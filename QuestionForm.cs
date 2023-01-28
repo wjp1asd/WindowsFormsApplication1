@@ -8,11 +8,17 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Diagnostics;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
     public partial class QuestionForm : Form
+
+
     {
+        Fuc f =new Fuc();
+        
         public QuestionForm()
         {
             InitializeComponent();
@@ -93,7 +99,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                this.btnNext.Text = "答题卡";
+                this.btnNext.Text = "提交";
                 btnAnswer_Click(sender, e);
             }
         }
@@ -194,7 +200,8 @@ namespace WindowsFormsApplication1
         {
             RadioButton rdb = (RadioButton)sender;
             string option = rdb.Tag.ToString();
-            datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option; 
+            datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
+            Console.WriteLine(datahelp.UserAnswer.ToString());
         }
 
         private void rdbA_CheckedChanged(object sender, EventArgs e)
@@ -203,6 +210,23 @@ namespace WindowsFormsApplication1
         }
 
         private void txtQuestionContent_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closing(object sender, FormClosedEventArgs e)
+        {
+           
+            f.ShowWarningTip("中途退出，成绩将不合格请谨慎选择");
+            Process.GetCurrentProcess().Kill();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
