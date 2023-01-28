@@ -1,0 +1,108 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+namespace WindowsFormsApplication1
+{
+    public partial class AnswerForm : Form
+    {
+        public AnswerForm()
+        {
+            InitializeComponent();
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+            ShowButtoAndLable();
+        }
+
+        private void ShowButtoAndLable()
+        {
+            
+            int btnX = 20;
+            int btnY = 60;
+            int IblX = 90;
+            int IblY = 65;
+            for (int i = 0; i < 20; i++)
+            {
+                Button btn = new Button();
+                btn.Location = new Point(btnX, btnY);
+                btn.Text = string.Format("第{0}题", i + 1);
+                btn.Tag = i;
+                btn.Click += new EventHandler(btn_Click);
+                btn.Size = new Size(60, 23);
+                Label Ibl = new Label();
+                Ibl.Location = new Point(IblX, IblY);
+
+                Ibl.BackColor = System.Drawing.Color.Transparent;
+                Ibl.Text = datahelp.UserAnswer[i];
+                Ibl.Size = new Size(41, 12);
+                this.Controls.Add(Ibl);
+                this.Controls.Add(btn);
+                btnX += 140;
+                IblX += 140;
+                if ((i + 1) % 4 == 0)
+                {
+                    btnX = 20;
+                    IblX = 90;
+                    btnY += 50;
+                    IblY += 50;
+
+                }
+            }
+        }
+        public void btn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int qid = int.Parse(btn.Tag.ToString());
+            datahelp.CurrentQuestion = qid + 1;
+            QuestionForm frm = new QuestionForm();
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.Close();
+        }
+
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+
+            if (datahelp.RemainTime > 0)
+            {
+                datahelp.RemainTime--;
+                int min = datahelp.RemainTime / 60;
+                int sec = datahelp.RemainTime % 60;
+                this.lbltime.Text = string.Format("{0:00}:{1:00}", min, sec);
+            }
+            else
+            {
+                this.timer1.Stop();
+                MessageBox.Show("时间到了，请交卷");
+            ScoreForm frm = new ScoreForm();
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+                this.Close();
+            }
+
+
+        }
+        private void btnsend_Click(object sender, EventArgs e)
+        {
+            this.timer1.Stop();
+            ScoreForm frm = new ScoreForm();
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.Close();
+
+        }
+
+       
+    }
+      
+}

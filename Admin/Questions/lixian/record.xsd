@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="record" targetNamespace="http://tempuri.org/record.xsd" xmlns:mstns="http://tempuri.org/record.xsd" xmlns="http://tempuri.org/record.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="examonlineConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="examonlineConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApplication1.Properties.Settings.GlobalReference.Default.examonlineConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources>
+          <DbSource ConnectionRef="examonlineConnectionString (Settings)" DbObjectName="dbo.lxjl" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="ScalarQuery" MethodsParameterType="CLR" Modifier="Public" Name="ScalarQuery" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ScalarQuery">
+            <SelectCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>SELECT  Id, shiyongdanwei, bianhao, shebeidaima, gongzuojiezhi, anquanfaxinghao, gongchengtongjing, fazuokongjing, 
+                   zhizhaodanwei, zhizhaoxuke, yl1, yl2, chuchangbianhao, chuchangriqi, jiaoyanfangshi, jianyanbianhao, jianyanjiezhi, 
+                   jiezhiwendu, w1, w2, w3, w4, w5, w6, c1, c2, c3, y1, y2, y3, mf, result, date1
+FROM      lxjl
+WHERE   (Id = 1)</CommandText>
+                <Parameters />
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="record" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="record" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="record">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
