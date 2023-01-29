@@ -57,5 +57,11 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             a.Show();
             this.Close();
         }
+
+        private void Online_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

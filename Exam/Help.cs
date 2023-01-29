@@ -42,6 +42,9 @@ namespace WindowsFormsApplication1
                 timer1.Start();
                 datahelp.stateTime = 0;
             }
+
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
        

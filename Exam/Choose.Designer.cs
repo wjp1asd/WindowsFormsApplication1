@@ -80,6 +80,7 @@
             this.Name = "Choose";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "抽题";
+            this.Load += new System.EventHandler(this.Choose_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

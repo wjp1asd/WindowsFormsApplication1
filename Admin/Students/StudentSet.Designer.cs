@@ -445,6 +445,7 @@
             this.Name = "StudentSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考生管理";
+            this.Load += new System.EventHandler(this.StudentSet_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

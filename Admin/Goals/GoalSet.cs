@@ -228,6 +228,12 @@ namespace WindowsFormsApplication1
             a.Show();
             this.Close();
         }
+
+        private void GoalSet_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }
 

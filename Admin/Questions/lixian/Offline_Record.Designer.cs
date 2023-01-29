@@ -84,6 +84,7 @@
             this.Name = "Offline_Record";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "记录填写";
+            this.Load += new System.EventHandler(this.Offline_Record_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

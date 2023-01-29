@@ -80,5 +80,11 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
             y.Show();
             this.Close();
         }
+
+        private void mf_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

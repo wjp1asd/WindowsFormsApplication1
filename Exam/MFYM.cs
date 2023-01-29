@@ -38,6 +38,8 @@ namespace WindowsFormsApplication1
         }
         private void MFYM_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
         bool G_MouseFlag;
         Pen pen = new Pen(Color.Black);

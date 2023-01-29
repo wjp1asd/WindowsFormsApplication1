@@ -249,5 +249,11 @@ namespace WindowsFormsApplication1.Questions
             this.panel1.Hide();
             InitTable(sql);
         }
+
+        private void Wucha_Settings_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

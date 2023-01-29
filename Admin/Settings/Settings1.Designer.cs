@@ -619,6 +619,7 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "系统配置";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Settings1
             // 
@@ -629,6 +630,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Settings1";
             this.Text = "系统设置";
+            this.Load += new System.EventHandler(this.Settings1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

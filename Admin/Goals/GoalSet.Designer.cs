@@ -151,6 +151,7 @@
             this.Name = "GoalSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "评分设置";
+            this.Load += new System.EventHandler(this.GoalSet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

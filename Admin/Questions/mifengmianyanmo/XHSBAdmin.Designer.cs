@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -50,7 +50,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lll = new System.Windows.Forms.Label();
             this.选取 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,7 @@
             this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lll = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -292,15 +292,6 @@
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.Visible = false;
             // 
-            // lll
-            // 
-            this.lll.AutoSize = true;
-            this.lll.Location = new System.Drawing.Point(12, 68);
-            this.lll.Name = "lll";
-            this.lll.Size = new System.Drawing.Size(129, 15);
-            this.lll.TabIndex = 22;
-            this.lll.Text = "安全阀型号：****";
-            // 
             // 选取
             // 
             this.选取.HeaderText = "选择";
@@ -327,8 +318,8 @@
             // optionA
             // 
             this.optionA.DataPropertyName = "optionA";
-            dataGridViewCellStyle9.NullValue = "操作";
-            this.optionA.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.NullValue = "操作";
+            this.optionA.DefaultCellStyle = dataGridViewCellStyle1;
             this.optionA.HeaderText = "选项A";
             this.optionA.MinimumWidth = 6;
             this.optionA.Name = "optionA";
@@ -338,8 +329,8 @@
             // optionB
             // 
             this.optionB.DataPropertyName = "optionB";
-            dataGridViewCellStyle10.NullValue = "删除";
-            this.optionB.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.NullValue = "删除";
+            this.optionB.DefaultCellStyle = dataGridViewCellStyle2;
             this.optionB.HeaderText = "选项B";
             this.optionB.MinimumWidth = 6;
             this.optionB.Name = "optionB";
@@ -370,6 +361,15 @@
             this.answer.Name = "answer";
             this.answer.Width = 125;
             // 
+            // lll
+            // 
+            this.lll.AutoSize = true;
+            this.lll.Location = new System.Drawing.Point(12, 68);
+            this.lll.Name = "lll";
+            this.lll.Size = new System.Drawing.Size(129, 15);
+            this.lll.TabIndex = 22;
+            this.lll.Text = "安全阀型号：****";
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(341, 23);
@@ -396,6 +396,7 @@
             this.Name = "XHSBAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "安全阀型号管理";
+            this.Load += new System.EventHandler(this.XHSBAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

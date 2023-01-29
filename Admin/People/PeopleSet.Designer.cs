@@ -435,6 +435,7 @@
             this.Name = "PeopleSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "人员管理";
+            this.Load += new System.EventHandler(this.PeopleSet_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

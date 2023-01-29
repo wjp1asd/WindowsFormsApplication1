@@ -82,6 +82,7 @@
             this.Name = "JiaoYan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "校验工艺设置";
+            this.Load += new System.EventHandler(this.JiaoYan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

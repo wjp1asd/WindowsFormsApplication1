@@ -294,7 +294,8 @@ namespace WindowsFormsApplication1.Questions
 
         private void Online_Questions_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void btnLogin_Click_1(object sender, EventArgs e)

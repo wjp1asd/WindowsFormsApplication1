@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Settings;
 
 namespace WindowsFormsApplication1
@@ -9,7 +10,7 @@ namespace WindowsFormsApplication1
 
     public partial class AdminIndex : Form
     {
-        private fullScreen ff;
+        private Fuc ff =new Fuc();
         public AdminIndex()
         {
             InitializeComponent();
@@ -40,9 +41,21 @@ namespace WindowsFormsApplication1
             //    MessageBox.Show(a.color1);
 
             this.label2.Text = a.link;
+            // 最大化 
+            this.change();
 
+        }
 
+        public void change() {
 
+            ff.fullsreen(this.button1, this);
+            ff.fullsreen(this.button2, this);
+            ff.fullsreen(this.button3, this);
+            ff.fullsreen(this.button4, this);
+            ff.fullsreen(this.button5, this);
+            ff.fullsreen(this.button6, this);
+            ff.fullsreen(this.button7, this);
+            ff.fullsreen(this.label2, this);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -94,22 +107,26 @@ namespace WindowsFormsApplication1
         private void button7_Click(object sender, EventArgs e)
         {
 
+            
+            form1 f=new form1();
+            f.Show();
             this.Close();
 
         }
 
         private void AdminIndex_Resize(object sender, EventArgs e)
         {
-           
-          //     ff.setTag(this);
-          //      ff.setSize(this);
-         
-           // Trace.WriteLine("宽度：" + this.Width);
-          //  Trace.WriteLine("高度：" + this.Height);
+
+            this.change();
 
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

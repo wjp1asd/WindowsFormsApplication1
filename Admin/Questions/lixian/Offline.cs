@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Questions
 {
@@ -17,6 +18,7 @@ namespace WindowsFormsApplication1.Questions
             InitUI();
 
         }
+        Fuc c = new Fuc();
         private void InitUI()
         {
             datahelp a = new datahelp();
@@ -32,8 +34,10 @@ namespace WindowsFormsApplication1.Questions
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
             //    MessageBox.Show(a.color1);
-
-
+            c.fullsreen(this.label2,this);
+            c.fullsreen(this.button1, this);
+            c.fullsreen(this.button2, this);
+            c.fullsreen(this.button3, this);
 
 
 
@@ -41,7 +45,8 @@ namespace WindowsFormsApplication1.Questions
 
         private void Offline_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void button1_Click(object sender, EventArgs e)

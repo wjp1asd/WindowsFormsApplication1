@@ -19,6 +19,8 @@ namespace WindowsFormsApplication1
         private void Form5_Load(object sender, EventArgs e)
         {
             ShowButtoAndLable();
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void ShowButtoAndLable()

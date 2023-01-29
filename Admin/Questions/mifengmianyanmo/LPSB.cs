@@ -305,5 +305,11 @@ namespace WindowsFormsApplication1.YanMO
 
             }
         }
+
+        private void LPSB_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

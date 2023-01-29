@@ -23,10 +23,11 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
+            chart1.ChartAreas[0].AxisY
         private void zaixianjiaoyan2_Load(object sender, EventArgs e)
-        {
-            chart1.ChartAreas[0].AxisY.LabelStyle.Format = "#KG";
-
+        {.LabelStyle.Format = "#KG";
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
 
         }
 

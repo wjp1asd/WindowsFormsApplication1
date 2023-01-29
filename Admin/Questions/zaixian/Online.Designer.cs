@@ -97,6 +97,7 @@
             this.Name = "Online";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "在线校验设置";
+            this.Load += new System.EventHandler(this.Online_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

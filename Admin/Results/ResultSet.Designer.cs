@@ -199,6 +199,7 @@
             this.Name = "ResultSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "成绩管理";
+            this.Load += new System.EventHandler(this.ResultSet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

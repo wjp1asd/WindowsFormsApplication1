@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
         [STAThread]
         static void Main()
         {
-
+            
             //Initc();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -41,6 +41,6 @@ namespace WindowsFormsApplication1
             // Application.Run(new ScanLogin());
            // Application.Run(new SubjectForm());
         }
-
+        
     }
 }

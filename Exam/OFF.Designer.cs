@@ -109,6 +109,7 @@
             this.Controls.Add(this.label2);
             this.Name = "OFF";
             this.Text = "离线校验";
+            this.Load += new System.EventHandler(this.OFF_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

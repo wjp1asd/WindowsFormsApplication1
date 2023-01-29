@@ -65,7 +65,8 @@ namespace WindowsFormsApplication1.Questions
 
         private void Offline_JiaoYan_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void bb(object sender, EventArgs e)

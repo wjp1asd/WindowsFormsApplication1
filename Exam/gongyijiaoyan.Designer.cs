@@ -80,6 +80,7 @@
             this.Controls.Add(this.label2);
             this.Name = "gongyijiaoyan";
             this.Text = "校验工艺编制";
+            this.Load += new System.EventHandler(this.gongyijiaoyan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

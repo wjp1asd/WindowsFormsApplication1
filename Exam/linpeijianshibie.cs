@@ -16,5 +16,11 @@ namespace WindowsFormsApplication1.Exam
         {
             InitializeComponent();
         }
+
+        private void linpeijianshibie_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

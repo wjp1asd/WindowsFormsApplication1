@@ -158,6 +158,7 @@
             this.Controls.Add(this.label2);
             this.Name = "jiaoyancanshu";
             this.Text = "校验参数设置";
+            this.Load += new System.EventHandler(this.jiaoyancanshu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

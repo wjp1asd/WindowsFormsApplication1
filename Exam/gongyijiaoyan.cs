@@ -21,5 +21,11 @@ namespace WindowsFormsApplication1.Exam
         {
             this.Close();
         }
+
+        private void gongyijiaoyan_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

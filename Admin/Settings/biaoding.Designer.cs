@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "biaoding";
             this.Text = "标定设置";
+            this.Load += new System.EventHandler(this.biaoding_Load);
             this.ResumeLayout(false);
 
         }

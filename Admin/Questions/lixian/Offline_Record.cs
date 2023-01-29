@@ -55,5 +55,11 @@ namespace WindowsFormsApplication1.Questions
             c.Show();
             this.Close();
         }
+
+        private void Offline_Record_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

@@ -277,5 +277,11 @@ namespace WindowsFormsApplication1
                 // }
             }
         }
+
+        private void StudentSet_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

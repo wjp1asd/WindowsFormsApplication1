@@ -22,5 +22,11 @@ namespace WindowsFormsApplication1.Exam
             JiaoYan j = new JiaoYan();
             j.Show();
         }
+
+        private void jiaoyancanshu_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

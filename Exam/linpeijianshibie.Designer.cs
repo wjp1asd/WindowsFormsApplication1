@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "linpeijianshibie";
             this.Text = "零配件识别";
+            this.Load += new System.EventHandler(this.linpeijianshibie_Load);
             this.ResumeLayout(false);
 
         }

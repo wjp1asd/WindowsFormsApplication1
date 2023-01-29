@@ -1,18 +1,25 @@
 ﻿using Sunny.UI;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
 {
     public class Fuc
     {
         public IFrame Frame { get; set; }
+
+        // fullsreen
+
+        public void fullsreen(System.Windows.Forms.Control c,Form f) {
+
+            c.Left += f.Width / 2;
+        
+        
+        }
         public Fuc() { }
        public void showloading() {
             UIStatusFormService.ShowStatusForm(100, "系统加载中......", 0);

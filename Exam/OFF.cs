@@ -48,5 +48,11 @@ namespace WindowsFormsApplication1.Exam
             jiaoyancanshu j = new jiaoyancanshu();
             j.Show();
         }
+
+        private void OFF_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

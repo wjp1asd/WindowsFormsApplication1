@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             InitUI();
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-            this.flowLayoutPanel1.Location = new Point(227,115);
+            ft.fullsreen(this.flowLayoutPanel1,this);
         }
 
         private void InitUI()
@@ -144,7 +144,7 @@ namespace WindowsFormsApplication1
 
         private void form1_Load(object sender, EventArgs e)
         {
-            ft.showloading();
+           // ft.showloading();
         
         }
 

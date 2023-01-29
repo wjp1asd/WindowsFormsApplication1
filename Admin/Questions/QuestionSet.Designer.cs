@@ -130,6 +130,7 @@
             this.Name = "QuestionSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "题库管理";
+            this.Load += new System.EventHandler(this.QuestionSet_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

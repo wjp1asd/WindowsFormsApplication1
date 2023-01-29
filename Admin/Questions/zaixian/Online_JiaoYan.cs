@@ -70,5 +70,11 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             MessageBox.Show("保存成功！,退出程序后加载");
             con.Close();
         }
+
+        private void Online_JiaoYan_Load(object sender, EventArgs e)
+        {
+          
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

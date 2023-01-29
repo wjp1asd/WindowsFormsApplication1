@@ -84,5 +84,11 @@ namespace WindowsFormsApplication1
             this.Close();
 
         }
+
+        private void QuestionSet_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

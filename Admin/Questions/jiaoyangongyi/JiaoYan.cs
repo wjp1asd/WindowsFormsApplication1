@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Questions;
 
 namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
 {
     public partial class JiaoYan : Form
     {
+
+        Fuc c=new Fuc();
         public JiaoYan()
         {
             InitializeComponent();
@@ -32,7 +35,11 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
             //    MessageBox.Show(a.color1);
 
+            c.fullsreen(this.label2,this);
 
+            c.fullsreen(this.button1, this);
+
+  
 
 
 
@@ -50,6 +57,12 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
             QuestionSet s = new QuestionSet();
             s.Show();
             this.Close();
+        }
+
+        private void JiaoYan_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
     }
 }

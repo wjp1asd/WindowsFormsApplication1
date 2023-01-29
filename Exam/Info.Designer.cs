@@ -78,7 +78,6 @@
             // 
             // pictureBox1
             // 
-            
             this.pictureBox1.Location = new System.Drawing.Point(535, 127);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(151, 200);
@@ -162,6 +161,7 @@
             this.Controls.Add(this.label2);
             this.Name = "Info";
             this.Text = "Info";
+            this.Load += new System.EventHandler(this.Info_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

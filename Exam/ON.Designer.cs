@@ -95,6 +95,7 @@
             this.Name = "ON";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ON";
+            this.Load += new System.EventHandler(this.ON_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

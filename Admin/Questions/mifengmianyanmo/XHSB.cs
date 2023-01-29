@@ -287,8 +287,14 @@ namespace WindowsFormsApplication1.YanMO
 
              };
             }
-          //  MessageBox.Show(e.RowIndex.ToString());
+
+        private void XHSB_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
+        //  MessageBox.Show(e.RowIndex.ToString());
+    }
     
 }
 

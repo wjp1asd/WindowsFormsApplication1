@@ -138,6 +138,7 @@
             this.Name = "Online_JiaoYan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "在线校验";
+            this.Load += new System.EventHandler(this.Online_JiaoYan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

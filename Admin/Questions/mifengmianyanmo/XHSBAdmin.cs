@@ -268,5 +268,11 @@ namespace WindowsFormsApplication1.YanMO
 
             this.InitTable(sql);
         }
+
+        private void XHSBAdmin_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

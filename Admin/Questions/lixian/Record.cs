@@ -86,7 +86,8 @@ namespace WindowsFormsApplication1
 
         private void Form2_Load(object sender, EventArgs e)
         {
-        // this.Height=this.MaximumSize.Height;
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void label7_Click(object sender, EventArgs e)

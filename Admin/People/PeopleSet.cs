@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -20,7 +21,7 @@ namespace WindowsFormsApplication1
         Boolean all = false;
         StringBuilder s1;
 
-
+       
         public PeopleSet()
         {
             InitializeComponent();
@@ -261,6 +262,12 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void PeopleSet_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
     }
 }

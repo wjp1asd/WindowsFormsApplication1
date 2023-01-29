@@ -16,5 +16,11 @@ namespace WindowsFormsApplication1.Admin.Settings
         {
             InitializeComponent();
         }
+
+        private void biaoding_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
     }
 }

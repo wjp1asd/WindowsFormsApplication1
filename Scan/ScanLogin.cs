@@ -41,6 +41,8 @@ namespace WindowsFormsApplication1.Scan
         {
             this.textBox1.Focus();
             this.button7.Enabled = false;
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void button7_Click(object sender, EventArgs e)
