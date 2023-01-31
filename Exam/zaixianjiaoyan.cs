@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -36,6 +37,21 @@ namespace WindowsFormsApplication1.Exam
 
 
 
+            this.change();
+
+
+        }
+        private Fuc ff = new Fuc();
+        public void change()
+        {
+
+            ff.fullsreen(this.button1, this);
+            ff.fullsreen(this.button2, this);
+            ff.fullsreen(this.button3, this);
+            ff.fullsreen(this.button4, this);
+
+         
+            ff.fullsreen(this.label2, this);
         }
         private void button3_Click(object sender, EventArgs e)
         {

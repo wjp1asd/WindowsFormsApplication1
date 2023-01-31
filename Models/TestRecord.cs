@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -21,7 +23,8 @@ namespace WindowsFormsApplication1.Models
         String zxlx;
         String adfxh;
         String qrcode;
-
+        String lxquestions;
+        String zquestions;
         public string Queque { get => queque; set => queque = value; }
         public string Ksname { get => ksname; set => ksname = value; }
         public string KsId { get => ksId; set => ksId = value; }
@@ -32,6 +35,8 @@ namespace WindowsFormsApplication1.Models
         public string Zxlx { get => zxlx; set => zxlx = value; }
         public string Adfxh { get => adfxh; set => adfxh = value; }
         public string Qrcode { get => qrcode; set => qrcode = value; }
+        public string Lxquestions { get => lxquestions; set => lxquestions = value; }
+        public string Zquestions { get => zquestions; set => zquestions = value; }
 
         public TestRecord(){
 
@@ -46,6 +51,28 @@ namespace WindowsFormsApplication1.Models
             //[zxlx] NCHAR(50) NULL,
             //[aqfxh] NCHAR(50) NULL,
             //[qrcode] NCHAR(50) NULL,
+        }
+
+        public int  Queuex()
+        {
+
+            int a=0; 
+           // Select* From dbo.S_ServiceDetailed Where Convert(varchar(10),[数据库添加时间字段], 120) = Convert(varchar(10), getDate(), 120)
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select count(*) from TestRecord wWhere Convert(varchar(10),[ksdate], 120) = Convert(varchar(10), getDate(), 120)";
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                a++;
+            }
+  
+            con.Close();
+
+            return a;
         }
         public TestRecord(string qrcode) {
 

@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1
 
     public partial class AdminIndex : Form
     {
-        private Fuc ff =new Fuc();
+     
         public AdminIndex()
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1
             this.change();
 
         }
-
+        private Fuc ff = new Fuc();
         public void change() {
 
             ff.fullsreen(this.button1, this);
@@ -117,7 +117,7 @@ namespace WindowsFormsApplication1
         private void AdminIndex_Resize(object sender, EventArgs e)
         {
 
-            this.change();
+            //this.change();
 
         }
 

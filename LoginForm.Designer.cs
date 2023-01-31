@@ -43,6 +43,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.uiAvatar1 = new Sunny.UI.UIAvatar();
             this.uiButton1 = new Sunny.UI.UIButton();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -136,7 +137,7 @@
             this.flowLayoutPanel1.Controls.Add(this.lblPassword);
             this.flowLayoutPanel1.Controls.Add(this.uiAvatar1);
             this.flowLayoutPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(608, 146);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(308, 146);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -255,6 +256,16 @@
             this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(839, 372);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 19;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // form1
             // 
             this.AllowDrop = true;
@@ -263,8 +274,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(982, 595);
             this.ControlBox = false;
-            this.Controls.Add(this.uiButton1);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -302,6 +314,7 @@
         private System.Windows.Forms.Label lblPassword;
         private Sunny.UI.UIAvatar uiAvatar1;
         private Sunny.UI.UIButton uiButton1;
+        private System.Windows.Forms.Button button4;
     }
 }
 

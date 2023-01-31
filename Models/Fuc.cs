@@ -21,12 +21,12 @@ namespace WindowsFormsApplication1.Models
         
         }
         public Fuc() { }
-       public void showloading() {
-            UIStatusFormService.ShowStatusForm(100, "系统加载中......", 0);
+       public void showloading(String t= "系统加载中......") {
+            UIStatusFormService.ShowStatusForm(100, t, 0);
             for (int i = 0; i < 88; i++)
             {
                 SystemEx.Delay(50);
-                UIStatusFormService.SetDescription("系统加载中(" + i + "%)......");
+                UIStatusFormService.SetDescription(t+"(" + i + "%)......");
                 UIStatusFormService.StepIt();
             }
 

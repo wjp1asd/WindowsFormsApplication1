@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1.Questions
             c.fullsreen(this.button1, this);
             c.fullsreen(this.button2, this);
             c.fullsreen(this.button3, this);
-
+            c.fullsreen(this.button7, this);
 
 
         }

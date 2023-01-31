@@ -14,6 +14,7 @@ using Sunny.UI;
 using System.Security.Cryptography;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
+using WindowsFormsApplication1.Exam;
 
 namespace WindowsFormsApplication1
 {
@@ -31,7 +32,7 @@ namespace WindowsFormsApplication1
             InitUI();
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-            ft.fullsreen(this.flowLayoutPanel1,this);
+            
         }
 
         private void InitUI()
@@ -182,6 +183,12 @@ namespace WindowsFormsApplication1
             ScanLogin s = new ScanLogin();
             s.Show();
             this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Choose c = new Choose();
+            c.Show();
         }
     }
 }

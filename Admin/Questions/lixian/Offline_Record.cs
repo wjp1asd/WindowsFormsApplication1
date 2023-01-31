@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Questions
 {
@@ -36,6 +37,19 @@ namespace WindowsFormsApplication1.Questions
 
 
 
+            this.change();
+
+
+        }
+        private Fuc ff = new Fuc();
+        public void change()
+        {
+
+          
+            ff.fullsreen(this.button2, this);
+         
+            ff.fullsreen(this.button7, this);
+            ff.fullsreen(this.label2, this);
         }
         private void label2_Click(object sender, EventArgs e)
         {

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.jiaoyangongyi;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
 using WindowsFormsApplication1.Admin.Questions.zaixian;
+using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Questions;
 using WindowsFormsApplication1.YanMO;
 
@@ -38,11 +39,25 @@ namespace WindowsFormsApplication1
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
             //    MessageBox.Show(a.color1);
 
-         
 
+            this.change();
 
 
         }
+        private Fuc ff = new Fuc();
+        public void change()
+        {
+
+            ff.fullsreen(this.button1, this);
+            ff.fullsreen(this.button2, this);
+            ff.fullsreen(this.button3, this);
+            ff.fullsreen(this.button4, this);
+        
+            ff.fullsreen(this.button7, this);
+            ff.fullsreen(this.label2, this);
+        }
+
+
         private void label2_Click(object sender, EventArgs e)
         {
 

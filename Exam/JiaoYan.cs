@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -15,6 +16,20 @@ namespace WindowsFormsApplication1.Exam
         public JiaoYan()
         {
             InitializeComponent();
+            this.change();
+
+
+        }
+        private Fuc ff = new Fuc();
+        public void change()
+        {
+
+            ff.fullsreen(this.button1, this);
+            ff.fullsreen(this.button2, this);
+            ff.fullsreen(this.button3, this);
+          
+           
+            ff.fullsreen(this.label2, this);
         }
 
         private void label1_Click(object sender, EventArgs e)

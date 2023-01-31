@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Questions;
 using WindowsFormsApplication1.YanMO;
 
@@ -38,9 +39,22 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
 
 
 
+            this.change();
+
 
         }
+        private Fuc ff = new Fuc();
+        public void change()
+        {
 
+            ff.fullsreen(this.button1, this);
+            ff.fullsreen(this.button2, this);
+            ff.fullsreen(this.button3, this);
+       
+
+            ff.fullsreen(this.button7, this);
+            ff.fullsreen(this.label2, this);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             XHSB x = new XHSB();
