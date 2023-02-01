@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select Top 10  id from question  where subid = 1 order by newid() ";
-            MessageBox.Show(sql);
+            
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
@@ -61,7 +61,7 @@ namespace WindowsFormsApplication1
             }
 
             answer = string.Join(",", answerList); ;
-            Console.WriteLine(answer);
+           
                 return   answer   ;
         
         }

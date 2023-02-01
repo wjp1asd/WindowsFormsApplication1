@@ -209,12 +209,14 @@ namespace WindowsFormsApplication1.Exam
         int m_iStatus = -1;     //打印机状态
         //语言版本 Language
         int m_lcLanguage = 0;
-        StringBuilder m_sbData;
+        StringBuilder m_sbData =new StringBuilder();
         TestRecord t = new TestRecord();
 
         public Print(string qrcode)
         {
             // 查询信息
+
+
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from TestRecord where qrcode='" +qrcode + "'";
@@ -225,20 +227,39 @@ namespace WindowsFormsApplication1.Exam
             while (reader.Read())
             {
    
-                t.Queque = reader["queue"].ToString();
-                t.Ksdate = reader["ksdate"].ToString();
-                t.Ksname = reader["ksname"].ToString();
-                t.KsId   = reader["ksId"].ToString();
+               t.Queque = reader["queue"].ToString();
+            
+             t.Ksdate = reader["ksdate"].ToString();
+             
+             t.Ksname = reader["ksname"].ToString();
+             
+                t.KsId = reader["ksId"].ToString();
+              
                 t.Lxyl = reader["lxyl"].ToString();
-                t.Zxyl = reader["zxyl"].ToString();
+           
                 t.Lxlx = reader["lxlx"].ToString();
+                t.Zxyl = reader["zxyl"].ToString();
+
                 t.Zxlx = reader["zxlx"].ToString();
+            
+
+
                 t.Adfxh = reader["aqfxh"].ToString();
+            
                 t.Qrcode  = reader["qrcode"].ToString();
             }
             con.Close();
-                InitializeComponent();
+            InitializeComponent();
             InitConfig();
+            this.queue.Text = t.Queque.Trim();
+            this.kstime.Text =  t.Ksdate.Trim();
+            this.ksname.Text =t.Ksname.Trim();
+            this.ksId.Text = "身份证："+t.KsId.Trim();
+            this.lxyl.Text = "要求整定压力:" +t.Lxyl.ToString().Trim()    + "Mpa";
+            this.lxlx.Text = "使用设备类型:" + t.Lxlx.ToString().Trim();
+            this.zxyl.Text = "要求整定压力:" + t.Zxyl.ToString().Trim() + "Mpa";
+           this.zxlx.Text = "使用设备类型:" +t.Zxlx.ToString().Trim();
+             this.aqfxh.Text = "安全阀型号:" + t.Adfxh.ToString().Trim();
         }
         public int r =1;
         private void InitConfig()
@@ -246,8 +267,9 @@ namespace WindowsFormsApplication1.Exam
             datahelp a = new datahelp();
             a.Initc();
             //获取打印机端口号
-            m_sbData.Append("USB001");
-            Console.WriteLine("打印机端口号"+a.print);
+        
+            m_sbData.Append(a.print.Trim());
+            MessageBox.Show(m_sbData.ToString());
             r = SetPrintport(m_sbData, 0);
             
             if (r == 0)
@@ -256,11 +278,13 @@ namespace WindowsFormsApplication1.Exam
                 SetClean();
                 SetReadZKmode(0);
                 this.label3.Text = "打印机成功";
+                this.uiLight1.Style = Sunny.UI.UIStyle.Green;
             }
             else { 
             
-            MessageBox.Show("初始化打印机失败");
+            
             this.label3.Text = "初始化打印机失败";
+            this.uiLight1.Style = Sunny.UI.UIStyle.Red;
 
             }
         }
@@ -282,55 +306,67 @@ namespace WindowsFormsApplication1.Exam
             PrintString(new StringBuilder("***安全阀模拟考试系统****"), 1);
             PrintChargeRow();
             PrintChargeRow();
+            SetSpacechar(5);
             SetLinespace(50);
-            SetSpacechar(10);
-          
-            SetAlignment(2);
-            PrintString(new StringBuilder("排队号："+t.Queque+ "       考试时间：" + t.Ksdate), 1);
-            PrintString(new StringBuilder("考 生：" + t.Ksname+ "      身份证号：" + t.KsId), 1);
+            SetAlignment(0);
+            PrintString(new StringBuilder("考 生：" + t.Ksname.Trim()+" "+ "排队号：" + t.Queque.Trim()), 1);
+        
+            PrintChargeRow();
+            PrintString(new StringBuilder("考试日期："), 1);
+            PrintChargeRow();
+            PrintString(new StringBuilder(t.Ksdate.Trim()), 1);
+            PrintChargeRow();
+            PrintString(new StringBuilder("身份证号："), 1);
+            PrintChargeRow();
+            PrintString(new StringBuilder( t.KsId.Trim()), 1);
             PrintString(new StringBuilder(), 1);
             PrintChargeRow();
             SetAlignment(0);
             PrintString(new StringBuilder("1、离线校验"), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder("要求整定压力:" + t.Lxyl
-                + "Mpa"), 1);
+            PrintString(new StringBuilder("要求整定压力:" + t.Lxyl.Trim()+ "Mpa"), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder("使用设备类型:" +
-                t.Lxlx), 1);
+            PrintString(new StringBuilder("使用设备类型:" +t.Lxlx.Trim()), 1);
             PrintChargeRow();
-
+            SetAlignment(0);
             PrintString(new StringBuilder("2、在线校验"), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder("要求整定压力:" + t.Zxyl
-                + "Mpa"), 1);
+            PrintString(new StringBuilder("要求整定压力:" + t.Zxyl.Trim() + "Mpa"), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder("使用设备类型" +
-                t.Zxlx), 1);
+            PrintString(new StringBuilder("使用设备类型:" +t.Zxlx.Trim()), 1);
             PrintChargeRow();
-            
 
+            SetAlignment(0);
             PrintString(new StringBuilder("3 密封面研磨"), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder("安全阀型号:" + t.Adfxh
-                ), 1);
+            PrintString(new StringBuilder("安全阀型号:" + t.Adfxh.Trim()), 1);
             PrintChargeRow();
-            SetSpacechar(5);
-            PrintString(new StringBuilder(t.Ksdate), 0);
+            SetSpacechar(2);
             PrintChargeRow();
-            PrintQrcode(new StringBuilder(t.Qrcode), 13, 2, 0);
+            PrintQrcode(new StringBuilder(t.Qrcode), 8, 2, 0);
             PrintChargeRow();
             PrintChargeRow();
             PrintCutpaper(0);
-            // PrintCutpaper(0);
-            // SetMarkoffsetprint(1000);
+          
 
         }
 
         private void Print_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+           
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
+
+        private void uiLight1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            form1 f1=new form1();
+            f1.Show();
+            this.Close();
         }
     }
 }

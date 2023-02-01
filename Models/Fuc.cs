@@ -3,7 +3,8 @@ using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
-
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
@@ -20,6 +21,16 @@ namespace WindowsFormsApplication1.Models
         
         
         }
+
+        public String  Md5(string plaintext)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] palindata = Encoding.Default.GetBytes(plaintext);//将要加密的字符串转换为字节数组
+            byte[] encryptdata = md5.ComputeHash(palindata);//将字符串加密后也转换为字符数组
+            var a = Convert.ToBase64String(encryptdata);//将加密后的字节数组转换为加密字符串
+            return a;
+        }
+
         public Fuc() { }
        public void showloading(String t= "系统加载中......") {
             UIStatusFormService.ShowStatusForm(100, t, 0);
@@ -34,15 +45,19 @@ namespace WindowsFormsApplication1.Models
         }
 
         // 判断是否有返回结果
-        public int RC(string sqlsent) {
-            int count = 0;
+        public string RC(string sqlsent) {
+            string count="";
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = string.Format(sqlsent);
             SqlCommand com1 = new SqlCommand(sql, con);
             con.Open();
-            count = int.Parse(com1.ExecuteScalar().ToString());
-            con.Close();
+            SqlDataReader reader = com1.ExecuteReader();
+            while (reader.Read())
+            {
+                count = reader["qrcode"].ToString();
+            }
+                con.Close();
             return count;
         }
         public void ShowWaitForm(string desc = "系统正在处理中，请稍候...")

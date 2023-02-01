@@ -35,6 +35,7 @@
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiLabel4 = new Sunny.UI.UILabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button7
@@ -42,7 +43,7 @@
             this.button7.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(303, 244);
+            this.button7.Location = new System.Drawing.Point(299, 350);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(209, 63);
             this.button7.TabIndex = 31;
@@ -101,9 +102,9 @@
             // uiLabel3
             // 
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel3.Location = new System.Drawing.Point(634, 90);
+            this.uiLabel3.Location = new System.Drawing.Point(560, 90);
             this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(100, 23);
+            this.uiLabel3.Size = new System.Drawing.Size(154, 23);
             this.uiLabel3.TabIndex = 35;
             this.uiLabel3.Text = "**********************‘";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -111,8 +112,9 @@
             // 
             // uiLabel4
             // 
+            this.uiLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel4.Location = new System.Drawing.Point(528, 90);
+            this.uiLabel4.Location = new System.Drawing.Point(454, 90);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(100, 23);
             this.uiLabel4.TabIndex = 34;
@@ -120,11 +122,25 @@
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(303, 227);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(205, 70);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "打印";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Choose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(827, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.uiLabel3);
             this.Controls.Add(this.uiLabel4);
             this.Controls.Add(this.uiLabel2);
@@ -150,5 +166,6 @@
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UILabel uiLabel3;
         private Sunny.UI.UILabel uiLabel4;
+        private System.Windows.Forms.Button button1;
     }
 }

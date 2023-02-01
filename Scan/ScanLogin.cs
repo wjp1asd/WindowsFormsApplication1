@@ -21,20 +21,15 @@ namespace WindowsFormsApplication1.Scan
         Fuc c = new Fuc();
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (this.textBox1.Text.Length == 8)
-            {
+          
                 // 
               
-                this.textBox1.Enabled = false;
+               
                 this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml("Green");
                 this.button7.Enabled = true;
                 this.button7.Text = "查询结果";
                 
-            }
-            else {
-                c.ShowInfoTip("指令长度为8位");
-               // this.textBox1.Text = "";
-}
+          
         }
 
         private void ScanLogin_Load(object sender, EventArgs e)
@@ -48,19 +43,28 @@ namespace WindowsFormsApplication1.Scan
         private void button7_Click(object sender, EventArgs e)
         {
             //查询数据 是否有选题记录
-            if (c.RC("select * from TestRecord where qrcode=" + this.textBox1.Text.Trim()) > 0)
+
+            String sql="select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
+           // MessageBox.Show(sql);
+            if (c.RC(sql).Length > 0)
             {
-                c.ShowSuccessTip("成功");
+                c.ShowSuccessTip("成功"+ c.RC(sql));
              
                 this.button7.Text = "确认考试";
 
-              Print p=new Print(this.textBox1.Text);
-                p.Show();
+             // Print p=new Print(this.textBox1.Text);
+              //  p.Show();
                 
             }
             else {
 
                 c.ShowErrorDialog("未找到合适记录");
+            }
+            if (this.button7.Text == "确认考试") {
+                // 开始进入考试
+                Exam1 ex=new Exam1(c.RC(sql));
+                ex.Show();
+
             }
 
         }

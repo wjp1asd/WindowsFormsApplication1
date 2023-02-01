@@ -37,9 +37,11 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("宋体", 34F);
+            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.textBox1.Location = new System.Drawing.Point(263, 135);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(284, 72);
+            this.textBox1.Size = new System.Drawing.Size(284, 79);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 

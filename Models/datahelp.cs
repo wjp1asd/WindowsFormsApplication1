@@ -19,6 +19,9 @@ namespace WindowsFormsApplication1
         public static int SubId = 0;
         public static int time = 5;
         public static int stateTime = 1;
+        // 考试状态
+        private int status = 0;
+
         // USB 接口定义
         public string id;
         public string print;
@@ -32,6 +35,9 @@ namespace WindowsFormsApplication1
         public string color1,color2,color3,color4,color5;
         public string  edyl = "1";
         public string  mfzj = "1";
+
+        public int Status { get => status; set => status = value; }
+
         public void Initc()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];

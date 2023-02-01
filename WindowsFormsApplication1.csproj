@@ -221,6 +221,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>examonlineDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Exam\Exam1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exam\Exam1.Designer.cs">
+      <DependentUpon>Exam1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exam\gongyijiaoyan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,12 +372,6 @@
       <DependentUpon>ScanLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="SubjectForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SubjectForm.Designer.cs">
-      <DependentUpon>SubjectForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="QuestionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -510,6 +510,9 @@
     <EmbeddedResource Include="Exam\Choose.resx">
       <DependentUpon>Choose.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Exam\Exam1.resx">
+      <DependentUpon>Exam1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Exam\gongyijiaoyan.resx">
       <DependentUpon>gongyijiaoyan.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,9 +602,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Scan\ScanLogin.resx">
       <DependentUpon>ScanLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SubjectForm.resx">
-      <DependentUpon>SubjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionForm.resx">
       <DependentUpon>QuestionForm.cs</DependentUpon>

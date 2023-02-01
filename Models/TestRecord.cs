@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -7,6 +9,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsFormsApplication1.Questions;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace WindowsFormsApplication1.Models
@@ -38,7 +42,8 @@ namespace WindowsFormsApplication1.Models
         public string Lxquestions { get => lxquestions; set => lxquestions = value; }
         public string Zquestions { get => zquestions; set => zquestions = value; }
 
-        public TestRecord(){
+        public TestRecord()
+        {
 
             //            [Id] INT NOT NULL,
             //[queue] NCHAR(50) NULL,
@@ -52,28 +57,123 @@ namespace WindowsFormsApplication1.Models
             //[aqfxh] NCHAR(50) NULL,
             //[qrcode] NCHAR(50) NULL,
         }
-
-        public int  Queuex()
+        public List<decimal> Yali()
         {
-
-            int a=0; 
-           // Select* From dbo.S_ServiceDetailed Where Convert(varchar(10),[数据库添加时间字段], 120) = Convert(varchar(10), getDate(), 120)
+            List<decimal> yali = new List<decimal>();
+           
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select count(*) from TestRecord wWhere Convert(varchar(10),[ksdate], 120) = Convert(varchar(10), getDate(), 120)";
+            string sql = "select * from Yali";
+
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-                a++;
+                yali.Add(decimal.Parse( reader["ztyli"].ToString()));
+            }
+
+            con.Close();
+
+
+
+            return yali;
+        }
+        public String Wucha() {
+            String wu="";
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select Top 1  type from wucha order by newid()";
+
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                wu = reader["type"].ToString();
+            }
+
+            con.Close();
+
+          
+
+            return wu;
+        }
+
+        public String Aqf()
+        {
+            String wu = "";
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select Top 1  Subname from Aquanfa order by newid()";
+
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                wu = reader["subname"].ToString();
+            }
+
+            con.Close();
+
+
+
+            return wu;
+        }
+
+
+        public TestRecord LastRecord()
+        {
+            TestRecord t = new TestRecord();
+            int a = 0;
+            // Select* From dbo.S_ServiceDetailed Where Convert(varchar(10),[数据库添加时间字段], 120) = Convert(varchar(10), getDate(), 120)
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select Top 1 * from TestRecord order by id desc";
+
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                t.lxyl = reader["lxyl"].ToString();
+                t.zxyl = reader["zxyl"].ToString();
+            }
+
+            con.Close();
+
+            return t;
+
+        }
+            public int  Queuex()
+        {
+
+            int a=0; 
+           // Select* From dbo.S_ServiceDetailed Where Convert(varchar(10),[数据库添加时间字段], 120) = Convert(varchar(10), getDate(), 120)
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select count(*) as num  from TestRecord Where Convert(varchar(10),[ksdate], 120) = Convert(varchar(10), getDate(), 120)";
+          
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                a = int.Parse(reader["num"].ToString())+1;
             }
   
             con.Close();
 
             return a;
         }
+
+
         public TestRecord(string qrcode) {
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -85,18 +185,20 @@ namespace WindowsFormsApplication1.Models
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-                //            [Id] INT NOT NULL,
-                //[queue] NCHAR(50) NULL,
-                //[ksname] NCHAR(50) NULL,
-                //[ksdate] NCHAR(50) NULL,
-                //[ksId] NCHAR(50) NULL,
-                //[lxyl] NCHAR(50) NULL,
-                //[lxlx] NCHAR(50) NULL,
-                //[zxyl] NCHAR(50) NULL,
-                //[zxlx] NCHAR(50) NULL,
-                //[aqfxh] NCHAR(50) NULL,
-                //[qrcode] NCHAR(50) NULL,
-                Queque = reader["queque"].ToString();
+         //       [Id] INT IDENTITY(1, 1) NOT NULL,
+   // [queue]       NCHAR(50)  NULL,
+    //[ksname] NCHAR(50)  NULL,
+  //  [ksdate] NCHAR(50)  NULL,
+   //[ksId] NCHAR(50)  NULL,
+    //[lxyl] NCHAR(50)  NULL,
+   // [lxlx] NCHAR(50)  NULL,
+   // [zxyl] NCHAR(50)  NULL,
+   // [zxlx] NCHAR(50)  NULL,
+    //[aqfxh] NCHAR(50)  NULL,
+   // [qrcode] NCHAR(50)  NULL,
+    //[lxquestions] NCHAR(100) NULL,
+    //[zxquestions] NCHAR(100) NULL
+                Queque = reader["queue"].ToString();
                 Ksdate = reader["ksdate"].ToString();
                 Ksname = reader["ksname"].ToString();
                 KsId = reader["ksId"].ToString();

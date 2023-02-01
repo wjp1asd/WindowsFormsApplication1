@@ -182,13 +182,21 @@ namespace WindowsFormsApplication1
         {
             ScanLogin s = new ScanLogin();
             s.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Choose c = new Choose();
             c.Show();
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ScanLogin sc=new  ScanLogin();
+            sc.Show();
+           this.Hide();
         }
     }
 }

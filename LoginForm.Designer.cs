@@ -44,6 +44,7 @@
             this.uiAvatar1 = new Sunny.UI.UIAvatar();
             this.uiButton1 = new Sunny.UI.UIButton();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -266,6 +267,16 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(839, 428);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 20;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // form1
             // 
             this.AllowDrop = true;
@@ -274,6 +285,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(982, 595);
             this.ControlBox = false;
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.uiButton1);
@@ -315,6 +327,7 @@
         private Sunny.UI.UIAvatar uiAvatar1;
         private Sunny.UI.UIButton uiButton1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 
