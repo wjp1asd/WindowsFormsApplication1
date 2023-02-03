@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1
             //  Application.Run(new Print());
             //  Application.Run(new plc());
             Application.Run(new form1());
-            //Application.Run(new Record());
+           // Application.Run(new Exam1());
             //Application.Run(new MFYM());
             // Application.Run(new ScanLogin());
            // Application.Run(new SubjectForm());

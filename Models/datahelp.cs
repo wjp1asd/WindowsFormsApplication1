@@ -3,19 +3,21 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Configuration;
+using System;
 
 namespace WindowsFormsApplication1
 {
     public class datahelp
     {
-        public static int[] QuestionIds = new int[20];
+        public static string [] QuestionIds = new string [10];
         public static int CurrentQuestion = 1;
         public static int RemainTime = 600;
-        public static string[] UserAnswer = new string[20];
-        public static string[] Answer = new string[20];
-        public static int StudentId= 0;
+        public static string[] UserAnswer = new string[10];
+        public static string[] Answer = new string[10];
+        public static string StudentId= "";
         public string name;
         public string loginid;
+        //0 离线 1在线
         public static int SubId = 0;
         public static int time = 5;
         public static int stateTime = 1;

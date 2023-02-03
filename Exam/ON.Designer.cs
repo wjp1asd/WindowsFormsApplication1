@@ -82,6 +82,7 @@
             this.label2.TabIndex = 38;
             this.label2.Text = "安全阀模拟考试系统";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // ON
             // 

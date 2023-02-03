@@ -128,7 +128,7 @@ namespace WindowsFormsApplication1
             SqlCommand com = new SqlCommand(sql,con);
             con.Open();
            
-            datahelp.StudentId = int.Parse(com.ExecuteScalar().ToString());
+            datahelp.StudentId = com.ExecuteScalar().ToString();
             con.Close();
         }
 

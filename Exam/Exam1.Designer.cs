@@ -40,35 +40,37 @@
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(225, 324);
+            this.button2.Location = new System.Drawing.Point(225, 256);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(360, 70);
             this.button2.TabIndex = 44;
-            this.button2.Text = "密封面研磨";
+            this.button2.Text = "在线校验";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
+            this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(225, 220);
+            this.button1.Location = new System.Drawing.Point(225, 152);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(360, 70);
             this.button1.TabIndex = 43;
-            this.button1.Text = "在线校验";
+            this.button1.Text = "离线校验";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Red;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(225, 116);
+            this.button3.Location = new System.Drawing.Point(225, 354);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(360, 70);
             this.button3.TabIndex = 42;
-            this.button3.Text = "离线校验";
+            this.button3.Text = "密封面研磨";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -83,6 +85,7 @@
             this.label2.TabIndex = 41;
             this.label2.Text = "安全阀模拟考试系统";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // uiBreadcrumb1
             // 
@@ -91,8 +94,7 @@
             "步骤一",
             "步骤二",
             "步骤三",
-            "步骤四",
-            "步骤五"});
+            "步骤四"});
             this.uiBreadcrumb1.ItemWidth = 192;
             this.uiBreadcrumb1.Location = new System.Drawing.Point(38, 527);
             this.uiBreadcrumb1.MinimumSize = new System.Drawing.Size(1, 1);

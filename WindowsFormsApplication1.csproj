@@ -251,6 +251,12 @@
     <Compile Include="Exam\linpeijianshibie.Designer.cs">
       <DependentUpon>linpeijianshibie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exam\Score1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exam\Score1.Designer.cs">
+      <DependentUpon>Score1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exam\zaixianjiaoyan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -539,6 +545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\Print.resx">
       <DependentUpon>Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exam\Score1.resx">
+      <DependentUpon>Score1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\zaixianjiaoyan.resx">
       <DependentUpon>zaixianjiaoyan.cs</DependentUpon>

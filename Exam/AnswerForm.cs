@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using WindowsFormsApplication1.Exam;
+
 namespace WindowsFormsApplication1
 {
     public partial class AnswerForm : Form
@@ -86,9 +88,8 @@ namespace WindowsFormsApplication1
             {
                 this.timer1.Stop();
                 MessageBox.Show("时间到了，请交卷");
-            ScoreForm frm = new ScoreForm();
-                frm.MdiParent = this.MdiParent;
-                frm.Show();
+                Score1 s = new Score1();
+                s.Show();
                 this.Close();
             }
 
@@ -97,9 +98,8 @@ namespace WindowsFormsApplication1
         private void btnsend_Click(object sender, EventArgs e)
         {
             this.timer1.Stop();
-            ScoreForm frm = new ScoreForm();
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+           Score1 s=new Score1();
+            s.Show();
             this.Close();
 
         }

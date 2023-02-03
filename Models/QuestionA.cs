@@ -65,6 +65,31 @@ namespace WindowsFormsApplication1
                 return   answer   ;
         
         }
+
+        public string Answer(string xx )
+        {
+            //返回抽题数据
+            String answer;
+            List<String> answerList = new List<string>();
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select answer from question  where id in ("+xx.Trim()+")";
+
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                answerList.Add(reader["answer"].ToString());
+
+            }
+
+            answer = string.Join(",", answerList); ;
+          
+            return answer;
+        }
+
         public String ChooseZaixian()
         {
             //返回抽题数据

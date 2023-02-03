@@ -18,10 +18,79 @@ namespace WindowsFormsApplication1
 
     {
         Fuc f =new Fuc();
-        
+        TestRecord t;
+        QuestionA qq=new QuestionA();
         public QuestionForm()
         {
             InitializeComponent();
+        }
+            public QuestionForm(String qrcode,String subtype="0")
+        {
+            InitializeComponent();
+            t=new TestRecord();
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select * from TestRecord where qrcode='" + qrcode + "'";
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+
+                t.Queque = reader["queue"].ToString();
+
+                t.Ksdate = reader["ksdate"].ToString();
+
+                t.Ksname = reader["ksname"].ToString();
+
+                t.KsId = reader["ksId"].ToString();
+
+                t.Lxyl = reader["lxyl"].ToString();
+
+                t.Lxlx = reader["lxlx"].ToString();
+                t.Zxyl = reader["zxyl"].ToString();
+
+                t.Zxlx = reader["zxlx"].ToString();
+                t.Lxquestions= reader["lxquestions"].ToString();
+                t.Zquestions = reader["zxquestions"].ToString();
+
+
+                t.Adfxh = reader["aqfxh"].ToString();
+
+                t.Qrcode = reader["qrcode"].ToString();
+            }
+            con.Close();
+            datahelp.StudentId = t.KsId;
+           
+            switch (subtype)
+            {
+                case "0":
+                    this.Text = "离线校验答题";
+                    datahelp.QuestionIds = t.Lxquestions.Split(',');
+                    datahelp.SubId = 0;
+                    datahelp.Answer = qq.Answer(t.Lxquestions).Split(',');
+                    break;
+                case "1":
+                    this.Text = "在线校验答题";
+                    datahelp.QuestionIds = t.Zquestions.Split(',');
+                    datahelp.SubId = 1;
+                    datahelp.Answer = qq.Answer(t.Zquestions).Split(','); 
+                    break;
+             
+            }
+            if (qrcode.Length == 0)
+            {
+                f.ShowErrorDialog("考试信息有误");
+
+
+            }
+            else {
+                // 加载题库
+
+                LoadQuestion();
+            }
+
         }
 
         private void Form4_Load(object sender, EventArgs e)
@@ -29,7 +98,7 @@ namespace WindowsFormsApplication1
             InitbtnUp();
             InitbtnNext();
             ShowInfo();
-            LoadQuestion();
+           
         }
         private void InitbtnUp()
         {
@@ -51,7 +120,7 @@ namespace WindowsFormsApplication1
         }
         private void InitbtnNext()
         {
-            if (datahelp.CurrentQuestion >19)
+            if (datahelp.CurrentQuestion >9)
             {
                 this.btnNext.Text  = "答题卡";
             }
@@ -59,21 +128,39 @@ namespace WindowsFormsApplication1
         }
         private void LoadQuestion()
         {
-            int questionId = datahelp.QuestionIds[datahelp.CurrentQuestion-1 ];
+
+            string questionId = datahelp.QuestionIds[datahelp.CurrentQuestion-1];
+         
+          
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from question where Id=" + questionId.ToString();
-
+            string sql = "select * from question where id =" + questionId.ToString().Trim();
+         
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-                this.txtQuestionContent.Text = reader["question"].ToString();
-                this.rdbA.Text = "A: " + reader["optionA"].ToString();
-                this.rdbB.Text = "B: " + reader["optionB"].ToString();
-                this.rbdC.Text = "C: " + reader["optionC"].ToString();
-                this.rdbD.Text = "D: " + reader["optionD"].ToString();
+                if (reader["type"].ToString().Trim() == "判断题")
+                {
+                    this.txtQuestionContent.Text = reader["question"].ToString();
+                    this.rdbA.Text = "对 " + reader["optionA"].ToString();
+                    this.rdbB.Text = "错 " + reader["optionB"].ToString();
+                    this.rbdC.Text = "" ;
+                    this.rdbD.Text = "";
+
+
+
+                }
+                else {
+                    this.txtQuestionContent.Text = reader["question"].ToString();
+                    this.rdbA.Text = "A: " + reader["optionA"].ToString();
+                    this.rdbB.Text = "B: " + reader["optionB"].ToString();
+                    this.rbdC.Text = "C: " + reader["optionC"].ToString();
+                    this.rdbD.Text = "D: " + reader["optionD"].ToString();
+
+                }
+               
             }
 
             reader.Close();
@@ -84,18 +171,23 @@ namespace WindowsFormsApplication1
 
         private void ShowInfo()
         {
-            this.lblCurrent.Text = datahelp.CurrentQuestion.ToString();
+            this.label3.Text = datahelp.CurrentQuestion.ToString();
+            this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
+            this.label7.Text ="系统答案：" + string.Join(",", datahelp.Answer);    
+             
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (datahelp.CurrentQuestion < 20)
+            if (datahelp.CurrentQuestion < 10)
             {
                 datahelp.CurrentQuestion++;
                 CheckNextButtonText();
-                ShowInfo();
+               
                 LoadQuestion();
                 SelectOption();
+                ShowInfo();
             }
             else
             {
@@ -130,7 +222,7 @@ namespace WindowsFormsApplication1
 
         private void CheckNextButtonText()
         {
-            if (datahelp.CurrentQuestion < 20)
+            if (datahelp.CurrentQuestion < 10)
             {
                 this.btnNext.Text = "下一题";
                 btnUp.Enabled = true;
@@ -200,8 +292,11 @@ namespace WindowsFormsApplication1
         {
             RadioButton rdb = (RadioButton)sender;
             string option = rdb.Tag.ToString();
+          
             datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
-            Console.WriteLine(datahelp.UserAnswer.ToString());
+            MessageBox.Show(string.Join("",datahelp.UserAnswer));
+            
+
         }
 
         private void rdbA_CheckedChanged(object sender, EventArgs e)
@@ -227,6 +322,21 @@ namespace WindowsFormsApplication1
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbltime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

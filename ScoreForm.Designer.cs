@@ -52,6 +52,7 @@
             this.lblscore.Name = "lblscore";
             this.lblscore.Size = new System.Drawing.Size(133, 25);
             this.lblscore.TabIndex = 4;
+            this.lblscore.Click += new System.EventHandler(this.lblscore_Click);
             // 
             // lblAllscore
             // 
@@ -61,6 +62,7 @@
             this.lblAllscore.Name = "lblAllscore";
             this.lblAllscore.Size = new System.Drawing.Size(400, 25);
             this.lblAllscore.TabIndex = 4;
+            this.lblAllscore.Click += new System.EventHandler(this.lblAllscore_Click);
             // 
             // label4
             // 
@@ -73,6 +75,7 @@
             this.label4.Size = new System.Drawing.Size(46, 24);
             this.label4.TabIndex = 5;
             this.label4.Text = "得分";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -85,6 +88,7 @@
             this.label5.Size = new System.Drawing.Size(46, 24);
             this.label5.TabIndex = 6;
             this.label5.Text = "满分";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // imageList1
             // 
@@ -110,7 +114,7 @@
             // 
             this.picFace.BackColor = System.Drawing.Color.Transparent;
             this.picFace.Location = new System.Drawing.Point(16, 62);
-            this.picFace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picFace.Margin = new System.Windows.Forms.Padding(4);
             this.picFace.Name = "picFace";
             this.picFace.Size = new System.Drawing.Size(183, 115);
             this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -138,12 +142,13 @@
             this.lblAllResult.Size = new System.Drawing.Size(67, 25);
             this.lblAllResult.TabIndex = 10;
             this.lblAllResult.Text = "100分";
+            this.lblAllResult.Click += new System.EventHandler(this.lblAllResult_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.Location = new System.Drawing.Point(248, 399);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 32);
             this.button1.TabIndex = 11;
@@ -159,6 +164,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(400, 25);
             this.label1.TabIndex = 4;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ScoreForm
             // 
@@ -178,7 +184,7 @@
             this.Controls.Add(this.lblscore);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScoreForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form6";

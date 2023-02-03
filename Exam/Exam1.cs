@@ -14,12 +14,14 @@ namespace WindowsFormsApplication1.Exam
     public partial class Exam1 : Form
     {
         TestRecord t;
-        public Exam1(String qrcode)
+        String qr;
+        public Exam1(String qrcode= "mXjjwVcvXizfGcnbOF9CKw==")
         {
             InitializeComponent();
 
             InitUI();
-            t=new TestRecord(qrcode);
+            qr=qrcode;
+          
 
         }
         private void InitUI()
@@ -76,7 +78,8 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            MFYM mf= new MFYM(qr);
+            mf.Show();
         }
 
         private void Exam1_Load(object sender, EventArgs e)
@@ -88,6 +91,23 @@ namespace WindowsFormsApplication1.Exam
         private void uiBreadcrumb1_ItemIndexChanged(object sender, int value)
         {
            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OFF of=new OFF(qr);
+            of.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ON on=new ON(qr);
+            on.Show();
         }
     }
 }

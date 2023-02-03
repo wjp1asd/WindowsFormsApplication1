@@ -12,8 +12,10 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class OFF : Form
     {
-        public OFF()
-        {
+        String qr;
+        public OFF(String qrcode)
+        {  
+            qr= qrcode;
             InitializeComponent();
             InitUI();
 
@@ -55,7 +57,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            QuestionForm a=new QuestionForm();
+            QuestionForm a=new QuestionForm(qr);
             a.Show();
         }
 

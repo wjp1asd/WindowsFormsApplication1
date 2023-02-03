@@ -303,7 +303,7 @@ namespace WindowsFormsApplication1
                 con.Open();
 
             if (int.Parse(com.ExecuteScalar().ToString()) > 0) {
-                datahelp.StudentId = int.Parse(com.ExecuteScalar().ToString());
+                datahelp.StudentId = com.ExecuteScalar().ToString();
             }
             else {
                 a = this.lblName.Text;

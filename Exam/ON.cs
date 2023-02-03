@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class ON : Form
     {
-        public ON()
+        public ON(String qrcode)
         {
             InitializeComponent();
             InitUI();
@@ -58,6 +58,11 @@ namespace WindowsFormsApplication1.Exam
         {
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

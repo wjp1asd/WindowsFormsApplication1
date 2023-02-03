@@ -173,9 +173,9 @@ namespace WindowsFormsApplication1.Models
             return a;
         }
 
-
-        public TestRecord(string qrcode) {
-
+        public TestRecord getRecord(string qrcode)
+        {
+            TestRecord t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from TestRecord where qrcode='" + qrcode + "'";
@@ -185,32 +185,23 @@ namespace WindowsFormsApplication1.Models
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-         //       [Id] INT IDENTITY(1, 1) NOT NULL,
-   // [queue]       NCHAR(50)  NULL,
-    //[ksname] NCHAR(50)  NULL,
-  //  [ksdate] NCHAR(50)  NULL,
-   //[ksId] NCHAR(50)  NULL,
-    //[lxyl] NCHAR(50)  NULL,
-   // [lxlx] NCHAR(50)  NULL,
-   // [zxyl] NCHAR(50)  NULL,
-   // [zxlx] NCHAR(50)  NULL,
-    //[aqfxh] NCHAR(50)  NULL,
-   // [qrcode] NCHAR(50)  NULL,
-    //[lxquestions] NCHAR(100) NULL,
-    //[zxquestions] NCHAR(100) NULL
-                Queque = reader["queue"].ToString();
-                Ksdate = reader["ksdate"].ToString();
-                Ksname = reader["ksname"].ToString();
-                KsId = reader["ksId"].ToString();
-                Lxyl = reader["lxyl"].ToString();
-                Zxyl = reader["zxyl"].ToString();
-                Lxlx = reader["lxlx"].ToString();
-                Zxlx = reader["zxlx"].ToString();
-                Adfxh = reader["aqfxh"].ToString();
-                Qrcode = reader["qrcode"].ToString();
+                t.queque = reader["queue"].ToString().Trim();
+                t.ksdate = reader["ksdate"].ToString().Trim();
+                t.ksname = reader["ksname"].ToString().Trim();
+                t.ksId = reader["ksId"].ToString().Trim();
+                t.lxyl = reader["lxyl"].ToString().Trim();
+                t.zxyl = reader["zxyl"].ToString().Trim();
+                t.lxlx = reader["lxlx"].ToString().Trim();
+                t.zxlx = reader["zxlx"].ToString().Trim();
+                t.adfxh = reader["aqfxh"].ToString().Trim();
+                t.qrcode = reader["qrcode"].ToString().Trim();
+                t.lxquestions = reader["lxquestions"].ToString();
+                t.zquestions = reader["zxquestions"].ToString();
             }
 
             con.Close();
+            return t;
         }
+      
     }
 }

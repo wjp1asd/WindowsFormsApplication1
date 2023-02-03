@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class MFYM : Form
     {
-        public MFYM()
+        public MFYM(String qrcode)
         {
             InitializeComponent();
 
@@ -90,6 +90,11 @@ namespace WindowsFormsApplication1
 
             graphics.DrawRectangle(pen, gle);
             graphics.Clear(Color.White);
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

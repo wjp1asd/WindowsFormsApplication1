@@ -68,10 +68,10 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < row; i++)
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
-                    //{
+                    {
                     // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
                    s1.Add(i);
-                // }
+                 }
             }
            
           //  MessageBox.Show(s1.ToString());
@@ -89,12 +89,12 @@ namespace WindowsFormsApplication1
                       var x = s1[i];
                         string question = "'"+this.dataGridView1.Rows[x].Cells[1].Value.ToString()+"'";
                         string answer = "'" + this.dataGridView1.Rows[x].Cells[2].Value.ToString() + "'";
-                      
+                        string mtype = "'" + this.dataGridView1.Rows[x].Cells[7].Value.ToString() + "'";
                         string oa = "'" + "无" + "'";
                         string ob = "'" + "无" + "'";
                         string oc = "'" + "无" + "'";
                         string od ="'" + "无" + "'";
-                        if (this.dataGridView1.Rows[x].Cells[4].Value != null)
+                        if (this.dataGridView1.Rows[x].Cells[3].Value != null)
                         {
                           oa = "'" + this.dataGridView1.Rows[x].Cells[3].Value.ToString() + "'";
                         }
@@ -112,8 +112,9 @@ namespace WindowsFormsApplication1
                           od = "'" + this.dataGridView1.Rows[x].Cells[6].Value.ToString() + "'";
                         }
                       
-                        string strcomm = "insert into " + TableName + "([question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(" +
+                        string strcomm = "insert into " + TableName + "([question],[type], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(" +
                  question + ","
+                  +  mtype + ","
                  + answer + ","
                  + Subtype + ","
                  + oa + ","
