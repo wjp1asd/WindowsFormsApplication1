@@ -198,5 +198,11 @@ namespace WindowsFormsApplication1
             sc.Show();
            this.Hide();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Opencv cv= new Opencv();
+            cv.Show();
+        }
     }
 }
