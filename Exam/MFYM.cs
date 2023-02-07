@@ -42,11 +42,11 @@ namespace WindowsFormsApplication1
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
         bool G_MouseFlag;
-        Pen pen = new Pen(Color.Black);
+        Pen pen = new Pen(Color.Red);
         Point lastPoint;
         private void _018_MouseMove(object sender, MouseEventArgs e)
         {
-            Graphics graphics = this.CreateGraphics();
+            Graphics graphics = this.flowLayoutPanel1.CreateGraphics();
             if (lastPoint.Equals(Point.Empty))//判断绘图开始点是否为空
             {
                 lastPoint = new Point(e.X, e.Y);//记录鼠标当前位置
@@ -72,9 +72,9 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Graphics graphics = this.CreateGraphics();
+            Graphics graphics = this.flowLayoutPanel1.CreateGraphics();
             Rectangle gle = new Rectangle(280, 192, 450, 270);
-
+            
             graphics.DrawRectangle(pen, gle);
         }
 

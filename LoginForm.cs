@@ -242,5 +242,12 @@ namespace WindowsFormsApplication1
             c.Show();
             this.Hide();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            MFYM mf = new MFYM("123");
+            mf.Show();
+            this.Hide();
+        }
     }
 }

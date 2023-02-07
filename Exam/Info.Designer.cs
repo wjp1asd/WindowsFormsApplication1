@@ -63,6 +63,7 @@
             this.button3.TabIndex = 27;
             this.button3.Text = "打印";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 
@@ -78,7 +79,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(535, 127);
+            this.pictureBox1.Location = new System.Drawing.Point(568, 104);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(151, 200);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

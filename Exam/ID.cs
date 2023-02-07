@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -321,6 +322,8 @@ namespace WindowsFormsApplication1
                 SqlCommand com1 = new SqlCommand(strcomm, con);
                 con.Open();
                 ff.ShowSuccessTip("更新信息成功！");
+              Choose a=new Choose(Id.ToString().Trim());
+                a.Show();
             }
             else {
                 ff.ShowErrorDialog("系统无相关信息");
