@@ -46,12 +46,14 @@ namespace WindowsFormsApplication1
             if (x == "1")
             {
                 // 管理员权限
+                this.button1.Top = this.button3.Top;
 
                 this.button2.Hide();
-                this.button2.Enabled = false;
-                this.button1.Top = this.button1.Top + 20;
-                this.button3.Top = this.button3.Top - 70;
-                this.uiButton1.Hide(); 
+                this.uiButton1.Hide();
+                this.button4.Hide();
+                this.button5.Hide();
+                this.button6.Hide();
+                this.button7.Hide();
             }
             else if (x == "0")
             {
@@ -59,20 +61,47 @@ namespace WindowsFormsApplication1
                 this.button1.Hide();
                 this.pictureBox1.Hide();
                 this.uiButton1.Hide();
-                this.button2.Top = this.button2.Top - 80;
-                this.button3.Top = this.button3.Top - 80;
+            
+                this.button4.Hide();
+                this.button5.Hide();
+                this.button6.Hide();
+                this.button7.Hide();
             }
-            else if (x == "2") {
+            else if (x == "2")
+            {
+                //考试机登录
                 this.button1.Hide();
-                this.button1.Enabled = false ;
-
+                this.button1.Enabled = false;
+                this.pictureBox1.Hide();
                 this.button2.Hide();
                 this.button2.Enabled = false;
 
-                this.uiButton1.Top = this.uiButton1.Top + 20;
-                this.button3.Top = this.button3.Top - 70;
+                this.uiButton1.Top = this.button3.Top;
+                this.uiButton1.Left = this.button3.Left-360;
+                this.button4.Hide();
+                this.button5.Hide();
+                this.button6.Hide();
+                this.button7.Hide();
             }
+            else if (x == "-1")
+            {
+                // 上帝模式
+                
+            }
+            else {
 
+                this.button4.Hide();
+                this.button5.Hide();
+                this.button6.Hide();
+                this.button7.Hide();
+                this.button1.Hide();
+                this.button2.Hide();
+                this.button3.Hide();
+                this.button4.Hide();
+                this.uiButton1.Hide();
+
+
+            }
 
         }
 
@@ -159,7 +188,7 @@ namespace WindowsFormsApplication1
         {
             ID f1 = new ID();
             f1.Show();
-          
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -176,20 +205,21 @@ namespace WindowsFormsApplication1
         {
             Settings1 s1 = new Settings1();
             s1.Show();
+            this.Hide();
         }
 
         private void uiButton1_Click(object sender, EventArgs e)
         {
             ScanLogin s = new ScanLogin();
             s.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Choose c = new Choose();
             c.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -203,6 +233,14 @@ namespace WindowsFormsApplication1
         {
             Opencv cv= new Opencv();
             cv.Show();
+            this.Hide();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            plc c=new plc();
+            c.Show();
+            this.Hide();
         }
     }
 }

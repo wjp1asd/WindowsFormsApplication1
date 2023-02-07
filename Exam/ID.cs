@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
-
+using WindowsFormsApplication1.Models;
 using static System.Net.Mime.MediaTypeNames;
 
 
@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
     {
         int nPort = 0;
         int nReaderPort = 0;
-       
+        string loc = ConfigurationManager.AppSettings["loc"];
 
         public ID()
         {
@@ -36,7 +36,9 @@ namespace WindowsFormsApplication1
      
         private void InitConfig()
         {
-            nPort = 1001;
+            datahelp a=new datahelp();
+            a.Initc();
+            nPort=int.Parse(a.print.ToString().Trim());
             this.groupBox1.Hide();
             if (nPort != 0)
             {
@@ -156,7 +158,7 @@ namespace WindowsFormsApplication1
                             //照片
                             if (System.IO.File.Exists("ZP.bmp"))
                             {
-                                pictureBox1.ImageLocation ="\\zp.bmp";
+                                pictureBox1.ImageLocation =loc+ "\\IDcard\\" + lblName.Text + "_"+ lblIdCard.Text + ".bmp";
                             }
                         }
                     }
@@ -205,11 +207,11 @@ namespace WindowsFormsApplication1
                             lblValidDate2.Text = "至  ";
                             IDCardReader.GetGAT_ValidEndDate2(ref arrTmp[0], ref nLen);
                             lblValidDate2.Text += System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
-                          
+
                             //照片
                             if (System.IO.File.Exists("ZP.bmp"))
                             {
-                                pictureBox2.ImageLocation = "\\zp.bmp";
+                                pictureBox1.ImageLocation = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
                             }
                         }
                     }
@@ -260,11 +262,11 @@ namespace WindowsFormsApplication1
                             IDCardReader.GetEndDate2(ref arrTmp[0], ref nLen);
                             lblValidDate2.Text += System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
                             //指纹信息
-                           
+
                             //照片
                             if (System.IO.File.Exists("ZP.bmp"))
                             {
-                                pictureBox2.ImageLocation = "\\zp.bmp";
+                                pictureBox1.ImageLocation = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
                             }
                         }
                         else
@@ -290,52 +292,38 @@ namespace WindowsFormsApplication1
             UpdataInfo(lblIdCard.Text);
         }
         public string a,b,c,d,f;
+        public Fuc ff=new Fuc();
+        private void button4_Click(object sender, EventArgs e)
+        {
 
-      
+        }
 
         private void UpdataInfo(string Id)
         {
       
                 string connectionString = ConfigurationManager.AppSettings["sqlc"];
                 SqlConnection con = new SqlConnection(connectionString);
-                string sql = "select id from student where loginId='" +Id.ToString() + "'";
+                string sql = "select id from student where idcard='" +Id.ToString() + "'";
                 SqlCommand com = new SqlCommand(sql, con);
                 con.Open();
+            string path = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+            string id = "";
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                id = reader["id"].ToString();
 
-            if (int.Parse(com.ExecuteScalar().ToString()) > 0) {
-                datahelp.StudentId = com.ExecuteScalar().ToString();
+            }
+            if (id.Length> 0) {
+                datahelp.StudentId = Id.ToString();
+                
+                string strcomm = "update student  set avatar=" + path +" where id = " + id;
+                SqlCommand com1 = new SqlCommand(strcomm, con);
+                con.Open();
+                ff.ShowSuccessTip("更新信息成功！");
             }
             else {
-                a = this.lblName.Text;
-                b = Id;
-                c = "123";
-                d = this.lblSex.Text;
-                f = "1";
-                string path = "\\zp.bmp";
-                //将制定路径的图片添加到FileStream类中    
-                FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-                //通过FileStream对象实例化BinaryReader对象
-                BinaryReader br = new BinaryReader(fs);
-                //通过BinaryReader类对象的ReadBytes()方法将FileStream类对象转化为二进制数组
-                byte[] imgBytesIn = br.ReadBytes(Convert.ToInt32(fs.Length));
-                br = new BinaryReader(fs);
-                //通过BinaryReader类对象的ReadBytes()方法将FileStream类对象转化为二进制数组
-                imgBytesIn = br.ReadBytes(Convert.ToInt32(fs.Length));
-
-                Console.WriteLine(imgBytesIn );
-
-                String str1 = "INSERT INTO student(name,loginId,password,sex,power,avatar) VALUES('"
-                    + a
-                    + "','"
-                    + b
-                    + "','"
-                    + c
-                    + "','"
-                    + d
-                    + "','"
-                    + f
-                    + "','"
-                    + imgBytesIn + "')";
+                ff.ShowErrorDialog("系统无相关信息");
             }
 
             con.Close();

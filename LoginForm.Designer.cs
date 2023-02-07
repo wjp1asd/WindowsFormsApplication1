@@ -46,6 +46,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +87,7 @@
             this.button1.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(324, 158);
+            this.button1.Location = new System.Drawing.Point(207, 158);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
             this.button1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
@@ -105,7 +106,7 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(324, 279);
+            this.button2.Location = new System.Drawing.Point(207, 281);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(262, 90);
@@ -119,7 +120,7 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(324, 402);
+            this.button3.Location = new System.Drawing.Point(574, 281);
             this.button3.MinimumSize = new System.Drawing.Size(1, 1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(262, 90);
@@ -139,7 +140,7 @@
             this.flowLayoutPanel1.Controls.Add(this.lblPassword);
             this.flowLayoutPanel1.Controls.Add(this.uiAvatar1);
             this.flowLayoutPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(308, 146);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(339, 122);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -248,7 +249,7 @@
             // 
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.uiButton1.Location = new System.Drawing.Point(324, 158);
+            this.uiButton1.Location = new System.Drawing.Point(574, 158);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(262, 90);
@@ -260,7 +261,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(796, 146);
+            this.button4.Location = new System.Drawing.Point(130, 517);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(131, 50);
             this.button4.TabIndex = 19;
@@ -270,7 +271,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(796, 216);
+            this.button5.Location = new System.Drawing.Point(324, 517);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(131, 48);
             this.button5.TabIndex = 20;
@@ -280,13 +281,23 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(796, 285);
+            this.button6.Location = new System.Drawing.Point(507, 517);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(131, 48);
             this.button6.TabIndex = 21;
             this.button6.Text = "阀帽测试";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(690, 517);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(131, 48);
+            this.button7.TabIndex = 22;
+            this.button7.Text = "阀帽测试";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // form1
             // 
@@ -296,11 +307,12 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(982, 595);
             this.ControlBox = false;
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.uiButton1);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -341,6 +353,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }
 
