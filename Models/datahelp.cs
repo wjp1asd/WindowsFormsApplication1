@@ -37,7 +37,8 @@ namespace WindowsFormsApplication1
         public string color1,color2,color3,color4,color5;
         public string  edyl = "1";
         public string  mfzj = "1";
-
+        // 题型数量
+        public int lxnum,zxnum,gynum,xhnum,lpjnum,yngnum;
         public int Status { get => status; set => status = value; }
 
         public void Initc()
@@ -84,7 +85,13 @@ namespace WindowsFormsApplication1
                 MC = reader["MC"].ToString();
                 edyl= reader["edyl"].ToString();
                 mfzj = reader["mfzj"].ToString();
-               
+                //题型数量
+                lxnum =int.Parse( reader["lxnum"].ToString());
+                zxnum = int.Parse(reader["zxnum"].ToString());
+                gynum = int.Parse(reader["gynum"].ToString());
+                xhnum = int.Parse(reader["xhnum"].ToString());
+                lpjnum = int.Parse(reader["lpjnum"].ToString());
+                yngnum = int.Parse(reader["ymgnum"].ToString());
             }
 
             reader.Close();

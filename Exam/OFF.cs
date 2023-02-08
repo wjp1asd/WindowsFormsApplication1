@@ -57,7 +57,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            QuestionForm a=new QuestionForm(qr);
+            QuestionForm a =new QuestionForm(qr);
             a.Show();
         }
 

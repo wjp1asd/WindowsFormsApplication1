@@ -246,6 +246,12 @@
     <Compile Include="Exam\Exam1.Designer.cs">
       <DependentUpon>Exam1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exam\LBJForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exam\LBJForm.Designer.cs">
+      <DependentUpon>LBJForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exam\gongyijiaoyan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -552,6 +558,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\jiaoyancanshu.resx">
       <DependentUpon>jiaoyancanshu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exam\LBJForm.resx">
+      <DependentUpon>LBJForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\linpeijianshibie.resx">
       <DependentUpon>linpeijianshibie.cs</DependentUpon>

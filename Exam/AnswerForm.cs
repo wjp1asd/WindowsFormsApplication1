@@ -65,7 +65,7 @@ namespace WindowsFormsApplication1
             Button btn = (Button)sender;
             int qid = int.Parse(btn.Tag.ToString());
             datahelp.CurrentQuestion = qid + 1;
-            QuestionForm frm = new QuestionForm();
+            LBJForm frm = new LBJForm();
             frm.MdiParent = this.MdiParent;
             frm.Show();
             this.Close();

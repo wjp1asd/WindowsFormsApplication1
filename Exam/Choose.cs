@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1.Exam
         private Fuc fc;
         private QuestionA qa;
         private TestRecord ts;
-        String lxques,zxques;
+        String lxques,zxques,gyques,xhques,lpjques,ymgques;
         String qrcode;
         public Choose(String ID= "123123123")
         {
@@ -55,8 +55,7 @@ namespace WindowsFormsApplication1.Exam
 
             this.Show();   
             // 执行抽题
-           lxques=  qa.ChooseLixian();
-           zxques   = qa.ChooseZaixian();
+          
             // 生成考试记录
             this.FormRecord();
 
@@ -187,16 +186,16 @@ namespace WindowsFormsApplication1.Exam
 
             }
             
-            MessageBox.Show("压力大：" + yali.Max());
-            MessageBox.Show("压力小：" + yali.Min());
+            //MessageBox.Show("压力大：" + yali.Max());
+            //MessageBox.Show("压力小：" + yali.Min());
 
-            MessageBox.Show("上一个离线压力：" + t.Lxyl);
-            MessageBox.Show("上一个在线压力：" + t.Zxyl);
-            MessageBox.Show("实际1：" + cur);
-            MessageBox.Show("实际2：" + cur1);
+            //MessageBox.Show("上一个离线压力：" + t.Lxyl);
+            //MessageBox.Show("上一个在线压力：" + t.Zxyl);
+            //MessageBox.Show("实际1：" + cur);
+            //MessageBox.Show("实际2：" + cur1);
 
-            MessageBox.Show("离线压力：" + lxyl);
-            MessageBox.Show("在线压力：" + zxyl);
+            //MessageBox.Show("离线压力：" + lxyl);
+            //MessageBox.Show("在线压力：" + zxyl);
 
 
 
@@ -220,10 +219,37 @@ namespace WindowsFormsApplication1.Exam
             String lxlx = ts.Wucha();
             String zxlx = ts.Wucha();
             String aqfxh = ts.Aqf();
-
+            String aqfxhid = "-1";
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string strcomm = "insert into TestRecord([queue], [ksname], [ksid],[ksdate], [lxyl], [lxlx], [zxyl], [zxlx],[aqfxh],[qrcode],[lxquestions],[zxquestions]) VALUES(" +
+            string sql = "select Top 1  * from Aquanfa order by newid()";
+
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                aqfxh= reader["subname"].ToString();
+                aqfxhid = reader["id"].ToString();
+            }
+
+            con.Close();
+
+            lxques = qa.ChooseLixian();
+            zxques = qa.ChooseZaixian();
+            xhques = qa.ChooseXH(aqfxhid);
+            gyques = qa.ChooseJiaoYan();
+            lpjques = qa.ChooseLPJ();
+            ymgques = qa.ChooseZaixian();
+            //MessageBox.Show("在线题：" + zxques);
+            //MessageBox.Show("离线题：" + lxques);
+            //MessageBox.Show("型号题：" + xhques);
+            //MessageBox.Show("工艺题：" + gyques);
+            //MessageBox.Show("零配件题：" + lpjques);
+            //MessageBox.Show("研磨题：" + ymgques);
+        
+            string strcomm = "insert into TestRecord([queue], [ksname], [ksid],[ksdate], [lxyl], [lxlx], [zxyl], [zxlx],[aqfxh],[qrcode],[lxquestions],[zxquestions],[gyquestions],[xhquestions],[lpjquestions],[ymgquestions]) VALUES(" +
                "'" + que.ToString() + "'" + "," +
               "'" + ksname.ToString() + "'" + "," +
               "'" + ksid.ToString() + "'" + "," +
@@ -235,10 +261,15 @@ namespace WindowsFormsApplication1.Exam
                       "'" + aqfxh.Trim().ToString() + "'" + "," +
                 "'" + a.ToString() + "'" + "," +
                  "'" + lxques.ToString() + "'" + "," +
-                  "'" + zxques.ToString() + "'" + ")"
+                  "'" + zxques.ToString() + "'" + "," +
+                  "'" + gyques.ToString() + "'" + "," +
+                  "'" + xhques.ToString() + "'" + "," +
+                  "'" + lpjques.ToString() + "'" + "," +
+                  "'" + ymgques.ToString() + "'" + 
+                  ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-           // MessageBox.Show(strcomm);
+           MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
            comm.ExecuteNonQuery();

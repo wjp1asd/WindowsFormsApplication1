@@ -24,6 +24,11 @@ namespace WindowsFormsApplication1.Settings
         public string a, b, c, d, f;
         public string a1,a2,a3, a4,a5,a6,a7,a8;
         public string a11, a12, a13, a14, a15, a16, a17, a18,a19,a20,a21,a22,a23;
+        public string b11, b12, b13, b14, b15, b16;
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -104,6 +109,13 @@ namespace WindowsFormsApplication1.Settings
                 a22 = this.jyy.Text = reader["AIjy"].ToString();
                 a23 = this.dj.Text = reader["MC"].ToString();
 
+                b11 = this.textBox1.Text = reader["lxnum"].ToString();
+                b12 = this.textBox2.Text = reader["zxnum"].ToString();
+                b13 = this.textBox3.Text = reader["gynum"].ToString();
+                b14 = this.textBox4.Text = reader["xhnum"].ToString();
+                b15 = this.textBox5.Text = reader["lpjnum"].ToString();
+                b16 = this.textBox6.Text = reader["ymgnum"].ToString();
+
             }
 
             reader.Close();
@@ -154,7 +166,12 @@ namespace WindowsFormsApplication1.Settings
             a22 = this.jyy.Text.Trim();
             a23 = this.dj.Text.Trim();
 
-            //   plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy,MC
+            b11 = this.textBox1.Text ;
+            b12 = this.textBox2.Text;
+            b13 = this.textBox3.Text ;
+            b14 = this.textBox4.Text ;
+            b15 = this.textBox5.Text ;
+            b16 = this.textBox6.Text ;
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
@@ -168,9 +185,12 @@ namespace WindowsFormsApplication1.Settings
                    + "',DIxy='" + a14 + "', DIhw='" + a15 + "', DIB1='" + a16
                 + "', DIB2='" + a17 + "', DIB3='" + a18 + "', AIY1='" + a20 + "', AIY2='" + a21
                 + "', AIjy='" + a22 + "',MC='" + a23
+
+                 + "', zxnum='" + b11 + "', lxnum='" + b12 + "', gynum='" + b13 + "', xhnum='" + b14
+                  + "', lpjnum='" + b15 + "', ymgnum='" + b16 
                 + "' where id=1";
 
-            // String str1 = "INSERT INTO settings (color1,color2,color3,color4,color5) VALUES('" + a+ "','" + b + "','" + c+"','" + d + "','" + f + "')";
+           
             MessageBox.Show(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();

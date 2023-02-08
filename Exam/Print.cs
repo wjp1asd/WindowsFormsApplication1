@@ -267,9 +267,10 @@ namespace WindowsFormsApplication1.Exam
             datahelp a = new datahelp();
             a.Initc();
             //获取打印机端口号
-        
-            m_sbData.Append(a.print.Trim());
-            MessageBox.Show(m_sbData.ToString());
+
+            m_sbData.Append(""+a.print.Trim()+"");
+           // m_sbData.Append("USB001");
+          //  MessageBox.Show(m_sbData.ToString());
             r = SetPrintport(m_sbData, 0);
             
             if (r == 0)

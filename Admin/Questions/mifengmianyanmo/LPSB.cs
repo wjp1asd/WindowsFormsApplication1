@@ -103,6 +103,7 @@ namespace WindowsFormsApplication1.YanMO
 
                 con.Close();
                 MessageBox.Show("已更新");
+                this.panel1.Hide();
             }
         }
 

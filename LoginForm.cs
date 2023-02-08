@@ -249,5 +249,11 @@ namespace WindowsFormsApplication1
             mf.Show();
             this.Hide();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            LBJForm lbg=new LBJForm("EmcaBvClo9bJ6NkgbLWqRg==");
+            lbg.Show();
+        }
     }
 }

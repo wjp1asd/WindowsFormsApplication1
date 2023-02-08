@@ -29,6 +29,10 @@ namespace WindowsFormsApplication1.Models
         String qrcode;
         String lxquestions;
         String zquestions;
+        String gyquestions;
+        String lpjuestions;
+        String xhquestions;
+        String ymguestions;
         public string Queque { get => queque; set => queque = value; }
         public string Ksname { get => ksname; set => ksname = value; }
         public string KsId { get => ksId; set => ksId = value; }
@@ -41,6 +45,10 @@ namespace WindowsFormsApplication1.Models
         public string Qrcode { get => qrcode; set => qrcode = value; }
         public string Lxquestions { get => lxquestions; set => lxquestions = value; }
         public string Zquestions { get => zquestions; set => zquestions = value; }
+        public string Lpjuestions { get => lpjuestions; set => lpjuestions = value; }
+        public string Xhquestions { get => xhquestions; set => xhquestions = value; }
+        public string Ymguestions { get => ymguestions; set => ymguestions = value; }
+        public string Gyquestions { get => gyquestions; set => gyquestions = value; }
 
         public TestRecord()
         {

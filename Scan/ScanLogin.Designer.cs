@@ -69,6 +69,7 @@
             this.label2.TabIndex = 31;
             this.label2.Text = "请将二维码对准扫描";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button1
             // 
