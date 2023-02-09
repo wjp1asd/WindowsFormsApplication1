@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.jiaoyangongyi;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
 using WindowsFormsApplication1.Admin.Questions.zaixian;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Questions;
-using WindowsFormsApplication1.YanMO;
 
 namespace WindowsFormsApplication1
 {
@@ -52,7 +45,7 @@ namespace WindowsFormsApplication1
             ff.fullsreen(this.button2, this);
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button4, this);
-        
+
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
         }
@@ -86,9 +79,9 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-          mf mf = new mf();
+            mf mf = new mf();
 
-           mf.Show();
+            mf.Show();
             this.Close();
         }
 

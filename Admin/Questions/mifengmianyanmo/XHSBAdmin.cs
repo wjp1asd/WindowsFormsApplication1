@@ -1,27 +1,21 @@
-﻿using OpenCvSharp.MachineLearning;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.YanMO
 {
     public partial class XHSBAdmin : Form
     {
-      
+
         int row;
         String TableName = "aqfadmin";
         String Subtype = "1";
         Boolean all = false;
         StringBuilder s1;
-        public XHSBAdmin( String subtype)
+        public XHSBAdmin(String subtype)
         {
             InitializeComponent();
             Subtype = subtype;
@@ -246,7 +240,7 @@ namespace WindowsFormsApplication1.YanMO
                   "'" + od.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-           MessageBox.Show(strcomm);
+            MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();

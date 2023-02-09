@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using WindowsFormsApplication1.Exam;
 
 namespace WindowsFormsApplication1
@@ -27,7 +21,7 @@ namespace WindowsFormsApplication1
 
         private void ShowButtoAndLable()
         {
-            
+
             int btnX = 20;
             int btnY = 60;
             int IblX = 90;
@@ -98,13 +92,13 @@ namespace WindowsFormsApplication1
         private void btnsend_Click(object sender, EventArgs e)
         {
             this.timer1.Stop();
-           Score1 s=new Score1();
+            Score1 s = new Score1();
             s.Show();
             this.Close();
 
         }
 
-       
+
     }
-      
+
 }

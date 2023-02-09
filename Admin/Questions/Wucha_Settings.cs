@@ -1,12 +1,7 @@
-﻿using OpenCvSharp.MachineLearning;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -153,20 +148,21 @@ namespace WindowsFormsApplication1.Questions
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string value= "±"+this.txtUsername.Text+this.comboBox1.Text;
+            string value = "±" + this.txtUsername.Text + this.comboBox1.Text;
             string type = this.comboBox2.Text;
 
-            if (this.textBox4.Text.ToString().Length == 0) {
+            if (this.textBox4.Text.ToString().Length == 0)
+            {
                 this.textBox4.Text = "-∞";
             }
             if (this.textBox2.Text.ToString().Length == 0)
             {
                 this.textBox2.Text = "+∞";
             }
-            string area = this.comboBox3.Text+this.textBox4.Text+"-"+this.textBox2.Text;
-         
+            string area = this.comboBox3.Text + this.textBox4.Text + "-" + this.textBox2.Text;
 
-            if (value.Length == 0 ||type.Length == 0 || area.Length == 0 
+
+            if (value.Length == 0 || type.Length == 0 || area.Length == 0
                 )
             {
                 MessageBox.Show("字段不能为空");
@@ -174,7 +170,7 @@ namespace WindowsFormsApplication1.Questions
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string strcomm = "insert into " + TableName + "([tt],[type], [value], [area]) VALUES("+
+            string strcomm = "insert into " + TableName + "([tt],[type], [value], [area]) VALUES(" +
                  "'" + Subtype.ToString() + "'" + "," +
                 "'" + type.ToString() + "'" + "," +
                "'" + value.ToString() + "'" + "," +
@@ -231,7 +227,7 @@ namespace WindowsFormsApplication1.Questions
 
                     con.Close();
                     MessageBox.Show("已删除");
-                    string sql = "select * from " + TableName ; 
+                    string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
                 }
@@ -245,7 +241,7 @@ namespace WindowsFormsApplication1.Questions
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string sql = "select * from " + TableName ;
+            string sql = "select * from " + TableName;
             this.panel1.Hide();
             InitTable(sql);
         }

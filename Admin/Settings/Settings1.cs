@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO.Ports;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Settings
@@ -17,13 +12,53 @@ namespace WindowsFormsApplication1.Settings
         public Settings1()
         {
             InitializeComponent();
-            
+
             InitC();
         }
 
         public string a, b, c, d, f;
-        public string a1,a2,a3, a4,a5,a6,a7,a8;
-        public string a11, a12, a13, a14, a15, a16, a17, a18,a19,a20,a21,a22,a23;
+        public string a1, a2, a3, a4, a5, a6, a7, a8;
+        public string a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23;
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
+            comboBox1.Items.Clear();//清除comboBox里面的数据
+            comboBox1.Items.AddRange(ports);//给comboBox1添加数据
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0219)
+            {//设备改变
+                if (m.WParam.ToInt32() == 0x8004)
+                {//usb串口拔出
+                    string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
+                    comboBox1.Items.Clear();//清除comboBox里面的数据
+                    comboBox1.Items.AddRange(ports);//给comboBox1添加数据
+              
+                }
+                else if (m.WParam.ToInt32() == 0x8000)
+                {//usb串口连接上
+                    string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
+                    comboBox1.Items.Clear();
+                    comboBox1.Items.AddRange(ports);
+                    
+                }
+            }
+            base.WndProc(ref m);
+        }
+        private void button8_Click(object sender, EventArgs e)
+        {
+           SerialPort port = new SerialPort();
+           string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
+           comboBox1.Items.AddRange(ports);
+        }
+
         public string b11, b12, b13, b14, b15, b16;
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -82,16 +117,16 @@ namespace WindowsFormsApplication1.Settings
                 d = System.Drawing.ColorTranslator.ToHtml(this.button5.BackColor);
                 this.button6.BackColor = System.Drawing.ColorTranslator.FromHtml(reader["color5"].ToString());
                 f = System.Drawing.ColorTranslator.ToHtml(this.button6.BackColor);
-            
-                a1=  this.idtextBox2.Text = reader["idcard"].ToString();
+
+                a1 = this.idtextBox2.Text = reader["idcard"].ToString();
                 a2 = this.printtextBox3.Text = reader["print1"].ToString();
                 a3 = this.scantextBox5.Text = reader["scan"].ToString();
                 a4 = this.cameratextBox6.Text = reader["camera2"].ToString();
                 a5 = this.cameratextBox7.Text = reader["camera1"].ToString();
                 a6 = this.mousetextBox9.Text = reader["mouse"].ToString();
-                a7 = this.link.Text= reader["link"].ToString(); ;
+                a7 = this.link.Text = reader["link"].ToString(); ;
                 a8 = this.PLCtextBox8.Text = reader["plc"].ToString();
-             //   plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy,MC
+                //   plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy,MC
                 a11 = this.bt.Text = reader["plcbt"].ToString();
                 a19 = this.jy.Text = reader["plcjy"].ToString();
 
@@ -141,12 +176,12 @@ namespace WindowsFormsApplication1.Settings
         private void button4_Click(object sender, EventArgs e)
         {
             a1 = this.idtextBox2.Text.Trim();
-            a2 = this.printtextBox3.Text.Trim(); 
-            a3 = this.scantextBox5.Text.Trim(); 
-            a4 = this.cameratextBox6.Text.Trim(); 
+            a2 = this.printtextBox3.Text.Trim();
+            a3 = this.scantextBox5.Text.Trim();
+            a4 = this.cameratextBox6.Text.Trim();
             a5 = this.cameratextBox7.Text.Trim();
             a6 = this.mousetextBox9.Text.Trim();
-            a7 = this.link.Text.Trim()     ;
+            a7 = this.link.Text.Trim();
             a8 = this.PLCtextBox8.Text.Trim();
 
             a11 = this.bt.Text.Trim();
@@ -166,19 +201,19 @@ namespace WindowsFormsApplication1.Settings
             a22 = this.jyy.Text.Trim();
             a23 = this.dj.Text.Trim();
 
-            b11 = this.textBox1.Text ;
+            b11 = this.textBox1.Text;
             b12 = this.textBox2.Text;
-            b13 = this.textBox3.Text ;
-            b14 = this.textBox4.Text ;
-            b15 = this.textBox5.Text ;
-            b16 = this.textBox6.Text ;
+            b13 = this.textBox3.Text;
+            b14 = this.textBox4.Text;
+            b15 = this.textBox5.Text;
+            b16 = this.textBox6.Text;
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
 
-            String str1 = "Update settings set color1='" + a + "',color2='" + b + "',color3='" + c + "',color4='" + d 
-                + "',color5='" + f + "',idcard='" + a1+ "',scan='" +a3+ "',camera1='" + a5
-                   + "',mouse='" + a6+ "',link='" + a7 + "',plc='" + a8
+            String str1 = "Update settings set color1='" + a + "',color2='" + b + "',color3='" + c + "',color4='" + d
+                + "',color5='" + f + "',idcard='" + a1 + "',scan='" + a3 + "',camera1='" + a5
+                   + "',mouse='" + a6 + "',link='" + a7 + "',plc='" + a8
                 + "',camera2='" + a4 + "',print1='" + a2
 
                  + "',plcbt='" + a11 + "',plcjy='" + a19 + "',plcst='" + a12 + "',plcsp='" + a13
@@ -187,14 +222,14 @@ namespace WindowsFormsApplication1.Settings
                 + "', AIjy='" + a22 + "',MC='" + a23
 
                  + "', zxnum='" + b11 + "', lxnum='" + b12 + "', gynum='" + b13 + "', xhnum='" + b14
-                  + "', lpjnum='" + b15 + "', ymgnum='" + b16 
+                  + "', lpjnum='" + b15 + "', ymgnum='" + b16
                 + "' where id=1";
 
-           
+
             MessageBox.Show(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
-          SqlDataReader reader = com.ExecuteReader();
+            SqlDataReader reader = com.ExecuteReader();
 
 
             MessageBox.Show("保存成功！,退出程序后加载");

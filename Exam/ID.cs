@@ -1,27 +1,16 @@
-﻿using cn.mineki.Reader;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 
 namespace WindowsFormsApplication1
 {
 
- 
+
     public partial class ID : Form
     {
         int nPort = 0;
@@ -30,21 +19,21 @@ namespace WindowsFormsApplication1
 
         public ID()
         {
-        
+
             InitializeComponent();
             InitConfig();
         }
-     
+
         private void InitConfig()
         {
-            datahelp a=new datahelp();
+            datahelp a = new datahelp();
             a.Initc();
             //  nPort=int.Parse(a.print.ToString().Trim());
             nPort = 1001;
             this.groupBox1.Hide();
             if (nPort != 0)
             {
-                
+
                 label2.Text = "";
                 try
                 {
@@ -59,10 +48,10 @@ namespace WindowsFormsApplication1
                             return;
                         }
                         this.label2.Text = "设备初始化成功！";
-                        this.label2.ForeColor=Color.Green;
+                        this.label2.ForeColor = Color.Green;
                         //开启请求
-                    
-                      
+
+
                     }
                     else
                     {
@@ -83,15 +72,15 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          // this.WindowState = FormWindowState.Maximized;
+            // this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             this.Close();
-         ff.backlogin();
+            ff.backlogin();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -106,15 +95,15 @@ namespace WindowsFormsApplication1
             if (nReaderPort == 0)
             {
                 int authenticate = IDCardReader.Authenticate();
-                if (authenticate == 0 )
+                if (authenticate == 0)
                 {
                     int readContent = IDCardReader.Read_Content(1);
                     this.groupBox1.Show();
 
                     if (IDCardReader.IsFPRIDCard() == 1)
                     {
-                
-                     
+
+
                         lblAddress.Visible = false;
                         lblDept.Visible = false;//机关代码
                         label6.Visible = false;
@@ -122,19 +111,19 @@ namespace WindowsFormsApplication1
                         label7.Visible = false;
                         label2.Text = "国籍：";
                         label4.Text = "出生日期：";
-                     
+
 
                         if (readContent == 0)
                         {
                             byte[] arrTmp = new byte[100];
                             int nLen = 100;
-                        
+
 
                             //姓名
                             IDCardReader.GetFPR_ENName2(ref arrTmp[0], ref nLen);
                             string str = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
                             lblName.Text = str.Replace(" ", "");
-                           
+
                             //证件号码
                             IDCardReader.GetFPR_IDNo2(ref arrTmp[0], ref nLen);
                             lblIdCard.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
@@ -160,16 +149,16 @@ namespace WindowsFormsApplication1
                             //照片
                             if (System.IO.File.Exists("ZP.bmp"))
                             {
-                                pictureBox1.ImageLocation =loc+ "\\IDcard\\" + lblName.Text + "_"+ lblIdCard.Text + ".bmp";
+                                pictureBox1.ImageLocation = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
                             }
                         }
                     }
                     else if (IDCardReader.IsGATIDCard() == 1)
                     {
-                   
 
-                    
-                
+
+
+
                         label6.Visible = true;
                         label7.Visible = true;
                         label5.Text = "身份证号：";
@@ -177,7 +166,7 @@ namespace WindowsFormsApplication1
                         label2.Text = "签次：";
                         if (readContent == 0)
                         {
-                     
+
 
                             byte[] arrTmp = new byte[100];
                             int nLen = 100;
@@ -219,20 +208,20 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                     
 
-                
+
+
                         lblAddress.Visible = true;
                         lblDept.Visible = true;
                         label6.Visible = true;
                         label7.Visible = true;
                         label5.Text = "身份证号：";
-        
+
                         label4.Text = "出生日期：";
 
                         if (readContent == 0)
                         {
-                      
+
                             byte[] arrTmp = new byte[100];
                             int nLen = 100;
 
@@ -293,8 +282,8 @@ namespace WindowsFormsApplication1
 
             UpdataInfo(lblIdCard.Text);
         }
-        public string a,b,c,d,f;
-        public Fuc ff=new Fuc();
+        public string a, b, c, d, f;
+        public Fuc ff = new Fuc();
         private void button4_Click(object sender, EventArgs e)
         {
 
@@ -307,12 +296,12 @@ namespace WindowsFormsApplication1
 
         private void UpdataInfo(string Id)
         {
-      
-                string connectionString = ConfigurationManager.AppSettings["sqlc"];
-                SqlConnection con = new SqlConnection(connectionString);
-                string sql = "select id from student where idcard='" +Id.ToString() + "'";
-                SqlCommand com = new SqlCommand(sql, con);
-                con.Open();
+
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select id from student where idcard='" + Id.ToString() + "'";
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
             string path = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
             string id = "";
             SqlDataReader reader = com.ExecuteReader();
@@ -321,28 +310,30 @@ namespace WindowsFormsApplication1
                 id = reader["id"].ToString();
 
             }
-            if (id.Length> 0) {
+            if (id.Length > 0)
+            {
                 datahelp.StudentId = Id.ToString();
-                
-                string strcomm = "update student  set avatar=" + path +" where id = " + id;
+
+                string strcomm = "update student  set avatar=" + path + " where id = " + id;
                 SqlCommand com1 = new SqlCommand(strcomm, con);
                 con.Open();
                 ff.ShowSuccessTip("更新信息成功！");
-              Choose a=new Choose(Id.ToString().Trim());
+                Choose a = new Choose(Id.ToString().Trim());
                 a.Show();
             }
-            else {
+            else
+            {
                 ff.ShowErrorDialog("系统无相关信息");
             }
 
             con.Close();
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.AutoReadCard();
-         
+
         }
 
         private void label2_Click(object sender, EventArgs e)

@@ -1,15 +1,7 @@
-﻿using Emgu.CV.Structure;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -25,16 +17,16 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
         }
 
-        public LBJForm(String qrcode= "EmcaBvClo9bJ6NkgbLWqRg==")
+        public LBJForm(String qrcode = "EmcaBvClo9bJ6NkgbLWqRg==")
         {
 
-          
+
             InitializeComponent();
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from TestRecord where qrcode='" + qrcode + "'";
-           // MessageBox.Show(sql);
+            // MessageBox.Show(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
@@ -56,8 +48,8 @@ namespace WindowsFormsApplication1.Exam
                 t.Zxyl = reader["zxyl"].ToString();
 
                 t.Zxlx = reader["zxlx"].ToString();
-                t.Lpjuestions= reader["lpjquestions"].ToString();
-               
+                t.Lpjuestions = reader["lpjquestions"].ToString();
+
 
 
                 t.Adfxh = reader["aqfxh"].ToString();
@@ -66,7 +58,7 @@ namespace WindowsFormsApplication1.Exam
             }
             con.Close();
             datahelp.StudentId = t.KsId;
-           // MessageBox.Show(t.KsId);
+            // MessageBox.Show(t.KsId);
 
             if (qrcode.Length == 0)
             {
@@ -78,10 +70,10 @@ namespace WindowsFormsApplication1.Exam
             {
                 // 加载题库
                 datahelp.CurrentQuestion = 1;
-           
-            datahelp.QuestionIds =t.Lpjuestions.Split(',');
-          datahelp.Answer = qq.Answer(t.Lpjuestions).Split(',');
-              LoadQuestion();
+
+                datahelp.QuestionIds = t.Lpjuestions.Split(',');
+                datahelp.Answer = qq.Answer(t.Lpjuestions).Split(',');
+                LoadQuestion();
             }
 
         }
@@ -121,7 +113,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void LoadQuestion()
         {
-           
+
             string questionId = datahelp.QuestionIds[datahelp.CurrentQuestion - 1];
 
 
@@ -134,14 +126,14 @@ namespace WindowsFormsApplication1.Exam
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-             
-                   // this.txtQuestionContent.Text = reader["question"].ToString();
-                    this.rdbA.Text = "A: " + reader["optionA"].ToString();
-                    this.rdbB.Text = "B: " + reader["optionB"].ToString();
-                    this.rbdC.Text = "C: " + reader["optionC"].ToString();
-                    this.rdbD.Text = "D: " + reader["optionD"].ToString();
-                    this.pictureBox1.ImageLocation = reader["image"].ToString();
-              
+
+                // this.txtQuestionContent.Text = reader["question"].ToString();
+                this.rdbA.Text = "A: " + reader["optionA"].ToString();
+                this.rdbB.Text = "B: " + reader["optionB"].ToString();
+                this.rbdC.Text = "C: " + reader["optionC"].ToString();
+                this.rdbD.Text = "D: " + reader["optionD"].ToString();
+                this.pictureBox1.ImageLocation = reader["image"].ToString();
+
 
             }
 

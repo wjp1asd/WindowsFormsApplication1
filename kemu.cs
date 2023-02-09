@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
@@ -23,7 +18,7 @@ namespace WindowsFormsApplication1
             if (e.ColumnIndex == 0)
             {
                 Import frm = new Import("1");
-                frm.GetData(this.dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString(), this.dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString(),true);
+                frm.GetData(this.dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString(), this.dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString(), true);
                 frm.Show();
 
             }
@@ -34,7 +29,7 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("删除成功");
                 }
             }
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,11 +39,11 @@ namespace WindowsFormsApplication1
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select*from subject where subName like '%" + this.textBox1.Text + "%'";
             SqlCommand com = new SqlCommand(sql, con);
-            SqlDataAdapter sda=new SqlDataAdapter (com);
+            SqlDataAdapter sda = new SqlDataAdapter(com);
 
-            DataSet ds=new DataSet ();
-            sda.Fill(ds,"sbujct");
-            this.dataGridView1.DataSource=ds.Tables[0];
+            DataSet ds = new DataSet();
+            sda.Fill(ds, "sbujct");
+            this.dataGridView1.DataSource = ds.Tables[0];
 
         }
 
@@ -62,6 +57,11 @@ namespace WindowsFormsApplication1
             Import frm = new Import("1");
             frm.GetData("", "", false);
             frm.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

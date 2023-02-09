@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -17,17 +11,17 @@ namespace WindowsFormsApplication1
 
 
     {
-        Fuc f =new Fuc();
+        Fuc f = new Fuc();
         TestRecord t;
-        QuestionA qq=new QuestionA();
+        QuestionA qq = new QuestionA();
         public QuestionForm()
         {
             InitializeComponent();
         }
-            public QuestionForm(String qrcode,String subtype="0")
+        public QuestionForm(String qrcode, String subtype = "0")
         {
             InitializeComponent();
-            t=new TestRecord();
+            t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from TestRecord where qrcode='" + qrcode + "'";
@@ -52,7 +46,7 @@ namespace WindowsFormsApplication1
                 t.Zxyl = reader["zxyl"].ToString();
 
                 t.Zxlx = reader["zxlx"].ToString();
-                t.Lxquestions= reader["lxquestions"].ToString();
+                t.Lxquestions = reader["lxquestions"].ToString();
                 t.Zquestions = reader["zxquestions"].ToString();
 
 
@@ -62,7 +56,7 @@ namespace WindowsFormsApplication1
             }
             con.Close();
             datahelp.StudentId = t.KsId;
-           
+
             switch (subtype)
             {
                 case "0":
@@ -75,9 +69,9 @@ namespace WindowsFormsApplication1
                     this.Text = "在线校验答题";
                     datahelp.QuestionIds = t.Zquestions.Split(',');
                     datahelp.SubId = 1;
-                    datahelp.Answer = qq.Answer(t.Zquestions).Split(','); 
+                    datahelp.Answer = qq.Answer(t.Zquestions).Split(',');
                     break;
-             
+
             }
             if (qrcode.Length == 0)
             {
@@ -85,7 +79,8 @@ namespace WindowsFormsApplication1
 
 
             }
-            else {
+            else
+            {
                 // 加载题库
 
                 LoadQuestion();
@@ -98,13 +93,13 @@ namespace WindowsFormsApplication1
             InitbtnUp();
             InitbtnNext();
             ShowInfo();
-           
+
         }
         private void InitbtnUp()
         {
-            if (datahelp.CurrentQuestion <2)
+            if (datahelp.CurrentQuestion < 2)
             {
-                this.btnUp.Enabled  = false;
+                this.btnUp.Enabled = false;
                 this.btnUp.Text = "已是第一题";
 
 
@@ -115,27 +110,27 @@ namespace WindowsFormsApplication1
                 this.btnUp.Enabled = true;
                 this.btnUp.Text = "上一题";
             }
-           
+
 
         }
         private void InitbtnNext()
         {
-            if (datahelp.CurrentQuestion >9)
+            if (datahelp.CurrentQuestion > 9)
             {
-                this.btnNext.Text  = "答题卡";
+                this.btnNext.Text = "答题卡";
             }
-           
+
         }
         private void LoadQuestion()
         {
 
-            string questionId = datahelp.QuestionIds[datahelp.CurrentQuestion-1];
-         
-          
+            string questionId = datahelp.QuestionIds[datahelp.CurrentQuestion - 1];
+
+
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from question where id =" + questionId.ToString().Trim();
-         
+
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
@@ -146,13 +141,14 @@ namespace WindowsFormsApplication1
                     this.txtQuestionContent.Text = reader["question"].ToString();
                     this.rdbA.Text = "对 " + reader["optionA"].ToString();
                     this.rdbB.Text = "错 " + reader["optionB"].ToString();
-                    this.rbdC.Text = "" ;
+                    this.rbdC.Text = "";
                     this.rdbD.Text = "";
 
 
 
                 }
-                else {
+                else
+                {
                     this.txtQuestionContent.Text = reader["question"].ToString();
                     this.rdbA.Text = "A: " + reader["optionA"].ToString();
                     this.rdbB.Text = "B: " + reader["optionB"].ToString();
@@ -160,7 +156,7 @@ namespace WindowsFormsApplication1
                     this.rdbD.Text = "D: " + reader["optionD"].ToString();
 
                 }
-               
+
             }
 
             reader.Close();
@@ -173,8 +169,8 @@ namespace WindowsFormsApplication1
         {
             this.label3.Text = datahelp.CurrentQuestion.ToString();
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
-            this.label7.Text ="系统答案：" + string.Join(",", datahelp.Answer);    
-             
+            this.label7.Text = "系统答案：" + string.Join(",", datahelp.Answer);
+
 
         }
 
@@ -184,7 +180,7 @@ namespace WindowsFormsApplication1
             {
                 datahelp.CurrentQuestion++;
                 CheckNextButtonText();
-               
+
                 LoadQuestion();
                 SelectOption();
                 ShowInfo();
@@ -267,22 +263,22 @@ namespace WindowsFormsApplication1
                 ShowInfo();
                 LoadQuestion();
                 SelectOption();
-            
+
             }
 
         }
         private void CheckUpButtonText()
         {
-            if (datahelp.CurrentQuestion >0)
+            if (datahelp.CurrentQuestion > 0)
             {
                 this.btnUp.Text = "上一题";
-               
-                
+
+
             }
             else
             {
                 this.btnUp.Text = "已是第一题";
-            btnUp.Enabled = false;
+                btnUp.Enabled = false;
             }
         }
 
@@ -292,10 +288,10 @@ namespace WindowsFormsApplication1
         {
             RadioButton rdb = (RadioButton)sender;
             string option = rdb.Tag.ToString();
-          
+
             datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
-            MessageBox.Show(string.Join("",datahelp.UserAnswer));
-            
+            MessageBox.Show(string.Join("", datahelp.UserAnswer));
+
 
         }
 
@@ -316,7 +312,7 @@ namespace WindowsFormsApplication1
 
         private void closing(object sender, FormClosedEventArgs e)
         {
-           
+
             f.ShowWarningTip("中途退出，成绩将不合格请谨慎选择");
             Process.GetCurrentProcess().Kill();
         }

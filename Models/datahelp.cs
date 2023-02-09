@@ -1,20 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Configuration;
-using System;
 
 namespace WindowsFormsApplication1
 {
     public class datahelp
     {
-        public static string [] QuestionIds = new string [10];
+        public static string[] QuestionIds = new string[10];
         public static int CurrentQuestion = 1;
         public static int RemainTime = 600;
         public static string[] UserAnswer = new string[10];
         public static string[] Answer = new string[10];
-        public static string StudentId= "";
+        public static string StudentId = "";
         public string name;
         public string loginid;
         //0 离线 1在线
@@ -31,14 +27,14 @@ namespace WindowsFormsApplication1
         public string camera1;
         public string camera2;
         public string plc;
-        public string plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy,MC;
+        public string plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy, MC;
         public string link;
         public string mouse;
-        public string color1,color2,color3,color4,color5;
-        public string  edyl = "1";
-        public string  mfzj = "1";
+        public string color1, color2, color3, color4, color5;
+        public string edyl = "1";
+        public string mfzj = "1";
         // 题型数量
-        public int lxnum,zxnum,gynum,xhnum,lpjnum,yngnum;
+        public int lxnum, zxnum, gynum, xhnum, lpjnum, yngnum;
         public int Status { get => status; set => status = value; }
 
         public void Initc()
@@ -52,11 +48,11 @@ namespace WindowsFormsApplication1
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-               
-               
+
+
                 id = reader["idcard"].ToString();
                 print = reader["print1"].ToString();
-               scan = reader["scan"].ToString();
+                scan = reader["scan"].ToString();
                 camera2 = reader["camera2"].ToString();
                 camera1 = reader["camera1"].ToString();
                 mouse = reader["mouse"].ToString();
@@ -83,10 +79,10 @@ namespace WindowsFormsApplication1
                 AIy2 = reader["AIy2"].ToString();
                 AIjy = reader["AIjy"].ToString();
                 MC = reader["MC"].ToString();
-                edyl= reader["edyl"].ToString();
+                edyl = reader["edyl"].ToString();
                 mfzj = reader["mfzj"].ToString();
                 //题型数量
-                lxnum =int.Parse( reader["lxnum"].ToString());
+                lxnum = int.Parse(reader["lxnum"].ToString());
                 zxnum = int.Parse(reader["zxnum"].ToString());
                 gynum = int.Parse(reader["gynum"].ToString());
                 xhnum = int.Parse(reader["xhnum"].ToString());

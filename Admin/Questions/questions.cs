@@ -1,5 +1,4 @@
-﻿using OpenCvSharp.MachineLearning;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -22,8 +21,9 @@ namespace WindowsFormsApplication1.Questions
         {
             InitializeComponent();
             this.uiComboBox1.SelectedIndex = 0;
-            switch (subtype) { 
-            case "1":
+            switch (subtype)
+            {
+                case "1":
                     this.Text = "离线校验题库";
                     break;
                 case "2":
@@ -117,7 +117,7 @@ namespace WindowsFormsApplication1.Questions
 
                 con.Close();
                 MessageBox.Show("已更新");
-                
+
             }
         }
 
@@ -146,7 +146,7 @@ namespace WindowsFormsApplication1.Questions
 
 
             this.Close();
-           
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -186,26 +186,27 @@ namespace WindowsFormsApplication1.Questions
         private void button3_Click(object sender, EventArgs e)
         {
             s1 = new StringBuilder();
-           
+
 
 
             for (int i = 0; i < row; i++)
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
-                //{
-               // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
-                     s1.Append(this.dataGridView1.Rows[i].Cells[1].Value+ "," );
-               // }
+                    //{
+                    // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
+                    s1.Append(this.dataGridView1.Rows[i].Cells[1].Value + ",");
+                // }
             }
-            if (s1.Length > 0) {
+            if (s1.Length > 0)
+            {
 
                 s1.Remove(s1.Length - 1, 1);
             }
-           
-          //  MessageBox.Show(s1.ToString());
+
+            //  MessageBox.Show(s1.ToString());
             if (s1.Length != 0)
             {
-                if (MessageBox.Show("确定删除id"+ s1.ToString()+" ? " , "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                if (MessageBox.Show("确定删除id" + s1.ToString() + " ? ", "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
 
                 {
 
@@ -214,7 +215,7 @@ namespace WindowsFormsApplication1.Questions
 
 
 
-                    string strcomm = "delete from " + TableName + " where id in (" + s1+")";
+                    string strcomm = "delete from " + TableName + " where id in (" + s1 + ")";
                     //update FilTer set 列名 = value where id = 3
                     //MessageBox.Show(strcomm);
 
@@ -261,7 +262,7 @@ namespace WindowsFormsApplication1.Questions
             string oc = this.textBox8.Text;
             string od = this.textBox7.Text;
 
-            if (question.Length == 0 || answer.Length == 0 
+            if (question.Length == 0 || answer.Length == 0
                 )
             {
                 MessageBox.Show("题目或答案不能为空");
@@ -270,13 +271,13 @@ namespace WindowsFormsApplication1.Questions
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string strcomm = "insert into " + TableName + "([question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(" +
-                "'" + question.ToString() + "'" + ","+
+                "'" + question.ToString() + "'" + "," +
                "'" + answer.ToString() + "'" + "," +
                "'" + Subtype + "'" + "," +
                 "'" + oa.ToString() + "'" + "," +
-                 "'" +ob.ToString() + "'" + "," +
+                 "'" + ob.ToString() + "'" + "," +
                   "'" + oc.ToString() + "'" + "," +
-                  "'" +  od.ToString() + "'" + ")"
+                  "'" + od.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
             // MessageBox.Show(strcomm);
@@ -316,7 +317,8 @@ namespace WindowsFormsApplication1.Questions
 
 
             }
-            else {
+            else
+            {
                 this.textBox10.Show();
                 this.textBox9.Show();
                 this.textBox8.Show();

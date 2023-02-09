@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -14,8 +8,8 @@ namespace WindowsFormsApplication1.Exam
     {
         String qr;
         public OFF(String qrcode)
-        {  
-            qr= qrcode;
+        {
+            qr = qrcode;
             InitializeComponent();
             InitUI();
 
@@ -33,7 +27,7 @@ namespace WindowsFormsApplication1.Exam
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
             this.button4.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
-           
+
 
             this.label2.Text = "离线校验";
 
@@ -52,12 +46,12 @@ namespace WindowsFormsApplication1.Exam
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button4, this);
 
-         
+
             ff.fullsreen(this.label2, this);
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            QuestionForm a =new QuestionForm(qr);
+            QuestionForm a = new QuestionForm(qr);
             a.Show();
         }
 

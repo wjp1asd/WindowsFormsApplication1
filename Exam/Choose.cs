@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
-using WindowsFormsApplication1.Questions;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -19,14 +14,14 @@ namespace WindowsFormsApplication1.Exam
         private Fuc fc;
         private QuestionA qa;
         private TestRecord ts;
-        String lxques,zxques,gyques,xhques,lpjques,ymgques;
+        String lxques, zxques, gyques, xhques, lpjques, ymgques;
         String qrcode;
-        public Choose(String ID= "123123123")
+        public Choose(String ID = "123123123")
         {
             // 身份证ID
-            st=new Student(ID);
-            fc=new Fuc();
-            qa=new QuestionA();
+            st = new Student(ID);
+            fc = new Fuc();
+            qa = new QuestionA();
             ts = new TestRecord();
             InitializeComponent();
             this.change();
@@ -53,9 +48,9 @@ namespace WindowsFormsApplication1.Exam
         {
             fc.showloading("抽题中");
 
-            this.Show();   
+            this.Show();
             // 执行抽题
-          
+
             // 生成考试记录
             this.FormRecord();
 
@@ -68,24 +63,28 @@ namespace WindowsFormsApplication1.Exam
             String ksdate = string.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now);
             String ksname = st.Name;
             String ksid = st.ID1;
-            String a= fc.Md5(ksdate + ksname + ksid);
+            String a = fc.Md5(ksdate + ksname + ksid);
             String lxyl = "";
             String zxyl = "";
             //获取最后一个信息和压力数组
-            List<decimal> yali= new List<decimal>();
-            List<decimal> yali2= new List<decimal>();
-            yali =ts.Yali();
+            List<decimal> yali = new List<decimal>();
+            List<decimal> yali2 = new List<decimal>();
+            yali = ts.Yali();
             yali2 = ts.Yali();
-            TestRecord t=new TestRecord();
+            TestRecord t = new TestRecord();
             t = ts.LastRecord();
             decimal max, min;
+#pragma warning disable CS0219 // 变量“last”已被赋值，但从未使用过它的值
             decimal last = 0;
+#pragma warning restore CS0219 // 变量“last”已被赋值，但从未使用过它的值
+#pragma warning disable CS0219 // 变量“last1”已被赋值，但从未使用过它的值
             decimal last1 = 0;
+#pragma warning restore CS0219 // 变量“last1”已被赋值，但从未使用过它的值
             decimal cur = 0;
-            decimal cur1= 0;
-         
+            decimal cur1 = 0;
+
             max = yali.Max();
-            min= yali.Min();
+            min = yali.Min();
 
             if (decimal.Parse(t.Lxyl) >= (min + (decimal)0.2))
             {
@@ -93,13 +92,14 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            else {
-                cur = decimal.Parse(t.Lxyl) +(decimal)0.2;
+            else
+            {
+                cur = decimal.Parse(t.Lxyl) + (decimal)0.2;
 
             }
-            
 
-                if (que == "1")
+
+            if (que == "1")
             {
                 // 当天第一个
                 yali2 = ts.Yali();
@@ -108,7 +108,8 @@ namespace WindowsFormsApplication1.Exam
                 lxyl = yali2[start2].ToString();
 
             }
-            else {
+            else
+            {
                 //不是第一个
                 // max 1.3 min 1 上一个 1.2 cur 1.0 那就在 1.0 1.1里选
                 if (decimal.Parse(t.Lxyl) > cur)
@@ -122,7 +123,8 @@ namespace WindowsFormsApplication1.Exam
 
 
                 }
-                else if(decimal.Parse(t.Lxyl) <cur) {
+                else if (decimal.Parse(t.Lxyl) < cur)
+                {
 
                     yali2 = ts.Yali();
                     yali2.RemoveAll(x => x <= decimal.Parse(t.Lxyl));
@@ -131,7 +133,7 @@ namespace WindowsFormsApplication1.Exam
                     lxyl = yali2[start2].ToString();
                 }
             }
-// 在线
+            // 在线
             if (decimal.Parse(t.Zxyl) >= (min + (decimal)0.2))
             {
                 cur1 = decimal.Parse(t.Zxyl) - (decimal)0.2;
@@ -185,7 +187,7 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            
+
             //MessageBox.Show("压力大：" + yali.Max());
             //MessageBox.Show("压力小：" + yali.Min());
 
@@ -230,7 +232,7 @@ namespace WindowsFormsApplication1.Exam
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-                aqfxh= reader["subname"].ToString();
+                aqfxh = reader["subname"].ToString();
                 aqfxhid = reader["id"].ToString();
             }
 
@@ -248,13 +250,13 @@ namespace WindowsFormsApplication1.Exam
             //MessageBox.Show("工艺题：" + gyques);
             //MessageBox.Show("零配件题：" + lpjques);
             //MessageBox.Show("研磨题：" + ymgques);
-        
+
             string strcomm = "insert into TestRecord([queue], [ksname], [ksid],[ksdate], [lxyl], [lxlx], [zxyl], [zxlx],[aqfxh],[qrcode],[lxquestions],[zxquestions],[gyquestions],[xhquestions],[lpjquestions],[ymgquestions]) VALUES(" +
                "'" + que.ToString() + "'" + "," +
               "'" + ksname.ToString() + "'" + "," +
               "'" + ksid.ToString() + "'" + "," +
                 "'" + ksdate.ToString() + "'" + "," +
-                "'" + lxyl.ToString() + "'" + "," + 
+                "'" + lxyl.ToString() + "'" + "," +
                 "'" + lxlx.Trim().ToString() + "'" + "," +
                   "'" + zxyl.ToString() + "'" + "," +
                     "'" + zxlx.Trim().ToString() + "'" + "," +
@@ -265,20 +267,20 @@ namespace WindowsFormsApplication1.Exam
                   "'" + gyques.ToString() + "'" + "," +
                   "'" + xhques.ToString() + "'" + "," +
                   "'" + lpjques.ToString() + "'" + "," +
-                  "'" + ymgques.ToString() + "'" + 
+                  "'" + ymgques.ToString() + "'" +
                   ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-           MessageBox.Show(strcomm);
+            MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
-           comm.ExecuteNonQuery();
+            comm.ExecuteNonQuery();
 
             con.Close();
-            MessageBox.Show("已创建考试信息，排队号0"+que);
+            MessageBox.Show("已创建考试信息，排队号0" + que);
             qrcode = a;
             this.button1.Show();
-          
+
 
         }
 

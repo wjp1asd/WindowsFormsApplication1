@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Exam
@@ -53,7 +47,7 @@ namespace WindowsFormsApplication1.Exam
             score = count * 5;
             if (score < 60)
             {
-              
+
                 this.label2.Text = "考得太差，好好复习吧";
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
@@ -62,7 +56,7 @@ namespace WindowsFormsApplication1.Exam
             else if (score < 70)
             {
                 this.lblscore.BackColor = Color.YellowGreen;
-               
+
                 this.label2.Text = "成绩不理想，继续努力";
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
@@ -70,7 +64,7 @@ namespace WindowsFormsApplication1.Exam
             else if (score < 80)
             {
                 this.lblscore.BackColor = Color.Yellow;
-            
+
                 this.label2.Text = "成绩不理想，继续加油";
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
@@ -79,7 +73,7 @@ namespace WindowsFormsApplication1.Exam
             else if (score < 90)
             {
                 this.lblscore.BackColor = Color.Green;
-            
+
                 this.label2.Text = "成绩很好，GOOD!";
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
@@ -88,7 +82,7 @@ namespace WindowsFormsApplication1.Exam
             else if (score <= 100)
             {
                 this.lblscore.BackColor = Color.Green;
-             
+
                 this.label2.Text = "你太棒了，Perfect!";
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);

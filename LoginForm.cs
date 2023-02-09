@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Configuration;
-using System.Diagnostics;
-using WindowsFormsApplication1.Settings;
-using Sunny.UI;
-using System.Security.Cryptography;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
 using WindowsFormsApplication1.Exam;
@@ -29,19 +20,19 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             this.flowLayoutPanel1.Hide();
-          
+
             InitUI();
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-            
+
         }
 
         private void InitUI()
-        {   
+        {
             datahelp a = new datahelp();
-                a.Initc();
-     
-          
+            a.Initc();
+
+
             string x = ConfigurationManager.AppSettings["machine"];
             this.label2.Text = a.link;
             if (x == "1")
@@ -62,7 +53,7 @@ namespace WindowsFormsApplication1
                 this.button1.Hide();
                 this.pictureBox1.Hide();
                 this.uiButton1.Hide();
-            
+
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
@@ -78,7 +69,7 @@ namespace WindowsFormsApplication1
                 this.button2.Enabled = false;
 
                 this.uiButton1.Top = this.button3.Top;
-                this.uiButton1.Left = this.button3.Left-360;
+                this.uiButton1.Left = this.button3.Left - 360;
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
@@ -87,9 +78,10 @@ namespace WindowsFormsApplication1
             else if (x == "-1")
             {
                 // 上帝模式
-                
+
             }
-            else {
+            else
+            {
 
                 this.button4.Hide();
                 this.button5.Hide();
@@ -110,7 +102,7 @@ namespace WindowsFormsApplication1
         {
             if (this.txtUsername.Text == "")
             {
-              
+
                 ft.ShowErrorTip("请输入用户名");
                 this.txtUsername.Focus();
                 return;
@@ -123,9 +115,9 @@ namespace WindowsFormsApplication1
             }
             else
             {
-      
-                   
-                int  power = 2;
+
+
+                int power = 2;
                 string connectionString = ConfigurationManager.AppSettings["sqlc"];
                 SqlConnection con = new SqlConnection(connectionString);
                 string sql = string.Format("select count(*) from dbo.student  where loginId='{0}' and password='{1}'and Power={2}", this.txtUsername.Text, this.txtPassword.Text, power);
@@ -133,19 +125,19 @@ namespace WindowsFormsApplication1
                 con.Open();
                 int count = int.Parse(com.ExecuteScalar().ToString());
                 con.Close();
-               ;
+                ;
                 if (count > 0)
                 {
-                   
-                       GetStudentId(this.txtUsername.Text.Trim());
-                       AdminIndex a = new AdminIndex();
-                  
+
+                    GetStudentId(this.txtUsername.Text.Trim());
+                    AdminIndex a = new AdminIndex();
+
                     a.Show();
                     this.Hide();
                 }
                 else
                 {
-                  ft.ShowErrorDialog("登录失败");
+                    ft.ShowErrorDialog("登录失败");
                 }
 
             }
@@ -154,10 +146,10 @@ namespace WindowsFormsApplication1
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select id from student where loginId='" + loginId .ToString()+"'";
-            SqlCommand com = new SqlCommand(sql,con);
+            string sql = "select id from student where loginId='" + loginId.ToString() + "'";
+            SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-           
+
             datahelp.StudentId = com.ExecuteScalar().ToString();
             con.Close();
         }
@@ -175,8 +167,8 @@ namespace WindowsFormsApplication1
 
         private void form1_Load(object sender, EventArgs e)
         {
-           // ft.showloading();
-        
+            // ft.showloading();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -225,21 +217,21 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ScanLogin sc=new  ScanLogin();
+            ScanLogin sc = new ScanLogin();
             sc.Show();
-           this.Hide();
+            this.Hide();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Opencv cv= new Opencv();
+            Opencv cv = new Opencv();
             cv.Show();
             this.Hide();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            plc c=new plc();
+            plc c = new plc();
             c.Show();
             this.Hide();
         }
@@ -253,7 +245,7 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            LBJForm lbg=new LBJForm("EmcaBvClo9bJ6NkgbLWqRg==");
+            LBJForm lbg = new LBJForm("EmcaBvClo9bJ6NkgbLWqRg==");
             lbg.Show();
         }
 
