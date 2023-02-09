@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
 using WindowsFormsApplication1.Exam;
+using WindowsFormsApplication1.YanMO;
 
 namespace WindowsFormsApplication1
 {
@@ -254,6 +255,12 @@ namespace WindowsFormsApplication1
         {
             LBJForm lbg=new LBJForm("EmcaBvClo9bJ6NkgbLWqRg==");
             lbg.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            XHSB xh=new XHSB();
+            xh.Show();
         }
     }
 }

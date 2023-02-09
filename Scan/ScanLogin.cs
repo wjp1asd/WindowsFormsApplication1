@@ -82,7 +82,8 @@ namespace WindowsFormsApplication1.Scan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            ff.backlogin();
         }
 
         private void label2_Click(object sender, EventArgs e)

@@ -39,7 +39,8 @@ namespace WindowsFormsApplication1
         {
             datahelp a=new datahelp();
             a.Initc();
-            nPort=int.Parse(a.print.ToString().Trim());
+            //  nPort=int.Parse(a.print.ToString().Trim());
+            nPort = 1001;
             this.groupBox1.Hide();
             if (nPort != 0)
             {
@@ -90,7 +91,7 @@ namespace WindowsFormsApplication1
         {
             
             this.Close();
-          
+         ff.backlogin();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

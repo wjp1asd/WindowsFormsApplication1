@@ -38,8 +38,8 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
             c.fullsreen(this.label2,this);
 
             c.fullsreen(this.button1, this);
+            c.fullsreen(this.button7, this);
 
-  
 
 
 

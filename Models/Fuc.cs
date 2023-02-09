@@ -14,7 +14,11 @@ namespace WindowsFormsApplication1.Models
         public IFrame Frame { get; set; }
 
         // fullsreen
-
+        public void backlogin() {
+         
+            form1 f = new form1();
+        f.Show();
+        }
         public void fullsreen(System.Windows.Forms.Control c,Form f) {
 
             c.Left += f.Width / 2;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenCvSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -100,24 +101,7 @@ namespace WindowsFormsApplication1.YanMO
             this.panel1.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                  string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
-             
-                string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//获取焦点触发行的第一个值
-
-
-                if (strcolumn == "cz")
-                {
-                    XHSBAdmin x = new XHSBAdmin(id);
-                    x.Show();
-                    // return;
-                }
-
-            }
-            }
+      
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -139,11 +123,15 @@ namespace WindowsFormsApplication1.YanMO
                     return;
                 }
 
+
+
+
              
-            
+
+
 
                 string strrow = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();//获取焦点触发行的第一个值
-                string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//获取焦点触发行的第一个值
+               string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//获取焦点触发行的第一个值
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
               
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "'where id = " + id;
@@ -276,22 +264,40 @@ namespace WindowsFormsApplication1.YanMO
 
         }
 
-        private void dd(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1){
-              //  string value = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//获取焦点触发行的第一个值
-               // MessageBox.Show(e.RowIndex.ToString());
-                XHSBAdmin x = new XHSBAdmin(id);
-                x.Show();
-
-             };
-            }
 
         private void XHSB_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int a = e.RowIndex;
+                DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                if (column is DataGridViewButtonColumn)
+                {
+                    //这里可以编写你需要的任意关于按钮事件的操作~
+                     string id = dataGridView1.Rows[a].Cells[1].Value.ToString();//获取焦点触发行的第一个值
+                    string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
+                    MessageBox.Show("按钮被点击" + strcolumn);
+                    if (strcolumn == "cz")
+                    {
+                       
+                      
+                        XHSBAdmin x = new XHSBAdmin(id);
+                        x.Show();
+                    }
+
+                }
+            }
+            else
+            {
+
+                return;
+            }
         }
         //  MessageBox.Show(e.RowIndex.ToString());
     }
