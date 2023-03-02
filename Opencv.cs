@@ -3,13 +3,7 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using Emgu.CV.Util;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -41,7 +35,7 @@ namespace WindowsFormsApplication1
             //CvInvoke.Imshow("mask", mask);
             //VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
             //VectorOfRect hierarchy = new VectorOfRect();
-         
+
             //CvInvoke.FindContours(mask, contours,hierarchy, RetrType.External, ChainApproxMethod.ChainApproxNone);
             //VectorOfVectorOfPoint contours_approx = new VectorOfVectorOfPoint(contours.Size);
             //Rectangle rect = new Rectangle();
@@ -64,9 +58,9 @@ namespace WindowsFormsApplication1
             Mat frame = new Mat();
             while (true)
             {
-              frame = cap.QueryFrame();   //实验读取到最后一帧有异常
-              cap.Read(frame);
-              if (frame.IsEmpty)
+                frame = cap.QueryFrame();   //实验读取到最后一帧有异常
+                cap.Read(frame);
+                if (frame.IsEmpty)
                 {
                     Console.WriteLine("frame is empty...");
                     break;
@@ -75,8 +69,8 @@ namespace WindowsFormsApplication1
                 Mat mask_red = new Mat();
                 Mat mask_green = new Mat();
 
-               double h_min_red = 0, s_min_red = 127, v_min_red = 128;
-               double h_max_red = 10, s_max_red = 255, v_max_red = 255;
+                double h_min_red = 0, s_min_red = 127, v_min_red = 128;
+                double h_max_red = 10, s_max_red = 255, v_max_red = 255;
 
                 double h_min_green = 35, s_min_green = 110, v_min_green = 106;
                 double h_max_green = 77, s_max_green = 255, v_max_green = 255;
@@ -84,7 +78,7 @@ namespace WindowsFormsApplication1
                 ScalarArray hsv_min_red = new ScalarArray(new MCvScalar(h_min_red, s_min_red, v_min_red));
                 ScalarArray hsv_max_red = new ScalarArray(new MCvScalar(h_max_red, s_max_red, v_max_red));
                 ScalarArray hsv_min_green = new ScalarArray(new MCvScalar(h_min_green, s_min_green, v_min_green));
-                ScalarArray hsv_max_green = new ScalarArray(new MCvScalar(h_max_green, s_max_green, v_max_green));              
+                ScalarArray hsv_max_green = new ScalarArray(new MCvScalar(h_max_green, s_max_green, v_max_green));
 
                 CvInvoke.CvtColor(frame, hsvimg, ColorConversion.Bgr2Hsv);
                 CvInvoke.InRange(hsvimg, hsv_min_red, hsv_max_red, mask_red);
@@ -93,39 +87,39 @@ namespace WindowsFormsApplication1
                 CvInvoke.MedianBlur(mask_green, mask_green, 5);
 
                 Mat mask = new Mat();
-               CvInvoke.Add(mask_red, mask_green, mask);  //掩膜相加
+                CvInvoke.Add(mask_red, mask_green, mask);  //掩膜相加
                 CvInvoke.Imshow("mask", mask);          //显示合在一起的掩膜
 
                 VectorOfVectorOfPoint contours_red = new VectorOfVectorOfPoint();
-               VectorOfRect hierachy_red = new VectorOfRect();
-               CvInvoke.FindContours(mask_red, contours_red, hierachy_red, RetrType.External, ChainApproxMethod.ChainApproxNone);
+                VectorOfRect hierachy_red = new VectorOfRect();
+                CvInvoke.FindContours(mask_red, contours_red, hierachy_red, RetrType.External, ChainApproxMethod.ChainApproxNone);
 
-               for (int i = 0; i < contours_red.Size; i++)
-               {
-                   Rectangle rect = CvInvoke.BoundingRectangle(contours_red[i]);
-                   if (rect.Width < 10 || rect.Height < 10)                //对于太小的外接矩形，删除掉
+                for (int i = 0; i < contours_red.Size; i++)
+                {
+                    Rectangle rect = CvInvoke.BoundingRectangle(contours_red[i]);
+                    if (rect.Width < 10 || rect.Height < 10)                //对于太小的外接矩形，删除掉
                         continue;
-                  CvInvoke.Rectangle(frame, rect, new MCvScalar(255, 0, 0), 1);
+                    CvInvoke.Rectangle(frame, rect, new MCvScalar(255, 0, 0), 1);
                     CvInvoke.PutText(frame, "red", new Point(rect.X, rect.Y - 5), FontFace.HersheyComplexSmall, 1.2, new MCvScalar(0, 255, 0));
-               }
+                }
 
                 VectorOfVectorOfPoint contours_green = new VectorOfVectorOfPoint();
-               VectorOfRect hierachy_green = new VectorOfRect();
-               CvInvoke.FindContours(mask_green, contours_green, hierachy_green, RetrType.External, ChainApproxMethod.ChainApproxNone);
+                VectorOfRect hierachy_green = new VectorOfRect();
+                CvInvoke.FindContours(mask_green, contours_green, hierachy_green, RetrType.External, ChainApproxMethod.ChainApproxNone);
 
-               for (int i = 0; i < contours_green.Size; i++)
-               {
+                for (int i = 0; i < contours_green.Size; i++)
+                {
                     Rectangle rect = CvInvoke.BoundingRectangle(contours_green[i]);
                     if (rect.Width < 10 || rect.Height < 10)                //对于太小的外接矩形，删除掉
-                       continue;
-                   CvInvoke.Rectangle(frame, rect, new MCvScalar(255, 0, 0), 1);
+                        continue;
+                    CvInvoke.Rectangle(frame, rect, new MCvScalar(255, 0, 0), 1);
                     CvInvoke.PutText(frame, "green", new Point(rect.X, rect.Y - 5), FontFace.HersheyComplexSmall, 1.2, new MCvScalar(0, 255, 0));
-              }
+                }
                 CvInvoke.Imshow("hsv_track", frame);
-               if (CvInvoke.WaitKey(30) == 27)
-              {
-                   break;
-            }
+                if (CvInvoke.WaitKey(30) == 27)
+                {
+                    break;
+                }
             }
 
         }
@@ -133,5 +127,5 @@ namespace WindowsFormsApplication1
 
 
     }
-    
+
 }

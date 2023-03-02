@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -13,21 +6,23 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class Exam1 : Form
     {
+#pragma warning disable CS0169 // 从不使用字段“Exam1.t”
         TestRecord t;
+#pragma warning restore CS0169 // 从不使用字段“Exam1.t”
         String qr;
-        public Exam1(String qrcode= "mXjjwVcvXizfGcnbOF9CKw==")
+        public Exam1(String qrcode = "mXjjwVcvXizfGcnbOF9CKw==")
         {
             InitializeComponent();
 
             InitUI();
-            qr=qrcode;
-          
+            qr = qrcode;
+
 
         }
         private void InitUI()
         {
             datahelp a = new datahelp();
-          
+
             a.Initc();
             this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
@@ -40,10 +35,11 @@ namespace WindowsFormsApplication1.Exam
 
 
             //    MessageBox.Show(a.color1);
-            switch (a.Status) {
+            switch (a.Status)
+            {
                 case 0:
-                    this.button2.Enabled= false;
-                   this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
+                    this.button2.Enabled = false;
+                    this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button3.Enabled = false;
                     break;
@@ -56,7 +52,7 @@ namespace WindowsFormsApplication1.Exam
                 case 2:
                     this.button1.Enabled = false;
                     this.button2.Enabled = false;
-                   this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
+                    this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     break;
 
@@ -78,7 +74,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MFYM mf= new MFYM(qr);
+            MFYM mf = new MFYM(qr);
             mf.Show();
         }
 
@@ -90,7 +86,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void uiBreadcrumb1_ItemIndexChanged(object sender, int value)
         {
-           
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -100,13 +96,13 @@ namespace WindowsFormsApplication1.Exam
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OFF of=new OFF(qr);
+            OFF of = new OFF(qr);
             of.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ON on=new ON(qr);
+            ON on = new ON(qr);
             on.Show();
         }
     }

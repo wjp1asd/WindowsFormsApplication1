@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -14,11 +6,11 @@ namespace WindowsFormsApplication1.Questions
 {
     public partial class Offline_JiaoYan : Form
     {
-     
+
         public Offline_JiaoYan()
         {
             InitializeComponent();
-           
+
             InitUI();
 
         }
@@ -50,7 +42,7 @@ namespace WindowsFormsApplication1.Questions
 
             ff.fullsreen(this.button1, this);
             ff.fullsreen(this.button2, this);
-           
+
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
         }
@@ -67,7 +59,7 @@ namespace WindowsFormsApplication1.Questions
             Wucha_Settings j = new Wucha_Settings("0");
             j.Show();
             this.Close();
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -85,7 +77,7 @@ namespace WindowsFormsApplication1.Questions
 
         private void bb(object sender, EventArgs e)
         {
-         
+
         }
 
         private void label2_Click(object sender, EventArgs e)

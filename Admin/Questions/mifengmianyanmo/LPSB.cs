@@ -1,14 +1,8 @@
-﻿using MiniExcelLibs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
 
@@ -18,13 +12,13 @@ namespace WindowsFormsApplication1.YanMO
     {
         int row;
         String TableName = "ymg";
-      
+
         Boolean all = false;
         StringBuilder s1;
         public LPSB()
         {
             InitializeComponent();
-            string sql = "select * from " + TableName ;
+            string sql = "select * from " + TableName;
             this.panel1.Hide();
             InitTable(sql);
         }
@@ -218,8 +212,8 @@ namespace WindowsFormsApplication1.YanMO
             string answer = this.textBox2.Text.Trim();
             string oa = this.textBox3.Text.Trim();
             string ob = this.textBox4.Text.Trim();
-            string oc = this.textBox5.Text.Trim(); 
-            string od = this.textBox6.Text.Trim(); 
+            string oc = this.textBox5.Text.Trim();
+            string od = this.textBox6.Text.Trim();
 
             if (question.Length == 0 || answer.Length == 0 || oa.Length == 0 || ob.Length == 0 ||
                 oc.Length == 0 || od.Length == 0
@@ -239,7 +233,7 @@ namespace WindowsFormsApplication1.YanMO
                   "'" + od.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-             MessageBox.Show(strcomm);
+            MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();

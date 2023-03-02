@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.colorDialog2 = new System.Windows.Forms.ColorDialog();
             this.colorDialog3 = new System.Windows.Forms.ColorDialog();
@@ -89,19 +90,22 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -571,6 +575,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label34);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.label33);
@@ -647,86 +653,15 @@
             this.groupBox1.Text = "系统配置";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // textBox1
+            // label34
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 613);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 25);
-            this.textBox1.TabIndex = 61;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(12, 618);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(67, 15);
-            this.label24.TabIndex = 60;
-            this.label24.Text = "离线题：";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(253, 616);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(65, 25);
-            this.textBox2.TabIndex = 63;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(179, 621);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(67, 15);
-            this.label29.TabIndex = 62;
-            this.label29.Text = "在线题：";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(411, 615);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(65, 25);
-            this.textBox3.TabIndex = 65;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(337, 620);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(67, 15);
-            this.label30.TabIndex = 64;
-            this.label30.Text = "工艺题：";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(132, 664);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(65, 25);
-            this.textBox4.TabIndex = 67;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(445, 667);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(97, 15);
-            this.label31.TabIndex = 66;
-            this.label31.Text = "研磨膏识别：";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(354, 666);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(65, 25);
-            this.textBox5.TabIndex = 69;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(38, 667);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(82, 15);
-            this.label32.TabIndex = 68;
-            this.label32.Text = "型号识别：";
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.IndianRed;
+            this.label34.Location = new System.Drawing.Point(7, 588);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(97, 15);
+            this.label34.TabIndex = 72;
+            this.label34.Text = "题型数量设置";
             // 
             // textBox6
             // 
@@ -744,15 +679,105 @@
             this.label33.TabIndex = 70;
             this.label33.Text = "零配件识别：";
             // 
-            // label34
+            // textBox5
             // 
-            this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.Color.IndianRed;
-            this.label34.Location = new System.Drawing.Point(7, 588);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(97, 15);
-            this.label34.TabIndex = 72;
-            this.label34.Text = "题型数量设置";
+            this.textBox5.Location = new System.Drawing.Point(354, 666);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(65, 25);
+            this.textBox5.TabIndex = 69;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(38, 667);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(82, 15);
+            this.label32.TabIndex = 68;
+            this.label32.Text = "型号识别：";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(132, 664);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(65, 25);
+            this.textBox4.TabIndex = 67;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(445, 667);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(97, 15);
+            this.label31.TabIndex = 66;
+            this.label31.Text = "研磨膏识别：";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(411, 615);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(65, 25);
+            this.textBox3.TabIndex = 65;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(337, 620);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(67, 15);
+            this.label30.TabIndex = 64;
+            this.label30.Text = "工艺题：";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(253, 616);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(65, 25);
+            this.textBox2.TabIndex = 63;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(179, 621);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(67, 15);
+            this.label29.TabIndex = 62;
+            this.label29.Text = "在线题：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(86, 613);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(65, 25);
+            this.textBox1.TabIndex = 61;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(12, 618);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(67, 15);
+            this.label24.TabIndex = 60;
+            this.label24.Text = "离线题：";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(491, 411);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(150, 23);
+            this.comboBox1.TabIndex = 74;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(324, 410);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(161, 23);
+            this.button8.TabIndex = 75;
+            this.button8.Text = "获取当前电脑端口";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // Settings1
             // 
@@ -845,5 +870,8 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Button button8;
     }
 }

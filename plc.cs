@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApplication1
 {
@@ -18,21 +11,25 @@ namespace WindowsFormsApplication1
     {
         private string serialPortName;
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
-//#02 01 00 05 01 07
-        byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05,0x01, 0x07 };
+        //#02 01 00 05 01 07
+        byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
         string t1, t2, t3, t4, t5, t6, t7, t8;
         // 采集，8个通道，每个通道非0表示采集，为0表示不采集
         //02 11 00 0C 01 01 01 01 01 01 01 01 1F
-        byte[] td1 = new byte[] { 0x02, 0x11, 0x00,0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,0x01, 0x1F };
-        byte[] td = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01,0x1F };
+        byte[] td1 = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1F };
+        byte[] td = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01, 0x1F };
+#pragma warning disable CS0169 // 从不使用字段“plc.t”
         Thread t;
+#pragma warning restore CS0169 // 从不使用字段“plc.t”
         public plc()
         {
             InitializeComponent();
-            t1 = "0x00"; t2 = "0x00"; t3= "0x00"; t4 = "0x00"; t5 = "0x00"; t6 = "0x00"; t7 = "0x00";
+            t1 = "0x00"; t2 = "0x00"; t3 = "0x00"; t4 = "0x00"; t5 = "0x00"; t6 = "0x00"; t7 = "0x00";
             t8 = "0x00";
         }
+#pragma warning disable CS0414 // 字段“plc.i”已被赋值，但从未使用过它的值
         int i = 0;
+#pragma warning restore CS0414 // 字段“plc.i”已被赋值，但从未使用过它的值
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -118,42 +115,64 @@ namespace WindowsFormsApplication1
             }
             base.WndProc(ref m);
         }
-       
-        string  a1, a2, a3, a4, a5, a6, a7,a8;
+
+#pragma warning disable CS0169 // 从不使用字段“plc.a2”
+#pragma warning disable CS0169 // 从不使用字段“plc.a7”
+#pragma warning disable CS0169 // 从不使用字段“plc.a1”
+#pragma warning disable CS0169 // 从不使用字段“plc.a8”
+#pragma warning disable CS0169 // 从不使用字段“plc.a6”
+#pragma warning disable CS0169 // 从不使用字段“plc.a5”
+#pragma warning disable CS0169 // 从不使用字段“plc.a4”
+#pragma warning disable CS0169 // 从不使用字段“plc.a3”
+        string a1, a2, a3, a4, a5, a6, a7, a8;
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+#pragma warning restore CS0169 // 从不使用字段“plc.a3”
+#pragma warning restore CS0169 // 从不使用字段“plc.a4”
+#pragma warning restore CS0169 // 从不使用字段“plc.a5”
+#pragma warning restore CS0169 // 从不使用字段“plc.a6”
+#pragma warning restore CS0169 // 从不使用字段“plc.a8”
+#pragma warning restore CS0169 // 从不使用字段“plc.a1”
+#pragma warning restore CS0169 // 从不使用字段“plc.a7”
+#pragma warning restore CS0169 // 从不使用字段“plc.a2”
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-       Thread.Sleep(500);
-       int len = serialPort2.BytesToRead;//获取可以读取的字节数
-       byte[] buff = new byte[len];//创建缓存数据数组
-       serialPort2.Read(buff, 0, len);//把数据读取到buff数组
+            Thread.Sleep(500);
+            int len = serialPort2.BytesToRead;//获取可以读取的字节数
+            byte[] buff = new byte[len];//创建缓存数据数组
+            serialPort2.Read(buff, 0, len);//把数据读取到buff数组
 
-          
 
-       //aio 模拟读取
-       if (buff.Length == 37) {
+
+            //aio 模拟读取
+            if (buff.Length == 37)
+            {
 
                 //通道1-8
-               
-        byte[] tt1 = buff.Skip(4).Take(4).ToArray();
-                 t1=  ShowBy(tt1,1);
-        byte[] tt2 = buff.Skip(8).Take(4).ToArray();
-                t2 = ShowBy(tt2,2);
-        byte[] tt3 = buff.Skip(12).Take(4).ToArray();
-                t3 = ShowBy(tt3,3);
-        byte[] tt4 = buff.Skip(16).Take(4).ToArray();
-               t4 = ShowBy(tt4,4);
-        byte[] tt5 = buff.Skip(20).Take(4).ToArray();
-              t5 = ShowBy(tt5,5);
-        byte[] tt6 = buff.Skip(24).Take(4).ToArray();
-                t6 = ShowBy(tt6,6);
-          byte[] tt7 = buff.Skip(28).Take(4).ToArray();
-               t7 = ShowBy(tt7,7);
-       byte[] tt8 = buff.Skip(32).Take(4).ToArray();
-               t8 = ShowBy(tt8,8);
-         }
+
+                byte[] tt1 = buff.Skip(4).Take(4).ToArray();
+                t1 = ShowBy(tt1, 1);
+                byte[] tt2 = buff.Skip(8).Take(4).ToArray();
+                t2 = ShowBy(tt2, 2);
+                byte[] tt3 = buff.Skip(12).Take(4).ToArray();
+                t3 = ShowBy(tt3, 3);
+                byte[] tt4 = buff.Skip(16).Take(4).ToArray();
+                t4 = ShowBy(tt4, 4);
+                byte[] tt5 = buff.Skip(20).Take(4).ToArray();
+                t5 = ShowBy(tt5, 5);
+                byte[] tt6 = buff.Skip(24).Take(4).ToArray();
+                t6 = ShowBy(tt6, 6);
+                byte[] tt7 = buff.Skip(28).Take(4).ToArray();
+                t7 = ShowBy(tt7, 7);
+                byte[] tt8 = buff.Skip(32).Take(4).ToArray();
+                t8 = ShowBy(tt8, 8);
+            }
         }
-       
-        private  string ShowBy(byte[] buff,int num)
+
+        private string ShowBy(byte[] buff, int num)
         {
             StringBuilder sb = new StringBuilder();
             StringBuilder sb1 = new StringBuilder();
@@ -161,42 +180,44 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < buff.Length; i++)
             {
                 sb.AppendFormat("{0:x2}" + " ", buff[i]);
-                if (i > 1) {
+                if (i > 1)
+                {
 
                     sb1.AppendFormat("{0:x2}", buff[i]);
                 }
-               
+
             }
-            textBox1.AppendText("通道"+num+"信息：" );
-            switch (num) { 
-            
-            case 1:
-                    voldetla(sb1,t1);
+            textBox1.AppendText("通道" + num + "信息：");
+            switch (num)
+            {
+
+                case 1:
+                    voldetla(sb1, t1);
                     break;
                 case 2:
-                  //  voldetla(sb1, t2);
+                    //  voldetla(sb1, t2);
                     break;
                 case 3:
-                  //  voldetla(sb1, t3);
+                    //  voldetla(sb1, t3);
                     break;
                 case 4:
-                  //  voldetla(sb1, t4);
+                    //  voldetla(sb1, t4);
                     break;
                 case 5:
-                  //  voldetla(sb1, t5);
+                    //  voldetla(sb1, t5);
                     break;
                 case 6:
-                  //  voldetla(sb1, t6);
+                    //  voldetla(sb1, t6);
                     break;
                 case 7:
-                   // voldetla(sb1, t7);
+                    // voldetla(sb1, t7);
                     break;
                 case 8:
-                   // voldetla(sb1, t8);
+                    // voldetla(sb1, t8);
                     break;
-             
+
             }
-           
+
             //textBox1.AppendText("长度：" + buff.Length);
             hexstring = sb1.ToString();
 
@@ -208,20 +229,20 @@ namespace WindowsFormsApplication1
         private void voldetla(StringBuilder sb1, string t8)
         {
             int a = Convert.ToInt32(sb1.ToString(), 16);
-            int b= Convert.ToInt32(t8.ToString(), 16);
+            int b = Convert.ToInt32(t8.ToString(), 16);
 
             textBox1.AppendText("当前通道：" + sb1.ToString());
             textBox1.AppendText("当前电压值：" + a);
             textBox1.AppendText("上次电压差：" + b);
-            textBox1.AppendText("当前电压差：" + (a-b));
-            textBox1.AppendText("变化速度：" +Math.Abs(a-b)/interval);
-            SendServo(Math.Abs(a - b) / interval,b);
+            textBox1.AppendText("当前电压差：" + (a - b));
+            textBox1.AppendText("变化速度：" + Math.Abs(a - b) / interval);
+            SendServo(Math.Abs(a - b) / interval, b);
         }
 
-        private void SendServo(int a,int pos)
+        private void SendServo(int a, int pos)
         {
-            byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C, 
-                
+            byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
+
                 0x01, 0x01, 0xF4,
                 0x01, 0x01, 0xF4,
                 0x01, 0x01, 0xF4,
@@ -290,10 +311,10 @@ namespace WindowsFormsApplication1
         {
             MessageBox.Show("连接串口成功");
 
-            byte[] s = new byte[] {0x02,0x00,0x00,0x04,0x06 };
+            byte[] s = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
 
 
-            serialPort2.Write(s,0,s.Length);
+            serialPort2.Write(s, 0, s.Length);
             String Str = textBox2.Text.ToString();//获取发送文本框里面的数据
             try
             {
@@ -337,25 +358,26 @@ namespace WindowsFormsApplication1
         private void button4_Click_1(object sender, EventArgs e)
         {
 
-      //      serialPort2.Write(td1, 0, td1.Length);
-          //   t = new Thread(Write2);
-          //    t.Start();
+            //      serialPort2.Write(td1, 0, td1.Length);
+            //   t = new Thread(Write2);
+            //    t.Start();
         }
-        int interval =500;
+        int interval = 500;
         private void Write2()
         {
 
-            while (true) {
+            while (true)
+            {
                 serialPort2.Write(td1, 0, td1.Length);
-                
+
                 System.Threading.Thread.Sleep(interval);
-               
+
                 int len = serialPort2.BytesToRead;//获取可以读取的字节数
                 byte[] buff = new byte[len];//创建缓存数据数组
                 serialPort2.Read(buff, 0, len);//把数据读取到buff数组
 
 
-               
+
                 //aio 模拟读取
                 if (buff.Length == 37)
                 {
@@ -389,5 +411,5 @@ namespace WindowsFormsApplication1
         }
     }
 
-  
+
 }

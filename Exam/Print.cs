@@ -1,12 +1,7 @@
-﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -205,11 +200,17 @@ namespace WindowsFormsApplication1.Exam
         public static extern unsafe int PrintDataMatrix(StringBuilder strData, int iSize);
 
 
+#pragma warning disable CS0414 // 字段“Print.m_iInit”已被赋值，但从未使用过它的值
         int m_iInit = -1;       //打印机初始化状态
+#pragma warning restore CS0414 // 字段“Print.m_iInit”已被赋值，但从未使用过它的值
+#pragma warning disable CS0414 // 字段“Print.m_iStatus”已被赋值，但从未使用过它的值
         int m_iStatus = -1;     //打印机状态
+#pragma warning restore CS0414 // 字段“Print.m_iStatus”已被赋值，但从未使用过它的值
         //语言版本 Language
+#pragma warning disable CS0414 // 字段“Print.m_lcLanguage”已被赋值，但从未使用过它的值
         int m_lcLanguage = 0;
-        StringBuilder m_sbData =new StringBuilder();
+#pragma warning restore CS0414 // 字段“Print.m_lcLanguage”已被赋值，但从未使用过它的值
+        StringBuilder m_sbData = new StringBuilder();
         TestRecord t = new TestRecord();
 
         public Print(string qrcode)
@@ -219,73 +220,80 @@ namespace WindowsFormsApplication1.Exam
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from TestRecord where qrcode='" +qrcode + "'";
+            string sql = "select * from TestRecord where qrcode='" + qrcode + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-           
+
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-   
-               t.Queque = reader["queue"].ToString();
-            
-             t.Ksdate = reader["ksdate"].ToString();
-             
-             t.Ksname = reader["ksname"].ToString();
-             
+
+                t.Queque = reader["queue"].ToString();
+
+                t.Ksdate = reader["ksdate"].ToString();
+
+                t.Ksname = reader["ksname"].ToString();
+
                 t.KsId = reader["ksId"].ToString();
-              
+
                 t.Lxyl = reader["lxyl"].ToString();
-           
+
                 t.Lxlx = reader["lxlx"].ToString();
                 t.Zxyl = reader["zxyl"].ToString();
 
                 t.Zxlx = reader["zxlx"].ToString();
-            
+
 
 
                 t.Adfxh = reader["aqfxh"].ToString();
-            
-                t.Qrcode  = reader["qrcode"].ToString();
+
+                t.Qrcode = reader["qrcode"].ToString();
             }
             con.Close();
             InitializeComponent();
             InitConfig();
             this.queue.Text = t.Queque.Trim();
-            this.kstime.Text =  t.Ksdate.Trim();
-            this.ksname.Text =t.Ksname.Trim();
-            this.ksId.Text = "身份证："+t.KsId.Trim();
-            this.lxyl.Text = "要求整定压力:" +t.Lxyl.ToString().Trim()    + "Mpa";
+            this.kstime.Text = t.Ksdate.Trim();
+            this.ksname.Text = t.Ksname.Trim();
+            this.ksId.Text = "身份证：" + t.KsId.Trim();
+            this.lxyl.Text = "要求整定压力:" + t.Lxyl.ToString().Trim() + "Mpa";
             this.lxlx.Text = "使用设备类型:" + t.Lxlx.ToString().Trim();
             this.zxyl.Text = "要求整定压力:" + t.Zxyl.ToString().Trim() + "Mpa";
-           this.zxlx.Text = "使用设备类型:" +t.Zxlx.ToString().Trim();
-             this.aqfxh.Text = "安全阀型号:" + t.Adfxh.ToString().Trim();
+            this.zxlx.Text = "使用设备类型:" + t.Zxlx.ToString().Trim();
+            this.aqfxh.Text = "安全阀型号:" + t.Adfxh.ToString().Trim();
         }
-        public int r =1;
+        public int r = 1;
         private void InitConfig()
         {
             datahelp a = new datahelp();
             a.Initc();
             //获取打印机端口号
+            if (File.Exists("Msprintsdk.dll"))
+            {
+                MessageBox.Show("打印模块加在成功");
 
-           // m_sbData.Append(""+a.print.Trim()+"");
-           m_sbData.Append("Us");
-          //  MessageBox.Show(m_sbData.ToString());
+            }
+           
+              // m_sbData.Append("" + a.print.Trim() + "");
+               m_sbData.Append("USB001");
+           
+            r= SetUsbportauto();
            // r = SetPrintport(m_sbData,0);
-            r = SetUsbportauto();
+
             if (r == 0)
             {
-               r = SetInit();
+                r = SetInit();
                 SetClean();
                 SetReadZKmode(0);
                 this.label3.Text = "打印机成功";
                 this.uiLight1.Style = Sunny.UI.UIStyle.Green;
             }
-            else { 
-            
-            
-            this.label3.Text = "初始化打印机失败";
-            this.uiLight1.Style = Sunny.UI.UIStyle.Red;
+            else
+            {
+
+
+                this.label3.Text = "初始化打印机失败";
+                this.uiLight1.Style = Sunny.UI.UIStyle.Red;
 
             }
         }
@@ -297,10 +305,10 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
 
-     
-         
+
+
+
             SetClean();
             PrintCutpaper(0);
             SetAlignment(1);
@@ -310,8 +318,8 @@ namespace WindowsFormsApplication1.Exam
             SetSpacechar(5);
             SetLinespace(50);
             SetAlignment(0);
-            PrintString(new StringBuilder("考 生：" + t.Ksname.Trim()+" "+ "排队号：" + t.Queque.Trim()), 1);
-        
+            PrintString(new StringBuilder("考 生：" + t.Ksname.Trim() + " " + "排队号：" + t.Queque.Trim()), 1);
+
             PrintChargeRow();
             PrintString(new StringBuilder("考试日期："), 1);
             PrintChargeRow();
@@ -319,22 +327,22 @@ namespace WindowsFormsApplication1.Exam
             PrintChargeRow();
             PrintString(new StringBuilder("身份证号："), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder( t.KsId.Trim()), 1);
+            PrintString(new StringBuilder(t.KsId.Trim()), 1);
             PrintString(new StringBuilder(), 1);
             PrintChargeRow();
             SetAlignment(0);
             PrintString(new StringBuilder("1、离线校验"), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder("要求整定压力:" + t.Lxyl.Trim()+ "Mpa"), 1);
+            PrintString(new StringBuilder("要求整定压力:" + t.Lxyl.Trim() + "Mpa"), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder("使用设备类型:" +t.Lxlx.Trim()), 1);
+            PrintString(new StringBuilder("使用设备类型:" + t.Lxlx.Trim()), 1);
             PrintChargeRow();
             SetAlignment(0);
             PrintString(new StringBuilder("2、在线校验"), 1);
             PrintChargeRow();
             PrintString(new StringBuilder("要求整定压力:" + t.Zxyl.Trim() + "Mpa"), 1);
             PrintChargeRow();
-            PrintString(new StringBuilder("使用设备类型:" +t.Zxlx.Trim()), 1);
+            PrintString(new StringBuilder("使用设备类型:" + t.Zxlx.Trim()), 1);
             PrintChargeRow();
 
             SetAlignment(0);
@@ -348,13 +356,13 @@ namespace WindowsFormsApplication1.Exam
             PrintChargeRow();
             PrintChargeRow();
             PrintCutpaper(0);
-          
+
 
         }
 
         private void Print_Load(object sender, EventArgs e)
         {
-           
+
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
@@ -365,7 +373,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button7_Click(object sender, EventArgs e)
         {
-            form1 f1=new form1();
+            form1 f1 = new form1();
             f1.Show();
             this.Close();
         }

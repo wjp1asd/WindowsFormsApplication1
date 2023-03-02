@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Questions
@@ -33,13 +28,13 @@ namespace WindowsFormsApplication1.Questions
                 case "1":
                     this.Text = "在线压力设置";
                     break;
-               
+
             }
             Subtype = subtype;
-            string sql = "select * from " + TableName+" where type = "+Subtype;
+            string sql = "select * from " + TableName + " where type = " + Subtype;
             this.panel1.Hide();
             InitTable(sql);
-          
+
         }
         private void InitTable(string sql)
         {
@@ -156,7 +151,7 @@ namespace WindowsFormsApplication1.Questions
         {
             string sub = this.txtUsername.Text.ToString();
             string f0 = this.textBox1.Text.ToString();
-            string f1= this.textBox2.Text.ToString();
+            string f1 = this.textBox2.Text.ToString();
             string f2 = this.textBox3.Text.ToString();
             string f3 = this.textBox4.Text.ToString();
             string f4 = this.textBox5.Text.ToString();
@@ -169,7 +164,7 @@ namespace WindowsFormsApplication1.Questions
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string strcomm = "insert into " + TableName + "([type],[sub], [f0], [f1],[f2],[f3],[f4]) VALUES(" +
-             "'" + Subtype.ToString() + "'" + "," + 
+             "'" + Subtype.ToString() + "'" + "," +
                 "'" + sub.ToString() + "'" + "," +
                "'" + f0.ToString() + "'" + "," +
                   "'" + f1.ToString() + "'" + "," +
@@ -242,7 +237,7 @@ namespace WindowsFormsApplication1.Questions
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string sql = "select * from " + TableName +" where type = " + Subtype;
+            string sql = "select * from " + TableName + " where type = " + Subtype;
             this.panel1.Hide();
             InitTable(sql);
         }

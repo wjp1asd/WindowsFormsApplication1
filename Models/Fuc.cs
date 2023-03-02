@@ -22,11 +22,11 @@ namespace WindowsFormsApplication1.Models
         public void fullsreen(System.Windows.Forms.Control c,Form f) {
 
             c.Left += f.Width / 2;
-        
-        
+
+
         }
 
-        public String  Md5(string plaintext)
+        public String Md5(string plaintext)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] palindata = Encoding.Default.GetBytes(plaintext);//将要加密的字符串转换为字节数组
@@ -36,12 +36,13 @@ namespace WindowsFormsApplication1.Models
         }
 
         public Fuc() { }
-       public void showloading(String t= "系统加载中......") {
+        public void showloading(String t = "系统加载中......")
+        {
             UIStatusFormService.ShowStatusForm(100, t, 0);
             for (int i = 0; i < 88; i++)
             {
                 SystemEx.Delay(50);
-                UIStatusFormService.SetDescription(t+"(" + i + "%)......");
+                UIStatusFormService.SetDescription(t + "(" + i + "%)......");
                 UIStatusFormService.StepIt();
             }
 
@@ -49,8 +50,9 @@ namespace WindowsFormsApplication1.Models
         }
 
         // 判断是否有返回结果
-        public string RC(string sqlsent) {
-            string count="";
+        public string RC(string sqlsent)
+        {
+            string count = "";
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = string.Format(sqlsent);
@@ -61,7 +63,7 @@ namespace WindowsFormsApplication1.Models
             {
                 count = reader["qrcode"].ToString();
             }
-                con.Close();
+            con.Close();
             return count;
         }
         public void ShowWaitForm(string desc = "系统正在处理中，请稍候...")

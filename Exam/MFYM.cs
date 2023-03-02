@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Configuration;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -23,14 +19,14 @@ namespace WindowsFormsApplication1
         {
             datahelp a = new datahelp();
             a.Initc();
-           // this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
+            // this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
             this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
-          
+
             this.label2.Text = "密封面动作研磨";
 
 
@@ -46,7 +42,7 @@ namespace WindowsFormsApplication1
         Point lastPoint;
         private void _018_MouseMove(object sender, MouseEventArgs e)
         {
-            Graphics graphics = this.flowLayoutPanel1.CreateGraphics();
+            Graphics graphics = this.CreateGraphics();
             if (lastPoint.Equals(Point.Empty))//判断绘图开始点是否为空
             {
                 lastPoint = new Point(e.X, e.Y);//记录鼠标当前位置
@@ -72,9 +68,9 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Graphics graphics = this.flowLayoutPanel1.CreateGraphics();
-            Rectangle gle = new Rectangle(280, 192, 450, 270);
-            
+            Graphics graphics = this.CreateGraphics();
+            Rectangle gle = new Rectangle(this.uiLine1.Location.X, this.uiLine1.Location.Y, 500, 500);
+
             graphics.DrawRectangle(pen, gle);
         }
 
@@ -85,9 +81,9 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Graphics graphics=this.CreateGraphics();
-            Rectangle gle = new Rectangle(280, 192, 450, 270);
 
+            Graphics graphics = this.CreateGraphics();
+            Rectangle gle = new Rectangle(this.uiLine1.Location.X, this.uiLine1.Location.Y, 500, 500);
             graphics.DrawRectangle(pen, gle);
             graphics.Clear(Color.White);
         }
@@ -95,6 +91,25 @@ namespace WindowsFormsApplication1
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // 生成图片
+            Bitmap bt = new Bitmap(this.Width, this.Height);
+            Graphics g = Graphics.FromImage(bt);
+            g.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
+            bt.MakeTransparent();
+            string connectionString = Application.StartupPath + "\\密封面图片\\1.bmp";
+          
+            bt.Save(connectionString, System.Drawing.Imaging.ImageFormat.Bmp);
+           
+            if (File.Exists(connectionString))
+            {
+          // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
+                MessageBox.Show("截图成功！");
+                return;
+            }
         }
     }
 }

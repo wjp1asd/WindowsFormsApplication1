@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -30,11 +24,11 @@ namespace WindowsFormsApplication1.Questions
             this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
-           
+
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
             //    MessageBox.Show(a.color1);
-            c.fullsreen(this.label2,this);
+            c.fullsreen(this.label2, this);
             c.fullsreen(this.button1, this);
             c.fullsreen(this.button2, this);
             c.fullsreen(this.button3, this);

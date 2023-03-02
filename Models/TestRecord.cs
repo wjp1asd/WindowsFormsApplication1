@@ -1,17 +1,7 @@
-﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using WindowsFormsApplication1.Questions;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -68,7 +58,7 @@ namespace WindowsFormsApplication1.Models
         public List<decimal> Yali()
         {
             List<decimal> yali = new List<decimal>();
-           
+
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from Yali";
@@ -79,7 +69,7 @@ namespace WindowsFormsApplication1.Models
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-                yali.Add(decimal.Parse( reader["ztyli"].ToString()));
+                yali.Add(decimal.Parse(reader["ztyli"].ToString()));
             }
 
             con.Close();
@@ -88,8 +78,9 @@ namespace WindowsFormsApplication1.Models
 
             return yali;
         }
-        public String Wucha() {
-            String wu="";
+        public String Wucha()
+        {
+            String wu = "";
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select Top 1  type from wucha order by newid()";
@@ -105,7 +96,7 @@ namespace WindowsFormsApplication1.Models
 
             con.Close();
 
-          
+
 
             return wu;
         }
@@ -137,7 +128,9 @@ namespace WindowsFormsApplication1.Models
         public TestRecord LastRecord()
         {
             TestRecord t = new TestRecord();
+#pragma warning disable CS0219 // 变量“a”已被赋值，但从未使用过它的值
             int a = 0;
+#pragma warning restore CS0219 // 变量“a”已被赋值，但从未使用过它的值
             // Select* From dbo.S_ServiceDetailed Where Convert(varchar(10),[数据库添加时间字段], 120) = Convert(varchar(10), getDate(), 120)
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
@@ -158,24 +151,24 @@ namespace WindowsFormsApplication1.Models
             return t;
 
         }
-            public int  Queuex()
+        public int Queuex()
         {
 
-            int a=0; 
-           // Select* From dbo.S_ServiceDetailed Where Convert(varchar(10),[数据库添加时间字段], 120) = Convert(varchar(10), getDate(), 120)
+            int a = 0;
+            // Select* From dbo.S_ServiceDetailed Where Convert(varchar(10),[数据库添加时间字段], 120) = Convert(varchar(10), getDate(), 120)
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select count(*) as num  from TestRecord Where Convert(varchar(10),[ksdate], 120) = Convert(varchar(10), getDate(), 120)";
-          
+
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-                a = int.Parse(reader["num"].ToString())+1;
+                a = int.Parse(reader["num"].ToString()) + 1;
             }
-  
+
             con.Close();
 
             return a;
@@ -210,6 +203,6 @@ namespace WindowsFormsApplication1.Models
             con.Close();
             return t;
         }
-      
+
     }
 }

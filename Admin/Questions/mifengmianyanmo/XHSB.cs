@@ -1,14 +1,9 @@
 ﻿using OpenCvSharp;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
 
@@ -16,7 +11,7 @@ namespace WindowsFormsApplication1.YanMO
 {
     public partial class XHSB : Form
     {
-     
+
         int row;
         String TableName = "Aquanfa";
 
@@ -133,7 +128,7 @@ namespace WindowsFormsApplication1.YanMO
                 string strrow = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();//获取焦点触发行的第一个值
                string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//获取焦点触发行的第一个值
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
-              
+
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "'where id = " + id;
                 //   MessageBox.Show("已更新");
 
@@ -148,7 +143,7 @@ namespace WindowsFormsApplication1.YanMO
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string sub = this.txtUsername.Text.ToString();
-         
+
             if (sub.Length == 0)
             {
                 MessageBox.Show("字段不能为空");
@@ -157,11 +152,11 @@ namespace WindowsFormsApplication1.YanMO
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string strcomm = "insert into " + TableName + "([subname]) VALUES(" +
-                "'" + sub.ToString() + "'" 
+                "'" + sub.ToString() + "'"
              + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-       
+
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
@@ -169,7 +164,7 @@ namespace WindowsFormsApplication1.YanMO
             con.Close();
             MessageBox.Show("已更新");
 
-            
+
             string sql = "select * from " + TableName;
 
             this.InitTable(sql);
@@ -235,7 +230,7 @@ namespace WindowsFormsApplication1.YanMO
             f.Show();
             this.Close();
         }
-      
+
         private void lblUsername_Click_1(object sender, EventArgs e)
         {
 
@@ -262,6 +257,13 @@ namespace WindowsFormsApplication1.YanMO
         private void txtUsername_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void XHSB_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
 
@@ -301,6 +303,6 @@ namespace WindowsFormsApplication1.YanMO
         }
         //  MessageBox.Show(e.RowIndex.ToString());
     }
-    
+
 }
 

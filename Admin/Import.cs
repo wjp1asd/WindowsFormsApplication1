@@ -1,16 +1,12 @@
 ﻿
+using MiniExcelLibs;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Diagnostics;
-
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using MiniExcelLibs;
 
 
 namespace WindowsFormsApplication1
@@ -22,13 +18,13 @@ namespace WindowsFormsApplication1
         String TableName = "question";
         String Subtype = "1";
         Boolean all = false;
-       List<int> s1;
+        List<int> s1;
         public static int type = 1;
-     
 
-        public Import( String subtype)
+
+        public Import(String subtype)
         {
-           
+
             InitializeComponent();
             switch (subtype)
             {
@@ -54,9 +50,9 @@ namespace WindowsFormsApplication1
 
         }
 
-        public void GetData(string Id, string name,bool rt)
+        public void GetData(string Id, string name, bool rt)
         {
-         
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,13 +64,13 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < row; i++)
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
-                    {
+                {
                     // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
-                   s1.Add(i);
-                 }
+                    s1.Add(i);
+                }
             }
-           
-          //  MessageBox.Show(s1.ToString());
+
+            //  MessageBox.Show(s1.ToString());
             if (s1.Count > 0)
             {
                 if (MessageBox.Show("开始批量上传 ? ", "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -85,36 +81,37 @@ namespace WindowsFormsApplication1
                     this.progressBar1.Maximum = 10;
                     this.progressBar1.Step = 10 / s1.Count;
 
-                    for (int i = 0; i < s1.Count; i++) {
-                      var x = s1[i];
-                        string question = "'"+this.dataGridView1.Rows[x].Cells[1].Value.ToString()+"'";
+                    for (int i = 0; i < s1.Count; i++)
+                    {
+                        var x = s1[i];
+                        string question = "'" + this.dataGridView1.Rows[x].Cells[1].Value.ToString() + "'";
                         string answer = "'" + this.dataGridView1.Rows[x].Cells[2].Value.ToString() + "'";
                         string mtype = "'" + this.dataGridView1.Rows[x].Cells[7].Value.ToString() + "'";
                         string oa = "'" + "无" + "'";
                         string ob = "'" + "无" + "'";
                         string oc = "'" + "无" + "'";
-                        string od ="'" + "无" + "'";
+                        string od = "'" + "无" + "'";
                         if (this.dataGridView1.Rows[x].Cells[3].Value != null)
                         {
-                          oa = "'" + this.dataGridView1.Rows[x].Cells[3].Value.ToString() + "'";
+                            oa = "'" + this.dataGridView1.Rows[x].Cells[3].Value.ToString() + "'";
                         }
-                        if (this.dataGridView1.Rows[x].Cells[4].Value !=null)
+                        if (this.dataGridView1.Rows[x].Cells[4].Value != null)
                         {
-                          ob = "'" + this.dataGridView1.Rows[x].Cells[4].Value.ToString() + "'";
+                            ob = "'" + this.dataGridView1.Rows[x].Cells[4].Value.ToString() + "'";
                         }
                         if (this.dataGridView1.Rows[x].Cells[5].Value != null)
                         {
-                          oc = "'" + this.dataGridView1.Rows[x].Cells[5].Value.ToString() + "'";
+                            oc = "'" + this.dataGridView1.Rows[x].Cells[5].Value.ToString() + "'";
 
                         }
                         if (this.dataGridView1.Rows[x].Cells[6].Value != null)
                         {
-                          od = "'" + this.dataGridView1.Rows[x].Cells[6].Value.ToString() + "'";
+                            od = "'" + this.dataGridView1.Rows[x].Cells[6].Value.ToString() + "'";
                         }
-                      
+
                         string strcomm = "insert into " + TableName + "([question],[type], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(" +
                  question + ","
-                  +  mtype + ","
+                  + mtype + ","
                  + answer + ","
                  + Subtype + ","
                  + oa + ","
@@ -122,18 +119,18 @@ namespace WindowsFormsApplication1
                    + oc + ","
                     + od + ")";
                         con.Open();
-                      //  MessageBox.Show(strcomm);
-                       SqlCommand comm = new SqlCommand(strcomm, con);
-                         comm.ExecuteNonQuery();
+                        //  MessageBox.Show(strcomm);
+                        SqlCommand comm = new SqlCommand(strcomm, con);
+                        comm.ExecuteNonQuery();
                         this.progressBar1.Value = (i + 1) * this.progressBar1.Step;
                         con.Close();
 
                     }
 
-                    
-                 
-                   
-                    
+
+
+
+
                     MessageBox.Show("已更新");
 
                 }
@@ -146,43 +143,45 @@ namespace WindowsFormsApplication1
 
 
         }
-     
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "c:\\";//注意这里写路径时要用c:\\而不是c:\
-           
+
             openFileDialog.RestoreDirectory = true;
             openFileDialog.FilterIndex = 1;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-            
-         
+
+
                 this.textBox1.Text = System.IO.Path.GetFullPath(openFileDialog.FileName);
                 var url = this.textBox1.Text.ToString();
-                if (!url.Contains("xlsx")) {
+                if (!url.Contains("xlsx"))
+                {
 
-                     MessageBox.Show("请上传有效文件");
+                    MessageBox.Show("请上传有效文件");
                     return;
 
 
                 }
                 var list = MiniExcel.Query<QuestionA>(url).ToList();
-              
+
 
                 dataGridView1.DataSource = list;
                 row = list.Count;
-                if (this.textBox1.Text.Length > 0) {
+                if (this.textBox1.Text.Length > 0)
+                {
 
                     this.button1.Text = "上传";
                 }
-              
+
             }
         }
 

@@ -1,15 +1,10 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -21,11 +16,11 @@ namespace WindowsFormsApplication1
         Boolean all = false;
         StringBuilder s1;
 
-       
+
         public PeopleSet()
         {
             InitializeComponent();
-            string sql = "select id,name,bumen,loginid,password,status,phone,confirm from " + TableName+ " where  power >1";
+            string sql = "select id,name,bumen,loginid,password,status,phone,confirm from " + TableName + " where  power >1";
             this.panel1.Hide();
             InitTable(sql);
         }
@@ -143,7 +138,7 @@ namespace WindowsFormsApplication1
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string sub = this.txtUsername.Text.ToString();
-            
+
             string f0 = this.textBox1bumen.Text.ToString();
             string f1 = this.textBox2lid.Text.ToString();
             string f2 = this.textBox3phone.Text.ToString();
@@ -242,11 +237,11 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-          
-                string sql = "select * from " + TableName + " where power>1 and name like '%" + this.textBox8.Text + "%'";
 
-                this.InitTable(sql);
-            
+            string sql = "select * from " + TableName + " where power>1 and name like '%" + this.textBox8.Text + "%'";
+
+            this.InitTable(sql);
+
         }
 
         private void textBox8_TextChanged(object sender, EventArgs e)

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -271,9 +267,9 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < row; i++)
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
-                   
-                   MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
-                  
+
+                    MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
+
                 // }
             }
         }

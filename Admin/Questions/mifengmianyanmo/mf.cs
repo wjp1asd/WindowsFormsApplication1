@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Questions;
@@ -50,7 +43,7 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
             ff.fullsreen(this.button1, this);
             ff.fullsreen(this.button2, this);
             ff.fullsreen(this.button3, this);
-       
+
 
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
@@ -71,7 +64,7 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
 
         private void button2_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void button7_Click(object sender, EventArgs e)

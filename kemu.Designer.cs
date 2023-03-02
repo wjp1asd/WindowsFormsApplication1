@@ -45,24 +45,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 55);
+            this.label1.Location = new System.Drawing.Point(68, 69);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "科目名：";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 52);
+            this.textBox1.Location = new System.Drawing.Point(145, 65);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(128, 21);
+            this.textBox1.Size = new System.Drawing.Size(169, 25);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(264, 50);
+            this.button1.Location = new System.Drawing.Point(352, 62);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 29);
             this.button1.TabIndex = 2;
             this.button1.Text = "查询";
             this.button1.UseVisualStyleBackColor = true;
@@ -78,13 +82,15 @@
             this.SubName,
             this.操作,
             this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 104);
+            this.dataGridView1.Location = new System.Drawing.Point(40, 130);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(424, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(565, 188);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.Visible = false;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -93,15 +99,19 @@
             // 
             this.ID.DataPropertyName = "Id";
             this.ID.HeaderText = "序号";
+            this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
+            this.ID.Width = 125;
             // 
             // SubName
             // 
             this.SubName.DataPropertyName = "subName";
             this.SubName.HeaderText = "科目名称";
+            this.SubName.MinimumWidth = 6;
             this.SubName.Name = "SubName";
             this.SubName.ReadOnly = true;
+            this.SubName.Width = 125;
             // 
             // 操作
             // 
@@ -109,8 +119,10 @@
             dataGridViewCellStyle1.NullValue = "操作";
             this.操作.DefaultCellStyle = dataGridViewCellStyle1;
             this.操作.HeaderText = "操作";
+            this.操作.MinimumWidth = 6;
             this.操作.Name = "操作";
             this.操作.ReadOnly = true;
+            this.操作.Width = 125;
             // 
             // Column1
             // 
@@ -118,30 +130,34 @@
             dataGridViewCellStyle2.NullValue = "删除";
             this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.HeaderText = "删除";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 125;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(365, 50);
+            this.button2.Location = new System.Drawing.Point(487, 62);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 29);
             this.button2.TabIndex = 4;
             this.button2.Text = "添加";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form9
+            // kemu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 348);
+            this.ClientSize = new System.Drawing.Size(668, 435);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Form9";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "kemu";
             this.Text = "Form9";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

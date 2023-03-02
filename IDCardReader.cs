@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
+using System.Text;
 
-namespace cn.mineki.Reader
+namespace WindowsFormsApplication1
 {
     public enum ReaderPortNum
     {
         SDT_COM1 = 1, SDT_COM2, SDT_COM3, SDT_COM4, SDT_COM5, SDT_COM6, SDT_COM7, SDT_COM8, SDT_COM9, SDT_COM10, SDT_COM11, SDT_COM12, SDT_COM13, SDT_COM14, SDT_COM15, SDT_COM16,
         SDT_USB1 = 1001, SDT_USB2, SDT_USB3, SDT_USB4, SDT_USB5, SDT_USB6, SDT_USB7, SDT_USB8, SDT_USB9, SDT_USB10, SDT_USB11, SDT_USB12, SDT_USB13, SDT_USB14, SDT_USB15, SDT_USB16,
-        HID = 2401,RF200_COM1 = 2501, RF200_COM2, RF200_COM3, RF200_COM4, RF200_COM5, RF200_COM6
+        HID = 2401, RF200_COM1 = 2501, RF200_COM2, RF200_COM3, RF200_COM4, RF200_COM5, RF200_COM6
     };
 
     public enum ReaderSlotNum
     {
-        TypeA=1, TypeB,ISO15693,DN,Mifare1,SmartCard,PsamCard
+        TypeA = 1, TypeB, ISO15693, DN, Mifare1, SmartCard, PsamCard
     };
-    
+
     class IDCardReader
     {
         #region 民族表
-        static public string[] Nation = {"无",	
-		"汉族","蒙古族","回族","藏族","维吾尔族",
+        static public string[] Nation = {"无",
+        "汉族","蒙古族","回族","藏族","维吾尔族",
         "苗族","彝族","壮族","布依族","朝鲜族",
         "满族",
         "侗族",
@@ -71,7 +70,7 @@ namespace cn.mineki.Reader
         "其它",
         "外国血统"};
         #endregion
-        
+
         #region 导入函数
         [DllImport("termb.dll", CharSet = CharSet.Auto)]
         public static extern int Buzzer(byte beepTime, byte waitTime, byte beepCount);
@@ -109,7 +108,7 @@ namespace cn.mineki.Reader
         [DllImport("termb.dll", CharSet = CharSet.Auto)]
         public static extern unsafe int ISO7816_CardRemove(ReaderSlotNum nSlot);
         [DllImport("termb.dll", CharSet = CharSet.Auto)]
-        public static extern unsafe int ISO7816_TransApdu(ReaderSlotNum nReaderSlot, ref byte pSendDatas, int nSendLen, ref byte pRecvDatas,ref int nRecvLen);
+        public static extern unsafe int ISO7816_TransApdu(ReaderSlotNum nReaderSlot, ref byte pSendDatas, int nSendLen, ref byte pRecvDatas, ref int nRecvLen);
         #endregion
 
         [DllImport("termb.dll", CharSet = CharSet.Auto)]
@@ -203,13 +202,13 @@ namespace cn.mineki.Reader
         public static extern unsafe bool GetEndDate2(ref byte sBuf, ref int nLen);
 
         [DllImport("termb.dll", CharSet = CharSet.Auto)]
-        public static extern unsafe bool GetNewAddress2(ref byte sBuf, ref int nLen);       
+        public static extern unsafe bool GetNewAddress2(ref byte sBuf, ref int nLen);
 
         [DllImport("termb.dll", CharSet = CharSet.Auto)]
         public static extern unsafe bool GetFingerPrint(ref byte sBuf, ref int nLen);
-                
+
         [DllImport("termb.dll", CharSet = CharSet.Ansi)]
-        public static extern unsafe bool MakeIDCardImages(string sHead,string sIDCardImagePath);
+        public static extern unsafe bool MakeIDCardImages(string sHead, string sIDCardImagePath);
 
         [DllImport("termb.dll", CharSet = CharSet.Auto)]
         public static extern unsafe bool GetPhoto(ref byte sBuf, ref int nLen);
@@ -309,7 +308,7 @@ namespace cn.mineki.Reader
 
         public static bool TransCommand(ReaderSlotNum nReaderSlot, string sReq, out string sResp)
         {
-            byte[] bySendData = StrToHexByte(sReq); 
+            byte[] bySendData = StrToHexByte(sReq);
             byte[] byRecvData = new byte[270];
             int nLen = 0;
             int nRet = IDCardReader.TransApduCommand(nReaderSlot, ref bySendData[0], bySendData.Length, ref byRecvData[0], ref nLen);

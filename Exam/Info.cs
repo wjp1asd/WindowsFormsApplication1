@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Exam
@@ -24,7 +18,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Choose choose=new Choose();
+            Choose choose = new Choose();
             choose.Show();
         }
     }

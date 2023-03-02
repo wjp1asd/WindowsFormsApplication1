@@ -1,23 +1,22 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Settings;
 
 namespace WindowsFormsApplication1
 {
-   
+
 
     public partial class AdminIndex : Form
     {
-     
+
         public AdminIndex()
         {
             InitializeComponent();
-          //   ff = new fullScreen(this);
+            //   ff = new fullScreen(this);
 
-          
-            
+
+
             InitUI();
 
         }
@@ -25,8 +24,8 @@ namespace WindowsFormsApplication1
         {
             datahelp a = new datahelp();
             a.Initc();
-            this.BackColor= System.Drawing.ColorTranslator.FromHtml(a.color4);
-            this.label2.ForeColor= System.Drawing.ColorTranslator.FromHtml(a.color5);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
+            this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
             this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
@@ -46,7 +45,8 @@ namespace WindowsFormsApplication1
 
         }
         private Fuc ff = new Fuc();
-        public void change() {
+        public void change()
+        {
 
             ff.fullsreen(this.button1, this);
             ff.fullsreen(this.button2, this);
@@ -107,8 +107,8 @@ namespace WindowsFormsApplication1
         private void button7_Click(object sender, EventArgs e)
         {
 
-            
-            form1 f=new form1();
+
+            form1 f = new form1();
             f.Show();
             this.Close();
 
