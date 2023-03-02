@@ -35,5 +35,10 @@ namespace WindowsFormsApplication1.Exam
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
