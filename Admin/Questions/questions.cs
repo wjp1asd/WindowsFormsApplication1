@@ -1,4 +1,4 @@
-﻿using OpenCvSharp.MachineLearning;
+﻿
 using System;
 using System.Configuration;
 using System.Data;

@@ -268,11 +268,11 @@ namespace WindowsFormsApplication1.Exam
             a.Initc();
             //获取打印机端口号
 
-            m_sbData.Append(""+a.print.Trim()+"");
-           // m_sbData.Append("USB001");
+           // m_sbData.Append(""+a.print.Trim()+"");
+           m_sbData.Append("Us");
           //  MessageBox.Show(m_sbData.ToString());
-            r = SetPrintport(m_sbData, 0);
-            
+           // r = SetPrintport(m_sbData,0);
+            r = SetUsbportauto();
             if (r == 0)
             {
                r = SetInit();
