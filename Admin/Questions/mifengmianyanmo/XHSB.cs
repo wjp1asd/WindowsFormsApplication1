@@ -267,12 +267,7 @@ namespace WindowsFormsApplication1.YanMO
         }
 
 
-        private void XHSB_Load(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-        }
-
+    
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)

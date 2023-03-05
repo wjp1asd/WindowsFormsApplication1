@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
             //    CvInvoke.PutText(srcImg, "blue", new Point(rect.X, rect.Y), FontFace.HersheyComplexSmall, 1.2, new MCvScalar(0, 255, 0));
             //}
             //CvInvoke.WaitKey(0);
-            VideoCapture cap = new VideoCapture(@"C:\Users\U59021\OneDrive - Bühler\Desktop\opencv\1.mp4");
+            VideoCapture cap = new VideoCapture(0);
             if (!cap.IsOpened)     //打开文件失败
             {
                 Console.WriteLine("Open video failed!");

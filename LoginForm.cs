@@ -7,6 +7,7 @@ using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.YanMO;
+using WindowsFormsApplication1.Settings;
 
 namespace WindowsFormsApplication1
 {

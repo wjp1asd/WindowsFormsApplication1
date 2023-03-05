@@ -1,35 +1,62 @@
 ﻿using System;
 using System.IO.Ports;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Sunny.UI;
 
 namespace WindowsFormsApplication1
 {
+    //    // 离线校验问题
+    //校验前准备
+    //1.DI1 红外信
+    //拆卸阀帽 红外传感器 输入 0或1，判断 阀帽是否拆卸 
+    //2.选择压力表
+    //也是红外传感器 关闭位置是不是决定使用哪个压力表，会不会被误操作使用两个。
+    //假设 D1 阀帽拆卸传感器
+    //        D0 校验阀(旋钮)
+    //        D2 D3 D5 D6 代表仿真压力表
+    //现在的外设都接全了，
+    //切换阀--DI0，设置要预留几组切换阀开关；
+    //工具接近开关--DI2，
+    //红外距离传感器--DI1；
+    //压力传感器---AI0；
+    //仿真压力表舵机---PL0；
+    //3.关闭泄压阀
+    //DI3 泄压阀
+
+
+   
+
     public partial class plc : Form
     {
         private string serialPortName;
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
-        //#02 01 00 05 01 07
+        //#02 01 00 05 01 07 数字输入DI 读取
         byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
         string t1, t2, t3, t4, t5, t6, t7, t8;
-        // 采集，8个通道，每个通道非0表示采集，为0表示不采集
+        // 采集DI，8个通道，每个通道非0表示采集，为0表示不采集
         //02 11 00 0C 01 01 01 01 01 01 01 01 1F
         byte[] td1 = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1F };
         byte[] td = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01, 0x1F };
-#pragma warning disable CS0169 // 从不使用字段“plc.t”
-        Thread t;
-#pragma warning restore CS0169 // 从不使用字段“plc.t”
+        // 采集AI，8个通道，每个通道非0表示采集，为0表示不采集
+        //02 12 00 0C 01 01 01 01 01 01 01 01 1C
+        byte[] ta1 = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1C };
+        byte[] ta = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x1C };
+      
+
         public plc()
         {
             InitializeComponent();
             t1 = "0x00"; t2 = "0x00"; t3 = "0x00"; t4 = "0x00"; t5 = "0x00"; t6 = "0x00"; t7 = "0x00";
             t8 = "0x00";
         }
-#pragma warning disable CS0414 // 字段“plc.i”已被赋值，但从未使用过它的值
-        int i = 0;
-#pragma warning restore CS0414 // 字段“plc.i”已被赋值，但从未使用过它的值
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -49,11 +76,20 @@ namespace WindowsFormsApplication1
                     if (comboBox5.Text == "无") { serialPort2.Parity = Parity.None; }
                     else if (comboBox5.Text == "奇校验") { serialPort2.Parity = Parity.Odd; }
                     else if (comboBox5.Text == "偶校验") { serialPort2.Parity = Parity.Even; }
-
-                    serialPort2.Open();//打开串口
-                    button1.Text = "关闭串口";//按钮显示关闭串口
-                    MessageBox.Show("连接串口成功");
-                    serialPort2.WriteLine("02 00 00 04 06");
+                    try
+                    {
+                        serialPort2.Open();//打开串口
+                        button1.Text = "关闭串口";//按钮显示关闭串口
+                        MessageBox.Show("连接串口成功");
+                        serialPort2.WriteLine("02 00 00 04 06");
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+                        throw;
+                    }
+                   
+                   
                 }
                 catch (Exception err)
                 {
@@ -64,6 +100,7 @@ namespace WindowsFormsApplication1
             {//要关闭串口
                 try
                 {//防止意外错误
+                    MessageBox.Show("关闭串口成功");
                     serialPort2.Close();//关闭串口
                 }
                 catch (Exception) { }
@@ -116,28 +153,83 @@ namespace WindowsFormsApplication1
             base.WndProc(ref m);
         }
 
-#pragma warning disable CS0169 // 从不使用字段“plc.a2”
-#pragma warning disable CS0169 // 从不使用字段“plc.a7”
-#pragma warning disable CS0169 // 从不使用字段“plc.a1”
-#pragma warning disable CS0169 // 从不使用字段“plc.a8”
-#pragma warning disable CS0169 // 从不使用字段“plc.a6”
-#pragma warning disable CS0169 // 从不使用字段“plc.a5”
-#pragma warning disable CS0169 // 从不使用字段“plc.a4”
-#pragma warning disable CS0169 // 从不使用字段“plc.a3”
-        string a1, a2, a3, a4, a5, a6, a7, a8;
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-#pragma warning restore CS0169 // 从不使用字段“plc.a3”
-#pragma warning restore CS0169 // 从不使用字段“plc.a4”
-#pragma warning restore CS0169 // 从不使用字段“plc.a5”
-#pragma warning restore CS0169 // 从不使用字段“plc.a6”
-#pragma warning restore CS0169 // 从不使用字段“plc.a8”
-#pragma warning restore CS0169 // 从不使用字段“plc.a1”
-#pragma warning restore CS0169 // 从不使用字段“plc.a7”
-#pragma warning restore CS0169 // 从不使用字段“plc.a2”
+        Mat f1= new Mat();
+        private void button6_Click(object sender, EventArgs e)
+        {
+            VideoCapture v = new VideoCapture(0);
+            v.SetCaptureProperty(CapProp.FrameHeight, 720);
+            v.SetCaptureProperty(CapProp.FrameWidth, 1280);
+            if (!v.IsOpened) {
+                MessageBox.Show("open video fail");
+                return;
+            }
+
+            Mat f = new Mat();
+            while (true) {
+              
+                v.Read(f);
+                if (f.IsEmpty) {
+
+                    MessageBox.Show("show fail");
+                    break;
+                }
+                f1 = f;
+                CvInvoke.Imshow("摄像头1：", f);
+                if (CvInvoke.WaitKey(30) == 27) {
+
+                    break;
+                }
+            }
+
+
+        }
+        private void button7_Click(object sender, EventArgs e)
+        {
+            VideoCapture v = new VideoCapture(1);
+            v.SetCaptureProperty(CapProp.FrameHeight, 720);
+            v.SetCaptureProperty(CapProp.FrameWidth, 1280);
+            if (!v.IsOpened)
+            {
+                MessageBox.Show("open video fail");
+                return;
+            }
+            Mat f = new Mat();
+
+            while (true)
+            {
+
+                v.Read(f);
+                if (f.IsEmpty)
+                {
+
+                    MessageBox.Show("show fail");
+                    break;
+                }
+                f1 = f;
+                CvInvoke.Imshow("摄像头2：", f);
+                if (CvInvoke.WaitKey(30) == 27)
+                {
+
+                    break;
+                }
+            }
+        }
+        string url = "//BNY-PC/Users/BNY/Desktop/考试图片/"+DateTime.Now.ToString("yy-mm-dd-hh-ii-ss");
+        private void button8_Click(object sender, EventArgs e)
+        {
+            CvInvoke.Imwrite(url+"shot.png",f1);
+            MessageBox.Show("拍照成");
+        }
+        // DI 输入的集合
+
+
+        string DIS ;
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(500);
@@ -152,12 +244,19 @@ namespace WindowsFormsApplication1
             {
 
                 //通道1-8
-
+                // 校验阀旋钮DI0
                 byte[] tt1 = buff.Skip(4).Take(4).ToArray();
                 t1 = ShowBy(tt1, 1);
+                // 选择量程的接近开关 DI1 
+
                 byte[] tt2 = buff.Skip(8).Take(4).ToArray();
+                // 阀帽拆卸红外传感器 D
+
                 t2 = ShowBy(tt2, 2);
                 byte[] tt3 = buff.Skip(12).Take(4).ToArray();
+                // 选择量程的接近开关 DI1 
+
+
                 t3 = ShowBy(tt3, 3);
                 byte[] tt4 = buff.Skip(16).Take(4).ToArray();
                 t4 = ShowBy(tt4, 4);
@@ -170,7 +269,100 @@ namespace WindowsFormsApplication1
                 byte[] tt8 = buff.Skip(32).Take(4).ToArray();
                 t8 = ShowBy(tt8, 8);
             }
+          
+            if(buff.Length==6){
+                // DI 读取 10jinzhi fanhui
+                byte[] tt1 = buff.Skip(4).Take(1).ToArray();
+                string a = Convert.ToString(tt1[0], 2);
+                string b = "";
+                switch (a.Length) {
+
+                    case 1:
+                        b = "0000000" + a;
+                        break;
+                    case 2:
+                        b = "000000" + a;
+                        break;
+                    case 3:
+                        b = "00000" + a;
+                        break;
+                    case 4:
+                        b = "0000" + a;
+                        break;
+                    case 5:
+                        b = "000" + a;
+                        break;
+                    case 6:
+                        b = "00" + a;
+                        break;
+                    case 7:
+                        b = "0" + a;
+                        break;
+
+                }
+
+                
+               DIS= b;
+                textBox3.Text = "DI back:"+DIS;
+                if (DIS.Length == 8) {
+
+                    fenxi();
+                }
+               
+
+            }
         }
+        int qiehuanfa = 0;
+        int gongju = 2;
+        int hongwai = 1;
+        int xieya = 3;
+        private void fenxi()
+        {
+            //
+            if (DIS[qiehuanfa] + "" == "0") {
+               
+                this.uiLight1.Style = Sunny.UI.UIStyle.Red;
+            }
+
+            if (DIS[hongwai] + "" == "0")
+            {
+             //   textBox3.Text += "阀帽拆卸";
+                this.uiLight2.Style = Sunny.UI.UIStyle.Red;
+            }
+            if (DIS[(gongju)] + "" == "0")
+            {
+             //   textBox3.Text += "工具离开";
+                this.uiLight3.Style = Sunny.UI.UIStyle.Red;
+            }
+            if (DIS[( xieya)] + "" == "0")
+            {
+               // textBox3.Text += "卸压阀打开";
+                this.uiLight4.Style = Sunny.UI.UIStyle.Red;
+            }
+        }
+
+        static string HexString2BinString(string hexString)
+        {
+            try
+            {
+                string result = string.Empty;
+                foreach (char c in hexString)
+                {
+                    int v = Convert.ToInt32(c.ToString(), 16);
+                    int v2 = int.Parse(Convert.ToString(v, 2));
+                    // 去掉格式串中的空格，即可去掉每个4位二进制数之间的空格，
+                    result += string.Format("{0:d4} ", v2);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+        }
+
 
         private string ShowBy(byte[] buff, int num)
         {
@@ -194,27 +386,27 @@ namespace WindowsFormsApplication1
                 case 1:
                     voldetla(sb1, t1);
                     break;
-                case 2:
-                    //  voldetla(sb1, t2);
-                    break;
-                case 3:
-                    //  voldetla(sb1, t3);
-                    break;
-                case 4:
-                    //  voldetla(sb1, t4);
-                    break;
-                case 5:
-                    //  voldetla(sb1, t5);
-                    break;
-                case 6:
-                    //  voldetla(sb1, t6);
-                    break;
-                case 7:
-                    // voldetla(sb1, t7);
-                    break;
-                case 8:
-                    // voldetla(sb1, t8);
-                    break;
+                //case 2:
+                //    voldetla(sb1, t2);
+                //    break;
+                //case 3:
+                //    voldetla(sb1, t3);
+                //    break;
+                //case 4:
+                //   voldetla(sb1, t4);
+                //    break;
+                //case 5:
+                //   voldetla(sb1, t5);
+                //    break;
+                //case 6:
+                //    voldetla(sb1, t6);
+                //    break;
+                //case 7:
+                //    voldetla(sb1, t7);
+                //    break;
+                //case 8:
+                //    voldetla(sb1, t8);
+                //    break;
 
             }
 
@@ -309,28 +501,22 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("连接串口成功");
+            MessageBox.Show("关闭串口成功");
 
-            byte[] s = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
-
-
-            serialPort2.Write(s, 0, s.Length);
-            String Str = textBox2.Text.ToString();//获取发送文本框里面的数据
-            try
-            {
-                if (Str.Length > 0)
-                {
-
-                    serialPort2.Write(Str);//串口发送数据
-
-                }
-            }
-            catch (Exception) { }
+            serialPort2.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             textBox2.Clear();//清除发送文本框里面的内容
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // 模拟红外距离变化
+
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -352,57 +538,47 @@ namespace WindowsFormsApplication1
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            serialPort2.Write(first, 0, first.Length);
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-
-            //      serialPort2.Write(td1, 0, td1.Length);
-            //   t = new Thread(Write2);
-            //    t.Start();
-        }
-        int interval = 500;
-        private void Write2()
-        {
-
-            while (true)
+            if (!serialPort2.IsOpen)
             {
-                serialPort2.Write(td1, 0, td1.Length);
 
-                System.Threading.Thread.Sleep(interval);
-
-                int len = serialPort2.BytesToRead;//获取可以读取的字节数
-                byte[] buff = new byte[len];//创建缓存数据数组
-                serialPort2.Read(buff, 0, len);//把数据读取到buff数组
-
-
-
-                //aio 模拟读取
-                if (buff.Length == 37)
-                {
-
-                    //通道1-8
-
-                    byte[] tt1 = buff.Skip(4).Take(4).ToArray();
-                    ShowBy(tt1, 1);
-                    //byte[] tt2 = buff.Skip(8).Take(4).ToArray();
-                    //ShowBy(tt2, 2);
-                    //byte[] tt3 = buff.Skip(12).Take(4).ToArray();
-                    //ShowBy(tt3, 3);
-                    //byte[] tt4 = buff.Skip(16).Take(4).ToArray();
-                    //ShowBy(tt4, 4);
-                    //byte[] tt5 = buff.Skip(20).Take(4).ToArray();
-                    //ShowBy(tt5, 5);
-                    //byte[] tt6 = buff.Skip(24).Take(4).ToArray();
-                    //ShowBy(tt6, 6);
-                    //byte[] tt7 = buff.Skip(28).Take(4).ToArray();
-                    //ShowBy(tt7, 7);
-                    //byte[] tt8 = buff.Skip(32).Take(4).ToArray();
-                    //ShowBy(tt8, 8);
-                }
+                MessageBox.Show("open串口");
+                return;
             }
 
+            serialPort2.Write(first, 0, first.Length);
+        }
+        Thread readDI;
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            if (!serialPort2.IsOpen) {
+
+               MessageBox.Show("open串口");
+                return;
+            }
+           
+
+             readDI = new Thread(ReadDI);
+             readDI.Start();
+        }
+        int interval = 500;
+
+
+        byte[] dio = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
+        int a = 0;
+
+        private void ReadDI()
+        {
+            
+            while (true)
+            {
+                serialPort2.Write(dio, 0, dio.Length);
+
+                System.Threading.Thread.Sleep(1000);
+                a++;
+
+                
+            }
+            textBox3.Text = "DI读取：" + a;
         }
 
         private void button5_Click(object sender, EventArgs e)
