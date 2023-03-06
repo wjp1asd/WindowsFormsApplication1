@@ -315,28 +315,33 @@ namespace WindowsFormsApplication1
         int qiehuanfa = 0;
         int gongju = 2;
         int hongwai = 1;
-        int xieya = 3;
+        int xieya = 7;
         private void fenxi()
         {
-            //
-            if (DIS[qiehuanfa] + "" == "0") {
-               
+            //123 7
+            if (DIS[7 - qiehuanfa] + "" == "0")
+            {
+                textBox3.Text += "切换阀打开";
+
                 this.uiLight1.Style = Sunny.UI.UIStyle.Red;
             }
+            else { 
+           
+            }
 
-            if (DIS[hongwai] + "" == "0")
+            if (DIS[7-hongwai] + "" == "0")
             {
-             //   textBox3.Text += "阀帽拆卸";
+              textBox3.Text += "阀帽存在";
                 this.uiLight2.Style = Sunny.UI.UIStyle.Red;
             }
-            if (DIS[(gongju)] + "" == "0")
+            if (DIS[7-(gongju)] + "" == "0")
             {
-             //   textBox3.Text += "工具离开";
+               textBox3.Text += "工具归位";
                 this.uiLight3.Style = Sunny.UI.UIStyle.Red;
             }
-            if (DIS[( xieya)] + "" == "0")
+            if (DIS[7-( xieya)] + "" == "0")
             {
-               // textBox3.Text += "卸压阀打开";
+                textBox3.Text += "卸压阀打开";
                 this.uiLight4.Style = Sunny.UI.UIStyle.Red;
             }
         }
