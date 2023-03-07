@@ -200,16 +200,6 @@ namespace WindowsFormsApplication1.Exam
         public static extern unsafe int PrintDataMatrix(StringBuilder strData, int iSize);
 
 
-#pragma warning disable CS0414 // 字段“Print.m_iInit”已被赋值，但从未使用过它的值
-        int m_iInit = -1;       //打印机初始化状态
-#pragma warning restore CS0414 // 字段“Print.m_iInit”已被赋值，但从未使用过它的值
-#pragma warning disable CS0414 // 字段“Print.m_iStatus”已被赋值，但从未使用过它的值
-        int m_iStatus = -1;     //打印机状态
-#pragma warning restore CS0414 // 字段“Print.m_iStatus”已被赋值，但从未使用过它的值
-        //语言版本 Language
-#pragma warning disable CS0414 // 字段“Print.m_lcLanguage”已被赋值，但从未使用过它的值
-        int m_lcLanguage = 0;
-#pragma warning restore CS0414 // 字段“Print.m_lcLanguage”已被赋值，但从未使用过它的值
         StringBuilder m_sbData = new StringBuilder();
         TestRecord t = new TestRecord();
 
@@ -255,7 +245,7 @@ namespace WindowsFormsApplication1.Exam
             this.queue.Text = t.Queque.Trim();
             this.kstime.Text = t.Ksdate.Trim();
             this.ksname.Text = t.Ksname.Trim();
-            this.ksId.Text = "身份证：" + t.KsId.Trim();
+            this.ksId.Text = t.KsId.Trim();
             this.lxyl.Text = "要求整定压力:" + t.Lxyl.ToString().Trim() + "Mpa";
             this.lxlx.Text = "使用设备类型:" + t.Lxlx.ToString().Trim();
             this.zxyl.Text = "要求整定压力:" + t.Zxyl.ToString().Trim() + "Mpa";
@@ -270,15 +260,13 @@ namespace WindowsFormsApplication1.Exam
             //获取打印机端口号
             if (File.Exists("Msprintsdk.dll"))
             {
-                MessageBox.Show("打印模块加在成功");
+                MessageBox.Show("打印模块加载成功");
 
             }
            
-              // m_sbData.Append("" + a.print.Trim() + "");
-               m_sbData.Append("USB001");
-           
+            
             r= SetUsbportauto();
-           // r = SetPrintport(m_sbData,0);
+            MessageBox.Show(r.ToString());
 
             if (r == 0)
             {
@@ -376,6 +364,16 @@ namespace WindowsFormsApplication1.Exam
             form1 f1 = new form1();
             f1.Show();
             this.Close();
+        }
+
+        private void ksId_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kstime_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

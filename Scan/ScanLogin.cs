@@ -11,7 +11,8 @@ namespace WindowsFormsApplication1.Scan
         {
             InitializeComponent();
             this.change();
-
+            this.ControlBox = false;
+           // this.FormBorderStyle = FormBorderStyle.None;
         }
         private Fuc ff = new Fuc();
         public void change()
@@ -26,8 +27,13 @@ namespace WindowsFormsApplication1.Scan
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-            // 
+            // 自动登录
+            if (this.textBox1.Text.ToString().Length > 19) {
 
+                xuanti();
+            
+            
+            }
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml("Green");
             this.button7.Enabled = true;
@@ -47,8 +53,22 @@ namespace WindowsFormsApplication1.Scan
         private void button7_Click(object sender, EventArgs e)
         {
             //查询数据 是否有选题记录
+            xuanti();
 
-            String sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
+           
+
+        }
+
+        private void xuanti()
+        {
+            if (this.textBox1.Text.ToString().Length <19)
+            {
+
+                ff.ShowErrorDialog("考试码格式有误");
+
+                return;
+            }
+                String sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
             // MessageBox.Show(sql);
             if (ff.RC(sql).Length > 0)
             {
@@ -72,7 +92,6 @@ namespace WindowsFormsApplication1.Scan
                 ex.Show();
 
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)

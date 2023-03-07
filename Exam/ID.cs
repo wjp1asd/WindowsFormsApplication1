@@ -1,7 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
@@ -15,13 +17,14 @@ namespace WindowsFormsApplication1
     {
         int nPort = 0;
         int nReaderPort = 0;
-        string loc = ConfigurationManager.AppSettings["loc"];
-
+        string loc = Application.StartupPath + "\\Images\\身份证照片\\";
+        string url = "ZP.bmp";
+        string Id = "321084199510025535";
         public ID()
         {
-
             InitializeComponent();
             InitConfig();
+           // this.UpdataInfo(Id);
         }
 
         private void InitConfig()
@@ -34,7 +37,7 @@ namespace WindowsFormsApplication1
             if (nPort != 0)
             {
 
-                label2.Text = "";
+                this.label2.Text = "自动读取,请放身份证！";
                 try
                 {
                     nReaderPort = IDCardReader.InitComm((ReaderPortNum)nPort);
@@ -47,10 +50,10 @@ namespace WindowsFormsApplication1
                             MessageBox.Show("初始化失败,请选择设备");
                             return;
                         }
-                        this.label2.Text = "设备初始化成功！";
+                       
                         this.label2.ForeColor = Color.Green;
                         //开启请求
-
+                        this.AutoReadCard();
 
                     }
                     else
@@ -90,7 +93,7 @@ namespace WindowsFormsApplication1
         private void AutoReadCard()
         {
 
-            timer1.Start();
+         
             button2.Text = "开始读卡";
             if (nReaderPort == 0)
             {
@@ -149,7 +152,22 @@ namespace WindowsFormsApplication1
                             //照片
                             if (System.IO.File.Exists("ZP.bmp"))
                             {
-                                pictureBox1.ImageLocation = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+
+                                try
+                                {
+                                    url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                    File.Copy("ZP.bmp", url);
+
+                                    pictureBox1.ImageLocation = url;
+                                }
+                                catch (Exception e)
+                                {
+                                    MessageBox.Show("保存图片异常"+e.ToString());
+                                    throw;
+                                }
+
+                              
+
                             }
                         }
                     }
@@ -202,7 +220,18 @@ namespace WindowsFormsApplication1
                             //照片
                             if (System.IO.File.Exists("ZP.bmp"))
                             {
-                                pictureBox1.ImageLocation = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                try
+                                {
+                                    url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                    File.Copy("ZP.bmp", url);
+
+                                    pictureBox1.ImageLocation = url;
+                                }
+                                catch (Exception e)
+                                {
+                                    MessageBox.Show("保存图片异常" + e.ToString());
+                                    throw;
+                                }
                             }
                         }
                     }
@@ -257,7 +286,18 @@ namespace WindowsFormsApplication1
                             //照片
                             if (System.IO.File.Exists("ZP.bmp"))
                             {
-                                pictureBox1.ImageLocation = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                try
+                                {
+                                   url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                    File.Copy("ZP.bmp", url);
+
+                                    pictureBox1.ImageLocation = url;
+                                }
+                                catch (Exception e)
+                                {
+                                    MessageBox.Show("保存图片异常" + e.ToString());
+                                    throw;
+                                }
                             }
                         }
                         else
@@ -267,6 +307,13 @@ namespace WindowsFormsApplication1
                             this.button2.Text = "重新读取";
                         }
                     }
+                    //上传信息
+                    if (lblIdCard.Text.ToString().Length > 0) {
+
+                        Id = lblIdCard.Text.ToString().Trim();
+                        UpdataInfo(Id);
+                    }
+                    
                 }
                 else
                 {
@@ -280,7 +327,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("初始化失败！");
             }
 
-            UpdataInfo(lblIdCard.Text);
+          
         }
         public string a, b, c, d, f;
         public Fuc ff = new Fuc();
@@ -294,6 +341,11 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
         private void UpdataInfo(string Id)
         {
 
@@ -302,7 +354,7 @@ namespace WindowsFormsApplication1
             string sql = "select id from student where idcard='" + Id.ToString() + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-            string path = loc + "\\IDcard\\" + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+            string path =url;
             string id = "";
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
@@ -310,16 +362,24 @@ namespace WindowsFormsApplication1
                 id = reader["id"].ToString();
 
             }
+            con.Close();
             if (id.Length > 0)
             {
                 datahelp.StudentId = Id.ToString();
-
-                string strcomm = "update student  set avatar=" + path + " where id = " + id;
-                SqlCommand com1 = new SqlCommand(strcomm, con);
+               
+                string strcomm = "update student  set avatar='" + path + "' where id = " + id;
+                
                 con.Open();
-                ff.ShowSuccessTip("更新信息成功！");
+                com = new SqlCommand(strcomm, con);
+                 
+              
+                
+                    ff.ShowSuccessTip("更新信息成功！");
+                this.Close();
                 Choose a = new Choose(Id.ToString().Trim());
-                a.Show();
+                    a.Show();
+                
+                con.Close();
             }
             else
             {

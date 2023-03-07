@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
-using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.YanMO;
 using WindowsFormsApplication1.Settings;
 
@@ -45,7 +44,7 @@ namespace WindowsFormsApplication1
                 this.uiButton1.Hide();
                 this.button4.Hide();
                 this.button5.Hide();
-                this.button6.Hide();
+                
                 this.button7.Hide();
             }
             else if (x == "0")
@@ -57,7 +56,7 @@ namespace WindowsFormsApplication1
 
                 this.button4.Hide();
                 this.button5.Hide();
-                this.button6.Hide();
+               
                 this.button7.Hide();
             }
             else if (x == "2")
@@ -73,7 +72,7 @@ namespace WindowsFormsApplication1
                 this.uiButton1.Left = this.button3.Left - 360;
                 this.button4.Hide();
                 this.button5.Hide();
-                this.button6.Hide();
+              
                 this.button7.Hide();
             }
             else if (x == "-1")
@@ -85,8 +84,7 @@ namespace WindowsFormsApplication1
             {
 
                 this.button4.Hide();
-                this.button5.Hide();
-                this.button6.Hide();
+                this.button5.Hide(); 
                 this.button7.Hide();
                 this.button1.Hide();
                 this.button2.Hide();
@@ -180,9 +178,11 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+          
             ID f1 = new ID();
             f1.Show();
             this.Hide();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
