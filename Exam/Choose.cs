@@ -16,24 +16,26 @@ namespace WindowsFormsApplication1.Exam
         private TestRecord ts;
         String lxques, zxques, gyques, xhques, lpjques, ymgques;
         String qrcode;
-        public Choose(String ID = "123123123")
+        string idcard = "";
+        public Choose(string id = "321084199510025535")
         {
             // 身份证ID
-            st = new Student(ID);
+            st = new Student(id);
             fc = new Fuc();
             qa = new QuestionA();
             ts = new TestRecord();
             InitializeComponent();
             this.change();
-            this.button1.Hide();
-
+            
+            idcard = id;
+            this.uiLabel2.Text = st.Name;
+          
         }
         private Fuc ff = new Fuc();
         public void change()
         {
-            this.uiLabel2.Text = st.Name;
-            this.uiLabel3.Text = st.ID1;
-            ff.fullsreen(this.button1, this);
+            
+           
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
@@ -44,11 +46,21 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
+        private void uiLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            fc.showloading("抽题中");
+          //  fc.showloading("抽题中");
 
-            this.Show();
+           // this.Show();
             // 执行抽题
 
             // 生成考试记录
@@ -271,7 +283,7 @@ namespace WindowsFormsApplication1.Exam
                   ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            MessageBox.Show(strcomm);
+          //  MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
@@ -279,8 +291,10 @@ namespace WindowsFormsApplication1.Exam
             con.Close();
             MessageBox.Show("已创建考试信息，排队号0" + que);
             qrcode = a;
-            this.button1.Show();
-
+          //  this.button1.Show();
+            Print p = new Print(qrcode);
+            p.Show();
+            this.Close();
 
         }
 
@@ -298,8 +312,8 @@ namespace WindowsFormsApplication1.Exam
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ID id = new ID();
-            id.Show();
+           form1 f=new form1();
+            f.Show();
             this.Close();
         }
     }

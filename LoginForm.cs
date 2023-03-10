@@ -225,8 +225,8 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Opencv cv = new Opencv();
-            cv.Show();
+            jiaoyancanshu  jy = new jiaoyancanshu();    
+            jy.Show();
             this.Hide();
         }
 

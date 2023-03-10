@@ -47,7 +47,7 @@ namespace WindowsFormsApplication1.Models
             {
 
                 Name = reader["name"].ToString();
-                ID1 = reader["idcard"].ToString();
+                ID = reader["idcard"].ToString();
 
                 Sex1 = reader["sex"].ToString();
                 switch (Sex)
