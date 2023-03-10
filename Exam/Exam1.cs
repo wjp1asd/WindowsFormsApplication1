@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1.Exam
         public Exam1(String qrcode = "mXjjwVcvXizfGcnbOF9CKw==")
         {
             InitializeComponent();
-
+            datahelp.QId=qrcode;
             InitUI();
             qr = qrcode;
 

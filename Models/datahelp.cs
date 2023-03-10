@@ -8,9 +8,11 @@ namespace WindowsFormsApplication1
         public static string[] QuestionIds = new string[10];
         public static int CurrentQuestion = 1;
         public static int RemainTime = 600;
+        public static int LxTime = 900;
         public static string[] UserAnswer = new string[10];
         public static string[] Answer = new string[10];
         public static string StudentId = "";
+        public static string QId = "mXjjwVcvXizfGcnbOF9CKw==";
         public string name;
         public string loginid;
         //0 离线 1在线
@@ -19,7 +21,7 @@ namespace WindowsFormsApplication1
         public static int stateTime = 1;
         // 考试状态
         private int status = 0;
-
+       
         // USB 接口定义
         public string id;
         public string print;
@@ -57,13 +59,13 @@ namespace WindowsFormsApplication1
                 camera1 = reader["camera1"].ToString();
                 mouse = reader["mouse"].ToString();
                 link = reader["link"].ToString().Trim();
-                plc = reader["plc"].ToString();
+                
                 color1 = reader["color1"].ToString();
                 color2 = reader["color2"].ToString();
                 color3 = reader["color3"].ToString();
                 color4 = reader["color4"].ToString();
                 color5 = reader["color5"].ToString();
-
+                plc = reader["plc"].ToString();
                 plcbt = reader["plcbt"].ToString();
                 plcjy = reader["plcjy"].ToString();
                 plcst = reader["plcst"].ToString();
