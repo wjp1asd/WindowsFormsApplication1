@@ -20,6 +20,7 @@ namespace WindowsFormsApplication1.Questions
         public Pressure(String subtype)
         {
             InitializeComponent();
+
             switch (subtype)
             {
                 case "0":
@@ -28,7 +29,6 @@ namespace WindowsFormsApplication1.Questions
                 case "1":
                     this.Text = "在线压力设置";
                     break;
-
             }
             Subtype = subtype;
             string sql = "select * from " + TableName + " where type = " + Subtype;
