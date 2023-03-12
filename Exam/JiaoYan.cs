@@ -33,11 +33,16 @@ namespace WindowsFormsApplication1.Exam
         byte[] ta1 = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1C };
         byte[] ta = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x1C };
         datahelp datahelp = new datahelp();
-        // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外
+        // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int qiehuanfa = 0;
         int gongju = 1;
         int famao = 2;
         int xieya = 7;
+        int step = -1;
+
+        // AO  仿真压力表 舵机 后续需要拓展
+
+        int fangzhen = 0;
         private void fenxi()
         {
             //
@@ -79,7 +84,42 @@ namespace WindowsFormsApplication1.Exam
             }
             else {
                 richTextBox2.Text += "卸压阀关闭";
+                guanbixieyafa();
             }
+        }
+
+        private void guanbixieyafa()
+        {
+            // 考点
+            test1();
+            test2();
+            test3();
+            test4();
+            test1();
+        }
+
+        private void test4()
+        {
+           //密封性能测试
+            throw new NotImplementedException();
+        }
+
+        private void test3()
+        {
+            //第三次测试
+            throw new NotImplementedException();
+        }
+
+        private void test2()
+        {
+            //第二次测试
+            throw new NotImplementedException();
+        }
+
+        private void test1()
+        {
+            //第一次测试
+            throw new NotImplementedException();
         }
 
         private void chaixiefamao()
@@ -87,13 +127,15 @@ namespace WindowsFormsApplication1.Exam
             shot();
         }
 
+       
+
         public JiaoYan(string wuchaid)
         {
             InitializeComponent();
             this.change();
            
             datahelp.Initc();
-            wucha = wucha.GetOne(wuchaid);
+             wucha = wucha.GetOne(wuchaid);
             this.timer1.Stop();
            
             t=t.getRecord(datahelp.QId);
@@ -170,6 +212,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void shot()
         {
+            step = 1;
             CvInvoke.Imwrite(url + "shot.png", f1);
             MessageBox.Show("拍照成功");
         }
@@ -177,6 +220,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void backCamera()
         {
+            
             VideoCapture v = new VideoCapture(0);
             v.SetCaptureProperty(CapProp.FrameHeight, 720);
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
@@ -185,7 +229,7 @@ namespace WindowsFormsApplication1.Exam
                 MessageBox.Show("open video fail");
                 return;
             }
-
+            step = 0;
             Mat f = new Mat();
             while (true)
             {
@@ -295,7 +339,7 @@ namespace WindowsFormsApplication1.Exam
                 {
                     serialPort2.Open();//打开串口
                     button1.Text = "关闭串口";//按钮显示关闭串口
-                  
+                    step = 1;
                     serialPort2.WriteLine("02 00 00 04 06");
                     MessageBox.Show("考试系统启动成功");
                 }
@@ -342,24 +386,24 @@ namespace WindowsFormsApplication1.Exam
                 t1 = ShowBy(tt1, 1);
              
 
-                byte[] tt2 = buff.Skip(8).Take(4).ToArray();
+                //byte[] tt2 = buff.Skip(8).Take(4).ToArray();
              
 
-                t2 = ShowBy(tt2, 2);
-                byte[] tt3 = buff.Skip(12).Take(4).ToArray();
+                //t2 = ShowBy(tt2, 2);
+                //byte[] tt3 = buff.Skip(12).Take(4).ToArray();
              
 
-                t3 = ShowBy(tt3, 3);
-                byte[] tt4 = buff.Skip(16).Take(4).ToArray();
-                t4 = ShowBy(tt4, 4);
-                byte[] tt5 = buff.Skip(20).Take(4).ToArray();
-                t5 = ShowBy(tt5, 5);
-                byte[] tt6 = buff.Skip(24).Take(4).ToArray();
-                t6 = ShowBy(tt6, 6);
-                byte[] tt7 = buff.Skip(28).Take(4).ToArray();
-                t7 = ShowBy(tt7, 7);
-                byte[] tt8 = buff.Skip(32).Take(4).ToArray();
-                t8 = ShowBy(tt8, 8);
+                //t3 = ShowBy(tt3, 3);
+                //byte[] tt4 = buff.Skip(16).Take(4).ToArray();
+                //t4 = ShowBy(tt4, 4);
+                //byte[] tt5 = buff.Skip(20).Take(4).ToArray();
+                //t5 = ShowBy(tt5, 5);
+                //byte[] tt6 = buff.Skip(24).Take(4).ToArray();
+                //t6 = ShowBy(tt6, 6);
+                //byte[] tt7 = buff.Skip(28).Take(4).ToArray();
+                //t7 = ShowBy(tt7, 7);
+                //byte[] tt8 = buff.Skip(32).Take(4).ToArray();
+                //t8 = ShowBy(tt8, 8);
             }
 
             if (buff.Length == 6)
@@ -503,14 +547,21 @@ namespace WindowsFormsApplication1.Exam
         private void SendServo(int a, int pos)
         {
             byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
-
+                //通道1
                 0x01, 0x01, 0xF4,
+                //通道2
                 0x01, 0x01, 0xF4,
+                //通道3
                 0x01, 0x01, 0xF4,
+                //通道4
                 0x01, 0x01, 0xF4,
+                //通道5
                 0x01, 0x01, 0xF4,
+                //通道6
                 0x01, 0x01, 0xF4,
+                //通道7
                 0x01, 0x01, 0xF4,
+                //通道8
                 0x01, 0x01, 0xF4,
 
                  0x5B
@@ -603,6 +654,11 @@ namespace WindowsFormsApplication1.Exam
         private void closed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void uiLedLabel4_Click(object sender, EventArgs e)
+        {
+
         }
 
         Thread readDI;
