@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Admin.Students;
 
 namespace WindowsFormsApplication1
 {
@@ -266,11 +267,14 @@ namespace WindowsFormsApplication1
         {
             for (int i = 0; i < row; i++)
             {
-                if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
+                if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True") {
 
-                    MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
+                    //this.Hide();
+                    studentRecord st = new studentRecord(this.dataGridView1.Rows[i].Cells[1].Value.ToString().Trim());
+                    st.Show();
+                }
 
-                // }
+              
             }
         }
 

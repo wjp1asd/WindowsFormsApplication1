@@ -40,6 +40,7 @@
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.uiLedLabel4 = new Sunny.UI.UILedLabel();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,7 +118,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 424);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 549);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(800, 26);
             this.statusStrip1.TabIndex = 43;
@@ -152,11 +153,29 @@
             this.richTextBox2.TabIndex = 45;
             this.richTextBox2.Text = "";
             // 
+            // uiLedLabel4
+            // 
+            this.uiLedLabel4.BackColor = System.Drawing.Color.Black;
+            this.uiLedLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLedLabel4.ForeColor = System.Drawing.Color.Lime;
+            this.uiLedLabel4.IntervalOn = 3;
+            this.uiLedLabel4.Location = new System.Drawing.Point(282, 64);
+            this.uiLedLabel4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLedLabel4.Name = "uiLedLabel4";
+            this.uiLedLabel4.Size = new System.Drawing.Size(181, 35);
+            this.uiLedLabel4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLedLabel4.StyleCustomMode = true;
+            this.uiLedLabel4.TabIndex = 99;
+            this.uiLedLabel4.Text = "36.1°C";
+            this.uiLedLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiLedLabel4.Click += new System.EventHandler(this.uiLedLabel4_Click);
+            // 
             // JiaoYan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 575);
+            this.Controls.Add(this.uiLedLabel4);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.statusStrip1);
@@ -189,5 +208,6 @@
         private System.IO.Ports.SerialPort serialPort2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private Sunny.UI.UILedLabel uiLedLabel4;
     }
 }

@@ -656,6 +656,11 @@ namespace WindowsFormsApplication1.Exam
             Application.Exit();
         }
 
+        private void uiLedLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
         Thread readDI;
         private void button4_Click_1(object sender, EventArgs e)
         {

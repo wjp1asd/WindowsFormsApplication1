@@ -255,7 +255,7 @@ namespace WindowsFormsApplication1.Exam
             xhques = qa.ChooseXH(aqfxhid);
             gyques = qa.ChooseJiaoYan();
             lpjques = qa.ChooseLPJ();
-            ymgques = qa.ChooseZaixian();
+            ymgques = qa.ChooseYMG();
             //MessageBox.Show("在线题：" + zxques);
             //MessageBox.Show("离线题：" + lxques);
             //MessageBox.Show("型号题：" + xhques);
