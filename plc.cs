@@ -274,6 +274,7 @@ namespace WindowsFormsApplication1
                 // DI 读取 10jinzhi fanhui
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
                 string a = Convert.ToString(tt1[0], 2);
+                textBox3.Text = "DI back:" + a;
                 string b = "";
                 switch (a.Length) {
 
@@ -298,12 +299,14 @@ namespace WindowsFormsApplication1
                     case 7:
                         b = "0" + a;
                         break;
-
+                    case 8:
+                        b = a;
+                        break;
                 }
 
                 
                DIS= b;
-                textBox3.Text = "DI back:"+DIS;
+             textBox3.Text = "DI back:"+DIS;
                 if (DIS.Length == 8) {
 
                     fenxi();
@@ -312,14 +315,15 @@ namespace WindowsFormsApplication1
 
             }
         }
-        int qiehuanfa = 0;
+        //通道
+        int qiehuanfa = 1;
         int gongju = 2;
-        int hongwai = 1;
-        int xieya = 7;
+        int hongwai = 3;
+        int xieya = 8;
         private void fenxi()
         {
             //123 7
-            if (DIS[7 - qiehuanfa] + "" == "0")
+            if (DIS[8 - qiehuanfa] + "" == "0")
             {
                 textBox3.Text += "切换阀打开";
 

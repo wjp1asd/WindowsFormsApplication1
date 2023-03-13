@@ -48,44 +48,57 @@ namespace WindowsFormsApplication1.Exam
             //
             if (DIS[7-qiehuanfa] + "" == "0")
             {
-
-                richTextBox2.Text += "切换阀打开";
+                dishow("切换阀打开");
+               // richTextBox1.Text += ";
             }
             else {
-
-                richTextBox2.Text += "切换阀关闭";
+                dishow("切换阀关闭");
+               // richTextBox1.Text += "切换阀关闭";
             }
 
             if (DIS[7 - famao] + "" == "0")
             {
-                richTextBox2.Text += "阀帽存在";
-
+               // richTextBox1.Text += "阀帽存在";
+                dishow("切换阀关闭");
             }
             else {
-
-                richTextBox2.Text += "阀帽拆卸";
+                dishow("阀帽拆卸");
+                //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
                 chaixiefamao();
             }
             if (DIS[(7-gongju)] + "" == "0")
             {
-                   richTextBox2.Text += "工具归位";
+                dishow("工具归位");
+               // richTextBox1.Text += "工具归位";
 
             }
             else
             {
-
-                richTextBox2.Text += "工具离开";
+                dishow("工具离开");
+               // richTextBox1.Text += "工具离开";
             }
             if (DIS[(7 - xieya)] + "" == "0")
             {
-                richTextBox2.Text += "卸压阀打开";
+                dishow("卸压阀打开");
+                //richTextBox2.Text += "卸压阀打开";
 
             }
             else {
-                richTextBox2.Text += "卸压阀关闭";
+                dishow("卸压阀关闭");
+             //   richTextBox2.Text += "卸压阀关闭";
                 guanbixieyafa();
             }
+        }
+
+        private void dishow(string msg)
+        {
+            Action tongdao = () => {
+                richTextBox1.Text += msg;
+            };
+            this.Invoke(tongdao);
+
+          
         }
 
         private void guanbixieyafa()
@@ -101,25 +114,25 @@ namespace WindowsFormsApplication1.Exam
         private void test4()
         {
            //密封性能测试
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         private void test3()
         {
             //第三次测试
-            throw new NotImplementedException();
+          //  throw new NotImplementedException();
         }
 
         private void test2()
         {
             //第二次测试
-            throw new NotImplementedException();
+          //  throw new NotImplementedException();
         }
 
         private void test1()
         {
             //第一次测试
-            throw new NotImplementedException();
+          //  throw new NotImplementedException();
         }
 
         private void chaixiefamao()
@@ -141,8 +154,8 @@ namespace WindowsFormsApplication1.Exam
             t=t.getRecord(datahelp.QId);
             showMsg();
             // 开启一个线程录像
-            Task t1 = new Task(backCamera); 
-                 t1.Start();
+           // Task t1 = new Task(backCamera); 
+              //   t1.Start();
         }
         Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
@@ -288,6 +301,11 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // DI
+            readDI = new Thread(ReadDI);
+            readDI.Start();
+            // AI0
+            serialPort2.Write(td1, 0, td1.Length);
             this.button3.Text = "正在校验";
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
             this.timer1.Start();
@@ -334,14 +352,15 @@ namespace WindowsFormsApplication1.Exam
                 else if (datahelp.plcsp.Trim() == "1.5") { serialPort2.StopBits = StopBits.OnePointFive; }
                 else if (datahelp.plcsp.Trim() == "2") { serialPort2.StopBits = StopBits.Two; }
                 /*设置奇偶校验*/
-               
+                serialPort2.Parity = Parity.None;
                 try
                 {
                     serialPort2.Open();//打开串口
                     button1.Text = "关闭串口";//按钮显示关闭串口
                     step = 1;
                     serialPort2.WriteLine("02 00 00 04 06");
-                    MessageBox.Show("考试系统启动成功");
+                 
+
                 }
                 catch (Exception err)
                 {
@@ -366,8 +385,9 @@ namespace WindowsFormsApplication1.Exam
         }
 
 
-
+        string DIS0;
         string DIS;
+
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(500);
@@ -375,10 +395,15 @@ namespace WindowsFormsApplication1.Exam
             byte[] buff = new byte[len];//创建缓存数据数组
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
 
+            if (buff.Length == 5)
+            {
+               
+              
+                MessageBox.Show("考试系统启动成功");
+            }
 
-
-            //aio 模拟读取
-            if (buff.Length == 37)
+                //aio 模拟读取
+                if (buff.Length == 37)
             {
 
                
@@ -408,11 +433,16 @@ namespace WindowsFormsApplication1.Exam
 
             if (buff.Length == 6)
             {
-                // DI 读取 10jinzhi fanhui
+             
+               
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
                 string a = Convert.ToString(tt1[0], 2);
                 string b = "";
-                switch (a.Length)
+                if (DIS0 == a) {
+                    dishow("DI无变化");
+                    return;
+                }
+                    switch (a.Length)
                 {
 
                     case 1:
@@ -436,15 +466,21 @@ namespace WindowsFormsApplication1.Exam
                     case 7:
                         b = "0" + a;
                         break;
-
+                    case 8:
+                        b = a;
+                        break;
                 }
 
-
+                
                 DIS = b;
-                richTextBox2.Text = "DI back:" + DIS;
+                Action tongdao = () => {
+                    uiLedLabel4.Text = DIS;
+                };
+                this.Invoke(tongdao);
+                
                 if (DIS.Length == 8)
                 {
-
+                    DIS0 = a;
                     fenxi();
                 }
 
@@ -479,6 +515,7 @@ namespace WindowsFormsApplication1.Exam
 
         private string ShowBy(byte[] buff, int num)
         {
+
             StringBuilder sb = new StringBuilder();
             StringBuilder sb1 = new StringBuilder();
             string hexstring = string.Empty;
@@ -492,12 +529,17 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
-            richTextBox2.AppendText("通道" + num + "信息：");
+            Action tongdao = () => {
+                richTextBox1.AppendText("通道" + num + "信息：");
+                richTextBox1.AppendText(""+sb1);
+            };
+            this.Invoke(tongdao);
+           
             switch (num)
             {
 
                 case 1:
-                    voldetla(sb1, t1);
+              //      voldetla(sb1, t1);
                     break;
                     //case 2:
                     //    voldetla(sb1, t2);
@@ -536,12 +578,16 @@ namespace WindowsFormsApplication1.Exam
             int a = Convert.ToInt32(sb1.ToString(), 16);
             int b = Convert.ToInt32(t8.ToString(), 16);
 
-            richTextBox2.AppendText("当前通道：" + sb1.ToString());
-            richTextBox2.AppendText("当前电压值：" + a);
-            richTextBox2.AppendText("上次电压差：" + b);
-            richTextBox2.AppendText("当前电压差：" + (a - b));
-            richTextBox2.AppendText("变化速度：" + Math.Abs(a - b) / interval);
-            SendServo(Math.Abs(a - b) / interval, b);
+            Action tongdao = () => {
+                richTextBox1.AppendText("当前通道：" + sb1.ToString());
+                richTextBox1.AppendText("当前电压值：" + a);
+                richTextBox1.AppendText("上次电压差：" + b);
+                richTextBox1.AppendText("当前电压差：" + (a - b));
+                richTextBox1.AppendText("变化速度：" + Math.Abs(a - b) / interval);
+            };
+            this.Invoke(tongdao);
+           
+            //SendServo(Math.Abs(a - b) / interval, b);
         }
 
         private void SendServo(int a, int pos)
