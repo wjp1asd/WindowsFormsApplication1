@@ -707,6 +707,11 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         Thread readDI;
         private void button4_Click_1(object sender, EventArgs e)
         {
