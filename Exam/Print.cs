@@ -343,6 +343,10 @@ namespace WindowsFormsApplication1.Exam
             PrintQrcode(new StringBuilder(t.Qrcode), 8, 2, 0);
             PrintChargeRow();
             PrintChargeRow();
+            PrintChargeRow();
+            PrintChargeRow();
+            PrintChargeRow();
+            PrintChargeRow();
             PrintCutpaper(0);
 
 

@@ -43,12 +43,13 @@ namespace WindowsFormsApplication1
             string sPath = Application.StartupPath+"\\Images\\身份证照片\\";
             string sPath1 = Application.StartupPath + "\\Images\\题库照片\\";
             string sPath2 = Application.StartupPath + "\\Images\\研磨照片\\";
+            string sPath3 = Application.StartupPath + "\\Images\\考试照片\\";
             if (!Directory.Exists(sPath))
             {
                 Directory.CreateDirectory(sPath);
             }else
             {
-                MessageBox.Show("123");
+             //   MessageBox.Show("123");
             }
             if (!Directory.Exists(sPath1))
             {
@@ -57,6 +58,10 @@ namespace WindowsFormsApplication1
             if (!Directory.Exists(sPath2))
             {
                 Directory.CreateDirectory(sPath2);
+            }
+            if (!Directory.Exists(sPath3))
+            {
+                Directory.CreateDirectory(sPath3);
             }
         }
     }
