@@ -303,6 +303,7 @@
       <DependentUpon>zaixianjiaoyan2.cs</DependentUpon>
     </Compile>
     <Compile Include="IDCardReader.cs" />
+    <Compile Include="Models\AutoWindowsSize.cs" />
     <Compile Include="Models\Dll.cs" />
     <Compile Include="Models\Fuc.cs" />
     <Compile Include="Models\fullscreen.cs" />

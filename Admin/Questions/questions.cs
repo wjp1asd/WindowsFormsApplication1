@@ -8,11 +8,13 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.jiaoyangongyi;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
 using WindowsFormsApplication1.Admin.Questions.zaixian;
-
+using AutoWindowsSize;
 namespace WindowsFormsApplication1.Questions
 {
     public partial class questions : Form
     {
+
+        AutoAdaptWindowsSize awt;
         int row;
         String TableName = "question";
         String Subtype = "1";
@@ -296,6 +298,7 @@ namespace WindowsFormsApplication1.Questions
 
         private void Online_Questions_Load(object sender, EventArgs e)
         {
+            awt = new AutoAdaptWindowsSize(this);
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
@@ -324,6 +327,14 @@ namespace WindowsFormsApplication1.Questions
                 this.textBox9.Show();
                 this.textBox8.Show();
                 this.textBox7.Show();
+            }
+        }
+
+        private void questions_SizeChanged(object sender, EventArgs e)
+        {
+            if (awt != null) {
+
+                awt.FormSizeChanged();
             }
         }
     }

@@ -100,7 +100,7 @@ namespace WindowsFormsApplication1
             Graphics g = Graphics.FromImage(bt);
             g.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
             bt.MakeTransparent();
-            string connectionString = Application.StartupPath + "\\密封面图片\\1.bmp";
+            string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
           
             bt.Save(connectionString, System.Drawing.Imaging.ImageFormat.Bmp);
            
@@ -110,6 +110,11 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("截图成功！");
                 return;
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
