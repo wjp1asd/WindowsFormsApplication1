@@ -612,7 +612,7 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox2.AppendText("变化速度：" + Math.Abs(a - b) / interval);
             };
             this.Invoke(tongdao);
-            SetZero();
+            //SetZero();
             //SendServo(Math.Abs(a - b) / interval, b);
         }
 
@@ -663,55 +663,22 @@ namespace WindowsFormsApplication1.Exam
 
         private void SendServo(int a, int pos)
         {
-            byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
-                //通道1
-                0x01, 0x01, 0xF4,
-                //通道2
-                0x01, 0x01, 0xF4,
-                //通道3
-                0x01, 0x01, 0xF4,
-                //通道4
-                0x01, 0x01, 0xF4,
-                //通道5
-                0x01, 0x01, 0xF4,
-                //通道6
-                0x01, 0x01, 0xF4,
-                //通道7
-                0x01, 0x01, 0xF4,
-                //通道8
-                0x01, 0x01, 0xF4,
-
-                 0x5B
-            };
-            serialPort2.Write(d1, 0, d1.Length);
-            Thread.Sleep(1000);
-            byte[] d2 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
-
-               0x01, 0x05, 0xDC,
-               0x01, 0x05, 0xDC,
-               0x01, 0x05, 0xDC,
-               0x01, 0x05, 0xDC,
-               0x01, 0x05, 0xDC,
-               0x01, 0x05, 0xDC,
-               0x01, 0x05, 0xDC,
-               0x01, 0x05, 0xDC,
-
-                 0x5B
-            };
-            serialPort2.Write(d2, 0, d2.Length);
-            Thread.Sleep(1000);
+            int b = (a / 10000 / 5)*2500;
+            string b1 = a.ToString("X4");
+            string a2 ="0x"+ b1.Substring(0, 2);
+            string a3 = "0x" + b1.Substring(2);
             byte[] d3 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
 
+                0x01, a2, a3,
                 0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
-               0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
 
-                 0x5B
+              
             };
             serialPort2.Write(d3, 0, d3.Length);
             Thread.Sleep(1000);
