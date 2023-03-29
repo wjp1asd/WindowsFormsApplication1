@@ -290,8 +290,8 @@ namespace WindowsFormsApplication1.Exam
 
         private void showMsg()
         {
-            richTextBox2.Text += "考试码：" + datahelp.QId;
-           this.label1.Text += "当前选择压力范围：" + wucha.Area1;
+           richTextBox2.Text += "考试码：" + datahelp.QId;
+           this.label1.Text += "当前选择压力范围：" + wucha.Area1.ToString().Trim()+"MPa";
            this.label1.Text += "当前离线整定压力：" + t.Lxyl+"Mpa";
            this.statusStrip1.Text += "当前采集卡端口：" + datahelp.plc+"波特率"+datahelp.plcbt+ "起始位，停止位，校验位" + datahelp.plcst+ "-" + datahelp.plcsp+"-"+datahelp.plcjy;
         
@@ -326,13 +326,24 @@ namespace WindowsFormsApplication1.Exam
         private void button3_Click(object sender, EventArgs e)
         {
             // DI
-            readDI = new Thread(ReadDI);
-            readDI.Start();
-            // AI0
-            serialPort2.Write(td1, 0, td1.Length);
-            this.button3.Text = "正在校验";
-            this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
-            this.timer1.Start();
+
+            if (serialPort2.IsOpen&&step==0)
+            {
+                readDI = new Thread(ReadDI);
+                readDI.Start();
+                // AI0
+                serialPort2.Write(td1, 0, td1.Length);
+                this.button3.Text = "正在校验";
+                this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
+                this.timer1.Start();
+
+            }
+            else {
+
+                ff.ShowErrorDialog("错误原因：1.未连接设备 2.设备异常无正确返回");
+                return;
+            }
+          
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -380,10 +391,10 @@ namespace WindowsFormsApplication1.Exam
                 try
                 {
                     serialPort2.Open();//打开串口
-                    button1.Text = "关闭串口";//按钮显示关闭串口
-                    step = 1;
+                    button3.Text = "正在连接";//按钮显示关闭串口
+                  
                     serialPort2.WriteLine("02 00 00 04 06");
-                 
+                    
 
                 }
                 catch (Exception err)
@@ -418,29 +429,30 @@ namespace WindowsFormsApplication1.Exam
             int len = serialPort2.BytesToRead;//获取可以读取的字节数
             byte[] buff = new byte[len];//创建缓存数据数组
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
-
+            // 通讯读取
             if (buff.Length == 5)
             {
-               
-              
+                button3.Text = "连接成功，点击测试";//按钮显示关闭串口
+                step = 0;
+                this.statusStrip1.Text = "连接成功";
                 MessageBox.Show("考试系统启动成功");
             }
 
-                //aio 模拟读取
-                if (buff.Length == 37)
+            //aio 模拟读取
+            else if (buff.Length == 37)
             {
 
-               //通道1读取
+                //通道1读取
                 byte[] tt1 = buff.Skip(4).Take(4).ToArray();
                 t1 = ShowBy(tt1, 1);
-             
+
 
                 //byte[] tt2 = buff.Skip(8).Take(4).ToArray();
-             
+
 
                 //t2 = ShowBy(tt2, 2);
                 //byte[] tt3 = buff.Skip(12).Take(4).ToArray();
-             
+
 
                 //t3 = ShowBy(tt3, 3);
                 //byte[] tt4 = buff.Skip(16).Take(4).ToArray();
@@ -454,19 +466,20 @@ namespace WindowsFormsApplication1.Exam
                 //byte[] tt8 = buff.Skip(32).Take(4).ToArray();
                 //t8 = ShowBy(tt8, 8);
             }
-
-            if (buff.Length == 6)
+            // dio 读取
+            else if (buff.Length == 6)
             {
-             
-               
+
+
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
                 string a = Convert.ToString(tt1[0], 2);
                 string b = "";
-                if (DIS0 == a) {
+                if (DIS0 == a)
+                {
                     dishow("DI无变化");
                     return;
                 }
-                    switch (a.Length)
+                switch (a.Length)
                 {
 
                     case 1:
@@ -495,13 +508,14 @@ namespace WindowsFormsApplication1.Exam
                         break;
                 }
 
-                
+
                 DIS = b;
-                Action tongdao = () => {
+                Action tongdao = () =>
+                {
                     uiLedLabel4.Text = DIS;
                 };
                 this.Invoke(tongdao);
-                
+
                 if (DIS.Length == 8)
                 {
                     DIS0 = a;
@@ -509,6 +523,12 @@ namespace WindowsFormsApplication1.Exam
                 }
 
 
+            }
+            else {
+
+                ff.ShowErrorDialog("设备无反应");
+            
+            
             }
         }
        
@@ -665,11 +685,12 @@ namespace WindowsFormsApplication1.Exam
         {
             int b = (a / 10000 / 5)*2500;
             string b1 = a.ToString("X4");
-            string a2 ="0x"+ b1.Substring(0, 2);
-            string a3 = "0x" + b1.Substring(2);
+          
+            int a2 = int.Parse("0x"+ b1.Substring(0, 2));
+            int a3 = int.Parse("0x" + b1.Substring(2));
             byte[] d3 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
 
-                0x01, a2, a3,
+                0x01, (byte)a2, (byte)a3,
                 0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
@@ -753,6 +774,37 @@ namespace WindowsFormsApplication1.Exam
         private void label1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            switch (step) {
+                case -1:
+                    this.button1.Text = "测试未开始";
+                    break;
+                case 0:
+                    this.button1.Text = "初次测试";
+                    break;
+                case 1:
+                    this.button1.Text = "第一次测试";
+                    break;
+                case 2:
+                    this.button1.Text = "第二次测试";
+                    break;
+                case 3:
+                    this.button1.Text = "第三次测试";
+                    break;
+                case 4:
+                    this.button1.Text = "密封性能测试";
+                    break;
+            }
+            step++;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         Thread readDI;
