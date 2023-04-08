@@ -20,11 +20,16 @@ namespace WindowsFormsApplication1.Settings
         public string a1, a2, a3, a4, a5, a6, a7, a8;
         public string a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23;
 
+        private void dj_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void button8_Click_1(object sender, EventArgs e)
         {
             string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
-            comboBox1.Items.Clear();//清除comboBox里面的数据
-            comboBox1.Items.AddRange(ports);//给comboBox1添加数据
+            PLCtextBox8.Items.Clear();//清除comboBox里面的数据
+            PLCtextBox8.Items.AddRange(ports);//给comboBox1添加数据
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,15 +43,15 @@ namespace WindowsFormsApplication1.Settings
                 if (m.WParam.ToInt32() == 0x8004)
                 {//usb串口拔出
                     string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
-                    comboBox1.Items.Clear();//清除comboBox里面的数据
-                    comboBox1.Items.AddRange(ports);//给comboBox1添加数据
+                    stop.Items.Clear();//清除comboBox里面的数据
+                    stop.Items.AddRange(ports);//给comboBox1添加数据
               
                 }
                 else if (m.WParam.ToInt32() == 0x8000)
                 {//usb串口连接上
                     string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
-                    comboBox1.Items.Clear();
-                    comboBox1.Items.AddRange(ports);
+                    stop.Items.Clear();
+                    stop.Items.AddRange(ports);
                     
                 }
             }
@@ -56,7 +61,7 @@ namespace WindowsFormsApplication1.Settings
         {
            SerialPort port = new SerialPort();
            string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
-           comboBox1.Items.AddRange(ports);
+           stop.Items.AddRange(ports);
         }
 
         public string b11, b12, b13, b14, b15, b16;
@@ -91,11 +96,7 @@ namespace WindowsFormsApplication1.Settings
             this.InitC();
         }
 
-        // String color = System.Drawing.ColorTranslator.ToHtml(colorEdit1.Color); //将Color对象转为String对象。如#AABBCC这种
-
-
-
-        // colorEdit1.Color = System.Drawing.ColorTranslator.FromHtml(color);//将#AABBCC这种字符串对象转为Color对象。
+     
         private void InitC()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -155,7 +156,7 @@ namespace WindowsFormsApplication1.Settings
 
             reader.Close();
             con.Close();
-            MessageBox.Show("系统配置加载成功");
+           // MessageBox.Show("系统配置加载成功");
 
         }
 

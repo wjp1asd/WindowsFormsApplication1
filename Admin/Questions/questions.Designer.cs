@@ -41,15 +41,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new Sunny.UI.UIDataGridView();
-            this.选择 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.optionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.optionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new Sunny.UI.UITitlePanel();
             this.label1 = new System.Windows.Forms.Label();
             this.uiComboBox1 = new Sunny.UI.UIComboBox();
@@ -67,6 +58,15 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.uiButton2 = new Sunny.UI.UIButton();
             this.uiButton1 = new Sunny.UI.UIButton();
+            this.选择 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.optionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.optionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -139,9 +139,9 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(590, 12);
+            this.textBox1.Location = new System.Drawing.Point(597, 12);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(332, 21);
+            this.textBox1.Size = new System.Drawing.Size(332, 25);
             this.textBox1.TabIndex = 11;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -209,6 +209,217 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.uiComboBox1);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.textBox9);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.textBox10);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.textBox11);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.textBox12);
+            this.panel1.Controls.Add(this.uiButton2);
+            this.panel1.Controls.Add(this.uiButton1);
+            this.panel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.panel1.Location = new System.Drawing.Point(194, 86);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.panel1.ShowText = false;
+            this.panel1.Size = new System.Drawing.Size(666, 417);
+            this.panel1.TabIndex = 15;
+            this.panel1.Text = "新增题目";
+            this.panel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(33, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 27);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "题型选择：";
+            // 
+            // uiComboBox1
+            // 
+            this.uiComboBox1.DataSource = null;
+            this.uiComboBox1.FillColor = System.Drawing.Color.White;
+            this.uiComboBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiComboBox1.Items.AddRange(new object[] {
+            "选择题",
+            "判断题"});
+            this.uiComboBox1.Location = new System.Drawing.Point(151, 40);
+            this.uiComboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiComboBox1.MinimumSize = new System.Drawing.Size(63, 0);
+            this.uiComboBox1.Name = "uiComboBox1";
+            this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.uiComboBox1.Size = new System.Drawing.Size(395, 39);
+            this.uiComboBox1.TabIndex = 28;
+            this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboBox1.Watermark = "";
+            this.uiComboBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiComboBox1.SelectedIndexChanged += new System.EventHandler(this.uiComboBox1_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(29, 326);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 27);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "选项D:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(112, 326);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(436, 34);
+            this.textBox7.TabIndex = 27;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(29, 278);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 27);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "选项C:";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(112, 278);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(436, 34);
+            this.textBox8.TabIndex = 25;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(29, 230);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 27);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "选项B:";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(112, 230);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(436, 34);
+            this.textBox9.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(29, 182);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 27);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "选项A:";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(112, 182);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(436, 34);
+            this.textBox10.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(29, 134);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 27);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "答案：";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(112, 134);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(436, 34);
+            this.textBox11.TabIndex = 19;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(33, 87);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(72, 27);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "题目：";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(110, 87);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(436, 34);
+            this.textBox12.TabIndex = 17;
+            // 
+            // uiButton2
+            // 
+            this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton2.Location = new System.Drawing.Point(348, 379);
+            this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton2.Name = "uiButton2";
+            this.uiButton2.Size = new System.Drawing.Size(95, 35);
+            this.uiButton2.TabIndex = 15;
+            this.uiButton2.Text = "退出";
+            this.uiButton2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiButton2.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // uiButton1
+            // 
+            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton1.Location = new System.Drawing.Point(208, 379);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Size = new System.Drawing.Size(100, 35);
+            this.uiButton1.TabIndex = 14;
+            this.uiButton1.Text = "新增";
+            this.uiButton1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiButton1.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
             // 选择
             // 
             this.选择.HeaderText = "选择";
@@ -224,6 +435,7 @@
             this.Id.HeaderText = "序号";
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             this.Id.Width = 60;
             // 
             // Type
@@ -281,217 +493,6 @@
             this.optionD.MinimumWidth = 6;
             this.optionD.Name = "optionD";
             this.optionD.Width = 125;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.uiComboBox1);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox8);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox9);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox10);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.textBox11);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.textBox12);
-            this.panel1.Controls.Add(this.uiButton2);
-            this.panel1.Controls.Add(this.uiButton1);
-            this.panel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.panel1.Location = new System.Drawing.Point(194, 86);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
-            this.panel1.ShowText = false;
-            this.panel1.Size = new System.Drawing.Size(666, 417);
-            this.panel1.TabIndex = 15;
-            this.panel1.Text = "新增题目";
-            this.panel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.panel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(33, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 22);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "题型选择：";
-            // 
-            // uiComboBox1
-            // 
-            this.uiComboBox1.DataSource = null;
-            this.uiComboBox1.FillColor = System.Drawing.Color.White;
-            this.uiComboBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiComboBox1.Items.AddRange(new object[] {
-            "选择题",
-            "判断题"});
-            this.uiComboBox1.Location = new System.Drawing.Point(151, 40);
-            this.uiComboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiComboBox1.MinimumSize = new System.Drawing.Size(63, 0);
-            this.uiComboBox1.Name = "uiComboBox1";
-            this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox1.Size = new System.Drawing.Size(395, 39);
-            this.uiComboBox1.TabIndex = 28;
-            this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiComboBox1.Watermark = "";
-            this.uiComboBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.uiComboBox1.SelectedIndexChanged += new System.EventHandler(this.uiComboBox1_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(29, 326);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 22);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "选项D:";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(112, 326);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(436, 29);
-            this.textBox7.TabIndex = 27;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(29, 278);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 22);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "选项C:";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(112, 278);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(436, 29);
-            this.textBox8.TabIndex = 25;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(29, 230);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 22);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "选项B:";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(112, 230);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(436, 29);
-            this.textBox9.TabIndex = 23;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(29, 182);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 22);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "选项A:";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(112, 182);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(436, 29);
-            this.textBox10.TabIndex = 21;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(29, 134);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 22);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "答案：";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(112, 134);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(436, 29);
-            this.textBox11.TabIndex = 19;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(33, 87);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 22);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "题目：";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(110, 87);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(436, 29);
-            this.textBox12.TabIndex = 17;
-            // 
-            // uiButton2
-            // 
-            this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton2.Location = new System.Drawing.Point(348, 379);
-            this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton2.Name = "uiButton2";
-            this.uiButton2.Size = new System.Drawing.Size(95, 35);
-            this.uiButton2.TabIndex = 15;
-            this.uiButton2.Text = "退出";
-            this.uiButton2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.uiButton2.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // uiButton1
-            // 
-            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton1.Location = new System.Drawing.Point(208, 379);
-            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton1.Name = "uiButton1";
-            this.uiButton1.Size = new System.Drawing.Size(100, 35);
-            this.uiButton1.TabIndex = 14;
-            this.uiButton1.Text = "新增";
-            this.uiButton1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.uiButton1.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // questions
             // 

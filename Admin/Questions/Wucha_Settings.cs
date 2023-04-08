@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1.Questions
             }
             Subtype = subtype;
             string sql = "select * from " + TableName;
-            MessageBox.Show(sql);
+         //   MessageBox.Show(sql);
             InitTable(sql);
             this.panel1.Hide();
         }

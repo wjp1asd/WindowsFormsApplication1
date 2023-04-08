@@ -197,6 +197,7 @@
             this.pick.HeaderText = "选择";
             this.pick.MinimumWidth = 6;
             this.pick.Name = "pick";
+            this.pick.ReadOnly = true;
             this.pick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.pick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.pick.TrueValue = "";

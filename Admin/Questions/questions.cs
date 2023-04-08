@@ -160,9 +160,12 @@ namespace WindowsFormsApplication1.Questions
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string sql = "select * from " + TableName + " where subId=" + Subtype + " and concat(id,question,answer) like '%" + this.textBox1.Text + "%'";
+            if (this.textBox1.Text.ToString().Length>0) {
+                string sql = "select * from " + TableName + " where subId=" + Subtype + " and concat(id,question,answer) like '%" + this.textBox1.Text + "%'";
 
-            this.InitTable(sql);
+                this.InitTable(sql);
+            }
+          
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

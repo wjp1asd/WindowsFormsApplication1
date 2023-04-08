@@ -50,6 +50,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lll = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.选取 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,8 +60,6 @@
             this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lll = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -292,6 +292,25 @@
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.Visible = false;
             // 
+            // lll
+            // 
+            this.lll.AutoSize = true;
+            this.lll.Location = new System.Drawing.Point(12, 68);
+            this.lll.Name = "lll";
+            this.lll.Size = new System.Drawing.Size(129, 15);
+            this.lll.TabIndex = 22;
+            this.lll.Text = "安全阀型号：****";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(341, 23);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 30);
+            this.button4.TabIndex = 23;
+            this.button4.Text = "刷新";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
             // 选取
             // 
             this.选取.HeaderText = "选择";
@@ -305,6 +324,7 @@
             this.ID.HeaderText = "序号";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             this.ID.Width = 40;
             // 
             // question
@@ -361,25 +381,6 @@
             this.answer.Name = "answer";
             this.answer.Width = 125;
             // 
-            // lll
-            // 
-            this.lll.AutoSize = true;
-            this.lll.Location = new System.Drawing.Point(12, 68);
-            this.lll.Name = "lll";
-            this.lll.Size = new System.Drawing.Size(129, 15);
-            this.lll.TabIndex = 22;
-            this.lll.Text = "安全阀型号：****";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(341, 23);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 30);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "刷新";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
             // XHSBAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -427,6 +428,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lll;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn 选取;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn question;
@@ -435,7 +438,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn optionC;
         private System.Windows.Forms.DataGridViewTextBoxColumn optionD;
         private System.Windows.Forms.DataGridViewTextBoxColumn answer;
-        private System.Windows.Forms.Label lll;
-        private System.Windows.Forms.Button button4;
     }
 }
