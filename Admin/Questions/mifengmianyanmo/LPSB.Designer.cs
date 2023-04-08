@@ -51,6 +51,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.选取 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +60,6 @@
             this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -306,6 +306,10 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // 选取
             // 
             this.选取.HeaderText = "选择";
@@ -319,6 +323,7 @@
             this.ID.HeaderText = "序号";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             this.ID.Width = 40;
             // 
             // image
@@ -374,10 +379,6 @@
             this.answer.MinimumWidth = 6;
             this.answer.Name = "answer";
             this.answer.Width = 125;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // LPSB
             // 

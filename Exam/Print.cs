@@ -260,13 +260,13 @@ namespace WindowsFormsApplication1.Exam
             //获取打印机端口号
             if (File.Exists("Msprintsdk.dll"))
             {
-                MessageBox.Show("打印模块加载成功");
+              //  MessageBox.Show("打印模块加载成功");
 
             }
            
             
             r= SetUsbportauto();
-            MessageBox.Show(r.ToString());
+         //   MessageBox.Show(r.ToString());
 
             if (r == 0)
             {

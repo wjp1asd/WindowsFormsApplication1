@@ -45,7 +45,8 @@ namespace WindowsFormsApplication1.Exam
         int liangcheng = 1;
         // AO  仿真压力表 舵机 后续需要拓展
 
-        int fangzhen = 0;
+        int fangzhen1 = 0;
+        int fangzhen2 = 1;
         private void fenxi()
         {
             //量程选择
@@ -377,6 +378,17 @@ namespace WindowsFormsApplication1.Exam
 
             try
             {
+                // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
+                qiehuanfa1 = int.Parse(datahelp.DIB1.Trim());
+                qiehuanfa2 = int.Parse(datahelp.DIB2.Trim()); 
+                qiehuanfa3 = int.Parse(datahelp.DIB3.Trim());
+                xieya = int.Parse(datahelp.DIxy.Trim());
+                gongju = int.Parse(datahelp.AIjy.Trim()); 
+                famao = int.Parse(datahelp.DIhw.Trim());
+                // ai yali 表
+                fangzhen1 = int.Parse(datahelp.AIY1.Trim());
+                fangzhen2 = int.Parse(datahelp.AIy2.Trim());
+
                 //防止意外错误
                 serialPort2.PortName = datahelp.plc;//获取comboBox1要打开的串口号
                 
@@ -824,7 +836,7 @@ namespace WindowsFormsApplication1.Exam
         int interval = 500;
 
 
-        byte[] dio = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
+        byte[] dio = new byte[] { 0x02, 0x20, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01};
         int a = 0;
 
         private void ReadDI()

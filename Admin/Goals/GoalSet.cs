@@ -118,11 +118,11 @@ namespace WindowsFormsApplication1
                     return;
                 }
                 string strrow = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();//获取焦点触发行的第一个值
-                string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//获取焦点触发行的第一个值
+                string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();//获取焦点触发行的第一个值
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
-                string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "'where id = " + id;
-                //   MessageBox.Show("已更新");
+                string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "' where id = " + id;
+                   //MessageBox.Show(strcomm);
 
                 con.Open();
                 SqlCommand comm = new SqlCommand(strcomm, con);
@@ -229,6 +229,11 @@ namespace WindowsFormsApplication1
         {
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
+
+        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
