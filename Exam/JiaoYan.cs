@@ -293,7 +293,7 @@ namespace WindowsFormsApplication1.Exam
            richTextBox2.Text += "考试码：" + datahelp.QId;
            this.label1.Text += "当前选择压力范围：" + wucha.Area1.ToString().Trim()+"MPa";
            this.label1.Text += "当前离线整定压力：" + t.Lxyl+"Mpa";
-           this.statusStrip1.Text += "当前采集卡端口：" + datahelp.plc+"波特率"+datahelp.plcbt+ "起始位，停止位，校验位" + datahelp.plcst+ "-" + datahelp.plcsp+"-"+datahelp.plcjy;
+           this.richTextBox2.Text += "当前采集卡端口：" + datahelp.plc+"波特率"+datahelp.plcbt+ "起始位，停止位，校验位" + datahelp.plcst+ "-" + datahelp.plcsp+"-"+datahelp.plcjy;
         
         }
 
@@ -322,17 +322,27 @@ namespace WindowsFormsApplication1.Exam
           
           
         }
+        Thread readAI;
 
+        private void ReadAI() {
+            while (true) {
+
+                serialPort2.Write(td1,0,td1.Length);
+                Thread.Sleep(500);
+            }
+        
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             // DI
 
-            if (serialPort2.IsOpen&&step==0)
+            if (serialPort2.IsOpen)
             {
                 readDI = new Thread(ReadDI);
                 readDI.Start();
                 // AI0
-                serialPort2.Write(td1, 0, td1.Length);
+                readAI = new Thread(ReadAI);
+                readAI.Start();
                 this.button3.Text = "正在校验";
                 this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                 this.timer1.Start();
@@ -378,7 +388,7 @@ namespace WindowsFormsApplication1.Exam
             try
             {
                 //防止意外错误
-                serialPort2.PortName = datahelp.plc;//获取comboBox1要打开的串口号
+                serialPort2.PortName = datahelp.plc.Trim();//获取comboBox1要打开的串口号
                 
                 serialPort2.BaudRate = int.Parse(datahelp.plcbt.Trim());//获取comboBox2选择的波特率
                 serialPort2.DataBits = int.Parse(datahelp.plcjy.Trim());//设置数据位
@@ -430,6 +440,7 @@ namespace WindowsFormsApplication1.Exam
             byte[] buff = new byte[len];//创建缓存数据数组
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
             // 通讯读取
+            //MessageBox.Show(buff.Length.ToString());
             if (buff.Length == 5)
             {
                 button3.Text = "连接成功，点击测试";//按钮显示关闭串口
@@ -525,8 +536,8 @@ namespace WindowsFormsApplication1.Exam
 
             }
             else {
-
-                ff.ShowErrorDialog("设备无反应");
+             this.label3.Text=""+buff.Length;
+           //     ff.ShowErrorDialog("设备无反应");
             
             
             }
@@ -573,16 +584,19 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
-            Action tongdao = () => {
-                richTextBox1.AppendText("通道" + num + "信息：");
-                richTextBox1.AppendText(""+sb1);
-            };
-            this.Invoke(tongdao);
+       //     Action tongdao = () => {
+        //        richTextBox1.AppendText("通道" + num + "信息：");
+       //         richTextBox1.AppendText(""+sb1);
+      //      };
+       //     this.Invoke(tongdao);
            
             switch (num)
             {
 
                 case 1:
+                    if (sb1!=null| t1!=null) {
+                        return null; 
+                    }
                voldetla(sb1, t1);
                     break;
                     //case 2:
