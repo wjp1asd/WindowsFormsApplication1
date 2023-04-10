@@ -57,6 +57,7 @@ namespace WindowsFormsApplication1
                 // 考生登录
 
                 this.button2.Left += 150;
+                this.button2.Top= 160;
                 this.button3.Left = this.button2.Left;
                 this.button1.Hide();
                 this.pictureBox1.Hide();
@@ -80,8 +81,8 @@ namespace WindowsFormsApplication1
                 this.button2.Hide();
                 this.button2.Enabled = false;
 
-                this.button3.Left -= 150;
-                this.uiButton1.Left -= 150;
+                this.button3.Left -= 180;
+                this.uiButton1.Left -= 180;
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
