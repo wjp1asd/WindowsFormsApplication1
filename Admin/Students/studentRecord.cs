@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using WindowsFormsApplication1.Models;
+using AutoWindowsSize;
 
 namespace WindowsFormsApplication1.Admin.Students
 {
@@ -56,10 +57,28 @@ namespace WindowsFormsApplication1.Admin.Students
         {
 
         }
-
-        private void studentRecord_Load(object sender, EventArgs e)
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
         {
 
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+        private void StudentSet_Load(object sender, EventArgs e)
+        {
+          
+        }
+        private void studentRecord_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
     }
 }

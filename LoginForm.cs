@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
-using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.YanMO;
 using WindowsFormsApplication1.Settings;
 
@@ -39,7 +38,9 @@ namespace WindowsFormsApplication1
             if (x == "1")
             {
                 // 管理员权限
-                this.button1.Top = this.button3.Top;
+
+                this.button1.Left += 150;
+                this.button3.Left = this.button1.Left;
 
                 this.button2.Hide();
                 this.uiButton1.Hide();
@@ -47,10 +48,16 @@ namespace WindowsFormsApplication1
                 this.button5.Hide();
                 this.button6.Hide();
                 this.button7.Hide();
+                this.button8.Hide();
+                this.button9.Hide();
+                this.button10.Hide();
             }
             else if (x == "0")
             {
                 // 考生登录
+
+                this.button2.Left += 150;
+                this.button3.Left = this.button2.Left;
                 this.button1.Hide();
                 this.pictureBox1.Hide();
                 this.uiButton1.Hide();
@@ -59,22 +66,29 @@ namespace WindowsFormsApplication1
                 this.button5.Hide();
                 this.button6.Hide();
                 this.button7.Hide();
+                this.button8.Hide();
+                this.button9.Hide();
+                this.button10.Hide();
             }
             else if (x == "2")
             {
                 //考试机登录
+             
                 this.button1.Hide();
                 this.button1.Enabled = false;
                 this.pictureBox1.Hide();
                 this.button2.Hide();
                 this.button2.Enabled = false;
 
-                this.uiButton1.Top = this.button3.Top;
-                this.uiButton1.Left = this.button3.Left - 360;
+                this.button3.Left -= 150;
+                this.uiButton1.Left -= 150;
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
                 this.button7.Hide();
+                this.button8.Hide();
+                this.button9.Hide();
+                this.button10.Hide();
             }
             else if (x == "-1")
             {

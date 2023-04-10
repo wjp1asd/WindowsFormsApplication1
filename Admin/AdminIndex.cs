@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Settings;
@@ -66,7 +67,7 @@ namespace WindowsFormsApplication1
 
         private void 管理员界面_Load(object sender, EventArgs e)
         {
-
+            awt = new AutoAdaptWindowsSize(this);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -129,6 +130,15 @@ namespace WindowsFormsApplication1
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
         }
     }
 }

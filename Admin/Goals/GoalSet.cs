@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -196,10 +197,12 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (this.textBox8.Text.Length > 0) {
+                string sql = "select * from " + TableName + " where  concat(name,sub,des)  like '%" + this.textBox8.Text + "%'";
 
-            string sql = "select * from " + TableName + " where  concat(name,sub,des)  like '%" + this.textBox8.Text + "%'";
-
-            this.InitTable(sql);
+                this.InitTable(sql);
+            }
+          
 
         }
 
@@ -224,10 +227,21 @@ namespace WindowsFormsApplication1
             a.Show();
             this.Close();
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
 
+                awt.FormSizeChanged();
+            }
+        }
+
+       
         private void GoalSet_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
+            this.SizeChanged += groupBox1_Resize;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 

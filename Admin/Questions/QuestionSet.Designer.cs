@@ -130,7 +130,9 @@
             this.Name = "QuestionSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "题库管理";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.QuestionSet_Load);
+            this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

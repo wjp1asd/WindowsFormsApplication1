@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -36,13 +37,23 @@ namespace WindowsFormsApplication1.Questions
 
 
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
 
         private void Offline_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
+            this.SizeChanged += groupBox1_Resize;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
-
+     
         private void button1_Click(object sender, EventArgs e)
         {
             questions oq = new questions("1");

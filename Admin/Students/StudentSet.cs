@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -142,7 +143,7 @@ namespace WindowsFormsApplication1
             string f0 = this.textBox1bumen.Text.ToString();
             string f1 = this.textBox2lid.Text.ToString();
             string f2 = this.textBox3phone.Text.ToString();
-            string f3 = this.textBox4con.Text.ToString();
+            string f3 = this.dateTimePicker1.Text.ToString();
             string f4 = this.textBox5pass.Text.ToString();
             string status = this.textBox7status.Text.ToString();
 
@@ -165,7 +166,7 @@ namespace WindowsFormsApplication1
               "'" + f3.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            MessageBox.Show(strcomm);
+            //MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
@@ -173,7 +174,8 @@ namespace WindowsFormsApplication1
             con.Close();
             MessageBox.Show("已更新");
             this.panel1.Hide();
-            string sql = "select * from " + TableName + " where power =1 and name like '%" + this.textBox8.Text + "%'";
+            string sql = "select id,name,bumen," +
+                "idcard,status,phone,date,sex from " + TableName + " where power =1 and name like '%" + this.textBox8.Text + "%'";
 
             this.InitTable(sql);
         }
@@ -199,6 +201,8 @@ namespace WindowsFormsApplication1
             }
             if (s1.Length != 0)
             {
+
+               
                 if (MessageBox.Show("确定删除id" + s1.ToString() + " ? ", "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
 
                 {
@@ -241,10 +245,13 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (this.textBox8.Text.Length > 0) {
+                string sql = "select id,name,bumen," +
+                "idcard,status,phone,date,sex from " + TableName + " where power =1 and name like '%" + this.textBox8.Text + "%'";
 
-            string sql = "select * from " + TableName + " where power =1 and name like '%" + this.textBox8.Text + "%'";
-
-            this.InitTable(sql);
+                this.InitTable(sql);
+            }
+          
 
         }
 
@@ -277,11 +284,24 @@ namespace WindowsFormsApplication1
               
             }
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
 
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+      
         private void StudentSet_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
     }
 }

@@ -262,12 +262,12 @@ namespace WindowsFormsApplication1.Questions
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string question = this.textBox12.Text;
-            string answer = this.textBox11.Text;
+            string answer = this.uiComboBox2.Text;
             string oa = this.textBox10.Text;
             string ob = this.textBox9.Text;
             string oc = this.textBox8.Text;
             string od = this.textBox7.Text;
-
+            string tt= this.uiComboBox1.Text;
             if (question.Length == 0 || answer.Length == 0
                 )
             {
@@ -276,9 +276,10 @@ namespace WindowsFormsApplication1.Questions
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string strcomm = "insert into " + TableName + "([question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(" +
+            string strcomm = "insert into " + TableName + "([question], [answer], [type],[subId], [optionA], [optionB], [optionC], [optionD]) VALUES(" +
                 "'" + question.ToString() + "'" + "," +
                "'" + answer.ToString() + "'" + "," +
+                "'" + tt + "'" + "," +
                "'" + Subtype + "'" + "," +
                 "'" + oa.ToString() + "'" + "," +
                  "'" + ob.ToString() + "'" + "," +
@@ -302,7 +303,7 @@ namespace WindowsFormsApplication1.Questions
         private void Online_Questions_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
-            this.WindowState = FormWindowState.Maximized;
+          
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
@@ -313,7 +314,7 @@ namespace WindowsFormsApplication1.Questions
 
         private void uiComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.uiComboBox1.SelectedIndex == 1)
+            if (this.uiComboBox1.SelectedIndex ==1 || this.uiComboBox1.SelectedIndex == 2)
             {
                 // 判断题
 

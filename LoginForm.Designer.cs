@@ -97,7 +97,7 @@
             this.button1.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
             this.button1.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Size = new System.Drawing.Size(262, 90);
+            this.button1.Size = new System.Drawing.Size(260, 90);
             this.button1.Style = Sunny.UI.UIStyle.Red;
             this.button1.TabIndex = 14;
             this.button1.Text = "管理员登录";
@@ -112,7 +112,7 @@
             this.button2.Location = new System.Drawing.Point(207, 281);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(262, 90);
+            this.button2.Size = new System.Drawing.Size(260, 90);
             this.button2.TabIndex = 15;
             this.button2.Text = "考生登录";
             this.button2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -126,7 +126,7 @@
             this.button3.Location = new System.Drawing.Point(574, 281);
             this.button3.MinimumSize = new System.Drawing.Size(1, 1);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(262, 90);
+            this.button3.Size = new System.Drawing.Size(260, 90);
             this.button3.TabIndex = 16;
             this.button3.Text = "退出";
             this.button3.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -255,7 +255,7 @@
             this.uiButton1.Location = new System.Drawing.Point(574, 158);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
-            this.uiButton1.Size = new System.Drawing.Size(262, 90);
+            this.uiButton1.Size = new System.Drawing.Size(260, 90);
             this.uiButton1.TabIndex = 18;
             this.uiButton1.Text = "扫描登录";
             this.uiButton1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));

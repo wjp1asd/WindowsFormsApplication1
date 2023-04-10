@@ -174,12 +174,14 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(782, 553);
             this.Controls.Add(this.groupBox1);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "AdminIndex";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "管理员界面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.管理员界面_Load);
             this.ResizeEnd += new System.EventHandler(this.AdminIndex_Resize);
+            this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

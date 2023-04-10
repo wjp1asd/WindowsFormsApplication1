@@ -31,13 +31,13 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.des = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.score = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +63,11 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -79,16 +84,7 @@
             this.dataGridView1.TabIndex = 49;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_2);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(304, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 31);
-            this.button1.TabIndex = 52;
-            this.button1.Text = "关闭";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.dataGridView1.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             // 
             // ID
             // 
@@ -106,7 +102,6 @@
             this.sub.HeaderText = "类别";
             this.sub.MinimumWidth = 6;
             this.sub.Name = "sub";
-            this.sub.Width = 125;
             // 
             // name
             // 
@@ -114,7 +109,6 @@
             this.name.HeaderText = "项目";
             this.name.MinimumWidth = 6;
             this.name.Name = "name";
-            this.name.Width = 125;
             // 
             // des
             // 
@@ -122,7 +116,6 @@
             this.des.HeaderText = "分项";
             this.des.MinimumWidth = 6;
             this.des.Name = "des";
-            this.des.Width = 125;
             // 
             // state
             // 
@@ -132,7 +125,6 @@
             this.state.MinimumWidth = 6;
             this.state.Name = "state";
             this.state.TrueValue = "1";
-            this.state.Width = 125;
             // 
             // score
             // 
@@ -140,7 +132,16 @@
             this.score.HeaderText = "分值";
             this.score.MinimumWidth = 6;
             this.score.Name = "score";
-            this.score.Width = 125;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(304, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 31);
+            this.button1.TabIndex = 52;
+            this.button1.Text = "关闭";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // GoalSet
             // 
@@ -154,6 +155,7 @@
             this.Name = "GoalSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "评分设置";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.GoalSet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

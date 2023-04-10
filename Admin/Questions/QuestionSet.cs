@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.jiaoyangongyi;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
@@ -92,11 +93,24 @@ namespace WindowsFormsApplication1
             this.Close();
 
         }
+     
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
 
+                awt.FormSizeChanged();
+            }
+        }
+       
         private void QuestionSet_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
+
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
+
+       
     }
 }

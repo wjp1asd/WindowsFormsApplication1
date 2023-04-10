@@ -1,4 +1,5 @@
 ﻿
+using AutoWindowsSize;
 using System;
 using System.Configuration;
 using System.Data;
@@ -40,11 +41,6 @@ namespace WindowsFormsApplication1
 
             this.dataGridView1.DataSource = ds.Tables["question"];
             row = this.dataGridView1.RowCount;
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void lblUsername_Click(object sender, EventArgs e)
@@ -165,14 +161,18 @@ namespace WindowsFormsApplication1
               "'" + f3.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            MessageBox.Show(strcomm);
+         //  MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
 
             con.Close();
             MessageBox.Show("已更新");
+
+            string sql = "select id,name,bumen,login" +
+                "id,password,status,phone,confirm from " + TableName + " where  power >1";
             this.panel1.Hide();
+            InitTable(sql);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -215,9 +215,11 @@ namespace WindowsFormsApplication1
 
                     con.Close();
                     MessageBox.Show("已删除");
-                    string sql = "select * from " + TableName;
 
-                    this.InitTable(sql);
+                    string sql = "select id,name,bumen,login" +
+                        "id,password,status,phone,confirm from " + TableName + " where  power >1";
+                    this.panel1.Hide();
+                    InitTable(sql);
                 }
 
             }
@@ -237,10 +239,13 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (this.textBox8.Text.Length > 0) {
+                string sql = "select id,name,bumen,loginid,password,status,phone,confirm from " + TableName + " where power>1 and name like '%" + this.textBox8.Text + "%'";
 
-            string sql = "select * from " + TableName + " where power>1 and name like '%" + this.textBox8.Text + "%'";
+                this.InitTable(sql);
 
-            this.InitTable(sql);
+            }
+          
 
         }
 
@@ -258,11 +263,24 @@ namespace WindowsFormsApplication1
         {
 
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
 
         private void PeopleSet_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
+
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
     }
 }
