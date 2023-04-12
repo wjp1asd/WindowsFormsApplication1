@@ -342,8 +342,7 @@ namespace WindowsFormsApplication1.Exam
                 readDI = new Thread(ReadDI);
                 readDI.Start();
                 // AI0
-                readAI = new Thread(ReadAI);
-                readAI.Start();
+              
                 this.button3.Text = "正在校验";
                 this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                 this.timer1.Start();
@@ -452,7 +451,7 @@ namespace WindowsFormsApplication1.Exam
             byte[] buff = new byte[len];//创建缓存数据数组
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
             // 通讯读取
-            //MessageBox.Show(buff.Length.ToString());
+            MessageBox.Show(buff.Length.ToString());
             if (buff.Length == 5)
             {
                 button3.Text = "连接成功，点击测试";//按钮显示关闭串口
@@ -461,39 +460,12 @@ namespace WindowsFormsApplication1.Exam
                 MessageBox.Show("考试系统启动成功");
             }
 
-            //aio 模拟读取
-            else if (buff.Length == 37)
+            else if (buff.Length ==38)
             {
-
-                //通道1读取
-                byte[] tt1 = buff.Skip(4).Take(4).ToArray();
+                // AI解析
+                byte[] tt0 = buff.Skip(4).Take(4).ToArray();
                 t1 = ShowBy(tt1, 1);
-
-
-                //byte[] tt2 = buff.Skip(8).Take(4).ToArray();
-
-
-                //t2 = ShowBy(tt2, 2);
-                //byte[] tt3 = buff.Skip(12).Take(4).ToArray();
-
-
-                //t3 = ShowBy(tt3, 3);
-                //byte[] tt4 = buff.Skip(16).Take(4).ToArray();
-                //t4 = ShowBy(tt4, 4);
-                //byte[] tt5 = buff.Skip(20).Take(4).ToArray();
-                //t5 = ShowBy(tt5, 5);
-                //byte[] tt6 = buff.Skip(24).Take(4).ToArray();
-                //t6 = ShowBy(tt6, 6);
-                //byte[] tt7 = buff.Skip(28).Take(4).ToArray();
-                //t7 = ShowBy(tt7, 7);
-                //byte[] tt8 = buff.Skip(32).Take(4).ToArray();
-                //t8 = ShowBy(tt8, 8);
-            }
-            // dio 读取
-            else if (buff.Length == 6)
-            {
-
-
+               // DI解析
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
                 string a = Convert.ToString(tt1[0], 2);
                 string b = "";
@@ -850,7 +822,7 @@ namespace WindowsFormsApplication1.Exam
         int interval = 500;
 
 
-        byte[] dio = new byte[] { 0x02, 0x20, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01};
+        byte[] dio = new byte[] { 0x02, 0x20, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,0x2E};
         int a = 0;
 
         private void ReadDI()
