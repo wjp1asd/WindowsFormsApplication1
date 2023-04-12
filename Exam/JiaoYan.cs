@@ -836,12 +836,39 @@ namespace WindowsFormsApplication1.Exam
         int interval = 500;
 
 
-        byte[] dio = new byte[] { 0x02, 0x20, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01};
+        byte[] dioheader = new byte[] { 0x02, 0x20, 0x00, 0x0C};
         int a = 0;
 
+        private static string CRC(string cmdString)
+        {
+            try
+            {
+                //CRC寄存器
+                int CRCCode = 0;
+                //将字符串拆分成为16进制字节数据然后两位两位进行异或校验
+                for (int i = 1; i < cmdString.Length / 2; i++)
+                {
+                    string cmdHex = cmdString.Substring(i * 2, 2);
+                    if (i == 1)
+                    {
+                        string cmdPrvHex = cmdString.Substring((i - 1) * 2, 2);
+                        CRCCode = (byte)Convert.ToInt32(cmdPrvHex, 16) ^ (byte)Convert.ToInt32(cmdHex, 16);
+                    }
+                    else
+                    {
+                        CRCCode = (byte)CRCCode ^ (byte)Convert.ToInt32(cmdHex, 16);
+                    }
+                }
+                return Convert.ToString(CRCCode, 16).ToUpper();//返回16进制校验码
+            }
+            catch
+            {
+                throw;
+            }
+        }
         private void ReadDI()
         {
-
+            // AI 接口
             while (true)
             {
                 serialPort2.Write(dio, 0, dio.Length);

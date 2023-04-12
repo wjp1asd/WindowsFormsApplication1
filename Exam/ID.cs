@@ -156,9 +156,13 @@ namespace WindowsFormsApplication1
                                 try
                                 {
                                     url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
-                                    File.Copy("ZP.bmp", url);
+                                    if (!File.Exists(url)) {
+                                        File.Copy("ZP.bmp", url);
 
-                                    pictureBox1.ImageLocation = url;
+                                        pictureBox1.ImageLocation = url;
+                                    }
+                                    
+                                   
                                 }
                                 catch (Exception e)
                                 {
@@ -223,9 +227,12 @@ namespace WindowsFormsApplication1
                                 try
                                 {
                                     url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
-                                    File.Copy("ZP.bmp", url);
+                                    if (!File.Exists(url))
+                                    {
+                                        File.Copy("ZP.bmp", url);
 
-                                    pictureBox1.ImageLocation = url;
+                                        pictureBox1.ImageLocation = url;
+                                    }
                                 }
                                 catch (Exception e)
                                 {
@@ -288,10 +295,13 @@ namespace WindowsFormsApplication1
                             {
                                 try
                                 {
-                                   url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
-                                    File.Copy("ZP.bmp", url);
+                                    url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                    if (!File.Exists(url))
+                                    {
+                                        File.Copy("ZP.bmp", url);
 
-                                    pictureBox1.ImageLocation = url;
+                                        pictureBox1.ImageLocation = url;
+                                    }
                                 }
                                 catch (Exception e)
                                 {
