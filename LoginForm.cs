@@ -81,8 +81,8 @@ namespace WindowsFormsApplication1
                 this.button2.Hide();
                 this.button2.Enabled = false;
 
-                this.button3.Left -= 180;
-                this.uiButton1.Left -= 180;
+                this.button3.Left -= 200;
+                this.uiButton1.Left -= 200;
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
