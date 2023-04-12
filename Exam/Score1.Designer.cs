@@ -135,7 +135,7 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "100分";
             // 
-            // Score
+            // Score1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,8 +149,8 @@
             this.Controls.Add(this.lblAllscore);
             this.Controls.Add(this.lblscore);
             this.Controls.Add(this.label1);
-            this.Name = "Score";
-            this.Text = "Score";
+            this.Name = "Score1";
+            this.Text = "得分情况";
             this.ResumeLayout(false);
             this.PerformLayout();
 

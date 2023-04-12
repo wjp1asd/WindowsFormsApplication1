@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -60,11 +61,36 @@ namespace WindowsFormsApplication1.Exam
             jiaoyancanshu j = new jiaoyancanshu();
             j.Show();
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
 
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+
+        private void Choose_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
         private void OFF_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

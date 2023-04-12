@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -77,11 +78,32 @@ namespace WindowsFormsApplication1.Exam
             MFYM mf = new MFYM(qr);
             mf.Show();
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+
+        private void Choose_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
 
         private void Exam1_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
 
         private void uiBreadcrumb1_ItemIndexChanged(object sender, int value)

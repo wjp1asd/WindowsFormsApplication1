@@ -79,7 +79,9 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
             this.Name = "gongyijiaoyan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "校验工艺编制";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.gongyijiaoyan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

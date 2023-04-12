@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -24,7 +25,7 @@ namespace WindowsFormsApplication1
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from TestRecord where qrcode='" + qrcode + "'";
+            string sql = "select * from TestRecord where qrcode = '" + qrcode + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
@@ -46,8 +47,8 @@ namespace WindowsFormsApplication1
                 t.Zxyl = reader["zxyl"].ToString();
 
                 t.Zxlx = reader["zxlx"].ToString();
-                t.Lxquestions = reader["lxquestions"].ToString();
-                t.Zquestions = reader["zxquestions"].ToString();
+                t.Lxquestions = reader["lxquestions"].ToString().Trim();
+                t.Zquestions = reader["zxquestions"].ToString().Trim();
 
 
                 t.Adfxh = reader["aqfxh"].ToString();
@@ -61,15 +62,49 @@ namespace WindowsFormsApplication1
             {
                 case "0":
                     this.Text = "离线校验答题";
-                    datahelp.QuestionIds = t.Lxquestions.Split(',');
-                    datahelp.SubId = 0;
-                    datahelp.Answer = qq.Answer(t.Lxquestions).Split(',');
+                    if (t.Lxquestions.Length > 0)
+                    {
+                        datahelp.QuestionIds = t.Lxquestions.Split(',');
+                        datahelp.SubId = 0;
+                        try
+                        {
+                            datahelp.Answer = qq.Answer(t.Lxquestions).Split(',');
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw ;
+                        }
+                       
+                    }
+                    else {
+
+                       f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
+                    }
+                   
                     break;
                 case "1":
                     this.Text = "在线校验答题";
-                    datahelp.QuestionIds = t.Zquestions.Split(',');
-                    datahelp.SubId = 1;
-                    datahelp.Answer = qq.Answer(t.Zquestions).Split(',');
+                    if (t.Zquestions.Length > 0)
+                    {
+                        datahelp.QuestionIds = t.Zquestions.Split(',');
+                        datahelp.SubId = 1;
+                        try
+                        {
+                            datahelp.Answer = qq.Answer(t.Zquestions).Split(',');
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+                       
+                    }
+                    else {
+                        f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
+
+                    }
                     break;
 
             }

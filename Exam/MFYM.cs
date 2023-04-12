@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
@@ -32,10 +33,31 @@ namespace WindowsFormsApplication1
 
 
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+
+        private void Choose_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
         private void MFYM_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
         bool G_MouseFlag;
         Pen pen = new Pen(Color.Red);
@@ -100,7 +122,8 @@ namespace WindowsFormsApplication1
             Graphics g = Graphics.FromImage(bt);
             g.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
             bt.MakeTransparent();
-            string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
+            string connectionString = Application.StartupPath + "\\Images\\研磨照片\\1.bmp";
+         //   string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
           
             bt.Save(connectionString, System.Drawing.Imaging.ImageFormat.Bmp);
            

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -16,11 +17,28 @@ namespace WindowsFormsApplication1
             a.Show();
             this.Close();
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
 
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+        private void StudentSet_Load(object sender, EventArgs e)
+        {
+          
+        }
         private void ResultSet_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
     }
 }

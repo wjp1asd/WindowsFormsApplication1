@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -16,7 +18,7 @@ namespace WindowsFormsApplication1
         String optionD1;
         String type;
         String subtype;
-
+       
 
         public string question { get => question1; set => question1 = value; }
         public string answer { get => answer1; set => answer1 = value; }
@@ -57,7 +59,7 @@ namespace WindowsFormsApplication1
 
                 SqlCommand com = new SqlCommand(sql, con);
                 con.Open();
-
+               // MessageBox.Show(sql);
                 SqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
@@ -65,8 +67,15 @@ namespace WindowsFormsApplication1
 
                 }
 
-                answer = string.Join(",", answerList); 
+                answer = string.Join(",", answerList);
+                if (answer.Length == 0)
+                {
 
+                    MessageBox.Show("题目已不存在于当前题库，请重新抽题");
+
+
+                }
+                else { answer = ""; } 
                
 
             }

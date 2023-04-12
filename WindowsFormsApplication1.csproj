@@ -420,10 +420,10 @@
       <DependentUpon>ScanLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="QuestionForm.cs">
+    <Compile Include="Exam\QuestionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuestionForm.Designer.cs">
+    <Compile Include="Exam\QuestionForm.Designer.cs">
       <DependentUpon>QuestionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ScoreForm.cs">
@@ -657,7 +657,7 @@
     <EmbeddedResource Include="Scan\ScanLogin.resx">
       <DependentUpon>ScanLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuestionForm.resx">
+    <EmbeddedResource Include="Exam\QuestionForm.resx">
       <DependentUpon>QuestionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScoreForm.resx">

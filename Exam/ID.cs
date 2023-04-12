@@ -1,4 +1,5 @@
 ﻿
+using AutoWindowsSize;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -72,11 +73,31 @@ namespace WindowsFormsApplication1
         {
 
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
 
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+
+        private void Choose_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            // this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
 
         private void button1_Click(object sender, EventArgs e)

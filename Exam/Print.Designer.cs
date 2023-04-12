@@ -309,6 +309,7 @@
             this.Name = "Print";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考生信息打印";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Print_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
