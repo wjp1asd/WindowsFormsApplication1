@@ -112,6 +112,7 @@
             this.Name = "mf";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "密封面研磨";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.mf_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

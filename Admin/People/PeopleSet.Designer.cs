@@ -49,10 +49,6 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -62,6 +58,10 @@
             this.loginid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.confirm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -287,6 +287,11 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pick,
@@ -306,6 +311,71 @@
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // pick
+            // 
+            this.pick.HeaderText = "选择";
+            this.pick.MinimumWidth = 6;
+            this.pick.Name = "pick";
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "Id";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.FalseValue = "0";
+            this.status.HeaderText = "状态";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.TrueValue = "1";
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "姓名";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            // 
+            // bumen
+            // 
+            this.bumen.DataPropertyName = "bumen";
+            this.bumen.HeaderText = "部门";
+            this.bumen.MinimumWidth = 6;
+            this.bumen.Name = "bumen";
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "电话";
+            this.phone.MinimumWidth = 6;
+            this.phone.Name = "phone";
+            // 
+            // loginid
+            // 
+            this.loginid.DataPropertyName = "loginid";
+            this.loginid.HeaderText = "账号";
+            this.loginid.MinimumWidth = 6;
+            this.loginid.Name = "loginid";
+            // 
+            // password
+            // 
+            this.password.DataPropertyName = "password";
+            this.password.HeaderText = "密码";
+            this.password.MinimumWidth = 6;
+            this.password.Name = "password";
+            // 
+            // confirm
+            // 
+            this.confirm.DataPropertyName = "confirm";
+            this.confirm.HeaderText = "确认";
+            this.confirm.MinimumWidth = 6;
+            this.confirm.Name = "confirm";
             // 
             // button6
             // 
@@ -345,90 +415,16 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // pick
-            // 
-            this.pick.HeaderText = "选择";
-            this.pick.MinimumWidth = 6;
-            this.pick.Name = "pick";
-            this.pick.Width = 60;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "Id";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 60;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.FalseValue = "0";
-            this.status.HeaderText = "状态";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.TrueValue = "1";
-            this.status.Width = 125;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "姓名";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.Width = 125;
-            // 
-            // bumen
-            // 
-            this.bumen.DataPropertyName = "bumen";
-            this.bumen.HeaderText = "部门";
-            this.bumen.MinimumWidth = 6;
-            this.bumen.Name = "bumen";
-            this.bumen.Width = 125;
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "电话";
-            this.phone.MinimumWidth = 6;
-            this.phone.Name = "phone";
-            this.phone.Width = 125;
-            // 
-            // loginid
-            // 
-            this.loginid.DataPropertyName = "loginid";
-            this.loginid.HeaderText = "账号";
-            this.loginid.MinimumWidth = 6;
-            this.loginid.Name = "loginid";
-            this.loginid.Width = 125;
-            // 
-            // password
-            // 
-            this.password.DataPropertyName = "password";
-            this.password.HeaderText = "密码";
-            this.password.MinimumWidth = 6;
-            this.password.Name = "password";
-            this.password.Width = 125;
-            // 
-            // confirm
-            // 
-            this.confirm.DataPropertyName = "confirm";
-            this.confirm.HeaderText = "确认";
-            this.confirm.MinimumWidth = 6;
-            this.confirm.Name = "confirm";
-            this.confirm.Width = 125;
-            // 
             // PeopleSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 555);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button6);
@@ -436,7 +432,9 @@
             this.Name = "PeopleSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "人员管理";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PeopleSet_Load);
+            this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

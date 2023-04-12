@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -43,7 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -51,7 +50,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.选取 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,12 +58,16 @@
             this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.btnExit);
@@ -78,7 +80,6 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
             this.panel1.Location = new System.Drawing.Point(272, 139);
@@ -211,14 +212,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "答案：";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(99, 67);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(436, 25);
-            this.textBox2.TabIndex = 5;
-            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -283,6 +276,11 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.选取,
@@ -300,22 +298,17 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1030, 530);
+            this.dataGridView1.Size = new System.Drawing.Size(1095, 530);
             this.dataGridView1.TabIndex = 31;
             this.dataGridView1.Visible = false;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // 选取
             // 
             this.选取.HeaderText = "选择";
             this.选取.MinimumWidth = 6;
             this.选取.Name = "选取";
-            this.选取.Width = 40;
             // 
             // ID
             // 
@@ -324,7 +317,6 @@
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 40;
             // 
             // image
             // 
@@ -332,29 +324,26 @@
             this.image.HeaderText = "图片地址";
             this.image.MinimumWidth = 10;
             this.image.Name = "image";
-            this.image.Width = 300;
             // 
             // optionA
             // 
             this.optionA.DataPropertyName = "optionA";
-            dataGridViewCellStyle1.NullValue = "操作";
-            this.optionA.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.NullValue = "操作";
+            this.optionA.DefaultCellStyle = dataGridViewCellStyle7;
             this.optionA.HeaderText = "选项A";
             this.optionA.MinimumWidth = 6;
             this.optionA.Name = "optionA";
             this.optionA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.optionA.Width = 125;
             // 
             // optionB
             // 
             this.optionB.DataPropertyName = "optionB";
-            dataGridViewCellStyle2.NullValue = "删除";
-            this.optionB.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.NullValue = "删除";
+            this.optionB.DefaultCellStyle = dataGridViewCellStyle8;
             this.optionB.HeaderText = "选项B";
             this.optionB.MinimumWidth = 6;
             this.optionB.Name = "optionB";
             this.optionB.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.optionB.Width = 125;
             // 
             // optionC
             // 
@@ -362,7 +351,6 @@
             this.optionC.HeaderText = "选项C";
             this.optionC.MinimumWidth = 6;
             this.optionC.Name = "optionC";
-            this.optionC.Width = 125;
             // 
             // optionD
             // 
@@ -370,7 +358,6 @@
             this.optionD.HeaderText = "选项D";
             this.optionD.MinimumWidth = 6;
             this.optionD.Name = "optionD";
-            this.optionD.Width = 125;
             // 
             // answer
             // 
@@ -378,7 +365,34 @@
             this.answer.HeaderText = "正确答案";
             this.answer.MinimumWidth = 6;
             this.answer.Name = "answer";
-            this.answer.Width = 125;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "AB",
+            "AC",
+            "AD",
+            "BC",
+            "BD",
+            "CD",
+            "ABC",
+            "BCD",
+            "ABCD",
+            "Y",
+            "N"});
+            this.comboBox1.Location = new System.Drawing.Point(99, 67);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(436, 23);
+            this.comboBox1.TabIndex = 17;
             // 
             // LPSB
             // 
@@ -393,6 +407,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "LPSB";
             this.Text = "零件识别";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.LPSB_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -415,7 +430,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Button button6;
@@ -433,5 +447,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn optionC;
         private System.Windows.Forms.DataGridViewTextBoxColumn optionD;
         private System.Windows.Forms.DataGridViewTextBoxColumn answer;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

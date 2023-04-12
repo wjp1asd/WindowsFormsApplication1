@@ -83,6 +83,16 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.xieya = new System.Windows.Forms.TextBox();
+            this.dj = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.stop = new System.Windows.Forms.ComboBox();
+            this.start = new System.Windows.Forms.ComboBox();
+            this.jy = new System.Windows.Forms.ComboBox();
+            this.bt = new System.Windows.Forms.ComboBox();
+            this.PLCtextBox8 = new System.Windows.Forms.ComboBox();
             this.button8 = new System.Windows.Forms.Button();
             this.label34 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -98,16 +108,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.PLCtextBox8 = new System.Windows.Forms.ComboBox();
-            this.bt = new System.Windows.Forms.ComboBox();
-            this.jy = new System.Windows.Forms.ComboBox();
-            this.start = new System.Windows.Forms.ComboBox();
-            this.stop = new System.Windows.Forms.ComboBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.dj = new System.Windows.Forms.TextBox();
-            this.xieya = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -608,6 +608,100 @@
             this.groupBox1.Text = "系统配置";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // xieya
+            // 
+            this.xieya.Location = new System.Drawing.Point(83, 516);
+            this.xieya.MaxLength = 3237;
+            this.xieya.Name = "xieya";
+            this.xieya.Size = new System.Drawing.Size(72, 25);
+            this.xieya.TabIndex = 86;
+            // 
+            // dj
+            // 
+            this.dj.Location = new System.Drawing.Point(132, 680);
+            this.dj.Name = "dj";
+            this.dj.Size = new System.Drawing.Size(65, 25);
+            this.dj.TabIndex = 85;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.ForeColor = System.Drawing.Color.IndianRed;
+            this.label37.Location = new System.Drawing.Point(16, 659);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(130, 15);
+            this.label37.TabIndex = 84;
+            this.label37.Text = "脉冲输出0-7（PL)";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.ForeColor = System.Drawing.Color.IndianRed;
+            this.label36.Location = new System.Drawing.Point(16, 597);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(130, 15);
+            this.label36.TabIndex = 83;
+            this.label36.Text = "模拟输入0-7（AI)";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.ForeColor = System.Drawing.Color.IndianRed;
+            this.label35.Location = new System.Drawing.Point(16, 492);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(130, 15);
+            this.label35.TabIndex = 81;
+            this.label35.Text = "数字输入0-7（DI)";
+            // 
+            // stop
+            // 
+            this.stop.FormattingEnabled = true;
+            this.stop.Items.AddRange(new object[] {
+            "1"});
+            this.stop.Location = new System.Drawing.Point(551, 473);
+            this.stop.Name = "stop";
+            this.stop.Size = new System.Drawing.Size(90, 23);
+            this.stop.TabIndex = 80;
+            // 
+            // start
+            // 
+            this.start.FormattingEnabled = true;
+            this.start.Items.AddRange(new object[] {
+            "1"});
+            this.start.Location = new System.Drawing.Point(551, 442);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(90, 23);
+            this.start.TabIndex = 79;
+            // 
+            // jy
+            // 
+            this.jy.FormattingEnabled = true;
+            this.jy.Items.AddRange(new object[] {
+            "8"});
+            this.jy.Location = new System.Drawing.Point(376, 443);
+            this.jy.Name = "jy";
+            this.jy.Size = new System.Drawing.Size(90, 23);
+            this.jy.TabIndex = 78;
+            // 
+            // bt
+            // 
+            this.bt.FormattingEnabled = true;
+            this.bt.Items.AddRange(new object[] {
+            "115200",
+            "9800"});
+            this.bt.Location = new System.Drawing.Point(224, 443);
+            this.bt.Name = "bt";
+            this.bt.Size = new System.Drawing.Size(90, 23);
+            this.bt.TabIndex = 77;
+            // 
+            // PLCtextBox8
+            // 
+            this.PLCtextBox8.FormattingEnabled = true;
+            this.PLCtextBox8.Location = new System.Drawing.Point(83, 443);
+            this.PLCtextBox8.Name = "PLCtextBox8";
+            this.PLCtextBox8.Size = new System.Drawing.Size(72, 23);
+            this.PLCtextBox8.TabIndex = 76;
+            // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(480, 413);
@@ -725,110 +819,18 @@
             this.label24.TabIndex = 60;
             this.label24.Text = "离线题：";
             // 
-            // PLCtextBox8
-            // 
-            this.PLCtextBox8.FormattingEnabled = true;
-            this.PLCtextBox8.Location = new System.Drawing.Point(83, 443);
-            this.PLCtextBox8.Name = "PLCtextBox8";
-            this.PLCtextBox8.Size = new System.Drawing.Size(72, 23);
-            this.PLCtextBox8.TabIndex = 76;
-            // 
-            // bt
-            // 
-            this.bt.FormattingEnabled = true;
-            this.bt.Items.AddRange(new object[] {
-            "115200",
-            "9800"});
-            this.bt.Location = new System.Drawing.Point(224, 443);
-            this.bt.Name = "bt";
-            this.bt.Size = new System.Drawing.Size(90, 23);
-            this.bt.TabIndex = 77;
-            // 
-            // jy
-            // 
-            this.jy.FormattingEnabled = true;
-            this.jy.Items.AddRange(new object[] {
-            "8"});
-            this.jy.Location = new System.Drawing.Point(376, 443);
-            this.jy.Name = "jy";
-            this.jy.Size = new System.Drawing.Size(90, 23);
-            this.jy.TabIndex = 78;
-            // 
-            // start
-            // 
-            this.start.FormattingEnabled = true;
-            this.start.Items.AddRange(new object[] {
-            "1"});
-            this.start.Location = new System.Drawing.Point(551, 442);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(90, 23);
-            this.start.TabIndex = 79;
-            // 
-            // stop
-            // 
-            this.stop.FormattingEnabled = true;
-            this.stop.Items.AddRange(new object[] {
-            "1"});
-            this.stop.Location = new System.Drawing.Point(551, 473);
-            this.stop.Name = "stop";
-            this.stop.Size = new System.Drawing.Size(90, 23);
-            this.stop.TabIndex = 80;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.ForeColor = System.Drawing.Color.IndianRed;
-            this.label35.Location = new System.Drawing.Point(16, 492);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(130, 15);
-            this.label35.TabIndex = 81;
-            this.label35.Text = "数字输入0-7（DI)";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.ForeColor = System.Drawing.Color.IndianRed;
-            this.label36.Location = new System.Drawing.Point(16, 597);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(130, 15);
-            this.label36.TabIndex = 83;
-            this.label36.Text = "模拟输入0-7（AI)";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.ForeColor = System.Drawing.Color.IndianRed;
-            this.label37.Location = new System.Drawing.Point(16, 659);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(130, 15);
-            this.label37.TabIndex = 84;
-            this.label37.Text = "脉冲输出0-7（PL)";
-            // 
-            // dj
-            // 
-            this.dj.Location = new System.Drawing.Point(132, 680);
-            this.dj.Name = "dj";
-            this.dj.Size = new System.Drawing.Size(65, 25);
-            this.dj.TabIndex = 85;
-            // 
-            // xieya
-            // 
-            this.xieya.Location = new System.Drawing.Point(83, 516);
-            this.xieya.MaxLength = 3237;
-            this.xieya.Name = "xieya";
-            this.xieya.Size = new System.Drawing.Size(72, 25);
-            this.xieya.TabIndex = 86;
-            // 
             // Settings1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 587);
+            this.ClientSize = new System.Drawing.Size(821, 587);
             this.Controls.Add(this.groupBox1);
             this.Name = "Settings1";
             this.Text = "系统设置";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Settings1_Load);
+            this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Settings1_Scroll);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

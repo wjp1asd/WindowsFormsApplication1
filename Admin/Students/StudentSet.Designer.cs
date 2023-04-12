@@ -34,7 +34,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4con = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox7status = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,9 +50,6 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -63,6 +59,10 @@
             this.bumen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -107,8 +107,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox4con);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.textBox7status);
             this.panel1.Controls.Add(this.label5);
@@ -123,7 +123,7 @@
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(258, 134);
+            this.panel1.Location = new System.Drawing.Point(329, 155);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(564, 330);
             this.panel1.TabIndex = 53;
@@ -139,14 +139,6 @@
             this.label6.Size = new System.Drawing.Size(112, 27);
             this.label6.TabIndex = 51;
             this.label6.Text = "考试日期：";
-            // 
-            // textBox4con
-            // 
-            this.textBox4con.Location = new System.Drawing.Point(354, 139);
-            this.textBox4con.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox4con.Name = "textBox4con";
-            this.textBox4con.Size = new System.Drawing.Size(171, 25);
-            this.textBox4con.TabIndex = 56;
             // 
             // label7
             // 
@@ -304,6 +296,11 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pick,
@@ -323,6 +320,71 @@
             this.dataGridView1.TabIndex = 51;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // pick
+            // 
+            this.pick.HeaderText = "选择";
+            this.pick.MinimumWidth = 6;
+            this.pick.Name = "pick";
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "Id";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.FalseValue = "0";
+            this.status.HeaderText = "状态";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.TrueValue = "1";
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "姓名";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            // 
+            // idcard
+            // 
+            this.idcard.DataPropertyName = "idcard";
+            this.idcard.HeaderText = "身份证";
+            this.idcard.MinimumWidth = 6;
+            this.idcard.Name = "idcard";
+            // 
+            // sex
+            // 
+            this.sex.DataPropertyName = "sex";
+            this.sex.HeaderText = "性别";
+            this.sex.MinimumWidth = 6;
+            this.sex.Name = "sex";
+            // 
+            // bumen
+            // 
+            this.bumen.DataPropertyName = "bumen";
+            this.bumen.HeaderText = "单位";
+            this.bumen.MinimumWidth = 6;
+            this.bumen.Name = "bumen";
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "电话";
+            this.phone.MinimumWidth = 6;
+            this.phone.Name = "phone";
+            // 
+            // date
+            // 
+            this.date.DataPropertyName = "date";
+            this.date.HeaderText = "考试日期";
+            this.date.MinimumWidth = 6;
+            this.date.Name = "date";
             // 
             // button6
             // 
@@ -354,91 +416,24 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // pick
+            // dateTimePicker1
             // 
-            this.pick.HeaderText = "选择";
-            this.pick.MinimumWidth = 6;
-            this.pick.Name = "pick";
-            this.pick.Width = 60;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "Id";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 60;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.FalseValue = "0";
-            this.status.HeaderText = "状态";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.TrueValue = "1";
-            this.status.Width = 125;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "姓名";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.Width = 125;
-            // 
-            // idcard
-            // 
-            this.idcard.DataPropertyName = "idcard";
-            this.idcard.HeaderText = "身份证";
-            this.idcard.MinimumWidth = 6;
-            this.idcard.Name = "idcard";
-            this.idcard.Width = 125;
-            // 
-            // sex
-            // 
-            this.sex.DataPropertyName = "sex";
-            this.sex.HeaderText = "性别";
-            this.sex.MinimumWidth = 6;
-            this.sex.Name = "sex";
-            this.sex.Width = 125;
-            // 
-            // bumen
-            // 
-            this.bumen.DataPropertyName = "bumen";
-            this.bumen.HeaderText = "单位";
-            this.bumen.MinimumWidth = 6;
-            this.bumen.Name = "bumen";
-            this.bumen.Width = 125;
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "电话";
-            this.phone.MinimumWidth = 6;
-            this.phone.Name = "phone";
-            this.phone.Width = 125;
-            // 
-            // date
-            // 
-            this.date.DataPropertyName = "date";
-            this.date.HeaderText = "考试日期";
-            this.date.MinimumWidth = 6;
-            this.date.Name = "date";
-            this.date.Width = 125;
+            this.dateTimePicker1.Location = new System.Drawing.Point(354, 136);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 25);
+            this.dateTimePicker1.TabIndex = 57;
             // 
             // StudentSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 555);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button6);
@@ -446,6 +441,7 @@
             this.Name = "StudentSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考生管理";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StudentSet_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -463,7 +459,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4con;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox7status;
         private System.Windows.Forms.Label label5;
@@ -492,5 +487,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn bumen;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

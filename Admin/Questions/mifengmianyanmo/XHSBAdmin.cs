@@ -1,4 +1,5 @@
 ﻿
+using AutoWindowsSize;
 using System;
 using System.Configuration;
 using System.Data;
@@ -216,7 +217,7 @@ namespace WindowsFormsApplication1.YanMO
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string question = this.txtUsername.Text;
-            string answer = this.textBox2.Text;
+            string answer = this.comboBox1.Text;
             string oa = this.textBox3.Text;
             string ob = this.textBox4.Text;
             string oc = this.textBox5.Text;
@@ -241,7 +242,7 @@ namespace WindowsFormsApplication1.YanMO
                   "'" + od.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            MessageBox.Show(strcomm);
+          //  MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
@@ -263,11 +264,25 @@ namespace WindowsFormsApplication1.YanMO
 
             this.InitTable(sql);
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
 
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+ 
         private void XHSBAdmin_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -19,6 +20,11 @@ namespace WindowsFormsApplication1.Settings
         public string a, b, c, d, f;
         public string a1, a2, a3, a4, a5, a6, a7, a8;
         public string a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23;
+
+        private void Settings1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
 
         private void dj_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -74,10 +80,23 @@ namespace WindowsFormsApplication1.Settings
         {
 
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+     
 
         private void Settings1_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
+            this.SizeChanged += groupBox1_Resize;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
@@ -227,7 +246,7 @@ namespace WindowsFormsApplication1.Settings
                 + "' where id=1";
 
 
-            MessageBox.Show(str1);
+          //  MessageBox.Show(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();

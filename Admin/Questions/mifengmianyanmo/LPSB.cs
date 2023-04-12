@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -103,8 +104,11 @@ namespace WindowsFormsApplication1.YanMO
 
         private void button6_Click(object sender, EventArgs e)
         {
+            mf f = new mf();
+            f.Show();
             this.Close();
-            this.Dispose();
+
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -209,7 +213,7 @@ namespace WindowsFormsApplication1.YanMO
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string question = this.txtUsername.Text.Trim();
-            string answer = this.textBox2.Text.Trim();
+            string answer = this.comboBox1.Text.Trim();
             string oa = this.textBox3.Text.Trim();
             string ob = this.textBox4.Text.Trim();
             string oc = this.textBox5.Text.Trim();
@@ -233,12 +237,15 @@ namespace WindowsFormsApplication1.YanMO
                   "'" + od.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            MessageBox.Show(strcomm);
+          //  MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
 
             con.Close();
+            string sql = "select * from " + TableName;
+
+            this.InitTable(sql);
             MessageBox.Show("已更新");
         }
 
@@ -286,8 +293,9 @@ namespace WindowsFormsApplication1.YanMO
 
         private void button5_Click_2(object sender, EventArgs e)
         {
+            string sPath1 = Application.StartupPath + "\\Images\\题库照片\\";
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Application.StartupPath;
+            openFileDialog.InitialDirectory = sPath1;
 
             openFileDialog.RestoreDirectory = true;
             openFileDialog.FilterIndex = 1;
@@ -300,11 +308,30 @@ namespace WindowsFormsApplication1.YanMO
 
             }
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
 
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+        private void StudentSet_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
         private void LPSB_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
     }
 }
