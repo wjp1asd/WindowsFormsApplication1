@@ -464,7 +464,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 // AI解析
                 byte[] tt0 = buff.Skip(4).Take(4).ToArray();
-                t1 = ShowBy(tt1, 1);
+             //   t1 = ShowBy(tt1, 1);
                // DI解析
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
                 string a = Convert.ToString(tt1[0], 2);
