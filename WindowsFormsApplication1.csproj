@@ -254,34 +254,34 @@
     <Compile Include="Exam\Exam1.Designer.cs">
       <DependentUpon>Exam1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\LBJForm.cs">
+    <Compile Include="Exam\LPJSB\LBJForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\LBJForm.Designer.cs">
+    <Compile Include="Exam\LPJSB\LBJForm.Designer.cs">
       <DependentUpon>LBJForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\gongyijiaoyan.cs">
+    <Compile Include="Exam\JYGY\gongyijiaoyan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\gongyijiaoyan.Designer.cs">
+    <Compile Include="Exam\JYGY\gongyijiaoyan.Designer.cs">
       <DependentUpon>gongyijiaoyan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\JiaoYan.cs">
+    <Compile Include="Exam\OFF\JiaoYan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\JiaoYan.Designer.cs">
+    <Compile Include="Exam\OFF\JiaoYan.Designer.cs">
       <DependentUpon>JiaoYan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\jiaoyancanshu.cs">
+    <Compile Include="Exam\OFF\jiaoyancanshu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\jiaoyancanshu.Designer.cs">
+    <Compile Include="Exam\OFF\jiaoyancanshu.Designer.cs">
       <DependentUpon>jiaoyancanshu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\linpeijianshibie.cs">
+    <Compile Include="Exam\LPJSB\linpeijianshibie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\linpeijianshibie.Designer.cs">
+    <Compile Include="Exam\LPJSB\linpeijianshibie.Designer.cs">
       <DependentUpon>linpeijianshibie.cs</DependentUpon>
     </Compile>
     <Compile Include="Exam\Score1.cs">
@@ -290,16 +290,16 @@
     <Compile Include="Exam\Score1.Designer.cs">
       <DependentUpon>Score1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\zaixianjiaoyan.cs">
+    <Compile Include="Exam\ON\zaixianjiaoyan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\zaixianjiaoyan.Designer.cs">
+    <Compile Include="Exam\ON\zaixianjiaoyan.Designer.cs">
       <DependentUpon>zaixianjiaoyan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\zaixianjiaoyan2.cs">
+    <Compile Include="Exam\ON\zaixianjiaoyan2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\zaixianjiaoyan2.Designer.cs">
+    <Compile Include="Exam\ON\zaixianjiaoyan2.Designer.cs">
       <DependentUpon>zaixianjiaoyan2.cs</DependentUpon>
     </Compile>
     <Compile Include="IDCardReader.cs" />
@@ -308,34 +308,34 @@
     <Compile Include="Models\Fuc.cs" />
     <Compile Include="Models\fullscreen.cs" />
     <Compile Include="Models\datahelp.cs" />
-    <Compile Include="Exam\Choose.cs">
+    <Compile Include="Choose\Choose.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\Choose.Designer.cs">
+    <Compile Include="Choose\Choose.Designer.cs">
       <DependentUpon>Choose.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\Info.cs">
+    <Compile Include="Choose\Info.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\Info.Designer.cs">
+    <Compile Include="Choose\Info.Designer.cs">
       <DependentUpon>Info.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\OFF.cs">
+    <Compile Include="Exam\OFF\OFF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\OFF.Designer.cs">
+    <Compile Include="Exam\OFF\OFF.Designer.cs">
       <DependentUpon>OFF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\ON.cs">
+    <Compile Include="Exam\ON\ON.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\ON.Designer.cs">
+    <Compile Include="Exam\ON\ON.Designer.cs">
       <DependentUpon>ON.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\Print.cs">
+    <Compile Include="Choose\Print.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\Print.Designer.cs">
+    <Compile Include="Choose\Print.Designer.cs">
       <DependentUpon>Print.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Import.cs">
@@ -344,10 +344,10 @@
     <Compile Include="Admin\Import.Designer.cs">
       <DependentUpon>Import.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\MFYM.cs">
+    <Compile Include="Exam\MF\MFYM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\MFYM.Designer.cs">
+    <Compile Include="Exam\MF\MFYM.Designer.cs">
       <DependentUpon>MFYM.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Score.cs" />
@@ -396,10 +396,10 @@
     <Compile Include="kemu.Designer.cs">
       <DependentUpon>kemu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\ID.cs">
+    <Compile Include="Choose\ID.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\ID.Designer.cs">
+    <Compile Include="Choose\ID.Designer.cs">
       <DependentUpon>ID.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
@@ -553,49 +553,49 @@
     <EmbeddedResource Include="Admin\Students\studentRecord.resx">
       <DependentUpon>studentRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\Choose.resx">
+    <EmbeddedResource Include="Choose\Choose.resx">
       <DependentUpon>Choose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\Exam1.resx">
       <DependentUpon>Exam1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\gongyijiaoyan.resx">
+    <EmbeddedResource Include="Exam\JYGY\gongyijiaoyan.resx">
       <DependentUpon>gongyijiaoyan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\ID.resx">
+    <EmbeddedResource Include="Choose\ID.resx">
       <DependentUpon>ID.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\Info.resx">
+    <EmbeddedResource Include="Choose\Info.resx">
       <DependentUpon>Info.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\JiaoYan.resx">
+    <EmbeddedResource Include="Exam\OFF\JiaoYan.resx">
       <DependentUpon>JiaoYan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\jiaoyancanshu.resx">
+    <EmbeddedResource Include="Exam\OFF\jiaoyancanshu.resx">
       <DependentUpon>jiaoyancanshu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\LBJForm.resx">
+    <EmbeddedResource Include="Exam\LPJSB\LBJForm.resx">
       <DependentUpon>LBJForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\linpeijianshibie.resx">
+    <EmbeddedResource Include="Exam\LPJSB\linpeijianshibie.resx">
       <DependentUpon>linpeijianshibie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\OFF.resx">
+    <EmbeddedResource Include="Exam\OFF\OFF.resx">
       <DependentUpon>OFF.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\ON.resx">
+    <EmbeddedResource Include="Exam\ON\ON.resx">
       <DependentUpon>ON.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\Print.resx">
+    <EmbeddedResource Include="Choose\Print.resx">
       <DependentUpon>Print.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\Score1.resx">
       <DependentUpon>Score1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\zaixianjiaoyan.resx">
+    <EmbeddedResource Include="Exam\ON\zaixianjiaoyan.resx">
       <DependentUpon>zaixianjiaoyan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\zaixianjiaoyan2.resx">
+    <EmbeddedResource Include="Exam\ON\zaixianjiaoyan2.resx">
       <DependentUpon>zaixianjiaoyan2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Goals\GoalSet.resx">
@@ -604,7 +604,7 @@
     <EmbeddedResource Include="Admin\Import.resx">
       <DependentUpon>Import.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\MFYM.resx">
+    <EmbeddedResource Include="Exam\MF\MFYM.resx">
       <DependentUpon>MFYM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\People\PeopleSet.resx">

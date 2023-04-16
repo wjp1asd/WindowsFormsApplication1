@@ -85,6 +85,7 @@
             this.button2.TabIndex = 36;
             this.button2.Text = "填写记录";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button4
             // 
@@ -97,6 +98,7 @@
             this.button4.TabIndex = 37;
             this.button4.Text = "考试完成";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // OFF
             // 

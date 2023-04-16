@@ -7,9 +7,7 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class Exam1 : Form
     {
-#pragma warning disable CS0169 // 从不使用字段“Exam1.t”
-        TestRecord t;
-#pragma warning restore CS0169 // 从不使用字段“Exam1.t”
+
         String qr;
         public Exam1(String qrcode = "mXjjwVcvXizfGcnbOF9CKw==")
         {
@@ -36,7 +34,7 @@ namespace WindowsFormsApplication1.Exam
 
 
             //    MessageBox.Show(a.color1);
-            switch (a.Status)
+            switch (datahelp.status)
             {
                 case 0:
                     this.button2.Enabled = false;

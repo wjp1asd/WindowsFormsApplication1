@@ -57,7 +57,7 @@ namespace WindowsFormsApplication1.Exam
             if (score < 60)
             {
 
-                this.label2.Text = "考得太差，好好复习吧";
+            
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
 
@@ -66,7 +66,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.lblscore.BackColor = Color.YellowGreen;
 
-                this.label2.Text = "成绩不理想，继续努力";
+             
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
             }
@@ -74,7 +74,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.lblscore.BackColor = Color.Yellow;
 
-                this.label2.Text = "成绩不理想，继续加油";
+             
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
 
@@ -83,7 +83,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.lblscore.BackColor = Color.Green;
 
-                this.label2.Text = "成绩很好，GOOD!";
+          
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
 
@@ -92,7 +92,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.lblscore.BackColor = Color.Green;
 
-                this.label2.Text = "你太棒了，Perfect!";
+              
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
             }
@@ -147,6 +147,14 @@ namespace WindowsFormsApplication1.Exam
         {
             ShowScore();
             AddStudentScore();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            datahelp.CurrentStep = 2;
+            OFF of =new OFF(datahelp.QId);
+            of.Show();
+            this.Close();
         }
     }
 

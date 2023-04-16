@@ -27,8 +27,9 @@ namespace WindowsFormsApplication1
         public static int time = 5;
         public static int stateTime = 1;
         // 考试状态
-        private int status = 0;
-       
+        public static int status = 0;
+        //考试步走
+        public static int CurrentStep= 1;
         // USB 接口定义
         public string id;
         public string print;
@@ -44,7 +45,7 @@ namespace WindowsFormsApplication1
         public string mfzj = "1";
         // 题型数量
         public int lxnum, zxnum, gynum, xhnum, lpjnum, yngnum;
-        public int Status { get => status; set => status = value; }
+    
 
         public void Initc()
         {

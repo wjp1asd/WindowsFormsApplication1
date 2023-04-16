@@ -83,6 +83,35 @@ namespace WindowsFormsApplication1.Exam
         }
         private void OFF_Load(object sender, EventArgs e)
         {
+            switch (datahelp.CurrentStep) {
+                case 1:
+
+                    this.button3.Enabled = true;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+                    break;
+                case 2:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = true;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+                    break;
+                case 3:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = true;
+                    this.button4.Enabled = false;
+                    break;
+                case 4:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = true;
+                    break;
+
+            }
+
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
@@ -90,6 +119,24 @@ namespace WindowsFormsApplication1.Exam
 
         private void label2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            datahelp.CurrentStep = 4;
+            Record r=new Record(datahelp.QId);
+            r.Show();
+            this.Close();
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            datahelp.status=1;
+            Exam1 e1 =new Exam1();
+            e1.Show();
+            this.Close();
 
         }
     }

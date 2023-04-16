@@ -836,7 +836,11 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
+            datahelp.CurrentStep = 3;
             this.Close();
+            OFF of = new OFF(datahelp.QId);
+            of.Show();
+        
         }
 
         Thread readDI;
