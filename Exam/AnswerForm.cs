@@ -15,24 +15,27 @@ namespace WindowsFormsApplication1
         private void Form5_Load(object sender, EventArgs e)
         {
             ShowButtoAndLable();
-            this.WindowState = FormWindowState.Maximized;
+           // this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void ShowButtoAndLable()
         {
 
+            datahelp c=new datahelp();
+            c.Initc();
+            int num = c.lxnum;
             int btnX = 20;
             int btnY = 60;
             int IblX = 90;
             int IblY = 65;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < num; i++)
             {
                 Button btn = new Button();
                 btn.Location = new Point(btnX, btnY);
                 btn.Text = string.Format("第{0}题", i + 1);
                 btn.Tag = i;
-                btn.Click += new EventHandler(btn_Click);
+               // btn.Click += new EventHandler(btn_Click);
                 btn.Size = new Size(60, 23);
                 Label Ibl = new Label();
                 Ibl.Location = new Point(IblX, IblY);

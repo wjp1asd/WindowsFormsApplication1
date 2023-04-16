@@ -49,8 +49,7 @@ namespace WindowsFormsApplication1
         {
             //返回抽题数据
 
-            if (xx.Length > 0)
-            {
+           
                 String answer;
                 List<String> answerList = new List<string>();
                 string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -59,7 +58,7 @@ namespace WindowsFormsApplication1
 
                 SqlCommand com = new SqlCommand(sql, con);
                 con.Open();
-               // MessageBox.Show(sql);
+             //  MessageBox.Show(sql);
                 SqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
@@ -75,14 +74,7 @@ namespace WindowsFormsApplication1
 
 
                 }
-                else { answer = ""; } 
-               
-
-            }
-            else {
-
-                answer = "错误";
-            }
+           // MessageBox.Show(answer);
             return answer;
         }
         public String ChooseLixian()

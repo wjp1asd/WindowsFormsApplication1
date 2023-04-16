@@ -93,6 +93,7 @@
             this.lblAllscore.Name = "lblAllscore";
             this.lblAllscore.Size = new System.Drawing.Size(400, 25);
             this.lblAllscore.TabIndex = 12;
+            this.lblAllscore.Click += new System.EventHandler(this.lblAllscore_Click_1);
             // 
             // lblscore
             // 
@@ -151,6 +152,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Score1";
             this.Text = "得分情况";
+            this.Load += new System.EventHandler(this.Score1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

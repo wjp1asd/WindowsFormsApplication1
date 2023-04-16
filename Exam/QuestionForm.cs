@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using AutoWindowsSize;
+using Sunny.UI;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -12,9 +13,12 @@ namespace WindowsFormsApplication1
 
 
     {
+        int num = 1;
+       
         Fuc f = new Fuc();
         TestRecord t;
         QuestionA qq = new QuestionA();
+        string []correct;
         public QuestionForm()
         {
             InitializeComponent();
@@ -22,6 +26,7 @@ namespace WindowsFormsApplication1
         public QuestionForm(String qrcode, String subtype = "0")
         {
             InitializeComponent();
+            
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
@@ -66,16 +71,7 @@ namespace WindowsFormsApplication1
                     {
                         datahelp.QuestionIds = t.Lxquestions.Split(',');
                         datahelp.SubId = 0;
-                        try
-                        {
-                            datahelp.Answer = qq.Answer(t.Lxquestions).Split(',');
-
-                        }
-                        catch (Exception)
-                        {
-
-                            throw ;
-                        }
+                     
                        
                     }
                     else {
@@ -90,15 +86,7 @@ namespace WindowsFormsApplication1
                     {
                         datahelp.QuestionIds = t.Zquestions.Split(',');
                         datahelp.SubId = 1;
-                        try
-                        {
-                            datahelp.Answer = qq.Answer(t.Zquestions).Split(',');
-                        }
-                        catch (Exception)
-                        {
-
-                            throw;
-                        }
+                  
                        
                     }
                     else {
@@ -125,10 +113,19 @@ namespace WindowsFormsApplication1
 
         private void Form4_Load(object sender, EventArgs e)
         {
+             datahelp c = new datahelp();
+             c.Initc();
+             num = c.lxnum;
+            this.label2.Text = "总题数：" + (num) + "，当前：";
+            datahelp.Answer = new string[num + 1];
+            datahelp.UserAnswer = new string[num + 1];
+            datahelp.Correct = new string[num + 1];
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
             InitbtnUp();
             InitbtnNext();
             ShowInfo();
-
         }
         private void InitbtnUp()
         {
@@ -150,7 +147,7 @@ namespace WindowsFormsApplication1
         }
         private void InitbtnNext()
         {
-            if (datahelp.CurrentQuestion > 9)
+            if (datahelp.CurrentQuestion == num)
             {
                 this.btnNext.Text = "答题卡";
             }
@@ -158,7 +155,7 @@ namespace WindowsFormsApplication1
         }
         private void LoadQuestion()
         {
-
+          
             string questionId = datahelp.QuestionIds[datahelp.CurrentQuestion - 1];
 
 
@@ -171,13 +168,22 @@ namespace WindowsFormsApplication1
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
+                string a = reader["optionA"].ToString();
+                string b = reader["optionB"].ToString();
+                string c = reader["optionC"].ToString();
+                string d = reader["optionD"].ToString();
+                datahelp.curAnswer= reader["answer"].ToString();
+                this.label7.Text = datahelp.curAnswer;
+                this.label10.Text = "[" + reader["type"].ToString().Trim() + "]";
                 if (reader["type"].ToString().Trim() == "判断题")
                 {
                     this.txtQuestionContent.Text = reader["question"].ToString();
-                    this.rdbA.Text = "对 " + reader["optionA"].ToString();
-                    this.rdbB.Text = "错 " + reader["optionB"].ToString();
-                    this.rbdC.Text = "";
-                    this.rdbD.Text = "";
+                    this.rdbA.Text = "对 ";
+                    this.rdbA.Tag = "Y";
+                    this.rdbB.Text = "错 ";
+                    this.rdbB.Tag = "N";
+                    this.rdbC.Hide();
+                    this.rdbD.Hide();
 
 
 
@@ -185,10 +191,49 @@ namespace WindowsFormsApplication1
                 else
                 {
                     this.txtQuestionContent.Text = reader["question"].ToString();
-                    this.rdbA.Text = "A: " + reader["optionA"].ToString();
-                    this.rdbB.Text = "B: " + reader["optionB"].ToString();
-                    this.rbdC.Text = "C: " + reader["optionC"].ToString();
-                    this.rdbD.Text = "D: " + reader["optionD"].ToString();
+                    this.rdbA.Show();
+                    this.rdbA.Tag = "A";
+                    this.rdbB.Show();
+                    this.rdbB.Tag = "B";
+                    this.rdbC.Show();   
+                    this.rdbC.Tag = "C";
+                    this.rdbD.Show();
+                    this.rdbD.Tag = "D";
+
+                    if (a.Trim().Length > 0)
+                    {
+                        this.rdbA.Text = "A: " + a;
+                    }
+                    else {
+                        this.rdbA.Hide();
+                    }
+                    if (b.Trim().Length > 0)
+                    {
+                        this.rdbB.Text = "B: " + b;
+                    }
+                    else
+                    {
+                        this.rdbB.Hide();
+                    }
+                    if (c.Trim().Length > 0)
+                    {
+                        this.rdbC.Text = "C: " + c;
+                    }
+                    else
+                    {
+                        this.rdbC.Hide();
+                    }
+                    if (d.Trim().Length > 0)
+                    {
+                        this.rdbD.Text = "D: " + d;
+                    }
+                    else
+                    {
+                        this.rdbD.Hide();
+                    }
+                 
+                   
+                  
 
                 }
 
@@ -202,22 +247,47 @@ namespace WindowsFormsApplication1
 
         private void ShowInfo()
         {
-            this.label3.Text = datahelp.CurrentQuestion.ToString();
+             this.label3.Text = ""+ (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
-            this.label7.Text = "系统答案：" + string.Join(",", datahelp.Answer);
-
+           this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
+            this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
 
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (datahelp.CurrentQuestion < 10)
+            if (datahelp.UserAnswer[datahelp.CurrentQuestion - 1]!=null)
+            {
+                checkanswer();
+            }
+            else {
+
+                MessageBox.Show("当前没有选择");
+                return;
+            }
+        
+            option = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
+
+            if (datahelp.CurrentQuestion < num)
             {
                 datahelp.CurrentQuestion++;
                 CheckNextButtonText();
-
                 LoadQuestion();
-                SelectOption();
+                this.rdbA.Checked = false;
+                this.rdbB.Checked = false;
+                this.rdbC.Checked = false;
+                this.rdbD.Checked = false;
+                if (datahelp.UserAnswer[datahelp.CurrentQuestion - 1] != null)
+                {
+
+                    SelectOption();
+                }
+                else {
+                    option = "";
+                    
+                }
+              
+
                 ShowInfo();
             }
             else
@@ -227,6 +297,44 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void checkanswer()
+        {
+            // 用户答案 与系统答案
+            string a=datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
+            string b = datahelp.curAnswer;
+            if (a.Length == b.Length)
+            {
+             
+                char[] a2 = a.ToCharArray();
+                char[] b2 = b.ToCharArray();
+                int cao = 0;
+                foreach (char c in a2)
+                {
+
+                    foreach (char d in b2)
+                    {
+                        if (c == d)
+                        {
+                            cao++;
+                        }
+                    }
+                }
+                if (cao == a.Length)
+                {
+                    datahelp.Correct[datahelp.CurrentQuestion - 1] = "1";
+                }
+                else {
+                    datahelp.Correct[datahelp.CurrentQuestion - 1] = "0";
+                }
+
+            }
+            else {
+                datahelp.Correct[datahelp.CurrentQuestion - 1] = "0";
+
+
+            }
+            
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -253,7 +361,7 @@ namespace WindowsFormsApplication1
 
         private void CheckNextButtonText()
         {
-            if (datahelp.CurrentQuestion < 10)
+            if (datahelp.CurrentQuestion < num)
             {
                 this.btnNext.Text = "下一题";
                 btnUp.Enabled = true;
@@ -270,23 +378,80 @@ namespace WindowsFormsApplication1
             AnswerForm frm = new AnswerForm();
             frm.MdiParent = this.MdiParent;
             frm.Show();
-            this.Close();
+            
         }
         private void SelectOption()
         {
-            switch (datahelp.UserAnswer[datahelp.CurrentQuestion - 1])
+            //需要修改
+            option = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
+            this.rdbA.Checked = false;
+            this.rdbB.Checked = false;
+            this.rdbC.Checked = false;
+            this.rdbD.Checked = false;
+            if (datahelp.UserAnswer[datahelp.CurrentQuestion - 1].Length == 1)
             {
-                case "A": this.rdbA.Checked = true; break;
-                case "B": this.rdbB.Checked = true; break;
-                case "C": this.rbdC.Checked = true; break;
-                case "D": this.rdbD.Checked = true; break;
-                default:
-                    this.rdbA.Checked = false;
-                    this.rdbB.Checked = false;
-                    this.rbdC.Checked = false;
-                    this.rdbD.Checked = false;
-                    break;
+
+                switch (datahelp.UserAnswer[datahelp.CurrentQuestion - 1])
+                {
+                    case "A": this.rdbA.Checked = true; break;
+                    case "Y":
+                        this.rdbA.Checked = true;
+                        this.rdbA.Tag = "Y";
+                        this.rdbC.Hide();
+                        this.rdbD.Hide();
+                        break;
+                    case "B":
+                        this.rdbB.Checked = true;
+                       
+                        break;
+                    case "N": this.rdbB.Checked = true;
+                        this.rdbB.Tag = "N";
+                        this.rdbD.Hide();
+                        this.rdbC.Hide();
+                        break;
+                    case "C": this.rdbC.Checked = true; break;
+                    case "D": this.rdbD.Checked = true; break;
+                    default:
+                        this.rdbA.Checked = false;
+                        this.rdbB.Checked = false;
+                        this.rdbC.Checked = false;
+                        this.rdbD.Checked = false;
+                        break;
+                }
             }
+            else
+            {
+
+                string a = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
+                char[] a2 = a.ToCharArray();
+                foreach (char c in a2)
+                {
+                   
+                    switch (""+c)
+                    {
+                        case "A": this.rdbA.Checked = true; break;
+                        
+                            break;
+                        case "B":
+                            this.rdbB.Checked = true;
+                         
+                            break;
+
+                      
+                        case "C": this.rdbC.Checked = true; break;
+                        case "D": this.rdbD.Checked = true; break;
+                        default:
+                            this.rdbA.Checked = false;
+                            this.rdbB.Checked = false;
+                            this.rdbC.Checked = false;
+                            this.rdbD.Checked = false;
+                            break;
+                    }
+
+                }
+            }
+            
+           
         }
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -295,7 +460,12 @@ namespace WindowsFormsApplication1
             {
                 datahelp.CurrentQuestion--;
                 CheckUpButtonText();
+                this.rdbA.Show();
+                this.rdbB.Show();
+                this.rdbC.Show();
+                this.rdbD.Show();
                 ShowInfo();
+               
                 LoadQuestion();
                 SelectOption();
 
@@ -304,7 +474,7 @@ namespace WindowsFormsApplication1
         }
         private void CheckUpButtonText()
         {
-            if (datahelp.CurrentQuestion > 0)
+            if (datahelp.CurrentQuestion > 1)
             {
                 this.btnUp.Text = "上一题";
 
@@ -317,16 +487,29 @@ namespace WindowsFormsApplication1
             }
         }
 
-
+        string  option="";
 
         private void rdbA_Click(object sender, EventArgs e)
         {
-            RadioButton rdb = (RadioButton)sender;
-            string option = rdb.Tag.ToString();
+            CheckBox rdb = (CheckBox)sender;
+           // option = "";
 
-            datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
-            MessageBox.Show(string.Join("", datahelp.UserAnswer));
+            if (rdb.Checked)
+                {
+                    if (!option.Contains(rdb.Tag.ToString())&& option.Length < 4) {
+                        option += rdb.Tag.ToString();
+                    }
 
+                   
+                }
+                else
+                {
+                  option=  option.Replace(rdb.Tag.ToString(),string.Empty);
+                }
+            
+          
+            datahelp.UserAnswer[datahelp.CurrentQuestion-1] = option;
+           
 
         }
 
@@ -339,7 +522,26 @@ namespace WindowsFormsApplication1
         {
 
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
 
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+
+        private void Choose_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 

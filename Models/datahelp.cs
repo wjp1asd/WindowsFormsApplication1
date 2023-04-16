@@ -5,12 +5,19 @@ namespace WindowsFormsApplication1
 {
     public class datahelp
     {
-        public static string[] QuestionIds = new string[10];
+        // 题库编号
+        public static string[] QuestionIds;
         public static int CurrentQuestion = 1;
         public static int RemainTime = 600;
         public static int LxTime = 900;
-        public static string[] UserAnswer = new string[10];
-        public static string[] Answer = new string[10];
+        // 用户答案
+        public static string[] UserAnswer;
+        // 系统答案
+        public static string[] Answer;
+        // 批改
+        public static string[] Correct;
+        // 当前系统答案
+        public static string curAnswer;
         public static string StudentId = "";
         public static string QId = "mXjjwVcvXizfGcnbOF9CKw==";
         public string name;

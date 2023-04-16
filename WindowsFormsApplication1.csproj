@@ -350,6 +350,7 @@
     <Compile Include="Exam\MFYM.Designer.cs">
       <DependentUpon>MFYM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Score.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\TestRecord.cs" />
     <Compile Include="Models\Wucha.cs" />

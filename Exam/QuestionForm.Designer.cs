@@ -33,21 +33,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.rdbA = new System.Windows.Forms.RadioButton();
             this.txtQuestionContent = new System.Windows.Forms.TextBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblCurrent = new System.Windows.Forms.Label();
-            this.rdbB = new System.Windows.Forms.RadioButton();
-            this.rbdC = new System.Windows.Forms.RadioButton();
-            this.rdbD = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.lbltime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnUp = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.rdbD = new System.Windows.Forms.CheckBox();
+            this.rdbC = new System.Windows.Forms.CheckBox();
+            this.rdbB = new System.Windows.Forms.CheckBox();
+            this.rdbA = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,23 +91,6 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "第       题";
             // 
-            // rdbA
-            // 
-            this.rdbA.AutoSize = true;
-            this.rdbA.BackColor = System.Drawing.Color.Transparent;
-            this.rdbA.Font = new System.Drawing.Font("宋体", 14F);
-            this.rdbA.Location = new System.Drawing.Point(178, 345);
-            this.rdbA.Margin = new System.Windows.Forms.Padding(4);
-            this.rdbA.Name = "rdbA";
-            this.rdbA.Size = new System.Drawing.Size(175, 28);
-            this.rdbA.TabIndex = 3;
-            this.rdbA.TabStop = true;
-            this.rdbA.Tag = "A";
-            this.rdbA.Text = "radioButton1";
-            this.rdbA.UseVisualStyleBackColor = false;
-            this.rdbA.CheckedChanged += new System.EventHandler(this.rdbA_CheckedChanged);
-            this.rdbA.Click += new System.EventHandler(this.rdbA_Click);
-            // 
             // txtQuestionContent
             // 
             this.txtQuestionContent.Font = new System.Drawing.Font("宋体", 14F);
@@ -140,54 +126,6 @@
             this.lblCurrent.Size = new System.Drawing.Size(21, 24);
             this.lblCurrent.TabIndex = 6;
             this.lblCurrent.Text = "1";
-            // 
-            // rdbB
-            // 
-            this.rdbB.AutoSize = true;
-            this.rdbB.BackColor = System.Drawing.Color.Transparent;
-            this.rdbB.Font = new System.Drawing.Font("宋体", 14F);
-            this.rdbB.Location = new System.Drawing.Point(968, 345);
-            this.rdbB.Margin = new System.Windows.Forms.Padding(4);
-            this.rdbB.Name = "rdbB";
-            this.rdbB.Size = new System.Drawing.Size(175, 28);
-            this.rdbB.TabIndex = 3;
-            this.rdbB.TabStop = true;
-            this.rdbB.Tag = "B";
-            this.rdbB.Text = "radioButton1";
-            this.rdbB.UseVisualStyleBackColor = false;
-            this.rdbB.Click += new System.EventHandler(this.rdbA_Click);
-            // 
-            // rbdC
-            // 
-            this.rbdC.AutoSize = true;
-            this.rbdC.BackColor = System.Drawing.Color.Transparent;
-            this.rbdC.Font = new System.Drawing.Font("宋体", 14F);
-            this.rbdC.Location = new System.Drawing.Point(178, 409);
-            this.rbdC.Margin = new System.Windows.Forms.Padding(4);
-            this.rbdC.Name = "rbdC";
-            this.rbdC.Size = new System.Drawing.Size(175, 28);
-            this.rbdC.TabIndex = 3;
-            this.rbdC.TabStop = true;
-            this.rbdC.Tag = "C";
-            this.rbdC.Text = "radioButton1";
-            this.rbdC.UseVisualStyleBackColor = false;
-            this.rbdC.Click += new System.EventHandler(this.rdbA_Click);
-            // 
-            // rdbD
-            // 
-            this.rdbD.AutoSize = true;
-            this.rdbD.BackColor = System.Drawing.Color.Transparent;
-            this.rdbD.Font = new System.Drawing.Font("宋体", 14F);
-            this.rdbD.Location = new System.Drawing.Point(968, 409);
-            this.rdbD.Margin = new System.Windows.Forms.Padding(4);
-            this.rdbD.Name = "rdbD";
-            this.rdbD.Size = new System.Drawing.Size(175, 28);
-            this.rdbD.TabIndex = 3;
-            this.rdbD.TabStop = true;
-            this.rdbD.Tag = "D";
-            this.rdbD.Text = "radioButton1";
-            this.rdbD.UseVisualStyleBackColor = false;
-            this.rdbD.Click += new System.EventHandler(this.rdbA_Click);
             // 
             // label5
             // 
@@ -235,6 +173,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.rdbD);
+            this.groupBox1.Controls.Add(this.rdbC);
+            this.groupBox1.Controls.Add(this.rdbB);
+            this.groupBox1.Controls.Add(this.rdbA);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
@@ -246,10 +191,6 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtQuestionContent);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.rdbD);
-            this.groupBox1.Controls.Add(this.rdbA);
-            this.groupBox1.Controls.Add(this.rbdC);
-            this.groupBox1.Controls.Add(this.rdbB);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -258,16 +199,93 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label3
+            // label9
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 12F);
-            this.label3.Location = new System.Drawing.Point(319, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "1";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("宋体", 14F);
+            this.label9.Location = new System.Drawing.Point(551, 357);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(226, 24);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "总题数：20，当前：";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("宋体", 14F);
+            this.label8.Location = new System.Drawing.Point(169, 607);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(226, 24);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "总题数：20，当前：";
+            // 
+            // rdbD
+            // 
+            this.rdbD.AutoSize = true;
+            this.rdbD.Font = new System.Drawing.Font("宋体", 14F);
+            this.rdbD.Location = new System.Drawing.Point(1124, 425);
+            this.rdbD.Name = "rdbD";
+            this.rdbD.Size = new System.Drawing.Size(140, 28);
+            this.rdbD.TabIndex = 16;
+            this.rdbD.Tag = "D";
+            this.rdbD.Text = "checkBox4";
+            this.rdbD.UseVisualStyleBackColor = true;
+            this.rdbD.Click += new System.EventHandler(this.rdbA_Click);
+            // 
+            // rdbC
+            // 
+            this.rdbC.AutoSize = true;
+            this.rdbC.Font = new System.Drawing.Font("宋体", 14F);
+            this.rdbC.Location = new System.Drawing.Point(173, 410);
+            this.rdbC.Name = "rdbC";
+            this.rdbC.Size = new System.Drawing.Size(140, 28);
+            this.rdbC.TabIndex = 15;
+            this.rdbC.Tag = "C";
+            this.rdbC.Text = "checkBox3";
+            this.rdbC.UseVisualStyleBackColor = true;
+            this.rdbC.Click += new System.EventHandler(this.rdbA_Click);
+            // 
+            // rdbB
+            // 
+            this.rdbB.AutoSize = true;
+            this.rdbB.Font = new System.Drawing.Font("宋体", 14F);
+            this.rdbB.Location = new System.Drawing.Point(1124, 368);
+            this.rdbB.Name = "rdbB";
+            this.rdbB.Size = new System.Drawing.Size(140, 28);
+            this.rdbB.TabIndex = 14;
+            this.rdbB.Tag = "B";
+            this.rdbB.Text = "checkBox2";
+            this.rdbB.UseVisualStyleBackColor = true;
+            this.rdbB.Click += new System.EventHandler(this.rdbA_Click);
+            // 
+            // rdbA
+            // 
+            this.rdbA.AutoSize = true;
+            this.rdbA.Font = new System.Drawing.Font("宋体", 14F);
+            this.rdbA.Location = new System.Drawing.Point(173, 353);
+            this.rdbA.Name = "rdbA";
+            this.rdbA.Size = new System.Drawing.Size(140, 28);
+            this.rdbA.TabIndex = 13;
+            this.rdbA.Tag = "A";
+            this.rdbA.Text = "checkBox1";
+            this.rdbA.UseVisualStyleBackColor = true;
+            this.rdbA.Click += new System.EventHandler(this.rdbA_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("宋体", 14F);
+            this.label7.Location = new System.Drawing.Point(169, 534);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(226, 24);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "总题数：20，当前：";
             // 
             // label6
             // 
@@ -282,17 +300,28 @@
             this.label6.Text = "总题数：20，当前：";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // label7
+            // label3
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("宋体", 14F);
-            this.label7.Location = new System.Drawing.Point(169, 534);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(226, 24);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "总题数：20，当前：";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 12F);
+            this.label3.Location = new System.Drawing.Point(319, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 20);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "1";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(435, 64);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 23);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "[]";
             // 
             // QuestionForm
             // 
@@ -321,13 +350,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton rdbA;
         private System.Windows.Forms.TextBox txtQuestionContent;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblCurrent;
-        private System.Windows.Forms.RadioButton rdbB;
-        private System.Windows.Forms.RadioButton rbdC;
-        private System.Windows.Forms.RadioButton rdbD;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbltime;
         private System.Windows.Forms.Timer timer1;
@@ -336,5 +361,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox rdbD;
+        private System.Windows.Forms.CheckBox rdbC;
+        private System.Windows.Forms.CheckBox rdbB;
+        private System.Windows.Forms.CheckBox rdbA;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
