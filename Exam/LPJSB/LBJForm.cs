@@ -1,30 +1,33 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
-namespace WindowsFormsApplication1
+namespace WindowsFormsApplication1.Exam
 {
-    public partial class QuestionForm : Form
-
-
+    public partial class LBJForm : Form
     {
         Fuc f = new Fuc();
         TestRecord t;
         QuestionA qq = new QuestionA();
-        public QuestionForm()
+        public LBJForm()
         {
             InitializeComponent();
         }
-        public QuestionForm(String qrcode, String subtype = "0")
+
+        public LBJForm(String qrcode = "EmcaBvClo9bJ6NkgbLWqRg==")
         {
+
+
             InitializeComponent();
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from TestRecord where qrcode='" + qrcode + "'";
+            // MessageBox.Show(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
@@ -46,8 +49,8 @@ namespace WindowsFormsApplication1
                 t.Zxyl = reader["zxyl"].ToString();
 
                 t.Zxlx = reader["zxlx"].ToString();
-                t.Lxquestions = reader["lxquestions"].ToString();
-                t.Zquestions = reader["zxquestions"].ToString();
+                t.Lpjuestions = reader["lpjquestions"].ToString();
+
 
 
                 t.Adfxh = reader["aqfxh"].ToString();
@@ -56,23 +59,8 @@ namespace WindowsFormsApplication1
             }
             con.Close();
             datahelp.StudentId = t.KsId;
+            // MessageBox.Show(t.KsId);
 
-            switch (subtype)
-            {
-                case "0":
-                    this.Text = "离线校验答题";
-                    datahelp.QuestionIds = t.Lxquestions.Split(',');
-                    datahelp.SubId = 0;
-                    datahelp.Answer = qq.Answer(t.Lxquestions).Split(',');
-                    break;
-                case "1":
-                    this.Text = "在线校验答题";
-                    datahelp.QuestionIds = t.Zquestions.Split(',');
-                    datahelp.SubId = 1;
-                    datahelp.Answer = qq.Answer(t.Zquestions).Split(',');
-                    break;
-
-            }
             if (qrcode.Length == 0)
             {
                 f.ShowErrorDialog("考试信息有误");
@@ -82,7 +70,10 @@ namespace WindowsFormsApplication1
             else
             {
                 // 加载题库
+                datahelp.CurrentQuestion = 1;
 
+                datahelp.QuestionIds = t.Lpjuestions.Split(',');
+                datahelp.Answer = qq.Answer(t.Lpjuestions).Split(',');
                 LoadQuestion();
             }
 
@@ -129,33 +120,21 @@ namespace WindowsFormsApplication1
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from question where id =" + questionId.ToString().Trim();
-
+            string sql = "select * from ymg where id =" + questionId.ToString().Trim();
+            MessageBox.Show(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-                if (reader["type"].ToString().Trim() == "判断题")
-                {
-                    this.txtQuestionContent.Text = reader["question"].ToString();
-                    this.rdbA.Text = "对 " + reader["optionA"].ToString();
-                    this.rdbB.Text = "错 " + reader["optionB"].ToString();
-                    this.rbdC.Text = "";
-                    this.rdbD.Text = "";
 
+                // this.txtQuestionContent.Text = reader["question"].ToString();
+                this.rdbA.Text = "A: " + reader["optionA"].ToString();
+                this.rdbB.Text = "B: " + reader["optionB"].ToString();
+                this.rbdC.Text = "C: " + reader["optionC"].ToString();
+                this.rdbD.Text = "D: " + reader["optionD"].ToString();
+                this.pictureBox1.ImageLocation = reader["image"].ToString();
 
-
-                }
-                else
-                {
-                    this.txtQuestionContent.Text = reader["question"].ToString();
-                    this.rdbA.Text = "A: " + reader["optionA"].ToString();
-                    this.rdbB.Text = "B: " + reader["optionB"].ToString();
-                    this.rbdC.Text = "C: " + reader["optionC"].ToString();
-                    this.rdbD.Text = "D: " + reader["optionD"].ToString();
-
-                }
 
             }
 
@@ -167,9 +146,9 @@ namespace WindowsFormsApplication1
 
         private void ShowInfo()
         {
-            this.label3.Text = datahelp.CurrentQuestion.ToString();
-            this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
-            this.label7.Text = "系统答案：" + string.Join(",", datahelp.Answer);
+            this.label7.Text = datahelp.CurrentQuestion.ToString();
+            this.label3.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
+            this.label6.Text = "系统答案：" + string.Join(",", datahelp.Answer);
 
 
         }
@@ -317,11 +296,6 @@ namespace WindowsFormsApplication1
             Process.GetCurrentProcess().Kill();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -332,9 +306,35 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+
+        private void Choose_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
+        private void LBJForm_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
         }
     }
 }

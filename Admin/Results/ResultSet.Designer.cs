@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -43,6 +38,11 @@
             this.bumen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +50,11 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pick,
@@ -67,6 +72,71 @@
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(1117, 426);
             this.dataGridView1.TabIndex = 52;
+            // 
+            // pick
+            // 
+            this.pick.HeaderText = "选择";
+            this.pick.MinimumWidth = 6;
+            this.pick.Name = "pick";
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "Id";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.FalseValue = "0";
+            this.status.HeaderText = "状态";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.TrueValue = "1";
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "姓名";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            // 
+            // idcard
+            // 
+            this.idcard.DataPropertyName = "idcard";
+            this.idcard.HeaderText = "身份证";
+            this.idcard.MinimumWidth = 6;
+            this.idcard.Name = "idcard";
+            // 
+            // sex
+            // 
+            this.sex.DataPropertyName = "sex";
+            this.sex.HeaderText = "性别";
+            this.sex.MinimumWidth = 6;
+            this.sex.Name = "sex";
+            // 
+            // bumen
+            // 
+            this.bumen.DataPropertyName = "bumen";
+            this.bumen.HeaderText = "单位";
+            this.bumen.MinimumWidth = 6;
+            this.bumen.Name = "bumen";
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "电话";
+            this.phone.MinimumWidth = 6;
+            this.phone.Name = "phone";
+            // 
+            // date
+            // 
+            this.date.DataPropertyName = "date";
+            this.date.HeaderText = "考试日期";
+            this.date.MinimumWidth = 6;
+            this.date.Name = "date";
             // 
             // textBox8
             // 
@@ -111,80 +181,6 @@
             this.button1.TabIndex = 57;
             this.button1.Text = "打印";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // pick
-            // 
-            this.pick.HeaderText = "选择";
-            this.pick.MinimumWidth = 6;
-            this.pick.Name = "pick";
-            this.pick.Width = 60;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "Id";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 60;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.FalseValue = "0";
-            this.status.HeaderText = "状态";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.TrueValue = "1";
-            this.status.Width = 125;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "姓名";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.Width = 125;
-            // 
-            // idcard
-            // 
-            this.idcard.DataPropertyName = "idcard";
-            this.idcard.HeaderText = "身份证";
-            this.idcard.MinimumWidth = 6;
-            this.idcard.Name = "idcard";
-            this.idcard.Width = 125;
-            // 
-            // sex
-            // 
-            this.sex.DataPropertyName = "sex";
-            this.sex.HeaderText = "性别";
-            this.sex.MinimumWidth = 6;
-            this.sex.Name = "sex";
-            this.sex.Width = 125;
-            // 
-            // bumen
-            // 
-            this.bumen.DataPropertyName = "bumen";
-            this.bumen.HeaderText = "单位";
-            this.bumen.MinimumWidth = 6;
-            this.bumen.Name = "bumen";
-            this.bumen.Width = 125;
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "电话";
-            this.phone.MinimumWidth = 6;
-            this.phone.Name = "phone";
-            this.phone.Width = 125;
-            // 
-            // date
-            // 
-            this.date.DataPropertyName = "date";
-            this.date.HeaderText = "考试日期";
-            this.date.MinimumWidth = 6;
-            this.date.Name = "date";
-            this.date.Width = 125;
             // 
             // ResultSet
             // 

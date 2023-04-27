@@ -53,12 +53,13 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(204, 9);
+            this.label2.Location = new System.Drawing.Point(308, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(382, 52);
+            this.label2.Size = new System.Drawing.Size(182, 52);
             this.label2.TabIndex = 32;
-            this.label2.Text = "安全阀模拟考试系统";
+            this.label2.Text = "离线校验";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button1
             // 
@@ -84,6 +85,7 @@
             this.button2.TabIndex = 36;
             this.button2.Text = "填写记录";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button4
             // 
@@ -96,6 +98,7 @@
             this.button4.TabIndex = 37;
             this.button4.Text = "考试完成";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // OFF
             // 
@@ -108,7 +111,9 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
             this.Name = "OFF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "离线校验";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.OFF_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

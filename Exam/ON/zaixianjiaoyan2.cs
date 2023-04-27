@@ -2,20 +2,18 @@
 using System;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace WindowsFormsApplication1.Exam
 {
-    public partial class ResultSet : Form
+    public partial class zaixianjiaoyan2 : Form
     {
-        public ResultSet()
+        public zaixianjiaoyan2()
         {
             InitializeComponent();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void chart1_Click(object sender, EventArgs e)
         {
-            AdminIndex a = new AdminIndex();
-            a.Show();
-            this.Close();
+
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -30,15 +28,22 @@ namespace WindowsFormsApplication1
         }
 
 
-        private void StudentSet_Load(object sender, EventArgs e)
-        {
-          
-        }
-        private void ResultSet_Load(object sender, EventArgs e)
+
+        private void Choose_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
         }
+
+        private void zaixianjiaoyan2_Load(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.LabelStyle.Format = "#KG";
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+
+        }
+
     }
 }

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -11,7 +13,7 @@ namespace WindowsFormsApplication1.Exam
         public Score1()
         {
             InitializeComponent();
-            InitializeComponent();
+           
         }
 
 
@@ -25,9 +27,14 @@ namespace WindowsFormsApplication1.Exam
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-
-            string sql = string.Format("insert into score values({0},{1},{2})", datahelp.StudentId, score, datahelp.SubId);
-            SqlCommand com = new SqlCommand(sql, con);
+            string strcomm = "insert into score ([studentid],[score],[subid],[tid]) VALUES(" +
+               "'" + datahelp.StudentId.Trim() +"'" + "," +
+              "'" + score + "'" + "," +
+              "'" + datahelp.SubId + "'" + "," +
+              "'" + datahelp.QId.Trim() + "'"
+              + ")";
+            MessageBox.Show(strcomm);
+            SqlCommand com = new SqlCommand(strcomm, con);
             con.Open();
             com.ExecuteNonQuery();
             con.Close();
@@ -36,19 +43,21 @@ namespace WindowsFormsApplication1.Exam
         private void ShowScore()
         {
             int count = 0;
-            for (int i = 0; i < 10; i++)
+        string [] a=    datahelp.Correct;
+            for (int i = 0; i < a.Length; i++)
             {
-                if (datahelp.UserAnswer[i] == datahelp.Answer[i])
+                // 答对题的数量
+                if (a[i]=="1")
                 {
                     count++;
                 }
             }
-
-            score = count * 5;
+            Score sc=new Score();
+            score = count * sc.getScore(datahelp.SubId);
             if (score < 60)
             {
 
-                this.label2.Text = "考得太差，好好复习吧";
+            
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
 
@@ -57,7 +66,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.lblscore.BackColor = Color.YellowGreen;
 
-                this.label2.Text = "成绩不理想，继续努力";
+             
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
             }
@@ -65,7 +74,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.lblscore.BackColor = Color.Yellow;
 
-                this.label2.Text = "成绩不理想，继续加油";
+             
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
 
@@ -74,7 +83,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.lblscore.BackColor = Color.Green;
 
-                this.label2.Text = "成绩很好，GOOD!";
+          
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
 
@@ -83,7 +92,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.lblscore.BackColor = Color.Green;
 
-                this.label2.Text = "你太棒了，Perfect!";
+              
                 this.label3.Text = score.ToString() + "分";
                 this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
             }
@@ -127,6 +136,25 @@ namespace WindowsFormsApplication1.Exam
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblAllscore_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Score1_Load(object sender, EventArgs e)
+        {
+            ShowScore();
+            AddStudentScore();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            datahelp.CurrentStep = 2;
+            OFF of =new OFF(datahelp.QId);
+            of.Show();
+            this.Close();
         }
     }
 

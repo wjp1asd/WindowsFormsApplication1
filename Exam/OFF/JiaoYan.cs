@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Threading.Tasks;
+using AutoWindowsSize;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -314,14 +315,33 @@ namespace WindowsFormsApplication1.Exam
         {
 
         }
-        
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+
+
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
+
+
+
+        private void Choose_Load(object sender, EventArgs e)
+        {
+            awt = new AutoAdaptWindowsSize(this);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            this.SizeChanged += groupBox1_Resize;
+        }
         private void JiaoYan_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-          
-          
-          
+            this.SizeChanged += groupBox1_Resize;
+
+
         }
         Thread readAI;
 
@@ -802,7 +822,11 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
+            datahelp.CurrentStep = 3;
             this.Close();
+            OFF of = new OFF(datahelp.QId);
+            of.Show();
+        
         }
 
         Thread readDI;
@@ -857,7 +881,7 @@ namespace WindowsFormsApplication1.Exam
             // AI 接口
             while (true)
             {
-                serialPort2.Write(dio, 0, dio.Length);
+               // serialPort2.Write(dio, 0, dio.Length);
 
                 System.Threading.Thread.Sleep(1000);
                 a++;

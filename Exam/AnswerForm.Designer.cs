@@ -67,12 +67,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+       
             this.ClientSize = new System.Drawing.Size(572, 366);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.btnsend);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form5";
+        
+            this.Name = "考试结果";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "答题卡";
             this.Load += new System.EventHandler(this.Form5_Load);

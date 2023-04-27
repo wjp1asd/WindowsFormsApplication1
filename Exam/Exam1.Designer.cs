@@ -120,6 +120,7 @@
             this.Controls.Add(this.label2);
             this.Name = "Exam1";
             this.Text = "考试";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Exam1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
