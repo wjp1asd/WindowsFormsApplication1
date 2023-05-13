@@ -231,6 +231,12 @@
     <Compile Include="Admin\Questions\zaixian\Online_JiaoYan.Designer.cs">
       <DependentUpon>Online_JiaoYan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Results\GradePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Results\GradePrint.Designer.cs">
+      <DependentUpon>GradePrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Settings\biaoding.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,6 +356,7 @@
     <Compile Include="Exam\MF\MFYM.Designer.cs">
       <DependentUpon>MFYM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\TestRecord.cs" />
@@ -546,6 +553,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Questions\zaixian\Online_JiaoYan.resx">
       <DependentUpon>Online_JiaoYan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Results\GradePrint.resx">
+      <DependentUpon>GradePrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Settings\biaoding.resx">
       <DependentUpon>biaoding.cs</DependentUpon>
