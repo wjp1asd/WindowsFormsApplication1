@@ -1,5 +1,6 @@
 ﻿using AutoWindowsSize;
 using System;
+using System.Configuration;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -31,24 +32,25 @@ namespace WindowsFormsApplication1.Exam
 
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
-
+            string x = ConfigurationManager.AppSettings["machine"];
+         
 
             //    MessageBox.Show(a.color1);
-            switch (datahelp.status)
+            switch (int.Parse(x))
             {
-                case 0:
+                case 2:
                     this.button2.Enabled = false;
                     this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button3.Enabled = false;
                     break;
-                case 1:
+                case 3:
                     this.button1.Enabled = false;
                     this.button3.Enabled = false;
                     this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     break;
-                case 2:
+                case 4:
                     this.button1.Enabled = false;
                     this.button2.Enabled = false;
                     this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");

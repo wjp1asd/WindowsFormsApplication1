@@ -1,6 +1,5 @@
 ﻿using AutoWindowsSize;
 using System;
-using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -60,7 +59,7 @@ namespace WindowsFormsApplication1
             this.SizeChanged += groupBox1_Resize;
         }
         bool G_MouseFlag;
-        Pen pen = new Pen(Color.Red);
+        Pen pen = new Pen(Color.Black);
         Point lastPoint;
         private void _018_MouseMove(object sender, MouseEventArgs e)
         {
@@ -123,13 +122,13 @@ namespace WindowsFormsApplication1
             g.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
             bt.MakeTransparent();
             string connectionString = Application.StartupPath + "\\Images\\研磨照片\\1.bmp";
-         //   string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
-          
+            //   string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
+
             bt.Save(connectionString, System.Drawing.Imaging.ImageFormat.Bmp);
-           
+
             if (File.Exists(connectionString))
             {
-          // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
+                // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
                 MessageBox.Show("截图成功！");
                 return;
             }

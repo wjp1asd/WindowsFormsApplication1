@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
@@ -54,8 +55,9 @@ namespace WindowsFormsApplication1.Scan
         {
             //查询数据 是否有选题记录
             xuanti();
+        
 
-           
+
 
         }
 
@@ -73,7 +75,19 @@ namespace WindowsFormsApplication1.Scan
             if (ff.RC(sql).Length > 0)
             {
                 ff.ShowSuccessTip("成功" + ff.RC(sql));
+                string x = ConfigurationManager.AppSettings["machine"];
+                switch (x) {
+                    case "2":
+                        this.button7.Text = "离线考试";
+                        break;
+                    case "3":
+                        this.button7.Text = "在线考试";
+                        break;
+                    case "4":
+                        this.button7.Text = "研磨考试";
+                        break;
 
+                }
                 this.button7.Text = "确认考试";
 
                 // Print p=new Print(this.textBox1.Text);
@@ -87,7 +101,8 @@ namespace WindowsFormsApplication1.Scan
             }
             if (this.button7.Text == "确认考试")
             {
-                // 开始进入考试
+                // 开始进入考试 读取不同设备参数 进行定向跳转    < !--1是管理员  0是考生抽题 2是离线考试 3 在线考试 4 研磨 - 1是上帝模式-- >
+               
                 Exam1 ex = new Exam1(ff.RC(sql));
                 ex.Show();
 
