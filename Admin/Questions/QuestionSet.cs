@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
-            this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
+          
 
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
             this.button4.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
         {
 
             ff.fullsreen(this.button1, this);
-            ff.fullsreen(this.button2, this);
+           
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button4, this);
 

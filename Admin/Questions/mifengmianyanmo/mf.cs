@@ -111,5 +111,12 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
         }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+          QuestionSet y= new QuestionSet();  
+            y.Show();
+            this.Close();
+        }
     }
 }

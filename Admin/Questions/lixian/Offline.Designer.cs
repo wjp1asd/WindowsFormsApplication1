@@ -116,6 +116,7 @@
             this.Text = "离线校验";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Offline_Load);
+            this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
