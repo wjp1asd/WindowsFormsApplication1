@@ -344,7 +344,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(183, 40);
             this.button7.TabIndex = 32;
-            this.button7.Text = "刷新";
+            this.button7.Text = "返回";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
