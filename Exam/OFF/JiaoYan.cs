@@ -24,11 +24,11 @@ namespace WindowsFormsApplication1.Exam
         string t1, t2, t3, t4, t5, t6, t7, t8;
         // 整体采集，每个通道非0表示采集，为0表示不采集
         //02 11 20 0C 01 01 01 01 01 01 01 01 1F Lrc  td1 =header +content +lrc
-        byte[]topheader= new byte[] { 0x02, 0x20, 0x00, 0x0C};
-        byte[] content = new byte[] { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 ,0x01 };//全采集
+        byte[] topheader = new byte[] { 0x02, 0x20, 0x00, 0x0C };
+        byte[] content = new byte[] { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//全采集
         byte[] td1 = new byte[13];
-     
-        
+
+
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int qiehuanfa1 = 0;
@@ -349,14 +349,14 @@ namespace WindowsFormsApplication1.Exam
 
             topheader.CopyTo(td1, 0);
             content.CopyTo(td1, topheader.Length);
-           
+
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
-           // byte[] end = new byte {a};
-          //  end.CopyTo(td1, td1.Length);
+            // byte[] end = new byte {a};
+            //  end.CopyTo(td1, td1.Length);
             Console.WriteLine(BitConverter.ToString(td1));
             MessageBox.Show(a.ToString("X2"));
-         //   MessageBox.Show(BitConverter.ToString(td1));
+            //   MessageBox.Show(BitConverter.ToString(td1));
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -411,7 +411,7 @@ namespace WindowsFormsApplication1.Exam
         public void plcinit()
         {
 
-           
+
             try
             {
                 //int qiehuanfa1 = 0;
@@ -436,7 +436,7 @@ namespace WindowsFormsApplication1.Exam
                 //byte a = CalcLRC(td1);
                 //td1[13] = a;
 
-               
+
                 //防止意外错误
                 serialPort2.PortName = datahelp.plc;//获取comboBox1要打开的串口号
 
@@ -896,7 +896,7 @@ namespace WindowsFormsApplication1.Exam
         byte[] dioheader = new byte[] { 0x02, 0x20, 0x00, 0x0C };
         int a = 0;
 
-      
+
         private void ReadDI()
         {
             // AI 接口
