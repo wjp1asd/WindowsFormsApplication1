@@ -45,24 +45,24 @@ namespace WindowsFormsApplication1
         }
 
 
+        bool G_MouseFlag=true;
+        Pen pen = new Pen(Color.Black);
+        Point lastPoint;
 
-        private void Choose_Load(object sender, EventArgs e)
-        {
-            awt = new AutoAdaptWindowsSize(this);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
-        }
         private void MFYM_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+         
             this.SizeChanged += groupBox1_Resize;
+
+            Graphics graphics = this.CreateGraphics();
+            Rectangle gle = new Rectangle(20, 20, 200, 200);
+            graphics.DrawEllipse(pen, gle);
         }
-        bool G_MouseFlag;
-        Pen pen = new Pen(Color.Black);
-        Point lastPoint;
+        
         private void _018_MouseMove(object sender, MouseEventArgs e)
         {
+            MessageBox.Show("触发");
             Graphics graphics = this.CreateGraphics();
             if (lastPoint.Equals(Point.Empty))//判断绘图开始点是否为空
             {
@@ -78,11 +78,13 @@ namespace WindowsFormsApplication1
 
         private void _018_MouseDown(object sender, MouseEventArgs e)
         {
+            MessageBox.Show("触发1");
             G_MouseFlag = true;//开始绘图标识设置为true
         }
 
         private void _018_MouseUp(object sender, MouseEventArgs e)
         {
+            MessageBox.Show("触发2");
             G_MouseFlag = false;//开始绘图标识设置为false
         }
         //画圆

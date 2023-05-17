@@ -1,17 +1,14 @@
-﻿using Emgu.CV.CvEnum;
+﻿using AutoWindowsSize;
 using Emgu.CV;
+using Emgu.CV.CvEnum;
 using System;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Threading.Tasks;
-using AutoWindowsSize;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -25,14 +22,13 @@ namespace WindowsFormsApplication1.Exam
         //#02 01 00 05 01 07 数字输入DI 读取
         byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
         string t1, t2, t3, t4, t5, t6, t7, t8;
-        // 采集DI，8个通道，每个通道非0表示采集，为0表示不采集
-        //02 11 00 0C 01 01 01 01 01 01 01 01 1F
-        byte[] td1 = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1F };
-        byte[] td = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01, 0x1F };
-        // 采集AI，8个通道，每个通道非0表示采集，为0表示不采集
-        //02 12 00 0C 01 01 01 01 01 01 01 01 1C
-        byte[] ta1 = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1C };
-        byte[] ta = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x1C };
+        // 整体采集，每个通道非0表示采集，为0表示不采集
+        //02 11 20 0C 01 01 01 01 01 01 01 01 1F Lrc  td1 =header +content +lrc
+        byte[]topheader= new byte[] { 0x02, 0x20, 0x00, 0x0C};
+        byte[] content = new byte[] { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 ,0x01 };//全采集
+        byte[] td1 = new byte[13];
+     
+        
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int qiehuanfa1 = 0;
@@ -48,18 +44,25 @@ namespace WindowsFormsApplication1.Exam
 
         int fangzhen1 = 0;
         int fangzhen2 = 1;
+
+        public static byte CalcLRC(byte[] data)
+        {
+            byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
+            return lrc;
+        }
         private void fenxi()
         {
             //量程选择
-            if (DIS[7-qiehuanfa1] + "" == "0")
+            if (DIS[7 - qiehuanfa1] + "" == "0")
             {
                 dishow("1.6Mpa量程选择");
-                liangcheng = 1; 
+                liangcheng = 1;
             }
-            else {
+            else
+            {
                 dishow("1.6Mpa量程关闭");
 
-               // richTextBox1.Text += "切换阀关闭";
+                // richTextBox1.Text += "切换阀关闭";
             }
             if (DIS[7 - qiehuanfa2] + "" == "0")
             {
@@ -85,25 +88,26 @@ namespace WindowsFormsApplication1.Exam
             }
             if (DIS[7 - famao] + "" == "0")
             {
-               // richTextBox1.Text += "阀帽存在";
+                // richTextBox1.Text += "阀帽存在";
                 dishow("阀帽存在");
             }
-            else {
+            else
+            {
                 dishow("阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
                 chaixiefamao();
             }
-            if (DIS[(7-gongju)] + "" == "0")
+            if (DIS[(7 - gongju)] + "" == "0")
             {
                 dishow("工具归位");
-               // richTextBox1.Text += "工具归位";
+                // richTextBox1.Text += "工具归位";
 
             }
             else
             {
                 dishow("工具离开");
-               // richTextBox1.Text += "工具离开";
+                // richTextBox1.Text += "工具离开";
             }
             if (DIS[(7 - xieya)] + "" == "0")
             {
@@ -111,21 +115,23 @@ namespace WindowsFormsApplication1.Exam
                 //richTextBox2.Text += "卸压阀打开";
 
             }
-            else {
+            else
+            {
                 dishow("卸压阀关闭");
-             //   richTextBox2.Text += "卸压阀关闭";
+                //   richTextBox2.Text += "卸压阀关闭";
                 guanbixieyafa();
             }
         }
 
         private void dishow(string msg)
         {
-            Action tongdao = () => {
+            Action tongdao = () =>
+            {
                 richTextBox1.Text += msg;
             };
             this.Invoke(tongdao);
 
-          
+
         }
 
         private void guanbixieyafa()
@@ -140,20 +146,20 @@ namespace WindowsFormsApplication1.Exam
 
         private void test4()
         {
-           //密封性能测试
-           // throw new NotImplementedException();
+            //密封性能测试
+            // throw new NotImplementedException();
         }
 
         private void test3()
         {
             //第三次测试
-          //  throw new NotImplementedException();
+            //  throw new NotImplementedException();
         }
 
         private void test2()
         {
             //第二次测试
-          //  throw new NotImplementedException();
+            //  throw new NotImplementedException();
         }
 
         private void test1()
@@ -166,22 +172,22 @@ namespace WindowsFormsApplication1.Exam
             shot();
         }
 
-       
+
 
         public JiaoYan(string wuchaid)
         {
             InitializeComponent();
             this.change();
-           
+
             datahelp.Initc();
-             wucha = wucha.GetOne(wuchaid);
+            wucha = wucha.GetOne(wuchaid);
             this.timer1.Stop();
-           
-            t=t.getRecord(datahelp.QId);
+
+            t = t.getRecord(datahelp.QId);
             showMsg();
             // 开启一个线程录像
-           // Task t1 = new Task(backCamera); 
-              //   t1.Start();
+            // Task t1 = new Task(backCamera); 
+            //   t1.Start();
         }
         Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
@@ -259,7 +265,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void backCamera()
         {
-            
+
             VideoCapture v = new VideoCapture(0);
             v.SetCaptureProperty(CapProp.FrameHeight, 720);
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
@@ -292,11 +298,11 @@ namespace WindowsFormsApplication1.Exam
 
         private void showMsg()
         {
-           richTextBox2.Text += "考试码：" + datahelp.QId;
-           this.label1.Text += "当前选择压力范围：" + wucha.Area1.ToString().Trim()+"MPa";
-           this.label1.Text += "当前离线整定压力：" + t.Lxyl+"Mpa";
-           this.statusStrip1.Text += "当前采集卡端口：" + datahelp.plc+"波特率"+datahelp.plcbt+ "起始位，停止位，校验位" + datahelp.plcst+ "-" + datahelp.plcsp+"-"+datahelp.plcjy;
-        
+            richTextBox2.Text += "考试码：" + datahelp.QId;
+            this.label1.Text += "当前选择压力范围：" + wucha.Area1.ToString().Trim() + "MPa";
+            this.label1.Text += "当前离线整定压力：" + t.Lxyl + "Mpa";
+            this.statusStrip1.Text += "当前采集卡端口：" + datahelp.plc + "波特率" + datahelp.plcbt + "起始位，停止位，校验位" + datahelp.plcst + "-" + datahelp.plcsp + "-" + datahelp.plcjy;
+
         }
 
         private Fuc ff = new Fuc();
@@ -341,14 +347,23 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
 
-
+            topheader.CopyTo(td1, 0);
+            content.CopyTo(td1, topheader.Length);
+           
+            byte a = CalcLRC(td1);
+            td1[12] = (byte)a;
+           // byte[] end = new byte {a};
+          //  end.CopyTo(td1, td1.Length);
+            Console.WriteLine(BitConverter.ToString(td1));
+            MessageBox.Show(a.ToString("X2"));
+         //   MessageBox.Show(BitConverter.ToString(td1));
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             // DI
 
-            if (serialPort2.IsOpen&&step==0)
+            if (serialPort2.IsOpen && step == 0)
             {
                 readDI = new Thread(ReadDI);
                 readDI.Start();
@@ -359,19 +374,20 @@ namespace WindowsFormsApplication1.Exam
                 this.timer1.Start();
 
             }
-            else {
+            else
+            {
 
                 ff.ShowErrorDialog("错误原因：1.未连接设备 2.设备异常无正确返回");
                 return;
             }
-          
+
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
-        
+
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -392,26 +408,38 @@ namespace WindowsFormsApplication1.Exam
                 //this.Close();
             }
         }
-        public void plcinit() {
-            
-          
+        public void plcinit()
+        {
 
+           
             try
             {
+                //int qiehuanfa1 = 0;
+                //int qiehuanfa2 = 3;
+                //int qiehuanfa3 = 4;
+                //int gongju = 1;
+                //int famao = 2;
+                //int xieya = 7;
                 // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
                 qiehuanfa1 = int.Parse(datahelp.DIB1.Trim());
-                qiehuanfa2 = int.Parse(datahelp.DIB2.Trim()); 
+                qiehuanfa2 = int.Parse(datahelp.DIB2.Trim());
                 qiehuanfa3 = int.Parse(datahelp.DIB3.Trim());
                 xieya = int.Parse(datahelp.DIxy.Trim());
-                gongju = int.Parse(datahelp.AIjy.Trim()); 
+                gongju = int.Parse(datahelp.AIjy.Trim());
                 famao = int.Parse(datahelp.DIhw.Trim());
                 // ai yali 表
                 fangzhen1 = int.Parse(datahelp.AIY1.Trim());
                 fangzhen2 = int.Parse(datahelp.AIy2.Trim());
 
+                //topheader.CopyTo(td1,0);
+                //content.CopyTo(td1, topheader.Length);
+                //byte a = CalcLRC(td1);
+                //td1[13] = a;
+
+               
                 //防止意外错误
                 serialPort2.PortName = datahelp.plc;//获取comboBox1要打开的串口号
-                
+
                 serialPort2.BaudRate = int.Parse(datahelp.plcbt.Trim());//获取comboBox2选择的波特率
                 serialPort2.DataBits = int.Parse(datahelp.plcjy.Trim());//设置数据位
                 /*设置停止位*/
@@ -424,9 +452,9 @@ namespace WindowsFormsApplication1.Exam
                 {
                     serialPort2.Open();//打开串口
                     button3.Text = "正在连接";//按钮显示关闭串口
-                  
+
                     serialPort2.WriteLine("02 00 00 04 06");
-                    
+
 
                 }
                 catch (Exception err)
@@ -556,15 +584,16 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            else {
+            else
+            {
 
                 ff.ShowErrorDialog("设备无反应");
-            
-            
+
+
             }
         }
-       
-     
+
+
 
         static string HexString2BinString(string hexString)
         {
@@ -605,17 +634,18 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
-            Action tongdao = () => {
+            Action tongdao = () =>
+            {
                 richTextBox1.AppendText("通道" + num + "信息：");
-                richTextBox1.AppendText(""+sb1);
+                richTextBox1.AppendText("" + sb1);
             };
             this.Invoke(tongdao);
-           
+
             switch (num)
             {
 
                 case 1:
-               voldetla(sb1, t1);
+                    voldetla(sb1, t1);
                     break;
                     //case 2:
                     //    voldetla(sb1, t2);
@@ -654,11 +684,12 @@ namespace WindowsFormsApplication1.Exam
             int a = Convert.ToInt32(sb1.ToString(), 16);
             int b = Convert.ToInt32(t8.ToString(), 16);
 
-            Action tongdao = () => {
+            Action tongdao = () =>
+            {
                 richTextBox2.AppendText("当前通道：" + sb1.ToString());
                 richTextBox2.AppendText("当前电压值：" + a);
                 calyali(a);
-               
+
                 richTextBox2.AppendText("上次电压差：" + b);
                 richTextBox2.AppendText("当前电压差：" + (a - b));
                 richTextBox2.AppendText("变化速度：" + Math.Abs(a - b) / interval);
@@ -672,12 +703,13 @@ namespace WindowsFormsApplication1.Exam
         {
             //
             int b = (a / 10000 / 5);
-            switch (liangcheng) {
+            switch (liangcheng)
+            {
                 case 1:
-                    this.label3.Text = "当前压力："+b*1.6+"Mpa";  
+                    this.label3.Text = "当前压力：" + b * 1.6 + "Mpa";
                     break;
                 case 2:
-                    this.label3.Text = "当前压力：" + b * 4+ "Mpa";
+                    this.label3.Text = "当前压力：" + b * 4 + "Mpa";
                     break;
                 case 3:
                     this.label3.Text = "当前压力：" + b * 25 + "Mpa";
@@ -715,10 +747,10 @@ namespace WindowsFormsApplication1.Exam
 
         private void SendServo(int a, int pos)
         {
-            int b = (a / 10000 / 5)*2500;
+            int b = (a / 10000 / 5) * 2500;
             string b1 = a.ToString("X4");
-          
-            int a2 = int.Parse("0x"+ b1.Substring(0, 2));
+
+            int a2 = int.Parse("0x" + b1.Substring(0, 2));
             int a3 = int.Parse("0x" + b1.Substring(2));
             byte[] d3 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
 
@@ -731,7 +763,7 @@ namespace WindowsFormsApplication1.Exam
                 0x01, 0x09, 0xC4,
                 0x01, 0x09, 0xC4,
 
-              
+
             };
             serialPort2.Write(d3, 0, d3.Length);
             Thread.Sleep(1000);
@@ -751,7 +783,7 @@ namespace WindowsFormsApplication1.Exam
             //02 45 00 1C 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 5B
         }
 
-      
+
         private void button9_Click(object sender, EventArgs e)
         {
             // 模拟红外距离变化
@@ -765,7 +797,7 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
-    
+
         private void button3_Click_1(object sender, EventArgs e)
         {
             if (!serialPort2.IsOpen)
@@ -810,8 +842,9 @@ namespace WindowsFormsApplication1.Exam
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-            switch (step) {
+
+            switch (step)
+            {
                 case -1:
                     this.button1.Text = "测试未开始";
                     break;
@@ -840,7 +873,7 @@ namespace WindowsFormsApplication1.Exam
             this.Close();
             OFF of = new OFF(datahelp.QId);
             of.Show();
-        
+
         }
 
         Thread readDI;
@@ -860,42 +893,16 @@ namespace WindowsFormsApplication1.Exam
         int interval = 500;
 
 
-        byte[] dioheader = new byte[] { 0x02, 0x20, 0x00, 0x0C};
+        byte[] dioheader = new byte[] { 0x02, 0x20, 0x00, 0x0C };
         int a = 0;
 
-        private static string CRC(string cmdString)
-        {
-            try
-            {
-                //CRC寄存器
-                int CRCCode = 0;
-                //将字符串拆分成为16进制字节数据然后两位两位进行异或校验
-                for (int i = 1; i < cmdString.Length / 2; i++)
-                {
-                    string cmdHex = cmdString.Substring(i * 2, 2);
-                    if (i == 1)
-                    {
-                        string cmdPrvHex = cmdString.Substring((i - 1) * 2, 2);
-                        CRCCode = (byte)Convert.ToInt32(cmdPrvHex, 16) ^ (byte)Convert.ToInt32(cmdHex, 16);
-                    }
-                    else
-                    {
-                        CRCCode = (byte)CRCCode ^ (byte)Convert.ToInt32(cmdHex, 16);
-                    }
-                }
-                return Convert.ToString(CRCCode, 16).ToUpper();//返回16进制校验码
-            }
-            catch
-            {
-                throw;
-            }
-        }
+      
         private void ReadDI()
         {
             // AI 接口
             while (true)
             {
-               // serialPort2.Write(dio, 0, dio.Length);
+                // serialPort2.Write(dio, 0, dio.Length);
 
                 System.Threading.Thread.Sleep(1000);
                 a++;
