@@ -286,10 +286,7 @@ namespace WindowsFormsApplication1.YanMO
 
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
 
         private void button5_Click_2(object sender, EventArgs e)
         {
@@ -333,5 +330,28 @@ namespace WindowsFormsApplication1.YanMO
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
         }
+
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+
+
+                string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
+
+                if (strcolumn == "选取")
+                {
+
+                    return;
+                }
+                MessageBox.Show("点击率");
+                string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
+
+                this.pictureBox1.LoadAsync(value);
+
+            }
+        }
+
     }
 }

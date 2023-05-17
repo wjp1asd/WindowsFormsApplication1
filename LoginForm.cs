@@ -91,6 +91,26 @@ namespace WindowsFormsApplication1
                 this.button9.Hide();
                 this.button10.Hide();
             }
+            else if (x == "2"|| x == "3"|| x == "4")
+            {
+                //考试机登录
+
+                this.button1.Hide();
+                this.button1.Enabled = false;
+                this.pictureBox1.Hide();
+                this.button2.Hide();
+                this.button2.Enabled = false;
+
+                this.button3.Left -= 200;
+                this.uiButton1.Left -= 200;
+                this.button4.Hide();
+                this.button5.Hide();
+                this.button6.Hide();
+                this.button7.Hide();
+                this.button8.Hide();
+                this.button9.Hide();
+                this.button10.Hide();
+            }
             else if (x == "-1")
             {
                 // 上帝模式

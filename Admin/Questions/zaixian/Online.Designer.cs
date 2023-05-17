@@ -32,6 +32,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button7
@@ -39,7 +40,7 @@
             this.button7.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(296, 317);
+            this.button7.Location = new System.Drawing.Point(292, 430);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(209, 63);
             this.button7.TabIndex = 25;
@@ -85,11 +86,25 @@
             this.label2.Text = "在线校验设置";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Red;
+            this.button3.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.Location = new System.Drawing.Point(296, 320);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(205, 70);
+            this.button3.TabIndex = 26;
+            this.button3.Text = "校验工艺编制";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // Online
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 553);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -97,7 +112,9 @@
             this.Name = "Online";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "在线校验设置";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Online_Load);
+            this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +126,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button3;
     }
 }

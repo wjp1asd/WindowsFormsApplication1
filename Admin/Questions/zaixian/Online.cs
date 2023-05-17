@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Admin.Questions.jiaoyangongyi;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Questions;
 
@@ -20,16 +22,15 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
-
+            this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
             this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
             //    MessageBox.Show(a.color1);
 
+            
 
-
-
-            this.change();
+          this.change();
 
 
         }
@@ -39,7 +40,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
 
             ff.fullsreen(this.button1, this);
             ff.fullsreen(this.button2, this);
-
+            ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
         }
@@ -63,11 +64,36 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             a.Show();
             this.Close();
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
 
+                awt.FormSizeChanged();
+            }
+        }
+
+       
         private void Online_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
+            this.SizeChanged += groupBox1_Resize;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            JiaoYan a= new JiaoYan();
+            a.Show();
+            this.Close();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            JiaoYan a = new JiaoYan();
+            a.Show();
+            this.Close();
         }
     }
 }

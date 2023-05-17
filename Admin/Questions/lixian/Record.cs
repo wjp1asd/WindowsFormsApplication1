@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.lixian;
 using WindowsFormsApplication1.Questions;
@@ -10,17 +12,21 @@ namespace WindowsFormsApplication1
     public partial class Record : Form
     {
 
-#pragma warning disable CS0414 // 字段“Record.TableName”已被赋值，但从未使用过它的值
-        string TableName = "lxjl";
-#pragma warning restore CS0414 // 字段“Record.TableName”已被赋值，但从未使用过它的值
+
+   
+
         string Id = "1";
         public Record(string id)
         {
             InitializeComponent();
-            Initc();
             Id = id;
+            Initc();
+          
+            this.printDocument1.OriginAtMargins = true;//启用页边距
+       
         }
 
+       
 
         public void Initc()
         {
@@ -92,8 +98,15 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            rr r = new rr();
-            r.Show();
+            // rr r = new rr();
+            // r.Show();
+            if (this.printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.printDocument1.Print();
+            }
+
+
+
         }
 
         private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
@@ -156,6 +169,16 @@ namespace WindowsFormsApplication1
             Offline_Record r = new Offline_Record();
             r.Show();
             this.Close();
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            //打印内容 为 整个Form
+            Image myFormImage;
+            myFormImage = new Bitmap(this.Width, this.Height);
+            Graphics g = Graphics.FromImage(myFormImage);
+            g.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+            e.Graphics.DrawImage(myFormImage, 0, 0);
         }
     }
 }

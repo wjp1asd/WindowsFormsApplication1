@@ -46,6 +46,7 @@
             this.button7.TabIndex = 27;
             this.button7.Text = "<返回>";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // label2
             // 

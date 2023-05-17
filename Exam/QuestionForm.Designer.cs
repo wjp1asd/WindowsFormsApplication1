@@ -41,6 +41,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnUp = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.rdbD = new System.Windows.Forms.CheckBox();
@@ -50,7 +51,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +98,7 @@
             this.txtQuestionContent.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuestionContent.Multiline = true;
             this.txtQuestionContent.Name = "txtQuestionContent";
+            this.txtQuestionContent.ReadOnly = true;
             this.txtQuestionContent.Size = new System.Drawing.Size(1104, 181);
             this.txtQuestionContent.TabIndex = 4;
             this.txtQuestionContent.TextChanged += new System.EventHandler(this.txtQuestionContent_TextChanged);
@@ -198,6 +199,18 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(435, 64);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 23);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "[]";
             // 
             // label9
             // 
@@ -310,18 +323,6 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "1";
             this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(435, 64);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 23);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "[]";
             // 
             // QuestionForm
             // 
