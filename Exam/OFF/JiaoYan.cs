@@ -47,6 +47,7 @@ namespace WindowsFormsApplication1.Exam
 
         public static byte CalcLRC(byte[] data)
         {
+           //112
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
