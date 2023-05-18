@@ -47,6 +47,13 @@ namespace WindowsFormsApplication1.Exam
 
         int fangzhen1 = 0;
         int fangzhen2 = 1;
+
+        public static byte CalcLRC(byte[] data)
+        {
+           //112
+            byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
+            return lrc;
+        }
         private void fenxi()
         {
             //量程选择
