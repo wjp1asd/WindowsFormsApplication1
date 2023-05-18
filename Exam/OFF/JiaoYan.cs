@@ -25,14 +25,13 @@ namespace WindowsFormsApplication1.Exam
         //#02 01 00 05 01 07 数字输入DI 读取
         byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
         string t1, t2, t3, t4, t5, t6, t7, t8;
-        // 采集DI，8个通道，每个通道非0表示采集，为0表示不采集
-        //02 11 00 0C 01 01 01 01 01 01 01 01 1F
-        byte[] td1 = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1F };
-        byte[] td = new byte[] { 0x02, 0x11, 0x00, 0x0C, 0x01, 0x1F };
-        // 采集AI，8个通道，每个通道非0表示采集，为0表示不采集
-        //02 12 00 0C 01 01 01 01 01 01 01 01 1C
-        byte[] ta1 = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1C };
-        byte[] ta = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x1C };
+        // 整体采集，每个通道非0表示采集，为0表示不采集
+        //02 11 20 0C 01 01 01 01 01 01 01 01 1F Lrc  td1 =header +content +lrc
+        byte[] topheader = new byte[] { 0x02, 0x20, 0x00, 0x0C };
+        byte[] content = new byte[] { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//全采集
+        byte[] td1 = new byte[13];
+
+
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int qiehuanfa1 = 0;
@@ -341,7 +340,16 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
 
+            topheader.CopyTo(td1, 0);
+            content.CopyTo(td1, topheader.Length);
 
+            byte a = CalcLRC(td1);
+            td1[12] = (byte)a;
+            // byte[] end = new byte {a};
+            //  end.CopyTo(td1, td1.Length);
+            Console.WriteLine(BitConverter.ToString(td1));
+            MessageBox.Show(a.ToString("X2"));
+            //   MessageBox.Show(BitConverter.ToString(td1));
         }
         Thread readAI;
 
@@ -401,9 +409,9 @@ namespace WindowsFormsApplication1.Exam
                 //this.Close();
             }
         }
-        public void plcinit() {
-            
-          
+        public void plcinit()
+        {
+
 
             try
             {
@@ -417,6 +425,12 @@ namespace WindowsFormsApplication1.Exam
                 // ai yali 表
                 fangzhen1 = int.Parse(datahelp.AIY1.Trim());
                 fangzhen2 = int.Parse(datahelp.AIy2.Trim());
+
+                //topheader.CopyTo(td1,0);
+                //content.CopyTo(td1, topheader.Length);
+                //byte a = CalcLRC(td1);
+                //td1[13] = a;
+
 
                 //防止意外错误
                 serialPort2.PortName = datahelp.plc.Trim();//获取comboBox1要打开的串口号
@@ -849,33 +863,7 @@ namespace WindowsFormsApplication1.Exam
         byte[] dio = new byte[] { 0x02, 0x20, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,0x2E};
         int a = 0;
 
-        private static string CRC(string cmdString)
-        {
-            try
-            {
-                //CRC寄存器
-                int CRCCode = 0;
-                //将字符串拆分成为16进制字节数据然后两位两位进行异或校验
-                for (int i = 1; i < cmdString.Length / 2; i++)
-                {
-                    string cmdHex = cmdString.Substring(i * 2, 2);
-                    if (i == 1)
-                    {
-                        string cmdPrvHex = cmdString.Substring((i - 1) * 2, 2);
-                        CRCCode = (byte)Convert.ToInt32(cmdPrvHex, 16) ^ (byte)Convert.ToInt32(cmdHex, 16);
-                    }
-                    else
-                    {
-                        CRCCode = (byte)CRCCode ^ (byte)Convert.ToInt32(cmdHex, 16);
-                    }
-                }
-                return Convert.ToString(CRCCode, 16).ToUpper();//返回16进制校验码
-            }
-            catch
-            {
-                throw;
-            }
-        }
+
         private void ReadDI()
         {
             // AI 接口
