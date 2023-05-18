@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1.Exam
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
         //#02 01 00 05 01 07 数字输入DI 读取
         byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
-        string t1, t2, t3, t4, t5, t6, t7, t8;
+        string t1="", t2="";
         // 整体采集，每个通道非0表示采集，为0表示不采集
         //02 11 20 0C 01 01 01 01 01 01 01 01 1F Lrc  td1 =header +content +lrc
         byte[] topheader = new byte[] { 0x02, 0x20, 0x00, 0x0C };
@@ -56,6 +56,12 @@ namespace WindowsFormsApplication1.Exam
         }
         private void fenxi()
         {
+            //MessageBox.Show(DIS);
+            //MessageBox.Show(""+(7 - qiehuanfa1));
+            //MessageBox.Show("" + (7 - qiehuanfa2));
+            //MessageBox.Show("" + (7 - qiehuanfa3));
+            //MessageBox.Show("" + (7 - famao));
+            //MessageBox.Show("" + (7 - xieya));
             //量程选择
             if (DIS[7-qiehuanfa1] + "" == "0")
             {
@@ -67,6 +73,8 @@ namespace WindowsFormsApplication1.Exam
 
                // richTextBox1.Text += "切换阀关闭";
             }
+
+
             if (DIS[7 - qiehuanfa2] + "" == "0")
             {
                 dishow("4Mpa量程选择");
@@ -78,6 +86,8 @@ namespace WindowsFormsApplication1.Exam
 
                 // richTextBox1.Text += "切换阀关闭";
             }
+
+
             if (DIS[7 - qiehuanfa3] + "" == "0")
             {
                 dishow("25Mpa量程选择");
@@ -89,6 +99,8 @@ namespace WindowsFormsApplication1.Exam
 
                 // richTextBox1.Text += "切换阀关闭";
             }
+
+
             if (DIS[7 - famao] + "" == "0")
             {
                // richTextBox1.Text += "阀帽存在";
@@ -100,7 +112,9 @@ namespace WindowsFormsApplication1.Exam
                 //开始拍照
                 chaixiefamao();
             }
-            if (DIS[(7-gongju)] + "" == "0")
+
+
+            if (DIS[7-gongju] + "" == "0")
             {
                 dishow("工具归位");
                // richTextBox1.Text += "工具归位";
@@ -111,7 +125,9 @@ namespace WindowsFormsApplication1.Exam
                 dishow("工具离开");
                // richTextBox1.Text += "工具离开";
             }
-            if (DIS[(7 - xieya)] + "" == "0")
+
+
+            if (DIS[7 - xieya] + "" == "0")
             {
                 dishow("卸压阀打开");
                 //richTextBox2.Text += "卸压阀打开";
@@ -120,7 +136,7 @@ namespace WindowsFormsApplication1.Exam
             else {
                 dishow("卸压阀关闭");
              //   richTextBox2.Text += "卸压阀关闭";
-                guanbixieyafa();
+            //    guanbixieyafa();
             }
         }
 
@@ -361,6 +377,7 @@ namespace WindowsFormsApplication1.Exam
         Thread readAI;
 
         private void ReadAI() {
+            MessageBox.Show(BitConverter.ToString(td1));
             while (true) {
 
                 serialPort2.Write(td1,0,td1.Length);
@@ -374,7 +391,7 @@ namespace WindowsFormsApplication1.Exam
 
             if (serialPort2.IsOpen)
             {
-                readDI = new Thread(ReadDI);
+                readDI = new Thread(ReadAI);
                 readDI.Start();
                 // AI0
               
@@ -456,7 +473,7 @@ namespace WindowsFormsApplication1.Exam
                     button3.Text = "正在连接";//按钮显示关闭串口
                   
                     serialPort2.WriteLine("02 00 00 04 06");
-                    
+                    SetZero();
 
                 }
                 catch (Exception err)
@@ -487,12 +504,12 @@ namespace WindowsFormsApplication1.Exam
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            Thread.Sleep(500);
+          //  Thread.Sleep(1000);
             int len = serialPort2.BytesToRead;//获取可以读取的字节数
             byte[] buff = new byte[len];//创建缓存数据数组
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
             // 通讯读取
-            MessageBox.Show(buff.Length.ToString());
+          //  MessageBox.Show(buff.Length.ToString());
             if (buff.Length == 5)
             {
                 button3.Text = "连接成功，点击测试";//按钮显示关闭串口
@@ -503,66 +520,153 @@ namespace WindowsFormsApplication1.Exam
 
             else if (buff.Length ==38)
             {
+                //  MessageBox.Show(BitConverter.ToString(buff));
                 // AI解析
-                byte[] tt0 = buff.Skip(4).Take(4).ToArray();
-             //   t1 = ShowBy(tt1, 1);
-               // DI解析
+                byte[] ttt1 = new byte[4];
+                byte[] ttt2 = new byte[4];
+                switch (fangzhen1) {
+
+                    case 1:
+                        ttt1 = buff.Skip(9).Take(4).ToArray();
+                        break;
+                    case 2:
+                        ttt1 = buff.Skip(13).Take(4).ToArray();
+                        break;
+                    case 3:
+                        ttt1 = buff.Skip(17).Take(4).ToArray();
+                        break;
+                    case 4:
+                        ttt1 = buff.Skip(21).Take(4).ToArray();
+                        break;
+                    case 5:
+                        ttt1 = buff.Skip(25).Take(4).ToArray();
+                        break;
+                    case 6:
+                        ttt1 = buff.Skip(29).Take(4).ToArray();
+                        break;
+                    case 7:
+                        ttt1 = buff.Skip(34).Take(4).ToArray();
+                        break;
+                    case 0:
+                        ttt1 = buff.Skip(5).Take(4).ToArray();
+                        break;
+
+
+
+                }
+
+
+
+                switch (fangzhen2)
+                {
+
+                    case 1:
+                        ttt2 = buff.Skip(9).Take(4).ToArray();
+                        break;
+                    case 2:
+                        ttt2 = buff.Skip(13).Take(4).ToArray();
+                        break;
+                    case 3:
+                        ttt2 = buff.Skip(17).Take(4).ToArray();
+                        break;
+                    case 4:
+                        ttt2 = buff.Skip(21).Take(4).ToArray();
+                        break;
+                    case 5:
+                        ttt2 = buff.Skip(25).Take(4).ToArray();
+                        break;
+                    case 6:
+                        ttt2 = buff.Skip(29).Take(4).ToArray();
+                        break;
+                    case 7:
+                        ttt2= buff.Skip(34).Take(4).ToArray();
+                        break;
+                    case 0:
+                        ttt2= buff.Skip(5).Take(4).ToArray();
+                        break;
+
+
+
+                }
+
+
+
+
+
+             //   MessageBox.Show(BitConverter.ToString(ttt1));
+              //  MessageBox.Show(BitConverter.ToString(ttt2));
+
+
+
+                  t1 = ShowBy(ttt1, 1);
+                  t2 = ShowBy(ttt2, 2);
+                // DI解析
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
-                string a = Convert.ToString(tt1[0], 2);
+              
+                string a = Convert.ToString(tt1[0], 2).Trim();
+                Console.WriteLine("Di:"+a);
+               // MessageBox.Show(a);
                 string b = "";
                 if (DIS0 == a)
                 {
                     dishow("DI无变化");
                     return;
                 }
-                switch (a.Length)
-                {
+                else {
 
-                    case 1:
-                        b = "0000000" + a;
-                        break;
-                    case 2:
-                        b = "000000" + a;
-                        break;
-                    case 3:
-                        b = "00000" + a;
-                        break;
-                    case 4:
-                        b = "0000" + a;
-                        break;
-                    case 5:
-                        b = "000" + a;
-                        break;
-                    case 6:
-                        b = "00" + a;
-                        break;
-                    case 7:
-                        b = "0" + a;
-                        break;
-                    case 8:
-                        b = a;
-                        break;
+                    switch (a.Length)
+                    {
+
+                        case 1:
+                            b = "0000000" + a;
+                            break;
+                        case 2:
+                            b = "000000" + a;
+                            break;
+                        case 3:
+                            b = "00000" + a;
+                            break;
+                        case 4:
+                            b = "0000" + a;
+                            break;
+                        case 5:
+                            b = "000" + a;
+                            break;
+                        case 6:
+                            b = "00" + a;
+                            break;
+                        case 7:
+                            b = "0" + a;
+                            break;
+                        case 8:
+                            b = a;
+                            break;
+                    }
+
+
+                    DIS = b;
+                    Action tongdao = () =>
+                    {
+                        uiLedLabel4.Text = DIS;
+                    };
+                    this.Invoke(tongdao);
+
+                    if (DIS.Length == 8)
+                    {
+                        DIS0 = a;
+                        fenxi();
+                    }
+
+
+
                 }
-
-
-                DIS = b;
-                Action tongdao = () =>
-                {
-                    uiLedLabel4.Text = DIS;
-                };
-                this.Invoke(tongdao);
-
-                if (DIS.Length == 8)
-                {
-                    DIS0 = a;
-                    fenxi();
-                }
+             
 
 
             }
             else {
-             this.label3.Text=""+buff.Length;
-           //     ff.ShowErrorDialog("设备无反应");
+             //this.label3.Text=""+buff.Length;
+             // ff.ShowErrorDialog("设备无反应");
             
             
             }
@@ -609,24 +713,30 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
-       //     Action tongdao = () => {
-        //        richTextBox1.AppendText("通道" + num + "信息：");
-       //         richTextBox1.AppendText(""+sb1);
-      //      };
-       //     this.Invoke(tongdao);
-           
+          Action tongdao = () => {
+              richTextBox3.AppendText("通道" + num + "信息：");
+              richTextBox3.AppendText(""+sb1);
+           };
+           this.Invoke(tongdao);
+            hexstring = sb1.ToString();
             switch (num)
             {
 
                 case 1:
-                    if (sb1!=null| t1!=null) {
-                        return null; 
+                    if (sb1.Length>0 && t1.Length>0) {
+                        voldetla(sb1, t1);
+                      
                     }
-               voldetla(sb1, t1);
+             
                     break;
-                    //case 2:
-                    //    voldetla(sb1, t2);
-                    //    break;
+                case 2:
+                    if (sb1.Length > 0 && t2.Length>0)
+                    {
+                        voldetla(sb1, t2);
+                      
+                    }
+                  
+                       break;
                     //case 3:
                     //    voldetla(sb1, t3);
                     //    break;
@@ -649,7 +759,7 @@ namespace WindowsFormsApplication1.Exam
             }
 
             //richTextBox2.AppendText("长度：" + buff.Length);
-            hexstring = sb1.ToString();
+          
 
 
             return hexstring;
@@ -658,21 +768,22 @@ namespace WindowsFormsApplication1.Exam
 
         private void voldetla(StringBuilder sb1, string t8)
         {
+           
             int a = Convert.ToInt32(sb1.ToString(), 16);
             int b = Convert.ToInt32(t8.ToString(), 16);
 
             Action tongdao = () => {
-                richTextBox2.AppendText("当前通道：" + sb1.ToString());
-                richTextBox2.AppendText("当前电压值：" + a);
+                richTextBox3.AppendText("当前通道：" + sb1.ToString());
+                richTextBox3.AppendText("当前电压值：" + a);
                 calyali(a);
                
-                richTextBox2.AppendText("上次电压差：" + b);
-                richTextBox2.AppendText("当前电压差：" + (a - b));
-                richTextBox2.AppendText("变化速度：" + Math.Abs(a - b) / interval);
+                richTextBox3.AppendText("上次电压差：" + b);
+                richTextBox3.AppendText("当前电压差：" + (a - b));
+                richTextBox3.AppendText("变化速度：" + Math.Abs(a - b) / interval);
             };
             this.Invoke(tongdao);
-            //SetZero();
-            //SendServo(Math.Abs(a - b) / interval, b);
+           
+           SendServo(Math.Abs(a - b) / interval, b);
         }
 
         private void calyali(int a)
@@ -681,13 +792,13 @@ namespace WindowsFormsApplication1.Exam
             int b = (a / 10000 / 5);
             switch (liangcheng) {
                 case 1:
-                    this.label3.Text = "当前压力："+b*1.6+"Mpa";  
+                    richTextBox3.AppendText("当前压力：" +b*1.6+"Mpa");  
                     break;
                 case 2:
-                    this.label3.Text = "当前压力：" + b * 4+ "Mpa";
+                    richTextBox3.AppendText("当前压力：" + b * 4+ "Mpa");
                     break;
                 case 3:
-                    this.label3.Text = "当前压力：" + b * 25 + "Mpa";
+                    richTextBox3.AppendText("当前压力：" + b * 25 + "Mpa");
                     break;
 
             }
@@ -843,6 +954,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
+            serialPort2.Close();
             datahelp.CurrentStep = 3;
             this.Close();
             OFF of = new OFF(datahelp.QId);
