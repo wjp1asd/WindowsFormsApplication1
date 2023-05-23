@@ -12,6 +12,7 @@ using WindowsFormsApplication1.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Threading.Tasks;
 using AutoWindowsSize;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -371,13 +372,13 @@ namespace WindowsFormsApplication1.Exam
             // byte[] end = new byte {a};
             //  end.CopyTo(td1, td1.Length);
             Console.WriteLine(BitConverter.ToString(td1));
-            MessageBox.Show(a.ToString("X2"));
+            //MessageBox.Show(a.ToString("X2"));
             //   MessageBox.Show(BitConverter.ToString(td1));
         }
         Thread readAI;
 
         private void ReadAI() {
-            MessageBox.Show(BitConverter.ToString(td1));
+          //  MessageBox.Show(BitConverter.ToString(td1));
             while (true) {
 
                 serialPort2.Write(td1,0,td1.Length);
@@ -473,6 +474,7 @@ namespace WindowsFormsApplication1.Exam
                     button3.Text = "正在连接";//按钮显示关闭串口
                   
                     serialPort2.WriteLine("02 00 00 04 06");
+                    richTextBox1.Clear(); 
                     SetZero();
 
                 }
@@ -520,45 +522,24 @@ namespace WindowsFormsApplication1.Exam
 
             else if (buff.Length ==38)
             {
-                //  MessageBox.Show(BitConverter.ToString(buff));
+                Action t = ()=>{
+                    richTextBox1.Clear();
+                
+                };
+                this.Invoke(t);
+               // richTextBox1.Clear();
+                 // MessageBox.Show(BitConverter.ToString(buff));
                 // AI解析
                 byte[] ttt1 = new byte[4];
                 byte[] ttt2 = new byte[4];
-                switch (fangzhen1) {
-
-                    case 1:
-                        ttt1 = buff.Skip(9).Take(4).ToArray();
-                        break;
-                    case 2:
-                        ttt1 = buff.Skip(13).Take(4).ToArray();
-                        break;
-                    case 3:
-                        ttt1 = buff.Skip(17).Take(4).ToArray();
-                        break;
-                    case 4:
-                        ttt1 = buff.Skip(21).Take(4).ToArray();
-                        break;
-                    case 5:
-                        ttt1 = buff.Skip(25).Take(4).ToArray();
-                        break;
-                    case 6:
-                        ttt1 = buff.Skip(29).Take(4).ToArray();
-                        break;
-                    case 7:
-                        ttt1 = buff.Skip(34).Take(4).ToArray();
-                        break;
-                    case 0:
-                        ttt1 = buff.Skip(5).Take(4).ToArray();
-                        break;
-
-
-
-                }
-
+            
 
 
                 switch (fangzhen2)
                 {
+                    case 0:
+                        ttt2 = buff.Skip(5).Take(4).ToArray();
+                        break;
 
                     case 1:
                         ttt2 = buff.Skip(9).Take(4).ToArray();
@@ -579,12 +560,9 @@ namespace WindowsFormsApplication1.Exam
                         ttt2 = buff.Skip(29).Take(4).ToArray();
                         break;
                     case 7:
-                        ttt2= buff.Skip(34).Take(4).ToArray();
+                        ttt2= buff.Skip(33).Take(4).ToArray();
                         break;
-                    case 0:
-                        ttt2= buff.Skip(5).Take(4).ToArray();
-                        break;
-
+                
 
 
                 }
@@ -593,12 +571,12 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-             //   MessageBox.Show(BitConverter.ToString(ttt1));
-              //  MessageBox.Show(BitConverter.ToString(ttt2));
+             ////MessageBox.Show(BitConverter.ToString(ttt1));
+              // MessageBox.Show(BitConverter.ToString(ttt2));
 
 
 
-                  t1 = ShowBy(ttt1, 1);
+                 t1 = "";
                   t2 = ShowBy(ttt2, 2);
                 // DI解析
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
@@ -700,25 +678,24 @@ namespace WindowsFormsApplication1.Exam
         private string ShowBy(byte[] buff, int num)
         {
 
-            StringBuilder sb = new StringBuilder();
-            StringBuilder sb1 = new StringBuilder();
-            string hexstring = string.Empty;
-            for (int i = 0; i < buff.Length; i++)
-            {
-                sb.AppendFormat("{0:x2}" + " ", buff[i]);
-                if (i > 1)
-                {
+            string sb1 = BitConverter.ToString(buff).Replace("-","");
 
-                    sb1.AppendFormat("{0:x2}", buff[i]);
-                }
+            if (t1.Length == 0) {
 
+                t1 = sb1;
             }
+  
+            
+             
+         
+  
           Action tongdao = () => {
               richTextBox3.AppendText("通道" + num + "信息：");
               richTextBox3.AppendText(""+sb1);
            };
            this.Invoke(tongdao);
-            hexstring = sb1.ToString();
+           
+           
             switch (num)
             {
 
@@ -730,9 +707,9 @@ namespace WindowsFormsApplication1.Exam
              
                     break;
                 case 2:
-                    if (sb1.Length > 0 && t2.Length>0)
+                    if (sb1.Length > 0 && t1.Length>0)
                     {
-                        voldetla(sb1, t2);
+                        voldetla(sb1, t1);
                       
                     }
                   
@@ -762,28 +739,107 @@ namespace WindowsFormsApplication1.Exam
           
 
 
-            return hexstring;
+            return sb1;
 
         }
-
-        private void voldetla(StringBuilder sb1, string t8)
+        public static int HexToDecimal(string hex)
         {
-           
+            if (!Regex.Match(hex, "^[0-9A-F]$", RegexOptions.IgnoreCase).Success)
+            {
+                throw new Exception("不是十六进制数字");
+            }
+
+            var decimalValue = 0;
+
+            var hexUp = hex.ToUpper();
+            // 从最后一位到第一位循环获取每位的值，并乘以基数的n-1次方
+            for (int i = hexUp.Length - 1; i >= 0; i--)
+            {
+                int currV = 0;
+                switch (hexUp[i])
+                {
+                    case 'A':
+                        currV = 10;
+                        break;
+                    case 'B':
+                        currV = 11;
+                        break;
+                    case 'C':
+                        currV = 12;
+                        break;
+                    case 'D':
+                        currV = 13;
+                        break;
+                    case 'E':
+                        currV = 14;
+                        break;
+                    case 'F':
+                        currV = 15;
+                        break;
+                    case '0':
+                        currV = 0;
+                        break;
+                    case '1':
+                        currV = 1;
+                        break;
+                    case '2':
+                        currV = 2;
+                        break;
+                    case '3':
+                        currV = 3;
+                        break;
+                    case '4':
+                        currV = 4;
+                        break;
+                    case '5':
+                        currV = 5;
+                        break;
+                    case '6':
+                        currV = 6;
+                        break;
+                    case '7':
+                        currV = 7;
+                        break;
+                    case '8':
+                        currV = 8;
+                        break;
+                    case '9':
+                        currV = 9;
+                        break;
+                    default:
+                        break;
+                }
+
+                for (int n = 0; n < hexUp.Length - 1 - i; n++)
+                {
+                    currV *= 16;
+                }
+                decimalValue += currV;
+            }
+            return decimalValue;
+        }
+        private void voldetla( string sb1, string t8)
+        {
+
             int a = Convert.ToInt32(sb1.ToString(), 16);
+          //  MessageBox.Show(sb1.ToString()+a);
             int b = Convert.ToInt32(t8.ToString(), 16);
 
-            Action tongdao = () => {
+            Action tongdao = () => { 
+             richTextBox3.Clear();
                 richTextBox3.AppendText("当前通道：" + sb1.ToString());
                 richTextBox3.AppendText("当前电压值：" + a);
-                calyali(a);
                
+             
                 richTextBox3.AppendText("上次电压差：" + b);
                 richTextBox3.AppendText("当前电压差：" + (a - b));
                 richTextBox3.AppendText("变化速度：" + Math.Abs(a - b) / interval);
-            };
+                calyali(a); };
             this.Invoke(tongdao);
-           
-           SendServo(Math.Abs(a - b) / interval, b);
+            if (Math.Abs(a - b) > 10000)   {
+                          SendServo(Math.Abs(a - b) / interval, b);
+
+            }
         }
 
         private void calyali(int a)
@@ -827,6 +883,8 @@ namespace WindowsFormsApplication1.Exam
 
                  0x5B
             };
+
+            MessageBox.Show(BitConverter.ToString(d1)) ;
             serialPort2.Write(d1, 0, d1.Length);
             Thread.Sleep(1000);
         }
@@ -834,10 +892,12 @@ namespace WindowsFormsApplication1.Exam
         private void SendServo(int a, int pos)
         {
             int b = (a / 10000 / 5)*2500;
-            string b1 = a.ToString("X4");
-          
+            string b1 = b.ToString("X4");
+           MessageBox.Show(""+b);
             int a2 = int.Parse("0x"+ b1.Substring(0, 2));
             int a3 = int.Parse("0x" + b1.Substring(2));
+
+           // MessageBox.Show(""+b1);
             byte[] d3 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
 
                 0x01, (byte)a2, (byte)a3,
