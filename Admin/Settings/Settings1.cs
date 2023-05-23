@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO.Ports;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Admin.Settings;
 
 namespace WindowsFormsApplication1.Settings
 {
@@ -20,6 +21,12 @@ namespace WindowsFormsApplication1.Settings
         public string a, b, c, d, f;
         public string a1, a2, a3, a4, a5, a6, a7, a8;
         public string a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23;
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            biaoding b= new biaoding();
+            b.Show();
+        }
 
         private void Settings1_Scroll(object sender, ScrollEventArgs e)
         {
