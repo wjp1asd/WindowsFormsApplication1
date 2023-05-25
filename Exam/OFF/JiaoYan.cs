@@ -456,7 +456,32 @@ namespace WindowsFormsApplication1.Exam
                 //content.CopyTo(td1, topheader.Length);
                 //byte a = CalcLRC(td1);
                 //td1[13] = a;
+                //防止意外错误
+                SER5.PortName ="COM5";//获取comboBox1要打开的串口号
 
+                SER5.BaudRate = 9600;//获取comboBox2选择的波特率
+                SER5.DataBits = 8;//设置数据位
+                /*设置停止位*/
+               // if (datahelp.plcsp.Trim() == "1") { SER5.StopBits = StopBits.One; }
+                //else if (datahelp.plcsp.Trim() == "1.5") { SER5.StopBits = StopBits.OnePointFive; }
+                //else if (datahelp.plcsp.Trim() == "2") { SER5.StopBits = StopBits.Two; }
+                ///*设置奇偶校验*/
+                SER5.Parity = Parity.None;
+                try
+                {
+                    SER5.Open();//打开串口
+                    button3.Text = "正在连接";//按钮显示关闭串口
+
+                  //  SER5.WriteLine("02 00 00 04 06");
+                    richTextBox1.Clear();
+                    SetZero1();
+
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+                    throw;
+                }
 
                 //防止意外错误
                 serialPort2.PortName = datahelp.plc.Trim();//获取comboBox1要打开的串口号
@@ -475,8 +500,8 @@ namespace WindowsFormsApplication1.Exam
                     button3.Text = "正在连接";//按钮显示关闭串口
                   
                     serialPort2.WriteLine("02 00 00 04 06");
-                    richTextBox1.Clear(); 
-                    SetZero();
+                    richTextBox1.Clear();
+                    // SetZero();//正确的方法先注视
 
                 }
                 catch (Exception err)
@@ -496,6 +521,21 @@ namespace WindowsFormsApplication1.Exam
 
 
         }
+
+
+        private void SetZero1()
+        {
+            //舵机归零
+
+            byte[] d1 = new byte[] {0xFF,0x01,0x00,0x0a,0x00, 
+                0xFF, 0x02, 0x00, 0xC4,0x09 
+            };
+
+            //  MessageBox.Show(BitConverter.ToString(d1)) ;
+            serialPort2.Write(d1, 0, d1.Length);
+            Thread.Sleep(1000);
+        }
+
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
             this.plcinit();
@@ -510,11 +550,15 @@ namespace WindowsFormsApplication1.Exam
             //Thread.Sleep(1000);
             //serialPort2.Close();
             int len = serialPort2.BytesToRead;//获取可以读取的字节数
-            byte[] buff = new byte[len];//创建缓存数据数组
-            serialPort2.Read(buff, 0, len);//把数据读取到buff数组
-                                           // 通讯读取
-            //MessageBox.Show(BitConverter.ToString(buff));
-            //MessageBox.Show(buff.Length.ToString());
+
+
+
+            byte[] buff = new byte[len];//
+             serialPort2.Read(buff,0,len);//把数据读取到buff数组
+                                         // 通讯读取
+             // MessageBox.Show(BitConverter.ToString(buff));
+            //MessageBox.Show(len);
+            //   MessageBox.Show(name);
             if (buff.Length == 5)
             {
                 button3.Text = "连接成功，点击测试";//按钮显示关闭串口
@@ -540,15 +584,18 @@ namespace WindowsFormsApplication1.Exam
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
 
                 string a = Convert.ToString(tt1[0], 2).Trim();
+                //int f = Convert.ToInt32(a.ToString(), 16);
+               // MessageBox.Show(BitConverter.ToString(buff)+","+f);
+
                 Console.WriteLine("Di:" + a);
                 // MessageBox.Show(a);
                 string b = "";
-                if (DIS0 == a)
-                {
-                    dishow("DI无变化");
-                    return;
-                }
-                else
+                //if (DIS0 == a)
+                //{
+                //    dishow("DI无变化");
+                //    return;
+                //}
+                //else
                 {
 
                     switch (a.Length)
@@ -825,10 +872,11 @@ namespace WindowsFormsApplication1.Exam
         }
         //上次电压值
         private int dwq;
+        string cz;
         private void voldetla( string sb1, string t8)
         {
             //cz从离线压力设置-初次测试压力中取值
-            string cz ="1.2";
+             cz ="1.2";
             //y为对应（500-2500）中的码值
           //  int y = (2000 * Convert.ToInt32( cz) )/Convert.ToInt32 (1.6);
             
@@ -858,31 +906,86 @@ namespace WindowsFormsApplication1.Exam
             //if (Math.Abs(a - b) > 10000)
             if (Math.Abs(a) < 119000)
             {
-                
-                SendServo(a, 0);
+                SendServo1(a, 0);
+                // SendServo(a, 0);//正确的方法先注视
                 //     SendServo(Math.Abs(a - b) / interval, b);
 
             }
             else 
             {
 
-                if (DIS[7 -xieya] + "" == "0")
-                {
-                    dishow("卸压阀打开");
-                    //richTextBox2.Text += "卸压阀打开";
-                    if (maz <= 2500 & maz > 500)
-                    { maz += 13; }
+                //if (DIS[7 - xieya] + "" == "0")
+                //{
+                //    dishow("卸压阀打开");
+                //    //richTextBox2.Text += "卸压阀打开";
+                //    if (maz <= 2500 & maz > 500)
+                //    { maz += 13; }
 
-                    smin = 200;
-                }
-                else
-                {
-                    dishow("卸压阀关闭");
-                    // xieya  richTextBox2.Text += "卸压阀关闭";
-                    //    guanbixieyafa();
-                }
+                //    smin = 200;
+                //}
+                //else
+                //{
+                //    dishow("卸压阀关闭");
+                //    // xieya  richTextBox2.Text += "卸压阀关闭";
+                //    //    guanbixieyafa();
+                //}
             }
         }
+        
+        private void SendServo1(int a, int pos)
+        {
+
+            this.richTextBox2.Text += "当前采集卡端口：" + "COM5"+ "波特率" 
+                + datahelp.plcbt + "起始位，停止位，校验位" + datahelp.plcst 
+                + "-" + datahelp.plcsp + "-" + datahelp.plcjy;
+
+          
+            byte[] d3 = new byte[] {0xFF,0x01,0x00,0x0a,0x00,
+                0xFF, 0x02, 0x00, 0xC4,0x09 };
+            //高八度低八度取值
+            d3[3] = (byte)(maz & 0x00ff); 
+            d3[4] = (byte)((maz >> 8) & 0xff);
+            //目标码值（离线压力设置-初次测试压力）
+            d3[9] = (byte)((cz >> 8) & 0xff);
+            d3[8] = (byte)(cz & 0x00ff);
+            //byte o = CalcLRC(d3);
+
+            //byte[] d4 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
+
+            // 0x01, d3[5],d3[6],
+            //   //0x01, 0x05, 0xDC,
+            //    0x01, 0x01, 0xF4,
+            //    0x01, 0x01, 0xF4,
+            //    0x01, 0x01, 0xF4,
+            //    0x01, 0x01, 0xF4,
+            //    0x01, 0x01, 0xF4,
+            //    0x01, 0x01, 0xF4,
+            //    0x01, 0x01, 0xF4,
+            //    o
+            //};
+
+            serialPort2.Write(d3, 0, d3.Length);
+
+            if (dwq - a > 100)
+            {
+                if (smin > 100)
+                {
+                    smin = smin - 100;
+                }
+            }
+            Thread.Sleep(smin);
+            if (a < 119000)
+            { dwq = a; }
+            if (maz > 500 & maz <= 2500)
+            {
+                cisu = cisu + 1;
+                maz -= 13;
+                if (maz < 500)
+                { maz = 500; }
+            }
+           
+        }
+
 
         private void calyali(int a)
         {
@@ -969,7 +1072,7 @@ namespace WindowsFormsApplication1.Exam
             //高八度低八度取值
             d3[6] =(byte) (maz & 0x00ff); d3[5] = (byte)((maz>>8)&0xff);
         
-            byte O = CalcLRC(d3);
+            byte o = CalcLRC(d3);
 
             byte[] d4 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
 
@@ -982,10 +1085,10 @@ namespace WindowsFormsApplication1.Exam
                 0x01, 0x01, 0xF4,
                 0x01, 0x01, 0xF4,
                 0x01, 0x01, 0xF4,
-                O
+                o
             };
 
-            serialPort2.Write(d4, 0, d4.Length);
+             serialPort2.Write(d4, 0, d4.Length);
 
             if (dwq - a > 100)
             {

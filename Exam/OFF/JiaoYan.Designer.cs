@@ -268,5 +268,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.IO.Ports.SerialPort SER5;
     }
 }
