@@ -275,8 +275,9 @@ namespace WindowsFormsApplication1.Exam
         private void shot()
         {
             step = 1;
-            CvInvoke.Imwrite(url + "shot.png", f1);
-            MessageBox.Show("拍照成功");
+          
+            //CvInvoke.Imwrite(url + "shot.png", f1);
+            //MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 
@@ -372,13 +373,13 @@ namespace WindowsFormsApplication1.Exam
             // byte[] end = new byte {a};
             //  end.CopyTo(td1, td1.Length);
             Console.WriteLine(BitConverter.ToString(td1));
-            //MessageBox.Show(a.ToString("X2"));
+           // MessageBox.Show(a.ToString("X2"));
             //   MessageBox.Show(BitConverter.ToString(td1));
         }
         Thread readAI;
 
         private void ReadAI() {
-          //  MessageBox.Show(BitConverter.ToString(td1));
+          // MessageBox.Show(BitConverter.ToString(td1));
             while (true) {
 
                 serialPort2.Write(td1,0,td1.Length);
@@ -506,12 +507,14 @@ namespace WindowsFormsApplication1.Exam
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-          //  Thread.Sleep(1000);
+            //Thread.Sleep(1000);
+            //serialPort2.Close();
             int len = serialPort2.BytesToRead;//获取可以读取的字节数
             byte[] buff = new byte[len];//创建缓存数据数组
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
-            // 通讯读取
-          //  MessageBox.Show(buff.Length.ToString());
+                                           // 通讯读取
+            //MessageBox.Show(BitConverter.ToString(buff));
+            //MessageBox.Show(buff.Length.ToString());
             if (buff.Length == 5)
             {
                 button3.Text = "连接成功，点击测试";//按钮显示关闭串口
@@ -528,69 +531,25 @@ namespace WindowsFormsApplication1.Exam
                 };
                 this.Invoke(t);
                // richTextBox1.Clear();
-                 // MessageBox.Show(BitConverter.ToString(buff));
+               //38位
+                 //MessageBox.Show(BitConverter.ToString(buff));
                 // AI解析
                 byte[] ttt1 = new byte[4];
                 byte[] ttt2 = new byte[4];
-            
 
-
-                switch (fangzhen2)
-                {
-                    case 0:
-                        ttt2 = buff.Skip(5).Take(4).ToArray();
-                        break;
-
-                    case 1:
-                        ttt2 = buff.Skip(9).Take(4).ToArray();
-                        break;
-                    case 2:
-                        ttt2 = buff.Skip(13).Take(4).ToArray();
-                        break;
-                    case 3:
-                        ttt2 = buff.Skip(17).Take(4).ToArray();
-                        break;
-                    case 4:
-                        ttt2 = buff.Skip(21).Take(4).ToArray();
-                        break;
-                    case 5:
-                        ttt2 = buff.Skip(25).Take(4).ToArray();
-                        break;
-                    case 6:
-                        ttt2 = buff.Skip(29).Take(4).ToArray();
-                        break;
-                    case 7:
-                        ttt2= buff.Skip(33).Take(4).ToArray();
-                        break;
-                
-
-
-                }
-
-
-
-
-
-             ////MessageBox.Show(BitConverter.ToString(ttt1));
-              // MessageBox.Show(BitConverter.ToString(ttt2));
-
-
-
-                 t1 = "";
-                  t2 = ShowBy(ttt2, 2);
-                // DI解析
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
-              
+
                 string a = Convert.ToString(tt1[0], 2).Trim();
-                Console.WriteLine("Di:"+a);
-               // MessageBox.Show(a);
+                Console.WriteLine("Di:" + a);
+                // MessageBox.Show(a);
                 string b = "";
                 if (DIS0 == a)
                 {
                     dishow("DI无变化");
                     return;
                 }
-                else {
+                else
+                {
 
                     switch (a.Length)
                     {
@@ -638,6 +597,52 @@ namespace WindowsFormsApplication1.Exam
 
 
                 }
+
+                switch (fangzhen2)
+                {
+                    case 0:
+                        ttt2 = buff.Skip(5).Take(4).ToArray();
+                        break;
+
+                    case 1:
+                        ttt2 = buff.Skip(9).Take(4).ToArray();
+                        break;
+                    case 2:
+                        ttt2 = buff.Skip(13).Take(4).ToArray();
+                        break;
+                    case 3:
+                        ttt2 = buff.Skip(17).Take(4).ToArray();
+                        break;
+                    case 4:
+                        ttt2 = buff.Skip(21).Take(4).ToArray();
+                        break;
+                    case 5:
+                        ttt2 = buff.Skip(25).Take(4).ToArray();
+                        break;
+                    case 6:
+                        ttt2 = buff.Skip(29).Take(4).ToArray();
+                        break;
+                    case 7:
+                        ttt2= buff.Skip(33).Take(4).ToArray();
+                        break;
+                
+
+
+                }
+
+
+
+
+
+             ////MessageBox.Show(BitConverter.ToString(ttt1));
+             //MessageBox.Show(BitConverter.ToString(ttt2));
+
+
+
+                  t1 = "";
+                  t2 = ShowBy(ttt2, 2);
+                // DI解析
+               
              
 
 
@@ -818,27 +823,64 @@ namespace WindowsFormsApplication1.Exam
             }
             return decimalValue;
         }
+        //上次电压值
+        private int dwq;
         private void voldetla( string sb1, string t8)
         {
-
+            //cz从离线压力设置-初次测试压力中取值
+            string cz ="1.2";
+            //y为对应（500-2500）中的码值
+          //  int y = (2000 * Convert.ToInt32( cz) )/Convert.ToInt32 (1.6);
+            
             int a = Convert.ToInt32(sb1.ToString(), 16);
-          //  MessageBox.Show(sb1.ToString()+a);
+         // MessageBox.Show(sb1.ToString()+a);
             int b = Convert.ToInt32(t8.ToString(), 16);
 
             Action tongdao = () => { 
              richTextBox3.Clear();
+   richTextBox3.AppendText("当前循环时间：" + smin);
+              
+ richTextBox3.AppendText("当前电压差：" + ( dwq-a));
+                
+
+                richTextBox3.AppendText("当前舵机码值：" + maz);
+               richTextBox3.AppendText("当前循环次数：" + cisu);
+                richTextBox3.AppendText("上次电位器码值码值：" + dwq);
+
                 richTextBox3.AppendText("当前通道：" + sb1.ToString());
-                richTextBox3.AppendText("当前电压值：" + a);
+                richTextBox3.AppendText("当前电位器码值（电压值）：" + a);
                
              
                 richTextBox3.AppendText("上次电压差：" + b);
-                richTextBox3.AppendText("当前电压差：" + (a - b));
-                richTextBox3.AppendText("变化速度：" + Math.Abs(a - b) / interval);
+               richTextBox3.AppendText("变化速度：" + Math.Abs(a - b) / interval);
                 calyali(a); };
             this.Invoke(tongdao);
-            if (Math.Abs(a - b) > 10000)   {
-                          SendServo(Math.Abs(a - b) / interval, b);
+            //if (Math.Abs(a - b) > 10000)
+            if (Math.Abs(a) < 119000)
+            {
+                
+                SendServo(a, 0);
+                //     SendServo(Math.Abs(a - b) / interval, b);
 
+            }
+            else 
+            {
+
+                if (DIS[7 -xieya] + "" == "0")
+                {
+                    dishow("卸压阀打开");
+                    //richTextBox2.Text += "卸压阀打开";
+                    if (maz <= 2500 & maz > 500)
+                    { maz += 13; }
+
+                    smin = 200;
+                }
+                else
+                {
+                    dishow("卸压阀关闭");
+                    // xieya  richTextBox2.Text += "卸压阀关闭";
+                    //    guanbixieyafa();
+                }
             }
         }
 
@@ -865,54 +907,107 @@ namespace WindowsFormsApplication1.Exam
             //舵机归零
             byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
                 //通道1
-                0x01, 0x01, 0xF4,
+                0x01, 0x09, 0xC4,
                 //通道2
-                0x01, 0x01, 0xF4,
+                0x01, 0x09, 0xC4,
                 //通道3
-                0x01, 0x01, 0xF4,
+                0x01,  0x09, 0xC4,
                 //通道4
-                0x01, 0x01, 0xF4,
+                0x01,  0x09, 0xC4,
                 //通道5
-                0x01, 0x01, 0xF4,
+                0x01,  0x09, 0xC4,
                 //通道6
-                0x01, 0x01, 0xF4,
+                0x01, 0x09, 0xC4,
                 //通道7
-                0x01, 0x01, 0xF4,
+                0x01,  0x09, 0xC4,
                 //通道8
-                0x01, 0x01, 0xF4,
+                0x01,  0x09, 0xC4,
 
                  0x5B
             };
 
-            MessageBox.Show(BitConverter.ToString(d1)) ;
+         //  MessageBox.Show(BitConverter.ToString(d1)) ;
             serialPort2.Write(d1, 0, d1.Length);
             Thread.Sleep(1000);
         }
+        //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
+         int  maz=2500;
+        int smin=1000;
+        int cisu=0;
 
         private void SendServo(int a, int pos)
         {
-            int b = (a / 10000 / 5)*2500;
-            string b1 = b.ToString("X4");
-           MessageBox.Show(""+b);
-            int a2 = int.Parse("0x"+ b1.Substring(0, 2));
-            int a3 = int.Parse("0x" + b1.Substring(2));
 
-           // MessageBox.Show(""+b1);
+            //MessageBox.Show(a.ToString());
+            //int b = (a / 1000 / 5)*2500;
+            //string b1 = b.ToString("X4");
+            // MessageBox.Show(""+b);
+            // MessageBox.Show(b1.ToString());
+            //  int a2 = int.Parse("0x"+ b1.Substring(0, 2));
+            // int a3 = int.Parse("0x" + b1.Substring(2));
+          
+            // MessageBox.Show(""+b1);
+        //string    maz1 = maz.ToString("X4");
+        //     // int maz1 =Convert.ToInt32( maz.ToString(),16);
+        //    // byte a2;byte a3;
+          // MessageBox.Show(maz.ToString());
+        //    int a2 =Convert.ToInt32( maz1.ToString().Substring(0, 2));
+        //    int a3 =Convert.ToInt32( maz1.ToString().Substring(2));
+        //      MessageBox.Show(a2.ToString());
+        //   MessageBox.Show(a3.ToString());
+         //     MessageBox.Show(BitConverter.ToString(maz2));
             byte[] d3 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
-
-                0x01, (byte)a2, (byte)a3,
-                0x01, 0x09, 0xC4,
-                0x01, 0x09, 0xC4,
-                0x01, 0x09, 0xC4,
-                0x01, 0x09, 0xC4,
-                0x01, 0x09, 0xC4,
-                0x01, 0x09, 0xC4,
-                0x01, 0x09, 0xC4,
-
-              
+0x01, 0x01,0xf4,//(byte)a2, (byte)a3,              
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
             };
-            serialPort2.Write(d3, 0, d3.Length);
-            Thread.Sleep(1000);
+            //高八度低八度取值
+            d3[6] =(byte) (maz & 0x00ff); d3[5] = (byte)((maz>>8)&0xff);
+        
+            byte O = CalcLRC(d3);
+
+            byte[] d4 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
+
+             0x01, d3[5],d3[6],
+               //0x01, 0x05, 0xDC,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                0x01, 0x01, 0xF4,
+                O
+            };
+
+            serialPort2.Write(d4, 0, d4.Length);
+
+            if (dwq - a > 100)
+            {
+                if (smin > 100)
+                {
+                    smin = smin - 100;
+                }
+            }
+            Thread.Sleep(smin);
+            if (a<119000)
+            { dwq = a; }
+            if(maz>500 & maz<=2500)
+            { 
+                cisu =cisu+1;
+            maz -= 13;
+                if (maz<500)
+                { maz = 500; }
+            }
+           // MessageBox.Show(smin.ToString());
+           // MessageBox.Show(maz.ToString());
+           //MessageBox.Show(BitConverter.ToString(d4));
+            //  MessageBox.Show(d4.Length.ToString());
             // 输出电压 0-5v  0-1.6Mpa
 
             //  string[] s3 = new string[s1.Length + s2.Length];
@@ -927,6 +1022,7 @@ namespace WindowsFormsApplication1.Exam
             //02 45 00 1C 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 5B
             //舵机正量程
             //02 45 00 1C 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 5B
+          
         }
 
       
