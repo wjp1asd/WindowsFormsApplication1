@@ -931,7 +931,7 @@ namespace WindowsFormsApplication1.Exam
                 //}
             }
         }
-        
+        int czmaz;
         private void SendServo1(int a, int pos)
         {
 
@@ -946,8 +946,8 @@ namespace WindowsFormsApplication1.Exam
             d3[3] = (byte)(maz & 0x00ff); 
             d3[4] = (byte)((maz >> 8) & 0xff);
             //目标码值（离线压力设置-初次测试压力）
-            d3[9] = (byte)((cz >> 8) & 0xff);
-            d3[8] = (byte)(cz & 0x00ff);
+            d3[9] = (byte)((czmaz >> 8) & 0xff);
+            d3[8] = (byte)(czmaz & 0x00ff);
             //byte o = CalcLRC(d3);
 
             //byte[] d4 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
@@ -968,20 +968,18 @@ namespace WindowsFormsApplication1.Exam
 
             if (dwq - a > 100)
             {
-                if (smin > 100)
-                {
-                    smin = smin - 100;
-                }
+                
+                    maz += 1;
+               
             }
-            Thread.Sleep(smin);
+            Thread.Sleep(1000);
             if (a < 119000)
             { dwq = a; }
-            if (maz > 500 & maz <= 2500)
+            if (maz > 1)
             {
                 cisu = cisu + 1;
-                maz -= 13;
-                if (maz < 500)
-                { maz = 500; }
+                maz -= 1;
+               
             }
            
         }
