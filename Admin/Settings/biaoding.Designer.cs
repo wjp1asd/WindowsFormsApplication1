@@ -28,20 +28,122 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.machine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.beizhu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(12, 31);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(220, 25);
+            this.textBox8.TabIndex = 62;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(270, 31);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(67, 30);
+            this.button5.TabIndex = 61;
+            this.button5.Text = "查询\r\n";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.status,
+            this.machine,
+            this.pin,
+            this.beizhu});
+            this.dataGridView1.Location = new System.Drawing.Point(10, 90);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(1353, 541);
+            this.dataGridView1.TabIndex = 58;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_3);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "Id";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.FalseValue = "0";
+            this.status.HeaderText = "状态";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.TrueValue = "1";
+            // 
+            // machine
+            // 
+            this.machine.DataPropertyName = "machine";
+            this.machine.HeaderText = "机器";
+            this.machine.MinimumWidth = 6;
+            this.machine.Name = "machine";
+            // 
+            // pin
+            // 
+            this.pin.DataPropertyName = "pin";
+            this.pin.HeaderText = "引脚";
+            this.pin.MinimumWidth = 6;
+            this.pin.Name = "pin";
+            // 
+            // beizhu
+            // 
+            this.beizhu.DataPropertyName = "beizhu";
+            this.beizhu.HeaderText = "备注";
+            this.beizhu.MinimumWidth = 6;
+            this.beizhu.Name = "beizhu";
             // 
             // biaoding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1375, 653);
+            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "biaoding";
             this.Text = "标定设置";
             this.Load += new System.EventHandler(this.biaoding_Load);
+            this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn machine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn beizhu;
     }
 }

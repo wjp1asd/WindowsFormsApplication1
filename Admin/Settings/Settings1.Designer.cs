@@ -108,6 +108,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.button9 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -528,6 +529,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.xieya);
             this.groupBox1.Controls.Add(this.dj);
             this.groupBox1.Controls.Add(this.label37);
@@ -819,6 +821,16 @@
             this.label24.TabIndex = 60;
             this.label24.Text = "离线题：";
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(385, 680);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(183, 40);
+            this.button9.TabIndex = 87;
+            this.button9.Text = "高级设置";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Settings1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -917,5 +929,6 @@
         private System.Windows.Forms.ComboBox stop;
         private System.Windows.Forms.TextBox xieya;
         private System.Windows.Forms.TextBox dj;
+        private System.Windows.Forms.Button button9;
     }
 }
