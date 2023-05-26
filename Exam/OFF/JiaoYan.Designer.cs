@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -220,6 +221,10 @@
             this.richTextBox3.TabIndex = 102;
             this.richTextBox3.Text = "";
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived_1);
+            // 
             // JiaoYan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -268,6 +273,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.IO.Ports.SerialPort SER5;
+      
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }

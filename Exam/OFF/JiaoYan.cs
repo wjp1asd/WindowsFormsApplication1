@@ -438,7 +438,7 @@ namespace WindowsFormsApplication1.Exam
         public void plcinit()
         {
 
-
+            //采集卡初始化+舵机控制板
             try
             {
                 // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
@@ -457,19 +457,19 @@ namespace WindowsFormsApplication1.Exam
                 //byte a = CalcLRC(td1);
                 //td1[13] = a;
                 //防止意外错误
-                SER5.PortName ="COM5";//获取comboBox1要打开的串口号
+                serialPort1.PortName ="COM5";//获取comboBox1要打开的串口号
 
-                SER5.BaudRate = 9600;//获取comboBox2选择的波特率
-                SER5.DataBits = 8;//设置数据位
+                serialPort1.BaudRate = 9600;//获取comboBox2选择的波特率
+                serialPort1.DataBits = 8;//设置数据位
                 /*设置停止位*/
-               // if (datahelp.plcsp.Trim() == "1") { SER5.StopBits = StopBits.One; }
+                // if (datahelp.plcsp.Trim() == "1") { SER5.StopBits = StopBits.One; }
                 //else if (datahelp.plcsp.Trim() == "1.5") { SER5.StopBits = StopBits.OnePointFive; }
                 //else if (datahelp.plcsp.Trim() == "2") { SER5.StopBits = StopBits.Two; }
                 ///*设置奇偶校验*/
-                SER5.Parity = Parity.None;
+                serialPort1.Parity = Parity.None;
                 try
                 {
-                    SER5.Open();//打开串口
+                    serialPort1.Open();//打开串口
                     button3.Text = "正在连接";//按钮显示关闭串口
 
                   //  SER5.WriteLine("02 00 00 04 06");
@@ -532,7 +532,7 @@ namespace WindowsFormsApplication1.Exam
             };
 
             //  MessageBox.Show(BitConverter.ToString(d1)) ;
-            serialPort2.Write(d1, 0, d1.Length);
+            serialPort1.Write(d1, 0, d1.Length);
             Thread.Sleep(1000);
         }
 
@@ -935,9 +935,16 @@ namespace WindowsFormsApplication1.Exam
         private void SendServo1(int a, int pos)
         {
 
-            this.richTextBox2.Text += "当前采集卡端口：" + "COM5"+ "波特率" 
-                + datahelp.plcbt + "起始位，停止位，校验位" + datahelp.plcst 
-                + "-" + datahelp.plcsp + "-" + datahelp.plcjy;
+            Action tongdao = () =>
+            {
+                this.richTextBox2.Text += "当前采集卡端口：" + "COM5" + "波特率"
+              + datahelp.plcbt + "起始位，停止位，校验位" + datahelp.plcst
+              + "-" + datahelp.plcsp + "-" + datahelp.plcjy;
+
+            };
+
+            this.Invoke(tongdao);
+          
 
           
             byte[] d3 = new byte[] {0xFF,0x01,0x00,0x0a,0x00,
@@ -964,7 +971,7 @@ namespace WindowsFormsApplication1.Exam
             //    o
             //};
 
-            serialPort2.Write(d3, 0, d3.Length);
+            serialPort1.Write(d3, 0, d3.Length);
 
             if (dwq - a > 100)
             {
@@ -1253,6 +1260,12 @@ namespace WindowsFormsApplication1.Exam
 
             }
             richTextBox2.Text = "DI读取：" + a;
+        }
+
+        private void serialPort1_DataReceived_1(object sender, SerialDataReceivedEventArgs e)
+        {
+
+
         }
 
         private void button5_Click(object sender, EventArgs e)
