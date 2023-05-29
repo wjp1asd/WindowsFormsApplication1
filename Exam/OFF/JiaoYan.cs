@@ -378,7 +378,7 @@ namespace WindowsFormsApplication1.Exam
         }
         Thread readAI;
 
-        private void ReadAI() {
+        private void ReadAI() { 
           // MessageBox.Show(BitConverter.ToString(td1));
             while (true) {
 
