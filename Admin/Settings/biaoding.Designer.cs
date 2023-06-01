@@ -35,6 +35,7 @@
             this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.machine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.beizhu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +72,7 @@
             this.status,
             this.machine,
             this.pin,
+            this.type,
             this.beizhu});
             this.dataGridView1.Location = new System.Drawing.Point(10, 90);
             this.dataGridView1.Name = "dataGridView1";
@@ -79,6 +81,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1353, 541);
             this.dataGridView1.TabIndex = 58;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_3);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // ID
             // 
@@ -111,6 +114,25 @@
             this.pin.MinimumWidth = 6;
             this.pin.Name = "pin";
             // 
+            // type
+            // 
+            this.type.DataPropertyName = "type";
+            this.type.HeaderText = "类型";
+            this.type.Items.AddRange(new object[] {
+            "表1",
+            "表2",
+            "表3",
+            "工具",
+            "阀帽",
+            "泄压阀",
+            "舵机",
+            "压力传感器1",
+            "压力传感器2"});
+            this.type.MinimumWidth = 6;
+            this.type.Name = "type";
+            this.type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // beizhu
             // 
             this.beizhu.DataPropertyName = "beizhu";
@@ -127,6 +149,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dataGridView1);
             this.Name = "biaoding";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "标定设置";
             this.Load += new System.EventHandler(this.biaoding_Load);
             this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
@@ -144,6 +167,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn machine;
         private System.Windows.Forms.DataGridViewTextBoxColumn pin;
+        private System.Windows.Forms.DataGridViewComboBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn beizhu;
     }
 }

@@ -123,7 +123,7 @@ namespace WindowsFormsApplication1.Admin.Settings
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "' where id = " + id;
-                //MessageBox.Show(strcomm);
+              //  MessageBox.Show(strcomm);
 
                 con.Open();
                 SqlCommand comm = new SqlCommand(strcomm, con);

@@ -37,7 +37,9 @@ namespace WindowsFormsApplication1
         public string camera1;
         public string camera2;
         public string plc;
-        public string plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy, MC;
+        public string plcbt, plcjy, plcst, plcsp,servo, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy, MC;
+        public string plc1;
+        public string plcbt1, plcjy1, plcst1, plcsp1, servo1;
         public string link;
         public string mouse;
         public string color1, color2, color3, color4, color5;
@@ -46,7 +48,7 @@ namespace WindowsFormsApplication1
         // 题型数量
         public int lxnum, zxnum, gynum, xhnum, lpjnum, yngnum;
     
-
+        
         public void Initc()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -73,11 +75,20 @@ namespace WindowsFormsApplication1
                 color3 = reader["color3"].ToString();
                 color4 = reader["color4"].ToString();
                 color5 = reader["color5"].ToString();
+                //离线端口配置
                 plc = reader["plc"].ToString();
                 plcbt = reader["plcbt"].ToString();
                 plcjy = reader["plcjy"].ToString();
                 plcst = reader["plcst"].ToString();
                 plcsp = reader["plcsp"].ToString();
+                servo = reader["servo"].ToString();
+                //在线端口配置
+                plc1 = reader["plc1"].ToString();
+                plcbt1 = reader["plcbt1"].ToString();
+                plcjy1 = reader["plcjy1"].ToString();
+                plcst1 = reader["plcst1"].ToString();
+                plcsp1 = reader["plcsp1"].ToString();
+                servo1 = reader["servo1"].ToString();
                 //数字量
                 DIxy = reader["DIxy"].ToString();
                 DIhw = reader["DIhw"].ToString();

@@ -2,6 +2,9 @@
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.IO.Ports;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -39,18 +42,18 @@ namespace WindowsFormsApplication1.Exam
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int qiehuanfa1 = 0;
-        int qiehuanfa2 = 3;
-        int qiehuanfa3 = 4;
-        int gongju = 1;
-        int famao = 2;
-        int xieya = 7;
+        int qiehuanfa2 = 0;
+        int qiehuanfa3 = 0;
+        int gongju = 0;
+        int famao = 0;
+        int xieya = 0;
         int step = -1;
         //量程选择 1.6 4 25 
         int liangcheng = 0;
         // AO  仿真压力表 舵机 后续需要拓展
 
         int fangzhen1 = 0;
-        int fangzhen2 = 1;
+        int fangzhen2 = 0;
 
         public static byte CalcLRC(byte[] data)
         {
@@ -434,7 +437,7 @@ namespace WindowsFormsApplication1.Exam
             }
         }
 
-
+        List<goal> goals =new List<goal>();
 
      
         private void JiaoYan_Load(object sender, EventArgs e)
@@ -448,11 +451,16 @@ namespace WindowsFormsApplication1.Exam
 
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
-            // byte[] end = new byte {a};
-            //  end.CopyTo(td1, td1.Length);
-            Console.WriteLine(BitConverter.ToString(td1));
-            // MessageBox.Show(a.ToString("X2"));
-            //   MessageBox.Show(BitConverter.ToString(td1));
+            //获得算分标准
+           goal g=new goal();
+           goals = g.getall();
+            // 获得标定信息
+            //for (int i = 0; i < goals.Count; i++)
+            //{
+            //    MessageBox.Show(goals[i].sub+goals[i].name+goals[i].des+ goals[i].score);
+            //}
+
+
         }
         Thread readAI;
 
@@ -518,27 +526,60 @@ namespace WindowsFormsApplication1.Exam
         }
         public void plcinit()
         {
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select * from biaoding where machine='离线'";
+
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+            
+                    string name = reader["type"].ToString().Trim();
+                switch (name)
+                {
+                    case "泄压阀":
+                        xieya = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+                    case "表1":
+                        qiehuanfa1 = int.Parse(reader["pin"].ToString().Trim().Substring(2,1));
+                        break;
+                    case "表2":
+                        qiehuanfa2 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+                    case "表3":
+                        qiehuanfa3 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+                    case "工具":
+                        gongju = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+                    case "阀帽":
+                        famao = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+                    case "压力传感器1":
+                        fangzhen1 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+                    case "压力传感器2":
+                        fangzhen2 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+                }
+
+            }
+
+            MessageBox.Show(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+"");
 
             //采集卡初始化+舵机控制板
             try
             {
                 // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展 舵机
-                qiehuanfa1 = int.Parse(datahelp.DIB1.Trim());
-                qiehuanfa2 = int.Parse(datahelp.DIB2.Trim());
-                qiehuanfa3 = int.Parse(datahelp.DIB3.Trim());
-                xieya = int.Parse(datahelp.DIxy.Trim());
-                gongju = int.Parse(datahelp.AIjy.Trim());
-                famao = int.Parse(datahelp.DIhw.Trim());
-                // ai yali 表
-                fangzhen1 = int.Parse(datahelp.AIY1.Trim());
-                fangzhen2 = int.Parse(datahelp.AIy2.Trim());
-
+                
                 //topheader.CopyTo(td1,0);
                 //content.CopyTo(td1, topheader.Length);
                 //byte a = CalcLRC(td1);
                 //td1[13] = a;
                 //防止意外错误
-                serialPort1.PortName = "COM5";//获取comboBox1要打开的串口号
+                serialPort1.PortName = datahelp.servo.Trim();//获取comboBox1要打开的串口号
 
                 serialPort1.BaudRate = 9600;//获取comboBox2选择的波特率
                 serialPort1.DataBits = 8;//设置数据位
