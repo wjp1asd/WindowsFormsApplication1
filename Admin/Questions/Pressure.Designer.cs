@@ -51,6 +51,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.f0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,7 +100,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(109, 118);
+            this.panel1.Location = new System.Drawing.Point(301, 132);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(596, 330);
             this.panel1.TabIndex = 44;
@@ -262,9 +263,15 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pick,
+            this.type,
             this.ID,
             this.sub,
             this.f0,
@@ -276,7 +283,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 419);
+            this.dataGridView1.Size = new System.Drawing.Size(1150, 419);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
@@ -317,7 +324,13 @@
             this.pick.HeaderText = "选择";
             this.pick.MinimumWidth = 6;
             this.pick.Name = "pick";
-            this.pick.Width = 60;
+            // 
+            // type
+            // 
+            this.type.DataPropertyName = "type";
+            this.type.HeaderText = "类型（0是离线1是在线）";
+            this.type.MinimumWidth = 6;
+            this.type.Name = "type";
             // 
             // ID
             // 
@@ -326,7 +339,6 @@
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 60;
             // 
             // sub
             // 
@@ -334,7 +346,6 @@
             this.sub.HeaderText = "项目";
             this.sub.MinimumWidth = 6;
             this.sub.Name = "sub";
-            this.sub.Width = 125;
             // 
             // f0
             // 
@@ -342,7 +353,6 @@
             this.f0.HeaderText = "要求整定压力MPa";
             this.f0.MinimumWidth = 6;
             this.f0.Name = "f0";
-            this.f0.Width = 125;
             // 
             // f1
             // 
@@ -350,7 +360,6 @@
             this.f1.HeaderText = "初次测试压力MPa";
             this.f1.MinimumWidth = 6;
             this.f1.Name = "f1";
-            this.f1.Width = 125;
             // 
             // f2
             // 
@@ -358,7 +367,6 @@
             this.f2.HeaderText = "第一次测试压力Mpa";
             this.f2.MinimumWidth = 6;
             this.f2.Name = "f2";
-            this.f2.Width = 125;
             // 
             // f3
             // 
@@ -366,7 +374,6 @@
             this.f3.HeaderText = "第二次测试压力Mpa";
             this.f3.MinimumWidth = 6;
             this.f3.Name = "f3";
-            this.f3.Width = 125;
             // 
             // f4
             // 
@@ -374,17 +381,16 @@
             this.f4.HeaderText = "第三次测试压力Mpa";
             this.f4.MinimumWidth = 6;
             this.f4.Name = "f4";
-            this.f4.Width = 125;
             // 
             // Pressure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 553);
+            this.ClientSize = new System.Drawing.Size(1211, 553);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button6);
@@ -393,6 +399,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试压力";
             this.Load += new System.EventHandler(this.Pressure_Load);
+            this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -426,6 +433,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewCheckBoxColumn pick;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn sub;
         private System.Windows.Forms.DataGridViewTextBoxColumn f0;

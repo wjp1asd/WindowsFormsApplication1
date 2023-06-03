@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1.Exam
                 }
             }
             Score sc=new Score();
-            score = count * sc.getScore(datahelp.SubId);
+            score = count * sc.getScore("lxt");
             if (score < 60)
             {
 

@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApplication1.Questions;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -46,6 +50,11 @@ namespace WindowsFormsApplication1.Models
         //密封面
         string path;
         string score7;
+        // 步骤分题
 
-    }
+        string csfm;
+
+      
+    
+}
 }

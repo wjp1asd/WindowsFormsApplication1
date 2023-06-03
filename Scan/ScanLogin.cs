@@ -71,10 +71,17 @@ namespace WindowsFormsApplication1.Scan
                 return;
             }
                 String sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
+                String sql1 = "select * from Grade where testid like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
             // MessageBox.Show(sql);
             if (ff.RC(sql).Length > 0)
             {
-                ff.ShowSuccessTip("成功" + ff.RC(sql));
+                //ff.ShowSuccessTip("成功" + ff.RC(sql));
+                string qrcode = ff.RC(sql);
+                if (ff.RC1(sql1).Length == 0) {
+                    //生成空白成绩单
+                    ff.formGrade(qrcode);
+                
+                }
                 string x = ConfigurationManager.AppSettings["machine"];
                 switch (x) {
                     case "2":

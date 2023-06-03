@@ -1,4 +1,5 @@
 ﻿
+using AutoWindowsSize;
 using System;
 using System.Configuration;
 using System.Data;
@@ -154,13 +155,13 @@ namespace WindowsFormsApplication1.Questions
 
             if (this.textBox4.Text.ToString().Length == 0)
             {
-                this.textBox4.Text = "-∞";
+                this.textBox4.Text = "0";
             }
             if (this.textBox2.Text.ToString().Length == 0)
             {
                 this.textBox2.Text = "+∞";
             }
-            string area = this.comboBox3.Text + this.textBox4.Text + "-" + this.textBox2.Text;
+            string area = this.textBox4.Text+" " + this.comboBox3.Text + " 整定压力 " +this.comboBox3.Text +  " " + this.textBox2.Text;
 
 
             if (value.Length == 0 || type.Length == 0 || area.Length == 0
@@ -171,19 +172,26 @@ namespace WindowsFormsApplication1.Questions
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string strcomm = "insert into " + TableName + "([tt],[type], [value], [area]) VALUES(" +
+            string strcomm = "insert into " + TableName + "([tt],[type], [value], [area],[min],[max]) VALUES(" +
                  "'" + Subtype.ToString() + "'" + "," +
                 "'" + type.ToString() + "'" + "," +
                "'" + value.ToString() + "'" + "," +
-               "'" + area.ToString() + "'" + ")"
+               "'" + area.ToString() + "'" + "," +
+                 "'" + this.textBox4.Text.Trim() + "'" + "," +
+                   "'" + this.textBox2.Text.Trim() + "'"  +
+               ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            MessageBox.Show(strcomm);
+          //  MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
 
             con.Close();
+
+            string sql = "select * from " + TableName;
+
+            this.InitTable(sql);
             MessageBox.Show("已更新");
         }
 
@@ -246,10 +254,21 @@ namespace WindowsFormsApplication1.Questions
             this.panel1.Hide();
             InitTable(sql);
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
+
+                awt.FormSizeChanged();
+            }
+        }
 
         private void Wucha_Settings_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
+
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
     }

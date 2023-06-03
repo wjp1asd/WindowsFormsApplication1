@@ -27,16 +27,16 @@ namespace WindowsFormsApplication1.Exam
             ts = new TestRecord();
             InitializeComponent();
             this.change();
-            
+
             idcard = id;
             this.uiLabel2.Text = st.Name;
-          
+
         }
         private Fuc ff = new Fuc();
         public void change()
         {
-            
-           
+
+
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
@@ -54,7 +54,7 @@ namespace WindowsFormsApplication1.Exam
         }
 
 
-      
+
         private void Choose_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
@@ -74,9 +74,9 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-          //  fc.showloading("抽题中");
+            //  fc.showloading("抽题中");
 
-           // this.Show();
+            // this.Show();
             // 执行抽题
 
             // 生成考试记录
@@ -299,7 +299,7 @@ namespace WindowsFormsApplication1.Exam
                   ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-          //  MessageBox.Show(strcomm);
+            //  MessageBox.Show(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
@@ -307,7 +307,7 @@ namespace WindowsFormsApplication1.Exam
             con.Close();
             MessageBox.Show("已创建考试信息，排队号0" + que);
             qrcode = a;
-          //  this.button1.Show();
+            //  this.button1.Show();
             Print p = new Print(qrcode);
             p.Show();
             this.Close();
@@ -328,7 +328,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button7_Click(object sender, EventArgs e)
         {
-           form1 f=new form1();
+            form1 f = new form1();
             f.Show();
             this.Close();
         }
