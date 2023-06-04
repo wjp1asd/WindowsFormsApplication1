@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
                     if (t.Lxquestions.Length > 0)
                     {
                         datahelp.QuestionIds = t.Lxquestions.Split(',');
-                        datahelp.SubId = 0;
+                        datahelp.SubId = 1;
                      
                        
                     }
@@ -85,11 +85,72 @@ namespace WindowsFormsApplication1
                     if (t.Zquestions.Length > 0)
                     {
                         datahelp.QuestionIds = t.Zquestions.Split(',');
-                        datahelp.SubId = 1;
+                        datahelp.SubId = 2;
                   
                        
                     }
                     else {
+                        f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
+
+                    }
+                    break;
+                case "2":
+                    this.Text = "工艺校验答题";
+                    if (t.Zquestions.Length > 0)
+                    {
+                        datahelp.QuestionIds = t.Gyquestions.Split(',');
+                        datahelp.SubId = 3;
+
+
+                    }
+                    else
+                    {
+                        f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
+
+                    }
+                    break;
+                case "3":
+                    this.Text = "型号答题";
+                    if (t.Zquestions.Length > 0)
+                    {
+                        datahelp.QuestionIds = t.Xhquestions.Split(',');
+                        datahelp.SubId = 3;
+
+
+                    }
+                    else
+                    {
+                        f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
+
+                    }
+                    break;
+               
+                case "4":
+                    this.Text = "零配件答题";
+                    if (t.Zquestions.Length > 0)
+                    {
+                        datahelp.QuestionIds = t.Lpjuestions.Split(',');
+                        datahelp.SubId = 4;
+
+
+                    }
+                    else
+                    {
+                        f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
+
+                    }
+                    break;
+                case "5":
+                    this.Text = "研磨膏答题";
+                    if (t.Zquestions.Length > 0)
+                    {
+                        datahelp.QuestionIds = t.Ymguestions.Split(',');
+                        datahelp.SubId = 3;
+
+
+                    }
+                    else
+                    {
                         f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
 
                     }
@@ -268,9 +329,11 @@ namespace WindowsFormsApplication1
         
             option = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
 
-            if (datahelp.CurrentQuestion < num)
+            if (datahelp.CurrentQuestion < num-1)
             {
-                datahelp.CurrentQuestion++;
+             
+                    datahelp.CurrentQuestion++;
+              
                 CheckNextButtonText();
                 LoadQuestion();
                 this.rdbA.Checked = false;
@@ -570,6 +633,11 @@ namespace WindowsFormsApplication1
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
         {
 
         }

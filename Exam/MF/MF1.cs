@@ -1,14 +1,22 @@
 ﻿using AutoWindowsSize;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
-namespace WindowsFormsApplication1.Exam
+namespace WindowsFormsApplication1.Exam.MF
 {
-    public partial class zaixianjiaoyan : Form
+    public partial class MF1 : Form
     {
-        public zaixianjiaoyan()
+        public MF1()
         {
+            InitializeComponent();
             InitUI();
 
         }
@@ -24,7 +32,6 @@ namespace WindowsFormsApplication1.Exam
 
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
             this.button4.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
-
 
 
             this.label2.Text = "在线校验";
@@ -43,27 +50,19 @@ namespace WindowsFormsApplication1.Exam
             ff.fullsreen(this.button2, this);
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button4, this);
-
-
             ff.fullsreen(this.label2, this);
         }
         private void button3_Click(object sender, EventArgs e)
         {
-           // 在线题 开始考试
-            datahelp.SubId = 2;
-            QuestionForm a = new QuestionForm(datahelp.QId,"1");
+            // 型号识别
+            datahelp.SubId = 4;
+            QuestionForm a = new QuestionForm(datahelp.QId, "4");
             a.Show();
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
         {
 
-
-            if (awt != null)
-            {
-
-                awt.FormSizeChanged();
-            }
         }
 
 
@@ -74,24 +73,46 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
         }
-        private void zaixianjiaoyan_Load(object sender, EventArgs e)
+        private void ON_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            zaixianjiaoyan2 z=new zaixianjiaoyan2();
-            z.Show();   
+            datahelp.SubId = 2;
+            zaixianjiaoyan a = new zaixianjiaoyan();
+            a.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // 零配件识别
+            datahelp.SubId = 5;
+            QuestionForm a = new QuestionForm(datahelp.QId, "5");
+            a.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // 研磨识别
+            datahelp.SubId = 6;
+            QuestionForm a = new QuestionForm(datahelp.QId, "6");
+            a.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
-            ProjectInfo p =new ProjectInfo();
-            p.Show();
+            ProjectInfo projectInfo = new ProjectInfo();
+            projectInfo.Show();
         }
     }
 }

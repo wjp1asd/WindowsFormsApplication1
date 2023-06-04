@@ -223,6 +223,7 @@
             this.label9.Size = new System.Drawing.Size(226, 24);
             this.label9.TabIndex = 18;
             this.label9.Text = "总题数：20，当前：";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 

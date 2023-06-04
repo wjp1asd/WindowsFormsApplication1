@@ -28,6 +28,11 @@ namespace WindowsFormsApplication1.Settings
             b.Show();
         }
 
+        private void start_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void label18_Click(object sender, EventArgs e)
         {
 

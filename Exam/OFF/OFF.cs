@@ -52,6 +52,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            datahelp.SubId = 1;
             QuestionForm a = new QuestionForm(qr);
             a.Show();
         }

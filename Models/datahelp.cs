@@ -22,8 +22,8 @@ namespace WindowsFormsApplication1
         public static string QId = "mXjjwVcvXizfGcnbOF9CKw==";
         public string name;
         public string loginid;
-        //0 离线 1在线
-        public static int SubId = 0;
+        //1 离线 2在线 3工艺 4 型号题 5 零配件 6 研磨膏
+        public static int SubId = 1;
         public static int time = 5;
         public static int stateTime = 1;
         // 考试状态
