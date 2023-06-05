@@ -55,9 +55,9 @@ namespace WindowsFormsApplication1.Exam.MF
         private void button3_Click(object sender, EventArgs e)
         {
             // 型号识别
-            datahelp.SubId = 4;
-            QuestionForm a = new QuestionForm(datahelp.QId, "4");
-            a.Show();
+            datahelp.SubId = 5;
+           // QuestionForm a = new QuestionForm(datahelp.QId, "5");
+          //  a.Show();
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -67,12 +67,6 @@ namespace WindowsFormsApplication1.Exam.MF
 
 
 
-        private void Choose_Load(object sender, EventArgs e)
-        {
-            awt = new AutoAdaptWindowsSize(this);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
-        }
         private void ON_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
@@ -95,16 +89,15 @@ namespace WindowsFormsApplication1.Exam.MF
         private void button1_Click_1(object sender, EventArgs e)
         {
             // 零配件识别
-            datahelp.SubId = 5;
-            QuestionForm a = new QuestionForm(datahelp.QId, "5");
-            a.Show();
+            datahelp.SubId = 6;
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // 研磨识别
-            datahelp.SubId = 6;
-            QuestionForm a = new QuestionForm(datahelp.QId, "6");
+            datahelp.SubId = 4;
+            QuestionForm a = new QuestionForm(datahelp.QId, "4");
             a.Show();
         }
 

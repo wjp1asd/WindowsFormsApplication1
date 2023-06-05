@@ -279,7 +279,7 @@ namespace WindowsFormsApplication1.YanMO
                     //这里可以编写你需要的任意关于按钮事件的操作~
                      string id = dataGridView1.Rows[a].Cells[1].Value.ToString();//获取焦点触发行的第一个值
                     string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
-                    MessageBox.Show("按钮被点击" + strcolumn);
+                 //   MessageBox.Show("按钮被点击" + strcolumn);
                     if (strcolumn == "cz")
                     {
                        
@@ -295,6 +295,11 @@ namespace WindowsFormsApplication1.YanMO
 
                 return;
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
         //  MessageBox.Show(e.RowIndex.ToString());
     }

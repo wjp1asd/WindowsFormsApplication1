@@ -110,7 +110,9 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
             this.Name = "MF1";
-            this.Text = "MF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "密封面研磨";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ON_Load);
             this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             this.ResumeLayout(false);

@@ -220,7 +220,7 @@ namespace WindowsFormsApplication1
             List<String> answerList = new List<string>();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select Top " + d.yngnum + " id from question where subid = 4 order by newid() ";
+            string sql = "select Top " + d.ymgnum + " id from question where subid = 4 order by newid() ";
 
 
             SqlCommand com = new SqlCommand(sql, con);

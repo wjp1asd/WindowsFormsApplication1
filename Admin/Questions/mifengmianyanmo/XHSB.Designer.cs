@@ -31,6 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cz = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -41,10 +45,6 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cz = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -86,8 +86,49 @@
             this.dataGridView1.Size = new System.Drawing.Size(972, 494);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.Visible = false;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // pick
+            // 
+            this.pick.FalseValue = "";
+            this.pick.HeaderText = "选择";
+            this.pick.MinimumWidth = 6;
+            this.pick.Name = "pick";
+            this.pick.ReadOnly = true;
+            this.pick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.pick.TrueValue = "";
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "Id";
+            this.ID.HeaderText = "序号";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // SubName
+            // 
+            this.SubName.DataPropertyName = "subName";
+            this.SubName.HeaderText = "分项";
+            this.SubName.MinimumWidth = 6;
+            this.SubName.Name = "SubName";
+            // 
+            // cz
+            // 
+            this.cz.DataPropertyName = "Id";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = "操作";
+            this.cz.DefaultCellStyle = dataGridViewCellStyle1;
+            this.cz.HeaderText = "操作";
+            this.cz.MinimumWidth = 6;
+            this.cz.Name = "cz";
+            this.cz.ReadOnly = true;
+            this.cz.Text = "管理";
+            this.cz.ToolTipText = "管理";
+            this.cz.UseColumnTextForButtonValue = true;
             // 
             // button1
             // 
@@ -195,46 +236,6 @@
             this.button5.Text = "删除";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // pick
-            // 
-            this.pick.FalseValue = "";
-            this.pick.HeaderText = "选择";
-            this.pick.MinimumWidth = 6;
-            this.pick.Name = "pick";
-            this.pick.ReadOnly = true;
-            this.pick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.pick.TrueValue = "";
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "Id";
-            this.ID.HeaderText = "序号";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // SubName
-            // 
-            this.SubName.DataPropertyName = "subName";
-            this.SubName.HeaderText = "分项";
-            this.SubName.MinimumWidth = 6;
-            this.SubName.Name = "SubName";
-            // 
-            // cz
-            // 
-            this.cz.DataPropertyName = "Id";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = "操作";
-            this.cz.DefaultCellStyle = dataGridViewCellStyle1;
-            this.cz.HeaderText = "操作";
-            this.cz.MinimumWidth = 6;
-            this.cz.Name = "cz";
-            this.cz.ReadOnly = true;
-            this.cz.Text = "管理";
-            this.cz.ToolTipText = "管理";
-            this.cz.UseColumnTextForButtonValue = true;
             // 
             // XHSB
             // 

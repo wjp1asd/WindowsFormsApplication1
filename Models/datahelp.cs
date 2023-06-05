@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
         public static string QId = "mXjjwVcvXizfGcnbOF9CKw==";
         public string name;
         public string loginid;
-        //1 离线 2在线 3工艺 4 型号题 5 零配件 6 研磨膏
+        //1 离线 2在线 3工艺 4 研磨膏  5型号题 6 零配件 
         public static int SubId = 1;
         public static int time = 5;
         public static int stateTime = 1;
@@ -46,7 +46,7 @@ namespace WindowsFormsApplication1
         public string edyl = "1";
         public string mfzj = "1";
         // 题型数量
-        public int lxnum, zxnum, gynum, xhnum, lpjnum, yngnum;
+        public int lxnum, zxnum, gynum, xhnum, lpjnum, ymgnum;
     
         
         public void Initc()
@@ -108,7 +108,7 @@ namespace WindowsFormsApplication1
                 gynum = int.Parse(reader["gynum"].ToString());
                 xhnum = int.Parse(reader["xhnum"].ToString());
                 lpjnum = int.Parse(reader["lpjnum"].ToString());
-                yngnum = int.Parse(reader["ymgnum"].ToString());
+                ymgnum = int.Parse(reader["ymgnum"].ToString());
             }
 
             reader.Close();

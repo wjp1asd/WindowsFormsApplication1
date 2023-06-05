@@ -163,15 +163,15 @@ namespace WindowsFormsApplication1.Exam
                     rate = sc.getScore("gyt");
                     break;
 
-                case 4:
+                case 5:
                     this.Text = "型号识别得分";
                     rate = sc.getScore("xhsb");
                     break;
-                case 5:
+                case 6:
                     this.Text = "零配件识别得分";
                     rate = sc.getScore("lpjsb");
                     break;
-                case 6:
+                case 4:
                     this.Text = "密封面研磨得分";
                     rate = sc.getScore("ymgsb");
                     break;
@@ -241,37 +241,37 @@ namespace WindowsFormsApplication1.Exam
                   
                     str1 = "Update Grade set lxquestions='" + a + "',lxanswer='" + b + "',lxcorrect='" + c + "',score2='" + d
               
-                + "' where testid="+datahelp.QId.Trim();
+                + "' where testid= '" + datahelp.QId.Trim() + "'";
                     break;
                 case 2:
                     str1 = "Update Grade set zxquestions='" + a + "',zxanswer='" + b + "',zxcorrect='" + c + "',score1='" + d
 
-              + "' where testid=" + datahelp.QId.Trim();
+              + "' where testid= '" + datahelp.QId.Trim() + "'";
                     break;
                 case 3:
                     str1 = "Update Grade set jyquestions='" + a + "',jyanswer='" + b + "',jycorrect='" + c + "',score3='" + d
 
-              + "' where testid=" + datahelp.QId.Trim();
-                    break;
-
-                case 4:
-                    str1 = "Update Grade set xhquestions='" + a + "',xhanswer='" + b + "',xhcorrect='" + c + "',score4='" + d
-
-            + "' where testid=" + datahelp.QId.Trim();
-
+              + "' where testid= '" + datahelp.QId.Trim() + "'";
                     break;
 
                 case 5:
-                    str1 = "Update Grade set lpjquestions='" + a + "',lpjanswer='" + b + "',lpjcorrect='" + c + "',score5='" + d
+                    str1 = "Update Grade set xhquestions='" + a + "',xhanswer='" + b + "',xhcorrect='" + c + "',score4='" + d
 
-            + "' where testid=" + datahelp.QId.Trim();
+            + "' where testid= '" + datahelp.QId.Trim() + "'";
 
                     break;
 
                 case 6:
+                    str1 = "Update Grade set lpjquestions='" + a + "',lpjanswer='" + b + "',lpjcorrect='" + c + "',score5='" + d
+
+            + "' where testid= '" + datahelp.QId.Trim() + "'";
+
+                    break;
+
+                case 4:
                     str1 = "Update Grade set ymgquestions='" + a + "',ymganswer='" + b + "',ymgcorrect='" + c + "',score7='" + d
 
-            + "' where testid=" + datahelp.QId.Trim();
+            + "' where testid= '" + datahelp.QId.Trim()+"'";
 
                     break;
 

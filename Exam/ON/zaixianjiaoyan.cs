@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1.Exam
         {
            // 在线题 开始考试
             datahelp.SubId = 2;
-            QuestionForm a = new QuestionForm(datahelp.QId,"1");
+            QuestionForm a = new QuestionForm(datahelp.QId,"2");
             a.Show();
         }
         AutoAdaptWindowsSize awt;

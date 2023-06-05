@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class QuestionForm
+    partial class XHForm
     {
         /// <summary>
         /// Required designer variable.
