@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
         public static int stateTime = 1;
         // 考试状态
         public static int status = 0;
-        //考试步走
+        //考试步走 
         public static int CurrentStep= 1;
         // USB 接口定义
         public string id;

@@ -25,6 +25,29 @@ namespace WindowsFormsApplication1
             datahelp c=new datahelp();
             c.Initc();
             int num = c.lxnum;
+            switch (datahelp.SubId)
+            {
+                case 1:
+                    num = c.lxnum;
+                    break;
+                case 2:
+                    num = c.zxnum;
+                    break;
+                case 3:
+                    num = c.gynum;
+                    break;
+                case 4:
+                    num = c.ymgnum;
+                    break;
+                case 5:
+                    num = c.xhnum;
+                    break;
+                case 6:
+                    num = c.lpjnum;
+                    break;
+
+            }
+            
             int btnX = 20;
             int btnY = 60;
             int IblX = 90;

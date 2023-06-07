@@ -404,6 +404,7 @@
             this.answer.HeaderText = "正确答案";
             this.answer.MinimumWidth = 6;
             this.answer.Name = "answer";
+            this.answer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // XHSBAdmin
             // 

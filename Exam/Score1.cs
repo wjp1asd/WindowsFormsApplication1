@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Exam
@@ -153,6 +154,7 @@ namespace WindowsFormsApplication1.Exam
                 case 1:
                     this.Text = "离线校验得分";
                     rate = sc.getScore("lxt");
+                   
                     break;
                 case 2:
                     this.Text = "在线校验得分";
@@ -177,7 +179,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
             }
 
-
+            this.lblAllResult.Text = "" + rate * datahelp.QuestionIds.Length;
             ShowScore();
             AddStudentScore();
         }
@@ -185,11 +187,49 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click_1(object sender, EventArgs e)
         {
             UpdateGrades();
+            switch (datahelp.SubId)
+            {
+                case 1:
+                    datahelp.CurrentStep = 2;
+                    OFF of = new OFF(datahelp.QId);
+                    of.Show();
+                    this.Close();
 
-            datahelp.CurrentStep = 2;
-            OFF of =new OFF(datahelp.QId);
-            of.Show();
-            this.Close();
+                    break;
+                case 2:
+                    datahelp.CurrentStep = 2;
+                    ON on = new ON(datahelp.QId);
+                    on.Show();
+                    this.Close();
+                    break;
+                case 3:
+                    datahelp.CurrentStep = 2;
+                    ON on1 = new ON(datahelp.QId);
+                    on1.Show();
+                    this.Close();
+                    break;
+
+                case 5:
+                    datahelp.CurrentStep = 2;
+                    MF1 mf = new MF1();
+                    mf.Show();
+                    this.Close();
+                    break;
+                case 6:
+                    datahelp.CurrentStep = 3;
+                    MF1 mf1 = new MF1();
+                    mf1.Show();
+                    this.Close();
+                    break;
+                case 4:
+                    datahelp.CurrentStep = 4;
+                    MF1 mf2 = new MF1();
+                    mf2.Show();
+                    this.Close();
+                    break;
+            }
+
+          
         }
 
         private void UpdateGrades()
@@ -277,7 +317,7 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-        
+            this.label2.Text =str1;
 
             MessageBox.Show(str1);
             SqlCommand com = new SqlCommand(str1, con);

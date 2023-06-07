@@ -36,6 +36,7 @@
             this.lblscore = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -60,6 +61,7 @@
             this.lblAllResult.Size = new System.Drawing.Size(67, 25);
             this.lblAllResult.TabIndex = 18;
             this.lblAllResult.Text = "100分";
+            this.lblAllResult.Visible = false;
             // 
             // label5
             // 
@@ -72,6 +74,7 @@
             this.label5.Size = new System.Drawing.Size(46, 24);
             this.label5.TabIndex = 16;
             this.label5.Text = "满分";
+            this.label5.Visible = false;
             // 
             // label4
             // 
@@ -93,6 +96,7 @@
             this.lblAllscore.Name = "lblAllscore";
             this.lblAllscore.Size = new System.Drawing.Size(400, 25);
             this.lblAllscore.TabIndex = 12;
+            this.lblAllscore.Visible = false;
             this.lblAllscore.Click += new System.EventHandler(this.lblAllscore_Click_1);
             // 
             // lblscore
@@ -124,11 +128,25 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "100分";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(96, 297);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 24);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "得分";
+            this.label2.Visible = false;
+            // 
             // Score1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblAllResult);
@@ -156,5 +174,6 @@
         private System.Windows.Forms.Label lblscore;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

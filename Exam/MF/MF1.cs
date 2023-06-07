@@ -1,12 +1,5 @@
 ﻿using AutoWindowsSize;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -55,9 +48,12 @@ namespace WindowsFormsApplication1.Exam.MF
         private void button3_Click(object sender, EventArgs e)
         {
             // 型号识别
+            this.Close();
             datahelp.SubId = 5;
-           // QuestionForm a = new QuestionForm(datahelp.QId, "5");
-          //  a.Show();
+            XHForm x = new XHForm(datahelp.QId);
+            x.Show();
+            // QuestionForm a = new QuestionForm(datahelp.QId, "5");
+            //  a.Show();
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -69,6 +65,37 @@ namespace WindowsFormsApplication1.Exam.MF
 
         private void ON_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(datahelp.CurrentStep+"+");
+            switch (datahelp.CurrentStep)
+            {
+                case 1:
+
+                    this.button3.Enabled = true;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+                    break;
+                case 2:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = true;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+                    break;
+                case 3:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = true;
+                    this.button4.Enabled = false;
+                    break;
+                case 4:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = true;
+                    break;
+
+            }
+
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
@@ -89,8 +116,10 @@ namespace WindowsFormsApplication1.Exam.MF
         private void button1_Click_1(object sender, EventArgs e)
         {
             // 零配件识别
+            this.Close();
             datahelp.SubId = 6;
-            
+            LBJForm lBJ = new LBJForm(datahelp.QId);
+            lBJ.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)

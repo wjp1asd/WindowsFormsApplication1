@@ -90,5 +90,13 @@ namespace WindowsFormsApplication1.Exam
             zaixianjiaoyan a = new zaixianjiaoyan();
             a.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            ProjectInfo projectInfo = new ProjectInfo();    
+            projectInfo.Show();
+        }
     }
 }

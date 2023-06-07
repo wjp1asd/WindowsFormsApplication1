@@ -9,6 +9,7 @@ namespace WindowsFormsApplication1.Exam
     {
         public zaixianjiaoyan()
         {
+            InitializeComponent();
             InitUI();
 
         }
@@ -68,12 +69,6 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-        private void Choose_Load(object sender, EventArgs e)
-        {
-            awt = new AutoAdaptWindowsSize(this);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
-        }
         private void zaixianjiaoyan_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
