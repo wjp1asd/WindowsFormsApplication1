@@ -46,6 +46,7 @@
             this.button4.TabIndex = 42;
             this.button4.Text = "考试完成";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
@@ -70,6 +71,7 @@
             this.button1.TabIndex = 40;
             this.button1.Text = "校验";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -107,8 +109,11 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
             this.Name = "zaixianjiaoyan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "在线校验";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.zaixianjiaoyan_Load);
+            this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

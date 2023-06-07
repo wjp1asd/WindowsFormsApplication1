@@ -50,7 +50,7 @@
             this.button7.BackColor = System.Drawing.Color.Gray;
             this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(305, 263);
+            this.button7.Location = new System.Drawing.Point(305, 260);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(209, 63);
             this.button7.TabIndex = 30;

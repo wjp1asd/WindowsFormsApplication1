@@ -15,13 +15,15 @@ namespace WindowsFormsApplication1.Models
         string Type;
         string Area;
         string Value;
+        string min;
+        string max;
 
         public string Type1 { get => Type; set => Type = value; }
         public string Area1 { get => Area; set => Area = value; }
         public string Value1 { get => Value; set => Value = value; }
         public string Id { get => id; set => id = value; }
-
-
+        public string Min { get => min; set => min = value; }
+        public string Max { get => max; set => max = value; }
 
         public Wucha GetOne(string id)
         {
@@ -40,6 +42,8 @@ namespace WindowsFormsApplication1.Models
                 w.Type1 = reader["Type"].ToString();
                 w.Value1 = reader["Value"].ToString();
                 w.Area1 = reader["Area"].ToString();
+                w.min = reader["min"].ToString().Trim();   
+                w.max = reader["max"].ToString().Trim();   
             }
 
             con.Close();
@@ -69,7 +73,8 @@ namespace WindowsFormsApplication1.Models
                 wu.Type1 = reader["Type"].ToString();
                 wu.Value1 = reader["Value"].ToString();
                 wu.Area1 = reader["Area"].ToString();
-
+                wu.Min = reader["min"].ToString();  
+                wu.max = reader["max"].ToString() ; 
                 wucha.Add(wu);
             }
 

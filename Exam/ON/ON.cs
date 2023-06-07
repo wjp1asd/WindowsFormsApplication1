@@ -46,7 +46,11 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
-
+            // 工艺题'
+            this.Close();
+            gongyijiaoyan gongyijiaoyan = new gongyijiaoyan();
+            gongyijiaoyan.Show();
+           
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -78,6 +82,21 @@ namespace WindowsFormsApplication1.Exam
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datahelp.SubId = 2;
+            zaixianjiaoyan a = new zaixianjiaoyan();
+            a.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            ProjectInfo projectInfo = new ProjectInfo();    
+            projectInfo.Show();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1.Questions
                     break;
 
                 case "4":
-                    this.Text = "密封面研磨题库";
+                    this.Text = "研磨膏题库";
                     break;
             }
             Subtype = subtype;

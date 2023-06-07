@@ -66,6 +66,51 @@ namespace WindowsFormsApplication1.Models
             con.Close();
             return count;
         }
+
+        public string RC1(string sqlsent)
+        {
+            string count = "";
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = string.Format(sqlsent);
+            SqlCommand com1 = new SqlCommand(sql, con);
+            con.Open();
+            SqlDataReader reader = com1.ExecuteReader();
+            while (reader.Read())
+            {
+                count = "123";
+            }
+            con.Close();
+            return count;
+        }
+        //生成成绩单
+        public int formGrade(string can)
+        {
+            int score1 = 0;
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            SqlCommand cmd = con.CreateCommand();
+
+
+            string strcomm = "insert into " + "Grade" + "([testid]) VALUES(" +
+
+                "'" + can.ToString().Trim() + "'" + ")"
+            ;
+
+
+            datahelp a = new datahelp();
+            SqlCommand com = new SqlCommand(strcomm, con);
+            con.Open();
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                score1 += 1;
+
+            }
+
+
+            return score1;
+        }
         public void ShowWaitForm(string desc = "系统正在处理中，请稍候...")
         {
             UIWaitFormService.ShowWaitForm(desc);

@@ -57,6 +57,7 @@
             this.button3.TabIndex = 41;
             this.button3.Text = "校验工艺编制";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 

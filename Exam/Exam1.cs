@@ -2,6 +2,7 @@
 using System;
 using System.Configuration;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Exam
@@ -75,7 +76,8 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MFYM mf = new MFYM(qr);
+            this.Close();
+            MF1 mf = new MF1();   
             mf.Show();
         }
         AutoAdaptWindowsSize awt;
@@ -118,12 +120,14 @@ namespace WindowsFormsApplication1.Exam
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Close();
             OFF of = new OFF(qr);
             of.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Close();
             ON on = new ON(qr);
             on.Show();
         }

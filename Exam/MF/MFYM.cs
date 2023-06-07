@@ -45,21 +45,20 @@ namespace WindowsFormsApplication1
         }
 
 
-
-        private void Choose_Load(object sender, EventArgs e)
-        {
-            awt = new AutoAdaptWindowsSize(this);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
-        }
+        Graphics back;
+       
+    
         private void MFYM_Load(object sender, EventArgs e)
         {
-            awt = new AutoAdaptWindowsSize(this);
+           // awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
+            //this.SizeChanged += groupBox1_Resize;
+            back = this.CreateGraphics();
+            back.Clear(Color.Green);
+           // back.new Rectangle(this.uiLine1.Location.X, this.uiLine1.Location.Y, 500, 500);
         }
         bool G_MouseFlag;
-        Pen pen = new Pen(Color.Black);
+        Pen pen = new Pen(Color.Red);
         Point lastPoint;
         private void _018_MouseMove(object sender, MouseEventArgs e)
         {

@@ -9,6 +9,7 @@ namespace WindowsFormsApplication1.Exam
     {
         public zaixianjiaoyan()
         {
+            InitializeComponent();
             InitUI();
 
         }
@@ -49,7 +50,10 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
-
+           // 在线题 开始考试
+            datahelp.SubId = 2;
+            QuestionForm a = new QuestionForm(datahelp.QId,"2");
+            a.Show();
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -65,17 +69,24 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-        private void Choose_Load(object sender, EventArgs e)
-        {
-            awt = new AutoAdaptWindowsSize(this);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
-        }
         private void zaixianjiaoyan_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            zaixianjiaoyan2 z=new zaixianjiaoyan2();
+            z.Show();   
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ProjectInfo p =new ProjectInfo();
+            p.Show();
         }
     }
 }

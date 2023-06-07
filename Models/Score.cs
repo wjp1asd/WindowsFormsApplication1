@@ -15,29 +15,16 @@ namespace WindowsFormsApplication1.Models
         String state;
        
 
-        public int getScore(int type) {
+        public int getScore(string can) {
          int score1 = 0;
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             SqlCommand cmd = con.CreateCommand();
-            string sql = "";
-            switch (type) { 
-            case 0:
-                 sql = "select score from sct where id=1 and state=1";
-                    break;
-
-                case 1:
-                  sql = "select score from sct where id=22 and state=1";
-                    break;
 
 
-                case 3:
-                    break;
+            string sql = "select score from sct where can like  '%" + can + "%'";
 
-                case 4:
-                    break;
-            }
-          
+
             datahelp a = new datahelp();
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();

@@ -28,6 +28,8 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+            ON o =new ON(datahelp.QId.Trim());
+            o.Show();   
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -54,6 +56,13 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            datahelp.SubId = 3;
+            QuestionForm a = new QuestionForm(datahelp.QId, "3");
+            a.Show();
         }
     }
 }

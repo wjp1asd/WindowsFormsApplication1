@@ -3,14 +3,12 @@ using System;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
-namespace WindowsFormsApplication1.Exam
+namespace WindowsFormsApplication1.Exam.MF
 {
-    public partial class OFF : Form
+    public partial class MF1 : Form
     {
-        String qr;
-        public OFF(String qrcode)
+        public MF1()
         {
-            qr = qrcode;
             InitializeComponent();
             InitUI();
 
@@ -29,8 +27,7 @@ namespace WindowsFormsApplication1.Exam
             this.button4.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
 
-
-            this.label2.Text = "离线校验";
+            this.label2.Text = "在线校验";
 
 
 
@@ -46,45 +43,31 @@ namespace WindowsFormsApplication1.Exam
             ff.fullsreen(this.button2, this);
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button4, this);
-
-
             ff.fullsreen(this.label2, this);
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            datahelp.SubId = 1;
-            QuestionForm a = new QuestionForm(qr);
-            a.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            jiaoyancanshu j = new jiaoyancanshu();
-            j.Show();
+            // 型号识别
+            this.Close();
+            datahelp.SubId = 5;
+            XHForm x = new XHForm(datahelp.QId);
+            x.Show();
+            // QuestionForm a = new QuestionForm(datahelp.QId, "5");
+            //  a.Show();
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
         {
 
+        }
 
-            if (awt != null)
+
+
+        private void ON_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show(datahelp.CurrentStep+"+");
+            switch (datahelp.CurrentStep)
             {
-
-                awt.FormSizeChanged();
-            }
-        }
-
-
-
-        private void Choose_Load(object sender, EventArgs e)
-        {
-            awt = new AutoAdaptWindowsSize(this);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
-        }
-        private void OFF_Load(object sender, EventArgs e)
-        {
-            switch (datahelp.CurrentStep) {
                 case 1:
 
                     this.button3.Enabled = true;
@@ -123,22 +106,35 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datahelp.SubId = 2;
+            zaixianjiaoyan a = new zaixianjiaoyan();
+            a.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // 零配件识别
+            this.Close();
+            datahelp.SubId = 6;
+            LBJForm lBJ = new LBJForm(datahelp.QId);
+            lBJ.Show();
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            datahelp.CurrentStep = 4;
-            Record r=new Record(datahelp.QId);
-            r.Show();
-            this.Close();
-
+            // 研磨识别
+            datahelp.SubId = 4;
+            QuestionForm a = new QuestionForm(datahelp.QId, "4");
+            a.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            datahelp.status=1;
-            Exam1 e1 =new Exam1();
-            e1.Show();
             this.Close();
-
+            ProjectInfo projectInfo = new ProjectInfo();
+            projectInfo.Show();
         }
     }
 }

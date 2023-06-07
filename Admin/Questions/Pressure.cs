@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -251,10 +252,19 @@ namespace WindowsFormsApplication1.Questions
         {
 
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
 
+                awt.FormSizeChanged();
+            }
+        }
         private void Pressure_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
     }

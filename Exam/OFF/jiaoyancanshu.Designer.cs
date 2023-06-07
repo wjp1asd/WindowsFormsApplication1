@@ -36,6 +36,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -54,34 +55,36 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.label3.Location = new System.Drawing.Point(26, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(182, 45);
+            this.label3.Size = new System.Drawing.Size(163, 39);
             this.label3.TabIndex = 44;
             this.label3.Text = "考生：****";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.label4.Location = new System.Drawing.Point(369, 120);
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.label4.Location = new System.Drawing.Point(450, 120);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(284, 45);
+            this.label4.Size = new System.Drawing.Size(253, 39);
             this.label4.TabIndex = 45;
             this.label4.Text = "身份证号码：****";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.label5.Location = new System.Drawing.Point(359, 192);
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.label5.Location = new System.Drawing.Point(416, 192);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(318, 45);
+            this.label5.Size = new System.Drawing.Size(283, 39);
             this.label5.TabIndex = 47;
             this.label5.Text = "使用设备类型：****";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -90,22 +93,22 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.label6.Location = new System.Drawing.Point(26, 192);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(318, 45);
+            this.label6.Size = new System.Drawing.Size(227, 39);
             this.label6.TabIndex = 46;
-            this.label6.Text = "要求整定压力：****";
+            this.label6.Text = "要求整定压力：";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.label7.Location = new System.Drawing.Point(26, 265);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(190, 45);
+            this.label7.Size = new System.Drawing.Size(167, 39);
             this.label7.TabIndex = 48;
             this.label7.Text = "误差范围：";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -114,9 +117,9 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("宋体", 14F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(198, 274);
+            this.comboBox1.Location = new System.Drawing.Point(199, 273);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(175, 31);
+            this.comboBox1.Size = new System.Drawing.Size(490, 31);
             this.comboBox1.TabIndex = 49;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -130,11 +133,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.label1.Location = new System.Drawing.Point(250, 192);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 39);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "****";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // jiaoyancanshu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label7);
@@ -161,5 +177,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }

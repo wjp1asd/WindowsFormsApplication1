@@ -272,6 +272,18 @@
     <Compile Include="Exam\JYGY\gongyijiaoyan.Designer.cs">
       <DependentUpon>gongyijiaoyan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exam\MF\MF1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exam\MF\MF1.Designer.cs">
+      <DependentUpon>MF1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Exam\MF\XHForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exam\MF\XHForm.Designer.cs">
+      <DependentUpon>XHForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exam\OFF\JiaoYan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,12 +295,6 @@
     </Compile>
     <Compile Include="Exam\OFF\jiaoyancanshu.Designer.cs">
       <DependentUpon>jiaoyancanshu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Exam\LPJSB\linpeijianshibie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Exam\LPJSB\linpeijianshibie.Designer.cs">
-      <DependentUpon>linpeijianshibie.cs</DependentUpon>
     </Compile>
     <Compile Include="Exam\Score1.cs">
       <SubType>Form</SubType>
@@ -579,6 +585,12 @@
     <EmbeddedResource Include="Choose\Info.resx">
       <DependentUpon>Info.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Exam\MF\MF1.resx">
+      <DependentUpon>MF1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exam\MF\XHForm.resx">
+      <DependentUpon>XHForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Exam\OFF\JiaoYan.resx">
       <DependentUpon>JiaoYan.cs</DependentUpon>
     </EmbeddedResource>
@@ -587,9 +599,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\LPJSB\LBJForm.resx">
       <DependentUpon>LBJForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Exam\LPJSB\linpeijianshibie.resx">
-      <DependentUpon>linpeijianshibie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\OFF\OFF.resx">
       <DependentUpon>OFF.cs</DependentUpon>

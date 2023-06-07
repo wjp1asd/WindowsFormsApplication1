@@ -1000,12 +1000,7 @@ namespace WindowsFormsApplication1.Exam
             int a = Convert.ToInt32(sb1.ToString(), 16);
             // MessageBox.Show(sb1.ToString()+a);
             int b = Convert.ToInt32(t8.ToString(), 16);
-            if (Math.Abs(a - b) == 0)
-            {
-                //校验阀关闭
-
-
-            }
+          
             Action tongdao = () =>
             {
                 richTextBox3.Clear();
@@ -1038,7 +1033,7 @@ namespace WindowsFormsApplication1.Exam
             }
             else
             {
-
+                dishow("校验阀关闭");
                 //if (DIS[7 - xieya] + "" == "0")
                 //{
                 //    dishow("卸压阀打开");
@@ -1057,6 +1052,8 @@ namespace WindowsFormsApplication1.Exam
             }
         }
         int czmaz;
+
+
         private void SendServo1(int a, int pos)
         {
 

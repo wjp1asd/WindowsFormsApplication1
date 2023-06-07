@@ -17,27 +17,49 @@ namespace WindowsFormsApplication1.Exam
 
 
         }
+        List<Wucha> wuchas = new List<Wucha>();
+        private double yali = 0;
 
         private void wucha(string type)
         {
            Wucha w= new Wucha();
-            List<Wucha> wucha = w.GetAll(type);
+             wuchas = w.GetAll(type);
             List<string> ports =new List<string>();
-            foreach (var item in wucha)
+            foreach (var item in wuchas)
             {
-                ports.Add(item.Area1.ToString().Trim()) ;
+                ports.Add(item.Value1.ToString().Trim()) ;
             }
             comboBox1.DataSource=ports;
             comboBox1.SelectedIndex=0;
-            index = wucha[comboBox1.SelectedIndex].Id;
+            index = wuchas[comboBox1.SelectedIndex].Id;
         }
-
+        Fuc ff = new Fuc();
+        int score = 0;
         private void button1_Click(object sender, EventArgs e)
         {
+            // 判读选择情况
+            //yali
+            string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
+            string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
+           
+             double a= double.Parse(a1);
+             double  b =double.Parse(b2);
+            yali = double.Parse(this.label1.Text.Trim());
 
-            this.Close();
-            JiaoYan j = new JiaoYan(index);
-            j.Show();
+            MessageBox.Show(""+a+ b+yali);
+            if (yali < a || yali > b)
+            {
+                // 其所选不在范围之内 不得分
+                ff.ShowErrorTip("误差选择错误，不得分");
+            }
+            else {
+                ff.ShowSuccessTip("选择正确，得分"+score);
+            
+            }
+            
+            //this.Close();
+            //JiaoYan j = new JiaoYan(index);
+            //j.Show();
            
         }
 
@@ -54,22 +76,22 @@ namespace WindowsFormsApplication1.Exam
             while (reader.Read())
             {
 
-                t.Queque = reader["queue"].ToString();
+                t.Queque = reader["queue"].ToString().Trim();
 
-                t.Ksdate = reader["ksdate"].ToString();
+                t.Ksdate = reader["ksdate"].ToString().Trim();
 
-                t.Ksname = reader["ksname"].ToString();
+                t.Ksname = reader["ksname"].ToString().Trim();
 
-                t.KsId = reader["ksId"].ToString();
+                t.KsId = reader["ksId"].ToString().Trim();
 
-                t.Lxyl = reader["lxyl"].ToString();
+                t.Lxyl = reader["lxyl"].ToString().Trim();
 
-                t.Lxlx = reader["lxlx"].ToString();
-                t.Zxyl = reader["zxyl"].ToString();
+                t.Lxlx = reader["lxlx"].ToString().Trim();
+                t.Zxyl = reader["zxyl"].ToString().Trim();
 
-                t.Zxlx = reader["zxlx"].ToString();
+                t.Zxlx = reader["zxlx"].ToString().Trim();
 
-
+               
 
                 t.Adfxh = reader["aqfxh"].ToString();
 
@@ -78,10 +100,14 @@ namespace WindowsFormsApplication1.Exam
             con.Close();
             this.label3.Text = "考生："+t.Ksname;
             this.label4.Text = "身份证：" + t.KsId;
-            this.label6.Text = "要求整定压力：" + t.Lxyl+"Mpa";
+            this.label1.Text = t.Lxyl
+                ;
+          //  yali = int.Parse(t.Lxyl);
             this.label5.Text = "使用设备类型：" + t.Lxlx ;
             wucha(t.Lxlx);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+            Score c= new Score();
+          score =  c.getScore("wxxz");
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

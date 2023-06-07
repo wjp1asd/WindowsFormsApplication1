@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,7 +50,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lll = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.选取 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.aid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.question = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,9 +61,6 @@
             this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lll = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +86,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(565, 349);
             this.panel1.TabIndex = 21;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "AB",
+            "AC",
+            "AD",
+            "BC",
+            "BD",
+            "CD",
+            "ABC",
+            "BCD",
+            "ABCD",
+            "Y",
+            "N"});
+            this.comboBox1.Location = new System.Drawing.Point(99, 67);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(436, 23);
+            this.comboBox1.TabIndex = 18;
             // 
             // btnLogin
             // 
@@ -272,6 +297,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.选取,
+            this.aid,
             this.ID,
             this.question,
             this.optionA,
@@ -290,11 +316,38 @@
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.Visible = false;
             // 
+            // lll
+            // 
+            this.lll.AutoSize = true;
+            this.lll.Location = new System.Drawing.Point(12, 68);
+            this.lll.Name = "lll";
+            this.lll.Size = new System.Drawing.Size(129, 15);
+            this.lll.TabIndex = 22;
+            this.lll.Text = "安全阀型号：****";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(341, 23);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 30);
+            this.button4.TabIndex = 23;
+            this.button4.Text = "刷新";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
             // 选取
             // 
             this.选取.HeaderText = "选择";
             this.选取.MinimumWidth = 6;
             this.选取.Name = "选取";
+            // 
+            // aid
+            // 
+            this.aid.DataPropertyName = "aid";
+            this.aid.HeaderText = "安全阀型号";
+            this.aid.MinimumWidth = 6;
+            this.aid.Name = "aid";
+            this.aid.ReadOnly = true;
             // 
             // ID
             // 
@@ -314,8 +367,8 @@
             // optionA
             // 
             this.optionA.DataPropertyName = "optionA";
-            dataGridViewCellStyle7.NullValue = "操作";
-            this.optionA.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.NullValue = "操作";
+            this.optionA.DefaultCellStyle = dataGridViewCellStyle1;
             this.optionA.HeaderText = "选项A";
             this.optionA.MinimumWidth = 6;
             this.optionA.Name = "optionA";
@@ -324,8 +377,8 @@
             // optionB
             // 
             this.optionB.DataPropertyName = "optionB";
-            dataGridViewCellStyle8.NullValue = "删除";
-            this.optionB.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.NullValue = "删除";
+            this.optionB.DefaultCellStyle = dataGridViewCellStyle2;
             this.optionB.HeaderText = "选项B";
             this.optionB.MinimumWidth = 6;
             this.optionB.Name = "optionB";
@@ -351,49 +404,7 @@
             this.answer.HeaderText = "正确答案";
             this.answer.MinimumWidth = 6;
             this.answer.Name = "answer";
-            // 
-            // lll
-            // 
-            this.lll.AutoSize = true;
-            this.lll.Location = new System.Drawing.Point(12, 68);
-            this.lll.Name = "lll";
-            this.lll.Size = new System.Drawing.Size(129, 15);
-            this.lll.TabIndex = 22;
-            this.lll.Text = "安全阀型号：****";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(341, 23);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 30);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "刷新";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "AB",
-            "AC",
-            "AD",
-            "BC",
-            "BD",
-            "CD",
-            "ABC",
-            "BCD",
-            "ABCD",
-            "Y",
-            "N"});
-            this.comboBox1.Location = new System.Drawing.Point(99, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(436, 23);
-            this.comboBox1.TabIndex = 18;
+            this.answer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // XHSBAdmin
             // 
@@ -444,7 +455,9 @@
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lll;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn 选取;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aid;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn question;
         private System.Windows.Forms.DataGridViewTextBoxColumn optionA;
@@ -452,6 +465,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn optionC;
         private System.Windows.Forms.DataGridViewTextBoxColumn optionD;
         private System.Windows.Forms.DataGridViewTextBoxColumn answer;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

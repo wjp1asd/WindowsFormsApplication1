@@ -56,6 +56,20 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.servo1 = new System.Windows.Forms.ComboBox();
+            this.stop1 = new System.Windows.Forms.ComboBox();
+            this.start1 = new System.Windows.Forms.ComboBox();
+            this.jy1 = new System.Windows.Forms.ComboBox();
+            this.bt1 = new System.Windows.Forms.ComboBox();
+            this.plc1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.servo = new System.Windows.Forms.ComboBox();
             this.button9 = new System.Windows.Forms.Button();
             this.stop = new System.Windows.Forms.ComboBox();
             this.start = new System.Windows.Forms.ComboBox();
@@ -77,20 +91,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.servo = new System.Windows.Forms.ComboBox();
-            this.servo1 = new System.Windows.Forms.ComboBox();
-            this.stop1 = new System.Windows.Forms.ComboBox();
-            this.start1 = new System.Windows.Forms.ComboBox();
-            this.jy1 = new System.Windows.Forms.ComboBox();
-            this.bt1 = new System.Windows.Forms.ComboBox();
-            this.plc1 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -358,6 +358,165 @@
             this.groupBox1.Text = "系统配置";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // servo1
+            // 
+            this.servo1.FormattingEnabled = true;
+            this.servo1.Items.AddRange(new object[] {
+            "COM1",
+            "COM2",
+            "COM3",
+            "COM4",
+            "COM5",
+            "COM6",
+            "COM7",
+            "COM8",
+            "COM9"});
+            this.servo1.Location = new System.Drawing.Point(83, 440);
+            this.servo1.Name = "servo1";
+            this.servo1.Size = new System.Drawing.Size(72, 23);
+            this.servo1.TabIndex = 102;
+            // 
+            // stop1
+            // 
+            this.stop1.FormattingEnabled = true;
+            this.stop1.Items.AddRange(new object[] {
+            "1"});
+            this.stop1.Location = new System.Drawing.Point(551, 435);
+            this.stop1.Name = "stop1";
+            this.stop1.Size = new System.Drawing.Size(90, 23);
+            this.stop1.TabIndex = 101;
+            // 
+            // start1
+            // 
+            this.start1.FormattingEnabled = true;
+            this.start1.Items.AddRange(new object[] {
+            "1"});
+            this.start1.Location = new System.Drawing.Point(551, 404);
+            this.start1.Name = "start1";
+            this.start1.Size = new System.Drawing.Size(90, 23);
+            this.start1.TabIndex = 100;
+            // 
+            // jy1
+            // 
+            this.jy1.FormattingEnabled = true;
+            this.jy1.Items.AddRange(new object[] {
+            "8"});
+            this.jy1.Location = new System.Drawing.Point(376, 405);
+            this.jy1.Name = "jy1";
+            this.jy1.Size = new System.Drawing.Size(90, 23);
+            this.jy1.TabIndex = 99;
+            // 
+            // bt1
+            // 
+            this.bt1.FormattingEnabled = true;
+            this.bt1.Items.AddRange(new object[] {
+            "115200",
+            "9600"});
+            this.bt1.Location = new System.Drawing.Point(224, 405);
+            this.bt1.Name = "bt1";
+            this.bt1.Size = new System.Drawing.Size(90, 23);
+            this.bt1.TabIndex = 98;
+            // 
+            // plc1
+            // 
+            this.plc1.FormattingEnabled = true;
+            this.plc1.Items.AddRange(new object[] {
+            "COM1",
+            "COM2",
+            "COM3",
+            "COM4",
+            "COM5",
+            "COM6",
+            "COM7",
+            "COM8",
+            "COM9"});
+            this.plc1.Location = new System.Drawing.Point(83, 405);
+            this.plc1.Name = "plc1";
+            this.plc1.Size = new System.Drawing.Size(72, 23);
+            this.plc1.TabIndex = 97;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 448);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 15);
+            this.label7.TabIndex = 96;
+            this.label7.Text = "舵机端口";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(486, 443);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 15);
+            this.label8.TabIndex = 95;
+            this.label8.Text = "停止位";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(484, 408);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 15);
+            this.label10.TabIndex = 94;
+            this.label10.Text = "起始位";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(161, 408);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(52, 15);
+            this.label11.TabIndex = 93;
+            this.label11.Text = "波特率";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(320, 408);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(52, 15);
+            this.label12.TabIndex = 92;
+            this.label12.Text = "校验位";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.IndianRed;
+            this.label14.Location = new System.Drawing.Point(16, 376);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(247, 15);
+            this.label14.TabIndex = 91;
+            this.label14.Text = "在线采集卡配置（限专业人士修改）";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(16, 408);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(61, 15);
+            this.label38.TabIndex = 90;
+            this.label38.Text = "PLC端口";
+            // 
+            // servo
+            // 
+            this.servo.FormattingEnabled = true;
+            this.servo.Items.AddRange(new object[] {
+            "COM1",
+            "COM2",
+            "COM3",
+            "COM4",
+            "COM5",
+            "COM6",
+            "COM7",
+            "COM8",
+            "COM9"});
+            this.servo.Location = new System.Drawing.Point(83, 331);
+            this.servo.Name = "servo";
+            this.servo.Size = new System.Drawing.Size(72, 23);
+            this.servo.TabIndex = 88;
+            // 
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(252, 490);
@@ -387,6 +546,7 @@
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(90, 23);
             this.start.TabIndex = 79;
+            this.start.SelectedIndexChanged += new System.EventHandler(this.start_SelectedIndexChanged);
             // 
             // jy
             // 
@@ -544,171 +704,12 @@
             this.label24.TabIndex = 60;
             this.label24.Text = "离线题：";
             // 
-            // servo
-            // 
-            this.servo.FormattingEnabled = true;
-            this.servo.Items.AddRange(new object[] {
-            "COM1",
-            "COM2",
-            "COM3",
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7",
-            "COM8",
-            "COM9"});
-            this.servo.Location = new System.Drawing.Point(83, 331);
-            this.servo.Name = "servo";
-            this.servo.Size = new System.Drawing.Size(72, 23);
-            this.servo.TabIndex = 88;
-            // 
-            // servo1
-            // 
-            this.servo1.FormattingEnabled = true;
-            this.servo1.Items.AddRange(new object[] {
-            "COM1",
-            "COM2",
-            "COM3",
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7",
-            "COM8",
-            "COM9"});
-            this.servo1.Location = new System.Drawing.Point(83, 440);
-            this.servo1.Name = "servo1";
-            this.servo1.Size = new System.Drawing.Size(72, 23);
-            this.servo1.TabIndex = 102;
-            // 
-            // stop1
-            // 
-            this.stop1.FormattingEnabled = true;
-            this.stop1.Items.AddRange(new object[] {
-            "1"});
-            this.stop1.Location = new System.Drawing.Point(551, 435);
-            this.stop1.Name = "stop1";
-            this.stop1.Size = new System.Drawing.Size(90, 23);
-            this.stop1.TabIndex = 101;
-            // 
-            // start1
-            // 
-            this.start1.FormattingEnabled = true;
-            this.start1.Items.AddRange(new object[] {
-            "1"});
-            this.start1.Location = new System.Drawing.Point(551, 404);
-            this.start1.Name = "start1";
-            this.start1.Size = new System.Drawing.Size(90, 23);
-            this.start1.TabIndex = 100;
-            // 
-            // jy1
-            // 
-            this.jy1.FormattingEnabled = true;
-            this.jy1.Items.AddRange(new object[] {
-            "8"});
-            this.jy1.Location = new System.Drawing.Point(376, 405);
-            this.jy1.Name = "jy1";
-            this.jy1.Size = new System.Drawing.Size(90, 23);
-            this.jy1.TabIndex = 99;
-            // 
-            // bt1
-            // 
-            this.bt1.FormattingEnabled = true;
-            this.bt1.Items.AddRange(new object[] {
-            "115200",
-            "9600"});
-            this.bt1.Location = new System.Drawing.Point(224, 405);
-            this.bt1.Name = "bt1";
-            this.bt1.Size = new System.Drawing.Size(90, 23);
-            this.bt1.TabIndex = 98;
-            // 
-            // plc1
-            // 
-            this.plc1.FormattingEnabled = true;
-            this.plc1.Items.AddRange(new object[] {
-            "COM1",
-            "COM2",
-            "COM3",
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7",
-            "COM8",
-            "COM9"});
-            this.plc1.Location = new System.Drawing.Point(83, 405);
-            this.plc1.Name = "plc1";
-            this.plc1.Size = new System.Drawing.Size(72, 23);
-            this.plc1.TabIndex = 97;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 448);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 15);
-            this.label7.TabIndex = 96;
-            this.label7.Text = "舵机端口";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(486, 443);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 15);
-            this.label8.TabIndex = 95;
-            this.label8.Text = "停止位";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(484, 408);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 15);
-            this.label10.TabIndex = 94;
-            this.label10.Text = "起始位";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(161, 408);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(52, 15);
-            this.label11.TabIndex = 93;
-            this.label11.Text = "波特率";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(320, 408);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(52, 15);
-            this.label12.TabIndex = 92;
-            this.label12.Text = "校验位";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.IndianRed;
-            this.label14.Location = new System.Drawing.Point(16, 376);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(247, 15);
-            this.label14.TabIndex = 91;
-            this.label14.Text = "在线采集卡配置（限专业人士修改）";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(16, 408);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(61, 15);
-            this.label38.TabIndex = 90;
-            this.label38.Text = "PLC端口";
-            // 
             // Settings1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(821, 587);
+            this.ClientSize = new System.Drawing.Size(842, 587);
             this.Controls.Add(this.groupBox1);
             this.Name = "Settings1";
             this.Text = "系统设置";
