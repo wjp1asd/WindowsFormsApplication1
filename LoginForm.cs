@@ -290,5 +290,12 @@ namespace WindowsFormsApplication1
             XHSB xh=new XHSB();
             xh.Show();
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
+            zaixianjiaoyan.Show();
+            
+        }
     }
 }

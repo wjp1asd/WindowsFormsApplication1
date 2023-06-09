@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,16 +63,25 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.uiLedLabel4 = new Sunny.UI.UILedLabel();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
             this.comboBox1.Font = new System.Drawing.Font("宋体", 14F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(349, 180);
+            this.comboBox1.Location = new System.Drawing.Point(618, 182);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 31);
+            this.comboBox1.Size = new System.Drawing.Size(224, 31);
             this.comboBox1.TabIndex = 57;
             // 
             // label7
@@ -79,7 +89,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label7.Location = new System.Drawing.Point(231, 182);
+            this.label7.Location = new System.Drawing.Point(500, 184);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 27);
             this.label7.TabIndex = 56;
@@ -91,7 +101,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label5.Location = new System.Drawing.Point(500, 134);
+            this.label5.Location = new System.Drawing.Point(1004, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(188, 27);
             this.label5.TabIndex = 55;
@@ -115,7 +125,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label4.Location = new System.Drawing.Point(223, 134);
+            this.label4.Location = new System.Drawing.Point(500, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(168, 27);
             this.label4.TabIndex = 53;
@@ -176,6 +186,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 25);
             this.textBox1.TabIndex = 59;
+            this.textBox1.TextChanged += new System.EventHandler(this.CALCf);
             // 
             // label9
             // 
@@ -194,7 +205,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label10.Location = new System.Drawing.Point(506, 230);
+            this.label10.Location = new System.Drawing.Point(787, 230);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 27);
             this.label10.TabIndex = 63;
@@ -203,17 +214,18 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(400, 230);
+            this.textBox2.Location = new System.Drawing.Point(681, 230);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 25);
             this.textBox2.TabIndex = 62;
+            this.textBox2.Text = "0";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label11.Location = new System.Drawing.Point(302, 230);
+            this.label11.Location = new System.Drawing.Point(510, 230);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 27);
             this.label11.TabIndex = 61;
@@ -224,7 +236,12 @@
             // 
             this.comboBox2.Font = new System.Drawing.Font("宋体", 14F);
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(638, 182);
+            this.comboBox2.Items.AddRange(new object[] {
+            "200",
+            "500",
+            "2000",
+            "5000"});
+            this.comboBox2.Location = new System.Drawing.Point(1021, 184);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(120, 31);
             this.comboBox2.TabIndex = 65;
@@ -234,7 +251,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label12.Location = new System.Drawing.Point(500, 182);
+            this.label12.Location = new System.Drawing.Point(883, 186);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(132, 27);
             this.label12.TabIndex = 64;
@@ -246,7 +263,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label13.Location = new System.Drawing.Point(811, 228);
+            this.label13.Location = new System.Drawing.Point(1154, 235);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(38, 27);
             this.label13.TabIndex = 68;
@@ -255,9 +272,9 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(705, 229);
+            this.textBox3.Location = new System.Drawing.Point(1021, 235);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 25);
+            this.textBox3.Size = new System.Drawing.Size(120, 25);
             this.textBox3.TabIndex = 67;
             // 
             // label14
@@ -265,7 +282,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label14.Location = new System.Drawing.Point(567, 227);
+            this.label14.Location = new System.Drawing.Point(883, 233);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(132, 27);
             this.label14.TabIndex = 66;
@@ -274,23 +291,23 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(22, 263);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "外加力";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "90%基准线";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "外加力";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "90%基准线";
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(948, 400);
             this.chart1.TabIndex = 69;
             this.chart1.Text = "chart1";
@@ -301,19 +318,20 @@
             this.button3.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(180, 698);
+            this.button3.Location = new System.Drawing.Point(180, 669);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 43);
             this.button3.TabIndex = 70;
             this.button3.Text = "开始";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(322, 698);
+            this.button1.Location = new System.Drawing.Point(322, 669);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 43);
             this.button1.TabIndex = 71;
@@ -325,19 +343,20 @@
             this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(614, 698);
+            this.button2.Location = new System.Drawing.Point(614, 669);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 43);
             this.button2.TabIndex = 73;
             this.button2.Text = "返回";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(472, 698);
+            this.button4.Location = new System.Drawing.Point(472, 669);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(116, 43);
             this.button4.TabIndex = 72;
@@ -408,12 +427,84 @@
             this.textBox5.Size = new System.Drawing.Size(90, 25);
             this.textBox5.TabIndex = 77;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 727);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1414, 26);
+            this.statusStrip1.TabIndex = 80;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(69, 20);
+            this.toolStripStatusLabel1.Text = "点击连接";
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1000;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(1046, 282);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(322, 419);
+            this.richTextBox2.TabIndex = 81;
+            this.richTextBox2.Text = "";
+            // 
+            // uiLedLabel4
+            // 
+            this.uiLedLabel4.BackColor = System.Drawing.Color.Black;
+            this.uiLedLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLedLabel4.ForeColor = System.Drawing.Color.Lime;
+            this.uiLedLabel4.IntervalOn = 3;
+            this.uiLedLabel4.Location = new System.Drawing.Point(1009, 64);
+            this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.uiLedLabel4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLedLabel4.Name = "uiLedLabel4";
+            this.uiLedLabel4.Size = new System.Drawing.Size(359, 35);
+            this.uiLedLabel4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLedLabel4.StyleCustomMode = true;
+            this.uiLedLabel4.TabIndex = 100;
+            this.uiLedLabel4.Text = "1111111";
+            this.uiLedLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label19.Location = new System.Drawing.Point(1154, 186);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(38, 27);
+            this.label19.TabIndex = 101;
+            this.label19.Text = "Kg";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // zaixianjiaoyan2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(982, 753);
+            this.ClientSize = new System.Drawing.Size(1414, 753);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.uiLedLabel4);
+            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.textBox5);
@@ -450,6 +541,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.zaixianjiaoyan2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,5 +580,13 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.IO.Ports.SerialPort serialPort2;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private Sunny.UI.UILedLabel uiLedLabel4;
+        private System.Windows.Forms.Label label19;
     }
 }
