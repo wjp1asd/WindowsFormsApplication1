@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1.Admin.Results
                 e.Graphics.DrawString("考生："+a11.Text, fntTxt, brush, new System.Drawing.Point(80, 46));
                 e.Graphics.DrawString("身份证：" + a12.Text, fntTxt, brush, new System.Drawing.Point(80, 66));
                 e.Graphics.DrawString("考试码：" + a13.Text, fntTxt, brush, new System.Drawing.Point(80, 86));
-                e.Graphics.DrawString(" 离线答题结果：" + a14.Text, fntTxt, brush, new System.Drawing.Point(80, 106));
+                e.Graphics.DrawString("离线答题结果：" + a14.Text, fntTxt, brush, new System.Drawing.Point(80, 106));
                 e.Graphics.DrawString("得分：" + a15.Text, fntTxt, brush, new System.Drawing.Point(80, 126));
                 e.Graphics.DrawString("在线答题结果：" + a16.Text, fntTxt, brush, new System.Drawing.Point(80, 146));
                 e.Graphics.DrawString("得分：" + a17.Text, fntTxt, brush, new System.Drawing.Point(80, 166));
