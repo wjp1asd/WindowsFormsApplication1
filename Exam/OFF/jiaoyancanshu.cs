@@ -46,7 +46,7 @@ namespace WindowsFormsApplication1.Exam
              double  b =double.Parse(b2);
             yali = double.Parse(this.label1.Text.Trim());
 
-            MessageBox.Show(""+a+ b+yali);
+         //   MessageBox.Show(""+a+ b+yali);
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
@@ -57,9 +57,14 @@ namespace WindowsFormsApplication1.Exam
             
             }
             
-            //this.Close();
-            //JiaoYan j = new JiaoYan(index);
-            //j.Show();
+            string url = "update grade set wxxz = " + score + "where testid ='" + datahelp.QId.Trim()+ "'"; ;
+            if (ff.RC1(url).Length>0) {
+                this.Close();
+                JiaoYan j = new JiaoYan(datahelp.QId.Trim());
+                j.Show();
+            }
+          
+            
            
         }
 

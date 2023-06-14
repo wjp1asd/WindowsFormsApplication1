@@ -371,8 +371,7 @@ namespace WindowsFormsApplication1.Exam
         {
 
             VideoCapture v = new VideoCapture(0);
-            v.SetCaptureProperty(CapProp.FrameHeight, 720);
-            v.SetCaptureProperty(CapProp.FrameWidth, 1280);
+          
             if (!v.IsOpened)
             {
                 MessageBox.Show("open video fail");

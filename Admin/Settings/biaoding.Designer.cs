@@ -127,7 +127,13 @@
             "泄压阀",
             "舵机",
             "压力传感器1",
-            "压力传感器2"});
+            "压力传感器2",
+            "在线阀帽",
+            "在线工具",
+            "游标卡尺",
+            "阀瓣",
+            "在线压力1",
+            "在线压力2"});
             this.type.MinimumWidth = 6;
             this.type.Name = "type";
             this.type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
