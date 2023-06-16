@@ -115,7 +115,7 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - qiehuanfa1] + "" == "0")
             {
                 dishow("1.6Mpa量程选择");
-                liangcheng = 1;
+                liangcheng =1;
             }
             else
             {

@@ -46,14 +46,14 @@ namespace WindowsFormsApplication1.Exam
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int youbiaokachi = 0;
-        int qiehuanfa2 = 0;
+        int lianjiegan = 0;
         int faban = 0;
         int gongju = 0;
         int famao = 0;
-        int xieya = 0;
+        int siheyi = 0;
         int step = -1;
         //量程选择 1.6 4 25 
-        int liangcheng = 0;
+        int liangcheng = 4;
         // AO  仿真压力表 舵机 后续需要拓展
 
         int fangzhen1 = 0;
@@ -129,10 +129,10 @@ namespace WindowsFormsApplication1.Exam
                 int sec = datahelp.LxTime % 60;
                 this.label1.Text = string.Format("{0:00}:{1:00}", min, sec);
                 Control.CheckForIllegalCrossThreadCalls = false;
-                Random a = new Random();
-                int x = a.Next(100);
-                y++;
-                this.chart1.Series[0].Points.AddXY(y, x);
+              //  Random a = new Random();
+              //  int x = a.Next(100);
+               // y++;
+              
               
 
             }
@@ -215,6 +215,7 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
+     
             private void button7_Click(object sender, EventArgs e)
             {
                 VideoCapture v = new VideoCapture(1);
@@ -291,8 +292,10 @@ namespace WindowsFormsApplication1.Exam
 
         public void plcinit()
         {
-            string connectionString = ConfigurationManager.AppSettings["sqlc"];
-            SqlConnection con = new SqlConnection(connectionString);
+            datahelp datahelp = new datahelp();
+            datahelp.Initc();
+                 
+            string connectionString = ConfigurationManager.AppSettings["sqlc"]; SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from biaoding";
 
             SqlCommand com = new SqlCommand(sql, con);
@@ -304,8 +307,15 @@ namespace WindowsFormsApplication1.Exam
                 string name = reader["type"].ToString().Trim();
                 switch (name)
                 {
-                  
-                    
+                    case "连接杆":
+                        lianjiegan = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+
+                    case "四合一":
+                        siheyi = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+
+
                     case "游标卡尺":
                         youbiaokachi = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
@@ -437,9 +447,10 @@ namespace WindowsFormsApplication1.Exam
             byte[] buff = new byte[len];//
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
                                            // 通讯读取
-                                           // MessageBox.Show(BitConverter.ToString(buff));
-                                           //MessageBox.Show(len);
-                                           //   MessageBox.Show(name);
+                                           //MessageBox.Show(BitConverter.ToString(buff));
+            //   MessageBox.Show(len.ToString());
+            //   MessageBox.Show(name);
+            
             if (buff.Length == 38)
             {
                 Action t = () =>
@@ -448,6 +459,7 @@ namespace WindowsFormsApplication1.Exam
 
                 };
                 this.Invoke(t);
+                dishow(BitConverter.ToString(buff));
                 //richTextBox2.Clear();
                 //38位
                 //MessageBox.Show(BitConverter.ToString(buff));
@@ -513,14 +525,14 @@ namespace WindowsFormsApplication1.Exam
                     {
                         DIS0 = a;
                         //di状态分析
-                        fenxi();
+                   //     fenxi();
                     }
 
 
 
                 }
 
-                switch (fangzhen2)
+                switch (fangzhen1)
                 {
                     case 0:
                         ttt2 = buff.Skip(5).Take(4).ToArray();
@@ -581,9 +593,9 @@ namespace WindowsFormsApplication1.Exam
         private void fenxi()
         {
 
-            int a = Convert.ToInt32(t1.ToString(), 16);
-            // MessageBox.Show(sb1.ToString()+a);
-            int b = Convert.ToInt32(t2.ToString(), 16);
+          int a = Convert.ToInt32(t1.ToString(), 16);
+           //  MessageBox.Show(sb1.ToString()+a);
+         int b = Convert.ToInt32(t2.ToString(), 16);
             if (Math.Abs(a - b) == 0)
             {
                 //校验阀关闭
@@ -602,9 +614,30 @@ namespace WindowsFormsApplication1.Exam
 
                 //richTextBox2.Text += "切换阀关闭";
             }
+            if (DIS[7 - lianjiegan] + "" == "0")
+            {
+                dishow("连接杆归位");
+                liangcheng = 3;
+            }
+            else
+            {
+                dishow("连接杆离开");
+
+                //richTextBox2.Text += "切换阀关闭";
+            }
+            if (DIS[7 - siheyi] + "" == "0")
+            {
+                dishow("四合一归位");
+                liangcheng = 3;
+            }
+            else
+            {
+                dishow("四合一离开");
+
+                //richTextBox2.Text += "切换阀关闭";
+            }
 
 
-         
 
             if (DIS[7 - faban] + "" == "0")
             {
@@ -909,9 +942,9 @@ namespace WindowsFormsApplication1.Exam
             Action tongdao = () =>
             {
                 richTextBox2.Clear();
-                richTextBox2.AppendText("当前循环时间：" + smin);
+             //   richTextBox2.AppendText("当前循环时间：" + smin);
 
-                richTextBox2.AppendText("当前电压差：" + (dwq - a));
+              //  richTextBox2.AppendText("当前电压差：" + (dwq - a));
 
 
                 richTextBox2.AppendText("当前舵机码值：" + maz);
@@ -920,8 +953,30 @@ namespace WindowsFormsApplication1.Exam
 
                 richTextBox2.AppendText("当前通道：" + sb1.ToString());
                 richTextBox2.AppendText("当前电位器码值（电压值）：" + a);
-
-
+                
+               float b1 = (a / 10000 / 5)*5000;
+               float b2 = 0;
+                switch (liangcheng)
+                {
+                    case 1:
+                        b2 = b1 * 200;
+                        richTextBox2.AppendText("当前压力：" + b1 * 200 + "KG");
+                        break;
+                    case 2:
+                        b2 = b1 * 500;
+                        richTextBox2.AppendText("当前压力：" + b1 * 500 + "KG");
+                        break;
+                    case 3:
+                         b2 = b1 * 2000;
+                        richTextBox2.AppendText("当前压力：" + b1 * 2000 + "KG");
+                        break;
+                    case 4:
+                         b2 = b1 * 5000;
+                        richTextBox2.AppendText("当前压力：" + b1 * 5000 + "KG");
+                        break;
+                }
+                this.chart1.Series[0].Points.AddXY(cisu, b1);
+               MessageBox.Show(b1.ToString());
                 richTextBox2.AppendText("上次电压差：" + b);
                 richTextBox2.AppendText("变化速度：" + Math.Abs(a - b) / interval);
                 calyali(a);
@@ -1007,18 +1062,21 @@ namespace WindowsFormsApplication1.Exam
         {
             //
             int b = (a / 10000 / 5);
+            this.chart1.Series[0].Points.AddXY(cisu, b);
             switch (liangcheng)
             {
                 case 1:
-                    richTextBox2.AppendText("当前压力：" + b * 1.6 + "Mpa");
+                    richTextBox2.AppendText("当前压力：" + b * 200 + "KG");
                     break;
                 case 2:
-                    richTextBox2.AppendText("当前压力：" + b * 4 + "Mpa");
+                    richTextBox2.AppendText("当前压力：" + b * 500 + "KG");
                     break;
                 case 3:
-                    richTextBox2.AppendText("当前压力：" + b * 25 + "Mpa");
+                    richTextBox2.AppendText("当前压力：" + b * 2000 + "KG");
                     break;
-
+                case 4:
+                    richTextBox2.AppendText("当前压力：" + b * 5000 + "KG");
+                    break;
             }
         }
 
@@ -1219,7 +1277,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
                 case 1:
                     this.button3.Text = "校验进行中";
-                    this.plcinit();
+                   // this.plcinit();
 
                     if (serialPort2.IsOpen)
                     {
@@ -1239,15 +1297,18 @@ namespace WindowsFormsApplication1.Exam
                         return;
                     }
                     //开启一个线程 摄像头
-                    Thread t = new Thread(backCamera);
-                    t.Start();
+                 //   Thread t = new Thread(backCamera);
+                  //  t.Start();
                     //
                     break;
             
             }
         }
 
-      
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            liangcheng =this.comboBox2.SelectedIndex;   
+        }
 
         private void wucha1(string type)
         {
