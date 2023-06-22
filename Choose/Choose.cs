@@ -1,10 +1,10 @@
-﻿using AutoWindowsSize;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using AutoWindowsSize;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Exam
@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1.Exam
         String lxques, zxques, gyques, xhques, lpjques, ymgques;
         String qrcode;
         string idcard = "";
-        public Choose(string id = "321084199510025535")
+        public Choose(string id = "321084199510025536")
         {
             // 身份证ID
             st = new Student(id);
@@ -161,60 +161,60 @@ namespace WindowsFormsApplication1.Exam
                     lxyl = yali2[start2].ToString();
                 }
             }
-            // 在线
-            if (decimal.Parse(t.Zxyl) >= (min + (decimal)0.2))
-            {
-                cur1 = decimal.Parse(t.Zxyl) - (decimal)0.2;
+            // 在线直接1.0
+            //if (decimal.Parse(t.Zxyl) >= (min + (decimal)0.2))
+            //{
+            //    cur1 = decimal.Parse(t.Zxyl) - (decimal)0.2;
 
 
-            }
-            else
-            {
-                cur1 = decimal.Parse(t.Zxyl) + (decimal)0.2;
+            //}
+            //else
+            //{
+            //    cur1 = decimal.Parse(t.Zxyl) + (decimal)0.2;
 
-            }
-            if (que == "1")
-            {
-                // 当天第一个
-                yali2 = ts.Yali();
-                Random random = new Random();
-                int start2 = random.Next(0, yali2.Count);
-                zxyl = yali2[start2].ToString();
+            //}
+            //if (que == "1")
+            //{
+            //    // 当天第一个
+            //    yali2 = ts.Yali();
+            //    Random random = new Random();
+            //    int start2 = random.Next(0, yali2.Count);
+            //    zxyl = yali2[start2].ToString();
 
-            }
-            else
-            {
-                //不是第一个
-                // max 1.3 min 1 上一个 1.2 cur 1.0 那就在 1.0 1.1里选
-                if (decimal.Parse(t.Lxyl) > cur1)
-                {
-                    // 删除大于等上次
-                    yali2 = ts.Yali();
-                    yali2.RemoveAll(x => x >= decimal.Parse(t.Zxyl));
-                    Random random = new Random();
-                    int start2 = random.Next(0, yali2.Count);
-                    zxyl = yali2[start2].ToString();
-
-
-                }
-                else if (decimal.Parse(t.Zxyl) < cur1)
-                {
-
-                    yali2 = ts.Yali();
-                    yali2.RemoveAll(x => x <= decimal.Parse(t.Zxyl));
-                    Random random = new Random();
-                    int start2 = random.Next(0, yali2.Count);
-                    zxyl = yali2[start2].ToString();
+            //}
+            //else
+            //{
+            //    //不是第一个
+            //    // max 1.3 min 1 上一个 1.2 cur 1.0 那就在 1.0 1.1里选
+            //    if (decimal.Parse(t.Lxyl) > cur1)
+            //    {
+            //        // 删除大于等上次
+            //        yali2 = ts.Yali();
+            //        yali2.RemoveAll(x => x >= decimal.Parse(t.Zxyl));
+            //        Random random = new Random();
+            //        int start2 = random.Next(0, yali2.Count);
+            //        zxyl = yali2[start2].ToString();
 
 
-                }
+            //    }
+            //    else if (decimal.Parse(t.Zxyl) < cur1)
+            //    {
+
+            //        yali2 = ts.Yali();
+            //        yali2.RemoveAll(x => x <= decimal.Parse(t.Zxyl));
+            //        Random random = new Random();
+            //        int start2 = random.Next(0, yali2.Count);
+            //        zxyl = yali2[start2].ToString();
 
 
-
+            //    }
 
 
 
-            }
+
+
+
+            //}
 
             //MessageBox.Show("压力大：" + yali.Max());
             //MessageBox.Show("压力小：" + yali.Min());
@@ -286,7 +286,7 @@ namespace WindowsFormsApplication1.Exam
                 "'" + ksdate.ToString() + "'" + "," +
                 "'" + lxyl.ToString() + "'" + "," +
                 "'" + lxlx.Trim().ToString() + "'" + "," +
-                  "'" + zxyl.ToString() + "'" + "," +
+                  "'" + 1.0 + "'" + "," +
                     "'" + zxlx.Trim().ToString() + "'" + "," +
                       "'" + aqfxh.Trim().ToString() + "'" + "," +
                 "'" + a.ToString() + "'" + "," +
@@ -299,13 +299,13 @@ namespace WindowsFormsApplication1.Exam
                   ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            //  MessageBox.Show(strcomm);
+            // ff.ShowInfoTip(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
 
             con.Close();
-            MessageBox.Show("已创建考试信息，排队号0" + que);
+            ff.ShowInfoTip("已创建考试信息，排队号0" + que);
             qrcode = a;
             //  this.button1.Show();
             Print p = new Print(qrcode);

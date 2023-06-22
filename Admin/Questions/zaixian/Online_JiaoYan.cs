@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Admin.Questions.zaixian
 {
@@ -39,7 +40,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             this.Close();
             ;
         }
-
+        private Fuc ff = new Fuc();
         private void button1_Click(object sender, EventArgs e)
         {
             string a = this.textBox1.Text.Trim();
@@ -47,7 +48,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
 
             if (a.Length == 0 || b.Length == 0)
             {
-                MessageBox.Show("参数不能为空");
+               ff.ShowInfoTip("参数不能为空");
                 return;
 
             }
@@ -57,11 +58,11 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             String str1 = "Update settings set edyl='" + a + "',mfzj='" + b + "' where id=1";
 
             // String str1 = "INSERT INTO settings (color1,color2,color3,color4,color5) VALUES('" + a+ "','" + b + "','" + c+"','" + d + "','" + f + "')";
-            MessageBox.Show(str1);
+           ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
-            MessageBox.Show("保存成功！,退出程序后加载");
+           ff.ShowInfoTip("保存成功！,退出程序后加载");
             con.Close();
         }
 

@@ -7,6 +7,7 @@ using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
 using WindowsFormsApplication1.YanMO;
 using WindowsFormsApplication1.Settings;
+using WindowsFormsApplication1.Admin.Results;
 
 namespace WindowsFormsApplication1
 {
@@ -51,6 +52,8 @@ namespace WindowsFormsApplication1
                 this.button8.Hide();
                 this.button9.Hide();
                 this.button10.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
             }
             else if (x == "0")
             {
@@ -70,6 +73,8 @@ namespace WindowsFormsApplication1
                 this.button8.Hide();
                 this.button9.Hide();
                 this.button10.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
             }
             else if (x == "2")
             {
@@ -90,6 +95,8 @@ namespace WindowsFormsApplication1
                 this.button8.Hide();
                 this.button9.Hide();
                 this.button10.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
             }
             else if (x == "2"|| x == "3"|| x == "4")
             {
@@ -110,6 +117,8 @@ namespace WindowsFormsApplication1
                 this.button8.Hide();
                 this.button9.Hide();
                 this.button10.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
             }
             else if (x == "-1")
             {
@@ -128,6 +137,8 @@ namespace WindowsFormsApplication1
                 this.button3.Hide();
                 this.button4.Hide();
                 this.uiButton1.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
 
 
             }
@@ -296,6 +307,12 @@ namespace WindowsFormsApplication1
             zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
             zaixianjiaoyan.Show();
             
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            GradePrint gradePrint = new GradePrint("w3gF7LblbhEknmqSQNtubw==");
+            gradePrint.Show();
         }
     }
 }

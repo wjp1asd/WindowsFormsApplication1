@@ -261,13 +261,13 @@ namespace WindowsFormsApplication1.Exam
             //获取打印机端口号
             if (File.Exists("Msprintsdk.dll"))
             {
-              //  MessageBox.Show("打印模块加载成功");
+              // ff.ShowInfoTip("打印模块加载成功");
 
             }
            
             
             r= SetUsbportauto();
-         //   MessageBox.Show(r.ToString());
+         //  ff.ShowInfoTip(r.ToString());
 
             if (r == 0)
             {
@@ -363,8 +363,14 @@ namespace WindowsFormsApplication1.Exam
                 awt.FormSizeChanged();
             }
         }
+        Fuc ff = new Fuc();
+        public void change()
+        {
 
-
+            ff.fullsreen(this.label2, this);
+            ff.fullsreen(this.button3, this);
+            ff.fullsreen(this.button7, this);
+        }
 
         private void Choose_Load(object sender, EventArgs e)
         {
@@ -378,6 +384,7 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+            this.change();
         }
 
         private void uiLight1_Click(object sender, EventArgs e)

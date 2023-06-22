@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -24,14 +25,14 @@ namespace WindowsFormsApplication1
             }
             else if (e.ColumnIndex == 1)
             {
-                if (DialogResult.Yes == MessageBox.Show("是否删除科目:" + this.dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString(), "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                if (DialogResult.Yes ==MessageBox.Show("是否删除科目:" + this.dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString(), "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                 {
-                    MessageBox.Show("删除成功");
+                   ff.ShowInfoTip("删除成功");
                 }
             }
 
         }
-
+        private Fuc ff = new Fuc();
         private void button1_Click(object sender, EventArgs e)
         {
             this.dataGridView1.Visible = true;

@@ -72,7 +72,7 @@ namespace WindowsFormsApplication1.Scan
             }
                 String sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
                 String sql1 = "select * from Grade where testid like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
-            // MessageBox.Show(sql);
+            //ff.ShowInfoTip(sql);
 
             if (ff.RC1(sql1).Length == 0)
             {

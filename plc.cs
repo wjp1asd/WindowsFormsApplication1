@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Sunny.UI;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -80,12 +81,12 @@ namespace WindowsFormsApplication1
                     {
                         serialPort2.Open();//打开串口
                         button1.Text = "关闭串口";//按钮显示关闭串口
-                        MessageBox.Show("连接串口成功");
+                       ff.ShowInfoTip("连接串口成功");
                         serialPort2.WriteLine("02 00 00 04 06");
                     }
                     catch (Exception err)
                     {
-                        MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+                       ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                         throw;
                     }
                    
@@ -93,21 +94,21 @@ namespace WindowsFormsApplication1
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+                   ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                 }
             }
             else
             {//要关闭串口
                 try
                 {//防止意外错误
-                    MessageBox.Show("关闭串口成功");
+                   ff.ShowInfoTip("关闭串口成功");
                     serialPort2.Close();//关闭串口
                 }
                 catch (Exception) { }
                 button1.Text = "打开串口";//按钮显示打开
             }
         }
-
+        private Fuc ff = new Fuc();
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x0219)
@@ -166,7 +167,7 @@ namespace WindowsFormsApplication1
             v.SetCaptureProperty(CapProp.FrameHeight, 720);
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened) {
-                MessageBox.Show("open video fail");
+               ff.ShowInfoTip("open video fail");
                 return;
             }
 
@@ -176,7 +177,7 @@ namespace WindowsFormsApplication1
                 v.Read(f);
                 if (f.IsEmpty) {
 
-                    MessageBox.Show("show fail");
+                   ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -196,7 +197,7 @@ namespace WindowsFormsApplication1
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened)
             {
-                MessageBox.Show("open video fail");
+               ff.ShowInfoTip("open video fail");
                 return;
             }
             Mat f = new Mat();
@@ -208,7 +209,7 @@ namespace WindowsFormsApplication1
                 if (f.IsEmpty)
                 {
 
-                    MessageBox.Show("show fail");
+                   ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -224,7 +225,7 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e)
         {
             CvInvoke.Imwrite(url+"shot.png",f1);
-            MessageBox.Show("拍照成");
+           ff.ShowInfoTip("拍照成");
         }
         // DI 输入的集合
 
@@ -510,7 +511,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("关闭串口成功");
+           ff.ShowInfoTip("关闭串口成功");
 
             serialPort2.Close();
         }
@@ -550,7 +551,7 @@ namespace WindowsFormsApplication1
             if (!serialPort2.IsOpen)
             {
 
-                MessageBox.Show("open串口");
+               ff.ShowInfoTip("open串口");
                 return;
             }
 
@@ -561,7 +562,7 @@ namespace WindowsFormsApplication1
         {
             if (!serialPort2.IsOpen) {
 
-               MessageBox.Show("open串口");
+              ff.ShowInfoTip("open串口");
                 return;
             }
            

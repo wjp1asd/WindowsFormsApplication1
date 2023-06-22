@@ -116,7 +116,7 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - qiehuanfa1] + "" == "0")
             {
                 dishow("1.6Mpa量程选择");
-                liangcheng = 1;
+                liangcheng =1;
             }
             else
             {
@@ -313,7 +313,7 @@ namespace WindowsFormsApplication1.Exam
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened)
             {
-                MessageBox.Show("open video fail");
+               ff.ShowInfoTip("open video fail");
                 return;
             }
 
@@ -325,7 +325,7 @@ namespace WindowsFormsApplication1.Exam
                 if (f.IsEmpty)
                 {
 
-                    MessageBox.Show("show fail");
+                   ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -346,7 +346,7 @@ namespace WindowsFormsApplication1.Exam
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened)
             {
-                MessageBox.Show("open video fail");
+               ff.ShowInfoTip("open video fail");
                 return;
             }
             Mat f = new Mat();
@@ -358,7 +358,7 @@ namespace WindowsFormsApplication1.Exam
                 if (f.IsEmpty)
                 {
 
-                    MessageBox.Show("show fail");
+                   ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -388,7 +388,7 @@ namespace WindowsFormsApplication1.Exam
             v.SetCaptureProperty(CapProp.FrameWidth, 120);
             if (!v.IsOpened)
             {
-                MessageBox.Show("open video fail");
+               ff.ShowInfoTip("open video fail");
                 return;
             }
             step = 0;
@@ -400,7 +400,7 @@ namespace WindowsFormsApplication1.Exam
                 if (f.IsEmpty)
                 {
 
-                    MessageBox.Show("show fail");
+                   ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -470,7 +470,7 @@ namespace WindowsFormsApplication1.Exam
             // 获得标定信息
             //for (int i = 0; i < goals.Count; i++)
             //{
-            //    MessageBox.Show(goals[i].sub+goals[i].name+goals[i].des+ goals[i].score);
+            //   ff.ShowInfoTip(goals[i].sub+goals[i].name+goals[i].des+ goals[i].score);
             //}
 
 
@@ -479,7 +479,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void ReadAI()
         {
-            // MessageBox.Show(BitConverter.ToString(td1));
+            //ff.ShowInfoTip(BitConverter.ToString(td1));
             while (true)
             {
 
@@ -530,13 +530,15 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 this.timer1.Stop();
-                MessageBox.Show("时间到了");
+               ff.ShowInfoTip("时间到了");
                 //AnswerForm frm = new AnswerForm();
                 //frm.MdiParent = this.MdiParent;
                 //frm.Show();
                 //this.Close();
             }
         }
+
+     
         public void plcinit()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -580,7 +582,7 @@ namespace WindowsFormsApplication1.Exam
 
             }
 
-            MessageBox.Show(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+"");
+           ff.ShowInfoTip(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+"");
 
             //采集卡初始化+舵机控制板
             try
@@ -614,7 +616,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+                   ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                     throw;
                 }
 
@@ -641,7 +643,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+                   ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                     throw;
                 }
 
@@ -649,7 +651,7 @@ namespace WindowsFormsApplication1.Exam
             }
             catch (Exception err)
             {
-                MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+               ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
             }
 
 
@@ -667,7 +669,7 @@ namespace WindowsFormsApplication1.Exam
                 0xFF, 0x02, 0x00, 0xC4,0x09
             };
 
-            //  MessageBox.Show(BitConverter.ToString(d1)) ;
+            // ff.ShowInfoTip(BitConverter.ToString(d1)) ;
             serialPort1.Write(d1, 0, d1.Length);
             Thread.Sleep(1000);
         }
@@ -688,9 +690,9 @@ namespace WindowsFormsApplication1.Exam
             byte[] buff = new byte[len];//
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
                                            // 通讯读取
-                                           // MessageBox.Show(BitConverter.ToString(buff));
+                                           //ff.ShowInfoTip(BitConverter.ToString(buff));
                                            //MessageBox.Show(len);
-                                           //   MessageBox.Show(name);
+                                           //  ff.ShowInfoTip(name);
      if (buff.Length == 38)
             {
                 Action t = () =>
@@ -710,10 +712,10 @@ namespace WindowsFormsApplication1.Exam
 
                 string a = Convert.ToString(tt1[0], 2).Trim();
                 //int f = Convert.ToInt32(a.ToString(), 16);
-                // MessageBox.Show(BitConverter.ToString(buff)+","+f);
+                //ff.ShowInfoTip(BitConverter.ToString(buff)+","+f);
 
                 Console.WriteLine("Di:" + a);
-                // MessageBox.Show(a);
+                //ff.ShowInfoTip(a);
                 string b = "";
                 //if (DIS0 == a)
                 //{
@@ -1153,7 +1155,7 @@ namespace WindowsFormsApplication1.Exam
                  0x5B
             };
 
-            //  MessageBox.Show(BitConverter.ToString(d1)) ;
+            // ff.ShowInfoTip(BitConverter.ToString(d1)) ;
             serialPort2.Write(d1, 0, d1.Length);
             Thread.Sleep(1000);
         }
@@ -1240,7 +1242,7 @@ namespace WindowsFormsApplication1.Exam
             if (!serialPort2.IsOpen)
             {
 
-                MessageBox.Show("open串口");
+               ff.ShowInfoTip("open串口");
                 return;
             }
 
@@ -1324,7 +1326,7 @@ namespace WindowsFormsApplication1.Exam
             if (!serialPort2.IsOpen)
             {
 
-                MessageBox.Show("open串口");
+               ff.ShowInfoTip("open串口");
                 return;
             }
 
@@ -1376,7 +1378,7 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 this.timer2.Stop();
-                MessageBox.Show("判分时间到了");
+               ff.ShowInfoTip("判分时间到了");
                
             }
         }

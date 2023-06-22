@@ -300,7 +300,7 @@ namespace WindowsFormsApplication1
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
 
         }
-
+        private Fuc ff = new Fuc();
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (datahelp.UserAnswer[datahelp.CurrentQuestion - 1]!=null)
@@ -309,7 +309,7 @@ namespace WindowsFormsApplication1
             }
             else {
 
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
                 return;
             }
         
@@ -398,7 +398,7 @@ namespace WindowsFormsApplication1
             else
             {
                 this.timer1.Stop();
-                MessageBox.Show("时间到了，请交卷");
+               ff.ShowInfoTip("时间到了，请交卷");
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
