@@ -161,60 +161,60 @@ namespace WindowsFormsApplication1.Exam
                     lxyl = yali2[start2].ToString();
                 }
             }
-            // 在线
-            if (decimal.Parse(t.Zxyl) >= (min + (decimal)0.2))
-            {
-                cur1 = decimal.Parse(t.Zxyl) - (decimal)0.2;
+            // 在线直接1.0
+            //if (decimal.Parse(t.Zxyl) >= (min + (decimal)0.2))
+            //{
+            //    cur1 = decimal.Parse(t.Zxyl) - (decimal)0.2;
 
 
-            }
-            else
-            {
-                cur1 = decimal.Parse(t.Zxyl) + (decimal)0.2;
+            //}
+            //else
+            //{
+            //    cur1 = decimal.Parse(t.Zxyl) + (decimal)0.2;
 
-            }
-            if (que == "1")
-            {
-                // 当天第一个
-                yali2 = ts.Yali();
-                Random random = new Random();
-                int start2 = random.Next(0, yali2.Count);
-                zxyl = yali2[start2].ToString();
+            //}
+            //if (que == "1")
+            //{
+            //    // 当天第一个
+            //    yali2 = ts.Yali();
+            //    Random random = new Random();
+            //    int start2 = random.Next(0, yali2.Count);
+            //    zxyl = yali2[start2].ToString();
 
-            }
-            else
-            {
-                //不是第一个
-                // max 1.3 min 1 上一个 1.2 cur 1.0 那就在 1.0 1.1里选
-                if (decimal.Parse(t.Lxyl) > cur1)
-                {
-                    // 删除大于等上次
-                    yali2 = ts.Yali();
-                    yali2.RemoveAll(x => x >= decimal.Parse(t.Zxyl));
-                    Random random = new Random();
-                    int start2 = random.Next(0, yali2.Count);
-                    zxyl = yali2[start2].ToString();
-
-
-                }
-                else if (decimal.Parse(t.Zxyl) < cur1)
-                {
-
-                    yali2 = ts.Yali();
-                    yali2.RemoveAll(x => x <= decimal.Parse(t.Zxyl));
-                    Random random = new Random();
-                    int start2 = random.Next(0, yali2.Count);
-                    zxyl = yali2[start2].ToString();
+            //}
+            //else
+            //{
+            //    //不是第一个
+            //    // max 1.3 min 1 上一个 1.2 cur 1.0 那就在 1.0 1.1里选
+            //    if (decimal.Parse(t.Lxyl) > cur1)
+            //    {
+            //        // 删除大于等上次
+            //        yali2 = ts.Yali();
+            //        yali2.RemoveAll(x => x >= decimal.Parse(t.Zxyl));
+            //        Random random = new Random();
+            //        int start2 = random.Next(0, yali2.Count);
+            //        zxyl = yali2[start2].ToString();
 
 
-                }
+            //    }
+            //    else if (decimal.Parse(t.Zxyl) < cur1)
+            //    {
+
+            //        yali2 = ts.Yali();
+            //        yali2.RemoveAll(x => x <= decimal.Parse(t.Zxyl));
+            //        Random random = new Random();
+            //        int start2 = random.Next(0, yali2.Count);
+            //        zxyl = yali2[start2].ToString();
 
 
-
+            //    }
 
 
 
-            }
+
+
+
+            //}
 
             //MessageBox.Show("压力大：" + yali.Max());
             //MessageBox.Show("压力小：" + yali.Min());
@@ -286,7 +286,7 @@ namespace WindowsFormsApplication1.Exam
                 "'" + ksdate.ToString() + "'" + "," +
                 "'" + lxyl.ToString() + "'" + "," +
                 "'" + lxlx.Trim().ToString() + "'" + "," +
-                  "'" + zxyl.ToString() + "'" + "," +
+                  "'" + 1.0 + "'" + "," +
                     "'" + zxlx.Trim().ToString() + "'" + "," +
                       "'" + aqfxh.Trim().ToString() + "'" + "," +
                 "'" + a.ToString() + "'" + "," +
