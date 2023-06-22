@@ -78,7 +78,8 @@ namespace WindowsFormsApplication1.Exam
                 awt.FormSizeChanged();
             }
         }
-
+        //外加力值推荐值
+        double wjltj = 0;
         private void CALCf(object sender, EventArgs e)
         {
             try
@@ -89,7 +90,7 @@ namespace WindowsFormsApplication1.Exam
 
                 double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2/10;
                 this.textBox3.Text = F.ToString();
-
+                wjltj = F;
                 double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
                 this.richTextBox2.Text += "开启压力"+PS;
             }
@@ -850,12 +851,14 @@ namespace WindowsFormsApplication1.Exam
         }
   
         //上次电压值
-        int dwq;
+        float dwq;
         string cz;
         int interval = 500;
          float standardValue = 0;
         // 基础线绘制
         bool standard = false;
+        float currentF = 0;
+        float lastF = 0;
         private void voldetla(string sb1, string t8)
         {
             //cz从离线压力设置-初次测试压力中取值
@@ -892,27 +895,27 @@ namespace WindowsFormsApplication1.Exam
                     break;
             }
            
-            if (b2 > 0) {
-              
-                setstandard(b2,a);
-            }
+           
                
            
             if (show&&(a - standardValue)>0) {
                 //    ff.ShowInfoTip("当前电压值-初始电压值："+(a- standardValue).ToString());
-                
-                this.chart1.Series[0].Points.AddXY(cisu,b2);
+                currentF = b2 - standardValue;
+               
+                this.chart1.Series[0].Points.AddXY(cisu, b2);
+                showpoint(cisu);
+                lastF = b2 - standardValue;
             }
-           
+         
             Action tongdao = () =>
             {
                 richTextBox2.Clear();
                richTextBox2.AppendText("当前循环时间：" + smin);
 
-                richTextBox2.AppendText("当前电压差：" + (a-dwq));
+                richTextBox2.AppendText("当前电压差：" + (dwq-a));
 
-                richTextBox2.AppendText("当前压力：" + (b2-standardValue) + "KG");
-               
+                richTextBox2.AppendText("当前压力：" +b2 + "KG");
+                this.textBox4.Text =""+ (b2);
                 richTextBox2.AppendText("当前循环次数：" + cisu);
                 richTextBox2.AppendText("上次电位器码值码值：" + dwq);
 
@@ -926,199 +929,37 @@ namespace WindowsFormsApplication1.Exam
              
             };
             this.Invoke(tongdao);
-           
-           
+            dwq = a;
+
+        }
+        int smin = 0;
+        private void showpoint(int x)
+        {
+            this.chart1.Series[0].Points[x].MarkerColor=Color.Red;
+            this.chart1.Series[0].Points[x].MarkerSize = 10;
+            this.chart1.Series[0].Points[x].MarkerStyle = MarkerStyle.Star6;
+
         }
 
-        private void setstandard(float max,float a)
+        private void setstandard(float a)
         {
             if (standard==false) {
                 standardValue = a;
+                MessageBox.Show(""+a);
                 StripLine s = new StripLine();
                 s.BackColor = Color.Red;
                 s.Interval = 0;
                 s.StripWidth = 1;
+                s.IntervalOffset = currentF;
                 //this.chart1.ChartAreas[0].AxisY.Minimum =0;
-                s.IntervalOffset = max;
-
+               
                 this.chart1.ChartAreas[0].AxisY.StripLines.Add(s);
                 standard = true;
             }
         }
 
-        int czmaz;
-
-
-        private void SendServo1(int a, int pos)
-        {
-
-            Action tongdao = () =>
-            {
-                this.richTextBox2.Text += "舵机就位";
-
-            };
-
-            this.Invoke(tongdao);
-
-            //舵机驱动
-
-            byte[] d3 = new byte[] {
-                0xFF,0x01,0x00,0x0a,0x00,
-                0xFF, 0x02, 0x00, 0xC4,0x09};
-            //高八度低八度取值
-            d3[3] = (byte)(maz & 0x00ff);
-            d3[4] = (byte)((maz >> 8) & 0xff);
-            //目标码值（离线压力设置-初次测试压力）
-            d3[9] = (byte)((czmaz >> 8) & 0xff);
-            d3[8] = (byte)(czmaz & 0x00ff);
-
-         //   serialPort1.Write(d3, 0, d3.Length);
-
-            if (dwq - a > 100)
-            {
-
-                maz += 1;
-
-            }
-            Thread.Sleep(1000);
-            if (a < 119000)
-            { dwq = a; }
-            if (maz > 1)
-            {
-                cisu = cisu + 1;
-                maz -= 1;
-
-            }
-
-        }
-
-
-       
-
-        private void SetZero()
-        {
-            //舵机归零
-            byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
-                //通道1
-                0x01, 0x09, 0xC4,
-                //通道2
-                0x01, 0x09, 0xC4,
-                //通道3
-                0x01,  0x09, 0xC4,
-                //通道4
-                0x01,  0x09, 0xC4,
-                //通道5
-                0x01,  0x09, 0xC4,
-                //通道6
-                0x01, 0x09, 0xC4,
-                //通道7
-                0x01,  0x09, 0xC4,
-                //通道8
-                0x01,  0x09, 0xC4,
-
-                 0x5B
-            };
-
-            //  MessageBox.Show(BitConverter.ToString(d1)) ;
-            serialPort2.Write(d1, 0, d1.Length);
-            Thread.Sleep(1000);
-        }
-        //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
-        int maz = 2500;
-        int smin = 1000;
+  
         int cisu = 0;
-
-        private void SendServo(int a, int pos)
-        {
-
-            //MessageBox.Show(a.ToString());
-            //int b = (a / 1000 / 5)*2500;
-            //string b1 = b.ToString("X4");
-            // MessageBox.Show(""+b);
-            // MessageBox.Show(b1.ToString());
-            //  int a2 = int.Parse("0x"+ b1.Substring(0, 2));
-            // int a3 = int.Parse("0x" + b1.Substring(2));
-
-            // MessageBox.Show(""+b1);
-            //string    maz1 = maz.ToString("X4");
-            //     // int maz1 =Convert.ToInt32( maz.ToString(),16);
-            //    // byte a2;byte a3;
-            // MessageBox.Show(maz.ToString());
-            //    int a2 =Convert.ToInt32( maz1.ToString().Substring(0, 2));
-            //    int a3 =Convert.ToInt32( maz1.ToString().Substring(2));
-            //      MessageBox.Show(a2.ToString());
-            //   MessageBox.Show(a3.ToString());
-            //     MessageBox.Show(BitConverter.ToString(maz2));
-            byte[] d3 = new byte[] {
-                0x02, 0x45, 0x00, 0x1C,
-                0x01, 0x01,0xf4,//(byte)a2, (byte)a3,              
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-            };
-            //高八度低八度取值
-            d3[6] = (byte)(maz & 0x00ff);
-            d3[5] = (byte)((maz >> 8) & 0xff);
-
-            byte o = CalcLRC(d3);
-
-            byte[] d4 = new byte[] {
-             0x02, 0x45, 0x00, 0x1C,
-             0x01, d3[5],d3[6],
-            //0x01, 0x05, 0xDC,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                o
-            };
-
-            //serialPort1.Write(d4, 0, d4.Length);
-
-            if (dwq - a > 100)
-            {
-                if (smin > 100)
-                {
-                    smin = smin - 100;
-                }
-            }
-            Thread.Sleep(smin);
-            if (a < 119000)
-            { dwq = a; }
-            if (maz > 500 & maz <= 2500)
-            {
-                cisu = cisu + 1;
-                maz -= 13;
-                if (maz < 500)
-                { maz = 500; }
-            }
-            // MessageBox.Show(smin.ToString());
-            // MessageBox.Show(maz.ToString());
-            //MessageBox.Show(BitConverter.ToString(d4));
-            //  MessageBox.Show(d4.Length.ToString());
-            // 输出电压 0-5v  0-1.6Mpa
-
-            //  string[] s3 = new string[s1.Length + s2.Length];
-            // Array.Copy(s1, 0, s3, 0, s1.Length);
-            //  Array.Copy(s2, 0, s3, s1.Length, s2.Length);
-
-            // serialPort2.Write(s, 0, s.Length);
-
-            //  C_APDU: //写PWM: 待续;Data:1Bytes Speed + 2Bytes Pos =24Bytes，Speed：1-20；Pos：500--2500us对应0x01F4--0x09C4
-            //    02 45 00 1C 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 5B
-            //舵机中位置
-            //02 45 00 1C 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 5B
-            //舵机正量程
-            //02 45 00 1C 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 5B
-
-        }
 
 
         private void button9_Click(object sender, EventArgs e)
@@ -1229,6 +1070,13 @@ namespace WindowsFormsApplication1.Exam
         {
             // 初始化图表
             show = true;
+
+
+            if (dwq>0) {
+
+                setstandard(dwq);
+            }
+          
         }
 
         private void chart1_GetToolTipText(object sender, ToolTipEventArgs e)

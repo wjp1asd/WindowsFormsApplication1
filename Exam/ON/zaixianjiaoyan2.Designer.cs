@@ -59,9 +59,6 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -399,7 +396,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(610, 330);
+            this.textBox4.Location = new System.Drawing.Point(900, 184);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
@@ -411,12 +408,12 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label15.Location = new System.Drawing.Point(608, 306);
+            this.label15.Location = new System.Drawing.Point(900, 146);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(74, 21);
             this.label15.TabIndex = 75;
-            this.label15.Text = "外加力值";
+            this.label15.Text = "实时力值";
             this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label16
@@ -424,48 +421,13 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label16.Location = new System.Drawing.Point(682, 330);
+            this.label16.Location = new System.Drawing.Point(972, 186);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(32, 21);
             this.label16.TabIndex = 76;
             this.label16.Text = "KG";
             this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label17.Location = new System.Drawing.Point(682, 391);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(26, 21);
-            this.label17.TabIndex = 79;
-            this.label17.Text = "秒";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label18.Location = new System.Drawing.Point(608, 367);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(42, 21);
-            this.label18.TabIndex = 78;
-            this.label18.Text = "用时";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(610, 391);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(68, 21);
-            this.textBox5.TabIndex = 77;
             // 
             // timer1
             // 
@@ -550,9 +512,6 @@
             this.Controls.Add(this.uiLedLabel4);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.textBox4);
@@ -623,9 +582,6 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
