@@ -1,10 +1,10 @@
-﻿using AutoWindowsSize;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using AutoWindowsSize;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Exam
@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1.Exam
         String lxques, zxques, gyques, xhques, lpjques, ymgques;
         String qrcode;
         string idcard = "";
-        public Choose(string id = "321084199510025535")
+        public Choose(string id = "321084199510025536")
         {
             // 身份证ID
             st = new Student(id);
@@ -299,13 +299,13 @@ namespace WindowsFormsApplication1.Exam
                   ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            //  MessageBox.Show(strcomm);
+            // ff.ShowInfoTip(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
 
             con.Close();
-            MessageBox.Show("已创建考试信息，排队号0" + que);
+            ff.ShowInfoTip("已创建考试信息，排队号0" + que);
             qrcode = a;
             //  this.button1.Show();
             Print p = new Print(qrcode);

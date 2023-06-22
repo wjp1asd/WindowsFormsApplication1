@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1.Exam
             string x = ConfigurationManager.AppSettings["machine"];
          
 
-            //    MessageBox.Show(a.color1);
+            //   ff.ShowInfoTip(a.color1);
             switch (int.Parse(x))
             {
                 case 2:

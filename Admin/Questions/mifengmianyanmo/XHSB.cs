@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.YanMO
 {
@@ -130,23 +131,24 @@ namespace WindowsFormsApplication1.YanMO
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "'where id = " + id;
-                //   MessageBox.Show("已更新");
+                //  ff.ShowInfoTip("已更新");
 
                 con.Open();
                 SqlCommand comm = new SqlCommand(strcomm, con);
                 comm.ExecuteNonQuery();
 
                 con.Close();
-                MessageBox.Show("已更新");
+               ff.ShowInfoTip("已更新");
             }
         }
+        private Fuc ff = new Fuc();
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string sub = this.txtUsername.Text.ToString();
 
             if (sub.Length == 0)
             {
-                MessageBox.Show("字段不能为空");
+               ff.ShowInfoTip("字段不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -162,7 +164,7 @@ namespace WindowsFormsApplication1.YanMO
             comm.ExecuteNonQuery();
 
             con.Close();
-            MessageBox.Show("已更新");
+           ff.ShowInfoTip("已更新");
 
 
             string sql = "select * from " + TableName;
@@ -181,7 +183,7 @@ namespace WindowsFormsApplication1.YanMO
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
                     //{
-                    // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
+                    //ff.ShowInfoTip(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
                     s1.Append(this.dataGridView1.Rows[i].Cells[1].Value + ",");
                 // }
             }
@@ -190,7 +192,7 @@ namespace WindowsFormsApplication1.YanMO
 
                 s1.Remove(s1.Length - 1, 1);
             }
-            //  MessageBox.Show(s1.ToString());
+            // ff.ShowInfoTip(s1.ToString());
             if (s1.Length != 0)
             {
                 if (MessageBox.Show("确定删除id" + s1.ToString() + " ? ", "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -211,7 +213,7 @@ namespace WindowsFormsApplication1.YanMO
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                    MessageBox.Show("已删除");
+                   ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
@@ -220,7 +222,7 @@ namespace WindowsFormsApplication1.YanMO
             }
             else
             {
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
             }
         }
 
@@ -279,7 +281,7 @@ namespace WindowsFormsApplication1.YanMO
                     //这里可以编写你需要的任意关于按钮事件的操作~
                      string id = dataGridView1.Rows[a].Cells[1].Value.ToString();//获取焦点触发行的第一个值
                     string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
-                 //   MessageBox.Show("按钮被点击" + strcolumn);
+                 //  ff.ShowInfoTip("按钮被点击" + strcolumn);
                     if (strcolumn == "cz")
                     {
                        
@@ -301,7 +303,7 @@ namespace WindowsFormsApplication1.YanMO
         {
 
         }
-        //  MessageBox.Show(e.RowIndex.ToString());
+        // ff.ShowInfoTip(e.RowIndex.ToString());
     }
 
 }

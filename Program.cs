@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
                 Directory.CreateDirectory(sPath);
             }else
             {
-             //   MessageBox.Show("123");
+             //  ff.ShowInfoTip("123");
             }
             if (!Directory.Exists(sPath1))
             {

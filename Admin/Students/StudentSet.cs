@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Students;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -126,16 +127,17 @@ namespace WindowsFormsApplication1
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "'where id = " + id;
-                //   MessageBox.Show("已更新");
+                //  ff.ShowInfoTip("已更新");
 
                 con.Open();
                 SqlCommand comm = new SqlCommand(strcomm, con);
                 comm.ExecuteNonQuery();
 
                 con.Close();
-                MessageBox.Show("已更新");
+               ff.ShowInfoTip("已更新");
             }
         }
+        private Fuc ff = new Fuc();
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string sub = this.txtUsername.Text.ToString();
@@ -151,7 +153,7 @@ namespace WindowsFormsApplication1
             if (sub.Length == 0 || f0.Length == 0 || f1.Length == 0 ||
                 f2.Length == 0 || f3.Length == 0 || f4.Length == 0)
             {
-                MessageBox.Show("字段不能为空");
+               ff.ShowInfoTip("字段不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -172,7 +174,7 @@ namespace WindowsFormsApplication1
             comm.ExecuteNonQuery();
 
             con.Close();
-            MessageBox.Show("已更新");
+           ff.ShowInfoTip("已更新");
             this.panel1.Hide();
             string sql = "select id,name,bumen," +
                 "idcard,status,phone,date,sex from " + TableName + " where power =1 and name like '%" + this.textBox8.Text + "%'";
@@ -190,7 +192,7 @@ namespace WindowsFormsApplication1
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
                     //{
-                    // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
+                    //ff.ShowInfoTip(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
                     s1.Append(this.dataGridView1.Rows[i].Cells[1].Value + ",");
                 // }
             }
@@ -221,7 +223,7 @@ namespace WindowsFormsApplication1
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                    MessageBox.Show("已删除");
+                   ff.ShowInfoTip("已删除");
                     string sql = "select id,name,bumen," +
                 "idcard,status,phone,date,sex from " + TableName + " where  power =1";
 
@@ -231,7 +233,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
             }
         }
 

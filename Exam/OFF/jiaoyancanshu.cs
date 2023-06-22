@@ -46,7 +46,7 @@ namespace WindowsFormsApplication1.Exam
              double  b =double.Parse(b2);
             yali = double.Parse(this.label1.Text.Trim());
 
-            MessageBox.Show(""+a+ b+yali);
+           ff.ShowInfoTip(""+a+ b+yali);
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分

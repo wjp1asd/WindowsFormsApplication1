@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO.Ports;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Settings;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Settings
 {
@@ -194,7 +195,7 @@ namespace WindowsFormsApplication1.Settings
 
             reader.Close();
             con.Close();
-           // MessageBox.Show("系统配置加载成功");
+           //ff.ShowInfoTip("系统配置加载成功");
 
         }
 
@@ -257,20 +258,20 @@ namespace WindowsFormsApplication1.Settings
                 + "' where id=1";
 
 
-         //  MessageBox.Show(str1);
+         // ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
 
 
-            MessageBox.Show("保存成功！,退出程序后加载");
+           ff.ShowInfoTip("保存成功！,退出程序后加载");
             con.Close();
 
             AdminIndex admin = new AdminIndex();
             admin.Show();
             this.Close();
         }
-
+        private Fuc ff = new Fuc();
         private void link_TextChanged(object sender, EventArgs e)
         {
 
