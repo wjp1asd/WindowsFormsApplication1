@@ -54,7 +54,7 @@ namespace WindowsFormsApplication1.Exam
         // AO  仿真压力表 舵机 后续需要拓展
 
         int fangzhen1 = 0;
-        int fangzhen2 = 0;
+        int fangzhen2 = 1;
 
         public static byte CalcLRC(byte[] data)
         {
@@ -182,6 +182,18 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - xieya] + "" == "0")
             {
                 dishow("卸压阀打开");
+
+                if (current<119000) {
+
+                    byte[] d3 = new byte[] {
+                0xFF,0x01,0x00,
+                0x0a,0x00,0xFF,
+                0x02, 0x00, 0xC4,
+                0x09};
+
+                serialPort1.Write(d3, 0, d3.Length);
+
+                }
                 //richTextBox2.Text += "卸压阀打开";
 
             }
@@ -689,7 +701,7 @@ namespace WindowsFormsApplication1.Exam
                 this.Invoke(t);
                 // richTextBox1.Clear();
                 //38位
-                //MessageBox.Show(BitConverter.ToString(buff));
+            //    MessageBox.Show(BitConverter.ToString(buff));
                 // AI解析
                 byte[] ttt1 = new byte[4];
                 byte[] ttt2 = new byte[4];
@@ -748,16 +760,12 @@ namespace WindowsFormsApplication1.Exam
                     };
                     this.Invoke(tongdao);
 
-                    if (DIS.Length == 8)
-                    {
-                        DIS0 = a;
-                        //di状态分析
-                        fenxi();
-                    }
+                    
 
 
 
                 }
+               
                 switch (fangzhen1)
                 {
                     case 0:
@@ -821,7 +829,37 @@ namespace WindowsFormsApplication1.Exam
 
                 //}
 
+                switch (7)
+                {
+                    case 0:
+                        ttt2 = buff.Skip(5).Take(4).ToArray();
+                        break;
 
+                    case 1:
+                        ttt2 = buff.Skip(9).Take(4).ToArray();
+                        break;
+                    case 2:
+                        ttt2 = buff.Skip(13).Take(4).ToArray();
+                        break;
+                    case 3:
+                        ttt2 = buff.Skip(17).Take(4).ToArray();
+                        break;
+                    case 4:
+                        ttt2 = buff.Skip(21).Take(4).ToArray();
+                        break;
+                    case 5:
+                        ttt2 = buff.Skip(25).Take(4).ToArray();
+                        break;
+                    case 6:
+                        ttt2= buff.Skip(29).Take(4).ToArray();
+                        break;
+                    case 7:
+                        ttt2 = buff.Skip(33).Take(4).ToArray();
+                        break;
+
+
+
+                }
 
 
 
@@ -829,15 +867,20 @@ namespace WindowsFormsApplication1.Exam
                 //MessageBox.Show(BitConverter.ToString(ttt2));
 
 
-                
+
                 t1 = "";
                 
-                t2 = ShowBy(ttt1,1);
+                t2 = ShowBy(ttt2,2);
                 t3 = "";
-               // t4 =ShowBy(ttt2, 2);
+                // t4 =ShowBy(ttt2, 2);
                 // DI解析
 
-
+                if (DIS.Length == 8)
+                {
+                    DIS0 = a;
+                    //di状态分析
+                    fenxi();
+                }
 
 
             }
@@ -954,6 +997,7 @@ namespace WindowsFormsApplication1.Exam
         //上次电压值
         private int dwq;
         string cz;
+        int current = 0;
         private void voldetla(string sb1, string t8)
         {
             //cz从离线压力设置-初次测试压力中取值
@@ -962,7 +1006,7 @@ namespace WindowsFormsApplication1.Exam
             //  int y = (2000 * Convert.ToInt32( cz) )/Convert.ToInt32 (1.6);
 
             int a = Convert.ToInt32(sb1.ToString(), 16);
-            // MessageBox.Show(sb1.ToString()+a);
+            current =0;
             int b = Convert.ToInt32(t8.ToString(), 16);
           
             Action tongdao = () =>
@@ -978,10 +1022,8 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox3.AppendText("当前循环次数：" + cisu);
                 richTextBox3.AppendText("上次电位器码值码值：" + dwq);
 
-                
+  
                 richTextBox3.AppendText("当前电位器码值（电压值）：" + a);
-
-
                 richTextBox3.AppendText("上次电压差：" + b);
                 richTextBox3.AppendText("变化速度：" + Math.Abs(a - b) / interval);
                 calyali(a);
@@ -991,8 +1033,10 @@ namespace WindowsFormsApplication1.Exam
             if (Math.Abs(a) < 119000)
             {
 
-                SendServo1(a, 0);
-                // SendServo(a, 0);//正确的方法先注视
+              SendServo1(a, 0);
+
+                //SendServo(a, 0);
+                //正确的方法先注视
                 //     SendServo(Math.Abs(a - b) / interval, b);
 
             }
@@ -1033,16 +1077,19 @@ namespace WindowsFormsApplication1.Exam
      //舵机驱动
 
             byte[] d3 = new byte[] {
-                0xFF,0x01,0x00,0x0a,0x00,
-                0xFF, 0x02, 0x00, 0xC4,0x09};
+                0xFF,0x01,0x00,
+                0x0a,0x00,0xFF, 
+                0x02, 0x00, 0xC4,
+                0x09};
             //高八度低八度取值
             d3[3] = (byte)(maz & 0x00ff);
             d3[4] = (byte)((maz >> 8) & 0xff);
             //目标码值（离线压力设置-初次测试压力）
-            d3[9] = (byte)((czmaz >> 8) & 0xff);
-            d3[8] = (byte)(czmaz & 0x00ff);
+            d3[9] = (byte)((maz >> 8) & 0xff);
+            d3[8] = (byte)(maz & 0x00ff);
            
             serialPort1.Write(d3, 0, d3.Length);
+            MessageBox.Show(BitConverter.ToString(d3));
 
             if (dwq - a > 100)
             {
@@ -1111,31 +1158,14 @@ namespace WindowsFormsApplication1.Exam
             Thread.Sleep(1000);
         }
         //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
-        int maz = 2500;
+        int maz = 1111;
         int smin = 1000;
         int cisu = 0;
 
         private void SendServo(int a, int pos)
         {
 
-            //MessageBox.Show(a.ToString());
-            //int b = (a / 1000 / 5)*2500;
-            //string b1 = b.ToString("X4");
-            // MessageBox.Show(""+b);
-            // MessageBox.Show(b1.ToString());
-            //  int a2 = int.Parse("0x"+ b1.Substring(0, 2));
-            // int a3 = int.Parse("0x" + b1.Substring(2));
 
-            // MessageBox.Show(""+b1);
-            //string    maz1 = maz.ToString("X4");
-            //     // int maz1 =Convert.ToInt32( maz.ToString(),16);
-            //    // byte a2;byte a3;
-            // MessageBox.Show(maz.ToString());
-            //    int a2 =Convert.ToInt32( maz1.ToString().Substring(0, 2));
-            //    int a3 =Convert.ToInt32( maz1.ToString().Substring(2));
-            //      MessageBox.Show(a2.ToString());
-            //   MessageBox.Show(a3.ToString());
-            //     MessageBox.Show(BitConverter.ToString(maz2));
             byte[] d3 = new byte[] {
                 0x02, 0x45, 0x00, 0x1C,
                 0x01, 0x01,0xf4,//(byte)a2, (byte)a3,              
@@ -1166,7 +1196,7 @@ namespace WindowsFormsApplication1.Exam
                 0x01, 0x01, 0xF4,
                 o
             };
-
+            MessageBox.Show(BitConverter.ToString(d4));
             serialPort1.Write(d4, 0, d4.Length);
 
             if (dwq - a > 100)
