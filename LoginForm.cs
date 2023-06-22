@@ -7,6 +7,7 @@ using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
 using WindowsFormsApplication1.YanMO;
 using WindowsFormsApplication1.Settings;
+using WindowsFormsApplication1.Admin.Results;
 
 namespace WindowsFormsApplication1
 {
@@ -289,6 +290,19 @@ namespace WindowsFormsApplication1
         {
             XHSB xh=new XHSB();
             xh.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
+            zaixianjiaoyan.Show();
+            
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            GradePrint gradePrint = new GradePrint("w3gF7LblbhEknmqSQNtubw==");
+            gradePrint.Show();
         }
     }
 }

@@ -57,9 +57,14 @@ namespace WindowsFormsApplication1.Exam
             
             }
             
-            //this.Close();
-            //JiaoYan j = new JiaoYan(index);
-            //j.Show();
+            string url = "update grade set wxxz = " + score + "where testid ='" + datahelp.QId.Trim()+ "'"; ;
+            if (ff.RC1(url).Length>0) {
+                this.Close();
+                JiaoYan j = new JiaoYan(datahelp.QId.Trim());
+                j.Show();
+            }
+          
+            
            
         }
 

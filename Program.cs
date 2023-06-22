@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -31,7 +32,8 @@ namespace WindowsFormsApplication1
             //   Application.Run(new Settings1());
             //  Application.Run(new Print());
             //  Application.Run(new plc());
-            Application.Run(new form1());
+           Application.Run(new form1());
+         // Application.Run(new zaixianjiaoyan2());
             // Application.Run(new Exam1());
             //Application.Run(new MFYM());
             // Application.Run(new ScanLogin());
