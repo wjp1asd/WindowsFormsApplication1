@@ -52,6 +52,8 @@ namespace WindowsFormsApplication1
                 this.button8.Hide();
                 this.button9.Hide();
                 this.button10.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
             }
             else if (x == "0")
             {
@@ -71,6 +73,8 @@ namespace WindowsFormsApplication1
                 this.button8.Hide();
                 this.button9.Hide();
                 this.button10.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
             }
             else if (x == "2")
             {
@@ -91,6 +95,8 @@ namespace WindowsFormsApplication1
                 this.button8.Hide();
                 this.button9.Hide();
                 this.button10.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
             }
             else if (x == "2"|| x == "3"|| x == "4")
             {
@@ -111,6 +117,8 @@ namespace WindowsFormsApplication1
                 this.button8.Hide();
                 this.button9.Hide();
                 this.button10.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
             }
             else if (x == "-1")
             {
@@ -129,6 +137,8 @@ namespace WindowsFormsApplication1
                 this.button3.Hide();
                 this.button4.Hide();
                 this.uiButton1.Hide();
+                this.button11.Hide();
+                this.button12.Hide();
 
 
             }

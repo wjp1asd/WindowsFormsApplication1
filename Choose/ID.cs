@@ -180,7 +180,7 @@ namespace WindowsFormsApplication1
                                         {
                                             File.Copy("ZP.bmp", url);
 
-                                            pictureBox1.ImageLocation = "ZP.bmp";
+                                          
                                         }
 
 
@@ -252,7 +252,7 @@ namespace WindowsFormsApplication1
                                         {
                                             File.Copy("ZP.bmp", url);
 
-                                            pictureBox1.ImageLocation = "ZP.bmp";
+                                           
                                         }
                                     }
                                     catch (Exception e)
@@ -321,7 +321,7 @@ namespace WindowsFormsApplication1
                                         {
                                             File.Copy("ZP.bmp", url);
 
-                                            pictureBox1.ImageLocation = "ZP.bmp";
+                                        
                                         }
                                     }
                                     catch (Exception e)
