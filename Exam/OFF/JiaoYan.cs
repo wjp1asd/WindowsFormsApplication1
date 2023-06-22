@@ -9,6 +9,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -23,8 +24,8 @@ namespace WindowsFormsApplication1.Exam
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
         //#02 01 00 05 01 07 数字输入DI 读取
         byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
-        //初始电位器的码值 t1,当前码值t2
-        string t1 = "", t2 = "";
+        //锁紧螺母 初始电位器的码值 t1,当前码值t2，弹簧 电位器的码值  t3, t4;
+        string t1 = "", t2 = "",t3="",t4=" ";
         // 整体采集，每个通道非0表示采集，为0表示不采集
         //02 11 20 0C 01 01 01 01 01 01 01 01 1F Lrc  td1 =header +content +lrc
         byte[] topheader = new byte[] { 0x02, 0x20, 0x00, 0x0C };
@@ -64,15 +65,15 @@ namespace WindowsFormsApplication1.Exam
         private void fenxi()
         {
 
-            int a = Convert.ToInt32(t1.ToString(), 16);
+           // int a = Convert.ToInt32(t1.ToString(), 16);
             // MessageBox.Show(sb1.ToString()+a);
-            int b = Convert.ToInt32(t2.ToString(), 16);
-            if (Math.Abs(a - b) == 0)
-            {
+            //int b = Convert.ToInt32(t2.ToString(), 16);
+            //if (Math.Abs(a - b) == 0)
+            //{
                 //校验阀关闭
-                dishow("校验阀关闭");
+            //    dishow("校验阀关闭");
 
-            }
+           // }
 
 
 
@@ -289,8 +290,8 @@ namespace WindowsFormsApplication1.Exam
             // 需要获取算分标准
             showMsg();
             // 开启一个线程录像
-            // Task t1 = new Task(backCamera); 
-            //   t1.Start();
+             Task t1 = new Task(backCamera); 
+               t1.Start();
         }
         Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
@@ -371,7 +372,8 @@ namespace WindowsFormsApplication1.Exam
         {
 
             VideoCapture v = new VideoCapture(0);
-          
+            v.SetCaptureProperty(CapProp.FrameHeight, 120);
+            v.SetCaptureProperty(CapProp.FrameWidth, 120);
             if (!v.IsOpened)
             {
                 MessageBox.Show("open video fail");
@@ -390,7 +392,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
                 }
                 f1 = f;
-                CvInvoke.Imshow("摄像头1：", f);
+                CvInvoke.Imshow("scene", f);
                 if (CvInvoke.WaitKey(30) == 27)
                 {
 
@@ -756,38 +758,68 @@ namespace WindowsFormsApplication1.Exam
 
 
                 }
-
-                switch (fangzhen2)
+                switch (fangzhen1)
                 {
                     case 0:
-                        ttt2 = buff.Skip(5).Take(4).ToArray();
+                        ttt1 = buff.Skip(5).Take(4).ToArray();
                         break;
 
                     case 1:
-                        ttt2 = buff.Skip(9).Take(4).ToArray();
+                        ttt1 = buff.Skip(9).Take(4).ToArray();
                         break;
                     case 2:
-                        ttt2 = buff.Skip(13).Take(4).ToArray();
+                        ttt1 = buff.Skip(13).Take(4).ToArray();
                         break;
                     case 3:
-                        ttt2 = buff.Skip(17).Take(4).ToArray();
+                        ttt1 = buff.Skip(17).Take(4).ToArray();
                         break;
                     case 4:
-                        ttt2 = buff.Skip(21).Take(4).ToArray();
+                        ttt1 = buff.Skip(21).Take(4).ToArray();
                         break;
                     case 5:
-                        ttt2 = buff.Skip(25).Take(4).ToArray();
+                        ttt1 = buff.Skip(25).Take(4).ToArray();
                         break;
                     case 6:
-                        ttt2 = buff.Skip(29).Take(4).ToArray();
+                        ttt1 = buff.Skip(29).Take(4).ToArray();
                         break;
                     case 7:
-                        ttt2 = buff.Skip(33).Take(4).ToArray();
+                        ttt1 = buff.Skip(33).Take(4).ToArray();
                         break;
 
 
 
                 }
+                //switch (fangzhen2)
+                //{
+                //    case 0:
+                //        ttt2 = buff.Skip(5).Take(4).ToArray();
+                //        break;
+
+                //    case 1:
+                //        ttt2 = buff.Skip(9).Take(4).ToArray();
+                //        break;
+                //    case 2:
+                //        ttt2 = buff.Skip(13).Take(4).ToArray();
+                //        break;
+                //    case 3:
+                //        ttt2 = buff.Skip(17).Take(4).ToArray();
+                //        break;
+                //    case 4:
+                //        ttt2 = buff.Skip(21).Take(4).ToArray();
+                //        break;
+                //    case 5:
+                //        ttt2 = buff.Skip(25).Take(4).ToArray();
+                //        break;
+                //    case 6:
+                //        ttt2 = buff.Skip(29).Take(4).ToArray();
+                //        break;
+                //    case 7:
+                //        ttt2 = buff.Skip(33).Take(4).ToArray();
+                //        break;
+
+
+
+                //}
 
 
 
@@ -797,9 +829,12 @@ namespace WindowsFormsApplication1.Exam
                 //MessageBox.Show(BitConverter.ToString(ttt2));
 
 
-
+                
                 t1 = "";
-                t2 = ShowBy(ttt2, 2);
+                
+                t2 = ShowBy(ttt1,1);
+                t3 = "";
+               // t4 =ShowBy(ttt2, 2);
                 // DI解析
 
 
@@ -852,6 +887,11 @@ namespace WindowsFormsApplication1.Exam
             }
 
 
+            if (t3.Length == 0)
+            {
+
+                t3 = sb1;
+            }
 
 
 
@@ -875,9 +915,9 @@ namespace WindowsFormsApplication1.Exam
 
                     break;
                 case 2:
-                    if (sb1.Length > 0 && t1.Length > 0)
+                    if (sb1.Length > 0 && t3.Length > 0)
                     {
-                        voldetla(sb1, t1);
+                        voldetla(sb1, t3);
 
                     }
 
@@ -1003,6 +1043,7 @@ namespace WindowsFormsApplication1.Exam
             Action tongdao = () =>
             {
                 richTextBox3.Clear();
+                richTextBox3.AppendText("当前通道：" + sb1.ToString());
                 richTextBox3.AppendText("当前循环时间：" + smin);
 
                 richTextBox3.AppendText("当前电压差：" + (dwq - a));
@@ -1012,7 +1053,7 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox3.AppendText("当前循环次数：" + cisu);
                 richTextBox3.AppendText("上次电位器码值码值：" + dwq);
 
-                richTextBox3.AppendText("当前通道：" + sb1.ToString());
+                
                 richTextBox3.AppendText("当前电位器码值（电压值）：" + a);
 
 
@@ -1220,24 +1261,7 @@ namespace WindowsFormsApplication1.Exam
                 if (maz < 500)
                 { maz = 500; }
             }
-            // MessageBox.Show(smin.ToString());
-            // MessageBox.Show(maz.ToString());
-            //MessageBox.Show(BitConverter.ToString(d4));
-            //  MessageBox.Show(d4.Length.ToString());
-            // 输出电压 0-5v  0-1.6Mpa
-
-            //  string[] s3 = new string[s1.Length + s2.Length];
-            // Array.Copy(s1, 0, s3, 0, s1.Length);
-            //  Array.Copy(s2, 0, s3, s1.Length, s2.Length);
-
-            // serialPort2.Write(s, 0, s.Length);
-
-            //  C_APDU: //写PWM: 待续;Data:1Bytes Speed + 2Bytes Pos =24Bytes，Speed：1-20；Pos：500--2500us对应0x01F4--0x09C4
-            //    02 45 00 1C 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 5B
-            //舵机中位置
-            //02 45 00 1C 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 5B
-            //舵机正量程
-            //02 45 00 1C 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 5B
+            
 
         }
 
