@@ -57,9 +57,9 @@ namespace WindowsFormsApplication1.Exam
             
             }
             
-            //this.Close();
-            //JiaoYan j = new JiaoYan(index);
-            //j.Show();
+           this.Close();
+           JiaoYan j = new JiaoYan(index);
+            j.Show();
            
         }
 
