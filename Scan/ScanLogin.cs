@@ -12,9 +12,7 @@ namespace WindowsFormsApplication1.Scan
         {
             InitializeComponent();
             this.change();
-            this.ControlBox = false;
-           // this.FormBorderStyle = FormBorderStyle.None;
-        }
+                  }
         private Fuc ff = new Fuc();
         public void change()
         {
@@ -47,7 +45,7 @@ namespace WindowsFormsApplication1.Scan
         {
             this.textBox1.Focus();
             this.button7.Enabled = false;
-            this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;   
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 

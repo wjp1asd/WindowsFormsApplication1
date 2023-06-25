@@ -92,6 +92,9 @@ namespace WindowsFormsApplication1.Exam
 
                 double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
                 this.richTextBox2.Text += "开启压力"+PS;
+
+                this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
+
             }
             catch (Exception)
             {
@@ -339,43 +342,12 @@ namespace WindowsFormsApplication1.Exam
 
             }
             // 130012
-            MessageBox.Show(youbiaokachi +"-"+ faban + "-" + famao + "-" + fangzhen1 + "-" + fangzhen2+"-" + + gongju + "");
+         //   MessageBox.Show(youbiaokachi +"-"+ faban + "-" + famao + "-" + fangzhen1 + "-" + fangzhen2+"-" + + gongju + "");
 
             //采集卡初始化+舵机控制板
             try
             {
-                //// Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展 舵机
-
-                ////topheader.CopyTo(td1,0);
-                ////content.CopyTo(td1, topheader.Length);
-                ////byte a = CalcLRC(td1);
-                ////td1[13] = a;
-                ////防止意外错误
-                //serialPort1.PortName = datahelp.servo1.Trim();//获取comboBox1要打开的串口号
-
-                //serialPort1.BaudRate = 9600;//获取comboBox2选择的波特率
-                //serialPort1.DataBits = 8;//设置数据位
-                ///*设置停止位*/
-                //// if (datahelp.plcsp.Trim() == "1") { SER5.StopBits = StopBits.One; }
-                ////else if (datahelp.plcsp.Trim() == "1.5") { SER5.StopBits = StopBits.OnePointFive; }
-                ////else if (datahelp.plcsp.Trim() == "2") { SER5.StopBits = StopBits.Two; }
-                /////*设置奇偶校验*/
-                //serialPort1.Parity = Parity.None;
-                //try
-                //{
-                //    serialPort1.Open();//打开串口
-                //    button3.Text = "正在连接";//按钮显示关闭串口
-
-                //    //  SER5.WriteLine("02 00 00 04 06");
-                //   richTextBox2.Clear();
-                //    SetZero1();
-
-                //}
-                //catch (Exception err)
-                //{
-                //    MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
-                //    throw;
-                //}
+          
 
                 //防止意外错误
                 serialPort2.PortName = datahelp.plc1.Trim();//获取comboBox1要打开的串口号
@@ -876,21 +848,22 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
                     b2 = b1 * 200;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 20 * 0.6;
+                   // this.chart1.ChartAreas[0].AxisY.Maximum = 20 * 0.6;
                     break;
                 case 2:
                     b2 = b1 * 500;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 50 * 0.6;
+                   // this.chart1.ChartAreas[0].AxisY.Maximum = 50 * 0.6;
                     break;
                 case 3:
                     b2 = b1 * 2000;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 200 * 0.6; 
+                   // this.chart1.ChartAreas[0].AxisY.Maximum = 200 * 0.6; 
                     break;
                 case 4:
                     b2 = b1 * 5000;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 500 * 0.6; 
+                   // this.chart1.ChartAreas[0].AxisY.Maximum = 500 * 0.6; 
                     break;
             }
+            
            
             if (b2 > 0) {
               
@@ -949,177 +922,11 @@ namespace WindowsFormsApplication1.Exam
         int czmaz;
 
 
-        private void SendServo1(int a, int pos)
-        {
-
-            Action tongdao = () =>
-            {
-                this.richTextBox2.Text += "舵机就位";
-
-            };
-
-            this.Invoke(tongdao);
-
-            //舵机驱动
-
-            byte[] d3 = new byte[] {
-                0xFF,0x01,0x00,0x0a,0x00,
-                0xFF, 0x02, 0x00, 0xC4,0x09};
-            //高八度低八度取值
-            d3[3] = (byte)(maz & 0x00ff);
-            d3[4] = (byte)((maz >> 8) & 0xff);
-            //目标码值（离线压力设置-初次测试压力）
-            d3[9] = (byte)((czmaz >> 8) & 0xff);
-            d3[8] = (byte)(czmaz & 0x00ff);
-
-         //   serialPort1.Write(d3, 0, d3.Length);
-
-            if (dwq - a > 100)
-            {
-
-                maz += 1;
-
-            }
-            Thread.Sleep(1000);
-            if (a < 119000)
-            { dwq = a; }
-            if (maz > 1)
-            {
-                cisu = cisu + 1;
-                maz -= 1;
-
-            }
-
-        }
-
-
-       
-
-        private void SetZero()
-        {
-            //舵机归零
-            byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
-                //通道1
-                0x01, 0x09, 0xC4,
-                //通道2
-                0x01, 0x09, 0xC4,
-                //通道3
-                0x01,  0x09, 0xC4,
-                //通道4
-                0x01,  0x09, 0xC4,
-                //通道5
-                0x01,  0x09, 0xC4,
-                //通道6
-                0x01, 0x09, 0xC4,
-                //通道7
-                0x01,  0x09, 0xC4,
-                //通道8
-                0x01,  0x09, 0xC4,
-
-                 0x5B
-            };
-
-            //  MessageBox.Show(BitConverter.ToString(d1)) ;
-            serialPort2.Write(d1, 0, d1.Length);
-            Thread.Sleep(1000);
-        }
+      
         //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
         int maz = 2500;
         int smin = 1000;
         int cisu = 0;
-
-        private void SendServo(int a, int pos)
-        {
-
-            //MessageBox.Show(a.ToString());
-            //int b = (a / 1000 / 5)*2500;
-            //string b1 = b.ToString("X4");
-            // MessageBox.Show(""+b);
-            // MessageBox.Show(b1.ToString());
-            //  int a2 = int.Parse("0x"+ b1.Substring(0, 2));
-            // int a3 = int.Parse("0x" + b1.Substring(2));
-
-            // MessageBox.Show(""+b1);
-            //string    maz1 = maz.ToString("X4");
-            //     // int maz1 =Convert.ToInt32( maz.ToString(),16);
-            //    // byte a2;byte a3;
-            // MessageBox.Show(maz.ToString());
-            //    int a2 =Convert.ToInt32( maz1.ToString().Substring(0, 2));
-            //    int a3 =Convert.ToInt32( maz1.ToString().Substring(2));
-            //      MessageBox.Show(a2.ToString());
-            //   MessageBox.Show(a3.ToString());
-            //     MessageBox.Show(BitConverter.ToString(maz2));
-            byte[] d3 = new byte[] {
-                0x02, 0x45, 0x00, 0x1C,
-                0x01, 0x01,0xf4,//(byte)a2, (byte)a3,              
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-            };
-            //高八度低八度取值
-            d3[6] = (byte)(maz & 0x00ff);
-            d3[5] = (byte)((maz >> 8) & 0xff);
-
-            byte o = CalcLRC(d3);
-
-            byte[] d4 = new byte[] {
-             0x02, 0x45, 0x00, 0x1C,
-             0x01, d3[5],d3[6],
-            //0x01, 0x05, 0xDC,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                0x01, 0x01, 0xF4,
-                o
-            };
-
-            //serialPort1.Write(d4, 0, d4.Length);
-
-            if (dwq - a > 100)
-            {
-                if (smin > 100)
-                {
-                    smin = smin - 100;
-                }
-            }
-            Thread.Sleep(smin);
-            if (a < 119000)
-            { dwq = a; }
-            if (maz > 500 & maz <= 2500)
-            {
-                cisu = cisu + 1;
-                maz -= 13;
-                if (maz < 500)
-                { maz = 500; }
-            }
-            // MessageBox.Show(smin.ToString());
-            // MessageBox.Show(maz.ToString());
-            //MessageBox.Show(BitConverter.ToString(d4));
-            //  MessageBox.Show(d4.Length.ToString());
-            // 输出电压 0-5v  0-1.6Mpa
-
-            //  string[] s3 = new string[s1.Length + s2.Length];
-            // Array.Copy(s1, 0, s3, 0, s1.Length);
-            //  Array.Copy(s2, 0, s3, s1.Length, s2.Length);
-
-            // serialPort2.Write(s, 0, s.Length);
-
-            //  C_APDU: //写PWM: 待续;Data:1Bytes Speed + 2Bytes Pos =24Bytes，Speed：1-20；Pos：500--2500us对应0x01F4--0x09C4
-            //    02 45 00 1C 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 5B
-            //舵机中位置
-            //02 45 00 1C 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 5B
-            //舵机正量程
-            //02 45 00 1C 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 5B
-
-        }
-
 
         private void button9_Click(object sender, EventArgs e)
         {

@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1.Models
         }
         public void fullsreen(System.Windows.Forms.Control c,Form f) {
 
-            c.Left += f.Width / 2;
+            c.Left += (c.Left+ f.Width) / 2;
 
 
         }

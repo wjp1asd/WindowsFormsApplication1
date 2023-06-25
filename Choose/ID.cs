@@ -22,12 +22,17 @@ namespace WindowsFormsApplication1
         int nReaderPort = 0;
         string loc = Application.StartupPath + "\\Images\\身份证照片\\";
         string url = "ZP.bmp";
-        string Id = "321084199510025536";
+        string Id = "321084199510025535";
         public ID()
         {
             InitializeComponent();
-           
+            this.Change();
            // this.UpdataInfo(Id);
+        }
+       
+        private void Change()
+        {
+            ff.fullsreen(this.label2, this);
         }
 
         private void InitConfig()
@@ -102,8 +107,7 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
 
-            this.Close();
-            ff.backlogin();
+         
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -114,7 +118,7 @@ namespace WindowsFormsApplication1
         {
             while (true) {
                 Thread.Sleep(1000);
-                button2.Text = "开始读卡";
+              
                 if (nReaderPort == 0)
                 {
                     int authenticate = IDCardReader.Authenticate();
@@ -335,7 +339,7 @@ namespace WindowsFormsApplication1
                             {
                                ff.showloading( "读卡操作失败！");
                                 this.label2.ForeColor = Color.Red;
-                                this.button2.Text = "重新读取";
+                            
                             }
                         }
                         //上传信息
@@ -386,6 +390,12 @@ namespace WindowsFormsApplication1
         private void timer1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ff.backlogin();
         }
 
         private void UpdataInfo(string Id)
