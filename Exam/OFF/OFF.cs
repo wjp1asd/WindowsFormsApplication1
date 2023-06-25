@@ -53,12 +53,14 @@ namespace WindowsFormsApplication1.Exam
         private void button3_Click(object sender, EventArgs e)
         {
             datahelp.SubId = 1;
+            this.Close();
             QuestionForm a = new QuestionForm(qr);
             a.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Close();
             jiaoyancanshu j = new jiaoyancanshu();
             j.Show();
         }
@@ -126,18 +128,20 @@ namespace WindowsFormsApplication1.Exam
         private void button2_Click(object sender, EventArgs e)
         {
             datahelp.CurrentStep = 4;
+            this.Close();
             Record r=new Record(datahelp.QId);
             r.Show();
-            this.Close();
+            
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             datahelp.status=1;
+            this.Close();
             Exam1 e1 =new Exam1();
             e1.Show();
-            this.Close();
+            
 
         }
     }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
-using AutoWindowsSize;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Exam
@@ -162,59 +163,19 @@ namespace WindowsFormsApplication1.Exam
                 }
             }
             // 在线直接1.0
-            //if (decimal.Parse(t.Zxyl) >= (min + (decimal)0.2))
-            //{
-            //    cur1 = decimal.Parse(t.Zxyl) - (decimal)0.2;
 
+            string connectionString2 = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con2 = new SqlConnection(connectionString2);
+            string sql2 = "select * from settings where id=1 ";
 
-            //}
-            //else
-            //{
-            //    cur1 = decimal.Parse(t.Zxyl) + (decimal)0.2;
-
-            //}
-            //if (que == "1")
-            //{
-            //    // 当天第一个
-            //    yali2 = ts.Yali();
-            //    Random random = new Random();
-            //    int start2 = random.Next(0, yali2.Count);
-            //    zxyl = yali2[start2].ToString();
-
-            //}
-            //else
-            //{
-            //    //不是第一个
-            //    // max 1.3 min 1 上一个 1.2 cur 1.0 那就在 1.0 1.1里选
-            //    if (decimal.Parse(t.Lxyl) > cur1)
-            //    {
-            //        // 删除大于等上次
-            //        yali2 = ts.Yali();
-            //        yali2.RemoveAll(x => x >= decimal.Parse(t.Zxyl));
-            //        Random random = new Random();
-            //        int start2 = random.Next(0, yali2.Count);
-            //        zxyl = yali2[start2].ToString();
-
-
-            //    }
-            //    else if (decimal.Parse(t.Zxyl) < cur1)
-            //    {
-
-            //        yali2 = ts.Yali();
-            //        yali2.RemoveAll(x => x <= decimal.Parse(t.Zxyl));
-            //        Random random = new Random();
-            //        int start2 = random.Next(0, yali2.Count);
-            //        zxyl = yali2[start2].ToString();
-
-
-            //    }
-
-
-
-
-
-
-            //}
+            SqlCommand com1 = new SqlCommand(sql2, con2);
+            con2.Open();
+            SqlDataReader reader1 = com1.ExecuteReader();
+            while (reader1.Read())
+            {
+                zxyl= reader1["edyl"].ToString();
+            }
+            
 
             //MessageBox.Show("压力大：" + yali.Max());
             //MessageBox.Show("压力小：" + yali.Min());
@@ -225,7 +186,7 @@ namespace WindowsFormsApplication1.Exam
             //MessageBox.Show("实际2：" + cur1);
 
             //MessageBox.Show("离线压力：" + lxyl);
-            //MessageBox.Show("在线压力：" + zxyl);
+          //  MessageBox.Show("在线压力：" + zxyl);
 
 
 

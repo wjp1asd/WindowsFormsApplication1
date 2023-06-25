@@ -47,9 +47,6 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +56,9 @@
             this.f2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.f3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.f4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -287,38 +287,6 @@
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(440, 19);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 30);
-            this.button6.TabIndex = 41;
-            this.button6.Text = "关闭";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(256, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 30);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "刷新";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(23, 511);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(758, 24);
-            this.label6.TabIndex = 47;
-            this.label6.Text = "注意：提取规则，上一次提取调压需要紧定压螺母，本次抽题需要松定压螺母，因此抽考题需要注意\r\n";
-            // 
             // pick
             // 
             this.pick.HeaderText = "选择";
@@ -381,6 +349,39 @@
             this.f4.HeaderText = "第三次测试压力Mpa";
             this.f4.MinimumWidth = 6;
             this.f4.Name = "f4";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(440, 19);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 30);
+            this.button6.TabIndex = 41;
+            this.button6.Text = "关闭";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(256, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 30);
+            this.button3.TabIndex = 40;
+            this.button3.Text = "刷新";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(0, 529);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(758, 24);
+            this.label6.TabIndex = 47;
+            this.label6.Text = "注意：提取规则，上一次提取调压需要紧定压螺母，本次抽题需要松定压螺母，因此抽考题需要注意\r\n";
             // 
             // Pressure
             // 

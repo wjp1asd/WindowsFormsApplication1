@@ -41,8 +41,13 @@ namespace WindowsFormsApplication1.Exam
         bool correct1 = false;
         bool correct2 = false;
         bool correct3 = false;
-
-
+        // 算分模块 密封面直径测量得分 拆卸阀帽得分 误差选择得分 校验结果得分
+        Score sc=new Score();
+        int mfzjcl = 0;
+        int cxfm1  = 0;
+        int wxxz1 = 0;
+        int jyjg1 = 0;
+        int azfm1 = 0;
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int youbiaokachi = 0;
@@ -61,6 +66,21 @@ namespace WindowsFormsApplication1.Exam
         public zaixianjiaoyan2()
         {
             InitializeComponent();
+            this.richTextBox2.Hide();
+            this.uiLedLabel4.Hide();
+            this.timer1.Stop();
+            InitScore();
+            //ff.fullsreen(this.label2,this) ;
+        }
+
+        private void InitScore()
+        {
+             mfzjcl =sc.getScore("mfzjcl");
+             cxfm1 = sc.getScore("cxfm1");
+             wxxz1 = sc.getScore("wxxz1");
+             jyjg1 = sc.getScore("jyjg1") ;
+             azfm1 = sc.getScore("azfm1");
+            this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -83,18 +103,30 @@ namespace WindowsFormsApplication1.Exam
         {
             try
             {
-                int mfzj = int.Parse(textBox1.Text.Trim());
-                double zdyl = double.Parse(t.Zxyl);
+               
+                double mfzj = int.Parse(textBox1.Text.Trim());
+                double zdyl = double.Parse("1.0");
                 double xtyl = double.Parse(textBox2.Text.Trim());
 
-                double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2/10;
+                double F = (zdyl - xtyl) * ((mfzj / 2) * (mfzj / 2) * 3.2/10);
+             //   MessageBox.Show(""+(mfzj / 2) * (mfzj / 2) * 3.2 / 10);
                 this.textBox3.Text = F.ToString();
 
-                double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
+                double PS = F * 10 / ((mfzj / 2) * (mfzj / 2) * 3.2) + xtyl;
                 this.richTextBox2.Text += "开启压力"+PS;
 
                 this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
+                // 游标卡尺和 阀瓣拿起 
 
+                if (DIS[7 - faban] + "" == "0" && DIS[7 - youbiaokachi] + "" == "0") {
+
+                    ff.ShowSuccessTip("得分:"+mfzjcl);
+
+                } else {
+
+                    ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
+                
+                }
             }
             catch (Exception)
             {
@@ -410,7 +442,7 @@ namespace WindowsFormsApplication1.Exam
 
 
         string DIS0;
-        string DIS;
+        string DIS="11111111";
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -497,7 +529,7 @@ namespace WindowsFormsApplication1.Exam
                     {
                         DIS0 = a;
                         //di状态分析
-                   //     fenxi();
+                    fenxi();
                     }
 
 
@@ -565,20 +597,11 @@ namespace WindowsFormsApplication1.Exam
         private void fenxi()
         {
 
-          int a = Convert.ToInt32(t1.ToString(), 16);
-           //  MessageBox.Show(sb1.ToString()+a);
-         int b = Convert.ToInt32(t2.ToString(), 16);
-            if (Math.Abs(a - b) == 0)
-            {
-                //校验阀关闭
-                dishow("校验阀关闭");
-
-            }
 
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
                 dishow("游标卡尺归位");
-                liangcheng = 1;
+               
             }
             else
             {
@@ -589,7 +612,7 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - lianjiegan] + "" == "0")
             {
                 dishow("连接杆归位");
-                liangcheng = 3;
+               
             }
             else
             {
@@ -600,7 +623,7 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - siheyi] + "" == "0")
             {
                 dishow("四合一归位");
-                liangcheng = 3;
+              
             }
             else
             {
@@ -614,7 +637,7 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - faban] + "" == "0")
             {
                 dishow("阀瓣归位");
-                liangcheng = 3;
+              
             }
             else
             {
@@ -956,10 +979,11 @@ namespace WindowsFormsApplication1.Exam
 
         private void showMsg()
             {
+            t.Zxyl = "1.0";
             this.label3.Text="考生："+t.Ksname.Trim();
             this.label4.Text = "身份证：" +t.KsId.Trim();
             this.label5.Text = "设备类型：" + t.Zxlx.Trim();
-            this.label6.Text = "整定压力：" + t.Zxyl.Trim();
+            this.label6.Text = "整定压力：" + t.Zxyl.Trim()+"Mpa";
 
             richTextBox2.Text += "考试码：" + datahelp.QId;
 
@@ -1053,6 +1077,27 @@ namespace WindowsFormsApplication1.Exam
             show = false;
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            yali = double.Parse(t.Zxyl.Trim());
+            string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
+            string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
+
+            double a = double.Parse(a1);
+            double b = double.Parse(b2);
+            ff.ShowInfoTip("" + a + b + yali);
+            if (yali < a || yali > b)
+            {
+                // 其所选不在范围之内 不得分
+                ff.ShowErrorTip("误差选择错误，不得分");
+            }
+            else
+            {
+                ff.ShowSuccessTip("选择正确，得分" + wxxz1);
+
+            }
+        }
+
         private void wucha1(string type)
         {
             Wucha w = new Wucha();
@@ -1063,7 +1108,7 @@ namespace WindowsFormsApplication1.Exam
                 ports.Add(item.Value1.ToString().Trim());
             }
             comboBox1.DataSource = ports;
-            comboBox1.SelectedIndex = 0;
+          
             index = wuchas[comboBox1.SelectedIndex].Id;
         }
     }

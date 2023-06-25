@@ -65,11 +65,11 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(346, 24);
+            this.label2.Location = new System.Drawing.Point(321, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 52);
+            this.label2.Size = new System.Drawing.Size(126, 52);
             this.label2.TabIndex = 21;
-            this.label2.Text = "校验";
+            this.label2.Text = " 校验 ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
@@ -78,7 +78,7 @@
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(298, 190);
+            this.button2.Location = new System.Drawing.Point(294, 188);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(205, 70);
             this.button2.TabIndex = 24;

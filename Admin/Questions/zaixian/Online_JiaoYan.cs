@@ -58,11 +58,11 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             String str1 = "Update settings set edyl='" + a + "',mfzj='" + b + "' where id=1";
 
             // String str1 = "INSERT INTO settings (color1,color2,color3,color4,color5) VALUES('" + a+ "','" + b + "','" + c+"','" + d + "','" + f + "')";
-           ff.ShowInfoTip(str1);
+          // ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
-           ff.ShowInfoTip("保存成功！,退出程序后加载");
+           //ff.ShowInfoTip("保存成功！,退出程序后加载");
             con.Close();
         }
 

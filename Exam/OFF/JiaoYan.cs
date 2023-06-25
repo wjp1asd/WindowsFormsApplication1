@@ -62,6 +62,17 @@ namespace WindowsFormsApplication1.Exam
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
+
+        private void InitScore()
+        {
+        //    mfzjcl = sc.getScore("mfzjcl");
+        //    cxfm1 = sc.getScore("cxfm1");
+        //    wxxz1 = sc.getScore("wxxz1");
+        //    jyjg1 = sc.getScore("jyjg1");
+        //    azfm1 = sc.getScore("azfm1");
+        //    this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
+        //
+        }
         private void fenxi()
         {
 
@@ -303,7 +314,7 @@ namespace WindowsFormsApplication1.Exam
             showMsg();
             // 开启一个线程录像
              Task t1 = new Task(backCamera); 
-               t1.Start();
+             t1.Start();
         }
         Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
@@ -384,8 +395,8 @@ namespace WindowsFormsApplication1.Exam
         {
 
             VideoCapture v = new VideoCapture(0);
-            v.SetCaptureProperty(CapProp.FrameHeight, 120);
-            v.SetCaptureProperty(CapProp.FrameWidth, 120);
+            v.SetCaptureProperty(CapProp.FrameHeight, 220);
+            v.SetCaptureProperty(CapProp.FrameWidth, 220);
             if (!v.IsOpened)
             {
                ff.ShowInfoTip("open video fail");
@@ -404,7 +415,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
                 }
                 f1 = f;
-                CvInvoke.Imshow("scene", f);
+                CvInvoke.Imshow("camera", f);
                 if (CvInvoke.WaitKey(30) == 27)
                 {
 
@@ -1366,6 +1377,12 @@ namespace WindowsFormsApplication1.Exam
         {
 
         }
+
+        private void richTextBox2_TextChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
         int ta = 60;
         private void timer2_Tick(object sender, EventArgs e)
         {

@@ -22,6 +22,11 @@ namespace WindowsFormsApplication1
         public QuestionForm()
         {
             InitializeComponent();
+            this.label6.Hide();
+            this.label7.Hide();
+            this.label8.Hide();
+            this.label9.Hide();
+
         }
         public QuestionForm(String qrcode, String subtype = "1")
         {
@@ -398,11 +403,13 @@ namespace WindowsFormsApplication1
             else
             {
                 this.timer1.Stop();
+
                ff.ShowInfoTip("时间到了，请交卷");
+                this.Close();
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
-                this.Close();
+               
             }
 
 
