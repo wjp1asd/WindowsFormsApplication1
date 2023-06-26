@@ -55,7 +55,7 @@ namespace WindowsFormsApplication1.Exam
 
         int fangzhen1 = 0;
         int fangzhen2 = 1;
-
+        int jiaoyanfa = 7;
         public static byte CalcLRC(byte[] data)
         {
             //112
@@ -589,11 +589,14 @@ namespace WindowsFormsApplication1.Exam
                     case "压力传感器2":
                         fangzhen2 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
+                    case "校验阀":
+                        jiaoyanfa = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
                 }
 
             }
 
-           ff.ShowInfoTip(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+"");
+           ff.ShowInfoTip(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+jiaoyanfa+"");
 
             //采集卡初始化+舵机控制板
             try
@@ -715,10 +718,10 @@ namespace WindowsFormsApplication1.Exam
                 // richTextBox1.Clear();
                 //38位
             //    MessageBox.Show(BitConverter.ToString(buff));
-                // AI解析
+                // AI解析锁紧螺母 
                 byte[] ttt1 = new byte[4];
                 byte[] ttt2 = new byte[4];
-
+                byte[] ttt3 = new byte[4];
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
 
                 string a = Convert.ToString(tt1[0], 2).Trim();
@@ -778,7 +781,7 @@ namespace WindowsFormsApplication1.Exam
 
 
                 }
-               
+               // 锁紧螺母
                 switch (fangzhen1)
                 {
                     case 0:
@@ -810,39 +813,7 @@ namespace WindowsFormsApplication1.Exam
 
 
                 }
-                //switch (fangzhen2)
-                //{
-                //    case 0:
-                //        ttt2 = buff.Skip(5).Take(4).ToArray();
-                //        break;
-
-                //    case 1:
-                //        ttt2 = buff.Skip(9).Take(4).ToArray();
-                //        break;
-                //    case 2:
-                //        ttt2 = buff.Skip(13).Take(4).ToArray();
-                //        break;
-                //    case 3:
-                //        ttt2 = buff.Skip(17).Take(4).ToArray();
-                //        break;
-                //    case 4:
-                //        ttt2 = buff.Skip(21).Take(4).ToArray();
-                //        break;
-                //    case 5:
-                //        ttt2 = buff.Skip(25).Take(4).ToArray();
-                //        break;
-                //    case 6:
-                //        ttt2 = buff.Skip(29).Take(4).ToArray();
-                //        break;
-                //    case 7:
-                //        ttt2 = buff.Skip(33).Take(4).ToArray();
-                //        break;
-
-
-
-                //}
-
-                switch (7)
+                switch (fangzhen2)
                 {
                     case 0:
                         ttt2 = buff.Skip(5).Take(4).ToArray();
@@ -864,10 +835,42 @@ namespace WindowsFormsApplication1.Exam
                         ttt2 = buff.Skip(25).Take(4).ToArray();
                         break;
                     case 6:
-                        ttt2= buff.Skip(29).Take(4).ToArray();
+                        ttt2 = buff.Skip(29).Take(4).ToArray();
                         break;
                     case 7:
                         ttt2 = buff.Skip(33).Take(4).ToArray();
+                        break;
+
+
+
+                }
+
+                switch (jiaoyanfa)
+                {
+                    case 0:
+                        ttt3 = buff.Skip(5).Take(4).ToArray();
+                        break;
+
+                    case 1:
+                        ttt3 = buff.Skip(9).Take(4).ToArray();
+                        break;
+                    case 2:
+                        ttt3 = buff.Skip(13).Take(4).ToArray();
+                        break;
+                    case 3:
+                        ttt3 = buff.Skip(17).Take(4).ToArray();
+                        break;
+                    case 4:
+                        ttt3 = buff.Skip(21).Take(4).ToArray();
+                        break;
+                    case 5:
+                        ttt3 = buff.Skip(25).Take(4).ToArray();
+                        break;
+                    case 6:
+                        ttt3 = buff.Skip(29).Take(4).ToArray();
+                        break;
+                    case 7:
+                        ttt3 = buff.Skip(33).Take(4).ToArray();
                         break;
 
 
@@ -883,7 +886,7 @@ namespace WindowsFormsApplication1.Exam
 
                 t1 = "";
                 
-                t2 = ShowBy(ttt2,2);
+                t2 = ShowBy(ttt3,2);
                 t3 = "";
                 // t4 =ShowBy(ttt2, 2);
                 // DI解析
@@ -950,22 +953,13 @@ namespace WindowsFormsApplication1.Exam
             }
 
 
-
-            Action tongdao = () =>
-            {
-                richTextBox3.AppendText("通道" + num + "信息：");
-                richTextBox3.AppendText("" + sb1);
-            };
-            this.Invoke(tongdao);
-
-
             switch (num)
             {
 
                 case 1:
                     if (sb1.Length > 0 && t1.Length > 0)
                     {
-                        voldetla(sb1, t1);
+                        voldetla1("锁紧螺母：",sb1, t1);
 
                     }
 
@@ -973,14 +967,17 @@ namespace WindowsFormsApplication1.Exam
                 case 2:
                     if (sb1.Length > 0 && t3.Length > 0)
                     {
-                        voldetla(sb1, t3);
+                        voldetla1("锁紧螺母：", sb1, t3);
 
                     }
 
                     break;
-                    //case 3:
-                    //    voldetla(sb1, t3);
-                    //    break;
+                 case 3:
+                    if (sb1.Length > 0 && t3.Length > 0)
+                    {
+                        voldetla(sb1, t3);
+                    }
+                      break;
                     //case 4:
                     //   voldetla(sb1, t4);
                     //    break;
@@ -1006,8 +1003,13 @@ namespace WindowsFormsApplication1.Exam
             return sb1;
 
         }
-      
-        //上次电压值
+        private int sjdwq;
+        private void voldetla1(string v, string sb1, string t1)
+        {
+            throw new NotImplementedException();
+        }
+
+        //校验阀电压值
         private int dwq;
         string cz;
         int current = 0;
@@ -1079,13 +1081,7 @@ namespace WindowsFormsApplication1.Exam
         private void SendServo1(int a, int pos)
         {
 
-            Action tongdao = () =>
-            {
-                this.richTextBox2.Text += "舵机就位";
-
-            };
-
-            this.Invoke(tongdao);
+        
 
      //舵机驱动
 
@@ -1102,7 +1098,7 @@ namespace WindowsFormsApplication1.Exam
             d3[8] = (byte)(maz & 0x00ff);
            
             serialPort1.Write(d3, 0, d3.Length);
-            MessageBox.Show(BitConverter.ToString(d3));
+          //  MessageBox.Show(BitConverter.ToString(d3));
 
             if (dwq - a > 100)
             {
