@@ -364,6 +364,7 @@
       <DependentUpon>MFYM.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Grade.cs" />
+    <Compile Include="Models\pressure.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\TestRecord.cs" />

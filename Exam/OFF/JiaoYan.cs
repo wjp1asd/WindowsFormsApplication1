@@ -38,8 +38,8 @@ namespace WindowsFormsApplication1.Exam
         bool correct1 = false;
         bool correct2 = false;
         bool correct3 = false;
-
-
+        Score sc = new Score();
+        pressure p=new pressure();
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int qiehuanfa1 = 0;
@@ -62,16 +62,23 @@ namespace WindowsFormsApplication1.Exam
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
-
+        int cxfm,ylxz, xygb,zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs= 0;
         private void InitScore()
         {
-        //    mfzjcl = sc.getScore("mfzjcl");
-        //    cxfm1 = sc.getScore("cxfm1");
-        //    wxxz1 = sc.getScore("wxxz1");
-        //    jyjg1 = sc.getScore("jyjg1");
-        //    azfm1 = sc.getScore("azfm1");
-        //    this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
-        //
+            ylxz= sc.getScore("ylxz");
+            cxfm = sc.getScore("cxfm");
+            zdyltz = sc.getScore("zdyltz");
+            sjlmsj = sc.getScore("sjlmsj");
+            azfm = sc.getScore("azfm");
+            dkxyf = sc.getScore("dkxyf");
+            gbylbqh = sc.getScore("gbylbqh");
+            bycs = sc.getScore("bycs");
+            //    jyjg1 = sc.getScore("jyjg1");zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs           
+            //    azfm1 = sc.getScore("azfm1");
+              this.label7.Text = "压力选择得分：" + ylxz + "拆卸阀帽得分：" + cxfm + "整定压力调整得分：" + zdyltz + "锁紧螺母得分：" + sjlmsj 
+                
+                + "安装阀帽得分：" + azfm+"打开泄压阀得分："+dkxyf+"关闭压力表切换"+gbylbqh+"保压测试得分"+bycs;
+            //
         }
         private void fenxi()
         {
@@ -243,15 +250,19 @@ namespace WindowsFormsApplication1.Exam
             {
               
                 case 1:
-                     test1();
+                    //初次压力
+                   test1();
                     break;
                 case 2:
+                    //第二次
                     test2();
                     break;
                 case 3:
+                    //第三次 
                     test3();
                     break;
                 case 4:
+                    //保压测试
                     test4();
                     break;
             }
@@ -298,7 +309,7 @@ namespace WindowsFormsApplication1.Exam
             shot();
         }
 
-
+List<pressure> pp=new List<pressure>();
 
         public JiaoYan(string wuchaid)
         {
@@ -308,13 +319,28 @@ namespace WindowsFormsApplication1.Exam
             datahelp.Initc();
             wucha = wucha.GetOne(wuchaid);
             this.timer1.Stop();
-
+            //获取压力码值
+            pp = p.getAll();
+            //
+            
             t = t.getRecord(datahelp.QId);
+
+            foreach (var p in pp)
+            {
+                if (double.Parse(t.Lxyl) == p.f0){
+                    //舵机码值=初次设置码值 比如整定1.0 初次1.2
+                    maz = p.maz;
+                    maz90 = p.maz90;
+                }
+
+            }
+            MessageBox.Show("初次码值："+maz+"保压码值："+maz90);
             // 需要获取算分标准
+            InitScore();
             showMsg();
             // 开启一个线程录像
-             Task t1 = new Task(backCamera); 
-             t1.Start();
+           //  Task t1 = new Task(backCamera); 
+           //  t1.Start();
         }
         Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
@@ -583,10 +609,10 @@ namespace WindowsFormsApplication1.Exam
                     case "阀帽":
                         famao = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
-                    case "压力传感器1":
+                    case "锁紧螺母":
                         fangzhen1 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
-                    case "压力传感器2":
+                    case "调压螺母":
                         fangzhen2 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
                     case "校验阀":
@@ -813,6 +839,7 @@ namespace WindowsFormsApplication1.Exam
 
 
                 }
+                // 调压螺母
                 switch (fangzhen2)
                 {
                     case 0:
@@ -844,7 +871,7 @@ namespace WindowsFormsApplication1.Exam
 
 
                 }
-
+                // 校验阀 压力
                 switch (jiaoyanfa)
                 {
                     case 0:
@@ -884,10 +911,10 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-                t1 = "";
+                t1 = ShowBy(ttt1,1); 
                 
-                t2 = ShowBy(ttt3,2);
-                t3 = "";
+                t2 = ShowBy(ttt2,2);
+                t3 = ShowBy(ttt3, 3); 
                 // t4 =ShowBy(ttt2, 2);
                 // DI解析
 
@@ -911,41 +938,23 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-        static string HexString2BinString(string hexString)
-        {
-            try
-            {
-                string result = string.Empty;
-                foreach (char c in hexString)
-                {
-                    int v = Convert.ToInt32(c.ToString(), 16);
-                    int v2 = int.Parse(Convert.ToString(v, 2));
-                    // 去掉格式串中的空格，即可去掉每个4位二进制数之间的空格，
-                    result += string.Format("{0:d4} ", v2);
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw;
-            }
-
-        }
-
-
         private string ShowBy(byte[] buff, int num)
         {
 
             string sb1 = BitConverter.ToString(buff).Replace("-", "");
-
+            // 锁紧螺母
             if (t1.Length == 0)
             {
 
                 t1 = sb1;
             }
+            // 调压螺母
+            if (t2.Length == 0)
+            {
 
-
+                t2 = sb1;
+            }
+            //校验阀
             if (t3.Length == 0)
             {
 
@@ -965,9 +974,9 @@ namespace WindowsFormsApplication1.Exam
 
                     break;
                 case 2:
-                    if (sb1.Length > 0 && t3.Length > 0)
+                    if (sb1.Length > 0 && t2.Length > 0)
                     {
-                        voldetla1("锁紧螺母：", sb1, t3);
+                        voldetla2("调压螺母：", sb1, t2);
 
                     }
 
@@ -978,21 +987,7 @@ namespace WindowsFormsApplication1.Exam
                         voldetla(sb1, t3);
                     }
                       break;
-                    //case 4:
-                    //   voldetla(sb1, t4);
-                    //    break;
-                    //case 5:
-                    //   voldetla(sb1, t5);
-                    //    break;
-                    //case 6:
-                    //    voldetla(sb1, t6);
-                    //    break;
-                    //case 7:
-                    //    voldetla(sb1, t7);
-                    //    break;
-                    //case 8:
-                    //    voldetla(sb1, t8);
-                    //    break;
+                   
 
             }
 
@@ -1003,23 +998,67 @@ namespace WindowsFormsApplication1.Exam
             return sb1;
 
         }
-        private int sjdwq;
+        
         private void voldetla1(string v, string sb1, string t1)
         {
-            throw new NotImplementedException();
-        }
+            int a = Convert.ToInt32(sb1.ToString(), 16);
+         
+            int b = Convert.ToInt32(t1.ToString(), 16);
 
+            Action tongdao = () =>
+            {
+              //  richTextBox3.Clear();
+                richTextBox3.AppendText(v+ sb1.ToString());
+                richTextBox3.AppendText(v + "当前电压差：" + (sjdwq - a));
+                richTextBox3.AppendText(v+"当前电位器码值（电压值）：" + a);
+                richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
+
+                if (sjdwq > a)
+                {
+                    ff.ShowInfoTip(v + "正在锁紧");
+                }
+                else {
+                    ff.ShowInfoTip(v + "正在放松");
+                }
+            };
+            this.Invoke(tongdao);
+        }
+        private void voldetla2(string v, string sb1, string t1)
+        {
+            int a = Convert.ToInt32(sb1.ToString(), 16);
+          
+            int b = Convert.ToInt32(t1.ToString(), 16);
+
+            Action tongdao = () =>
+            {
+                //  richTextBox3.Clear();
+                richTextBox3.AppendText(v + sb1.ToString());
+                richTextBox3.AppendText(v + "当前电压差：" + (tydwq - a));
+                richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a);
+                richTextBox3.AppendText(v + "上次电位器码值码值：" + tydwq);
+
+                if (sjdwq > a)
+                {
+                    ff.ShowInfoTip(v + "正在锁紧");
+                }
+                else
+                {
+                    ff.ShowInfoTip(v + "正在放松");
+                }
+            };
+            this.Invoke(tongdao);
+        }
         //校验阀电压值
         private int dwq;
+        //锁紧电压值
+        private int sjdwq;
+        // 调压电压值
+        private int tydwq;
         string cz;
         int current = 0;
         private void voldetla(string sb1, string t8)
         {
-            //cz从离线压力设置-初次测试压力中取值
-            cz = "1.2";
-            //y为对应（500-2500）中的码值
-            //  int y = (2000 * Convert.ToInt32( cz) )/Convert.ToInt32 (1.6);
-
+            
             int a = Convert.ToInt32(sb1.ToString(), 16);
             current =0;
             int b = Convert.ToInt32(t8.ToString(), 16);
@@ -1168,6 +1207,7 @@ namespace WindowsFormsApplication1.Exam
         }
         //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
         int maz = 1111;
+        int maz90 = 0;
         int smin = 1000;
         int cisu = 0;
 
@@ -1311,7 +1351,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
             }
 
-            // 开启1分钟判分倒计时
+            // 开启1分钟判分倒计时  保压测试显示3分钟 实际30秒走完
             this.timer2.Start();
             ta = 60;
             step++;

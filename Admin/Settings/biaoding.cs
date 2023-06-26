@@ -154,7 +154,10 @@ namespace WindowsFormsApplication1.Admin.Settings
                     s1.Append(this.dataGridView1.Rows[i].Cells[1].Value + ",");
                 // }
             }
-            s1.Remove(s1.Length - 1, 1);
+            if(s1.Length > 1){
+                s1.Remove(s1.Length - 1, 1);
+            }
+          
             // ff.ShowInfoTip(s1.ToString());
             if (s1.Length != 0)
             {
@@ -218,10 +221,7 @@ namespace WindowsFormsApplication1.Admin.Settings
 
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -258,9 +258,6 @@ namespace WindowsFormsApplication1.Admin.Settings
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
-        private void dataGridView1_CellContentClick_3(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
     }
 }
