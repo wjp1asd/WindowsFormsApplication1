@@ -70,7 +70,9 @@ namespace WindowsFormsApplication1.Exam
             this.uiLedLabel4.Hide();
             this.timer1.Stop();
             InitScore();
-            //ff.fullsreen(this.label2,this) ;
+            this.button2.Enabled = false;
+            this.button1.Enabled = false;
+            this.button4.Enabled = false;
         }
 
         private void InitScore()
@@ -198,7 +200,7 @@ namespace WindowsFormsApplication1.Exam
           
             //注意数据绑定后，它的series是1而不是0  本来正常应该是1   博文后注
             this.chart1.Series[0].ChartType = SeriesChartType.Spline;
-            //this.chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "yyyy-MM-dd-HH:mm:ss";
+            //this.chart1..ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "yyyy-MM-dd-HH:mm:ss";
         
             this.chart1.Series[0].IsValueShownAsLabel = false;             //是否显示数据      
             this.chart1.Series[0].IsVisibleInLegend = false;              //是否显示数据说明  
@@ -208,7 +210,8 @@ namespace WindowsFormsApplication1.Exam
           
             this.chart1.ChartAreas[0].AxisX.LineWidth = 2;                     //X轴宽度
             this.chart1.ChartAreas[0].AxisY.LineWidth = 2;                      //Y轴宽度  
-         
+            this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+            this.chart1.Width = this.Width;
         }
 
         public static byte CalcLRC(byte[] data)
@@ -689,62 +692,7 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
-        private void guanbixieyafa()
-        {
-            // 考点
-            switch (step)
-            {
-
-                case 1:
-                    test1();
-                    break;
-                case 2:
-                    test2();
-                    break;
-                case 3:
-                    test3();
-                    break;
-                case 4:
-                    test4();
-                    break;
-            }
-
-
-
-
-
-        }
-
-        private void test4()
-        {
-            //密封性能测试
-            // throw new NotImplementedException();
-        }
-
-        private void test3()
-        {
-            //第三次测试
-            //  throw new NotImplementedException();
-        }
-
-        private void test2()
-        {
-            //第二次测试
-            //  throw new NotImplementedException();
-        }
-
-        private void test1()
-        {
-            //第一次测试第一次校验：
-            //            开校验阀时判断 切换阀打开、泄压阀关闭
-            //                             不正确  提示请检查你的操作是否正确。
-            //  一分钟之内操作正确得分
-            //                 正确     量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
-            //关闭校验阀、打开泄压阀（无先后顺序） 
-            //量程表归0
-
-            this.label1.Text = "泄压阀关闭，请打开校验阀";
-        }
+      
 
         private void chaixiefamao()
         {
@@ -959,7 +907,7 @@ namespace WindowsFormsApplication1.Exam
         {
             if (standard==false) {
                 standardValue = a;
-                MessageBox.Show(""+a);
+                //MessageBox.Show(""+a);
                 StripLine s = new StripLine();
                 s.BackColor = Color.Red;
                 s.Interval = 0;
@@ -1010,7 +958,7 @@ namespace WindowsFormsApplication1.Exam
 
             richTextBox2.Text += "考试码：" + datahelp.QId;
 
-            wucha1(t.Zxlx);
+           
          
               
            this.richTextBox2.Text += "当前采集卡端口：" + datahelp.plc1 + "波特率" + datahelp.plcbt1 + "起始位，停止位，校验位" + datahelp.plcst1 + "-" + datahelp.plcsp1 + "-" + datahelp.plcjy1;
@@ -1039,6 +987,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            this.plcinit();
             step = 1;
             switch(step) {
                 case 0:
@@ -1057,8 +1006,11 @@ namespace WindowsFormsApplication1.Exam
                         this.button3.Text = "正在校验";
                         this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                         this.timer1.Start();
-
-                    }
+                        this.comboBox1.Enabled =false; this.comboBox2.Enabled =false;
+                        this.button1.Enabled = true;
+                        this.button2.Enabled = true;
+                        this.button4.Enabled = true;
+                    }   
                     else
                     {
 
@@ -1076,7 +1028,9 @@ namespace WindowsFormsApplication1.Exam
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            liangcheng =this.comboBox2.SelectedIndex+1;   
+            liangcheng =this.comboBox2.SelectedIndex+1;
+
+            this.comboBox2.Enabled = false;
         }
         bool show = false;
         private void button1_Click(object sender, EventArgs e)
@@ -1109,6 +1063,9 @@ namespace WindowsFormsApplication1.Exam
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //获取初始值
+            wucha1(t.Zxlx);
+
             yali = double.Parse(t.Zxyl.Trim());
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
@@ -1120,12 +1077,23 @@ namespace WindowsFormsApplication1.Exam
             {
                 // 其所选不在范围之内 不得分
                 ff.ShowErrorTip("误差选择错误，不得分");
+                this.comboBox1.Enabled = false;
             }
             else
             {
                 ff.ShowSuccessTip("选择正确，得分" + wxxz1);
-
+                this.comboBox1.Enabled = false;
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_Click(object sender, EventArgs e)
+        {
+           
         }
 
         private void wucha1(string type)
