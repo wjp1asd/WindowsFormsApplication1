@@ -84,11 +84,13 @@ namespace WindowsFormsApplication1.Exam
         {
             try
             {
-                int mfzj = int.Parse(textBox1.Text.Trim());
-                double zdyl = double.Parse(t.Zxyl);
+                double mfzj = double.Parse(textBox1.Text.Trim());
+                //  double zdyl = double.Parse(t.Zxyl);
+                double zdyl = 1.0;
                 double xtyl = double.Parse(textBox2.Text.Trim());
 
                 double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2/10;
+               
                 this.textBox3.Text = F.ToString();
                 wjltj = F;
                 double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
@@ -853,12 +855,14 @@ namespace WindowsFormsApplication1.Exam
         //上次电压值
         float dwq;
         string cz;
-        int interval = 500;
+        int interval = 200;
          float standardValue = 0;
         // 基础线绘制
         bool standard = false;
         float currentF = 0;
         float lastF = 0;
+        //标定k值
+        float k = 1;
         private void voldetla(string sb1, string t8)
         {
             //cz从离线压力设置-初次测试压力中取值
@@ -878,27 +882,44 @@ namespace WindowsFormsApplication1.Exam
             switch (liangcheng)
             {
                 case 1:
-                    b2 = b1 * 200;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 20 * 0.6;
+                   k = 1.39F;
+                    //33.33F;
+                    b2 = b1 * 200 * k;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    //推荐力Y的1.2倍
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+                        //20 * 0.6;
                     break;
                 case 2:
-                    b2 = b1 * 500;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 50 * 0.6;
+                   k = 1.34F;
+                    //13.33F;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    b2 = b1 * 500 * k;
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+                    //50 * 0.6;
                     break;
                 case 3:
-                    b2 = b1 * 2000;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 200 * 0.6; 
+                    k = 1.34F;
+                        //3.33F;
+                    b2 = b1 * 2000 * k;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+                    //200 * 0.6; 
                     break;
                 case 4:
-                    b2 = b1 * 5000;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 500 * 0.6; 
+                   k = 1.34F;
+                    //1.33F;
+                    b2 = b1 * 5000*k;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2; 
+                    //500 * 0.6; 
                     break;
             }
            
            
                
            
-            if (show&&(a - standardValue)>0) {
+            if (show&&(a - standardValue)>=0) {
                 //    ff.ShowInfoTip("当前电压值-初始电压值："+(a- standardValue).ToString());
                 currentF = b2 - standardValue;
                
@@ -951,8 +972,6 @@ namespace WindowsFormsApplication1.Exam
                 s.Interval = 0;
                 s.StripWidth = 1;
                 s.IntervalOffset = currentF;
-                //this.chart1.ChartAreas[0].AxisY.Minimum =0;
-               
                 this.chart1.ChartAreas[0].AxisY.StripLines.Add(s);
                 standard = true;
             }
@@ -1071,7 +1090,7 @@ namespace WindowsFormsApplication1.Exam
             // 初始化图表
             show = true;
 
-
+            this.chart1.ChartAreas[0].AxisY.Maximum = 1.2 * wjltj;
             if (dwq>0) {
 
                 setstandard(dwq);
