@@ -82,21 +82,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void fenxi()
         {
-
-           // int a = Convert.ToInt32(t1.ToString(), 16);
-            // MessageBox.Show(sb1.ToString()+a);
-            //int b = Convert.ToInt32(t2.ToString(), 16);
-            //if (Math.Abs(a - b) == 0)
-            //{
-                //校验阀关闭
-            //    dishow("校验阀关闭");
-
-           // }
-
-
-
-            //            校验阀：电位器码值 切换阀：舵机 量程表：1.6量程
-
+         
             // 第一次校验：
             //开校验阀时判断 切换阀打开、泄压阀关闭
             //                 不正确  提示请检查你的操作是否正确。
@@ -180,7 +166,7 @@ namespace WindowsFormsApplication1.Exam
                 dishow("阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                chaixiefamao();
+                 chaixiefamao();
             }
 
 
@@ -294,19 +280,38 @@ namespace WindowsFormsApplication1.Exam
         private void test1()
         {
             //第一次测试第一次校验：
-//            开校验阀时判断 切换阀打开、泄压阀关闭
-//                             不正确  提示请检查你的操作是否正确。
-//  一分钟之内操作正确得分
-//                 正确     量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
-//关闭校验阀、打开泄压阀（无先后顺序） 
-//量程表归0
+            //            开校验阀时判断 切换阀打开、泄压阀关闭
+            //                             不正确  提示请检查你的操作是否正确。
+            //  一分钟之内操作正确得分
+            //                 正确     量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
+            //关闭校验阀、打开泄压阀（无先后顺序） 
+            //量程表归0
+            if (Math.Abs(current) < 119000)
+            {
+                ff.ShowInfoTip("初次测试" + "校验阀打开");
+                // 
+               
 
-            this.label1.Text = "泄压阀关闭，请打开校验阀";
+                if (DIS[7 - xieya] + "" == "0"&& ta>0  )
+                ta = 60;
+
+            }
+            else {
+
+                ff.ShowInfoTip("初次测试" + "校验阀关闭");
+            }
+           // this.label1.Text = "泄压阀关闭，请打开校验阀";
         }
 
         private void chaixiefamao()
         {
-            shot();
+            // 10秒后拍照
+            ff.ShowInfoNotifier("量程归0判断30秒");
+            if (current > 119000) {
+                Thread.Sleep(10000);
+                shot();
+            }
+          
         }
 
 List<pressure> pp=new List<pressure>();
@@ -410,10 +415,10 @@ List<pressure> pp=new List<pressure>();
 
         private void shot()
         {
-            step = 1;
+           // step = 1;
 
-            //CvInvoke.Imwrite(url + "shot.png", f1);
-            //MessageBox.Show("拍照成功");
+            CvInvoke.Imwrite(url + "shot.png", f1);
+            MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 
@@ -1013,11 +1018,11 @@ List<pressure> pp=new List<pressure>();
                 richTextBox3.AppendText(v+"当前电位器码值（电压值）：" + a);
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
 
-                if (sjdwq > a)
+                if ((a - sjdwq) > 0)
                 {
                     ff.ShowInfoTip(v + "正在锁紧");
                 }
-                else {
+                else if((a - sjdwq) < 0) {
                     ff.ShowInfoTip(v + "正在放松");
                 }
             };
@@ -1037,11 +1042,11 @@ List<pressure> pp=new List<pressure>();
                 richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a);
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + tydwq);
 
-                if (sjdwq > a)
+                if ((a - tydwq) > 0)
                 {
                     ff.ShowInfoTip(v + "正在锁紧");
                 }
-                else
+                else if ((a - tydwq) < 0)
                 {
                     ff.ShowInfoTip(v + "正在放松");
                 }
@@ -1050,6 +1055,7 @@ List<pressure> pp=new List<pressure>();
         }
         //校验阀电压值
         private int dwq;
+        private int dwqcha;
         //锁紧电压值
         private int sjdwq;
         // 调压电压值
@@ -1060,9 +1066,9 @@ List<pressure> pp=new List<pressure>();
         {
             
             int a = Convert.ToInt32(sb1.ToString(), 16);
-            current =0;
+            current =a;
             int b = Convert.ToInt32(t8.ToString(), 16);
-          
+            dwqcha = dwq - a;
             Action tongdao = () =>
             {
                 richTextBox3.Clear();
@@ -1086,7 +1092,12 @@ List<pressure> pp=new List<pressure>();
             
             if (Math.Abs(a) < 119000)
             {
-
+                if (ta == 60&&step==1) {
+                    // 开启一个1分值计时
+                    this.timer2.Enabled = true;
+                    this.timer2.Start();
+                    ff.ShowInfoTip("请在一分钟内正确操作");
+                }
               SendServo1(a, 0);
 
                 //SendServo(a, 0);
@@ -1096,8 +1107,12 @@ List<pressure> pp=new List<pressure>();
             }
             else
             {
-                dishow("校验阀关闭");
-                //if (DIS[7 - xieya] + "" == "0")
+
+
+                if (DIS[7 - xieya] + "" == "0"&&step==1) {
+                    ff.ShowInfoTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
+
+                }
                 //{
                 //    dishow("卸压阀打开");
                 //    //richTextBox2.Text += "卸压阀打开";
@@ -1403,11 +1418,7 @@ List<pressure> pp=new List<pressure>();
             richTextBox2.Text = "DI读取：" + a;
         }
 
-        private void serialPort1_DataReceived_1(object sender, SerialDataReceivedEventArgs e)
-        {
-
-
-        }
+  
 
         private void lbltime_Click(object sender, EventArgs e)
         {
