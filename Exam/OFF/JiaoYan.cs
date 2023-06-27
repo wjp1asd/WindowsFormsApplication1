@@ -1113,6 +1113,22 @@ List<pressure> pp=new List<pressure>();
                     ff.ShowInfoTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
 
                 }
+
+                if (DIS[7 - xieya] + "" == "0" && step ==2)
+                {
+                    ff.ShowInfoTip("第二次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
+
+                }
+                if (DIS[7 - xieya] + "" == "0" && step == 3)
+                {
+                    ff.ShowInfoTip("第三次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
+
+                }
+                if (DIS[7 - xieya] + "" == "0" && step == 4)
+                {
+                    ff.ShowInfoTip("密封测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
+
+                }
                 //{
                 //    dishow("卸压阀打开");
                 //    //richTextBox2.Text += "卸压阀打开";
@@ -1363,13 +1379,18 @@ List<pressure> pp=new List<pressure>();
                     break;
                 case 4:
                     this.button1.Text = "密封性能测试";
+                    ff.ShowInfoTip("保压测试开始，倒计时3分钟");
+                    maz = maz90;
+                    ta = 300;
                     break;
             }
 
             // 开启1分钟判分倒计时  保压测试显示3分钟 实际30秒走完
-            this.timer2.Start();
+          
             ta = 60;
             step++;
+
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1436,7 +1457,7 @@ List<pressure> pp=new List<pressure>();
             if (ta > 0) { 
                 ta--;
                 int min = ta / 60;
-                int sec = ta% 60;
+                int sec = ta % 60;
                 this.label4.Text = string.Format("{0:00}:{1:00}", min, sec);
             }
             else
