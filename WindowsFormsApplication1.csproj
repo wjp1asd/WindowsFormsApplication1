@@ -364,6 +364,7 @@
       <DependentUpon>MFYM.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Grade.cs" />
+    <Compile Include="Models\pressure.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\TestRecord.cs" />
@@ -762,6 +763,25 @@
     <Analyzer Include="dll\Msprintsdk.x64.dll" />
     <Analyzer Include="dll\termb.dll" />
     <Analyzer Include="dll\WltRS.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -58,7 +58,7 @@ namespace WindowsFormsApplication1
 
                 SqlCommand com = new SqlCommand(sql, con);
                 con.Open();
-             //  MessageBox.Show(sql);
+             // ff.ShowInfoTip(sql);
                 SqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
@@ -70,13 +70,15 @@ namespace WindowsFormsApplication1
                 if (answer.Length == 0)
                 {
 
-                    MessageBox.Show("题目已不存在于当前题库，请重新抽题");
+                   ff.ShowInfoTip("题目已不存在于当前题库，请重新抽题");
 
 
                 }
-           // MessageBox.Show(answer);
+           //ff.ShowInfoTip(answer);
             return answer;
         }
+
+        private Fuc ff = new Fuc();
         public String ChooseLixian()
         {
             //返回抽题数据select * from AppleStoreorder by rand()limit 100;
@@ -167,7 +169,7 @@ namespace WindowsFormsApplication1
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select Top " + d.xhnum + " id from aqfadmin  where aid =" + aid + " order by newid() ";
-            // MessageBox.Show(sql);
+            //ff.ShowInfoTip(sql);
 
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();

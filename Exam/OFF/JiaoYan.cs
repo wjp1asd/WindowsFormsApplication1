@@ -9,6 +9,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -23,8 +24,8 @@ namespace WindowsFormsApplication1.Exam
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
         //#02 01 00 05 01 07 数字输入DI 读取
         byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
-        //初始电位器的码值 t1,当前码值t2
-        string t1 = "", t2 = "";
+        //锁紧螺母 初始电位器的码值 t1,当前码值t2，弹簧 电位器的码值  t3, t4;
+        string t1 = "", t2 = "",t3="",t4=" ";
         // 整体采集，每个通道非0表示采集，为0表示不采集
         //02 11 20 0C 01 01 01 01 01 01 01 01 1F Lrc  td1 =header +content +lrc
         byte[] topheader = new byte[] { 0x02, 0x20, 0x00, 0x0C };
@@ -37,8 +38,8 @@ namespace WindowsFormsApplication1.Exam
         bool correct1 = false;
         bool correct2 = false;
         bool correct3 = false;
-
-
+        Score sc = new Score();
+        pressure p=new pressure();
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int qiehuanfa1 = 0;
@@ -53,31 +54,35 @@ namespace WindowsFormsApplication1.Exam
         // AO  仿真压力表 舵机 后续需要拓展
 
         int fangzhen1 = 0;
-        int fangzhen2 = 0;
-
+        int fangzhen2 = 1;
+        int jiaoyanfa = 7;
         public static byte CalcLRC(byte[] data)
         {
             //112
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
+        int cxfm,ylxz, xygb,zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs= 0;
+        private void InitScore()
+        {
+            ylxz= sc.getScore("ylxz");
+            cxfm = sc.getScore("cxfm");
+            zdyltz = sc.getScore("zdyltz");
+            sjlmsj = sc.getScore("sjlmsj");
+            azfm = sc.getScore("azfm");
+            dkxyf = sc.getScore("dkxyf");
+            gbylbqh = sc.getScore("gbylbqh");
+            bycs = sc.getScore("bycs");
+            //    jyjg1 = sc.getScore("jyjg1");zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs           
+            //    azfm1 = sc.getScore("azfm1");
+              this.label7.Text = "压力选择得分：" + ylxz + "拆卸阀帽得分：" + cxfm + "整定压力调整得分：" + zdyltz + "锁紧螺母得分：" + sjlmsj 
+                
+                + "安装阀帽得分：" + azfm+"打开泄压阀得分："+dkxyf+"关闭压力表切换"+gbylbqh+"保压测试得分"+bycs;
+            //
+        }
         private void fenxi()
         {
-
-            int a = Convert.ToInt32(t1.ToString(), 16);
-            // MessageBox.Show(sb1.ToString()+a);
-            int b = Convert.ToInt32(t2.ToString(), 16);
-            if (Math.Abs(a - b) == 0)
-            {
-                //校验阀关闭
-                dishow("校验阀关闭");
-
-            }
-
-
-
-            //            校验阀：电位器码值 切换阀：舵机 量程表：1.6量程
-
+         
             // 第一次校验：
             //开校验阀时判断 切换阀打开、泄压阀关闭
             //                 不正确  提示请检查你的操作是否正确。
@@ -161,7 +166,7 @@ namespace WindowsFormsApplication1.Exam
                 dishow("阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                chaixiefamao();
+                 chaixiefamao();
             }
 
 
@@ -181,6 +186,18 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - xieya] + "" == "0")
             {
                 dishow("卸压阀打开");
+
+                if (current<119000) {
+
+                    byte[] d3 = new byte[] {
+                0xFF,0x01,0x00,
+                0x0a,0x00,0xFF,
+                0x02, 0x00, 0xC4,
+                0x09};
+
+                serialPort1.Write(d3, 0, d3.Length);
+
+                }
                 //richTextBox2.Text += "卸压阀打开";
 
             }
@@ -219,15 +236,19 @@ namespace WindowsFormsApplication1.Exam
             {
               
                 case 1:
-                     test1();
+                    //初次压力
+                   test1();
                     break;
                 case 2:
+                    //第二次
                     test2();
                     break;
                 case 3:
+                    //第三次 
                     test3();
                     break;
                 case 4:
+                    //保压测试
                     test4();
                     break;
             }
@@ -259,22 +280,41 @@ namespace WindowsFormsApplication1.Exam
         private void test1()
         {
             //第一次测试第一次校验：
-//            开校验阀时判断 切换阀打开、泄压阀关闭
-//                             不正确  提示请检查你的操作是否正确。
-//  一分钟之内操作正确得分
-//                 正确     量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
-//关闭校验阀、打开泄压阀（无先后顺序） 
-//量程表归0
+            //            开校验阀时判断 切换阀打开、泄压阀关闭
+            //                             不正确  提示请检查你的操作是否正确。
+            //  一分钟之内操作正确得分
+            //                 正确     量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
+            //关闭校验阀、打开泄压阀（无先后顺序） 
+            //量程表归0
+            if (Math.Abs(current) < 119000)
+            {
+                ff.ShowInfoTip("初次测试" + "校验阀打开");
+                // 
+               
 
-            this.label1.Text = "泄压阀关闭，请打开校验阀";
+                if (DIS[7 - xieya] + "" == "0"&& ta>0  )
+                ta = 60;
+
+            }
+            else {
+
+                ff.ShowInfoTip("初次测试" + "校验阀关闭");
+            }
+           // this.label1.Text = "泄压阀关闭，请打开校验阀";
         }
 
         private void chaixiefamao()
         {
-            shot();
+            // 10秒后拍照
+            ff.ShowInfoNotifier("量程归0判断30秒");
+            if (current > 119000) {
+                Thread.Sleep(10000);
+                shot();
+            }
+          
         }
 
-
+List<pressure> pp=new List<pressure>();
 
         public JiaoYan(string wuchaid)
         {
@@ -284,13 +324,28 @@ namespace WindowsFormsApplication1.Exam
             datahelp.Initc();
             wucha = wucha.GetOne(wuchaid);
             this.timer1.Stop();
-
+            //获取压力码值
+            pp = p.getAll();
+            //
+            
             t = t.getRecord(datahelp.QId);
+
+            foreach (var p in pp)
+            {
+                if (double.Parse(t.Lxyl) == p.f0){
+                    //舵机码值=初次设置码值 比如整定1.0 初次1.2
+                    maz = p.maz;
+                    maz90 = p.maz90;
+                }
+
+            }
+            MessageBox.Show("初次码值："+maz+"保压码值："+maz90);
             // 需要获取算分标准
+            InitScore();
             showMsg();
             // 开启一个线程录像
-            // Task t1 = new Task(backCamera); 
-            //   t1.Start();
+           //  Task t1 = new Task(backCamera); 
+           //  t1.Start();
         }
         Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
@@ -300,7 +355,7 @@ namespace WindowsFormsApplication1.Exam
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened)
             {
-                MessageBox.Show("open video fail");
+               ff.ShowInfoTip("open video fail");
                 return;
             }
 
@@ -312,7 +367,7 @@ namespace WindowsFormsApplication1.Exam
                 if (f.IsEmpty)
                 {
 
-                    MessageBox.Show("show fail");
+                   ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -333,7 +388,7 @@ namespace WindowsFormsApplication1.Exam
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened)
             {
-                MessageBox.Show("open video fail");
+               ff.ShowInfoTip("open video fail");
                 return;
             }
             Mat f = new Mat();
@@ -345,7 +400,7 @@ namespace WindowsFormsApplication1.Exam
                 if (f.IsEmpty)
                 {
 
-                    MessageBox.Show("show fail");
+                   ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -360,10 +415,10 @@ namespace WindowsFormsApplication1.Exam
 
         private void shot()
         {
-            step = 1;
+           // step = 1;
 
-            //CvInvoke.Imwrite(url + "shot.png", f1);
-            //MessageBox.Show("拍照成功");
+            CvInvoke.Imwrite(url + "shot.png", f1);
+            MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 
@@ -371,10 +426,11 @@ namespace WindowsFormsApplication1.Exam
         {
 
             VideoCapture v = new VideoCapture(0);
-          
+            v.SetCaptureProperty(CapProp.FrameHeight, 220);
+            v.SetCaptureProperty(CapProp.FrameWidth, 220);
             if (!v.IsOpened)
             {
-                MessageBox.Show("open video fail");
+               ff.ShowInfoTip("open video fail");
                 return;
             }
             step = 0;
@@ -386,11 +442,11 @@ namespace WindowsFormsApplication1.Exam
                 if (f.IsEmpty)
                 {
 
-                    MessageBox.Show("show fail");
+                   ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
-                CvInvoke.Imshow("摄像头1：", f);
+                CvInvoke.Imshow("camera", f);
                 if (CvInvoke.WaitKey(30) == 27)
                 {
 
@@ -456,7 +512,7 @@ namespace WindowsFormsApplication1.Exam
             // 获得标定信息
             //for (int i = 0; i < goals.Count; i++)
             //{
-            //    MessageBox.Show(goals[i].sub+goals[i].name+goals[i].des+ goals[i].score);
+            //   ff.ShowInfoTip(goals[i].sub+goals[i].name+goals[i].des+ goals[i].score);
             //}
 
 
@@ -465,7 +521,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void ReadAI()
         {
-            // MessageBox.Show(BitConverter.ToString(td1));
+            //ff.ShowInfoTip(BitConverter.ToString(td1));
             while (true)
             {
 
@@ -516,13 +572,15 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 this.timer1.Stop();
-                MessageBox.Show("时间到了");
+               ff.ShowInfoTip("时间到了");
                 //AnswerForm frm = new AnswerForm();
                 //frm.MdiParent = this.MdiParent;
                 //frm.Show();
                 //this.Close();
             }
         }
+
+     
         public void plcinit()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -556,17 +614,20 @@ namespace WindowsFormsApplication1.Exam
                     case "阀帽":
                         famao = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
-                    case "压力传感器1":
+                    case "锁紧螺母":
                         fangzhen1 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
-                    case "压力传感器2":
+                    case "调压螺母":
                         fangzhen2 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
+                        break;
+                    case "校验阀":
+                        jiaoyanfa = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
                 }
 
             }
 
-            MessageBox.Show(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+"");
+           ff.ShowInfoTip(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+jiaoyanfa+"");
 
             //采集卡初始化+舵机控制板
             try
@@ -600,7 +661,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+                   ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                     throw;
                 }
 
@@ -627,7 +688,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+                   ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                     throw;
                 }
 
@@ -635,7 +696,7 @@ namespace WindowsFormsApplication1.Exam
             }
             catch (Exception err)
             {
-                MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
+               ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
             }
 
 
@@ -653,7 +714,7 @@ namespace WindowsFormsApplication1.Exam
                 0xFF, 0x02, 0x00, 0xC4,0x09
             };
 
-            //  MessageBox.Show(BitConverter.ToString(d1)) ;
+            // ff.ShowInfoTip(BitConverter.ToString(d1)) ;
             serialPort1.Write(d1, 0, d1.Length);
             Thread.Sleep(1000);
         }
@@ -674,9 +735,9 @@ namespace WindowsFormsApplication1.Exam
             byte[] buff = new byte[len];//
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
                                            // 通讯读取
-                                           // MessageBox.Show(BitConverter.ToString(buff));
+                                           //ff.ShowInfoTip(BitConverter.ToString(buff));
                                            //MessageBox.Show(len);
-                                           //   MessageBox.Show(name);
+                                           //  ff.ShowInfoTip(name);
      if (buff.Length == 38)
             {
                 Action t = () =>
@@ -687,19 +748,19 @@ namespace WindowsFormsApplication1.Exam
                 this.Invoke(t);
                 // richTextBox1.Clear();
                 //38位
-                //MessageBox.Show(BitConverter.ToString(buff));
-                // AI解析
+            //    MessageBox.Show(BitConverter.ToString(buff));
+                // AI解析锁紧螺母 
                 byte[] ttt1 = new byte[4];
                 byte[] ttt2 = new byte[4];
-
+                byte[] ttt3 = new byte[4];
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
 
                 string a = Convert.ToString(tt1[0], 2).Trim();
                 //int f = Convert.ToInt32(a.ToString(), 16);
-                // MessageBox.Show(BitConverter.ToString(buff)+","+f);
+                //ff.ShowInfoTip(BitConverter.ToString(buff)+","+f);
 
                 Console.WriteLine("Di:" + a);
-                // MessageBox.Show(a);
+                //ff.ShowInfoTip(a);
                 string b = "";
                 //if (DIS0 == a)
                 //{
@@ -746,17 +807,44 @@ namespace WindowsFormsApplication1.Exam
                     };
                     this.Invoke(tongdao);
 
-                    if (DIS.Length == 8)
-                    {
-                        DIS0 = a;
-                        //di状态分析
-                        fenxi();
-                    }
+                    
 
 
 
                 }
+               // 锁紧螺母
+                switch (fangzhen1)
+                {
+                    case 0:
+                        ttt1 = buff.Skip(5).Take(4).ToArray();
+                        break;
 
+                    case 1:
+                        ttt1 = buff.Skip(9).Take(4).ToArray();
+                        break;
+                    case 2:
+                        ttt1 = buff.Skip(13).Take(4).ToArray();
+                        break;
+                    case 3:
+                        ttt1 = buff.Skip(17).Take(4).ToArray();
+                        break;
+                    case 4:
+                        ttt1 = buff.Skip(21).Take(4).ToArray();
+                        break;
+                    case 5:
+                        ttt1 = buff.Skip(25).Take(4).ToArray();
+                        break;
+                    case 6:
+                        ttt1 = buff.Skip(29).Take(4).ToArray();
+                        break;
+                    case 7:
+                        ttt1 = buff.Skip(33).Take(4).ToArray();
+                        break;
+
+
+
+                }
+                // 调压螺母
                 switch (fangzhen2)
                 {
                     case 0:
@@ -788,8 +876,38 @@ namespace WindowsFormsApplication1.Exam
 
 
                 }
+                // 校验阀 压力
+                switch (jiaoyanfa)
+                {
+                    case 0:
+                        ttt3 = buff.Skip(5).Take(4).ToArray();
+                        break;
+
+                    case 1:
+                        ttt3 = buff.Skip(9).Take(4).ToArray();
+                        break;
+                    case 2:
+                        ttt3 = buff.Skip(13).Take(4).ToArray();
+                        break;
+                    case 3:
+                        ttt3 = buff.Skip(17).Take(4).ToArray();
+                        break;
+                    case 4:
+                        ttt3 = buff.Skip(21).Take(4).ToArray();
+                        break;
+                    case 5:
+                        ttt3 = buff.Skip(25).Take(4).ToArray();
+                        break;
+                    case 6:
+                        ttt3 = buff.Skip(29).Take(4).ToArray();
+                        break;
+                    case 7:
+                        ttt3 = buff.Skip(33).Take(4).ToArray();
+                        break;
 
 
+
+                }
 
 
 
@@ -798,11 +916,19 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-                t1 = "";
-                t2 = ShowBy(ttt2, 2);
+                t1 = ShowBy(ttt1,1); 
+                
+                t2 = ShowBy(ttt2,2);
+                t3 = ShowBy(ttt3, 3); 
+                // t4 =ShowBy(ttt2, 2);
                 // DI解析
 
-
+                if (DIS.Length == 8)
+                {
+                    DIS0 = a;
+                    //di状态分析
+                    fenxi();
+                }
 
 
             }
@@ -817,50 +943,28 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-        static string HexString2BinString(string hexString)
-        {
-            try
-            {
-                string result = string.Empty;
-                foreach (char c in hexString)
-                {
-                    int v = Convert.ToInt32(c.ToString(), 16);
-                    int v2 = int.Parse(Convert.ToString(v, 2));
-                    // 去掉格式串中的空格，即可去掉每个4位二进制数之间的空格，
-                    result += string.Format("{0:d4} ", v2);
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw;
-            }
-
-        }
-
-
         private string ShowBy(byte[] buff, int num)
         {
 
             string sb1 = BitConverter.ToString(buff).Replace("-", "");
-
+            // 锁紧螺母
             if (t1.Length == 0)
             {
 
                 t1 = sb1;
             }
-
-
-
-
-
-            Action tongdao = () =>
+            // 调压螺母
+            if (t2.Length == 0)
             {
-                richTextBox3.AppendText("通道" + num + "信息：");
-                richTextBox3.AppendText("" + sb1);
-            };
-            this.Invoke(tongdao);
+
+                t2 = sb1;
+            }
+            //校验阀
+            if (t3.Length == 0)
+            {
+
+                t3 = sb1;
+            }
 
 
             switch (num)
@@ -869,37 +973,26 @@ namespace WindowsFormsApplication1.Exam
                 case 1:
                     if (sb1.Length > 0 && t1.Length > 0)
                     {
-                        voldetla(sb1, t1);
+                        voldetla1("锁紧螺母：",sb1, t1);
 
                     }
 
                     break;
                 case 2:
-                    if (sb1.Length > 0 && t1.Length > 0)
+                    if (sb1.Length > 0 && t2.Length > 0)
                     {
-                        voldetla(sb1, t1);
+                        voldetla2("调压螺母：", sb1, t2);
 
                     }
 
                     break;
-                    //case 3:
-                    //    voldetla(sb1, t3);
-                    //    break;
-                    //case 4:
-                    //   voldetla(sb1, t4);
-                    //    break;
-                    //case 5:
-                    //   voldetla(sb1, t5);
-                    //    break;
-                    //case 6:
-                    //    voldetla(sb1, t6);
-                    //    break;
-                    //case 7:
-                    //    voldetla(sb1, t7);
-                    //    break;
-                    //case 8:
-                    //    voldetla(sb1, t8);
-                    //    break;
+                 case 3:
+                    if (sb1.Length > 0 && t3.Length > 0)
+                    {
+                        voldetla(sb1, t3);
+                    }
+                      break;
+                   
 
             }
 
@@ -910,99 +1003,76 @@ namespace WindowsFormsApplication1.Exam
             return sb1;
 
         }
-        public static int HexToDecimal(string hex)
+        
+        private void voldetla1(string v, string sb1, string t1)
         {
-            if (!Regex.Match(hex, "^[0-9A-F]$", RegexOptions.IgnoreCase).Success)
+            int a = Convert.ToInt32(sb1.ToString(), 16);
+         
+            int b = Convert.ToInt32(t1.ToString(), 16);
+
+            Action tongdao = () =>
             {
-                throw new Exception("不是十六进制数字");
-            }
+              //  richTextBox3.Clear();
+                richTextBox3.AppendText(v+ sb1.ToString());
+                richTextBox3.AppendText(v + "当前电压差：" + (sjdwq - a));
+                richTextBox3.AppendText(v+"当前电位器码值（电压值）：" + a);
+                richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
 
-            var decimalValue = 0;
-
-            var hexUp = hex.ToUpper();
-            // 从最后一位到第一位循环获取每位的值，并乘以基数的n-1次方
-            for (int i = hexUp.Length - 1; i >= 0; i--)
-            {
-                int currV = 0;
-                switch (hexUp[i])
+                if ((a - sjdwq) > 0)
                 {
-                    case 'A':
-                        currV = 10;
-                        break;
-                    case 'B':
-                        currV = 11;
-                        break;
-                    case 'C':
-                        currV = 12;
-                        break;
-                    case 'D':
-                        currV = 13;
-                        break;
-                    case 'E':
-                        currV = 14;
-                        break;
-                    case 'F':
-                        currV = 15;
-                        break;
-                    case '0':
-                        currV = 0;
-                        break;
-                    case '1':
-                        currV = 1;
-                        break;
-                    case '2':
-                        currV = 2;
-                        break;
-                    case '3':
-                        currV = 3;
-                        break;
-                    case '4':
-                        currV = 4;
-                        break;
-                    case '5':
-                        currV = 5;
-                        break;
-                    case '6':
-                        currV = 6;
-                        break;
-                    case '7':
-                        currV = 7;
-                        break;
-                    case '8':
-                        currV = 8;
-                        break;
-                    case '9':
-                        currV = 9;
-                        break;
-                    default:
-                        break;
+                    ff.ShowInfoTip(v + "正在锁紧");
                 }
-
-                for (int n = 0; n < hexUp.Length - 1 - i; n++)
-                {
-                    currV *= 16;
+                else if((a - sjdwq) < 0) {
+                    ff.ShowInfoTip(v + "正在放松");
                 }
-                decimalValue += currV;
-            }
-            return decimalValue;
+            };
+            this.Invoke(tongdao);
         }
-        //上次电压值
+        private void voldetla2(string v, string sb1, string t1)
+        {
+            int a = Convert.ToInt32(sb1.ToString(), 16);
+          
+            int b = Convert.ToInt32(t1.ToString(), 16);
+
+            Action tongdao = () =>
+            {
+                //  richTextBox3.Clear();
+                richTextBox3.AppendText(v + sb1.ToString());
+                richTextBox3.AppendText(v + "当前电压差：" + (tydwq - a));
+                richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a);
+                richTextBox3.AppendText(v + "上次电位器码值码值：" + tydwq);
+
+                if ((a - tydwq) > 0)
+                {
+                    ff.ShowInfoTip(v + "正在锁紧");
+                }
+                else if ((a - tydwq) < 0)
+                {
+                    ff.ShowInfoTip(v + "正在放松");
+                }
+            };
+            this.Invoke(tongdao);
+        }
+        //校验阀电压值
         private int dwq;
+        private int dwqcha;
+        //锁紧电压值
+        private int sjdwq;
+        // 调压电压值
+        private int tydwq;
         string cz;
+        int current = 0;
         private void voldetla(string sb1, string t8)
         {
-            //cz从离线压力设置-初次测试压力中取值
-            cz = "1.2";
-            //y为对应（500-2500）中的码值
-            //  int y = (2000 * Convert.ToInt32( cz) )/Convert.ToInt32 (1.6);
-
+            
             int a = Convert.ToInt32(sb1.ToString(), 16);
-            // MessageBox.Show(sb1.ToString()+a);
+            current =a;
             int b = Convert.ToInt32(t8.ToString(), 16);
-          
+            dwqcha = dwq - a;
             Action tongdao = () =>
             {
                 richTextBox3.Clear();
+                richTextBox3.AppendText("当前通道：" + sb1.ToString());
                 richTextBox3.AppendText("当前循环时间：" + smin);
 
                 richTextBox3.AppendText("当前电压差：" + (dwq - a));
@@ -1012,10 +1082,8 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox3.AppendText("当前循环次数：" + cisu);
                 richTextBox3.AppendText("上次电位器码值码值：" + dwq);
 
-                richTextBox3.AppendText("当前通道：" + sb1.ToString());
+  
                 richTextBox3.AppendText("当前电位器码值（电压值）：" + a);
-
-
                 richTextBox3.AppendText("上次电压差：" + b);
                 richTextBox3.AppendText("变化速度：" + Math.Abs(a - b) / interval);
                 calyali(a);
@@ -1024,16 +1092,43 @@ namespace WindowsFormsApplication1.Exam
             
             if (Math.Abs(a) < 119000)
             {
+                if (ta == 60&&step==1) {
+                    // 开启一个1分值计时
+                    this.timer2.Enabled = true;
+                    this.timer2.Start();
+                    ff.ShowInfoTip("请在一分钟内正确操作");
+                }
+              SendServo1(a, 0);
 
-                SendServo1(a, 0);
-                // SendServo(a, 0);//正确的方法先注视
+                //SendServo(a, 0);
+                //正确的方法先注视
                 //     SendServo(Math.Abs(a - b) / interval, b);
 
             }
             else
             {
-                dishow("校验阀关闭");
-                //if (DIS[7 - xieya] + "" == "0")
+
+
+                if (DIS[7 - xieya] + "" == "0"&&step==1) {
+                    ff.ShowInfoTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
+
+                }
+
+                if (DIS[7 - xieya] + "" == "0" && step ==2)
+                {
+                    ff.ShowInfoTip("第二次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
+
+                }
+                if (DIS[7 - xieya] + "" == "0" && step == 3)
+                {
+                    ff.ShowInfoTip("第三次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
+
+                }
+                if (DIS[7 - xieya] + "" == "0" && step == 4)
+                {
+                    ff.ShowInfoTip("密封测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
+
+                }
                 //{
                 //    dishow("卸压阀打开");
                 //    //richTextBox2.Text += "卸压阀打开";
@@ -1056,27 +1151,24 @@ namespace WindowsFormsApplication1.Exam
         private void SendServo1(int a, int pos)
         {
 
-            Action tongdao = () =>
-            {
-                this.richTextBox2.Text += "舵机就位";
-
-            };
-
-            this.Invoke(tongdao);
+        
 
      //舵机驱动
 
             byte[] d3 = new byte[] {
-                0xFF,0x01,0x00,0x0a,0x00,
-                0xFF, 0x02, 0x00, 0xC4,0x09};
+                0xFF,0x01,0x00,
+                0x0a,0x00,0xFF, 
+                0x02, 0x00, 0xC4,
+                0x09};
             //高八度低八度取值
             d3[3] = (byte)(maz & 0x00ff);
             d3[4] = (byte)((maz >> 8) & 0xff);
             //目标码值（离线压力设置-初次测试压力）
-            d3[9] = (byte)((czmaz >> 8) & 0xff);
-            d3[8] = (byte)(czmaz & 0x00ff);
+            d3[9] = (byte)((maz >> 8) & 0xff);
+            d3[8] = (byte)(maz & 0x00ff);
            
             serialPort1.Write(d3, 0, d3.Length);
+          //  MessageBox.Show(BitConverter.ToString(d3));
 
             if (dwq - a > 100)
             {
@@ -1140,36 +1232,20 @@ namespace WindowsFormsApplication1.Exam
                  0x5B
             };
 
-            //  MessageBox.Show(BitConverter.ToString(d1)) ;
+            // ff.ShowInfoTip(BitConverter.ToString(d1)) ;
             serialPort2.Write(d1, 0, d1.Length);
             Thread.Sleep(1000);
         }
         //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
-        int maz = 2500;
+        int maz = 1111;
+        int maz90 = 0;
         int smin = 1000;
         int cisu = 0;
 
         private void SendServo(int a, int pos)
         {
 
-            //MessageBox.Show(a.ToString());
-            //int b = (a / 1000 / 5)*2500;
-            //string b1 = b.ToString("X4");
-            // MessageBox.Show(""+b);
-            // MessageBox.Show(b1.ToString());
-            //  int a2 = int.Parse("0x"+ b1.Substring(0, 2));
-            // int a3 = int.Parse("0x" + b1.Substring(2));
 
-            // MessageBox.Show(""+b1);
-            //string    maz1 = maz.ToString("X4");
-            //     // int maz1 =Convert.ToInt32( maz.ToString(),16);
-            //    // byte a2;byte a3;
-            // MessageBox.Show(maz.ToString());
-            //    int a2 =Convert.ToInt32( maz1.ToString().Substring(0, 2));
-            //    int a3 =Convert.ToInt32( maz1.ToString().Substring(2));
-            //      MessageBox.Show(a2.ToString());
-            //   MessageBox.Show(a3.ToString());
-            //     MessageBox.Show(BitConverter.ToString(maz2));
             byte[] d3 = new byte[] {
                 0x02, 0x45, 0x00, 0x1C,
                 0x01, 0x01,0xf4,//(byte)a2, (byte)a3,              
@@ -1200,7 +1276,7 @@ namespace WindowsFormsApplication1.Exam
                 0x01, 0x01, 0xF4,
                 o
             };
-
+            MessageBox.Show(BitConverter.ToString(d4));
             serialPort1.Write(d4, 0, d4.Length);
 
             if (dwq - a > 100)
@@ -1220,24 +1296,7 @@ namespace WindowsFormsApplication1.Exam
                 if (maz < 500)
                 { maz = 500; }
             }
-            // MessageBox.Show(smin.ToString());
-            // MessageBox.Show(maz.ToString());
-            //MessageBox.Show(BitConverter.ToString(d4));
-            //  MessageBox.Show(d4.Length.ToString());
-            // 输出电压 0-5v  0-1.6Mpa
-
-            //  string[] s3 = new string[s1.Length + s2.Length];
-            // Array.Copy(s1, 0, s3, 0, s1.Length);
-            //  Array.Copy(s2, 0, s3, s1.Length, s2.Length);
-
-            // serialPort2.Write(s, 0, s.Length);
-
-            //  C_APDU: //写PWM: 待续;Data:1Bytes Speed + 2Bytes Pos =24Bytes，Speed：1-20；Pos：500--2500us对应0x01F4--0x09C4
-            //    02 45 00 1C 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 01 01 F4 5B
-            //舵机中位置
-            //02 45 00 1C 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 01 05 DC 5B
-            //舵机正量程
-            //02 45 00 1C 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 01 09 C4 5B
+            
 
         }
 
@@ -1261,7 +1320,7 @@ namespace WindowsFormsApplication1.Exam
             if (!serialPort2.IsOpen)
             {
 
-                MessageBox.Show("open串口");
+               ff.ShowInfoTip("open串口");
                 return;
             }
 
@@ -1320,13 +1379,18 @@ namespace WindowsFormsApplication1.Exam
                     break;
                 case 4:
                     this.button1.Text = "密封性能测试";
+                    ff.ShowInfoTip("保压测试开始，倒计时3分钟");
+                    maz = maz90;
+                    ta = 300;
                     break;
             }
 
-            // 开启1分钟判分倒计时
-            this.timer2.Start();
+            // 开启1分钟判分倒计时  保压测试显示3分钟 实际30秒走完
+          
             ta = 60;
             step++;
+
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1345,7 +1409,7 @@ namespace WindowsFormsApplication1.Exam
             if (!serialPort2.IsOpen)
             {
 
-                MessageBox.Show("open串口");
+               ff.ShowInfoTip("open串口");
                 return;
             }
 
@@ -1375,29 +1439,31 @@ namespace WindowsFormsApplication1.Exam
             richTextBox2.Text = "DI读取：" + a;
         }
 
-        private void serialPort1_DataReceived_1(object sender, SerialDataReceivedEventArgs e)
-        {
-
-
-        }
+  
 
         private void lbltime_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void richTextBox2_TextChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
         int ta = 60;
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (ta > 0) { 
                 ta--;
                 int min = ta / 60;
-                int sec = ta% 60;
+                int sec = ta % 60;
                 this.label4.Text = string.Format("{0:00}:{1:00}", min, sec);
             }
             else
             {
                 this.timer2.Stop();
-                MessageBox.Show("判分时间到了");
+               ff.ShowInfoTip("判分时间到了");
                
             }
         }

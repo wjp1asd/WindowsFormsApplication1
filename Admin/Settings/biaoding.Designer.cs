@@ -42,18 +42,18 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(9, 25);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox8.Location = new System.Drawing.Point(12, 31);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(166, 21);
+            this.textBox8.Size = new System.Drawing.Size(220, 25);
             this.textBox8.TabIndex = 62;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(202, 25);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Location = new System.Drawing.Point(269, 31);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(50, 24);
+            this.button5.Size = new System.Drawing.Size(67, 30);
             this.button5.TabIndex = 61;
             this.button5.Text = "查询\r\n";
             this.button5.UseVisualStyleBackColor = true;
@@ -76,14 +76,13 @@
             this.pin,
             this.type,
             this.beizhu});
-            this.dataGridView1.Location = new System.Drawing.Point(8, 72);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 65);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1015, 433);
+            this.dataGridView1.Size = new System.Drawing.Size(1353, 541);
             this.dataGridView1.TabIndex = 58;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_3);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // ID
@@ -129,8 +128,9 @@
             "阀帽",
             "泄压阀",
             "舵机",
-            "压力传感器1",
-            "压力传感器2",
+            "锁紧螺母",
+            "调压螺母",
+            "校验阀",
             "在线阀帽",
             "在线工具",
             "游标卡尺",
@@ -153,13 +153,13 @@
             // 
             // biaoding
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 522);
+            this.ClientSize = new System.Drawing.Size(1375, 652);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "biaoding";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "标定设置";

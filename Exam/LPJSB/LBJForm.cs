@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1.Exam
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from TestRecord where qrcode='" + qrcode + "'";
-            // MessageBox.Show(sql);
+            //ff.ShowInfoTip(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
@@ -137,6 +137,7 @@ namespace WindowsFormsApplication1.Exam
             }
 
         }
+        private Fuc ff = new Fuc();
         private void LoadQuestion()
         {
 
@@ -146,7 +147,7 @@ namespace WindowsFormsApplication1.Exam
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from ymg where id =" + questionId.ToString().Trim();
-            MessageBox.Show(sql);
+           ff.ShowInfoTip(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
@@ -228,7 +229,7 @@ namespace WindowsFormsApplication1.Exam
             else
             {
 
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
                 return;
             }
 
@@ -320,7 +321,7 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 this.timer1.Stop();
-                MessageBox.Show("时间到了，请交卷");
+               ff.ShowInfoTip("时间到了，请交卷");
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();

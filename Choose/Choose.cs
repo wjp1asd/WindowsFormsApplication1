@@ -1,4 +1,5 @@
 ﻿using AutoWindowsSize;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,7 +19,7 @@ namespace WindowsFormsApplication1.Exam
         String lxques, zxques, gyques, xhques, lpjques, ymgques;
         String qrcode;
         string idcard = "";
-        public Choose(string id = "321084199510025535")
+        public Choose(string id = "321084199510025536")
         {
             // 身份证ID
             st = new Student(id);
@@ -161,60 +162,20 @@ namespace WindowsFormsApplication1.Exam
                     lxyl = yali2[start2].ToString();
                 }
             }
-            // 在线
-            if (decimal.Parse(t.Zxyl) >= (min + (decimal)0.2))
+            // 在线直接1.0
+
+            string connectionString2 = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con2 = new SqlConnection(connectionString2);
+            string sql2 = "select * from settings where id=1 ";
+
+            SqlCommand com1 = new SqlCommand(sql2, con2);
+            con2.Open();
+            SqlDataReader reader1 = com1.ExecuteReader();
+            while (reader1.Read())
             {
-                cur1 = decimal.Parse(t.Zxyl) - (decimal)0.2;
-
-
+                zxyl= reader1["edyl"].ToString();
             }
-            else
-            {
-                cur1 = decimal.Parse(t.Zxyl) + (decimal)0.2;
-
-            }
-            if (que == "1")
-            {
-                // 当天第一个
-                yali2 = ts.Yali();
-                Random random = new Random();
-                int start2 = random.Next(0, yali2.Count);
-                zxyl = yali2[start2].ToString();
-
-            }
-            else
-            {
-                //不是第一个
-                // max 1.3 min 1 上一个 1.2 cur 1.0 那就在 1.0 1.1里选
-                if (decimal.Parse(t.Lxyl) > cur1)
-                {
-                    // 删除大于等上次
-                    yali2 = ts.Yali();
-                    yali2.RemoveAll(x => x >= decimal.Parse(t.Zxyl));
-                    Random random = new Random();
-                    int start2 = random.Next(0, yali2.Count);
-                    zxyl = yali2[start2].ToString();
-
-
-                }
-                else if (decimal.Parse(t.Zxyl) < cur1)
-                {
-
-                    yali2 = ts.Yali();
-                    yali2.RemoveAll(x => x <= decimal.Parse(t.Zxyl));
-                    Random random = new Random();
-                    int start2 = random.Next(0, yali2.Count);
-                    zxyl = yali2[start2].ToString();
-
-
-                }
-
-
-
-
-
-
-            }
+            
 
             //MessageBox.Show("压力大：" + yali.Max());
             //MessageBox.Show("压力小：" + yali.Min());
@@ -225,7 +186,7 @@ namespace WindowsFormsApplication1.Exam
             //MessageBox.Show("实际2：" + cur1);
 
             //MessageBox.Show("离线压力：" + lxyl);
-            //MessageBox.Show("在线压力：" + zxyl);
+          //  MessageBox.Show("在线压力：" + zxyl);
 
 
 
@@ -286,7 +247,7 @@ namespace WindowsFormsApplication1.Exam
                 "'" + ksdate.ToString() + "'" + "," +
                 "'" + lxyl.ToString() + "'" + "," +
                 "'" + lxlx.Trim().ToString() + "'" + "," +
-                  "'" + zxyl.ToString() + "'" + "," +
+                  "'" + 1.0 + "'" + "," +
                     "'" + zxlx.Trim().ToString() + "'" + "," +
                       "'" + aqfxh.Trim().ToString() + "'" + "," +
                 "'" + a.ToString() + "'" + "," +
@@ -299,13 +260,13 @@ namespace WindowsFormsApplication1.Exam
                   ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-            //  MessageBox.Show(strcomm);
+            // ff.ShowInfoTip(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
 
             con.Close();
-            MessageBox.Show("已创建考试信息，排队号0" + que);
+            ff.ShowInfoTip("已创建考试信息，排队号0" + que);
             qrcode = a;
             //  this.button1.Show();
             Print p = new Print(qrcode);

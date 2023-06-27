@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -112,7 +113,7 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+        private Fuc ff = new Fuc();
         private void button3_Click(object sender, EventArgs e)
         {
             // 生成图片
@@ -128,7 +129,7 @@ namespace WindowsFormsApplication1
             if (File.Exists(connectionString))
             {
                 // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
-                MessageBox.Show("截图成功！");
+               ff.ShowInfoTip("截图成功！");
                 return;
             }
         }

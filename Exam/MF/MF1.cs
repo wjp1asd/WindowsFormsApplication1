@@ -65,7 +65,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
         private void ON_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(datahelp.CurrentStep+"+");
+           ff.ShowInfoTip(datahelp.CurrentStep+"+");
             switch (datahelp.CurrentStep)
             {
                 case 1:

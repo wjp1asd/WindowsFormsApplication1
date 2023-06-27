@@ -34,6 +34,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -54,12 +55,12 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(139, 28);
+            this.label6.Location = new System.Drawing.Point(208, 29);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(312, 36);
+            this.label6.Size = new System.Drawing.Size(204, 36);
             this.label6.TabIndex = 1;
-            this.label6.Text = "华奥兴达安全阀考试系统";
+            this.label6.Text = "安全阀考试系统";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
@@ -100,12 +101,25 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(208, 162);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(204, 36);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "请完成复位工作";
+            // 
             // ProjectInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(629, 482);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label7);
@@ -129,5 +143,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label2;
     }
 }

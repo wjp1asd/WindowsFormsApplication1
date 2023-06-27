@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
-
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -65,12 +65,12 @@ namespace WindowsFormsApplication1
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
                 {
-                    // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
+                    //ff.ShowInfoTip(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
                     s1.Add(i);
                 }
             }
 
-            //  MessageBox.Show(s1.ToString());
+            // ff.ShowInfoTip(s1.ToString());
             if (s1.Count > 0)
             {
                 if (MessageBox.Show("开始批量上传 ? ", "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -119,7 +119,7 @@ namespace WindowsFormsApplication1
                    + oc + ","
                     + od + ")";
                         con.Open();
-                        //  MessageBox.Show(strcomm);
+                        // ff.ShowInfoTip(strcomm);
                         SqlCommand comm = new SqlCommand(strcomm, con);
                         comm.ExecuteNonQuery();
                         this.progressBar1.Value = (i + 1) * this.progressBar1.Step;
@@ -131,19 +131,19 @@ namespace WindowsFormsApplication1
 
 
 
-                    MessageBox.Show("已更新");
+                   ff.ShowInfoTip("已更新");
 
                 }
 
             }
             else
             {
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
             }
 
 
         }
-
+        private Fuc ff = new Fuc();
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1
                 if (!url.Contains("xlsx"))
                 {
 
-                    MessageBox.Show("请上传有效文件");
+                   ff.ShowInfoTip("请上传有效文件");
                     return;
 
 

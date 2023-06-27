@@ -30,9 +30,9 @@ namespace WindowsFormsApplication1
             // Application.Run(new Offline());
             // Application.Run(new StudentSet());
             //   Application.Run(new Settings1());
-            //  Application.Run(new Print());
+            //  Application.Run(new Print("mXjjwVcvXizfGcnbOF9CKw=="));
             //  Application.Run(new plc());
-           Application.Run(new form1());
+       Application.Run(new form1());
          // Application.Run(new zaixianjiaoyan2());
             // Application.Run(new Exam1());
             //Application.Run(new MFYM());
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
                 Directory.CreateDirectory(sPath);
             }else
             {
-             //   MessageBox.Show("123");
+             //  ff.ShowInfoTip("123");
             }
             if (!Directory.Exists(sPath1))
             {

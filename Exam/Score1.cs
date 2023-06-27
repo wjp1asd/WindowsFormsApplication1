@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1.Exam
               "'" + datahelp.SubId + "'" + "," +
               "'" + datahelp.QId.Trim() + "'"
               + ")";
-           // MessageBox.Show(strcomm);
+           //ff.ShowInfoTip(strcomm);
             SqlCommand com = new SqlCommand(strcomm, con);
             con.Open();
             com.ExecuteNonQuery();
@@ -231,43 +231,10 @@ namespace WindowsFormsApplication1.Exam
 
           
         }
-
+        private Fuc ff = new Fuc();
         private void UpdateGrades()
         {
-    //        [Id] INT IDENTITY(1, 1) NOT NULL,
-    //[name]            NCHAR(10) NULL,
-    //[idcard] NCHAR(10) NULL,
-    //[testid] NCHAR(50) NULL,
-    //[zxquestions] NCHAR(10) NULL,
-    //[zxanswer] NCHAR(10) NULL,
-    //[zxcorrect] NCHAR(10) NULL,
-    //[score1] INT NULL DEFAULT 0,
-    //[lxquestions] NCHAR(10) NULL,
-    //[lxanswer] NCHAR(10) NULL,
-    //[lxcorrect] NCHAR(10) NULL,
-    //[score2] INT NULL DEFAULT 0,
-    //[jyquestions] NCHAR(10) NULL,
-    //[jyanswer] NCHAR(10) NULL,
-    //[jycorrect] NCHAR(10) NULL,
-    //[score3] INT NULL DEFAULT 0,
-    //[xhquestions] NCHAR(10) NULL,
-    //[xhanswer] NCHAR(10) NULL,
-    //[xhcorrect] NCHAR(10) NULL,
-    //[score4] INT NULL DEFAULT 0,
-    //[lpjquestions] NCHAR(10) NULL,
-    //[lpjanswer] NCHAR(10) NULL,
-    //[lpjcorrect] NCHAR(10) NULL,
-    //[score5] INT NULL DEFAULT 0,
-    //[gyquestions] NCHAR(10) NULL,
-    //[gyanswer] NCHAR(10) NULL,
-    //[gycorrect] NCHAR(10) NULL,
-    //[score6] INT NULL DEFAULT 0,
-    //[ymgquestions] NCHAR(10) NULL,
-    //[ymganswer] NCHAR(10) NULL,
-    //[ymgcorrect] NCHAR(10) NULL,
-    //[score7] NCHAR(10) NULL,
-    //[path] NCHAR(10) NULL,
-    //[score8] INT NULL DEFAULT 0,
+   
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string a = string.Join(",", datahelp.QuestionIds);
@@ -319,7 +286,7 @@ namespace WindowsFormsApplication1.Exam
             }
             this.label2.Text =str1;
 
-            MessageBox.Show(str1);
+           ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             com.ExecuteNonQuery();

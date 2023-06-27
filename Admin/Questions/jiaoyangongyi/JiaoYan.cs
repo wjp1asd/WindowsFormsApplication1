@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
 
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
-            //    MessageBox.Show(a.color1);
+            //   ff.ShowInfoTip(a.color1);
 
             c.fullsreen(this.label2, this);
 

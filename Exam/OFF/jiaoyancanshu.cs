@@ -43,10 +43,10 @@ namespace WindowsFormsApplication1.Exam
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
            
              double a= double.Parse(a1);
-             double  b =double.Parse(b2);
+             double b =double.Parse(b2);
             yali = double.Parse(this.label1.Text.Trim());
 
-         //   MessageBox.Show(""+a+ b+yali);
+           
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
@@ -57,10 +57,11 @@ namespace WindowsFormsApplication1.Exam
             
             }
             
-            string url = "update grade set wxxz = " + score + "where testid ='" + datahelp.QId.Trim()+ "'"; ;
-            if (ff.RC1(url).Length>0) {
+            string url = "update grade set wxxz = " + score + "where testid = '" + datahelp.QId.Trim()+ "'";
+            //MessageBox.Show(""+ff.RC1(url).Length);
+            if (ff.RC1(url).Length==0) {
                 this.Close();
-                JiaoYan j = new JiaoYan(datahelp.QId.Trim());
+                JiaoYan j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
                 j.Show();
             }
           

@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1.Questions
 
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
-            //    MessageBox.Show(a.color1);
+            //   ff.ShowInfoTip(a.color1);
 
 
 
