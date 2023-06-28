@@ -55,9 +55,24 @@ namespace WindowsFormsApplication1.Models
 
         public string csfm;
 
-    
+        public int updateGrade(int score,string mode,string tid) {
+            int i = 0;
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "update grade set "+mode+" = " + score + "where testid = '" + tid + "'";
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                i++;
+            }
+
+                return i;
+        }
         public void getOne(string tid) {
-        
+       
      
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
