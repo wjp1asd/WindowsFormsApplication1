@@ -1065,7 +1065,7 @@ List<pressure> pp=new List<pressure>();
           
             Action tongdao = () =>
             {
-                richTextBox3.Clear();
+               // richTextBox3.Clear();
                 richTextBox3.AppendText("当前通道：" + sb1.ToString());
                 richTextBox3.AppendText("当前循环时间：" + smin);
 
