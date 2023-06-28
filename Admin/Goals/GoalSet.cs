@@ -27,6 +27,7 @@ namespace WindowsFormsApplication1
             InitTotal();
         }
 
+        Score sc=new Score();
         private void InitTotal()
         {
             string total = "";
@@ -150,6 +151,7 @@ namespace WindowsFormsApplication1
 
                 con.Close();
                ff.ShowInfoTip("已更新");
+                InitTotal();
             }
         }
         private void btnLogin_Click(object sender, EventArgs e)

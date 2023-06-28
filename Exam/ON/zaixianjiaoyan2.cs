@@ -50,7 +50,7 @@ namespace WindowsFormsApplication1.Exam
         int azfm1 = 0;
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
-        int youbiaokachi = 0;
+        int youbiaokachi = 2;
         int lianjiegan = 0;
         int faban = 0;
         int gongju = 0;
@@ -66,8 +66,8 @@ namespace WindowsFormsApplication1.Exam
         public zaixianjiaoyan2()
         {
             InitializeComponent();
-            this.richTextBox2.Hide();
-            this.uiLedLabel4.Hide();
+            //this.richTextBox2.Hide();
+           // this.uiLedLabel4.Hide();
             this.timer1.Stop();
             InitScore();
             this.button2.Enabled = false;
@@ -368,17 +368,12 @@ namespace WindowsFormsApplication1.Exam
                     case "在线阀帽":
                         famao = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
-                    case "在线压力1":
-                        fangzhen1 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
-                        break;
-                    case "在线压力2":
-                        fangzhen2 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
-                        break;
+                  
                 }
 
             }
             // 130012
-         //   MessageBox.Show(youbiaokachi +"-"+ faban + "-" + famao + "-" + fangzhen1 + "-" + fangzhen2+"-" + + gongju + "");
+         //  MessageBox.Show(youbiaokachi +"-"+ siheyi + "-" + famao);
 
             //采集卡初始化+舵机控制板
             try
@@ -604,34 +599,34 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
-                dishow("游标卡尺归位");
-               
+               //ff.ShowInfoTip("游标卡尺归位");
+                //MessageBox.Show("游标卡尺归位");
             }
             else
             {
-                dishow("游标卡尺离开");
-
+              //  ff.ShowInfoTip("游标卡尺离开");
+               // MessageBox.Show("游标卡尺离开");
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - lianjiegan] + "" == "0")
             {
-                dishow("连接杆归位");
+                ff.ShowInfoTip("连接杆归位");
                
             }
             else
             {
-                dishow("连接杆离开");
+                ff.ShowInfoTip("连接杆离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - siheyi] + "" == "0")
             {
-                dishow("四合一归位");
+                ff.ShowInfoTip("四合一归位");
               
             }
             else
             {
-                dishow("四合一离开");
+                ff.ShowInfoTip("四合一离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -640,12 +635,12 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - faban] + "" == "0")
             {
-                dishow("阀瓣归位");
+                ff.ShowInfoTip("阀瓣归位");
               
             }
             else
             {
-                dishow("阀瓣离开");
+                ff.ShowInfoTip("阀瓣离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -654,26 +649,26 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - famao] + "" == "0")
             {
                 //richTextBox2.Text += "阀帽存在";
-                dishow("在线阀帽存在");
+                ff.ShowInfoTip("在线阀帽存在");
             }
             else
             {
-                dishow("在线阀帽拆卸");
+                ff.ShowInfoTip("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                chaixiefamao();
+             //   chaixiefamao();
             }
 
 
             if (DIS[7 - gongju] + "" == "0")
             {
-                dishow("在线工具归位");
+                ff.ShowInfoTip("在线工具归位");
                 //richTextBox2.Text += "工具归位";
 
             }
             else
             {
-                dishow("在线工具离开");
+                ff.ShowInfoTip("在线工具离开");
                 //richTextBox2.Text += "工具离开";
             }
 
@@ -1064,7 +1059,7 @@ namespace WindowsFormsApplication1.Exam
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //获取初始值
-            wucha1(t.Zxlx);
+          
 
             yali = double.Parse(t.Zxyl.Trim());
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
@@ -1073,6 +1068,7 @@ namespace WindowsFormsApplication1.Exam
             double a = double.Parse(a1);
             double b = double.Parse(b2);
             ff.ShowInfoTip("" + a + b + yali);
+            if (step == 0) { return; }
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
