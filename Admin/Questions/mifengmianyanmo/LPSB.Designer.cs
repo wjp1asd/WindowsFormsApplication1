@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
@@ -85,8 +85,8 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(46, 93);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(206, 98);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(424, 279);
             this.panel1.TabIndex = 39;
@@ -111,7 +111,7 @@
             "Y",
             "N"});
             this.comboBox1.Location = new System.Drawing.Point(74, 54);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(328, 20);
             this.comboBox1.TabIndex = 17;
@@ -265,17 +265,17 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pictureBox1.Location = new System.Drawing.Point(0, 263);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(844, 235);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 40;
             this.pictureBox1.TabStop = false;
             // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(264, 24);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(56, 24);
             this.button6.TabIndex = 37;
@@ -286,7 +286,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(185, 24);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(56, 24);
             this.button3.TabIndex = 34;
@@ -297,7 +297,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(22, 24);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 24);
             this.button2.TabIndex = 33;
@@ -308,7 +308,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(98, 24);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(56, 24);
             this.button1.TabIndex = 32;
@@ -371,8 +371,8 @@
             // optionA
             // 
             this.optionA.DataPropertyName = "optionA";
-            dataGridViewCellStyle3.NullValue = "操作";
-            this.optionA.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.NullValue = "操作";
+            this.optionA.DefaultCellStyle = dataGridViewCellStyle1;
             this.optionA.HeaderText = "选项A";
             this.optionA.MinimumWidth = 6;
             this.optionA.Name = "optionA";
@@ -381,8 +381,8 @@
             // optionB
             // 
             this.optionB.DataPropertyName = "optionB";
-            dataGridViewCellStyle4.NullValue = "删除";
-            this.optionB.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.NullValue = "删除";
+            this.optionB.DefaultCellStyle = dataGridViewCellStyle2;
             this.optionB.HeaderText = "选项B";
             this.optionB.MinimumWidth = 6;
             this.optionB.Name = "optionB";
@@ -437,7 +437,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LPSB";
             this.Text = "零件识别";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
