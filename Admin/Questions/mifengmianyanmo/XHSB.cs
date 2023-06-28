@@ -113,7 +113,7 @@ namespace WindowsFormsApplication1.YanMO
 
                 string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
 
-                if (strcolumn == "pick")
+                if (strcolumn == "选取")
                 {
 
                     return;
@@ -281,7 +281,15 @@ namespace WindowsFormsApplication1.YanMO
                     //这里可以编写你需要的任意关于按钮事件的操作~
                      string id = dataGridView1.Rows[a].Cells[1].Value.ToString();//获取焦点触发行的第一个值
                     string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
-                 //  ff.ShowInfoTip("按钮被点击" + strcolumn);
+                                                                                            //  ff.ShowInfoTip("按钮被点击" + strcolumn);
+                   
+                    if (strcolumn == "选取")
+                    {
+
+                        return;
+                    }
+
+
                     if (strcolumn == "cz")
                     {
                        
