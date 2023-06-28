@@ -50,7 +50,7 @@ namespace WindowsFormsApplication1.Exam
         int azfm1 = 0;
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
-        int youbiaokachi = 0;
+        int youbiaokachi = 2;
         int lianjiegan = 0;
         int faban = 0;
         int gongju = 0;
@@ -66,11 +66,13 @@ namespace WindowsFormsApplication1.Exam
         public zaixianjiaoyan2()
         {
             InitializeComponent();
-            this.richTextBox2.Hide();
-            this.uiLedLabel4.Hide();
+            //this.richTextBox2.Hide();
+           // this.uiLedLabel4.Hide();
             this.timer1.Stop();
             InitScore();
-            //ff.fullsreen(this.label2,this) ;
+            this.button2.Enabled = false;
+            this.button1.Enabled = false;
+            this.button4.Enabled = false;
         }
 
         private void InitScore()
@@ -98,21 +100,22 @@ namespace WindowsFormsApplication1.Exam
                 awt.FormSizeChanged();
             }
         }
-
+        //外加力值推荐值
+        double wjltj = 0;
         private void CALCf(object sender, EventArgs e)
         {
             try
             {
-               
-                double mfzj = int.Parse(textBox1.Text.Trim());
-                double zdyl = double.Parse("1.0");
+                double mfzj = double.Parse(textBox1.Text.Trim());
+                //  double zdyl = double.Parse(t.Zxyl);
+                double zdyl = 1.0;
                 double xtyl = double.Parse(textBox2.Text.Trim());
 
-                double F = (zdyl - xtyl) * ((mfzj / 2) * (mfzj / 2) * 3.2/10);
-             //   MessageBox.Show(""+(mfzj / 2) * (mfzj / 2) * 3.2 / 10);
+                double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2/10;
+               
                 this.textBox3.Text = F.ToString();
-
-                double PS = F * 10 / ((mfzj / 2) * (mfzj / 2) * 3.2) + xtyl;
+                wjltj = F;
+                double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
                 this.richTextBox2.Text += "开启压力"+PS;
 
                 this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
@@ -197,7 +200,7 @@ namespace WindowsFormsApplication1.Exam
           
             //注意数据绑定后，它的series是1而不是0  本来正常应该是1   博文后注
             this.chart1.Series[0].ChartType = SeriesChartType.Spline;
-            //this.chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "yyyy-MM-dd-HH:mm:ss";
+            //this.chart1..ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "yyyy-MM-dd-HH:mm:ss";
         
             this.chart1.Series[0].IsValueShownAsLabel = false;             //是否显示数据      
             this.chart1.Series[0].IsVisibleInLegend = false;              //是否显示数据说明  
@@ -207,7 +210,8 @@ namespace WindowsFormsApplication1.Exam
           
             this.chart1.ChartAreas[0].AxisX.LineWidth = 2;                     //X轴宽度
             this.chart1.ChartAreas[0].AxisY.LineWidth = 2;                      //Y轴宽度  
-         
+            this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+            this.chart1.Width = this.Width;
         }
 
         public static byte CalcLRC(byte[] data)
@@ -364,17 +368,12 @@ namespace WindowsFormsApplication1.Exam
                     case "在线阀帽":
                         famao = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
-                    case "在线压力1":
-                        fangzhen1 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
-                        break;
-                    case "在线压力2":
-                        fangzhen2 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
-                        break;
+                  
                 }
 
             }
             // 130012
-         //   MessageBox.Show(youbiaokachi +"-"+ faban + "-" + famao + "-" + fangzhen1 + "-" + fangzhen2+"-" + + gongju + "");
+         //  MessageBox.Show(youbiaokachi +"-"+ siheyi + "-" + famao);
 
             //采集卡初始化+舵机控制板
             try
@@ -600,34 +599,34 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
-                dishow("游标卡尺归位");
-               
+               //ff.ShowInfoTip("游标卡尺归位");
+                //MessageBox.Show("游标卡尺归位");
             }
             else
             {
-                dishow("游标卡尺离开");
-
+              //  ff.ShowInfoTip("游标卡尺离开");
+               // MessageBox.Show("游标卡尺离开");
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - lianjiegan] + "" == "0")
             {
-                dishow("连接杆归位");
+                ff.ShowInfoTip("连接杆归位");
                
             }
             else
             {
-                dishow("连接杆离开");
+                ff.ShowInfoTip("连接杆离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - siheyi] + "" == "0")
             {
-                dishow("四合一归位");
+                ff.ShowInfoTip("四合一归位");
               
             }
             else
             {
-                dishow("四合一离开");
+                ff.ShowInfoTip("四合一离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -636,12 +635,12 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - faban] + "" == "0")
             {
-                dishow("阀瓣归位");
+                ff.ShowInfoTip("阀瓣归位");
               
             }
             else
             {
-                dishow("阀瓣离开");
+                ff.ShowInfoTip("阀瓣离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -650,26 +649,26 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - famao] + "" == "0")
             {
                 //richTextBox2.Text += "阀帽存在";
-                dishow("在线阀帽存在");
+                ff.ShowInfoTip("在线阀帽存在");
             }
             else
             {
-                dishow("在线阀帽拆卸");
+                ff.ShowInfoTip("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                chaixiefamao();
+             //   chaixiefamao();
             }
 
 
             if (DIS[7 - gongju] + "" == "0")
             {
-                dishow("在线工具归位");
+                ff.ShowInfoTip("在线工具归位");
                 //richTextBox2.Text += "工具归位";
 
             }
             else
             {
-                dishow("在线工具离开");
+                ff.ShowInfoTip("在线工具离开");
                 //richTextBox2.Text += "工具离开";
             }
 
@@ -688,62 +687,7 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
-        private void guanbixieyafa()
-        {
-            // 考点
-            switch (step)
-            {
-
-                case 1:
-                    test1();
-                    break;
-                case 2:
-                    test2();
-                    break;
-                case 3:
-                    test3();
-                    break;
-                case 4:
-                    test4();
-                    break;
-            }
-
-
-
-
-
-        }
-
-        private void test4()
-        {
-            //密封性能测试
-            // throw new NotImplementedException();
-        }
-
-        private void test3()
-        {
-            //第三次测试
-            //  throw new NotImplementedException();
-        }
-
-        private void test2()
-        {
-            //第二次测试
-            //  throw new NotImplementedException();
-        }
-
-        private void test1()
-        {
-            //第一次测试第一次校验：
-            //            开校验阀时判断 切换阀打开、泄压阀关闭
-            //                             不正确  提示请检查你的操作是否正确。
-            //  一分钟之内操作正确得分
-            //                 正确     量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
-            //关闭校验阀、打开泄压阀（无先后顺序） 
-            //量程表归0
-
-            this.label1.Text = "泄压阀关闭，请打开校验阀";
-        }
+      
 
         private void chaixiefamao()
         {
@@ -845,12 +789,16 @@ namespace WindowsFormsApplication1.Exam
         }
   
         //上次电压值
-        int dwq;
+        float dwq;
         string cz;
-        int interval = 500;
+        int interval = 200;
          float standardValue = 0;
         // 基础线绘制
         bool standard = false;
+        float currentF = 0;
+        float lastF = 0;
+        //标定k值
+        float k = 1;
         private void voldetla(string sb1, string t8)
         {
             //cz从离线压力设置-初次测试压力中取值
@@ -870,45 +818,61 @@ namespace WindowsFormsApplication1.Exam
             switch (liangcheng)
             {
                 case 1:
-                    b2 = b1 * 200;
-                   // this.chart1.ChartAreas[0].AxisY.Maximum = 20 * 0.6;
+                   k = 1.39F;
+                    //33.33F;
+                    b2 = b1 * 200 * k;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    //推荐力Y的1.2倍
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+                        //20 * 0.6;
                     break;
                 case 2:
-                    b2 = b1 * 500;
-                   // this.chart1.ChartAreas[0].AxisY.Maximum = 50 * 0.6;
+                   k = 1.34F;
+                    //13.33F;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    b2 = b1 * 500 * k;
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+                    //50 * 0.6;
                     break;
                 case 3:
-                    b2 = b1 * 2000;
-                   // this.chart1.ChartAreas[0].AxisY.Maximum = 200 * 0.6; 
+                    k = 1.34F;
+                        //3.33F;
+                    b2 = b1 * 2000 * k;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+                    //200 * 0.6; 
                     break;
                 case 4:
-                    b2 = b1 * 5000;
-                   // this.chart1.ChartAreas[0].AxisY.Maximum = 500 * 0.6; 
+                   k = 1.34F;
+                    //1.33F;
+                    b2 = b1 * 5000*k;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2; 
+                    //500 * 0.6; 
                     break;
             }
-            
            
-            if (b2 > 0) {
-              
-                setstandard(b2,a);
-            }
+           
                
            
-            if (show&&(a - standardValue)>0) {
+            if (show&&(a - standardValue)>=0) {
                 //    ff.ShowInfoTip("当前电压值-初始电压值："+(a- standardValue).ToString());
-                
-                this.chart1.Series[0].Points.AddXY(cisu,b2);
+                currentF = b2 - standardValue;
+               
+                this.chart1.Series[0].Points.AddXY(cisu, b2);
+                showpoint(cisu);
+                lastF = b2 - standardValue;
             }
-           
+         
             Action tongdao = () =>
             {
                 richTextBox2.Clear();
                richTextBox2.AppendText("当前循环时间：" + smin);
 
-                richTextBox2.AppendText("当前电压差：" + (a-dwq));
+                richTextBox2.AppendText("当前电压差：" + (dwq-a));
 
-                richTextBox2.AppendText("当前压力：" + (b2-standardValue) + "KG");
-               
+                richTextBox2.AppendText("当前压力：" +b2 + "KG");
+                this.textBox4.Text =""+ (b2);
                 richTextBox2.AppendText("当前循环次数：" + cisu);
                 richTextBox2.AppendText("上次电位器码值码值：" + dwq);
 
@@ -922,34 +886,36 @@ namespace WindowsFormsApplication1.Exam
              
             };
             this.Invoke(tongdao);
-           
-           
+            dwq = a;
+
+        }
+        int smin = 0;
+        private void showpoint(int x)
+        {
+            this.chart1.Series[0].Points[x].MarkerColor=Color.Red;
+            this.chart1.Series[0].Points[x].MarkerSize = 10;
+            this.chart1.Series[0].Points[x].MarkerStyle = MarkerStyle.Star6;
+
         }
 
-        private void setstandard(float max,float a)
+        private void setstandard(float a)
         {
             if (standard==false) {
                 standardValue = a;
+                //MessageBox.Show(""+a);
                 StripLine s = new StripLine();
                 s.BackColor = Color.Red;
                 s.Interval = 0;
                 s.StripWidth = 1;
-                //this.chart1.ChartAreas[0].AxisY.Minimum =0;
-                s.IntervalOffset = max;
-
+                s.IntervalOffset = currentF;
                 this.chart1.ChartAreas[0].AxisY.StripLines.Add(s);
                 standard = true;
             }
         }
 
-        int czmaz;
-
-
-      
-        //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
-        int maz = 2500;
-        int smin = 1000;
+  
         int cisu = 0;
+
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -987,7 +953,7 @@ namespace WindowsFormsApplication1.Exam
 
             richTextBox2.Text += "考试码：" + datahelp.QId;
 
-            wucha1(t.Zxlx);
+           
          
               
            this.richTextBox2.Text += "当前采集卡端口：" + datahelp.plc1 + "波特率" + datahelp.plcbt1 + "起始位，停止位，校验位" + datahelp.plcst1 + "-" + datahelp.plcsp1 + "-" + datahelp.plcjy1;
@@ -1016,6 +982,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            this.plcinit();
             step = 1;
             switch(step) {
                 case 0:
@@ -1034,8 +1001,11 @@ namespace WindowsFormsApplication1.Exam
                         this.button3.Text = "正在校验";
                         this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                         this.timer1.Start();
-
-                    }
+                        this.comboBox1.Enabled =false; this.comboBox2.Enabled =false;
+                        this.button1.Enabled = true;
+                        this.button2.Enabled = true;
+                        this.button4.Enabled = true;
+                    }   
                     else
                     {
 
@@ -1053,13 +1023,22 @@ namespace WindowsFormsApplication1.Exam
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            liangcheng =this.comboBox2.SelectedIndex+1;   
+            liangcheng =this.comboBox2.SelectedIndex+1;
+
+            this.comboBox2.Enabled = false;
         }
         bool show = false;
         private void button1_Click(object sender, EventArgs e)
         {
             // 初始化图表
             show = true;
+
+            this.chart1.ChartAreas[0].AxisY.Maximum = 1.2 * wjltj;
+            if (dwq>0) {
+
+                setstandard(dwq);
+            }
+          
         }
 
         private void chart1_GetToolTipText(object sender, ToolTipEventArgs e)
@@ -1079,6 +1058,9 @@ namespace WindowsFormsApplication1.Exam
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //获取初始值
+          
+
             yali = double.Parse(t.Zxyl.Trim());
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
@@ -1086,16 +1068,28 @@ namespace WindowsFormsApplication1.Exam
             double a = double.Parse(a1);
             double b = double.Parse(b2);
             ff.ShowInfoTip("" + a + b + yali);
+            if (step == 0) { return; }
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
                 ff.ShowErrorTip("误差选择错误，不得分");
+                this.comboBox1.Enabled = false;
             }
             else
             {
                 ff.ShowSuccessTip("选择正确，得分" + wxxz1);
-
+                this.comboBox1.Enabled = false;
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_Click(object sender, EventArgs e)
+        {
+           
         }
 
         private void wucha1(string type)

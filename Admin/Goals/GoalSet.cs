@@ -24,7 +24,26 @@ namespace WindowsFormsApplication1
             string sql = "select * from " + TableName;
 
             InitTable(sql);
+            InitTotal();
         }
+
+        Score sc=new Score();
+        private void InitTotal()
+        {
+            string total = "";
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = " select sum(score) from "+TableName;
+            SqlCommand com1 = new SqlCommand(sql, con);
+            con.Open();
+            SqlDataReader reader = com1.ExecuteReader();
+            while (reader.Read())
+            {
+                total = reader[0].ToString();
+            }
+            this.label1.Text = "总分："+total;
+        }
+
         private void InitTable(string sql)
         {
             this.dataGridView1.Visible = true;
@@ -132,6 +151,7 @@ namespace WindowsFormsApplication1
 
                 con.Close();
                ff.ShowInfoTip("已更新");
+                InitTotal();
             }
         }
         private void btnLogin_Click(object sender, EventArgs e)
