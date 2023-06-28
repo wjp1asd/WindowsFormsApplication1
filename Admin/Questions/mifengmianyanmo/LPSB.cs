@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1.YanMO
         {
             InitializeComponent();
             string sql = "select * from " + TableName;
-            this.panel1.Hide();
+            //this.panel1.Hide();
             InitTable(sql);
         }
         //List<QuestionA> qs;
@@ -330,6 +330,10 @@ namespace WindowsFormsApplication1.YanMO
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+
+            string connectionString = ConfigurationManager.AppSettings["loc"];
+
+            this.label6.Text += ":图片必须放在共享路" + connectionString;
         }
 
 

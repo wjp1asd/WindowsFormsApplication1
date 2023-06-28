@@ -284,5 +284,10 @@ namespace WindowsFormsApplication1.YanMO
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
         }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
