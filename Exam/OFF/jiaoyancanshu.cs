@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1.Exam
         }
         List<Wucha> wuchas = new List<Wucha>();
         private double yali = 0;
-
+        Grade g=new Grade();    
         private void wucha(string type)
         {
            Wucha w= new Wucha();
@@ -56,10 +56,10 @@ namespace WindowsFormsApplication1.Exam
                 ff.ShowSuccessTip("选择正确，得分"+score);
             
             }
-            
-            string url = "update grade set wxxz = " + score + "where testid = '" + datahelp.QId.Trim()+ "'";
+          int i=  g.updateGrade(score,"wxxz", datahelp.QId.Trim());
+           
             //MessageBox.Show(""+ff.RC1(url).Length);
-            if (ff.RC1(url).Length==0) {
+            if (i>0) {
                 this.Close();
                 JiaoYan j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
                 j.Show();

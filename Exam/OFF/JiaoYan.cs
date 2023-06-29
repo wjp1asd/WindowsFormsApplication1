@@ -208,7 +208,7 @@ namespace WindowsFormsApplication1.Exam
                 if (liangcheng > 0)
                 {
                     //  开校验阀时判断  切换阀打开、泄压阀关闭
-                    guanbixieyafa();
+                //    guanbixieyafa();
 
                 }
                 else {
@@ -1006,7 +1006,7 @@ List<pressure> pp=new List<pressure>();
         
         private void voldetla1(string v, string sb1, string t1)
         {
-            int a = Convert.ToInt32(sb1.ToString(), 16);
+            int a1 = Convert.ToInt32(sb1.ToString(), 16);
          
             int b = Convert.ToInt32(t1.ToString(), 16);
 
@@ -1014,15 +1014,15 @@ List<pressure> pp=new List<pressure>();
             {
               //  richTextBox3.Clear();
                 richTextBox3.AppendText(v+ sb1.ToString());
-                richTextBox3.AppendText(v + "当前电压差：" + (sjdwq - a));
-                richTextBox3.AppendText(v+"当前电位器码值（电压值）：" + a);
+                richTextBox3.AppendText(v + "当前电压差：" + (sjdwq - a1));
+                richTextBox3.AppendText(v+"当前电位器码值（电压值）：" + a1);
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
 
-                if ((a - sjdwq) > 0)
+                if ((a1 - sjdwq) > 0)
                 {
                     ff.ShowInfoTip(v + "正在锁紧");
                 }
-                else if((a - sjdwq) < 0) {
+                else if((a1 - sjdwq) < 0) {
                     ff.ShowInfoTip(v + "正在放松");
                 }
             };
@@ -1030,7 +1030,7 @@ List<pressure> pp=new List<pressure>();
         }
         private void voldetla2(string v, string sb1, string t1)
         {
-            int a = Convert.ToInt32(sb1.ToString(), 16);
+            int a2 = Convert.ToInt32(sb1.ToString(), 16);
           
             int b = Convert.ToInt32(t1.ToString(), 16);
 
@@ -1038,15 +1038,15 @@ List<pressure> pp=new List<pressure>();
             {
                 //  richTextBox3.Clear();
                 richTextBox3.AppendText(v + sb1.ToString());
-                richTextBox3.AppendText(v + "当前电压差：" + (tydwq - a));
-                richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a);
+                richTextBox3.AppendText(v + "当前电压差：" + (tydwq - a2));
+                richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a2);
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + tydwq);
 
-                if ((a - tydwq) > 0)
+                if ((a2 - tydwq) > 0)
                 {
                     ff.ShowInfoTip(v + "正在锁紧");
                 }
-                else if ((a - tydwq) < 0)
+                else if ((a2 - tydwq) < 0)
                 {
                     ff.ShowInfoTip(v + "正在放松");
                 }
@@ -1365,9 +1365,7 @@ List<pressure> pp=new List<pressure>();
                 case -1:
                     this.button1.Text = "测试未开始";
                     break;
-                case 0:
-                    this.button1.Text = "初次测试";
-                    break;
+              
                 case 1:
                     this.button1.Text = "第一次测试";
                     break;
