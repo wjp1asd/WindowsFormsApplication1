@@ -10,8 +10,8 @@ namespace WindowsFormsApplication1.Exam
         public gongyijiaoyan()
         {
             InitializeComponent();
-            this.change();
 
+            InitUI();
 
         }
         private Fuc ff = new Fuc();
@@ -24,7 +24,26 @@ namespace WindowsFormsApplication1.Exam
 
             ff.fullsreen(this.label2, this);
         }
+        private void InitUI()
+        {
+            datahelp a = new datahelp();
+            a.Initc();
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
+            this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
+            this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
+          
+
+            this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
+
+
+
+
+
+            this.change();
+
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -63,6 +82,7 @@ namespace WindowsFormsApplication1.Exam
             datahelp.SubId = 3;
             QuestionForm a = new QuestionForm(datahelp.QId, "3");
             a.Show();
+            this.Close();
         }
     }
 }

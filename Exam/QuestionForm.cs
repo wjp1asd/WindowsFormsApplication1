@@ -347,6 +347,7 @@ namespace WindowsFormsApplication1
             else
             {
                 this.btnNext.Text = "提交";
+               
                 btnAnswer_Click(sender, e);
             }
         }
@@ -431,7 +432,7 @@ namespace WindowsFormsApplication1
 
         private void btnAnswer_Click(object sender, EventArgs e)
         {
-           
+          this.Hide();
             AnswerForm frm = new AnswerForm();
            
             frm.Show();

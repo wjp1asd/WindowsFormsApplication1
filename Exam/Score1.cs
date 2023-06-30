@@ -191,6 +191,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
                     OFF of = new OFF(datahelp.QId);
                     of.Show();
                     this.Close();
@@ -198,12 +199,16 @@ namespace WindowsFormsApplication1.Exam
                     break;
                 case 2:
                     datahelp.CurrentStep = 2;
-                    ON on = new ON(datahelp.QId);
-                    on.Show();
+                    datahelp.CurrentStep1 = 2;
+                    //ON on = new ON(datahelp.QId);
+                    //on.Show();
+                    zaixianjiaoyan x = new zaixianjiaoyan();
+                    x.Show();
                     this.Close();
                     break;
                 case 3:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
                     ON on1 = new ON(datahelp.QId);
                     on1.Show();
                     this.Close();
@@ -211,6 +216,7 @@ namespace WindowsFormsApplication1.Exam
 
                 case 5:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
                     MF1 mf = new MF1();
                     mf.Show();
                     this.Close();
@@ -286,7 +292,7 @@ namespace WindowsFormsApplication1.Exam
             }
             this.label2.Text =str1;
 
-           ff.ShowInfoTip(str1);
+        //   ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             com.ExecuteNonQuery();

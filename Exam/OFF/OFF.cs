@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void OFF_Load(object sender, EventArgs e)
         {
-            switch (datahelp.CurrentStep) {
+            switch (datahelp.CurrentStep1) {
                 case 1:
 
                     this.button3.Enabled = true;

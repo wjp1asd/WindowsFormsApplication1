@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
+using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -160,18 +161,28 @@ namespace WindowsFormsApplication1
             //   string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
             string connectionString1 = loc + "\\研磨照片\\" + t.Qrcode + t.Ksname + ".bmp";
             bt.Save(connectionString, System.Drawing.Imaging.ImageFormat.Bmp);
-            bt.Save(connectionString1, System.Drawing.Imaging.ImageFormat.Bmp);
+           
+            //try
+            //{
+            //    bt.Save(connectionString1, System.Drawing.Imaging.ImageFormat.Bmp);
+            //}
+            //catch (Exception)
+            //{
 
+            //    throw;
+            //}
             if (File.Exists(connectionString))
             {
-               // g.upda
+               // g.updateGrade(
                 ff.ShowSuccessTip("得分"+score);
                 // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
-               ff.ShowInfoTip("截图成功！");
-                return;
+              // ff.ShowInfoTip("截图成功！");
+                
             }
-
+            datahelp.CurrentStep = 5;   
             this.Close();
+            MF1 mF = new MF1();
+            mF.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -182,7 +193,7 @@ namespace WindowsFormsApplication1
         private void MFYM_KeyDown(object sender, KeyEventArgs e)
 
         {
-            ff.ShowInfoTip("ESC");
+           
             if (e.KeyCode == Keys.Escape)
             {
                 ff.ShowInfoTip("ESC");
