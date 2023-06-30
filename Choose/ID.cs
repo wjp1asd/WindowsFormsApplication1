@@ -125,7 +125,14 @@ namespace WindowsFormsApplication1
                     if (authenticate == 0)
                     {
                         int readContent = IDCardReader.Read_Content(1);
-                        this.groupBox1.Show();
+
+                        Action tongdao = () =>
+                        {
+                            this.groupBox1.Show();
+                        };
+                        this.Invoke(tongdao);
+
+                         
 
                         if (IDCardReader.IsFPRIDCard() == 1)
                         {
@@ -270,7 +277,7 @@ namespace WindowsFormsApplication1
                         else
                         {
 
-
+                        
 
                             lblAddress.Visible = true;
                             lblDept.Visible = true;
