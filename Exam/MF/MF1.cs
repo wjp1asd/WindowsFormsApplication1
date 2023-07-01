@@ -28,9 +28,6 @@ namespace WindowsFormsApplication1.Exam.MF
             this.button5.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
 
-            this.label2.Text = "在线校验";
-
-
 
             this.change();
 
@@ -124,6 +121,7 @@ namespace WindowsFormsApplication1.Exam.MF
             datahelp.SubId = 2;
             zaixianjiaoyan a = new zaixianjiaoyan();
             a.Show();
+            this.Close();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -141,6 +139,7 @@ namespace WindowsFormsApplication1.Exam.MF
             datahelp.SubId = 4;
             QuestionForm a = new QuestionForm(datahelp.QId, "4");
             a.Show();
+            this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)

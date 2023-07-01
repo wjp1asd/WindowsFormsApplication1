@@ -217,6 +217,19 @@ namespace WindowsFormsApplication1
         {
             // ft.showloading();
 
+            initsetp();
+           
+        }
+
+        private void initsetp()
+        {
+            datahelp.CurrentStep = 1;
+            datahelp.CurrentStep1 = 1;
+            datahelp.QuestionIds = null;
+            datahelp.CurrentQuestion = 0;
+            datahelp.UserAnswer = null;
+            datahelp.curAnswer = null;
+            datahelp.Correct = null;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -258,7 +271,7 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Choose c = new Choose();
+            Choose c = new Choose("321084199510025535");
             c.Show();
             this.Hide();
         }

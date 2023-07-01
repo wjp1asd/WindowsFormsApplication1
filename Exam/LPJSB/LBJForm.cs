@@ -147,7 +147,7 @@ namespace WindowsFormsApplication1.Exam
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from ymg where id =" + questionId.ToString().Trim();
-           ff.ShowInfoTip(sql);
+          // ff.ShowInfoTip(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
@@ -158,7 +158,7 @@ namespace WindowsFormsApplication1.Exam
                 string c = reader["optionC"].ToString();
                 string d = reader["optionD"].ToString();
                 datahelp.curAnswer = reader["answer"].ToString();
-                this.label7.Text = datahelp.curAnswer;
+                this.label7.Text = datahelp.CurrentQuestion.ToString();
                 // this.txtQuestionContent.Text = reader["question"].ToString();
                 this.rdbA.Show();
                 this.rdbA.Tag = "A";
@@ -348,8 +348,8 @@ namespace WindowsFormsApplication1.Exam
         private void btnAnswer_Click(object sender, EventArgs e)
         {
             AnswerForm frm = new AnswerForm();
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+                 frm.Show();
+            this.Close();
 
         }
         private void SelectOption()

@@ -13,13 +13,14 @@ namespace WindowsFormsApplication1.Exam
         public jiaoyancanshu()
         {
             InitializeComponent();
+
+
           
-
-
         }
         List<Wucha> wuchas = new List<Wucha>();
         private double yali = 0;
-        Grade g=new Grade();    
+        Grade g=new Grade();  
+        
         private void wucha(string type)
         {
            Wucha w= new Wucha();
@@ -56,7 +57,7 @@ namespace WindowsFormsApplication1.Exam
                 ff.ShowSuccessTip("选择正确，得分"+score);
             
             }
-          int i=  g.updateGrade(score,"wxxz", datahelp.QId.Trim());
+            int i=  g.updateGrade(score,"wxxz", datahelp.QId.Trim());
            
             //MessageBox.Show(""+ff.RC1(url).Length);
            
@@ -72,6 +73,16 @@ namespace WindowsFormsApplication1.Exam
         private void jiaoyancanshu_Load(object sender, EventArgs e)
         {
             TestRecord t = new TestRecord();
+            g.getOne(datahelp.QId);
+            if (g.wxxz > -1)
+            {
+
+                ff.ShowErrorDialog("重复考试");
+
+                this.Close();
+            }
+
+            g.updateGrade(0, "wxxz", datahelp.QId);
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from TestRecord where qrcode='" + datahelp.QId + "'";
@@ -113,7 +124,9 @@ namespace WindowsFormsApplication1.Exam
             wucha(t.Lxlx);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             Score c= new Score();
-          score =  c.getScore("wxxz");
+            score =  c.getScore("wxxz");
+           
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -333,12 +333,6 @@
     <Compile Include="Choose\Choose.Designer.cs">
       <DependentUpon>Choose.cs</DependentUpon>
     </Compile>
-    <Compile Include="Choose\Info.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Choose\Info.Designer.cs">
-      <DependentUpon>Info.cs</DependentUpon>
-    </Compile>
     <Compile Include="Exam\OFF\OFF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -579,6 +573,9 @@
     <EmbeddedResource Include="Choose\Choose.resx">
       <DependentUpon>Choose.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Exam\AnswerForm.resx">
+      <DependentUpon>AnswerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Exam\Exam1.resx">
       <DependentUpon>Exam1.cs</DependentUpon>
     </EmbeddedResource>
@@ -587,9 +584,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Choose\ID.resx">
       <DependentUpon>ID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Choose\Info.resx">
-      <DependentUpon>Info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\MF\MF1.resx">
       <DependentUpon>MF1.cs</DependentUpon>

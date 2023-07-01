@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
         Fuc f = new Fuc();
         TestRecord t;
         QuestionA qq = new QuestionA();
+        Grade g=new Grade();    
         string []correct;
         public QuestionForm()
         {
@@ -26,7 +27,7 @@ namespace WindowsFormsApplication1
             this.label7.Hide();
             this.label8.Hide();
             this.label9.Hide();
-
+           
         }
         public QuestionForm(String qrcode, String subtype = "1")
         {
@@ -38,7 +39,7 @@ namespace WindowsFormsApplication1
             string sql = "select * from TestRecord where qrcode = '" + qrcode + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-
+            g.getOne(qrcode);
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
@@ -76,7 +77,14 @@ namespace WindowsFormsApplication1
                     {
                         datahelp.QuestionIds = t.Lxquestions.Split(',');
                         datahelp.SubId = 1;
-                     
+
+                        if (int.Parse(g.score2) > -1) {
+
+                            f.ShowErrorDialog("重复考试");
+
+                            this.Enabled = false;
+                        }
+                        g.updateGrade(0,"score2",datahelp.QId);
                        
                     }
                     else {
@@ -91,8 +99,16 @@ namespace WindowsFormsApplication1
                     {
                         datahelp.QuestionIds = t.Zquestions.Split(',');
                         datahelp.SubId = 2;
-                  
-                       
+
+                        if (int.Parse(g.score1) > -1)
+                        {
+
+                            f.ShowErrorDialog("重复考试");
+
+                            this.Enabled = false;
+                        }
+
+                        g.updateGrade(0, "score1", datahelp.QId);
                     }
                     else {
                         f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
@@ -106,7 +122,14 @@ namespace WindowsFormsApplication1
                         datahelp.QuestionIds = t.Gyquestions.Split(',');
                         datahelp.SubId = 3;
 
+                        if (int.Parse(g.score3) > -1)
+                        {
 
+                            f.ShowErrorDialog("重复考试");
+
+                            this.Enabled = false;
+                        }
+                        g.updateGrade(0, "score3", datahelp.QId);
                     }
                     else
                     {
@@ -122,7 +145,14 @@ namespace WindowsFormsApplication1
                         datahelp.QuestionIds = t.Ymguestions.Split(',');
                         datahelp.SubId = 4;
 
+                        if (int.Parse(g.score7) > -1)
+                        {
 
+                            f.ShowErrorDialog("重复考试");
+
+                            this.Enabled = false;
+                        }
+                        g.updateGrade(0, "score7", datahelp.QId);
                     }
                     else
                     {

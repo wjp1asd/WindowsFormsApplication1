@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Questions;
 
 namespace WindowsFormsApplication1.Exam
@@ -20,13 +21,14 @@ namespace WindowsFormsApplication1.Exam
         {
             InitializeComponent();
         }
-
+        string tper = "";
 
         string Id = "1";
         public record(string id,string type="离线")
         {
             InitializeComponent();
             Id = id;
+            tper = type;    
             Initc();
             this.label2.Text = type + this.label2.Text;
             this.printDocument1.OriginAtMargins = true;//启用页边距
@@ -100,15 +102,13 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string connectionString = ConfigurationManager.AppSettings["machine"];
-
-            connectionString = "2";
-            if (connectionString == "2") {
+          
+            if (tper == "离线") {
                 OFF off = new OFF(datahelp.QId);
                 off.Show();
                 datahelp.CurrentStep1 = 4;
             }
-            if (connectionString == "3")
+            if (tper == "在线")
             {
                 zaixianjiaoyan z=new zaixianjiaoyan();
                 z.Show();
@@ -127,10 +127,31 @@ namespace WindowsFormsApplication1.Exam
             g.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
             e.Graphics.DrawImage(myFormImage, 0, 0);
         }
-
+        Grade g = new Grade();
+        Fuc ff=new Fuc();
         private void record_Load(object sender, EventArgs e)
         {
+            g.getOne(datahelp.QId);
 
+            if (tper == "离线")
+            {
+                if (g.yqzdyl > -1)
+                {
+
+                    ff.ShowErrorDialog("重复考试");
+
+                    this.Close();
+                }
+
+                g.updateGrade(0, "yqzdyl", datahelp.QId);
+
+
+            }
+            else {
+               
+
+            }
+              
         }
     }
 }

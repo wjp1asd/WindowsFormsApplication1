@@ -47,14 +47,16 @@
             this.rdbC = new System.Windows.Forms.CheckBox();
             this.rdbB = new System.Windows.Forms.CheckBox();
             this.rdbA = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUp
             // 
             this.btnUp.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnUp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnUp.Location = new System.Drawing.Point(385, 483);
+            this.btnUp.Location = new System.Drawing.Point(422, 11);
             this.btnUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(124, 35);
@@ -80,7 +82,7 @@
             // 
             this.btnNext.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnNext.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnNext.Location = new System.Drawing.Point(722, 483);
+            this.btnNext.Location = new System.Drawing.Point(753, 11);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(133, 35);
@@ -91,6 +93,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -147,8 +150,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label3.Font = new System.Drawing.Font("宋体", 14F);
-            this.label3.Location = new System.Drawing.Point(173, 555);
+            this.label3.Location = new System.Drawing.Point(0, 586);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(226, 24);
@@ -159,8 +163,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label6.Font = new System.Drawing.Font("宋体", 14F);
-            this.label6.Location = new System.Drawing.Point(173, 592);
+            this.label6.Location = new System.Drawing.Point(0, 610);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(226, 24);
@@ -173,7 +178,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(124, 95);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(275, 345);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -192,8 +197,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label9.Font = new System.Drawing.Font("宋体", 14F);
-            this.label9.Location = new System.Drawing.Point(537, 349);
+            this.label9.Location = new System.Drawing.Point(0, 538);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(226, 24);
@@ -204,8 +210,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label8.Font = new System.Drawing.Font("宋体", 14F);
-            this.label8.Location = new System.Drawing.Point(155, 526);
+            this.label8.Location = new System.Drawing.Point(0, 562);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(226, 24);
@@ -214,6 +221,7 @@
             // 
             // rdbD
             // 
+            this.rdbD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbD.AutoSize = true;
             this.rdbD.Font = new System.Drawing.Font("宋体", 14F);
             this.rdbD.Location = new System.Drawing.Point(1041, 230);
@@ -227,6 +235,7 @@
             // 
             // rdbC
             // 
+            this.rdbC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbC.AutoSize = true;
             this.rdbC.Font = new System.Drawing.Font("宋体", 14F);
             this.rdbC.Location = new System.Drawing.Point(511, 230);
@@ -240,6 +249,7 @@
             // 
             // rdbB
             // 
+            this.rdbB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbB.AutoSize = true;
             this.rdbB.Font = new System.Drawing.Font("宋体", 14F);
             this.rdbB.Location = new System.Drawing.Point(1041, 173);
@@ -253,6 +263,7 @@
             // 
             // rdbA
             // 
+            this.rdbA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbA.AutoSize = true;
             this.rdbA.Font = new System.Drawing.Font("宋体", 14F);
             this.rdbA.Location = new System.Drawing.Point(511, 173);
@@ -264,11 +275,25 @@
             this.rdbA.UseVisualStyleBackColor = true;
             this.rdbA.Click += new System.EventHandler(this.rdbA_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnUp);
+            this.groupBox1.Controls.Add(this.btnNext);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(0, 484);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(1298, 54);
+            this.groupBox1.TabIndex = 104;
+            this.groupBox1.TabStop = false;
+            // 
             // LBJForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1298, 634);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rdbD);
             this.Controls.Add(this.rdbC);
             this.Controls.Add(this.rdbB);
@@ -279,20 +304,19 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnUp);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Name = "LBJForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "答题中请勿退出";
+            this.Text = "零配件答题";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form4_Load);
             this.SizeChanged += new System.EventHandler(this.groupBox1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,5 +341,6 @@
         private System.Windows.Forms.CheckBox rdbC;
         private System.Windows.Forms.CheckBox rdbB;
         public System.Windows.Forms.CheckBox rdbA;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

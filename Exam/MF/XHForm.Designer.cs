@@ -168,8 +168,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label6.Font = new System.Drawing.Font("宋体", 14F);
-            this.label6.Location = new System.Drawing.Point(1093, 428);
+            this.label6.Location = new System.Drawing.Point(3, 603);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(226, 24);
@@ -180,8 +181,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label7.Font = new System.Drawing.Font("宋体", 14F);
-            this.label7.Location = new System.Drawing.Point(1093, 391);
+            this.label7.Location = new System.Drawing.Point(3, 579);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(226, 24);
@@ -242,8 +244,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label8.Font = new System.Drawing.Font("宋体", 14F);
-            this.label8.Location = new System.Drawing.Point(1093, 464);
+            this.label8.Location = new System.Drawing.Point(3, 555);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(226, 24);
@@ -254,8 +257,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label9.Font = new System.Drawing.Font("宋体", 14F);
-            this.label9.Location = new System.Drawing.Point(1093, 355);
+            this.label9.Location = new System.Drawing.Point(3, 531);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(226, 24);
@@ -309,7 +313,9 @@
             this.ClientSize = new System.Drawing.Size(1374, 630);
             this.Controls.Add(this.groupBox1);
             this.Name = "XHForm";
-            this.Text = "XHForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "型号识别答题";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form4_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
