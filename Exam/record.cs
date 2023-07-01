@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1.Exam
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from lxjl where id=" + Id;
+            string sql = "select * from lxjl where id= 1" ;
             datahelp a = new datahelp();
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
@@ -102,6 +102,7 @@ namespace WindowsFormsApplication1.Exam
         {
             string connectionString = ConfigurationManager.AppSettings["machine"];
 
+            connectionString = "2";
             if (connectionString == "2") {
                 OFF off = new OFF(datahelp.QId);
                 off.Show();

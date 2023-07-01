@@ -60,6 +60,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button1_Click(object sender, EventArgs e)
         {
+            datahelp.CurrentStep1 = 3;
             this.Close();
             jiaoyancanshu j = new jiaoyancanshu();
             j.Show();
@@ -129,7 +130,7 @@ namespace WindowsFormsApplication1.Exam
         {
             datahelp.CurrentStep = 4;
             this.Close();
-            Record r=new Record(datahelp.QId);
+           record r= new record(datahelp.QId);
             r.Show();
             
 
@@ -139,8 +140,8 @@ namespace WindowsFormsApplication1.Exam
         {
             datahelp.status=1;
             this.Close();
-            Exam1 e1 =new Exam1();
-            e1.Show();
+            ProjectInfo p = new ProjectInfo();
+            p.Show();
             
 
         }

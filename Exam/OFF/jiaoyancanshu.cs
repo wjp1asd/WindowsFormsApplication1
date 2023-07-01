@@ -59,11 +59,11 @@ namespace WindowsFormsApplication1.Exam
           int i=  g.updateGrade(score,"wxxz", datahelp.QId.Trim());
            
             //MessageBox.Show(""+ff.RC1(url).Length);
-            if (i>0) {
+           
                 this.Close();
                 JiaoYan j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
                 j.Show();
-            }
+            
           
             
            

@@ -302,8 +302,11 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            XHSB xh=new XHSB();
-            xh.Show();
+            jiaoyancanshu  jy = new jiaoyancanshu();    
+            jy.Show();
+
+           // XHSB xh =new XHSB();
+            //xh.Show();
         }
 
         private void button11_Click(object sender, EventArgs e)

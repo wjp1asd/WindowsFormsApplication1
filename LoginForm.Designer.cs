@@ -308,7 +308,7 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(131, 48);
             this.button10.TabIndex = 25;
-            this.button10.Text = "型号识别";
+            this.button10.Text = "离线";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
@@ -328,7 +328,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(131, 48);
             this.button12.TabIndex = 27;
-            this.button12.Text = "在线测试";
+            this.button12.Text = "成绩单";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
