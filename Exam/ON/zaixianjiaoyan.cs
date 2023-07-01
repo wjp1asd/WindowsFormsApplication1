@@ -74,6 +74,37 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+
+            switch (datahelp.CurrentStep1)
+            {
+                case 1:
+
+                    this.button3.Enabled = true;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+
+                    break;
+                case 2:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = true;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+                    break;
+                case 3:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = true;
+                    this.button4.Enabled = false;
+                    break;
+                case 4:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = true;
+                    break;
+
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,6 +118,13 @@ namespace WindowsFormsApplication1.Exam
             this.Close();
             ProjectInfo p =new ProjectInfo();
             p.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            record a=new record("1","在线");
+            a.Show();
         }
     }
 }

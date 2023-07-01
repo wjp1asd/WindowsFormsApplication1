@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -23,7 +24,26 @@ namespace WindowsFormsApplication1
             string sql = "select * from " + TableName;
 
             InitTable(sql);
+            InitTotal();
         }
+
+        Score sc=new Score();
+        private void InitTotal()
+        {
+            string total = "";
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = " select sum(score) from "+TableName;
+            SqlCommand com1 = new SqlCommand(sql, con);
+            con.Open();
+            SqlDataReader reader = com1.ExecuteReader();
+            while (reader.Read())
+            {
+                total = reader[0].ToString();
+            }
+            this.label1.Text = "总分："+total;
+        }
+
         private void InitTable(string sql)
         {
             this.dataGridView1.Visible = true;
@@ -88,7 +108,7 @@ namespace WindowsFormsApplication1
             }
             all = !all;
         }
-
+        private Fuc ff = new Fuc();
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -130,7 +150,8 @@ namespace WindowsFormsApplication1
                 comm.ExecuteNonQuery();
 
                 con.Close();
-                MessageBox.Show("已更新");
+               ff.ShowInfoTip("已更新");
+                InitTotal();
             }
         }
         private void btnLogin_Click(object sender, EventArgs e)
@@ -149,12 +170,12 @@ namespace WindowsFormsApplication1
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
                     //{
-                    // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
+                    //ff.ShowInfoTip(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
                     s1.Append(this.dataGridView1.Rows[i].Cells[1].Value + ",");
                 // }
             }
             s1.Remove(s1.Length - 1, 1);
-            //  MessageBox.Show(s1.ToString());
+            // ff.ShowInfoTip(s1.ToString());
             if (s1.Length != 0)
             {
                 if (MessageBox.Show("确定删除id" + s1.ToString() + " ? ", "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -175,7 +196,7 @@ namespace WindowsFormsApplication1
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                    MessageBox.Show("已删除");
+                   ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
@@ -184,7 +205,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
             }
         }
 

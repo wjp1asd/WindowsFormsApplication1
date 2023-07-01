@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button7 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,34 +42,32 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.zxlx = new System.Windows.Forms.Label();
             this.zxyl = new System.Windows.Forms.Label();
+            this.zxlx = new System.Windows.Forms.Label();
             this.aqfxh = new System.Windows.Forms.Label();
-            this.lxlx = new System.Windows.Forms.Label();
             this.lxyl = new System.Windows.Forms.Label();
-            this.uiLight1 = new Sunny.UI.UILight();
+            this.lxlx = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button7
+            // label2
             // 
-            this.button7.BackColor = System.Drawing.Color.MediumSpringGreen;
-            this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(503, 566);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(209, 62);
-            this.button7.TabIndex = 25;
-            this.button7.Text = "<返回>";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(364, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(182, 52);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "信息打印";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Red;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(73, 566);
+            this.button3.Location = new System.Drawing.Point(128, 542);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(205, 62);
@@ -79,17 +76,19 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label2
+            // button7
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(181, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(382, 52);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "安全阀模拟考试系统";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button7.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button7.Location = new System.Drawing.Point(558, 542);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(209, 62);
+            this.button7.TabIndex = 25;
+            this.button7.Text = "<返回>";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label1
             // 
@@ -100,16 +99,6 @@
             this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 27;
             this.label1.Text = "排队号：";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(336, 566);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 15);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "加载打印机配置";
             // 
             // label4
             // 
@@ -213,16 +202,6 @@
             this.label13.TabIndex = 38;
             this.label13.Text = "3、密封面研磨";
             // 
-            // zxlx
-            // 
-            this.zxlx.AutoSize = true;
-            this.zxlx.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Bold);
-            this.zxlx.Location = new System.Drawing.Point(95, 326);
-            this.zxlx.Name = "zxlx";
-            this.zxlx.Size = new System.Drawing.Size(314, 24);
-            this.zxlx.TabIndex = 42;
-            this.zxlx.Text = "使用设备类型：********；";
-            // 
             // zxyl
             // 
             this.zxyl.AutoSize = true;
@@ -232,6 +211,16 @@
             this.zxyl.Size = new System.Drawing.Size(341, 24);
             this.zxyl.TabIndex = 41;
             this.zxyl.Text = "要求整定压力：****.***Mpa;";
+            // 
+            // zxlx
+            // 
+            this.zxlx.AutoSize = true;
+            this.zxlx.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Bold);
+            this.zxlx.Location = new System.Drawing.Point(95, 326);
+            this.zxlx.Name = "zxlx";
+            this.zxlx.Size = new System.Drawing.Size(314, 24);
+            this.zxlx.TabIndex = 42;
+            this.zxlx.Text = "使用设备类型：********；";
             // 
             // aqfxh
             // 
@@ -243,16 +232,6 @@
             this.aqfxh.TabIndex = 43;
             this.aqfxh.Text = "安全阀型号：********；";
             // 
-            // lxlx
-            // 
-            this.lxlx.AutoSize = true;
-            this.lxlx.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Bold);
-            this.lxlx.Location = new System.Drawing.Point(95, 206);
-            this.lxlx.Name = "lxlx";
-            this.lxlx.Size = new System.Drawing.Size(314, 24);
-            this.lxlx.TabIndex = 45;
-            this.lxlx.Text = "使用设备类型：********；";
-            // 
             // lxyl
             // 
             this.lxyl.AutoSize = true;
@@ -263,20 +242,15 @@
             this.lxyl.TabIndex = 44;
             this.lxyl.Text = "要求整定压力：****.***Mpa;";
             // 
-            // uiLight1
+            // lxlx
             // 
-            this.uiLight1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight1.Location = new System.Drawing.Point(373, 592);
-            this.uiLight1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.uiLight1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiLight1.Name = "uiLight1";
-            this.uiLight1.Radius = 35;
-            this.uiLight1.Size = new System.Drawing.Size(35, 35);
-            this.uiLight1.Style = Sunny.UI.UIStyle.Red;
-            this.uiLight1.TabIndex = 46;
-            this.uiLight1.Text = "uiLight1";
-            this.uiLight1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.uiLight1.Click += new System.EventHandler(this.uiLight1_Click);
+            this.lxlx.AutoSize = true;
+            this.lxlx.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Bold);
+            this.lxlx.Location = new System.Drawing.Point(95, 206);
+            this.lxlx.Name = "lxlx";
+            this.lxlx.Size = new System.Drawing.Size(314, 24);
+            this.lxlx.TabIndex = 45;
+            this.lxlx.Text = "使用设备类型：********；";
             // 
             // Print
             // 
@@ -284,7 +258,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(947, 669);
-            this.Controls.Add(this.uiLight1);
             this.Controls.Add(this.lxlx);
             this.Controls.Add(this.lxyl);
             this.Controls.Add(this.aqfxh);
@@ -300,7 +273,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button3);
@@ -309,7 +281,6 @@
             this.Name = "Print";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考生信息打印";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Print_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -318,11 +289,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -333,11 +303,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label zxlx;
         private System.Windows.Forms.Label zxyl;
+        private System.Windows.Forms.Label zxlx;
         private System.Windows.Forms.Label aqfxh;
-        private System.Windows.Forms.Label lxlx;
         private System.Windows.Forms.Label lxyl;
-        private Sunny.UI.UILight uiLight1;
+        private System.Windows.Forms.Label lxlx;
     }
 }

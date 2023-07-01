@@ -40,6 +40,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,11 +97,11 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.label5.Location = new System.Drawing.Point(44, 144);
+            this.label5.Location = new System.Drawing.Point(44, 153);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(486, 31);
+            this.label5.Size = new System.Drawing.Size(454, 31);
             this.label5.TabIndex = 46;
-            this.label5.Text = "请用轨迹仪在边框中画出正确的研磨轨迹\"8\".";
+            this.label5.Text = "按住实现划出研磨轨迹,ESC 退出鼠标锁定";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
@@ -132,7 +133,7 @@
             // 
             this.uiLine1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLine1.LineColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine1.Location = new System.Drawing.Point(12, 178);
+            this.uiLine1.Location = new System.Drawing.Point(3, 214);
             this.uiLine1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uiLine1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLine1.Name = "uiLine1";
@@ -143,42 +144,65 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(831, 149);
+            this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(820, 148);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 22);
-            this.button1.TabIndex = 52;
+            this.button1.Size = new System.Drawing.Size(116, 42);
+            this.button1.TabIndex = 73;
             this.button1.Text = "开始";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(912, 149);
+            this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(981, 148);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 22);
-            this.button2.TabIndex = 53;
+            this.button2.Size = new System.Drawing.Size(116, 42);
+            this.button2.TabIndex = 74;
             this.button2.Text = "清屏";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(993, 149);
+            this.button3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.Location = new System.Drawing.Point(1137, 148);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 22);
-            this.button3.TabIndex = 54;
-            this.button3.Text = "结束";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Size = new System.Drawing.Size(116, 42);
+            this.button3.TabIndex = 75;
+            this.button3.Text = "完成";
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label6.Location = new System.Drawing.Point(433, 245);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(454, 31);
+            this.label6.TabIndex = 76;
+            this.label6.Text = "按住实现划出研磨轨迹,ESC 退出鼠标锁定";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // MFYM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1313, 605);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
@@ -189,11 +213,15 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MFYM";
             this.Text = "密封面动作研磨";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MFYM_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MFYM_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MFYM_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this._018_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this._018_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this._018_MouseUp);
@@ -216,5 +244,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -261,28 +261,23 @@ namespace WindowsFormsApplication1.Exam
             //获取打印机端口号
             if (File.Exists("Msprintsdk.dll"))
             {
-              //  MessageBox.Show("打印模块加载成功");
+              // ff.ShowInfoTip("打印模块加载成功");
 
             }
            
             
             r= SetUsbportauto();
-         //   MessageBox.Show(r.ToString());
+         //  ff.ShowInfoTip(r.ToString());
 
             if (r == 0)
             {
                 r = SetInit();
                 SetClean();
                 SetReadZKmode(0);
-                this.label3.Text = "打印机成功";
-                this.uiLight1.Style = Sunny.UI.UIStyle.Green;
-            }
+                 }
             else
             {
-
-
-                this.label3.Text = "初始化打印机失败";
-                this.uiLight1.Style = Sunny.UI.UIStyle.Red;
+                ff.ShowErrorNotifier("打印机失败");
 
             }
         }
@@ -350,7 +345,8 @@ namespace WindowsFormsApplication1.Exam
             PrintChargeRow();
             PrintCutpaper(0);
 
-
+            ff.ShowInfoTip("打印完成");
+            // 生成考试成绩单
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -363,8 +359,14 @@ namespace WindowsFormsApplication1.Exam
                 awt.FormSizeChanged();
             }
         }
+        Fuc ff = new Fuc();
+        public void change()
+        {
 
-
+            ff.fullsreen(this.label2, this);
+            ff.fullsreen(this.button3, this);
+            ff.fullsreen(this.button7, this);
+        }
 
         private void Choose_Load(object sender, EventArgs e)
         {
@@ -378,6 +380,7 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+          //  this.change();
         }
 
         private void uiLight1_Click(object sender, EventArgs e)
@@ -398,6 +401,11 @@ namespace WindowsFormsApplication1.Exam
         }
 
         private void kstime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

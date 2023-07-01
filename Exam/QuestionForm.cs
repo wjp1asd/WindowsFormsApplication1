@@ -5,6 +5,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Exam.MF;
+using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -18,10 +20,16 @@ namespace WindowsFormsApplication1
         Fuc f = new Fuc();
         TestRecord t;
         QuestionA qq = new QuestionA();
+        Grade g=new Grade();    
         string []correct;
         public QuestionForm()
         {
             InitializeComponent();
+            this.label6.Hide();
+            this.label7.Hide();
+            this.label8.Hide();
+            this.label9.Hide();
+           
         }
         public QuestionForm(String qrcode, String subtype = "1")
         {
@@ -33,7 +41,7 @@ namespace WindowsFormsApplication1
             string sql = "select * from TestRecord where qrcode = '" + qrcode + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-
+            g.getOne(qrcode);
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
@@ -71,7 +79,15 @@ namespace WindowsFormsApplication1
                     {
                         datahelp.QuestionIds = t.Lxquestions.Split(',');
                         datahelp.SubId = 1;
-                     
+
+                        if (int.Parse(g.score2) > -1) {
+
+                            f.ShowErrorDialog("重复考试");
+
+                            this.btnUp.Enabled = false;
+                            this.btnNext.Enabled = false;   
+                        }
+                        g.updateGrade(0,"score2",datahelp.QId);
                        
                     }
                     else {
@@ -86,8 +102,17 @@ namespace WindowsFormsApplication1
                     {
                         datahelp.QuestionIds = t.Zquestions.Split(',');
                         datahelp.SubId = 2;
-                  
-                       
+
+                        if (int.Parse(g.score1) > -1)
+                        {
+
+                            f.ShowErrorDialog("重复考试");
+
+                            this.btnUp.Enabled = false;
+                            this.btnNext.Enabled = false;
+                        }
+
+                        g.updateGrade(0, "score1", datahelp.QId);
                     }
                     else {
                         f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
@@ -101,7 +126,14 @@ namespace WindowsFormsApplication1
                         datahelp.QuestionIds = t.Gyquestions.Split(',');
                         datahelp.SubId = 3;
 
+                        if (int.Parse(g.score3) > -1)
+                        {
 
+                            f.ShowErrorDialog("重复考试");
+
+                            this.Enabled = false;
+                        }
+                        g.updateGrade(0, "score3", datahelp.QId);
                     }
                     else
                     {
@@ -117,7 +149,14 @@ namespace WindowsFormsApplication1
                         datahelp.QuestionIds = t.Ymguestions.Split(',');
                         datahelp.SubId = 4;
 
+                        if (int.Parse(g.score7) > -1)
+                        {
 
+                            f.ShowErrorDialog("重复考试");
+
+                            this.Enabled = false;
+                        }
+                        g.updateGrade(0, "score7", datahelp.QId);
                     }
                     else
                     {
@@ -300,7 +339,7 @@ namespace WindowsFormsApplication1
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
 
         }
-
+        private Fuc ff = new Fuc();
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (datahelp.UserAnswer[datahelp.CurrentQuestion - 1]!=null)
@@ -309,7 +348,7 @@ namespace WindowsFormsApplication1
             }
             else {
 
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
                 return;
             }
         
@@ -342,6 +381,7 @@ namespace WindowsFormsApplication1
             else
             {
                 this.btnNext.Text = "提交";
+               
                 btnAnswer_Click(sender, e);
             }
         }
@@ -398,11 +438,13 @@ namespace WindowsFormsApplication1
             else
             {
                 this.timer1.Stop();
-                MessageBox.Show("时间到了，请交卷");
+
+               ff.ShowInfoTip("时间到了，请交卷");
+                this.Close();
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
-                this.Close();
+               
             }
 
 
@@ -424,7 +466,7 @@ namespace WindowsFormsApplication1
 
         private void btnAnswer_Click(object sender, EventArgs e)
         {
-           
+          this.Hide();
             AnswerForm frm = new AnswerForm();
            
             frm.Show();
@@ -631,6 +673,61 @@ namespace WindowsFormsApplication1
 
         private void rdbA_CheckedChanged_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            switch (datahelp.SubId)
+            {
+                case 1:
+                    datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+                    OFF of = new OFF(datahelp.QId);
+                    of.Show();
+                   // this.Close();
+
+                    break;
+                case 2:
+                    datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+                    //ON on = new ON(datahelp.QId);
+                    //on.Show();
+                    zaixianjiaoyan x = new zaixianjiaoyan();
+                    x.Show();
+                   // this.Close();
+                    break;
+                case 3:
+                    
+                    datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+                    ON on1 = new ON(datahelp.QId);
+                    on1.Show();
+                  //
+                    break;
+
+                case 5:
+                    datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+
+                    MF1 mf = new MF1();
+                    mf.Show();
+                  //  this.Close();
+                    break;
+                case 6:
+                    datahelp.CurrentStep = 3;
+                    MF1 mf1 = new MF1();
+                    mf1.Show();
+                 //   this.Close();
+                    break;
+                case 4:
+                    datahelp.CurrentStep = 4;
+                    MF1 mf2 = new MF1();
+                    mf2.Show();
+                  //  this.Close();
+                    break;
+            }
 
         }
     }

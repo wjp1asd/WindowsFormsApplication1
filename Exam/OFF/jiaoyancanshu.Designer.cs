@@ -44,7 +44,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(169, 9);
+            this.label2.Location = new System.Drawing.Point(319, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(382, 52);
             this.label2.TabIndex = 42;
@@ -55,36 +55,34 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.label3.Location = new System.Drawing.Point(26, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 39);
+            this.label3.Size = new System.Drawing.Size(133, 32);
             this.label3.TabIndex = 44;
             this.label3.Text = "考生：****";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.label4.Location = new System.Drawing.Point(450, 120);
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.label4.Location = new System.Drawing.Point(581, 120);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(253, 39);
+            this.label4.Size = new System.Drawing.Size(208, 32);
             this.label4.TabIndex = 45;
             this.label4.Text = "身份证号码：****";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.label5.Location = new System.Drawing.Point(416, 192);
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.label5.Location = new System.Drawing.Point(581, 192);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(283, 39);
+            this.label5.Size = new System.Drawing.Size(233, 32);
             this.label5.TabIndex = 47;
             this.label5.Text = "使用设备类型：****";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -93,10 +91,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.label6.Location = new System.Drawing.Point(26, 192);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(227, 39);
+            this.label6.Size = new System.Drawing.Size(189, 32);
             this.label6.TabIndex = 46;
             this.label6.Text = "要求整定压力：";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -125,12 +123,14 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(297, 391);
+            this.button1.BackColor = System.Drawing.Color.Cyan;
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(451, 380);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 35);
             this.button1.TabIndex = 50;
             this.button1.Text = "下一步";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
@@ -149,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1083, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);

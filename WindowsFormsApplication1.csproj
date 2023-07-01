@@ -296,6 +296,12 @@
     <Compile Include="Exam\OFF\jiaoyancanshu.Designer.cs">
       <DependentUpon>jiaoyancanshu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exam\record.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exam\record.Designer.cs">
+      <DependentUpon>record.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exam\Score1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,12 +332,6 @@
     </Compile>
     <Compile Include="Choose\Choose.Designer.cs">
       <DependentUpon>Choose.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Choose\Info.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Choose\Info.Designer.cs">
-      <DependentUpon>Info.cs</DependentUpon>
     </Compile>
     <Compile Include="Exam\OFF\OFF.cs">
       <SubType>Form</SubType>
@@ -364,6 +364,7 @@
       <DependentUpon>MFYM.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Grade.cs" />
+    <Compile Include="Models\pressure.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\TestRecord.cs" />
@@ -572,6 +573,9 @@
     <EmbeddedResource Include="Choose\Choose.resx">
       <DependentUpon>Choose.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Exam\AnswerForm.resx">
+      <DependentUpon>AnswerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Exam\Exam1.resx">
       <DependentUpon>Exam1.cs</DependentUpon>
     </EmbeddedResource>
@@ -580,9 +584,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Choose\ID.resx">
       <DependentUpon>ID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Choose\Info.resx">
-      <DependentUpon>Info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\MF\MF1.resx">
       <DependentUpon>MF1.cs</DependentUpon>
@@ -607,6 +608,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Choose\Print.resx">
       <DependentUpon>Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exam\record.resx">
+      <DependentUpon>record.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam\Score1.resx">
       <DependentUpon>Score1.cs</DependentUpon>
@@ -762,6 +766,25 @@
     <Analyzer Include="dll\Msprintsdk.x64.dll" />
     <Analyzer Include="dll\termb.dll" />
     <Analyzer Include="dll\WltRS.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

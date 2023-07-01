@@ -252,7 +252,7 @@ namespace WindowsFormsApplication1.Exam.MF
             else
             {
 
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
                 return;
             }
 
@@ -330,7 +330,7 @@ namespace WindowsFormsApplication1.Exam.MF
             }
 
         }
-
+        private Fuc ff = new Fuc();
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -344,7 +344,7 @@ namespace WindowsFormsApplication1.Exam.MF
             else
             {
                 this.timer1.Stop();
-                MessageBox.Show("时间到了，请交卷");
+               ff.ShowInfoTip("时间到了，请交卷");
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -371,8 +371,8 @@ namespace WindowsFormsApplication1.Exam.MF
         private void btnAnswer_Click(object sender, EventArgs e)
         {
             AnswerForm frm = new AnswerForm();
-            frm.MdiParent = this.MdiParent;
             frm.Show();
+            this.Close();
 
         }
         private void SelectOption()

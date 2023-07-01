@@ -40,7 +40,7 @@
             this.button7.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(296, 380);
+            this.button7.Location = new System.Drawing.Point(292, 375);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(209, 63);
             this.button7.TabIndex = 27;
@@ -54,7 +54,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(300, 7);
+            this.label2.Location = new System.Drawing.Point(283, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(222, 52);
             this.label2.TabIndex = 26;

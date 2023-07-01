@@ -13,13 +13,14 @@ namespace WindowsFormsApplication1.Exam
         public jiaoyancanshu()
         {
             InitializeComponent();
+
+
           
-
-
         }
         List<Wucha> wuchas = new List<Wucha>();
         private double yali = 0;
-
+        Grade g=new Grade();  
+        
         private void wucha(string type)
         {
            Wucha w= new Wucha();
@@ -43,10 +44,10 @@ namespace WindowsFormsApplication1.Exam
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
            
              double a= double.Parse(a1);
-             double  b =double.Parse(b2);
+             double b =double.Parse(b2);
             yali = double.Parse(this.label1.Text.Trim());
 
-            MessageBox.Show(""+a+ b+yali);
+           
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
@@ -56,16 +57,37 @@ namespace WindowsFormsApplication1.Exam
                 ff.ShowSuccessTip("选择正确，得分"+score);
             
             }
+            int i=  g.updateGrade(score,"wxxz", datahelp.QId.Trim());
+           
+            //MessageBox.Show(""+ff.RC1(url).Length);
+           
+                this.Close();
+                JiaoYan j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
+                j.Show();
             
-            //this.Close();
-            //JiaoYan j = new JiaoYan(index);
-            //j.Show();
+          
+            
            
         }
 
         private void jiaoyancanshu_Load(object sender, EventArgs e)
         {
             TestRecord t = new TestRecord();
+         
+            if (g.getGrade("wxxz",datahelp.QId) > -1)
+            {
+
+                ff.ShowErrorDialog("重复考试");
+
+                this.Hide();
+                this.button1.Enabled = false;
+                datahelp.CurrentStep1 = 3;
+
+                OFF of = new OFF(datahelp.QId);
+                of.Show();
+            }
+
+            g.updateGrade(0, "wxxz", datahelp.QId);
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from TestRecord where qrcode='" + datahelp.QId + "'";
@@ -107,7 +129,9 @@ namespace WindowsFormsApplication1.Exam
             wucha(t.Lxlx);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             Score c= new Score();
-          score =  c.getScore("wxxz");
+            score =  c.getScore("wxxz");
+           
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

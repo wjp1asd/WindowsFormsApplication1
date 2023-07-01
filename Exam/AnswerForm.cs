@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -59,12 +60,12 @@ namespace WindowsFormsApplication1
                 btn.Text = string.Format("第{0}题", i + 1);
                 btn.Tag = i;
                // btn.Click += new EventHandler(btn_Click);
-                btn.Size = new Size(60, 23);
+                btn.Size = new Size(60, 30);
                 Label Ibl = new Label();
                 Ibl.Location = new Point(IblX, IblY);
 
                 Ibl.BackColor = System.Drawing.Color.Transparent;
-                Ibl.Text = datahelp.UserAnswer[i];
+                Ibl.Text = datahelp.UserAnswer[i].Trim();
                 Ibl.Size = new Size(41, 12);
                 this.Controls.Add(Ibl);
                 this.Controls.Add(btn);
@@ -107,7 +108,7 @@ namespace WindowsFormsApplication1
             else
             {
                 this.timer1.Stop();
-                MessageBox.Show("时间到了，请交卷");
+               ff.ShowInfoTip("时间到了，请交卷");
                 Score1 s = new Score1();
                 s.Show();
                 this.Close();
@@ -115,6 +116,8 @@ namespace WindowsFormsApplication1
 
 
         }
+
+        private Fuc ff = new Fuc();
         private void btnsend_Click(object sender, EventArgs e)
         {
             this.timer1.Stop();

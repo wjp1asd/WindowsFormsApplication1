@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1.Exam
             string x = ConfigurationManager.AppSettings["machine"];
          
 
-            //    MessageBox.Show(a.color1);
+            //   ff.ShowInfoTip(a.color1);
             switch (int.Parse(x))
             {
                 case 2:
@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
 
             }
-            this.label2.Text = a.link;
+           // this.label2.Text = a.link;
             // 最大化 
             this.change();
 
@@ -106,6 +106,7 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+            ff.ShowInfoDialog("每次考试只有一次机会，中途退出则不计分");
         }
 
         private void uiBreadcrumb1_ItemIndexChanged(object sender, int value)

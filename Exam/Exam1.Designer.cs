@@ -79,11 +79,11 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(216, 16);
+            this.label2.Location = new System.Drawing.Point(230, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(382, 52);
+            this.label2.Size = new System.Drawing.Size(222, 52);
             this.label2.TabIndex = 41;
-            this.label2.Text = "安全阀模拟考试系统";
+            this.label2.Text = "考试科目：";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 

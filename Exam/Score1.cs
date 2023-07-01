@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
            
         }
-        int rate = 0;
+        double rate = 0;
 
         private void Form6_Load(object sender, EventArgs e)
         {
@@ -35,13 +35,13 @@ namespace WindowsFormsApplication1.Exam
               "'" + datahelp.SubId + "'" + "," +
               "'" + datahelp.QId.Trim() + "'"
               + ")";
-           // MessageBox.Show(strcomm);
+           //ff.ShowInfoTip(strcomm);
             SqlCommand com = new SqlCommand(strcomm, con);
             con.Open();
             com.ExecuteNonQuery();
             con.Close();
         }
-        private int score = 0;
+        private double score = 0;
         private void ShowScore()
         {
             int count = 0;
@@ -57,48 +57,7 @@ namespace WindowsFormsApplication1.Exam
           
 
             score = count * rate;
-            if (score < 60)
-            {
-
-            
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-
-            }
-            else if (score < 70)
-            {
-                this.lblscore.BackColor = Color.YellowGreen;
-
-             
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-            }
-            else if (score < 80)
-            {
-                this.lblscore.BackColor = Color.Yellow;
-
-             
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-
-            }
-            else if (score < 90)
-            {
-                this.lblscore.BackColor = Color.Green;
-
-          
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-
-            }
-            else if (score <= 100)
-            {
-                this.lblscore.BackColor = Color.Green;
-
-              
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-            }
+            this.label2.Text = ":" + score.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -179,8 +138,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
             }
 
-            this.lblAllResult.Text = "" + rate * datahelp.QuestionIds.Length;
-            ShowScore();
+                 ShowScore();
             AddStudentScore();
         }
 
@@ -191,6 +149,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 =2;
                     OFF of = new OFF(datahelp.QId);
                     of.Show();
                     this.Close();
@@ -198,12 +157,16 @@ namespace WindowsFormsApplication1.Exam
                     break;
                 case 2:
                     datahelp.CurrentStep = 2;
-                    ON on = new ON(datahelp.QId);
-                    on.Show();
+                    datahelp.CurrentStep1 = 2;
+                    //ON on = new ON(datahelp.QId);
+                    //on.Show();
+                    zaixianjiaoyan x = new zaixianjiaoyan();
+                    x.Show();
                     this.Close();
                     break;
                 case 3:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
                     ON on1 = new ON(datahelp.QId);
                     on1.Show();
                     this.Close();
@@ -211,6 +174,8 @@ namespace WindowsFormsApplication1.Exam
 
                 case 5:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+                   
                     MF1 mf = new MF1();
                     mf.Show();
                     this.Close();
@@ -231,49 +196,16 @@ namespace WindowsFormsApplication1.Exam
 
           
         }
-
+        private Fuc ff = new Fuc();
         private void UpdateGrades()
         {
-    //        [Id] INT IDENTITY(1, 1) NOT NULL,
-    //[name]            NCHAR(10) NULL,
-    //[idcard] NCHAR(10) NULL,
-    //[testid] NCHAR(50) NULL,
-    //[zxquestions] NCHAR(10) NULL,
-    //[zxanswer] NCHAR(10) NULL,
-    //[zxcorrect] NCHAR(10) NULL,
-    //[score1] INT NULL DEFAULT 0,
-    //[lxquestions] NCHAR(10) NULL,
-    //[lxanswer] NCHAR(10) NULL,
-    //[lxcorrect] NCHAR(10) NULL,
-    //[score2] INT NULL DEFAULT 0,
-    //[jyquestions] NCHAR(10) NULL,
-    //[jyanswer] NCHAR(10) NULL,
-    //[jycorrect] NCHAR(10) NULL,
-    //[score3] INT NULL DEFAULT 0,
-    //[xhquestions] NCHAR(10) NULL,
-    //[xhanswer] NCHAR(10) NULL,
-    //[xhcorrect] NCHAR(10) NULL,
-    //[score4] INT NULL DEFAULT 0,
-    //[lpjquestions] NCHAR(10) NULL,
-    //[lpjanswer] NCHAR(10) NULL,
-    //[lpjcorrect] NCHAR(10) NULL,
-    //[score5] INT NULL DEFAULT 0,
-    //[gyquestions] NCHAR(10) NULL,
-    //[gyanswer] NCHAR(10) NULL,
-    //[gycorrect] NCHAR(10) NULL,
-    //[score6] INT NULL DEFAULT 0,
-    //[ymgquestions] NCHAR(10) NULL,
-    //[ymganswer] NCHAR(10) NULL,
-    //[ymgcorrect] NCHAR(10) NULL,
-    //[score7] NCHAR(10) NULL,
-    //[path] NCHAR(10) NULL,
-    //[score8] INT NULL DEFAULT 0,
+   
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string a = string.Join(",", datahelp.QuestionIds);
             string b = string.Join(",",datahelp.UserAnswer);
             string c = string.Join(",", datahelp.Correct);
-            int d = score;
+            double d = score;
             string str1 = "";
             switch (datahelp.SubId)
             {
@@ -317,9 +249,9 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            this.label2.Text =str1;
+            //this.label2.Text =str1;
 
-            MessageBox.Show(str1);
+        //   ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             com.ExecuteNonQuery();

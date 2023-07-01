@@ -15,19 +15,20 @@ using AutoWindowsSize;
 
 namespace WindowsFormsApplication1.Admin.Students
 {
+   
     public partial class studentRecord : Form
     {
 
         int row;
         String TableName = "testRecord";
-
+        private Fuc ff = new Fuc();
         Boolean all = false;
         StringBuilder s1;
         public studentRecord(string id)
         {
             if (id.Length==0) {
                
-                MessageBox.Show("当前学生信息有误");
+               ff.ShowInfoTip("当前学生信息有误");
                 return;
             }
            // Select TestRecord. *from TestRecord where TestRecord.ksid = (select idcard from student where id = 9) 

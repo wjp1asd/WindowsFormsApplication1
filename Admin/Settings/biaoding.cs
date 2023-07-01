@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Admin.Settings
 {
@@ -123,14 +124,14 @@ namespace WindowsFormsApplication1.Admin.Settings
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "' where id = " + id;
-              //  MessageBox.Show(strcomm);
+              // ff.ShowInfoTip(strcomm);
 
                 con.Open();
                 SqlCommand comm = new SqlCommand(strcomm, con);
                 comm.ExecuteNonQuery();
 
                 con.Close();
-                MessageBox.Show("已更新");
+               ff.ShowInfoTip("已更新");
             }
         }
         private void btnLogin_Click(object sender, EventArgs e)
@@ -138,7 +139,7 @@ namespace WindowsFormsApplication1.Admin.Settings
 
 
         }
-
+        private Fuc ff = new Fuc();
         private void button2_Click(object sender, EventArgs e)
         {
             s1 = new StringBuilder();
@@ -149,12 +150,15 @@ namespace WindowsFormsApplication1.Admin.Settings
             {
                 if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
                     //{
-                    // MessageBox.Show(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
+                    //ff.ShowInfoTip(this.dataGridView1.Rows[i].Cells[1].Value.ToString());
                     s1.Append(this.dataGridView1.Rows[i].Cells[1].Value + ",");
                 // }
             }
-            s1.Remove(s1.Length - 1, 1);
-            //  MessageBox.Show(s1.ToString());
+            if(s1.Length > 1){
+                s1.Remove(s1.Length - 1, 1);
+            }
+          
+            // ff.ShowInfoTip(s1.ToString());
             if (s1.Length != 0)
             {
                 if (MessageBox.Show("确定删除id" + s1.ToString() + " ? ", "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -175,7 +179,7 @@ namespace WindowsFormsApplication1.Admin.Settings
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                    MessageBox.Show("已删除");
+                   ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
@@ -184,7 +188,7 @@ namespace WindowsFormsApplication1.Admin.Settings
             }
             else
             {
-                MessageBox.Show("当前没有选择");
+               ff.ShowInfoTip("当前没有选择");
             }
         }
 
@@ -217,10 +221,7 @@ namespace WindowsFormsApplication1.Admin.Settings
 
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -257,9 +258,6 @@ namespace WindowsFormsApplication1.Admin.Settings
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
-        private void dataGridView1_CellContentClick_3(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
     }
 }
