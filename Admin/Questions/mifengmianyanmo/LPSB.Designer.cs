@@ -62,6 +62,7 @@
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -85,8 +86,8 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(46, 93);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(254, 44);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(424, 279);
             this.panel1.TabIndex = 39;
@@ -111,7 +112,7 @@
             "Y",
             "N"});
             this.comboBox1.Location = new System.Drawing.Point(74, 54);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(328, 20);
             this.comboBox1.TabIndex = 17;
@@ -263,11 +264,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 263);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(660, 115);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(844, 235);
+            this.pictureBox1.Size = new System.Drawing.Size(160, 136);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 40;
             this.pictureBox1.TabStop = false;
@@ -275,7 +275,7 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(264, 24);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(56, 24);
             this.button6.TabIndex = 37;
@@ -286,7 +286,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(185, 24);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(56, 24);
             this.button3.TabIndex = 34;
@@ -297,7 +297,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(22, 24);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 24);
             this.button2.TabIndex = 33;
@@ -308,7 +308,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(98, 24);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(56, 24);
             this.button1.TabIndex = 32;
@@ -424,6 +424,17 @@
             this.label6.TabIndex = 41;
             this.label6.Text = "双击地址可查看内容";
             // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(514, 24);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 12);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "双击地址可查看内容";
+            // 
             // LPSB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -431,13 +442,14 @@
             this.ClientSize = new System.Drawing.Size(844, 498);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LPSB";
             this.Text = "零件识别";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -485,5 +497,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
