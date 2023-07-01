@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -131,16 +132,31 @@ namespace WindowsFormsApplication1.Exam
         Fuc ff=new Fuc();
         private void record_Load(object sender, EventArgs e)
         {
-            g.getOne(datahelp.QId);
+            //g.getOne(datahelp.QId);
 
             if (tper == "离线")
             {
-                if (g.yqzdyl > -1)
+                if (g.getGrade("yqzdyl",datahelp.QId) > -1)
                 {
 
                     ff.ShowErrorDialog("重复考试");
 
+                    
+                    if (tper == "离线")
+                    {
+                        OFF off = new OFF(datahelp.QId);
+                        off.Show();
+                        datahelp.CurrentStep1 = 4;
+                    }
+                    if (tper == "在线")
+                    {
+                        zaixianjiaoyan z = new zaixianjiaoyan();
+                        z.Show();
+                        datahelp.CurrentStep1 = 4;
+                    }
+
                     this.Close();
+
                 }
 
                 g.updateGrade(0, "yqzdyl", datahelp.QId);
@@ -152,6 +168,11 @@ namespace WindowsFormsApplication1.Exam
 
             }
               
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.ShowSuccessDialog("保存成功");
         }
     }
 }

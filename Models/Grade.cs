@@ -99,7 +99,7 @@ namespace WindowsFormsApplication1.Models
             SqlCommand cmd = con.CreateCommand();
 
 
-            string sql = "select "+can+"from Grades where testid like  '%" + qid + "%'";
+            string sql = "select "+can+" from Grade where testid like  '%" + qid + "%'";
 
 
             datahelp a = new datahelp();

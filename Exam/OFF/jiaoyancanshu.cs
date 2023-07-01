@@ -73,13 +73,18 @@ namespace WindowsFormsApplication1.Exam
         private void jiaoyancanshu_Load(object sender, EventArgs e)
         {
             TestRecord t = new TestRecord();
-            g.getOne(datahelp.QId);
-            if (g.wxxz > -1)
+         
+            if (g.getGrade("wxxz",datahelp.QId) > -1)
             {
 
                 ff.ShowErrorDialog("重复考试");
 
-                this.Close();
+                this.Hide();
+                this.button1.Enabled = false;
+                datahelp.CurrentStep1 = 3;
+
+                OFF of = new OFF(datahelp.QId);
+                of.Show();
             }
 
             g.updateGrade(0, "wxxz", datahelp.QId);

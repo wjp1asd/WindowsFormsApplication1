@@ -5,6 +5,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Exam.MF;
+using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -82,7 +84,8 @@ namespace WindowsFormsApplication1
 
                             f.ShowErrorDialog("重复考试");
 
-                            this.Enabled = false;
+                            this.btnUp.Enabled = false;
+                            this.btnNext.Enabled = false;   
                         }
                         g.updateGrade(0,"score2",datahelp.QId);
                        
@@ -105,7 +108,8 @@ namespace WindowsFormsApplication1
 
                             f.ShowErrorDialog("重复考试");
 
-                            this.Enabled = false;
+                            this.btnUp.Enabled = false;
+                            this.btnNext.Enabled = false;
                         }
 
                         g.updateGrade(0, "score1", datahelp.QId);
@@ -669,6 +673,61 @@ namespace WindowsFormsApplication1
 
         private void rdbA_CheckedChanged_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            switch (datahelp.SubId)
+            {
+                case 1:
+                    datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+                    OFF of = new OFF(datahelp.QId);
+                    of.Show();
+                   // this.Close();
+
+                    break;
+                case 2:
+                    datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+                    //ON on = new ON(datahelp.QId);
+                    //on.Show();
+                    zaixianjiaoyan x = new zaixianjiaoyan();
+                    x.Show();
+                   // this.Close();
+                    break;
+                case 3:
+                    
+                    datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+                    ON on1 = new ON(datahelp.QId);
+                    on1.Show();
+                  //
+                    break;
+
+                case 5:
+                    datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+
+                    MF1 mf = new MF1();
+                    mf.Show();
+                  //  this.Close();
+                    break;
+                case 6:
+                    datahelp.CurrentStep = 3;
+                    MF1 mf1 = new MF1();
+                    mf1.Show();
+                 //   this.Close();
+                    break;
+                case 4:
+                    datahelp.CurrentStep = 4;
+                    MF1 mf2 = new MF1();
+                    mf2.Show();
+                  //  this.Close();
+                    break;
+            }
 
         }
     }

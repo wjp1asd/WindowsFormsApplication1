@@ -249,7 +249,7 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            this.label2.Text =str1;
+            //this.label2.Text =str1;
 
         //   ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
