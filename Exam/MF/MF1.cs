@@ -136,5 +136,13 @@ namespace WindowsFormsApplication1.Exam.MF
             ProjectInfo projectInfo = new ProjectInfo();
             projectInfo.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            MFYM mf = new MFYM(datahelp.QId);
+            mf.Show();
+
+        }
     }
 }
