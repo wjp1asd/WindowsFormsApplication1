@@ -345,7 +345,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                ff.showloading( "读卡操作失败！");
-                                this.label2.ForeColor = Color.Red;
+                               // this.label2.ForeColor = Color.Red;
                             
                             }
                         }
@@ -363,8 +363,8 @@ namespace WindowsFormsApplication1
                     else
                     {
                         ff.ShowInfoTip("请放身份证!");
-                        this.label2.Text = "请放身份证!";
-                        this.label2.ForeColor = Color.Red;
+                      //  this.label2.Text = "请放身份证!";
+                       // this.label2.ForeColor = Color.Red;
                        
                     }
                 }
