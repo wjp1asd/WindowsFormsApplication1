@@ -137,7 +137,7 @@ namespace WindowsFormsApplication1
                         if (IDCardReader.IsFPRIDCard() == 1)
                         {
 
-
+                            //外国人
                             lblAddress.Visible = false;
                             lblDept.Visible = false;//机关代码
                             label6.Visible = false;
@@ -193,7 +193,7 @@ namespace WindowsFormsApplication1
 
                                           
                                         }
-
+                                        this.pictureBox1.ImageLocation = url;
 
                                     }
                                     catch (Exception e)
@@ -211,7 +211,7 @@ namespace WindowsFormsApplication1
                         {
 
 
-
+                            // 签证
 
                             label6.Visible = true;
                             label7.Visible = true;
@@ -265,6 +265,7 @@ namespace WindowsFormsApplication1
 
                                            
                                         }
+                                        this.pictureBox1.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
@@ -312,7 +313,7 @@ namespace WindowsFormsApplication1
                                 lblName.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
 
                                 IDCardReader.GetNation2(ref arrTmp[0], ref nLen);
-                                lblNation.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
+                             //   lblNation.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
 
                                 IDCardReader.GetStartDate2(ref arrTmp[0], ref nLen);
                                 lblValidDate.Text = "";
@@ -334,6 +335,8 @@ namespace WindowsFormsApplication1
 
                                         
                                         }
+
+                                        this.pictureBox1.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
@@ -352,10 +355,10 @@ namespace WindowsFormsApplication1
                         //上传信息
                         if (lblIdCard.Text.ToString().Length > 0)
                         {
-                         
+                            this.groupBox1.Show();
 
                             Id = lblIdCard.Text.ToString().Trim();
-                            UpdataInfo(Id);
+                           UpdataInfo(Id);
                             break;
                         }
                        
@@ -384,7 +387,7 @@ namespace WindowsFormsApplication1
         public Fuc ff = new Fuc();
         private void button4_Click(object sender, EventArgs e)
         {
-              this.Close();
+               this.Close();
                Choose a = new Choose(Id.ToString().Trim());
                a.Show();
         }
@@ -403,6 +406,11 @@ namespace WindowsFormsApplication1
         {
             this.Close();
             ff.backlogin();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void UpdataInfo(string Id)

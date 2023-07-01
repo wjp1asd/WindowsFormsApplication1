@@ -30,6 +30,7 @@ namespace WindowsFormsApplication1
         public static int status = 0;
         //考试步走 
         public static int CurrentStep= 1;
+        public static int CurrentStep1 = 1;
         // USB 接口定义
         public string id;
         public string print;

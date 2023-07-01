@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnswerForm));
             this.btnsend = new System.Windows.Forms.Button();
             this.lbltime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -37,14 +36,16 @@
             // 
             // btnsend
             // 
+            this.btnsend.BackColor = System.Drawing.Color.Turquoise;
             this.btnsend.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnsend.ForeColor = System.Drawing.Color.Red;
-            this.btnsend.Location = new System.Drawing.Point(222, 12);
+            this.btnsend.ForeColor = System.Drawing.Color.Transparent;
+            this.btnsend.Location = new System.Drawing.Point(318, 400);
+            this.btnsend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnsend.Name = "btnsend";
-            this.btnsend.Size = new System.Drawing.Size(89, 36);
+            this.btnsend.Size = new System.Drawing.Size(119, 45);
             this.btnsend.TabIndex = 0;
-            this.btnsend.Text = "交  卷";
-            this.btnsend.UseVisualStyleBackColor = true;
+            this.btnsend.Text = "提交";
+            this.btnsend.UseVisualStyleBackColor = false;
             this.btnsend.Click += new System.EventHandler(this.btnsend_Click);
             // 
             // lbltime
@@ -52,9 +53,10 @@
             this.lbltime.BackColor = System.Drawing.Color.Transparent;
             this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbltime.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbltime.Location = new System.Drawing.Point(462, 27);
+            this.lbltime.Location = new System.Drawing.Point(653, 28);
+            this.lbltime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(60, 20);
+            this.lbltime.Size = new System.Drawing.Size(80, 25);
             this.lbltime.TabIndex = 1;
             // 
             // timer1
@@ -63,16 +65,15 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form5
+            // AnswerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-       
-            this.ClientSize = new System.Drawing.Size(572, 366);
+            this.ClientSize = new System.Drawing.Size(763, 458);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.btnsend);
-        
-            this.Name = "考试结果";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "AnswerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "答题卡";
             this.Load += new System.EventHandler(this.Form5_Load);
