@@ -541,6 +541,8 @@ List<pressure> pp=new List<pressure>();
                 // AI0
 
                 this.button3.Text = "正在校验";
+                this.button1.Text = "第一次测试";
+                this.step = 1;
                 this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                 this.timer1.Start();
 
@@ -1394,10 +1396,22 @@ List<pressure> pp=new List<pressure>();
         private void button2_Click(object sender, EventArgs e)
         {
             datahelp.CurrentStep1 = 3;
-          
-            OFF of = new OFF(datahelp.QId);
-            of.Show();
-          //  this.Close();
+
+            if (DIS == "11111111")
+            {
+                OFF of = new OFF(datahelp.QId);
+                of.Show();
+                this.Close();
+                serialPort1.Close();
+                serialPort2.Close();
+                return;
+            }
+            else
+            {
+
+                MessageBox.Show("请完成复位再退出");
+
+            }
         }
 
         Thread readDI;
