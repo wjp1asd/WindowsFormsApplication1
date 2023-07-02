@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1.Models
         }
         public void fullsreen(System.Windows.Forms.Control c,Form f) {
 
-            c.Left += (c.Left+ f.Width) / 2;
+            c.Left += (c.Left+ f.Width) / 2-50;
 
 
         }
@@ -84,7 +84,7 @@ namespace WindowsFormsApplication1.Models
             return count;
         }
         //生成成绩单
-        public int formGrade(string can)
+        public int formGrade(string can,string name ,string id)
         {
             int score1 = 0;
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -92,9 +92,11 @@ namespace WindowsFormsApplication1.Models
             SqlCommand cmd = con.CreateCommand();
 
 
-            string strcomm = "insert into " + "Grade" + "([testid]) VALUES(" +
+            string strcomm = "insert into " + "Grade" + "([testid],[name],[idcard]) VALUES(" +
 
-                "'" + can.ToString().Trim() + "'" + ")"
+                "'" + can.ToString().Trim() + "'"+","
+            + "'" +  name.ToString().Trim() + "'" + ","
+            + "'" +  id.ToString().Trim() + "'" + ")"
             ;
 
 

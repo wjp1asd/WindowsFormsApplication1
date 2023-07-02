@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
         }
 
-        public LBJForm(String qrcode = "EmcaBvClo9bJ6NkgbLWqRg==")
+        public LBJForm(String qrcode )
         {
 
 
@@ -66,7 +66,7 @@ namespace WindowsFormsApplication1.Exam
                 datahelp.QuestionIds = t.Lpjuestions.Split(',');
                 datahelp.SubId = 6;
 
-
+              //  MessageBox.Show(t.Lpjuestions);
             }
             else
             {
@@ -96,7 +96,7 @@ namespace WindowsFormsApplication1.Exam
         {
             datahelp c = new datahelp();
             c.Initc();
-            num = c.xhnum;
+            num = c.lpjnum;
             this.label2.Text = "总题数：" + (num) + "，当前：";
             datahelp.Answer = new string[num];
             datahelp.UserAnswer = new string[num];
@@ -147,7 +147,7 @@ namespace WindowsFormsApplication1.Exam
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from ymg where id =" + questionId.ToString().Trim();
-           ff.ShowInfoTip(sql);
+          // ff.ShowInfoTip(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
@@ -158,7 +158,7 @@ namespace WindowsFormsApplication1.Exam
                 string c = reader["optionC"].ToString();
                 string d = reader["optionD"].ToString();
                 datahelp.curAnswer = reader["answer"].ToString();
-                this.label7.Text = datahelp.curAnswer;
+                this.label3.Text = datahelp.curAnswer;
                 // this.txtQuestionContent.Text = reader["question"].ToString();
                 this.rdbA.Show();
                 this.rdbA.Tag = "A";
@@ -213,7 +213,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void ShowInfo()
         {
-            this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
+           // this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
             this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
@@ -235,7 +235,7 @@ namespace WindowsFormsApplication1.Exam
 
             option = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
 
-            if (datahelp.CurrentQuestion < num - 1)
+            if (datahelp.CurrentQuestion < num)
             {
 
                 datahelp.CurrentQuestion++;
@@ -348,8 +348,8 @@ namespace WindowsFormsApplication1.Exam
         private void btnAnswer_Click(object sender, EventArgs e)
         {
             AnswerForm frm = new AnswerForm();
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+                 frm.Show();
+            this.Close();
 
         }
         private void SelectOption()

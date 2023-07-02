@@ -1,5 +1,4 @@
 ﻿using AutoWindowsSize;
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -41,6 +40,12 @@ namespace WindowsFormsApplication1.Exam
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
+
+            this.button3.Left -=100;
+            this.button7.Left -= 100;
+            this.label2.Left -= 100;
+
+
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -173,9 +178,9 @@ namespace WindowsFormsApplication1.Exam
             SqlDataReader reader1 = com1.ExecuteReader();
             while (reader1.Read())
             {
-                zxyl= reader1["edyl"].ToString();
+                zxyl = reader1["edyl"].ToString();
             }
-            
+
 
             //MessageBox.Show("压力大：" + yali.Max());
             //MessageBox.Show("压力小：" + yali.Min());
@@ -186,7 +191,7 @@ namespace WindowsFormsApplication1.Exam
             //MessageBox.Show("实际2：" + cur1);
 
             //MessageBox.Show("离线压力：" + lxyl);
-          //  MessageBox.Show("在线压力：" + zxyl);
+            //  MessageBox.Show("在线压力：" + zxyl);
 
 
 
@@ -268,9 +273,12 @@ namespace WindowsFormsApplication1.Exam
             con.Close();
             ff.ShowInfoTip("已创建考试信息，排队号0" + que);
             qrcode = a;
-            //  this.button1.Show();
+            //生成考试清单
+            ff.formGrade(qrcode,ksname,ksid);
             Print p = new Print(qrcode);
             p.Show();
+
+           // String sql1 = "select * from Grade where testid like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
             this.Close();
 
         }

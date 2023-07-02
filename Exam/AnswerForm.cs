@@ -60,12 +60,12 @@ namespace WindowsFormsApplication1
                 btn.Text = string.Format("第{0}题", i + 1);
                 btn.Tag = i;
                // btn.Click += new EventHandler(btn_Click);
-                btn.Size = new Size(60, 23);
+                btn.Size = new Size(60, 30);
                 Label Ibl = new Label();
                 Ibl.Location = new Point(IblX, IblY);
 
                 Ibl.BackColor = System.Drawing.Color.Transparent;
-                Ibl.Text = datahelp.UserAnswer[i];
+                Ibl.Text = datahelp.UserAnswer[i].Trim();
                 Ibl.Size = new Size(41, 12);
                 this.Controls.Add(Ibl);
                 this.Controls.Add(btn);

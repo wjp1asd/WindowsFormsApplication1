@@ -1394,12 +1394,11 @@ List<pressure> pp=new List<pressure>();
 
         private void button2_Click(object sender, EventArgs e)
         {
-            serialPort2.Close();
-            datahelp.CurrentStep = 3;
-            this.Close();
+            datahelp.CurrentStep1 = 3;
+          
             OFF of = new OFF(datahelp.QId);
             of.Show();
-
+          //  this.Close();
         }
 
         Thread readDI;

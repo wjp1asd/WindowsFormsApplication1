@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
         // 当前系统答案
         public static string curAnswer;
         public static string StudentId = "";
-        public static string QId = "w3gF7LblbhEknmqSQNtubw== ";
+        public static string QId = "lN3rmtYoCH4MA1i76ux+Ug==";
         public string name;
         public string loginid;
         //1 离线 2在线 3工艺 4 研磨膏  5型号题 6 零配件 
@@ -30,6 +30,7 @@ namespace WindowsFormsApplication1
         public static int status = 0;
         //考试步走 
         public static int CurrentStep= 1;
+        public static int CurrentStep1 = 1;
         // USB 接口定义
         public string id;
         public string print;

@@ -47,10 +47,11 @@ namespace WindowsFormsApplication1.Exam
         private void button3_Click(object sender, EventArgs e)
         {
             // 工艺题'
-            this.Close();
+           
             gongyijiaoyan gongyijiaoyan = new gongyijiaoyan();
             gongyijiaoyan.Show();
-           
+            this.Close();
+
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -77,6 +78,31 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+
+            switch (datahelp.CurrentStep)
+            {
+                case 1:
+
+                    this.button3.Enabled = true;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                   
+                    break;
+                case 2:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = true;
+                    this.button2.Enabled = false;
+                 
+                    break;
+                case 3:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = true;
+                    
+                    break;
+              
+
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -87,8 +113,10 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             datahelp.SubId = 2;
+            datahelp.CurrentStep1 = 1;
             zaixianjiaoyan a = new zaixianjiaoyan();
             a.Show();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

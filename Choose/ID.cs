@@ -102,6 +102,7 @@ namespace WindowsFormsApplication1
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             // this.SizeChanged += groupBox1_Resize;
             InitConfig();
+           // this.groupBox1.s
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -125,12 +126,19 @@ namespace WindowsFormsApplication1
                     if (authenticate == 0)
                     {
                         int readContent = IDCardReader.Read_Content(1);
-                        this.groupBox1.Show();
+
+                        Action tongdao = () =>
+                        {
+                            this.groupBox1.Show();
+                        };
+                        this.Invoke(tongdao);
+
+                         
 
                         if (IDCardReader.IsFPRIDCard() == 1)
                         {
 
-
+                            //外国人
                             lblAddress.Visible = false;
                             lblDept.Visible = false;//机关代码
                             label6.Visible = false;
@@ -186,7 +194,7 @@ namespace WindowsFormsApplication1
 
                                           
                                         }
-
+                                        this.pictureBox2.ImageLocation = url;
 
                                     }
                                     catch (Exception e)
@@ -204,7 +212,7 @@ namespace WindowsFormsApplication1
                         {
 
 
-
+                            // 签证
 
                             label6.Visible = true;
                             label7.Visible = true;
@@ -258,6 +266,7 @@ namespace WindowsFormsApplication1
 
                                            
                                         }
+                                        this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
@@ -270,7 +279,7 @@ namespace WindowsFormsApplication1
                         else
                         {
 
-
+                        
 
                             lblAddress.Visible = true;
                             lblDept.Visible = true;
@@ -305,7 +314,7 @@ namespace WindowsFormsApplication1
                                 lblName.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
 
                                 IDCardReader.GetNation2(ref arrTmp[0], ref nLen);
-                                lblNation.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
+                             //   lblNation.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
 
                                 IDCardReader.GetStartDate2(ref arrTmp[0], ref nLen);
                                 lblValidDate.Text = "";
@@ -327,6 +336,8 @@ namespace WindowsFormsApplication1
 
                                         
                                         }
+
+                                        this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
@@ -338,17 +349,17 @@ namespace WindowsFormsApplication1
                             else
                             {
                                ff.showloading( "读卡操作失败！");
-                                this.label2.ForeColor = Color.Red;
+                               // this.label2.ForeColor = Color.Red;
                             
                             }
                         }
                         //上传信息
                         if (lblIdCard.Text.ToString().Length > 0)
                         {
-                         
+                            this.groupBox1.Show();
 
                             Id = lblIdCard.Text.ToString().Trim();
-                            UpdataInfo(Id);
+                           UpdataInfo(Id);
                             break;
                         }
                        
@@ -356,8 +367,8 @@ namespace WindowsFormsApplication1
                     else
                     {
                         ff.ShowInfoTip("请放身份证!");
-                        this.label2.Text = "请放身份证!";
-                        this.label2.ForeColor = Color.Red;
+                      //  this.label2.Text = "请放身份证!";
+                       // this.label2.ForeColor = Color.Red;
                        
                     }
                 }
@@ -377,7 +388,7 @@ namespace WindowsFormsApplication1
         public Fuc ff = new Fuc();
         private void button4_Click(object sender, EventArgs e)
         {
-              this.Close();
+               this.Close();
                Choose a = new Choose(Id.ToString().Trim());
                a.Show();
         }
@@ -396,6 +407,11 @@ namespace WindowsFormsApplication1
         {
             this.Close();
             ff.backlogin();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void UpdataInfo(string Id)
