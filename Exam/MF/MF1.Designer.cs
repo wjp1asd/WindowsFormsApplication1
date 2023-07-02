@@ -67,8 +67,8 @@
             this.button3.BackColor = System.Drawing.Color.Red;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(206, 84);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Location = new System.Drawing.Point(274, 96);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(205, 56);
             this.button3.TabIndex = 43;
@@ -108,7 +108,7 @@
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button5.Location = new System.Drawing.Point(274, 376);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(273, 70);
+            this.button5.Size = new System.Drawing.Size(205, 54);
             this.button5.TabIndex = 47;
             this.button5.Text = "研磨方法";
             this.button5.UseVisualStyleBackColor = false;
@@ -125,7 +125,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MF1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "密封面研磨";

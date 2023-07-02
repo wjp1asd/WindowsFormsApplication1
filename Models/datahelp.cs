@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
         // 当前系统答案
         public static string curAnswer;
         public static string StudentId = "";
-        public static string QId = "w3gF7LblbhEknmqSQNtubw== ";
+        public static string QId = "8s9sWWkq/yCL6B399O/tWQ==";
         public string name;
         public string loginid;
         //1 离线 2在线 3工艺 4 研磨膏  5型号题 6 零配件 
