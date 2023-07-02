@@ -50,6 +50,7 @@ namespace WindowsFormsApplication1.Exam
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
+                score =0;
                 ff.ShowErrorTip("误差选择错误，不得分");
             }
             else {
@@ -59,11 +60,11 @@ namespace WindowsFormsApplication1.Exam
           int i=  g.updateGrade(score,"wxxz", datahelp.QId.Trim());
            
             //MessageBox.Show(""+ff.RC1(url).Length);
-            if (i>0) {
+           
                 this.Close();
                 JiaoYan j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
                 j.Show();
-            }
+            
           
             
            

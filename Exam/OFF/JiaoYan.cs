@@ -187,7 +187,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 dishow("卸压阀打开");
 
-                if (current<119000) {
+                if (a<119000) {
 
                     byte[] d3 = new byte[] {
                 0xFF,0x01,0x00,
@@ -627,7 +627,7 @@ List<pressure> pp=new List<pressure>();
 
             }
 
-           ff.ShowInfoTip(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+jiaoyanfa+"");
+         //  ff.ShowInfoTip(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+jiaoyanfa+"");
 
             //采集卡初始化+舵机控制板
             try
@@ -1020,10 +1020,10 @@ List<pressure> pp=new List<pressure>();
 
                 if ((a1 - sjdwq) > 0)
                 {
-                    ff.ShowInfoTip(v + "正在锁紧");
+                    richTextBox2.AppendText(v + "正在锁紧");
                 }
                 else if((a1 - sjdwq) < 0) {
-                    ff.ShowInfoTip(v + "正在放松");
+                    richTextBox2.AppendText(v + "正在放松");
                 }
             };
             this.Invoke(tongdao);
@@ -1044,11 +1044,11 @@ List<pressure> pp=new List<pressure>();
 
                 if ((a2 - tydwq) > 0)
                 {
-                    ff.ShowInfoTip(v + "正在锁紧");
+                    richTextBox2.AppendText(v + "正在锁紧");
                 }
                 else if ((a2 - tydwq) < 0)
                 {
-                    ff.ShowInfoTip(v + "正在放松");
+                    richTextBox2.AppendText(v + "正在放松");
                 }
             };
             this.Invoke(tongdao);
@@ -1288,7 +1288,8 @@ List<pressure> pp=new List<pressure>();
             }
             Thread.Sleep(smin);
             if (a < 119000)
-            { dwq = a; }
+            { dwq = a;
+            }
             if (maz > 500 & maz <= 2500)
             {
                 cisu = cisu + 1;
