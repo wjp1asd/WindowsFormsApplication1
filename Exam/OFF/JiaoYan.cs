@@ -19,7 +19,8 @@ namespace WindowsFormsApplication1.Exam
     {
         TestRecord t = new TestRecord();
         Wucha wucha = new Wucha();
-        string url = Application.StartupPath + "\\Images\\考试照片\\" + DateTime.Now.ToString("yy-mm-dd-hh-ii-ss");
+       
+        string url = "\\考试照片\\" + DateTime.Now.ToString("yy-mm-dd-hh-ii-ss");
         private string serialPortName;
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
         //#02 01 00 05 01 07 数字输入DI 读取
@@ -306,10 +307,10 @@ namespace WindowsFormsApplication1.Exam
         private void chaixiefamao()
         {
             // 10秒后拍照
-            ff.ShowInfoNotifier("量程归0判断30秒");
+            ff.ShowInfoTip("量程归0判断30秒");
             if (current > 119000) {
                 Thread.Sleep(10000);
-                shot();
+              //  shot();
             }
           
         }
@@ -344,8 +345,8 @@ List<pressure> pp=new List<pressure>();
             InitScore();
             showMsg();
             // 开启一个线程录像
-           //  Task t1 = new Task(backCamera); 
-           //  t1.Start();
+          //  Task t1 = new Task(backCamera); 
+           //t1.Start();
         }
         Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
@@ -415,9 +416,9 @@ List<pressure> pp=new List<pressure>();
 
         private void shot()
         {
-           // step = 1;
-
-            CvInvoke.Imwrite(url + "shot.png", f1);
+            // step = 1;
+            string loc = ConfigurationManager.AppSettings["loc"];
+            CvInvoke.Imwrite(loc+url + "shot.png", f1);
             MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
@@ -541,10 +542,13 @@ List<pressure> pp=new List<pressure>();
                 // AI0
 
                 this.button3.Text = "正在校验";
+                this.button2.Text="第一次测试";
+                this.step=1;
                 this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                 this.timer1.Start();
-
             }
+
+
             else
             {
 
@@ -726,7 +730,7 @@ List<pressure> pp=new List<pressure>();
 
 
         string DIS0;
-        string DIS;
+        string DIS="11111111";
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -1383,7 +1387,7 @@ List<pressure> pp=new List<pressure>();
                     ta = 300;
                     break;
             }
-
+            //MessageBox.Show(this.button1.Text.ToString());
             // 开启1分钟判分倒计时  保压测试显示3分钟 实际30秒走完
           
             ta = 60;
@@ -1395,10 +1399,23 @@ List<pressure> pp=new List<pressure>();
         private void button2_Click(object sender, EventArgs e)
         {
             datahelp.CurrentStep1 = 3;
+           
+
+            if (DIS=="11111111")
+            {
+                OFF of = new OFF(datahelp.QId);
+                of.Show();
+                this.Close();
+                serialPort1.Close();
+                serialPort2.Close();
+                return;
+            }
+            else {
+
+                MessageBox.Show("请完成复位再退出");
+
+            }
           
-            OFF of = new OFF(datahelp.QId);
-            of.Show();
-          //  this.Close();
         }
 
         Thread readDI;
