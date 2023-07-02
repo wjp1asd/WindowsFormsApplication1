@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1.Models
         String gyquestions;
         String lpjuestions;
         String xhquestions;
-        String ymguestions;
+        String ymgquestions;
         public string Queque { get => queque; set => queque = value; }
         public string Ksname { get => ksname; set => ksname = value; }
         public string KsId { get => ksId; set => ksId = value; }
@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1.Models
         public string Zquestions { get => zquestions; set => zquestions = value; }
         public string Lpjuestions { get => lpjuestions; set => lpjuestions = value; }
         public string Xhquestions { get => xhquestions; set => xhquestions = value; }
-        public string Ymguestions { get => ymguestions; set => ymguestions = value; }
+        public string Ymgquestions { get => ymgquestions; set => ymgquestions = value; }
         public string Gyquestions { get => gyquestions; set => gyquestions = value; }
 
         public TestRecord()

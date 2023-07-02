@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -51,6 +53,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
             this.选取 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,11 +63,8 @@
             this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -71,9 +72,10 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.btnLogin);
@@ -88,11 +90,48 @@
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblUsername);
-            this.panel1.Location = new System.Drawing.Point(237, 190);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(109, 115);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(835, 349);
+            this.panel1.Size = new System.Drawing.Size(622, 279);
             this.panel1.TabIndex = 39;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Location = new System.Drawing.Point(435, 55);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(160, 136);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 42;
+            this.pictureBox2.TabStop = false;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "AB",
+            "AC",
+            "AD",
+            "BC",
+            "BD",
+            "CD",
+            "ABC",
+            "BCD",
+            "ABCD",
+            "Y",
+            "N"});
+            this.comboBox2.Location = new System.Drawing.Point(73, 16);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(239, 20);
+            this.comboBox2.TabIndex = 18;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox1
             // 
@@ -258,8 +297,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(880, 144);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Location = new System.Drawing.Point(660, 115);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(213, 170);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -342,6 +382,20 @@
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(340, 30);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 12);
+            this.label6.TabIndex = 41;
+            this.label6.Text = "双击地址可查看内容";
+            // 
             // 选取
             // 
             this.选取.HeaderText = "选择";
@@ -362,12 +416,13 @@
             this.image.HeaderText = "图片地址";
             this.image.MinimumWidth = 10;
             this.image.Name = "image";
+            this.image.ReadOnly = true;
             // 
             // optionA
             // 
             this.optionA.DataPropertyName = "optionA";
-            dataGridViewCellStyle5.NullValue = "操作";
-            this.optionA.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.NullValue = "操作";
+            this.optionA.DefaultCellStyle = dataGridViewCellStyle1;
             this.optionA.HeaderText = "选项A";
             this.optionA.MinimumWidth = 6;
             this.optionA.Name = "optionA";
@@ -376,8 +431,8 @@
             // optionB
             // 
             this.optionB.DataPropertyName = "optionB";
-            dataGridViewCellStyle6.NullValue = "删除";
-            this.optionB.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.NullValue = "删除";
+            this.optionB.DefaultCellStyle = dataGridViewCellStyle2;
             this.optionB.HeaderText = "选项B";
             this.optionB.MinimumWidth = 6;
             this.optionB.Name = "optionB";
@@ -404,39 +459,6 @@
             this.answer.MinimumWidth = 6;
             this.answer.Name = "answer";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(447, 38);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(142, 15);
-            this.label6.TabIndex = 41;
-            this.label6.Text = "双击地址可查看内容";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(597, 56);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(213, 170);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 42;
-            this.pictureBox2.TabStop = false;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(99, 20);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(333, 23);
-            this.comboBox2.TabIndex = 43;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
             // LPSB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -457,6 +479,7 @@
             this.Load += new System.EventHandler(this.LPSB_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -487,6 +510,11 @@
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn 选取;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn image;
@@ -495,10 +523,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn optionC;
         private System.Windows.Forms.DataGridViewTextBoxColumn optionD;
         private System.Windows.Forms.DataGridViewTextBoxColumn answer;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

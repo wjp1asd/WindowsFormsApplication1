@@ -63,8 +63,9 @@ namespace WindowsFormsApplication1
                 t.Lxquestions = reader["lxquestions"].ToString().Trim();
                 t.Zquestions = reader["zxquestions"].ToString().Trim();
                 t.Gyquestions = reader["gyquestions"].ToString().Trim();
-                t.Ymguestions = reader["ymgquestions"].ToString().Trim();
-                t.Adfxh = reader["aqfxh"].ToString();
+                t.Ymgquestions = reader["ymgquestions"].ToString().Trim();
+
+                   t.Adfxh = reader["aqfxh"].ToString();
 
                 t.Qrcode = reader["qrcode"].ToString();
             }
@@ -80,14 +81,14 @@ namespace WindowsFormsApplication1
                         datahelp.QuestionIds = t.Lxquestions.Split(',');
                         datahelp.SubId = 1;
 
-                        if (int.Parse(g.score2) > -1) {
+                        //if (int.Parse(g.score2) > -1) {
 
-                            f.ShowErrorDialog("重复考试");
+                        //    f.ShowErrorDialog("重复考试");
 
-                            this.btnUp.Enabled = false;
-                            this.btnNext.Enabled = false;   
-                        }
-                        g.updateGrade(0,"score2",datahelp.QId);
+                        //    this.btnUp.Enabled = false;
+                        //    this.btnNext.Enabled = false;   
+                        //}
+                        //g.updateGrade(0,"score2",datahelp.QId);
                        
                     }
                     else {
@@ -103,16 +104,16 @@ namespace WindowsFormsApplication1
                         datahelp.QuestionIds = t.Zquestions.Split(',');
                         datahelp.SubId = 2;
 
-                        if (int.Parse(g.score1) > -1)
-                        {
+                        //if (int.Parse(g.score1) > -1)
+                        //{
 
-                            f.ShowErrorDialog("重复考试");
+                        //    f.ShowErrorDialog("重复考试");
 
-                            this.btnUp.Enabled = false;
-                            this.btnNext.Enabled = false;
-                        }
+                        //    this.btnUp.Enabled = false;
+                        //    this.btnNext.Enabled = false;
+                        //}
 
-                        g.updateGrade(0, "score1", datahelp.QId);
+                        //g.updateGrade(0, "score1", datahelp.QId);
                     }
                     else {
                         f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
@@ -126,14 +127,15 @@ namespace WindowsFormsApplication1
                         datahelp.QuestionIds = t.Gyquestions.Split(',');
                         datahelp.SubId = 3;
 
-                        if (int.Parse(g.score3) > -1)
-                        {
+                        //if (int.Parse(g.score3) > -1)
+                        //{
 
-                            f.ShowErrorDialog("重复考试");
+                        //    f.ShowErrorDialog("重复考试");
 
-                            this.Enabled = false;
-                        }
-                        g.updateGrade(0, "score3", datahelp.QId);
+                        //    this.btnUp.Enabled = false;
+                        //    this.btnNext.Enabled = false;
+                        //}
+                        //g.updateGrade(0, "score3", datahelp.QId);
                     }
                     else
                     {
@@ -144,19 +146,24 @@ namespace WindowsFormsApplication1
               
                 case "4":
                     this.Text = "研磨膏答题";
-                    if (t.Ymguestions.Length > 0)
+                    if (t.Ymgquestions.Length > 0)
                     {
-                        datahelp.QuestionIds = t.Ymguestions.Split(',');
+                        MessageBox.Show(t.Ymgquestions.Trim().Split(',') + ""+ t.Ymgquestions.Trim());
+
+                        datahelp.QuestionIds = t.Ymgquestions.Trim().Split(',');
+
+                        
                         datahelp.SubId = 4;
 
-                        if (int.Parse(g.score7) > -1)
-                        {
+                        //if (int.Parse(g.score7) > -1)
+                        //{
 
-                            f.ShowErrorDialog("重复考试");
+                        //    f.ShowErrorDialog("重复考试");
+                        //    this.btnUp.Enabled = false;
+                        //    this.btnNext.Enabled = false;
 
-                            this.Enabled = false;
-                        }
-                        g.updateGrade(0, "score7", datahelp.QId);
+                        //}
+                        //g.updateGrade(0, "score7", datahelp.QId);
                     }
                     else
                     {

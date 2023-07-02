@@ -102,6 +102,7 @@ namespace WindowsFormsApplication1
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             // this.SizeChanged += groupBox1_Resize;
             InitConfig();
+           // this.groupBox1.s
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -193,7 +194,7 @@ namespace WindowsFormsApplication1
 
                                           
                                         }
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
 
                                     }
                                     catch (Exception e)
@@ -265,7 +266,7 @@ namespace WindowsFormsApplication1
 
                                            
                                         }
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
@@ -336,7 +337,7 @@ namespace WindowsFormsApplication1
                                         
                                         }
 
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {

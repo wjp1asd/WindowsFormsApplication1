@@ -28,11 +28,12 @@ namespace WindowsFormsApplication1.Exam.MF
         TestRecord t;
         QuestionA qq = new QuestionA();
         string[] correct;
-      
+        Grade g = new Grade();
+       
         public XHForm(string qrcode)
         {
             InitializeComponent();
-
+            g.getOne(qrcode);
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
@@ -74,9 +75,16 @@ namespace WindowsFormsApplication1.Exam.MF
                     {
                         datahelp.QuestionIds = t.Xhquestions.Split(',');
                         datahelp.SubId = 5;
+               // if (int.Parse(g.score4) > -1)
+               // {
 
+               //     f.ShowErrorDialog("重复考试");
 
-                    }
+                 //   this.Enabled = false;
+              //  }
+               // g.updateGrade(0, "score4", datahelp.QId);
+
+            }
                     else
                     {
                         f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
@@ -508,11 +516,6 @@ namespace WindowsFormsApplication1.Exam.MF
 
             datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
 
-
-        }
-
-        private void rdbA_CheckedChanged(object sender, EventArgs e)
-        {
 
         }
 

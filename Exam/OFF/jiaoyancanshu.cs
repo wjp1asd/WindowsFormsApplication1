@@ -74,18 +74,18 @@ namespace WindowsFormsApplication1.Exam
         {
             TestRecord t = new TestRecord();
          
-            if (g.getGrade("wxxz",datahelp.QId) > -1)
-            {
+            //if (g.getGrade("wxxz",datahelp.QId) > -1)
+            //{
 
-                ff.ShowErrorDialog("重复考试");
+            //    ff.ShowErrorDialog("重复考试");
 
-                this.Hide();
-                this.button1.Enabled = false;
-                datahelp.CurrentStep1 = 3;
+            //    this.Hide();
+            //    this.button1.Enabled = false;
+            //    datahelp.CurrentStep1 = 3;
 
-                OFF of = new OFF(datahelp.QId);
-                of.Show();
-            }
+            //    OFF of = new OFF(datahelp.QId);
+            //    of.Show();
+            //}
 
             g.updateGrade(0, "wxxz", datahelp.QId);
             string connectionString = ConfigurationManager.AppSettings["sqlc"];

@@ -17,13 +17,13 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
            
         }
-        double rate = 0;
+        float rate = 0;
 
         private void Form6_Load(object sender, EventArgs e)
         {
 
-            ShowScore();
-            AddStudentScore();
+           
+           // AddStudentScore();
         }
         private void AddStudentScore()
         {
@@ -31,17 +31,17 @@ namespace WindowsFormsApplication1.Exam
             SqlConnection con = new SqlConnection(connectionString);
             string strcomm = "insert into score ([studentid],[score],[subid],[tid]) VALUES(" +
                "'" + datahelp.StudentId.Trim() +"'" + "," +
-              "'" + score + "'" + "," +
+              "'" + score.ToString() + "'" + "," +
               "'" + datahelp.SubId + "'" + "," +
               "'" + datahelp.QId.Trim() + "'"
               + ")";
-           //ff.ShowInfoTip(strcomm);
+         // ff.ShowInfoTip(strcomm);
             SqlCommand com = new SqlCommand(strcomm, con);
             con.Open();
             com.ExecuteNonQuery();
             con.Close();
         }
-        private double score = 0;
+        private float score = 0;
         private void ShowScore()
         {
             int count = 0;
@@ -54,10 +54,12 @@ namespace WindowsFormsApplication1.Exam
                     count++;
                 }
             }
-          
 
-            score = count * rate;
-            this.label2.Text = ":" + score.ToString();
+
+            //score = count * rate;
+             MessageBox.Show(count+""+rate+""+score);
+            this.label2.Show();
+            this.label2.Text = "得分:" + score.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -112,34 +114,35 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
                     this.Text = "离线校验得分";
-                    rate = sc.getScore("lxt");
+                    rate = float.Parse(sc.getScore("lxt").ToString());
                    
                     break;
                 case 2:
                     this.Text = "在线校验得分";
-                    rate = sc.getScore("zxt");
+                    rate = float.Parse(sc.getScore("zxt").ToString());
                     break;
                 case 3:
                     this.Text = "校验工艺得分";
-                    rate = sc.getScore("gyt");
+                    rate = float.Parse(sc.getScore("gyt").ToString());
                     break;
 
                 case 5:
                     this.Text = "型号识别得分";
-                    rate = sc.getScore("xhsb");
+                    rate = float.Parse(sc.getScore("xhsb").ToString());
                     break;
                 case 6:
                     this.Text = "零配件识别得分";
-                    rate = sc.getScore("lpjsb");
+                    rate = float.Parse(sc.getScore("lpjsb").ToString());
                     break;
                 case 4:
                     this.Text = "密封面研磨得分";
-                    rate = sc.getScore("ymgsb");
+                    rate = float.Parse(sc.getScore("ymgsb").ToString());
                     break;
             }
-
+         
+          //  MessageBox.Show(rate+"");
                  ShowScore();
-            AddStudentScore();
+           // AddStudentScore();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
