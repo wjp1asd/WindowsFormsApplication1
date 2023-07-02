@@ -22,6 +22,8 @@ namespace WindowsFormsApplication1.Scan
 
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
+
+            
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

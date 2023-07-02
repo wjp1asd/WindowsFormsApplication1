@@ -373,7 +373,7 @@ namespace WindowsFormsApplication1.Exam
 
             }
             // 130012
-         //  MessageBox.Show(youbiaokachi +"-"+ siheyi + "-" + famao);
+           MessageBox.Show(youbiaokachi +"-"+ siheyi + "-" + famao);
 
             //采集卡初始化+舵机控制板
             try
