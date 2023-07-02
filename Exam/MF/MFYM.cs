@@ -19,6 +19,7 @@ namespace WindowsFormsApplication1
             InitUI();
 
         }
+        bool draw = false;
         float score = 0;
         private void InitUI()
         {
@@ -86,8 +87,8 @@ namespace WindowsFormsApplication1
             this.Cursor = new Cursor(this.Cursor.Handle);
              Cursor.Position =new Point(this.Size.Width/2, this.Size.Height/2);
             Cursor.Clip = new Rectangle(p.X,p.Y, this.Size.Width - 100, this.Size.Height - 400);
-
-            MessageBox.Show(p.X+"-"+ p.Y + "-" + (this.Size.Width - 100) + "-" + (this.Size.Height - 400));
+            MessageBox.Show("点击开始研磨");
+            //MessageBox.Show(p.X+"-"+ p.Y + "-" + (this.Size.Width - 100) + "-" + (this.Size.Height - 400));
         }
 
         bool G_MouseFlag;
@@ -95,6 +96,10 @@ namespace WindowsFormsApplication1
         Point lastPoint;
         private void _018_MouseMove(object sender, MouseEventArgs e)
         {
+            if (draw == false) {
+
+                return;
+            }
             Graphics graphics = this.CreateGraphics();
             if (lastPoint.Equals(Point.Empty))//判断绘图开始点是否为空
             {
@@ -207,6 +212,7 @@ namespace WindowsFormsApplication1
         private void button1_Click_2(object sender, EventArgs e)
         {
             initBound();
+            this.draw = true;
         }
 
        
