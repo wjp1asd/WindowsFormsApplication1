@@ -180,5 +180,10 @@ namespace WindowsFormsApplication1
             g.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
             e.Graphics.DrawImage(myFormImage, 0, 0);
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("保存成功");
+        }
     }
 }

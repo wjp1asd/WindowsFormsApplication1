@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1.Exam
             this.uiLedLabel4.Hide();
             this.timer1.Stop();
             InitScore();
-            this.button2.Enabled = false;
+            //this.button2.Enabled = false;
             this.button1.Enabled = false;
             this.button4.Enabled = false;
         }
@@ -966,6 +966,9 @@ namespace WindowsFormsApplication1.Exam
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+            datahelp.CurrentStep1 = 3;
+            zaixianjiaoyan o=new zaixianjiaoyan();
+            o.Show();
         }
         Thread readAI;
 

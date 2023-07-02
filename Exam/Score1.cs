@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
            
         }
-        int rate = 0;
+        double rate = 0;
 
         private void Form6_Load(object sender, EventArgs e)
         {
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1.Exam
             com.ExecuteNonQuery();
             con.Close();
         }
-        private int score = 0;
+        private double score = 0;
         private void ShowScore()
         {
             int count = 0;
@@ -57,48 +57,7 @@ namespace WindowsFormsApplication1.Exam
           
 
             score = count * rate;
-            if (score < 60)
-            {
-
-            
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-
-            }
-            else if (score < 70)
-            {
-                this.lblscore.BackColor = Color.YellowGreen;
-
-             
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-            }
-            else if (score < 80)
-            {
-                this.lblscore.BackColor = Color.Yellow;
-
-             
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-
-            }
-            else if (score < 90)
-            {
-                this.lblscore.BackColor = Color.Green;
-
-          
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-
-            }
-            else if (score <= 100)
-            {
-                this.lblscore.BackColor = Color.Green;
-
-              
-                this.label3.Text = score.ToString() + "分";
-                this.lblscore.Size = new Size((this.lblAllscore.Width * score) / 100, this.lblscore.Height);
-            }
+            this.label2.Text = ":" + score.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -179,8 +138,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
             }
 
-            this.lblAllResult.Text = "" + rate * datahelp.QuestionIds.Length;
-            ShowScore();
+                 ShowScore();
             AddStudentScore();
         }
 
@@ -191,6 +149,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 =2;
                     OFF of = new OFF(datahelp.QId);
                     of.Show();
                     this.Close();
@@ -198,12 +157,16 @@ namespace WindowsFormsApplication1.Exam
                     break;
                 case 2:
                     datahelp.CurrentStep = 2;
-                    ON on = new ON(datahelp.QId);
-                    on.Show();
+                    datahelp.CurrentStep1 = 2;
+                    //ON on = new ON(datahelp.QId);
+                    //on.Show();
+                    zaixianjiaoyan x = new zaixianjiaoyan();
+                    x.Show();
                     this.Close();
                     break;
                 case 3:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
                     ON on1 = new ON(datahelp.QId);
                     on1.Show();
                     this.Close();
@@ -211,6 +174,8 @@ namespace WindowsFormsApplication1.Exam
 
                 case 5:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
+                   
                     MF1 mf = new MF1();
                     mf.Show();
                     this.Close();
@@ -240,7 +205,7 @@ namespace WindowsFormsApplication1.Exam
             string a = string.Join(",", datahelp.QuestionIds);
             string b = string.Join(",",datahelp.UserAnswer);
             string c = string.Join(",", datahelp.Correct);
-            int d = score;
+            double d = score;
             string str1 = "";
             switch (datahelp.SubId)
             {
@@ -284,9 +249,9 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            this.label2.Text =str1;
+            //this.label2.Text =str1;
 
-           ff.ShowInfoTip(str1);
+        //   ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             com.ExecuteNonQuery();

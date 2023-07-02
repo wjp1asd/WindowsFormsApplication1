@@ -8,6 +8,7 @@ using WindowsFormsApplication1.Scan;
 using WindowsFormsApplication1.YanMO;
 using WindowsFormsApplication1.Settings;
 using WindowsFormsApplication1.Admin.Results;
+using WindowsFormsApplication1.Exam.MF;
 
 namespace WindowsFormsApplication1
 {
@@ -48,9 +49,9 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-                this.button7.Hide();
+              
                 this.button8.Hide();
-                this.button9.Hide();
+                
                 this.button10.Hide();
                 this.button11.Hide();
                 this.button12.Hide();
@@ -69,9 +70,9 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-                this.button7.Hide();
+              
                 this.button8.Hide();
-                this.button9.Hide();
+              
                 this.button10.Hide();
                 this.button11.Hide();
                 this.button12.Hide();
@@ -91,9 +92,9 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-                this.button7.Hide();
+               
                 this.button8.Hide();
-                this.button9.Hide();
+               
                 this.button10.Hide();
                 this.button11.Hide();
                 this.button12.Hide();
@@ -113,9 +114,9 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-                this.button7.Hide();
+                
                 this.button8.Hide();
-                this.button9.Hide();
+                
                 this.button10.Hide();
                 this.button11.Hide();
                 this.button12.Hide();
@@ -131,7 +132,7 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-                this.button7.Hide();
+               
                 this.button1.Hide();
                 this.button2.Hide();
                 this.button3.Hide();
@@ -216,6 +217,19 @@ namespace WindowsFormsApplication1
         {
             // ft.showloading();
 
+            initsetp();
+           
+        }
+
+        private void initsetp()
+        {
+            datahelp.CurrentStep = 1;
+            datahelp.CurrentStep1 = 1;
+            datahelp.QuestionIds = null;
+            datahelp.CurrentQuestion = 0;
+            datahelp.UserAnswer = null;
+            datahelp.curAnswer = null;
+            datahelp.Correct = null;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -257,7 +271,7 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Choose c = new Choose();
+            Choose c = new Choose("321084199510025535");
             c.Show();
             this.Hide();
         }
@@ -271,8 +285,10 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            jiaoyancanshu  jy = new jiaoyancanshu();    
-            jy.Show();
+            //jiaoyancanshu  jy = new jiaoyancanshu();    
+            //jy.Show();
+            OFF off = new OFF(datahelp.QId);
+            off.Show(); 
             this.Hide();
         }
 
@@ -285,7 +301,8 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            MFYM mf = new MFYM("123");
+            
+            MF1 mf = new MF1();
             mf.Show();
             this.Hide();
         }
@@ -298,15 +315,20 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            XHSB xh=new XHSB();
-            xh.Show();
+            jiaoyancanshu  jy = new jiaoyancanshu();    
+            jy.Show();
+
+           // XHSB xh =new XHSB();
+            //xh.Show();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
-            zaixianjiaoyan.Show();
-            
+            //zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
+            //zaixianjiaoyan.Show();
+            ON on = new ON(datahelp.QId);
+            on.Show();
+            this.Hide();
         }
 
         private void button12_Click(object sender, EventArgs e)

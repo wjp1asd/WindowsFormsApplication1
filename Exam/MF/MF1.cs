@@ -25,9 +25,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
             this.button4.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
-
-
-            this.label2.Text = "在线校验";
+            this.button5.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
 
 
@@ -43,6 +41,7 @@ namespace WindowsFormsApplication1.Exam.MF
             ff.fullsreen(this.button2, this);
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button4, this);
+            ff.fullsreen(this.button5, this);
             ff.fullsreen(this.label2, this);
         }
         private void button3_Click(object sender, EventArgs e)
@@ -65,7 +64,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
         private void ON_Load(object sender, EventArgs e)
         {
-           ff.ShowInfoTip(datahelp.CurrentStep+"+");
+          // ff.ShowInfoTip(datahelp.CurrentStep+"+");
             switch (datahelp.CurrentStep)
             {
                 case 1:
@@ -74,24 +73,35 @@ namespace WindowsFormsApplication1.Exam.MF
                     this.button1.Enabled = false;
                     this.button2.Enabled = false;
                     this.button4.Enabled = false;
+                    this.button5.Enabled = false;
                     break;
                 case 2:
                     this.button3.Enabled = false;
                     this.button1.Enabled = true;
                     this.button2.Enabled = false;
                     this.button4.Enabled = false;
+                    this.button5.Enabled = false;
                     break;
                 case 3:
                     this.button3.Enabled = false;
                     this.button1.Enabled = false;
                     this.button2.Enabled = true;
                     this.button4.Enabled = false;
+                    this.button5.Enabled = false;
+                    break;
+                case 5:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = true;
+                    this.button5.Enabled = false;
                     break;
                 case 4:
                     this.button3.Enabled = false;
                     this.button1.Enabled = false;
                     this.button2.Enabled = false;
-                    this.button4.Enabled = true;
+                    this.button5.Enabled = true;
+                    this.button4.Enabled = false;
                     break;
 
             }
@@ -111,6 +121,7 @@ namespace WindowsFormsApplication1.Exam.MF
             datahelp.SubId = 2;
             zaixianjiaoyan a = new zaixianjiaoyan();
             a.Show();
+            this.Close();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -128,6 +139,7 @@ namespace WindowsFormsApplication1.Exam.MF
             datahelp.SubId = 4;
             QuestionForm a = new QuestionForm(datahelp.QId, "4");
             a.Show();
+            this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -135,6 +147,13 @@ namespace WindowsFormsApplication1.Exam.MF
             this.Close();
             ProjectInfo projectInfo = new ProjectInfo();
             projectInfo.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            MFYM mf = new MFYM(datahelp.QId);
+            mf.Show();  
         }
     }
 }

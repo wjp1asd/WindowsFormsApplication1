@@ -371,8 +371,8 @@ namespace WindowsFormsApplication1.Exam.MF
         private void btnAnswer_Click(object sender, EventArgs e)
         {
             AnswerForm frm = new AnswerForm();
-            frm.MdiParent = this.MdiParent;
             frm.Show();
+            this.Close();
 
         }
         private void SelectOption()

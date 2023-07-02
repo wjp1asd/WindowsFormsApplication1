@@ -1,8 +1,10 @@
 ﻿using AutoWindowsSize;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
@@ -21,7 +23,7 @@ namespace WindowsFormsApplication1.YanMO
         {
             InitializeComponent();
             string sql = "select * from " + TableName;
-            this.panel1.Hide();
+            //this.panel1.Hide();
             InitTable(sql);
         }
         //List<QuestionA> qs;
@@ -213,7 +215,7 @@ namespace WindowsFormsApplication1.YanMO
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string question = this.txtUsername.Text.Trim();
+            string question = this.comboBox2.Text.Trim();
             string answer = this.comboBox1.Text.Trim();
             string oa = this.textBox3.Text.Trim();
             string ob = this.textBox4.Text.Trim();
@@ -287,22 +289,30 @@ namespace WindowsFormsApplication1.YanMO
 
         }
 
-      
-
+        FileSystemInfo[] imgs;
+        List<string> urls = new List<string>();
         private void button5_Click_2(object sender, EventArgs e)
         {
             string sPath1 = Application.StartupPath + "\\Images\\题库照片\\";
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = sPath1;
-
-            openFileDialog.RestoreDirectory = true;
-            openFileDialog.FilterIndex = 1;
+            FolderBrowserDialog openFileDialog = new FolderBrowserDialog();
+            
+            openFileDialog.SelectedPath = sPath1;
+            
+            DirectoryInfo dir =new DirectoryInfo(sPath1);   
+            
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
 
+                 imgs=dir.GetFiles();
+                foreach (FileSystemInfo item in imgs)
+                {
+                    urls.Add(item.FullName);
+                }     //MessageBox.Show(imgs.Length+"");
+                 comboBox2.DataSource = imgs;    
 
-                this.txtUsername.Text = System.IO.Path.GetFullPath(openFileDialog.FileName);
-                var url = this.txtUsername.Text.ToString();
+              
+               // this.txtUsername.Text = System.IO.Path.GetFullPath(openFileDialog.FileName);
+                //var url = this.txtUsername.Text.ToString();
 
             }
         }
@@ -330,6 +340,10 @@ namespace WindowsFormsApplication1.YanMO
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+
+            string connectionString = ConfigurationManager.AppSettings["loc"];
+
+            this.label6.Text += ":图片必须放在共享路径：" + connectionString;
         }
 
 
@@ -354,5 +368,9 @@ namespace WindowsFormsApplication1.YanMO
             }
         }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.pictureBox2.ImageLocation = this.urls[this.comboBox2.SelectedIndex];
+        }
     }
 }
