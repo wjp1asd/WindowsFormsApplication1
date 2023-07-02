@@ -43,11 +43,11 @@ namespace WindowsFormsApplication1.Exam
         bool correct3 = false;
         // 算分模块 密封面直径测量得分 拆卸阀帽得分 误差选择得分 校验结果得分
         Score sc=new Score();
-        int mfzjcl = 0;
-        int cxfm1  = 0;
-        int wxxz1 = 0;
-        int jyjg1 = 0;
-        int azfm1 = 0;
+        float mfzjcl = 0;
+        float cxfm1  = 0;
+        float wxxz1 = 0;
+        float jyjg1 = 0;
+        float azfm1 = 0;
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int youbiaokachi = 2;
@@ -157,6 +157,8 @@ namespace WindowsFormsApplication1.Exam
 
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
+            this.richTextBox2.Hide();
+            this.plcinit();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -799,6 +801,7 @@ namespace WindowsFormsApplication1.Exam
         float lastF = 0;
         //标定k值
         float k = 1;
+        float wjl= 0;
         private void voldetla(string sb1, string t8)
         {
             //cz从离线压力设置-初次测试压力中取值
@@ -813,7 +816,7 @@ namespace WindowsFormsApplication1.Exam
             float b1 = (a-standardValue) / 10000 / 5;
             //生成基准线
            
-         
+            
             float b2 = 0;
             switch (liangcheng)
             {
@@ -851,14 +854,23 @@ namespace WindowsFormsApplication1.Exam
                     //500 * 0.6; 
                     break;
             }
-           
+            if (b2 - wjl < 0 && Math.Abs(wjl - wjltj) <= 1) {
+                // 开启压力值
+                Action tongdao1 = () =>
+                {
+
+                    this.textBox5.Text = b2.ToString();
+                };
+                this.Invoke(tongdao1);
+
+                }
            
                
            
             if (show&&(a - standardValue)>=0) {
                 //    ff.ShowInfoTip("当前电压值-初始电压值："+(a- standardValue).ToString());
                 currentF = b2 - standardValue;
-               
+                this.textBox5.Text = currentF.ToString();
                 this.chart1.Series[0].Points.AddXY(cisu, b2);
                 showpoint(cisu);
                 lastF = b2 - standardValue;
@@ -887,6 +899,7 @@ namespace WindowsFormsApplication1.Exam
             };
             this.Invoke(tongdao);
             dwq = a;
+            wjl = b2;
 
         }
         int smin = 0;
@@ -953,9 +966,10 @@ namespace WindowsFormsApplication1.Exam
 
             richTextBox2.Text += "考试码：" + datahelp.QId;
 
-           
-         
-              
+            wucha1(t.Zxlx);
+            wuc = true;
+
+
            this.richTextBox2.Text += "当前采集卡端口：" + datahelp.plc1 + "波特率" + datahelp.plcbt1 + "起始位，停止位，校验位" + datahelp.plcst1 + "-" + datahelp.plcsp1 + "-" + datahelp.plcjy1;
 
             }
@@ -967,8 +981,21 @@ namespace WindowsFormsApplication1.Exam
         {
             this.Close();
             datahelp.CurrentStep1 = 3;
-            zaixianjiaoyan o=new zaixianjiaoyan();
-            o.Show();
+            if (DIS == "11111111")
+            {
+                zaixianjiaoyan o = new zaixianjiaoyan();
+                o.Show();
+                this.Close();
+                serialPort2.Close();
+             
+            }
+            else
+            {
+
+                MessageBox.Show("请完成复位再退出");
+
+            }
+          
         }
         Thread readAI;
 
@@ -985,7 +1012,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            this.plcinit();
+            
             step = 1;
             switch(step) {
                 case 0:
@@ -1058,11 +1085,11 @@ namespace WindowsFormsApplication1.Exam
         {
             show = false;
         }
-
+        bool wuc = false;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //获取初始值
-          
+            if (wuc == false) { return; }
 
             yali = double.Parse(t.Zxyl.Trim());
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
