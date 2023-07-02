@@ -18,6 +18,8 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class record : Form
     {
+
+        
         public record()
         {
             InitializeComponent();
@@ -172,7 +174,20 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            //SqlConnection con = new SqlConnection(connectionString);
+            //string a = this.edyl.Text.Trim();
+            //string b = this.zj.Text.Trim();
+            //string c = string.Join(",", datahelp.Correct);
+            //double d = score;
+            //string str1 = "";
+            //string  str1 = "Update Grade set lxquestions='" + a + "',lxanswer='" + b + "',lxcorrect='" + c + "',score2='" + d
+
+            //  + "' where testid= '" + datahelp.QId.Trim() + "'";
+
+
             this.ShowSuccessDialog("保存成功");
+
         }
     }
 }

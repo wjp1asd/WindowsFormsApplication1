@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1.Exam
             index = wuchas[comboBox1.SelectedIndex].Id;
         }
         Fuc ff = new Fuc();
-        int score = 0;
+        float score = 0;
         private void button1_Click(object sender, EventArgs e)
         {
             // 判读选择情况
