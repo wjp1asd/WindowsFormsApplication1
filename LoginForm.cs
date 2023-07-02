@@ -36,7 +36,8 @@ namespace WindowsFormsApplication1
 
 
             string x = ConfigurationManager.AppSettings["machine"];
-            this.label2.Text = a.link;
+            this.label2.Text = a.link.Trim();
+            this.label2.Left += 100;
             if (x == "1")
             {
                 // 管理员权限
@@ -247,7 +248,8 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+         //   Application.Exit();
+            System.Environment.Exit(0);
         }
 
         private void label2_Click(object sender, EventArgs e)

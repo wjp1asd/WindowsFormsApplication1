@@ -102,6 +102,7 @@ namespace WindowsFormsApplication1
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             // this.SizeChanged += groupBox1_Resize;
             InitConfig();
+           // this.groupBox1.s
         }
 
         private void button1_Click(object sender, EventArgs e)
