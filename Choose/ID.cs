@@ -193,7 +193,7 @@ namespace WindowsFormsApplication1
 
                                           
                                         }
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
 
                                     }
                                     catch (Exception e)
@@ -265,7 +265,7 @@ namespace WindowsFormsApplication1
 
                                            
                                         }
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
@@ -336,7 +336,7 @@ namespace WindowsFormsApplication1
                                         
                                         }
 
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {

@@ -291,7 +291,8 @@ namespace WindowsFormsApplication1.YanMO
 
         private void button5_Click_2(object sender, EventArgs e)
         {
-            string sPath1 = Application.StartupPath + "\\Images\\题库照片\\";
+            //   string sPath1 = Application.StartupPath + "\\Images\\题库照片\\";
+            string sPath1 = loc+"\\题库照片\\";
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = sPath1;
 
@@ -325,15 +326,16 @@ namespace WindowsFormsApplication1.YanMO
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
         }
+        string loc = "";
         private void LPSB_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+            this.panel1.Hide();
+          loc = ConfigurationManager.AppSettings["loc"];
 
-            string connectionString = ConfigurationManager.AppSettings["loc"];
-
-            this.label6.Text += ":图片必须放在共享路" + connectionString;
+            this.label6.Text += ":图片必须放在共享路" + loc;
         }
 
 

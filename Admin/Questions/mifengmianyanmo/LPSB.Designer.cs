@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
@@ -62,7 +62,6 @@
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -86,7 +85,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(254, 44);
+            this.panel1.Location = new System.Drawing.Point(109, 115);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(424, 279);
@@ -264,6 +263,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Location = new System.Drawing.Point(660, 115);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -371,8 +371,8 @@
             // optionA
             // 
             this.optionA.DataPropertyName = "optionA";
-            dataGridViewCellStyle3.NullValue = "操作";
-            this.optionA.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.NullValue = "操作";
+            this.optionA.DefaultCellStyle = dataGridViewCellStyle9;
             this.optionA.HeaderText = "选项A";
             this.optionA.MinimumWidth = 6;
             this.optionA.Name = "optionA";
@@ -381,8 +381,8 @@
             // optionB
             // 
             this.optionB.DataPropertyName = "optionB";
-            dataGridViewCellStyle4.NullValue = "删除";
-            this.optionB.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.NullValue = "删除";
+            this.optionB.DefaultCellStyle = dataGridViewCellStyle10;
             this.optionB.HeaderText = "选项B";
             this.optionB.MinimumWidth = 6;
             this.optionB.Name = "optionB";
@@ -415,25 +415,13 @@
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(335, 30);
+            this.label6.Location = new System.Drawing.Point(340, 30);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(113, 12);
             this.label6.TabIndex = 41;
             this.label6.Text = "双击地址可查看内容";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(514, 24);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 12);
-            this.label7.TabIndex = 41;
-            this.label7.Text = "双击地址可查看内容";
             // 
             // LPSB
             // 
@@ -442,7 +430,6 @@
             this.ClientSize = new System.Drawing.Size(844, 498);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
@@ -497,6 +484,5 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
     }
 }
