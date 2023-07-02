@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1.Exam
             }
 
 
-            //score = count * rate;
+             score = count * rate;
              MessageBox.Show(count+""+rate+""+score);
             this.label2.Show();
             this.label2.Text = "得分:" + score.ToString();

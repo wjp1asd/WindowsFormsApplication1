@@ -542,7 +542,7 @@ List<pressure> pp=new List<pressure>();
                 // AI0
 
                 this.button3.Text = "正在校验";
-                this.button2.Text="第一次测试";
+                this.button1.Text="第一次测试";
                 this.step=1;
                 this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                 this.timer1.Start();
