@@ -40,6 +40,12 @@ namespace WindowsFormsApplication1.Exam
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
+
+            this.button3.Left -=100;
+            this.button7.Left -= 100;
+            this.label2.Left -= 100;
+
+
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)

@@ -233,7 +233,7 @@ namespace WindowsFormsApplication1.Questions
 
                     con.Close();
                    ff.ShowInfoTip("已删除");
-                    string sql = "select * from " + TableName + " where subId=" + Subtype + " and concat(id,question,answer) like '%" + this.textBox1.Text + "%'";
+                    string sql = "select * from " + TableName + " where subId=" + Subtype ;
 
                     this.InitTable(sql);
                 }
@@ -297,7 +297,7 @@ namespace WindowsFormsApplication1.Questions
             con.Close();
            ff.ShowInfoTip("已更新");
             this.panel1.Hide();
-            string sql = "select * from " + TableName + " where subId=" + Subtype + " and concat(id,question,answer) like '%" + this.textBox1.Text + "%'";
+            string sql = "select * from " + TableName + " where subId=" + Subtype ;
 
             this.InitTable(sql);
         }
@@ -316,10 +316,10 @@ namespace WindowsFormsApplication1.Questions
 
         private void uiComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.uiComboBox1.SelectedIndex ==1 || this.uiComboBox1.SelectedIndex == 2)
+            if (this.uiComboBox1.SelectedIndex == 2)
             {
                 // 判断题
-
+               // this.uiComboBox1.items;
                 this.textBox10.Hide();
                 this.textBox9.Hide();
                 this.textBox8.Hide();

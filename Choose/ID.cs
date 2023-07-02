@@ -102,6 +102,7 @@ namespace WindowsFormsApplication1
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             // this.SizeChanged += groupBox1_Resize;
             InitConfig();
+           // this.groupBox1.s
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -125,7 +126,14 @@ namespace WindowsFormsApplication1
                     if (authenticate == 0)
                     {
                         int readContent = IDCardReader.Read_Content(1);
-                      
+
+                        Action tongdao = () =>
+                        {
+                            this.groupBox1.Show();
+                        };
+                        this.Invoke(tongdao);
+
+                         
 
                         if (IDCardReader.IsFPRIDCard() == 1)
                         {
@@ -186,7 +194,7 @@ namespace WindowsFormsApplication1
 
                                           
                                         }
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
 
                                     }
                                     catch (Exception e)
@@ -258,7 +266,7 @@ namespace WindowsFormsApplication1
 
                                            
                                         }
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
@@ -271,7 +279,7 @@ namespace WindowsFormsApplication1
                         else
                         {
 
-
+                        
 
                             lblAddress.Visible = true;
                             lblDept.Visible = true;
@@ -329,7 +337,7 @@ namespace WindowsFormsApplication1
                                         
                                         }
 
-                                        this.pictureBox1.ImageLocation = url;
+                                        this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
@@ -341,7 +349,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                ff.showloading( "读卡操作失败！");
-                                this.label2.ForeColor = Color.Red;
+                               // this.label2.ForeColor = Color.Red;
                             
                             }
                         }
@@ -359,8 +367,8 @@ namespace WindowsFormsApplication1
                     else
                     {
                         ff.ShowInfoTip("请放身份证!");
-                        this.label2.Text = "请放身份证!";
-                        this.label2.ForeColor = Color.Red;
+                      //  this.label2.Text = "请放身份证!";
+                       // this.label2.ForeColor = Color.Red;
                        
                     }
                 }
