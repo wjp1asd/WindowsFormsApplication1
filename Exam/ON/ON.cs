@@ -113,6 +113,7 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             datahelp.SubId = 2;
+            datahelp.CurrentStep1 = 1;
             zaixianjiaoyan a = new zaixianjiaoyan();
             a.Show();
             this.Close();

@@ -71,7 +71,7 @@ namespace WindowsFormsApplication1
         {
             score = sc.getScore("ymff");
             
-            this.label6.Text = "密封面直径测量得分：" + score;
+            this.label6.Text = "研磨得分：" + score;
         }
         private void initBound()
         {
