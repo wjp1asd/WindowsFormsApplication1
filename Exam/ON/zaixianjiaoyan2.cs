@@ -43,11 +43,11 @@ namespace WindowsFormsApplication1.Exam
         bool correct3 = false;
         // 算分模块 密封面直径测量得分 拆卸阀帽得分 误差选择得分 校验结果得分
         Score sc=new Score();
-        int mfzjcl = 0;
-        int cxfm1  = 0;
-        int wxxz1 = 0;
-        int jyjg1 = 0;
-        int azfm1 = 0;
+        float mfzjcl = 0;
+        float cxfm1  = 0;
+        float wxxz1 = 0;
+        float jyjg1 = 0;
+        float azfm1 = 0;
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int youbiaokachi = 2;

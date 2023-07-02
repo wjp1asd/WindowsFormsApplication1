@@ -62,7 +62,7 @@ namespace WindowsFormsApplication1.Exam
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
-        int cxfm,ylxz, xygb,zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs= 0;
+        float cxfm,ylxz, xygb,zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs= 0;
         private void InitScore()
         {
             ylxz= sc.getScore("ylxz");

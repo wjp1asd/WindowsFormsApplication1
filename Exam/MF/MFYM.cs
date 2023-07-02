@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
             InitUI();
 
         }
-        int score = 0;
+        float score = 0;
         private void InitUI()
         {
             datahelp a = new datahelp();
