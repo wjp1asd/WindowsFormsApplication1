@@ -122,6 +122,7 @@ namespace WindowsFormsApplication1
               
                 if (nReaderPort == 0)
                 {
+                    //这里可能初始化要改 
                     int authenticate = IDCardReader.Authenticate();
                     if (authenticate == 0)
                     {
