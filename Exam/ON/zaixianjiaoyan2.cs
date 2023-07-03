@@ -66,8 +66,13 @@ namespace WindowsFormsApplication1.Exam
         public zaixianjiaoyan2()
         {
             InitializeComponent();
+<<<<<<< HEAD
            this.richTextBox2.Hide();
            this.uiLedLabel4.Hide();
+=======
+            this.richTextBox2.Hide();
+            this.uiLedLabel4.Hide();
+>>>>>>> 30927f08a7acbba9ecf12dce130c8be8fec6e80c
             this.timer1.Stop();
             InitScore();
             //this.button2.Enabled = false;
@@ -375,7 +380,7 @@ namespace WindowsFormsApplication1.Exam
 
             }
             // 130012
-         //  MessageBox.Show(youbiaokachi +"-"+ siheyi + "-" + famao);
+        //   MessageBox.Show(youbiaokachi +"-"+ siheyi + "-" + famao);
 
             //采集卡初始化+舵机控制板
             try
@@ -601,12 +606,12 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
-               //ff.ShowInfoTip("游标卡尺归位");
+               ff.ShowInfoTip("游标卡尺归位");
                 //MessageBox.Show("游标卡尺归位");
             }
             else
             {
-              //  ff.ShowInfoTip("游标卡尺离开");
+               ff.ShowInfoTip("游标卡尺离开");
                // MessageBox.Show("游标卡尺离开");
                 //richTextBox2.Text += "切换阀关闭";
             }

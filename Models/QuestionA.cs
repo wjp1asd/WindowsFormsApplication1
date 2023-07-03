@@ -141,7 +141,7 @@ namespace WindowsFormsApplication1
             List<String> answerList = new List<string>();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select Top " + d.gynum + " id from question  where subid = 2 order by newid() ";
+            string sql = "select Top " + d.gynum + " id from question  where subid = 3 order by newid() ";
 
 
             SqlCommand com = new SqlCommand(sql, con);
