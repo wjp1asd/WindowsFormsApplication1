@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -15,9 +16,9 @@ namespace WindowsFormsApplication1.Models
 
         // fullsreen
         public void backlogin() {
-         
-            form1 f = new form1();
-        f.Show();
+
+            Application.Restart();
+            Process.GetCurrentProcess()?.Kill();
         }
         public void fullsreen(System.Windows.Forms.Control c,Form f) {
 
