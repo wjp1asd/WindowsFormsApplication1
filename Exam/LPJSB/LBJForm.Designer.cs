@@ -166,7 +166,7 @@
             // 
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(36, 61);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(275, 345);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -214,7 +214,7 @@
             this.rdbD.AutoSize = true;
             this.rdbD.Font = new System.Drawing.Font("宋体", 14F);
             this.rdbD.Location = new System.Drawing.Point(605, 182);
-            this.rdbD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbD.Margin = new System.Windows.Forms.Padding(2);
             this.rdbD.Name = "rdbD";
             this.rdbD.Size = new System.Drawing.Size(118, 23);
             this.rdbD.TabIndex = 35;
@@ -228,7 +228,7 @@
             this.rdbC.AutoSize = true;
             this.rdbC.Font = new System.Drawing.Font("宋体", 14F);
             this.rdbC.Location = new System.Drawing.Point(605, 155);
-            this.rdbC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbC.Margin = new System.Windows.Forms.Padding(2);
             this.rdbC.Name = "rdbC";
             this.rdbC.Size = new System.Drawing.Size(118, 23);
             this.rdbC.TabIndex = 34;
@@ -242,7 +242,7 @@
             this.rdbB.AutoSize = true;
             this.rdbB.Font = new System.Drawing.Font("宋体", 14F);
             this.rdbB.Location = new System.Drawing.Point(605, 128);
-            this.rdbB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbB.Margin = new System.Windows.Forms.Padding(2);
             this.rdbB.Name = "rdbB";
             this.rdbB.Size = new System.Drawing.Size(118, 23);
             this.rdbB.TabIndex = 33;
@@ -256,7 +256,7 @@
             this.rdbA.AutoSize = true;
             this.rdbA.Font = new System.Drawing.Font("宋体", 14F);
             this.rdbA.Location = new System.Drawing.Point(605, 101);
-            this.rdbA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbA.Margin = new System.Windows.Forms.Padding(2);
             this.rdbA.Name = "rdbA";
             this.rdbA.Size = new System.Drawing.Size(118, 23);
             this.rdbA.TabIndex = 32;
@@ -297,7 +297,7 @@
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LBJForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "零配件答题";
