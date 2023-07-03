@@ -334,8 +334,20 @@ List<pressure> pp=new List<pressure>();
             {
                 if (double.Parse(t.Lxyl) == p.f0){
                     //舵机码值=初次设置码值 比如整定1.0 初次1.2
-                    maz = p.maz;
-                    maz90 = p.maz90;
+                    double x = p.f1;
+                    foreach (var p1 in pp)
+                    {
+                        if (p.f1 == p1.f0) {
+                            maz = p1.maz;
+                            maz90 = p1.maz90;
+
+                        }
+
+
+                    }
+                      
+
+                   
                 }
 
             }
