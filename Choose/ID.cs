@@ -3,6 +3,7 @@ using AutoWindowsSize;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -381,6 +382,8 @@ namespace WindowsFormsApplication1
                 else
                 {
                     ff.ShowErrorTip("初始化失败！");
+                    Application.Restart();
+                    Process.GetCurrentProcess().Kill();
                 }
 
 
