@@ -56,9 +56,9 @@ namespace WindowsFormsApplication1.Exam
             }
 
 
-            //score = count * rate;
-             MessageBox.Show(count+""+rate+""+score);
-            this.label2.Show();
+            score = count * rate;
+            // MessageBox.Show(count+""+rate+""+score);
+            this.label2.Hide();
             this.label2.Text = "得分:" + score.ToString();
         }
 

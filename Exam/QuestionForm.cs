@@ -148,7 +148,7 @@ namespace WindowsFormsApplication1
                     this.Text = "研磨膏答题";
                     if (t.Ymgquestions.Length > 0)
                     {
-                        MessageBox.Show(t.Ymgquestions.Trim().Split(',') + ""+ t.Ymgquestions.Trim());
+                     //   MessageBox.Show(t.Ymgquestions.Trim().Split(',') + ""+ t.Ymgquestions.Trim());
 
                         datahelp.QuestionIds = t.Ymgquestions.Trim().Split(',');
 

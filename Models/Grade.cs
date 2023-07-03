@@ -73,7 +73,7 @@ namespace WindowsFormsApplication1.Models
         //[jyjg1] INT DEFAULT((-1)) NULL,
         //[azfm1] INT DEFAULT((-1)) NULL,
         //[bycs] INT DEFAULT((-1)) NULL,
-        public int updateGrade(int score, string mode, string tid)
+        public int updateGrade(float score, string mode, string tid)
         {
             int i = 0;
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
