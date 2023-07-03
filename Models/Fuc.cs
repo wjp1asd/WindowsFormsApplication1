@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1.Models
                     c.Left += (c.Left + f.Width) / 2 - 50;
                     break;
                 case "4":
-                    c.Left += (c.Left + f.Width) / 2 - 50;
+                    c.Left += (c.Left + f.Width) / 2;
                     break;
 
                 default:
@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1.Models
                     c.Left += (c.Left + f.Width) / 2 - 50;
                     break;
                 case "4":
-                    c.Left += (c.Left + f.Width) / 2 - 180;
+                    c.Left += (c.Left + f.Width) / 2 - 190;
                     break;
 
                 default:

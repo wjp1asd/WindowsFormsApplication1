@@ -383,7 +383,7 @@ namespace WindowsFormsApplication1
                 {
                     ff.ShowErrorTip("初始化失败！");
                     Application.Restart();
-                    Process.GetCurrentProcess().Kill();
+                    Process.GetCurrentProcess()?.Kill();
                 }
 
 

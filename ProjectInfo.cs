@@ -33,9 +33,9 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
+           
             Application.Restart();
-            Process.GetCurrentProcess().Kill(); 
-
+            Process.GetCurrentProcess()?.Kill();
         }
     }
 }
