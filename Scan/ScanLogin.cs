@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
@@ -22,6 +23,8 @@ namespace WindowsFormsApplication1.Scan
 
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
+
+            
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -119,8 +122,10 @@ namespace WindowsFormsApplication1.Scan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
-            ff.backlogin();
+            // this.Close();
+            // ff.backlogin();
+            Application.Restart();
+            Process.GetCurrentProcess()?.Kill();
         }
 
         private void label2_Click(object sender, EventArgs e)
