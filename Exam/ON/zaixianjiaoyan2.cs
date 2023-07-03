@@ -375,7 +375,7 @@ namespace WindowsFormsApplication1.Exam
 
             }
             // 130012
-           MessageBox.Show(youbiaokachi +"-"+ siheyi + "-" + famao);
+        //   MessageBox.Show(youbiaokachi +"-"+ siheyi + "-" + famao);
 
             //采集卡初始化+舵机控制板
             try
@@ -601,12 +601,12 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
-               //ff.ShowInfoTip("游标卡尺归位");
+               ff.ShowInfoTip("游标卡尺归位");
                 //MessageBox.Show("游标卡尺归位");
             }
             else
             {
-              //  ff.ShowInfoTip("游标卡尺离开");
+               ff.ShowInfoTip("游标卡尺离开");
                // MessageBox.Show("游标卡尺离开");
                 //richTextBox2.Text += "切换阀关闭";
             }
