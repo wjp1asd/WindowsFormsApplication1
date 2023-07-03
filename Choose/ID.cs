@@ -115,6 +115,7 @@ namespace WindowsFormsApplication1
         {
 
         }
+        int authenticate =-1;
         private void AutoReadCard()
         {
             while (true) {
@@ -122,7 +123,11 @@ namespace WindowsFormsApplication1
               
                 if (nReaderPort == 0)
                 {
-                    int authenticate = IDCardReader.Authenticate();
+                    if (authenticate == -1) {
+
+                        authenticate = IDCardReader.Authenticate();
+                    }
+                    
                     if (authenticate == 0)
                     {
                         int readContent = IDCardReader.Read_Content(1);
@@ -367,9 +372,10 @@ namespace WindowsFormsApplication1
                     else
                     {
                         ff.ShowInfoTip("请放身份证!");
-                      //  this.label2.Text = "请放身份证!";
-                       // this.label2.ForeColor = Color.Red;
-                       
+                        authenticate = IDCardReader.Authenticate();
+                        //  this.label2.Text = "请放身份证!";
+                        // this.label2.ForeColor = Color.Red;
+
                     }
                 }
                 else

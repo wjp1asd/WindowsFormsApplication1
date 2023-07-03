@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -32,9 +33,8 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
-            form1 f=new form1();
-            f.Show();
+            Application.Restart();
+            Process.GetCurrentProcess().Kill(); 
 
         }
     }
