@@ -1,15 +1,14 @@
 ﻿using AutoWindowsSize;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO.Ports;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -19,28 +18,28 @@ namespace WindowsFormsApplication1.Exam
     {
         TestRecord t = new TestRecord();
         Wucha wucha = new Wucha();
-       
+
         string url = "\\考试照片\\" + DateTime.Now.ToString("yy-mm-dd-hh-ii-ss");
         private string serialPortName;
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
         //#02 01 00 05 01 07 数字输入DI 读取
         byte[] io = new byte[] { 0x02, 0x01, 0x00, 0x05, 0x01, 0x07 };
         //锁紧螺母 初始电位器的码值 t1,当前码值t2，弹簧 电位器的码值  t3, t4;
-        string t1 = "", t2 = "",t3="",t4=" ";
+        string t1 = "", t2 = "", t3 = "", t4 = " ";
         // 整体采集，每个通道非0表示采集，为0表示不采集
         //02 11 20 0C 01 01 01 01 01 01 01 01 1F Lrc  td1 =header +content +lrc
         byte[] topheader = new byte[] { 0x02, 0x20, 0x00, 0x0C };
         byte[] content = new byte[] { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//全采集
         byte[] td1 = new byte[13];
 
-// 量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
-//关闭校验阀、打开泄压阀（无先后顺序） 
-//量程表归0
+        // 量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
+        //关闭校验阀、打开泄压阀（无先后顺序） 
+        //量程表归0
         bool correct1 = false;
         bool correct2 = false;
         bool correct3 = false;
         Score sc = new Score();
-        pressure p=new pressure();
+        pressure p = new pressure();
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
         int qiehuanfa1 = 0;
@@ -63,7 +62,7 @@ namespace WindowsFormsApplication1.Exam
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
-        float cxfm,ylxz, xygb,zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs= 0;
+        float cxfm, ylxz, xygb, zdyltz, sjlmsj, azfm, dkxyf, gbylbqh, bycs = 0;
         private void InitScore()
         {
             ylxz= sc.getScore("ylxz");
@@ -76,14 +75,14 @@ namespace WindowsFormsApplication1.Exam
             bycs = sc.getScore("bycs");
             //    jyjg1 = sc.getScore("jyjg1");zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs           
             //    azfm1 = sc.getScore("azfm1");
-              this.label7.Text = "压力选择得分：" + ylxz + "拆卸阀帽得分：" + cxfm + "整定压力调整得分：" + zdyltz + "锁紧螺母得分：" + sjlmsj 
-                
-                + "安装阀帽得分：" + azfm+"打开泄压阀得分："+dkxyf+"关闭压力表切换"+gbylbqh+"保压测试得分"+bycs;
+            this.label7.Text = "压力选择得分：" + ylxz + "拆卸阀帽得分：" + cxfm + "整定压力调整得分：" + zdyltz + "锁紧螺母得分：" + sjlmsj
+
+              + "安装阀帽得分：" + azfm+"打开泄压阀得分："+dkxyf+"关闭压力表切换"+gbylbqh+"保压测试得分"+bycs;
             //
         }
         private void fenxi()
         {
-         
+
             // 第一次校验：
             //开校验阀时判断 切换阀打开、泄压阀关闭
             //                 不正确  提示请检查你的操作是否正确。
@@ -167,7 +166,7 @@ namespace WindowsFormsApplication1.Exam
                 dishow("阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                 chaixiefamao();
+              // chaixiefamao();
             }
 
 
@@ -188,7 +187,8 @@ namespace WindowsFormsApplication1.Exam
             {
                 dishow("卸压阀打开");
 
-                if (a<119000) {
+                if (a<119000)
+                {
 
                     byte[] d3 = new byte[] {
                 0xFF,0x01,0x00,
@@ -196,7 +196,7 @@ namespace WindowsFormsApplication1.Exam
                 0x02, 0x00, 0xC4,
                 0x09};
 
-                serialPort1.Write(d3, 0, d3.Length);
+                    serialPort1.Write(d3, 0, d3.Length);
 
                 }
                 //richTextBox2.Text += "卸压阀打开";
@@ -209,13 +209,14 @@ namespace WindowsFormsApplication1.Exam
                 if (liangcheng > 0)
                 {
                     //  开校验阀时判断  切换阀打开、泄压阀关闭
-                //    guanbixieyafa();
+                    //    guanbixieyafa();
 
                 }
-                else {
+                else
+                {
                     dishow("未选择量程，算分异常");
                 }
-               
+
             }
         }
 
@@ -235,10 +236,10 @@ namespace WindowsFormsApplication1.Exam
             // 考点
             switch (step)
             {
-              
+
                 case 1:
                     //初次压力
-                   test1();
+                    test1();
                     break;
                 case 2:
                     //第二次
@@ -253,11 +254,11 @@ namespace WindowsFormsApplication1.Exam
                     test4();
                     break;
             }
-           
-           
-          
-           
-           
+
+
+
+
+
         }
 
         private void test4()
@@ -291,31 +292,33 @@ namespace WindowsFormsApplication1.Exam
             {
                 ff.ShowInfoTip("初次测试" + "校验阀打开");
                 // 
-               
 
-                if (DIS[7 - xieya] + "" == "0"&& ta>0  )
-                ta = 60;
+
+                if (DIS[7 - xieya] + "" == "0"&& ta>0)
+                    ta = 60;
 
             }
-            else {
+            else
+            {
 
                 ff.ShowInfoTip("初次测试" + "校验阀关闭");
             }
-           // this.label1.Text = "泄压阀关闭，请打开校验阀";
+            // this.label1.Text = "泄压阀关闭，请打开校验阀";
         }
 
         private void chaixiefamao()
         {
             // 10秒后拍照
             ff.ShowInfoTip("量程归0判断30秒");
-            if (current > 119000) {
-                Thread.Sleep(10000);
-              //  shot();
+            if (current > 119000)
+            {
+              //  Thread.Sleep(10000);
+                //  shot();
             }
-          
-        }
 
-List<pressure> pp=new List<pressure>();
+        }
+        pressure ap = new pressure();
+        List<pressure> pp = new List<pressure>();
 
         public JiaoYan(string wuchaid)
         {
@@ -328,17 +331,21 @@ List<pressure> pp=new List<pressure>();
             //获取压力码值
             pp = p.getAll();
             //
-            
+
             t = t.getRecord(datahelp.QId);
 
             foreach (var p in pp)
             {
-                if (double.Parse(t.Lxyl) == p.f0){
+                if (double.Parse(t.Lxyl) == p.f0)
+                {
+                    ap=p;
                     //舵机码值=初次设置码值 比如整定1.0 初次1.2
                     double x = p.f1;
                     foreach (var p1 in pp)
                     {
-                        if (p.f1 == p1.f0) {
+                        if (p.f1 == p1.f0)
+                        {
+                            // 初次
                             maz = p1.maz;
                             maz90 = p1.maz90;
 
@@ -346,9 +353,9 @@ List<pressure> pp=new List<pressure>();
 
 
                     }
-                      
 
-                   
+
+
                 }
 
             }
@@ -357,8 +364,8 @@ List<pressure> pp=new List<pressure>();
             InitScore();
             showMsg();
             // 开启一个线程录像
-          //  Task t1 = new Task(backCamera); 
-           //t1.Start();
+            //  Task t1 = new Task(backCamera); 
+            //t1.Start();
         }
         Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
@@ -368,7 +375,7 @@ List<pressure> pp=new List<pressure>();
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened)
             {
-               ff.ShowInfoTip("open video fail");
+                ff.ShowInfoTip("open video fail");
                 return;
             }
 
@@ -380,7 +387,7 @@ List<pressure> pp=new List<pressure>();
                 if (f.IsEmpty)
                 {
 
-                   ff.ShowInfoTip("show fail");
+                    ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -401,7 +408,7 @@ List<pressure> pp=new List<pressure>();
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened)
             {
-               ff.ShowInfoTip("open video fail");
+                ff.ShowInfoTip("open video fail");
                 return;
             }
             Mat f = new Mat();
@@ -413,7 +420,7 @@ List<pressure> pp=new List<pressure>();
                 if (f.IsEmpty)
                 {
 
-                   ff.ShowInfoTip("show fail");
+                    ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -443,7 +450,7 @@ List<pressure> pp=new List<pressure>();
             v.SetCaptureProperty(CapProp.FrameWidth, 220);
             if (!v.IsOpened)
             {
-               ff.ShowInfoTip("open video fail");
+                ff.ShowInfoTip("open video fail");
                 return;
             }
             step = 0;
@@ -455,7 +462,7 @@ List<pressure> pp=new List<pressure>();
                 if (f.IsEmpty)
                 {
 
-                   ff.ShowInfoTip("show fail");
+                    ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -505,9 +512,9 @@ List<pressure> pp=new List<pressure>();
             }
         }
 
-        List<goal> goals =new List<goal>();
+        List<goal> goals = new List<goal>();
 
-     
+
         private void JiaoYan_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
@@ -520,14 +527,32 @@ List<pressure> pp=new List<pressure>();
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
             //获得算分标准
-           goal g=new goal();
-           goals = g.getall();
+            goal g = new goal();
+            goals = g.getall();
+            v=new VideoCapture(0);
+            Application.Idle += Application_Idle;
+
             // 获得标定信息
             //for (int i = 0; i < goals.Count; i++)
             //{
             //   ff.ShowInfoTip(goals[i].sub+goals[i].name+goals[i].des+ goals[i].score);
             //}
 
+
+        }
+
+        VideoCapture v;
+        private void Application_Idle(object sender, EventArgs e)
+        {
+
+            Mat t = new Mat();
+            v.Read(t);
+            if (!t.IsEmpty)
+            {
+                Image<Bgr, byte> imageFrame = t.ToImage<Bgr, byte>(); // 将帧转换为Emgu CV的图像类型
+                pictureBox1.Image = imageFrame.ToBitmap(); // 显示图像
+
+            }
 
         }
         Thread readAI;
@@ -588,7 +613,7 @@ List<pressure> pp=new List<pressure>();
             else
             {
                 this.timer1.Stop();
-               ff.ShowInfoTip("时间到了");
+                ff.ShowInfoTip("时间到了");
                 //AnswerForm frm = new AnswerForm();
                 //frm.MdiParent = this.MdiParent;
                 //frm.Show();
@@ -596,7 +621,7 @@ List<pressure> pp=new List<pressure>();
             }
         }
 
-     
+
         public void plcinit()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -608,15 +633,15 @@ List<pressure> pp=new List<pressure>();
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-            
-                    string name = reader["type"].ToString().Trim();
+
+                string name = reader["type"].ToString().Trim();
                 switch (name)
                 {
                     case "泄压阀":
                         xieya = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
                     case "表1":
-                        qiehuanfa1 = int.Parse(reader["pin"].ToString().Trim().Substring(2,1));
+                        qiehuanfa1 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
                         break;
                     case "表2":
                         qiehuanfa2 = int.Parse(reader["pin"].ToString().Trim().Substring(2, 1));
@@ -643,13 +668,13 @@ List<pressure> pp=new List<pressure>();
 
             }
 
-         //  ff.ShowInfoTip(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+jiaoyanfa+"");
+            //  ff.ShowInfoTip(qiehuanfa1+ qiehuanfa2+qiehuanfa3+famao+fangzhen1+fangzhen2+xieya+gongju+jiaoyanfa+"");
 
             //采集卡初始化+舵机控制板
             try
             {
                 // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展 舵机
-                
+
                 //topheader.CopyTo(td1,0);
                 //content.CopyTo(td1, topheader.Length);
                 //byte a = CalcLRC(td1);
@@ -677,7 +702,7 @@ List<pressure> pp=new List<pressure>();
                 }
                 catch (Exception err)
                 {
-                   ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
+                    ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                     throw;
                 }
 
@@ -704,7 +729,7 @@ List<pressure> pp=new List<pressure>();
                 }
                 catch (Exception err)
                 {
-                   ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
+                    ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                     throw;
                 }
 
@@ -712,7 +737,7 @@ List<pressure> pp=new List<pressure>();
             }
             catch (Exception err)
             {
-               ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
+                ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
             }
 
 
@@ -742,11 +767,11 @@ List<pressure> pp=new List<pressure>();
 
 
         string DIS0;
-        string DIS="11111111";
+        string DIS = "11111111";
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-          
+
             int len = serialPort2.BytesToRead;//获取可以读取的字节数
             byte[] buff = new byte[len];//
             serialPort2.Read(buff, 0, len);//把数据读取到buff数组
@@ -754,7 +779,7 @@ List<pressure> pp=new List<pressure>();
                                            //ff.ShowInfoTip(BitConverter.ToString(buff));
                                            //MessageBox.Show(len);
                                            //  ff.ShowInfoTip(name);
-     if (buff.Length == 38)
+            if (buff.Length == 38)
             {
                 Action t = () =>
                 {
@@ -764,7 +789,7 @@ List<pressure> pp=new List<pressure>();
                 this.Invoke(t);
                 // richTextBox1.Clear();
                 //38位
-            //    MessageBox.Show(BitConverter.ToString(buff));
+                //    MessageBox.Show(BitConverter.ToString(buff));
                 // AI解析锁紧螺母 
                 byte[] ttt1 = new byte[4];
                 byte[] ttt2 = new byte[4];
@@ -823,12 +848,12 @@ List<pressure> pp=new List<pressure>();
                     };
                     this.Invoke(tongdao);
 
-                    
+
 
 
 
                 }
-               // 锁紧螺母
+                // 锁紧螺母
                 switch (fangzhen1)
                 {
                     case 0:
@@ -932,10 +957,10 @@ List<pressure> pp=new List<pressure>();
 
 
 
-                t1 = ShowBy(ttt1,1); 
-                
-                t2 = ShowBy(ttt2,2);
-                t3 = ShowBy(ttt3, 3); 
+                t1 = ShowBy(ttt1, 1);
+
+                t2 = ShowBy(ttt2, 2);
+                t3 = ShowBy(ttt3, 3);
                 // t4 =ShowBy(ttt2, 2);
                 // DI解析
 
@@ -989,7 +1014,7 @@ List<pressure> pp=new List<pressure>();
                 case 1:
                     if (sb1.Length > 0 && t1.Length > 0)
                     {
-                        voldetla1("锁紧螺母：",sb1, t1);
+                        voldetla1("锁紧螺母：", sb1, t1);
 
                     }
 
@@ -1002,13 +1027,13 @@ List<pressure> pp=new List<pressure>();
                     }
 
                     break;
-                 case 3:
+                case 3:
                     if (sb1.Length > 0 && t3.Length > 0)
                     {
                         voldetla(sb1, t3);
                     }
-                      break;
-                   
+                    break;
+
 
             }
 
@@ -1019,16 +1044,16 @@ List<pressure> pp=new List<pressure>();
             return sb1;
 
         }
-        
+
         private void voldetla1(string v, string sb1, string t1)
         {
             int a1 = Convert.ToInt32(sb1.ToString(), 16);
-         
+
             int b = Convert.ToInt32(t1.ToString(), 16);
 
             Action tongdao = () =>
             {
-              //  richTextBox3.Clear();
+                //  richTextBox3.Clear();
                 richTextBox3.AppendText(v+ sb1.ToString());
                 richTextBox3.AppendText(v + "当前电压差：" + (sjdwq - a1));
                 richTextBox3.AppendText(v+"当前电位器码值（电压值）：" + a1);
@@ -1038,7 +1063,8 @@ List<pressure> pp=new List<pressure>();
                 {
                     richTextBox2.AppendText(v + "正在锁紧");
                 }
-                else if((a1 - sjdwq) < 0) {
+                else if ((a1 - sjdwq) < 0)
+                {
                     richTextBox2.AppendText(v + "正在放松");
                 }
             };
@@ -1047,7 +1073,7 @@ List<pressure> pp=new List<pressure>();
         private void voldetla2(string v, string sb1, string t1)
         {
             int a2 = Convert.ToInt32(sb1.ToString(), 16);
-          
+
             int b = Convert.ToInt32(t1.ToString(), 16);
 
             Action tongdao = () =>
@@ -1080,14 +1106,14 @@ List<pressure> pp=new List<pressure>();
         int current = 0;
         private void voldetla(string sb1, string t8)
         {
-            
+
             int a = Convert.ToInt32(sb1.ToString(), 16);
             current =a;
             int b = Convert.ToInt32(t8.ToString(), 16);
             dwqcha = dwq - a;
             Action tongdao = () =>
             {
-               // richTextBox3.Clear();
+                // richTextBox3.Clear();
                 richTextBox3.AppendText("当前通道：" + sb1.ToString());
                 richTextBox3.AppendText("当前循环时间：" + smin);
 
@@ -1098,23 +1124,24 @@ List<pressure> pp=new List<pressure>();
                 richTextBox3.AppendText("当前循环次数：" + cisu);
                 richTextBox3.AppendText("上次电位器码值码值：" + dwq);
 
-  
+
                 richTextBox3.AppendText("当前电位器码值（电压值）：" + a);
                 richTextBox3.AppendText("上次电压差：" + b);
                 richTextBox3.AppendText("变化速度：" + Math.Abs(a - b) / interval);
                 calyali(a);
             };
             this.Invoke(tongdao);
-            
+
             if (Math.Abs(a) < 119000)
             {
-                if (ta == 60&&step==1) {
+                if (ta == 60&&step==1)
+                {
                     // 开启一个1分值计时
                     this.timer2.Enabled = true;
                     this.timer2.Start();
                     ff.ShowInfoTip("请在一分钟内正确操作");
                 }
-              SendServo1(a, 0);
+                SendServo1(a, 0);
 
                 //SendServo(a, 0);
                 //正确的方法先注视
@@ -1125,7 +1152,8 @@ List<pressure> pp=new List<pressure>();
             {
 
 
-                if (DIS[7 - xieya] + "" == "0"&&step==1) {
+                if (DIS[7 - xieya] + "" == "0"&&step==1)
+                {
                     ff.ShowInfoTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
 
                 }
@@ -1167,13 +1195,13 @@ List<pressure> pp=new List<pressure>();
         private void SendServo1(int a, int pos)
         {
 
-        
 
-     //舵机驱动
+
+            //舵机驱动
 
             byte[] d3 = new byte[] {
                 0xFF,0x01,0x00,
-                0x0a,0x00,0xFF, 
+                0x0a,0x00,0xFF,
                 0x02, 0x00, 0xC4,
                 0x09};
             //高八度低八度取值
@@ -1182,9 +1210,9 @@ List<pressure> pp=new List<pressure>();
             //目标码值（离线压力设置-初次测试压力）
             d3[9] = (byte)((maz >> 8) & 0xff);
             d3[8] = (byte)(maz & 0x00ff);
-           
+
             serialPort1.Write(d3, 0, d3.Length);
-          //  MessageBox.Show(BitConverter.ToString(d3));
+            //  MessageBox.Show(BitConverter.ToString(d3));
 
             if (dwq - a > 100)
             {
@@ -1274,7 +1302,7 @@ List<pressure> pp=new List<pressure>();
                 0x01, 0x01, 0xF4,
             };
             //高八度低八度取值
-            d3[6] = (byte)(maz & 0x00ff); 
+            d3[6] = (byte)(maz & 0x00ff);
             d3[5] = (byte)((maz >> 8) & 0xff);
 
             byte o = CalcLRC(d3);
@@ -1304,7 +1332,8 @@ List<pressure> pp=new List<pressure>();
             }
             Thread.Sleep(smin);
             if (a < 119000)
-            { dwq = a;
+            {
+                dwq = a;
             }
             if (maz > 500 & maz <= 2500)
             {
@@ -1313,7 +1342,7 @@ List<pressure> pp=new List<pressure>();
                 if (maz < 500)
                 { maz = 500; }
             }
-            
+
 
         }
 
@@ -1337,7 +1366,7 @@ List<pressure> pp=new List<pressure>();
             if (!serialPort2.IsOpen)
             {
 
-               ff.ShowInfoTip("open串口");
+                ff.ShowInfoTip("open串口");
                 return;
             }
 
@@ -1381,19 +1410,34 @@ List<pressure> pp=new List<pressure>();
             {
                 case -1:
                     this.button1.Text = "测试未开始";
+                    MessageBox.Show("测试未开始");
                     break;
-              
+
+                case 0:
+                    this.button1.Text = "初次测试";
+                    MessageBox.Show("初次测试");
+                    break;
+
                 case 1:
                     this.button1.Text = "第一次测试";
+                    MessageBox.Show("第一次测试");
+                    maz =ap.maz;
+                    maz90=ap.maz90;
                     break;
                 case 2:
                     this.button1.Text = "第二次测试";
+                    MessageBox.Show("第二次测试");
+
                     break;
                 case 3:
                     this.button1.Text = "第三次测试";
+                    MessageBox.Show("初次测试");
+
                     break;
                 case 4:
                     this.button1.Text = "密封性能测试";
+                    MessageBox.Show("密封性能测试");
+
                     ff.ShowInfoTip("保压测试开始，倒计时3分钟");
                     maz = maz90;
                     ta = 300;
@@ -1401,11 +1445,11 @@ List<pressure> pp=new List<pressure>();
             }
             //MessageBox.Show(this.button1.Text.ToString());
             // 开启1分钟判分倒计时  保压测试显示3分钟 实际30秒走完
-          
+
             ta = 60;
             step++;
 
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1435,7 +1479,7 @@ List<pressure> pp=new List<pressure>();
             if (!serialPort2.IsOpen)
             {
 
-               ff.ShowInfoTip("open串口");
+                ff.ShowInfoTip("open串口");
                 return;
             }
 
@@ -1465,7 +1509,7 @@ List<pressure> pp=new List<pressure>();
             richTextBox2.Text = "DI读取：" + a;
         }
 
-  
+
 
         private void lbltime_Click(object sender, EventArgs e)
         {
@@ -1480,7 +1524,8 @@ List<pressure> pp=new List<pressure>();
         int ta = 60;
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (ta > 0) { 
+            if (ta > 0)
+            {
                 ta--;
                 int min = ta / 60;
                 int sec = ta % 60;
@@ -1489,8 +1534,8 @@ List<pressure> pp=new List<pressure>();
             else
             {
                 this.timer2.Stop();
-               ff.ShowInfoTip("判分时间到了");
-               
+                ff.ShowInfoTip("判分时间到了");
+
             }
         }
 

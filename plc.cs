@@ -4,10 +4,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
 using Sunny.UI;
 using WindowsFormsApplication1.Models;
 
@@ -544,6 +546,21 @@ namespace WindowsFormsApplication1
             comboBox3.Text = "1";/*默认停止位:1*/
             comboBox4.Text = "8";/*默认数据位:8*/
             comboBox5.Text = "无";/*默认奇偶校验位:无*/
+            v=new VideoCapture(0);
+            Application.Idle += Application_Idle;
+        }
+        VideoCapture v;
+        private void Application_Idle(object sender, EventArgs e)
+        {
+
+          Mat t=new Mat();
+            v.Read(t);
+            if (!t.IsEmpty) {
+                Image<Bgr, byte> imageFrame =t.ToImage<Bgr, byte>(); // 将帧转换为Emgu CV的图像类型
+                pictureBox1.Image = imageFrame.ToBitmap(); // 显示图像
+
+            }
+
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -557,6 +574,16 @@ namespace WindowsFormsApplication1
 
             serialPort2.Write(first, 0, first.Length);
         }
+
+        private void plc_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (v != null)
+            {
+                v.Stop(); // 停止视频捕获
+                v.Dispose(); // 释放资源
+            }
+        }
+
         Thread readDI;
         private void button4_Click_1(object sender, EventArgs e)
         {

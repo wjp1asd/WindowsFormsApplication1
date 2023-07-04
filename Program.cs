@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
             // Application.Run(new Offline_Questions());
             // Application.Run(new Offline_JiaoYan());
             //Application.Run(new Import(1));
-            //Application.Run(new plc());
+           // Application.Run(new plc());
             // Application.Run(new Offline());
             // Application.Run(new StudentSet());
             //   Application.Run(new Settings1());
