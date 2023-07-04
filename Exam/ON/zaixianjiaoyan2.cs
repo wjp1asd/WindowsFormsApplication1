@@ -66,13 +66,9 @@ namespace WindowsFormsApplication1.Exam
         public zaixianjiaoyan2()
         {
             InitializeComponent();
-<<<<<<< HEAD
-           this.richTextBox2.Hide();
-           this.uiLedLabel4.Hide();
-=======
+
             this.richTextBox2.Hide();
             this.uiLedLabel4.Hide();
->>>>>>> 30927f08a7acbba9ecf12dce130c8be8fec6e80c
             this.timer1.Stop();
             InitScore();
             //this.button2.Enabled = false;
