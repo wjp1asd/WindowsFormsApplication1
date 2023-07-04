@@ -117,6 +117,7 @@ namespace WindowsFormsApplication1
 
         }
         int authenticate =-1;
+        int readContent = -1;
         private void AutoReadCard()
         {
             while (true) {
@@ -131,7 +132,12 @@ namespace WindowsFormsApplication1
                     
                     if (authenticate == 0)
                     {
-                        int readContent = IDCardReader.Read_Content(1);
+                        if ( readContent == -1)
+                        {
+
+                            readContent = IDCardReader.Read_Content(1);
+                        }
+                      
 
                         Action tongdao = () =>
                         {
@@ -354,9 +360,12 @@ namespace WindowsFormsApplication1
                             }
                             else
                             {
-                               ff.showloading( "读卡操作失败！");
-                               // this.label2.ForeColor = Color.Red;
-                            
+                               ff.ShowErrorTip( "读卡操作失败！");
+                                MessageBox.Show("警告：请联系管理员充气设备再进行抽题");
+                                break;
+                               // InitConfig();
+                                // this.label2.ForeColor = Color.Red;
+                                //   authenticate = IDCardReader.Authenticate();
                             }
                         }
                         //上传信息
@@ -373,7 +382,7 @@ namespace WindowsFormsApplication1
                     else
                     {
                         ff.ShowInfoTip("请放身份证!");
-                        authenticate = IDCardReader.Authenticate();
+                      //  authenticate = IDCardReader.Authenticate();
                         //  this.label2.Text = "请放身份证!";
                         // this.label2.ForeColor = Color.Red;
 
@@ -381,7 +390,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    ff.ShowErrorTip("初始化失败！");
+                    ff.ShowErrorTip("初始化失败!重启程序");
                     Application.Restart();
                     Process.GetCurrentProcess()?.Kill();
                 }
