@@ -66,9 +66,8 @@ namespace WindowsFormsApplication1.Exam
         public zaixianjiaoyan2()
         {
             InitializeComponent();
-
-            this.richTextBox2.Hide();
-            this.uiLedLabel4.Hide();
+           // this.richTextBox2.Hide();
+        //    this.uiLedLabel4.Hide();
             this.timer1.Stop();
             InitScore();
             //this.button2.Enabled = false;
@@ -602,34 +601,39 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
-               ff.ShowInfoTip("游标卡尺归位");
+               dishow("游标卡尺归位");
                 //MessageBox.Show("游标卡尺归位");
+                //richTextBox2.Text += "游标卡尺归位";
+               // richTextBox2.Text += "\r\n";
             }
             else
             {
-               ff.ShowInfoTip("游标卡尺离开");
-               // MessageBox.Show("游标卡尺离开");
+                dishow("游标卡尺离开");
+
+               // richTextBox2.Text += "游标卡尺离开";
+                //richTextBox2.Text += "\r\n";
+                // MessageBox.Show("游标卡尺离开");
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - lianjiegan] + "" == "0")
             {
-                ff.ShowInfoTip("连接杆归位");
+                dishow("连接杆归位");
                
             }
             else
             {
-                ff.ShowInfoTip("连接杆离开");
+                dishow("连接杆离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - siheyi] + "" == "0")
             {
-                ff.ShowInfoTip("四合一归位");
+                dishow("四合一归位");
               
             }
             else
             {
-                ff.ShowInfoTip("四合一离开");
+                dishow("四合一离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -638,12 +642,12 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - faban] + "" == "0")
             {
-                ff.ShowInfoTip("阀瓣归位");
+                dishow("阀瓣归位");
               
             }
             else
             {
-                ff.ShowInfoTip("阀瓣离开");
+                dishow("阀瓣离开");
 
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -652,11 +656,11 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - famao] + "" == "0")
             {
                 //richTextBox2.Text += "阀帽存在";
-                ff.ShowInfoTip("在线阀帽存在");
+                dishow("在线阀帽存在");
             }
             else
             {
-                ff.ShowInfoTip("在线阀帽拆卸");
+                dishow("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
              //   chaixiefamao();
@@ -665,13 +669,13 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - gongju] + "" == "0")
             {
-                ff.ShowInfoTip("在线工具归位");
+                dishow("在线工具归位");
                 //richTextBox2.Text += "工具归位";
 
             }
             else
             {
-                ff.ShowInfoTip("在线工具离开");
+                dishow("在线工具离开");
                 //richTextBox2.Text += "工具离开";
             }
 
@@ -684,6 +688,7 @@ namespace WindowsFormsApplication1.Exam
             Action tongdao = () =>
             {
                richTextBox2.Text += msg;
+                richTextBox2.Text += "\r\n";
             };
             this.Invoke(tongdao);
 
@@ -855,16 +860,7 @@ namespace WindowsFormsApplication1.Exam
                     //500 * 0.6; 
                     break;
             }
-            if (b2 - wjl < 0 && Math.Abs(wjl - wjltj) <= 1) {
-                // 开启压力值
-                Action tongdao1 = () =>
-                {
-
-                    this.textBox5.Text = b2.ToString();
-                };
-                this.Invoke(tongdao1);
-
-                }
+           
            
                
            
@@ -873,10 +869,21 @@ namespace WindowsFormsApplication1.Exam
                 currentF = b2 - standardValue;
                 this.textBox5.Text = currentF.ToString();
                 this.chart1.Series[0].Points.AddXY(cisu, b2);
-                showpoint(cisu);
+               
                 lastF = b2 - standardValue;
             }
-         
+            if (b2 - wjl < 0 && Math.Abs(wjl - wjltj) <= 1)
+            {
+                // 开启压力值
+                Action tongdao1 = () =>
+                {
+
+                    this.textBox5.Text = b2.ToString();
+                };
+                this.Invoke(tongdao1);
+
+                showpoint(cisu);
+            }
             Action tongdao = () =>
             {
                 richTextBox2.Clear();
@@ -907,7 +914,7 @@ namespace WindowsFormsApplication1.Exam
         private void showpoint(int x)
         {
             this.chart1.Series[0].Points[x].MarkerColor=Color.Red;
-            this.chart1.Series[0].Points[x].MarkerSize = 10;
+            this.chart1.Series[0].Points[x].MarkerSize = 20;
             this.chart1.Series[0].Points[x].MarkerStyle = MarkerStyle.Star6;
 
         }

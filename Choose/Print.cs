@@ -390,9 +390,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button7_Click(object sender, EventArgs e)
         {
-            form1 f1 = new form1();
-            f1.Show();
-            this.Close();
+            ff.backlogin();
         }
 
         private void ksId_Click(object sender, EventArgs e)

@@ -37,12 +37,12 @@ namespace WindowsFormsApplication1.Exam.MF
         public void change()
         {
 
-            ff.fullsreen(this.button1, this);
-            ff.fullsreen(this.button2, this);
-            ff.fullsreen(this.button3, this);
-            ff.fullsreen(this.button4, this);
-            ff.fullsreen(this.button5, this);
-            ff.fullsreen(this.label2, this);
+            ff.fullsreen1(this.button1, this);
+            ff.fullsreen1(this.button2, this);
+            ff.fullsreen1(this.button3, this);
+            ff.fullsreen1(this.button4, this);
+            ff.fullsreen1(this.button5, this);
+            ff.fullsreen1(this.label2, this);
         }
         private void button3_Click(object sender, EventArgs e)
         {

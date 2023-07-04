@@ -90,7 +90,23 @@ namespace WindowsFormsApplication1.Models
 
             return i;
         }
+        public int updatepath(string path, string tid)
+        {
+            int i = 0;
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "update grade set path = '" + path+"'  where testid = '" + tid + "'";
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
 
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                i++;
+            }
+
+            return i;
+        }
         public int getGrade(string can,string qid)
         {
             int score1 = 0;
