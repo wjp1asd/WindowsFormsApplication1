@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -15,17 +16,63 @@ namespace WindowsFormsApplication1.Models
 
         // fullsreen
         public void backlogin() {
-         
-            form1 f = new form1();
-        f.Show();
+
+            Application.Restart();
+            Process.GetCurrentProcess()?.Kill();
         }
         public void fullsreen(System.Windows.Forms.Control c,Form f) {
 
-            //  c.Left += (c.Left+ f.Width) / 2-50;
+            //
+            //
+            string x = ConfigurationManager.AppSettings["machine"];
+            switch (x)
+            {
+                case "2":
+                    c.Left += (c.Left + f.Width) / 2 - 50;
+                    break;
+                case "3":
+                    c.Left += (c.Left + f.Width) / 2 - 50;
+                    break;
+                case "4":
+                    c.Left += (c.Left + f.Width) / 2;
+                    break;
 
-            c.Left += (c.Left + f.Width) / 2;
+                default:
+                    c.Left += (c.Left + f.Width) / 2 - 50;
+                    break;
+
+            }
+            // c.Left += (c.Left+ f.Width) / 2-50;
+
+            
         }
+        public void fullsreen1(System.Windows.Forms.Control c, Form f)
+        {
 
+            //
+            //
+            string x = ConfigurationManager.AppSettings["machine"];
+            switch (x)
+            {
+                case "2":
+                    c.Left += (c.Left + f.Width) / 2 - 50;
+                    break;
+                case "3":
+                    c.Left += (c.Left + f.Width) / 2 - 50;
+                    break;
+                case "4":
+                    c.Left += (c.Left + f.Width) / 2 - 190;
+                    break;
+
+                default:
+                    c.Left += (c.Left + f.Width) / 2 - 50;
+                    break;
+
+            }
+            // c.Left += (c.Left+ f.Width) / 2-50;
+
+
+        }
         public String Md5(string plaintext)
         {
             MD5 md5 = new MD5CryptoServiceProvider();

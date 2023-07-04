@@ -49,8 +49,8 @@ namespace WindowsFormsApplication1
                 awt.FormSizeChanged();
             }
         }
-        Grade g=new Grade();
-
+        Grade g1 =new Grade();
+       
         Graphics back;
         TestRecord t = new TestRecord();  
     Score sc=new Score();
@@ -178,7 +178,8 @@ namespace WindowsFormsApplication1
             //}
             if (File.Exists(connectionString))
             {
-               // g.updateGrade(
+                g1.updatepath(connectionString1,datahelp.QId);
+               // g1.updateGrade()
                 ff.ShowSuccessTip("得分"+score);
                 // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
               // ff.ShowInfoTip("截图成功！");
