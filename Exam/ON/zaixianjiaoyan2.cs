@@ -50,6 +50,12 @@ namespace WindowsFormsApplication1.Exam
         float azfm1 = 0;
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
+        bool youbiao = true;
+        bool ljg = true;
+        bool fb = true;
+        bool gj = true;
+        bool shy = true;
+        bool fm = true;
         int youbiaokachi = 2;
         int lianjiegan = 0;
         int faban = 0;
@@ -74,7 +80,7 @@ namespace WindowsFormsApplication1.Exam
             this.button1.Enabled = false;
             this.button4.Enabled = false;
         }
-
+        Grade g = new Grade();
         private void InitScore()
         {
              mfzjcl =sc.getScore("mfzjcl");
@@ -83,6 +89,12 @@ namespace WindowsFormsApplication1.Exam
              jyjg1 = sc.getScore("jyjg1") ;
              azfm1 = sc.getScore("azfm1");
             this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
+            g.updateGrade(0, "mfzjcl", datahelp.QId);
+            g.updateGrade(0, "cxfm1", datahelp.QId);
+            g.updateGrade(0, "wxxz1", datahelp.QId);
+            g.updateGrade(0, "jyjg1", datahelp.QId);
+            g.updateGrade(0, "azfm1", datahelp.QId);
+        
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -124,6 +136,7 @@ namespace WindowsFormsApplication1.Exam
                 if (DIS[7 - faban] + "" == "0" && DIS[7 - youbiaokachi] + "" == "0") {
 
                     ff.ShowSuccessTip("得分:"+mfzjcl);
+                    g.updateGrade(mfzjcl, "mfzjcl", datahelp.QId);
 
                 } else {
 
@@ -159,6 +172,7 @@ namespace WindowsFormsApplication1.Exam
             td1[12] = (byte)a;
             this.richTextBox2.Hide();
             this.plcinit();
+            this.timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -168,11 +182,7 @@ namespace WindowsFormsApplication1.Exam
                 int min = datahelp.LxTime / 60;
                 int sec = datahelp.LxTime % 60;
                 this.label1.Text = string.Format("{0:00}:{1:00}", min, sec);
-                Control.CheckForIllegalCrossThreadCalls = false;
-              //  Random a = new Random();
-              //  int x = a.Next(100);
-               // y++;
-              
+               
               
 
             }
@@ -180,10 +190,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.timer1.Stop();
                 MessageBox.Show("时间到了");
-                //AnswerForm frm = new AnswerForm();
-                //frm.MdiParent = this.MdiParent;
-                //frm.Show();
-                //this.Close();
+               
             }
         }
         private void Initnum()
@@ -222,115 +229,8 @@ namespace WindowsFormsApplication1.Exam
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
-        Mat f1 = new Mat();
-            private void button6_Click(object sender, EventArgs e)
-            {
-                VideoCapture v = new VideoCapture(0);
-                v.SetCaptureProperty(CapProp.FrameHeight, 720);
-                v.SetCaptureProperty(CapProp.FrameWidth, 1280);
-                if (!v.IsOpened)
-                {
-                    MessageBox.Show("open video fail");
-                    return;
-                }
 
-                Mat f = new Mat();
-                while (true)
-                {
-
-                    v.Read(f);
-                    if (f.IsEmpty)
-                    {
-
-                        MessageBox.Show("show fail");
-                        break;
-                    }
-                    f1 = f;
-                    CvInvoke.Imshow("摄像头1：", f);
-                    if (CvInvoke.WaitKey(30) == 27)
-                    {
-
-                        break;
-                    }
-                }
-
-
-            }
-     
-            private void button7_Click(object sender, EventArgs e)
-            {
-                VideoCapture v = new VideoCapture(1);
-                v.SetCaptureProperty(CapProp.FrameHeight, 720);
-                v.SetCaptureProperty(CapProp.FrameWidth, 1280);
-                if (!v.IsOpened)
-                {
-                    MessageBox.Show("open video fail");
-                    return;
-                }
-                Mat f = new Mat();
-
-                while (true)
-                {
-
-                    v.Read(f);
-                    if (f.IsEmpty)
-                    {
-
-                        MessageBox.Show("show fail");
-                        break;
-                    }
-                    f1 = f;
-                    CvInvoke.Imshow("摄像头2：", f);
-                    if (CvInvoke.WaitKey(30) == 27)
-                    {
-
-                        break;
-                    }
-                }
-            }
-        Fuc ff= new Fuc();  
-            private void shot()
-            {
-             
-
-                CvInvoke.Imwrite(url + "shot.png", f1);
-                ff.ShowInfoTip("拍照成功");
-            }
-            // DI 输入的集合
-
-            private void backCamera()
-            {
-
-                VideoCapture v = new VideoCapture(0);
-               // v.SetCaptureProperty(CapProp.FrameHeight, 720);
-                //v.SetCaptureProperty(CapProp.FrameWidth, 1280);
-                if (!v.IsOpened)
-                {
-                    MessageBox.Show("open video fail");
-                    return;
-                }
-                step = 0;
-                Mat f = new Mat();
-                while (true)
-                {
-
-                    v.Read(f);
-                    if (f.IsEmpty)
-                    {
-
-                        MessageBox.Show("show fail");
-                        break;
-                    }
-                    f1 = f;
-                    CvInvoke.Imshow("摄像头1：", f);
-                    if (CvInvoke.WaitKey(30) == 27)
-                    {
-
-                        break;
-                    }
-                }
-            }
-
+       
         public void plcinit()
         {
             datahelp datahelp = new datahelp();
@@ -602,6 +502,7 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
                dishow("游标卡尺归位");
+                youbiao = true;
                 //MessageBox.Show("游标卡尺归位");
                 //richTextBox2.Text += "游标卡尺归位";
                // richTextBox2.Text += "\r\n";
@@ -609,7 +510,7 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 dishow("游标卡尺离开");
-
+                youbiao = false;
                // richTextBox2.Text += "游标卡尺离开";
                 //richTextBox2.Text += "\r\n";
                 // MessageBox.Show("游标卡尺离开");
@@ -618,23 +519,23 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - lianjiegan] + "" == "0")
             {
                 dishow("连接杆归位");
-               
+                ljg = true;
             }
             else
             {
                 dishow("连接杆离开");
-
+                ljg = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - siheyi] + "" == "0")
             {
                 dishow("四合一归位");
-              
+                shy = true;
             }
             else
             {
                 dishow("四合一离开");
-
+                shy = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
 
@@ -643,12 +544,13 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - faban] + "" == "0")
             {
                 dishow("阀瓣归位");
+                fb = true;
               
             }
             else
             {
                 dishow("阀瓣离开");
-
+                fb = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
 
@@ -657,9 +559,11 @@ namespace WindowsFormsApplication1.Exam
             {
                 //richTextBox2.Text += "阀帽存在";
                 dishow("在线阀帽存在");
+                fm = true;
             }
             else
             {
+                fm = false;
                 dishow("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
@@ -671,12 +575,13 @@ namespace WindowsFormsApplication1.Exam
             {
                 dishow("在线工具归位");
                 //richTextBox2.Text += "工具归位";
-
+                gj = true;
             }
             else
             {
                 dishow("在线工具离开");
                 //richTextBox2.Text += "工具离开";
+                gj = false;
             }
 
 
@@ -699,7 +604,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void chaixiefamao()
         {
-            shot();
+           // shot();
         }
 
         static string HexString2BinString(string hexString)
@@ -984,12 +889,56 @@ namespace WindowsFormsApplication1.Exam
         string index;
         List<Wucha> wuchas = new List<Wucha>();
         private double yali = 0;
-
+        bool last = false;
+        Fuc ff = new Fuc();
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
             datahelp.CurrentStep1 = 3;
-            if (DIS == "11111111")
+            if (last == false)
+            {
+                if (fm == true)
+                {
+                    g.updateGrade(azfm1, "azfm1", datahelp.QId);
+                    ff.ShowSuccessTip("阀帽归位得分");
+                }
+                else
+                {
+                    ff.ShowErrorTip("阀帽未归位不得分");
+
+                }
+                if (shy == true)
+                {
+                  //  g.updateGrade(, "dkxyf", datahelp.QId);
+                    ff.ShowSuccessTip("四合一归位得分");
+                }
+                else
+                {
+                    ff.ShowErrorTip("四合一未归位不得分");
+
+                }
+                if (gj == true)
+                {
+                  //  g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
+                    ff.ShowSuccessTip("工具归位正确");
+                }
+                else
+                {
+                    ff.ShowErrorTip("工具未归位");
+
+                }
+
+
+            }
+          //  g.updateGrade(0, "mfzjcl", datahelp.QId);
+            //g.updateGrade(0, "csfm1", datahelp.QId);
+          //  g.updateGrade(0, "wxxz1", datahelp.QId);
+           // g.updateGrade(0, "jyjg1", datahelp.QId);
+           // g.updateGrade(0, "azfm1", datahelp.QId);
+
+
+
+            if (DIS == "01100000")
             {
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();
@@ -1112,6 +1061,7 @@ namespace WindowsFormsApplication1.Exam
                 // 其所选不在范围之内 不得分
                 ff.ShowErrorTip("误差选择错误，不得分");
                 this.comboBox1.Enabled = false;
+                g.updateGrade(wxxz1, "wxxz1", datahelp.QId);
             }
             else
             {
