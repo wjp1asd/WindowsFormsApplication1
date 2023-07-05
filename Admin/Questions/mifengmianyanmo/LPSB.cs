@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1.YanMO
         {
             InitializeComponent();
             string sql = "select * from " + TableName;
-            //this.panel1.Hide();
+            this.panel1.Hide();
             InitTable(sql);
         }
         //List<QuestionA> qs;

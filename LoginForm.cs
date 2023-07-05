@@ -335,7 +335,7 @@ namespace WindowsFormsApplication1
 
         private void button12_Click(object sender, EventArgs e)
         {
-            GradePrint gradePrint = new GradePrint("w3gF7LblbhEknmqSQNtubw==");
+            GradePrint gradePrint = new GradePrint(datahelp.QId);
             gradePrint.Show();
         }
     }

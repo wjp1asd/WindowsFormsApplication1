@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
@@ -117,6 +118,7 @@ namespace WindowsFormsApplication1.Scan
             {
                 // 开始进入考试 读取不同设备参数 进行定向跳转    < !--1是管理员  0是考生抽题 2是离线考试 3 在线考试 4 研磨 - 1是上帝模式-- >
                 this.Close();
+                Task.Delay(3000);
                 Exam1 ex = new Exam1(ff.RC(sql));
                 ex.Show();
 

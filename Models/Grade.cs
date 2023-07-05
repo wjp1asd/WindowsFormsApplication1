@@ -90,12 +90,12 @@ namespace WindowsFormsApplication1.Models
 
             return i;
         }
-        public int updatepath(string path, string tid)
+        public int updatepath(string path,string pathname,string tid)
         {
             int i = 0;
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "update grade set path = '" + path+"'  where testid = '" + tid + "'";
+            string sql = "update grade set "+ pathname +" = '" + path+"'  where testid = '" + tid + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
