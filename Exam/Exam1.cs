@@ -40,18 +40,21 @@ namespace WindowsFormsApplication1.Exam
             switch (int.Parse(x))
             {
                 case 2:
+                    this.button1.Enabled = true;
                     this.button2.Enabled = false;
                     this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button3.Enabled = false;
                     break;
                 case 3:
+                    this.button2.Enabled = true;
                     this.button1.Enabled = false;
                     this.button3.Enabled = false;
                     this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     break;
                 case 4:
+                    this.button3.Enabled = true;
                     this.button1.Enabled = false;
                     this.button2.Enabled = false;
                     this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
