@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Threading;
@@ -20,8 +21,9 @@ namespace WindowsFormsApplication1.Exam
     {
         TestRecord t = new TestRecord();
         Wucha wucha = new Wucha();
-
-        string url = "\\考试照片\\" + DateTime.Now.ToString("yy-mm-dd-hh-ii-ss");
+        DateTime currentTime = DateTime.Now;
+       
+        string url;
         private string serialPortName;
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
         //#02 01 00 05 01 07 数字输入DI 读取
@@ -47,9 +49,9 @@ namespace WindowsFormsApplication1.Exam
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
 
         bool qiehuastate = false;
-        bool gongjustate = false;
-        bool famaostate = false;
-        bool xieyastate = false;
+        bool gongjustate = true;
+        bool famaostate = true;
+        bool xieyastate = true;
 
         int qiehuanfa1 = 0;
         int qiehuanfa2 = 0;
@@ -156,7 +158,7 @@ namespace WindowsFormsApplication1.Exam
                 
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                // chaixiefamao();
+                 chaixiefamao();
             }
 
 
@@ -367,10 +369,18 @@ namespace WindowsFormsApplication1.Exam
         private void shot()
         {
             // step = 1;
-            string loc = ConfigurationManager.AppSettings["loc"];
+            string loc1 = ConfigurationManager.AppSettings["loc"];
          //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc+url +t.Ksname +"-shot.png", mat);
-            g.updatepath(loc + url + t.Ksname + "-shot.png", "lxpic", datahelp.QId);
+          
+           
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+            CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Ksname + "-shot.png");
+
+            bt.Save(loc1 + url + t.Ksname + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Ksname + "-shot.png";
+            g.updatepath(mm, "lxpic", datahelp.QId);
             MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
@@ -434,6 +444,8 @@ namespace WindowsFormsApplication1.Exam
             v=new VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
 
+            string timestamp = currentTime.ToString("yyyyMMddHHmmss");
+            url ="\\考试照片\\"+timestamp;
             // 获得标定信息
             //for (int i = 0; i < goals.Count; i++)
             //{
@@ -968,7 +980,7 @@ namespace WindowsFormsApplication1.Exam
                     richTextBox2.AppendText(v + "正在锁紧");
                     if (correct2 == true && ap.f0>ap.f1) {
                         // 整定压力 大于 初次压力
-                        g.updateGrade(sjlmsj, "sjlmj", datahelp.QId);
+                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
                         ff.ShowSuccessTip("第二次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
 
                     }
@@ -979,7 +991,7 @@ namespace WindowsFormsApplication1.Exam
                     if (correct2 == true && ap.f0 < ap.f1)
                     {
                         // 整定压力 小于于 初次压力
-                        g.updateGrade(sjlmsj, "sjlmj", datahelp.QId);
+                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
                         ff.ShowSuccessTip("第二次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
 
                     }
@@ -1070,7 +1082,7 @@ namespace WindowsFormsApplication1.Exam
                     ff.ShowInfoTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
                     correct1 = true;
                     if (famaostate == false) {
-                        g.updateGrade(cxfm, "cxfm", datahelp.QId);
+                        g.updateGrade(cxfm, "csfm", datahelp.QId);
                     }
                   
                         
@@ -1423,7 +1435,7 @@ namespace WindowsFormsApplication1.Exam
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
-            MessageBox.Show("本地拍照成功"+ loc + url + t.Ksname + "-shot.png");
+            MessageBox.Show("本地拍照成功");
         }
 
         private void timer3_Tick(object sender, EventArgs e)
