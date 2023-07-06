@@ -80,7 +80,7 @@
             this.comboBox1.Font = new System.Drawing.Font("宋体", 12F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(416, 147);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(90, 24);
             this.comboBox1.TabIndex = 57;
@@ -197,7 +197,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(122, 185);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(90, 21);
             this.textBox1.TabIndex = 59;
@@ -232,7 +232,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(416, 188);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(90, 21);
             this.textBox2.TabIndex = 62;
@@ -261,7 +261,7 @@
             "2000",
             "5000"});
             this.comboBox2.Location = new System.Drawing.Point(798, 144);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(90, 24);
             this.comboBox2.TabIndex = 65;
@@ -297,7 +297,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(798, 184);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(91, 21);
             this.textBox3.TabIndex = 67;
@@ -326,7 +326,7 @@
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 249);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.BorderColor = System.Drawing.Color.Silver;
@@ -339,7 +339,7 @@
             series1.MarkerColor = System.Drawing.Color.Red;
             series1.MarkerSize = 20;
             series1.MarkerStep = 100;
-            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Star4;
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "外加力";
             series1.YValuesPerPoint = 2;
             this.chart1.Series.Add(series1);
@@ -355,7 +355,7 @@
             this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button3.Location = new System.Drawing.Point(264, 11);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 34);
             this.button3.TabIndex = 70;
@@ -369,7 +369,7 @@
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(385, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 34);
             this.button1.TabIndex = 71;
@@ -383,7 +383,7 @@
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.Location = new System.Drawing.Point(620, 11);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 34);
             this.button2.TabIndex = 73;
@@ -397,7 +397,7 @@
             this.button4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button4.Location = new System.Drawing.Point(502, 11);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(87, 34);
             this.button4.TabIndex = 72;
@@ -408,7 +408,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(122, 222);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(90, 21);
@@ -458,7 +458,7 @@
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(784, 226);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(242, 336);
             this.richTextBox2.TabIndex = 81;
@@ -471,7 +471,7 @@
             this.uiLedLabel4.ForeColor = System.Drawing.Color.Lime;
             this.uiLedLabel4.IntervalOn = 3;
             this.uiLedLabel4.Location = new System.Drawing.Point(757, 51);
-            this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.uiLedLabel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLedLabel4.Name = "uiLedLabel4";
             this.uiLedLabel4.Size = new System.Drawing.Size(269, 28);
@@ -516,6 +516,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1060, 50);
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label18
             // 
@@ -546,7 +547,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(416, 222);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(90, 21);
@@ -589,7 +590,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chart1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "zaixianjiaoyan2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "在线校验";

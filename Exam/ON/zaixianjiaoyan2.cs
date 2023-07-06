@@ -116,39 +116,47 @@ namespace WindowsFormsApplication1.Exam
         double wjltj = 0;
         private void CALCf(object sender, EventArgs e)
         {
-            try
-            {
-                double mfzj = double.Parse(textBox1.Text.Trim());
-                //  double zdyl = double.Parse(t.Zxyl);
-                double zdyl = 1.0;
-                double xtyl = double.Parse(textBox2.Text.Trim());
+            if (textBox1.Text.Trim().Length > 0) {
 
-                double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2/10;
-               
-                this.textBox3.Text = F.ToString();
-                wjltj = F;
-                double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
-                this.richTextBox2.Text += "开启压力"+PS;
+                try
+                {
+                    double mfzj = double.Parse(textBox1.Text.Trim());
+                    //  double zdyl = double.Parse(t.Zxyl);
+                    double zdyl = 1.0;
+                    double xtyl = double.Parse(textBox2.Text.Trim());
 
-                this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
-                // 游标卡尺和 阀瓣拿起 
+                    double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2 / 10;
 
-                if (DIS[7 - faban] + "" == "0" && DIS[7 - youbiaokachi] + "" == "0") {
+                    this.textBox3.Text = F.ToString();
+                    wjltj = F;
+                    double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
+                    this.richTextBox2.Text += "开启压力" + PS;
 
-                    ff.ShowSuccessTip("得分:"+mfzjcl);
-                    g.updateGrade(mfzjcl, "mfzjcl", datahelp.QId);
+                    this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
+                    // 游标卡尺和 阀瓣拿起 
 
-                } else {
+                    if (fb==false && youbiao==false && step == 1)
+                    { 
 
-                    ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
-                
+                        ff.ShowSuccessTip("得分:" + mfzjcl);
+                        g.updateGrade(mfzjcl, "mfzjcl", datahelp.QId);
+
+                    }
+                    else
+                    {
+
+                        ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
+
+                    }
                 }
-            }
-            catch (Exception)
-            {
+                catch (Exception)
+                {
 
-                throw;
+                    throw;
+                }
+                this.textBox1.Enabled = false;
             }
+          
           
         }
         Thread tj;
@@ -172,7 +180,8 @@ namespace WindowsFormsApplication1.Exam
             td1[12] = (byte)a;
             this.richTextBox2.Hide();
             this.plcinit();
-            this.timer1.Start();
+           
+             this.timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -482,7 +491,7 @@ namespace WindowsFormsApplication1.Exam
                 t2 = ShowBy(ttt2, 2);
                 // DI解析
 
-
+                cisu++;
 
 
             }
@@ -501,7 +510,7 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
-               dishow("游标卡尺归位");
+             //  ff.ShowInfoTip("游标卡尺归位");
                 youbiao = true;
                 //MessageBox.Show("游标卡尺归位");
                 //richTextBox2.Text += "游标卡尺归位";
@@ -509,7 +518,7 @@ namespace WindowsFormsApplication1.Exam
             }
             else
             {
-                dishow("游标卡尺离开");
+             //   ff.ShowInfoTip("游标卡尺离开");
                 youbiao = false;
                // richTextBox2.Text += "游标卡尺离开";
                 //richTextBox2.Text += "\r\n";
@@ -543,13 +552,13 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - faban] + "" == "0")
             {
-                dishow("阀瓣归位");
+             //  ff.ShowInfoTip("阀瓣归位");
                 fb = true;
               
             }
             else
             {
-                dishow("阀瓣离开");
+              //  ff.ShowInfoTip("阀瓣离开");
                 fb = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -761,6 +770,8 @@ namespace WindowsFormsApplication1.Exam
                 this.Invoke(tongdao1);
 
                 showpoint(cisu);
+
+
             }
             Action tongdao = () =>
             {
@@ -791,6 +802,7 @@ namespace WindowsFormsApplication1.Exam
         int smin = 0;
         private void showpoint(int x)
         {
+          //  MessageBox.Show("" + x + "开启压力点");
             this.chart1.Series[0].Points[x].MarkerColor=Color.Red;
             this.chart1.Series[0].Points[x].MarkerSize = 20;
             this.chart1.Series[0].Points[x].MarkerStyle = MarkerStyle.Star6;
@@ -937,6 +949,7 @@ namespace WindowsFormsApplication1.Exam
 
                 serialPort2.Write(td1, 0, td1.Length);
                 Thread.Sleep(500);
+                
             }
 
         }
@@ -959,6 +972,7 @@ namespace WindowsFormsApplication1.Exam
                         // AI0
 
                         this.button3.Text = "正在校验";
+                       
                         this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                         this.timer1.Start();
                         this.comboBox1.Enabled =false; this.comboBox2.Enabled =false;
@@ -1051,6 +1065,11 @@ namespace WindowsFormsApplication1.Exam
         private void comboBox1_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void wucha1(string type)
