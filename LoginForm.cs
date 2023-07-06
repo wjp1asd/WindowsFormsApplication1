@@ -273,9 +273,12 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Choose c = new Choose("321084199510025535");
+            //Choose c = new Choose("321084199510025535");
+          //  this.Close();
+            zaixianjiaoyan2 c = new zaixianjiaoyan2();
             c.Show();
-            this.Hide();
+         
+           this.Hide();
         }
 
         private void button5_Click(object sender, EventArgs e)

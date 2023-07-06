@@ -358,13 +358,13 @@ namespace WindowsFormsApplication1.Exam
             
             if (buff.Length == 38)
             {
-                Action t = () =>
-                {
-                   richTextBox2.Clear();
+                //Action t = () =>
+                //{
+                //   richTextBox2.Clear();
 
-                };
-                this.Invoke(t);
-                dishow(BitConverter.ToString(buff));
+                //};
+                //this.Invoke(t);
+                //dishow(BitConverter.ToString(buff));
                 //richTextBox2.Clear();
                 //38位
                 //MessageBox.Show(BitConverter.ToString(buff));
@@ -602,33 +602,6 @@ namespace WindowsFormsApplication1.Exam
 
       
 
-        private void chaixiefamao()
-        {
-           // shot();
-        }
-
-        static string HexString2BinString(string hexString)
-        {
-            try
-            {
-                string result = string.Empty;
-                foreach (char c in hexString)
-                {
-                    int v = Convert.ToInt32(c.ToString(), 16);
-                    int v2 = int.Parse(Convert.ToString(v, 2));
-                    // 去掉格式串中的空格，即可去掉每个4位二进制数之间的空格，
-                    result += string.Format("{0:d4} ", v2);
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw;
-            }
-
-        }
-
 
         private string ShowBy(byte[] buff, int num)
         {
@@ -771,15 +744,15 @@ namespace WindowsFormsApplication1.Exam
            
             if (show&&(a - standardValue)>=0) {
                 //    ff.ShowInfoTip("当前电压值-初始电压值："+(a- standardValue).ToString());
-                currentF = b2 - standardValue;
+                currentF = b2;
                 this.textBox5.Text = currentF.ToString();
                 this.chart1.Series[0].Points.AddXY(cisu, b2);
                
-                lastF = b2 - standardValue;
+               
             }
-            if (b2 - wjl < 0 && Math.Abs(wjl - wjltj) <= 1)
+            if (b2 - wjl < 0 && Math.Abs(wjl - wjltj) <= 1&&liangcheng>0)
             {
-                // 开启压力值
+                // 开始下降 压力值
                 Action tongdao1 = () =>
                 {
 
@@ -813,7 +786,7 @@ namespace WindowsFormsApplication1.Exam
             this.Invoke(tongdao);
             dwq = a;
             wjl = b2;
-
+            lastF = b2;
         }
         int smin = 0;
         private void showpoint(int x)
