@@ -154,7 +154,7 @@ namespace WindowsFormsApplication1.Exam
 
                     throw;
                 }
-                this.textBox1.Enabled = false;
+                 this.textBox1.Enabled = false;
             }
           
           
