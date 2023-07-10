@@ -54,8 +54,8 @@ namespace WindowsFormsApplication1.Exam
             decyl = sc.getScore("decyl");
             dscyl = sc.getScore("dscyl");
             mfsyyl = sc.getScore("mfsyyl");
-            mfsyyl = sc.getScore("mfsyyl");
-            this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
+            jyjg1 = sc.getScore("jyjg1");
+       //     this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
             g.updateGrade(0, "mfzjcl", datahelp.QId);
             g.updateGrade(0, "cxfm1", datahelp.QId);
             g.updateGrade(0, "wxxz1", datahelp.QId);
