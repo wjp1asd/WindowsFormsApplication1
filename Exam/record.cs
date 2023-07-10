@@ -37,7 +37,31 @@ namespace WindowsFormsApplication1.Exam
             this.printDocument1.OriginAtMargins = true;//启用页边距
 
         }
+        Score sc = new Score();
+        //要求整定压力 公称直径 压力等级范围 第一次 第二次 第三次 密封压力
+        float yqzdyl = 0;
+        float gctj = 0;
+        float yldj = 0;
+        float dycyl,decyl,dscyl,mfsyyl = 0;
+        float azfm1 = 0;
+      //  Grade g = new Grade();
+        private void InitScore()
+        {
+            yqzdyl = sc.getScore("yqzdyl");
+            gctj = sc.getScore("gctj");
+            yldj = sc.getScore("yldj");
+            dycyl = sc.getScore("dycyl");
+            decyl = sc.getScore("decyl");
+            dscyl = sc.getScore("dscyl");
+            mfsyyl = sc.getScore("mfsyyl");
+            this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
+            g.updateGrade(0, "mfzjcl", datahelp.QId);
+            g.updateGrade(0, "cxfm1", datahelp.QId);
+            g.updateGrade(0, "wxxz1", datahelp.QId);
+            g.updateGrade(0, "jyjg1", datahelp.QId);
+            g.updateGrade(0, "azfm1", datahelp.QId);
 
+        }
 
 
         public void Initc()
