@@ -133,7 +133,7 @@ namespace WindowsFormsApplication1.Exam
                     this.richTextBox2.Text += "开启压力" + PS;
 
                     this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
-                    // 游标卡尺和 阀瓣拿起 
+                    // 游标卡尺和 阀瓣拿起 zxc
 
                     if (fb==false && youbiao==false && step == 1)
                     { 
