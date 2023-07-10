@@ -154,7 +154,7 @@ namespace WindowsFormsApplication1.Exam
 
                     throw;
                 }
-                 this.textBox1.Enabled = false;
+                
             }
           
           
@@ -1012,7 +1012,7 @@ namespace WindowsFormsApplication1.Exam
 
                 setstandard(dwq);
             }
-          
+            this.textBox1.Enabled = false;
         }
 
         private void chart1_GetToolTipText(object sender, ToolTipEventArgs e)
