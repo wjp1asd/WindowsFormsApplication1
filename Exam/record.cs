@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1.Exam
         float gctj = 0;
         float yldj = 0;
         float dycyl,decyl,dscyl,mfsyyl = 0;
-        float azfm1 = 0;
+        float jyjg1 = 0;
       //  Grade g = new Grade();
         private void InitScore()
         {
@@ -53,6 +53,7 @@ namespace WindowsFormsApplication1.Exam
             dycyl = sc.getScore("dycyl");
             decyl = sc.getScore("decyl");
             dscyl = sc.getScore("dscyl");
+            mfsyyl = sc.getScore("mfsyyl");
             mfsyyl = sc.getScore("mfsyyl");
             this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
             g.updateGrade(0, "mfzjcl", datahelp.QId);
