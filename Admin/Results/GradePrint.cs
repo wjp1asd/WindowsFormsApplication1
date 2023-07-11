@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -31,9 +32,9 @@ namespace WindowsFormsApplication1.Admin.Results
             System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.Black);           //线条颜色         
             try
             {
-                e.Graphics.DrawString("成绩单汇总", titleFont, brush, new System.Drawing.Point(this.Width/2, 20));
-                Point[] points111 = { new Point(20, 38), new Point(this.Width, 38) };
-                e.Graphics.DrawLines(pen, points111);
+                e.Graphics.DrawString("成绩单汇总", titleFont, brush, new System.Drawing.Point(this.Width/2-200,0));
+             //   Point[] points111 = { new Point(20, 38), new Point(this.Width, 38) };
+               // e.Graphics.DrawLines(pen, points111);
               
                 e.Graphics.DrawString("考生："+a11.Text, fntTxt, brush, new System.Drawing.Point(80, 46));
                 e.Graphics.DrawString("身份证：" + a12.Text, fntTxt, brush, new System.Drawing.Point(80, 66));
@@ -50,6 +51,12 @@ namespace WindowsFormsApplication1.Admin.Results
                 e.Graphics.DrawString("得分：" + a23.Text, fntTxt, brush, new System.Drawing.Point(80, 286));
                 e.Graphics.DrawString("研磨膏答题结果：" + a24.Text, fntTxt, brush, new System.Drawing.Point(80, 306));
                 e.Graphics.DrawString("得分：" + a25.Text, fntTxt, brush, new System.Drawing.Point(80, 326));
+              
+                e.Graphics.DrawString("离线拍照：" , fntTxt, brush, new System.Drawing.Point(80, 366));
+                e.Graphics.DrawImage(new Bitmap(a1.lxpic), new System.Drawing.Point(80, 396));
+
+                e.Graphics.DrawString("密封截图：", fntTxt, brush, new System.Drawing.Point(80, 836));
+                e.Graphics.DrawImage(new Bitmap(a1.mxpic), new System.Drawing.Point(80, 866));
             }
             catch (Exception ee)
             {

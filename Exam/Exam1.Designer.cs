@@ -37,11 +37,13 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(225, 256);
+            this.button2.Location = new System.Drawing.Point(166, 160);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(360, 70);
+            this.button2.Size = new System.Drawing.Size(270, 56);
             this.button2.TabIndex = 44;
             this.button2.Text = "在线校验";
             this.button2.UseVisualStyleBackColor = false;
@@ -51,11 +53,13 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(225, 152);
+            this.button1.Location = new System.Drawing.Point(166, 77);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(360, 70);
+            this.button1.Size = new System.Drawing.Size(270, 56);
             this.button1.TabIndex = 43;
             this.button1.Text = "离线校验";
             this.button1.UseVisualStyleBackColor = false;
@@ -64,11 +68,13 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Red;
+            this.button3.Enabled = false;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(225, 354);
+            this.button3.Location = new System.Drawing.Point(166, 233);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(360, 70);
+            this.button3.Size = new System.Drawing.Size(270, 56);
             this.button3.TabIndex = 42;
             this.button3.Text = "密封面研磨";
             this.button3.UseVisualStyleBackColor = false;
@@ -79,9 +85,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(230, 67);
+            this.label2.Location = new System.Drawing.Point(169, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(222, 52);
+            this.label2.Size = new System.Drawing.Size(178, 42);
             this.label2.TabIndex = 41;
             this.label2.Text = "考试科目：";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -89,13 +96,14 @@
             // 
             // Exam1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 601);
+            this.ClientSize = new System.Drawing.Size(600, 481);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Exam1";
             this.Text = "考试";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

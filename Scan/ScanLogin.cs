@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
@@ -26,15 +27,26 @@ namespace WindowsFormsApplication1.Scan
 
             
         }
+        bool read = true;
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
             // 自动登录
-            if (this.textBox1.Text.ToString().Length > 19) {
+            if (this.textBox1.Text.ToString().Length == 22 &&read==true) {
 
-                xuanti();
-            
-            
+                string sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
+
+                MessageBox.Show("success");
+                if (ff.RC(sql).Length > 0)
+                {
+
+
+                 //   this.Close();
+                 //   Exam1 ex = new Exam1(ff.RC(sql));
+                  //  ex.Show();
+                }
+                read = false; 
+                this.textBox1.Enabled= false;   
             }
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml("Green");
@@ -71,19 +83,11 @@ namespace WindowsFormsApplication1.Scan
 
                 return;
             }
-                String sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
-             //   String sql1 = "select * from Grade where testid like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
-            //ff.ShowInfoTip(sql);
-
-            //if (ff.RC1(sql1).Length == 0)
-            //{
-            //    //没有考过shi生成空白成绩单
-            //    ff.formGrade(ff.RC(sql));
-
-            //}
+                string sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
+           
             if (ff.RC(sql).Length > 0)
             {
-                //ff.ShowSuccessTip("成功" + ff.RC(sql));
+            
                 string qrcode = ff.RC(sql);
                
                 string x = ConfigurationManager.AppSettings["machine"];
@@ -99,7 +103,7 @@ namespace WindowsFormsApplication1.Scan
                         break;
 
                 }
-                this.button7.Text = "确认考试";
+                this.button7.Text = "确认考试"; 
 
                 // Print p=new Print(this.textBox1.Text);
                 //  p.Show();
@@ -114,6 +118,7 @@ namespace WindowsFormsApplication1.Scan
             {
                 // 开始进入考试 读取不同设备参数 进行定向跳转    < !--1是管理员  0是考生抽题 2是离线考试 3 在线考试 4 研磨 - 1是上帝模式-- >
                 this.Close();
+                Task.Delay(3000);
                 Exam1 ex = new Exam1(ff.RC(sql));
                 ex.Show();
 

@@ -178,7 +178,7 @@ namespace WindowsFormsApplication1
             //}
             if (File.Exists(connectionString))
             {
-                g1.updatepath(connectionString1,datahelp.QId);
+                g1.updatepath(connectionString1,"mfpic",datahelp.QId);
                // g1.updateGrade()
                 ff.ShowSuccessTip("得分"+score);
                 // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");

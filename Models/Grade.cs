@@ -50,6 +50,8 @@ namespace WindowsFormsApplication1.Models
         public int wxxz1;
         public int yqzdyl;
 
+        public string mxpic;
+        public string lxpic;
         //    [csfm] INT DEFAULT((-1)) NULL,
         //[ylxz] INT DEFAULT((-1)) NULL,
         //[xygb] INT DEFAULT((-1)) NULL,
@@ -90,12 +92,12 @@ namespace WindowsFormsApplication1.Models
 
             return i;
         }
-        public int updatepath(string path, string tid)
+        public int updatepath(string path,string pathname,string tid)
         {
             int i = 0;
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "update grade set path = '" + path+"'  where testid = '" + tid + "'";
+            string sql = "update grade set "+ pathname +" = '" + path+"'  where testid = '" + tid + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
@@ -162,7 +164,8 @@ namespace WindowsFormsApplication1.Models
                 ymgcorrect = reader["ymgcorrect"].ToString().Trim();
                 score6 = reader["score6"].ToString().Trim();
                 wxxz = int.Parse(reader["wxxz"].ToString().Trim());
-              
+                mxpic = reader["mfpic"].ToString().Trim();
+                lxpic = reader["lxpic"].ToString().Trim();
             }
 
             con.Close();

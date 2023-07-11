@@ -56,6 +56,8 @@
             this.uiLight6 = new Sunny.UI.UILight();
             this.uiLight7 = new Sunny.UI.UILight();
             this.uiLight8 = new Sunny.UI.UILight();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -188,7 +190,7 @@
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(468, 61);
+            this.textBox3.Size = new System.Drawing.Size(125, 61);
             this.textBox3.TabIndex = 12;
             // 
             // button6
@@ -356,11 +358,20 @@
             this.uiLight8.Text = "uiLight8";
             this.uiLight8.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(193, 205);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 61);
+            this.pictureBox1.TabIndex = 55;
+            this.pictureBox1.TabStop = false;
+            // 
             // plc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 360);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.uiLight8);
             this.Controls.Add(this.uiLight7);
             this.Controls.Add(this.uiLight6);
@@ -390,7 +401,9 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "plc";
             this.Text = "plc";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.plc_FormClosing);
             this.Load += new System.EventHandler(this.plc_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,5 +438,6 @@
         private Sunny.UI.UILight uiLight6;
         private Sunny.UI.UILight uiLight7;
         private Sunny.UI.UILight uiLight8;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

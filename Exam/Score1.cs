@@ -113,33 +113,33 @@ namespace WindowsFormsApplication1.Exam
             switch (datahelp.SubId)
             {
                 case 1:
-                    this.Text = "离线校验得分";
+                    this.Text = "离线校验";
                     rate = float.Parse(sc.getScore("lxt").ToString());
                    
                     break;
                 case 2:
-                    this.Text = "在线校验得分";
+                    this.Text = "在线校验";
                     rate = float.Parse(sc.getScore("zxt").ToString());
                     break;
                 case 3:
-                    this.Text = "校验工艺得分";
+                    this.Text = "校验工艺";
                     rate = float.Parse(sc.getScore("gyt").ToString());
                     break;
 
                 case 5:
-                    this.Text = "型号识别得分";
+                    this.Text = "型号识别";
                     rate = float.Parse(sc.getScore("xhsb").ToString());
                     break;
                 case 6:
-                    this.Text = "零配件识别得分";
+                    this.Text = "零配件识别";
                     rate = float.Parse(sc.getScore("lpjsb").ToString());
                     break;
                 case 4:
-                    this.Text = "密封面研磨得分";
+                    this.Text = "密封面研磨";
                     rate = float.Parse(sc.getScore("ymgsb").ToString());
                     break;
             }
-         
+            this.label2.Text = this.Text + "完成";
           //  MessageBox.Show(rate+"");
                  ShowScore();
            // AddStudentScore();

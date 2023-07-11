@@ -47,10 +47,10 @@ namespace WindowsFormsApplication1.Exam
         private void button3_Click(object sender, EventArgs e)
         {
             // 工艺题'
-           
+            this.Close();
             gongyijiaoyan gongyijiaoyan = new gongyijiaoyan();
             gongyijiaoyan.Show();
-            this.Close();
+           
 
         }
         AutoAdaptWindowsSize awt;

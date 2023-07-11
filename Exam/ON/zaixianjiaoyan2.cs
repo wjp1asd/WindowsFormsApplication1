@@ -50,6 +50,12 @@ namespace WindowsFormsApplication1.Exam
         float azfm1 = 0;
         datahelp datahelp = new datahelp();
         // Di 端口的一些设备 切换阀 DI0 工具检测DI1 阀帽红外 后续需要拓展
+        bool youbiao = true;
+        bool ljg = true;
+        bool fb = true;
+        bool gj = true;
+        bool shy = true;
+        bool fm = true;
         int youbiaokachi = 2;
         int lianjiegan = 0;
         int faban = 0;
@@ -74,7 +80,7 @@ namespace WindowsFormsApplication1.Exam
             this.button1.Enabled = false;
             this.button4.Enabled = false;
         }
-
+        Grade g = new Grade();
         private void InitScore()
         {
              mfzjcl =sc.getScore("mfzjcl");
@@ -83,6 +89,12 @@ namespace WindowsFormsApplication1.Exam
              jyjg1 = sc.getScore("jyjg1") ;
              azfm1 = sc.getScore("azfm1");
             this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
+            g.updateGrade(0, "mfzjcl", datahelp.QId);
+            g.updateGrade(0, "cxfm1", datahelp.QId);
+            g.updateGrade(0, "wxxz1", datahelp.QId);
+            g.updateGrade(0, "jyjg1", datahelp.QId);
+            g.updateGrade(0, "azfm1", datahelp.QId);
+        
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -104,38 +116,47 @@ namespace WindowsFormsApplication1.Exam
         double wjltj = 0;
         private void CALCf(object sender, EventArgs e)
         {
-            try
-            {
-                double mfzj = double.Parse(textBox1.Text.Trim());
-                //  double zdyl = double.Parse(t.Zxyl);
-                double zdyl = 1.0;
-                double xtyl = double.Parse(textBox2.Text.Trim());
+            if (textBox1.Text.Trim().Length > 0) {
 
-                double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2/10;
-               
-                this.textBox3.Text = F.ToString();
-                wjltj = F;
-                double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
-                this.richTextBox2.Text += "开启压力"+PS;
+                try
+                {
+                    double mfzj = double.Parse(textBox1.Text.Trim());
+                    //  double zdyl = double.Parse(t.Zxyl);
+                    double zdyl = 1.0;
+                    double xtyl = double.Parse(textBox2.Text.Trim());
 
-                this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
-                // 游标卡尺和 阀瓣拿起 
+                    double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2 / 10;
 
-                if (DIS[7 - faban] + "" == "0" && DIS[7 - youbiaokachi] + "" == "0") {
+                    this.textBox3.Text = F.ToString();
+                    wjltj = F;
+                    double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
+                    this.richTextBox2.Text += "开启压力" + PS;
 
-                    ff.ShowSuccessTip("得分:"+mfzjcl);
+                    this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
+                    // 游标卡尺和 阀瓣拿起 zxc
 
-                } else {
+                    if (fb==false && youbiao==false && step == 1)
+                    { 
 
-                    ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
-                
+                        ff.ShowSuccessTip("得分:" + mfzjcl);
+                        g.updateGrade(mfzjcl, "mfzjcl", datahelp.QId);
+
+                    }
+                    else
+                    {
+
+                        ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
+
+                    }
                 }
-            }
-            catch (Exception)
-            {
+                catch (Exception)
+                {
 
-                throw;
+                    throw;
+                }
+                
             }
+          
           
         }
         Thread tj;
@@ -159,6 +180,8 @@ namespace WindowsFormsApplication1.Exam
             td1[12] = (byte)a;
             this.richTextBox2.Hide();
             this.plcinit();
+           
+             this.timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -168,11 +191,7 @@ namespace WindowsFormsApplication1.Exam
                 int min = datahelp.LxTime / 60;
                 int sec = datahelp.LxTime % 60;
                 this.label1.Text = string.Format("{0:00}:{1:00}", min, sec);
-                Control.CheckForIllegalCrossThreadCalls = false;
-              //  Random a = new Random();
-              //  int x = a.Next(100);
-               // y++;
-              
+               
               
 
             }
@@ -180,10 +199,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.timer1.Stop();
                 MessageBox.Show("时间到了");
-                //AnswerForm frm = new AnswerForm();
-                //frm.MdiParent = this.MdiParent;
-                //frm.Show();
-                //this.Close();
+               
             }
         }
         private void Initnum()
@@ -222,115 +238,8 @@ namespace WindowsFormsApplication1.Exam
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
-        Mat f1 = new Mat();
-            private void button6_Click(object sender, EventArgs e)
-            {
-                VideoCapture v = new VideoCapture(0);
-                v.SetCaptureProperty(CapProp.FrameHeight, 720);
-                v.SetCaptureProperty(CapProp.FrameWidth, 1280);
-                if (!v.IsOpened)
-                {
-                    MessageBox.Show("open video fail");
-                    return;
-                }
 
-                Mat f = new Mat();
-                while (true)
-                {
-
-                    v.Read(f);
-                    if (f.IsEmpty)
-                    {
-
-                        MessageBox.Show("show fail");
-                        break;
-                    }
-                    f1 = f;
-                    CvInvoke.Imshow("摄像头1：", f);
-                    if (CvInvoke.WaitKey(30) == 27)
-                    {
-
-                        break;
-                    }
-                }
-
-
-            }
-     
-            private void button7_Click(object sender, EventArgs e)
-            {
-                VideoCapture v = new VideoCapture(1);
-                v.SetCaptureProperty(CapProp.FrameHeight, 720);
-                v.SetCaptureProperty(CapProp.FrameWidth, 1280);
-                if (!v.IsOpened)
-                {
-                    MessageBox.Show("open video fail");
-                    return;
-                }
-                Mat f = new Mat();
-
-                while (true)
-                {
-
-                    v.Read(f);
-                    if (f.IsEmpty)
-                    {
-
-                        MessageBox.Show("show fail");
-                        break;
-                    }
-                    f1 = f;
-                    CvInvoke.Imshow("摄像头2：", f);
-                    if (CvInvoke.WaitKey(30) == 27)
-                    {
-
-                        break;
-                    }
-                }
-            }
-        Fuc ff= new Fuc();  
-            private void shot()
-            {
-             
-
-                CvInvoke.Imwrite(url + "shot.png", f1);
-                ff.ShowInfoTip("拍照成功");
-            }
-            // DI 输入的集合
-
-            private void backCamera()
-            {
-
-                VideoCapture v = new VideoCapture(0);
-               // v.SetCaptureProperty(CapProp.FrameHeight, 720);
-                //v.SetCaptureProperty(CapProp.FrameWidth, 1280);
-                if (!v.IsOpened)
-                {
-                    MessageBox.Show("open video fail");
-                    return;
-                }
-                step = 0;
-                Mat f = new Mat();
-                while (true)
-                {
-
-                    v.Read(f);
-                    if (f.IsEmpty)
-                    {
-
-                        MessageBox.Show("show fail");
-                        break;
-                    }
-                    f1 = f;
-                    CvInvoke.Imshow("摄像头1：", f);
-                    if (CvInvoke.WaitKey(30) == 27)
-                    {
-
-                        break;
-                    }
-                }
-            }
-
+       
         public void plcinit()
         {
             datahelp datahelp = new datahelp();
@@ -458,13 +367,13 @@ namespace WindowsFormsApplication1.Exam
             
             if (buff.Length == 38)
             {
-                Action t = () =>
-                {
-                   richTextBox2.Clear();
+                //Action t = () =>
+                //{
+                //   richTextBox2.Clear();
 
-                };
-                this.Invoke(t);
-                dishow(BitConverter.ToString(buff));
+                //};
+                //this.Invoke(t);
+                //dishow(BitConverter.ToString(buff));
                 //richTextBox2.Clear();
                 //38位
                 //MessageBox.Show(BitConverter.ToString(buff));
@@ -582,7 +491,7 @@ namespace WindowsFormsApplication1.Exam
                 t2 = ShowBy(ttt2, 2);
                 // DI解析
 
-
+                cisu++;
 
 
             }
@@ -601,15 +510,16 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - youbiaokachi] + "" == "0")
             {
-               dishow("游标卡尺归位");
+             //  ff.ShowInfoTip("游标卡尺归位");
+                youbiao = true;
                 //MessageBox.Show("游标卡尺归位");
                 //richTextBox2.Text += "游标卡尺归位";
                // richTextBox2.Text += "\r\n";
             }
             else
             {
-                dishow("游标卡尺离开");
-
+             //   ff.ShowInfoTip("游标卡尺离开");
+                youbiao = false;
                // richTextBox2.Text += "游标卡尺离开";
                 //richTextBox2.Text += "\r\n";
                 // MessageBox.Show("游标卡尺离开");
@@ -618,23 +528,23 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - lianjiegan] + "" == "0")
             {
                 dishow("连接杆归位");
-               
+                ljg = true;
             }
             else
             {
                 dishow("连接杆离开");
-
+                ljg = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - siheyi] + "" == "0")
             {
                 dishow("四合一归位");
-              
+                shy = true;
             }
             else
             {
                 dishow("四合一离开");
-
+                shy = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
 
@@ -642,13 +552,14 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - faban] + "" == "0")
             {
-                dishow("阀瓣归位");
+             //  ff.ShowInfoTip("阀瓣归位");
+                fb = true;
               
             }
             else
             {
-                dishow("阀瓣离开");
-
+              //  ff.ShowInfoTip("阀瓣离开");
+                fb = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
 
@@ -657,9 +568,11 @@ namespace WindowsFormsApplication1.Exam
             {
                 //richTextBox2.Text += "阀帽存在";
                 dishow("在线阀帽存在");
+                fm = true;
             }
             else
             {
+                fm = false;
                 dishow("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
@@ -671,12 +584,13 @@ namespace WindowsFormsApplication1.Exam
             {
                 dishow("在线工具归位");
                 //richTextBox2.Text += "工具归位";
-
+                gj = true;
             }
             else
             {
                 dishow("在线工具离开");
                 //richTextBox2.Text += "工具离开";
+                gj = false;
             }
 
 
@@ -696,33 +610,6 @@ namespace WindowsFormsApplication1.Exam
         }
 
       
-
-        private void chaixiefamao()
-        {
-            shot();
-        }
-
-        static string HexString2BinString(string hexString)
-        {
-            try
-            {
-                string result = string.Empty;
-                foreach (char c in hexString)
-                {
-                    int v = Convert.ToInt32(c.ToString(), 16);
-                    int v2 = int.Parse(Convert.ToString(v, 2));
-                    // 去掉格式串中的空格，即可去掉每个4位二进制数之间的空格，
-                    result += string.Format("{0:d4} ", v2);
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw;
-            }
-
-        }
 
 
         private string ShowBy(byte[] buff, int num)
@@ -866,15 +753,15 @@ namespace WindowsFormsApplication1.Exam
            
             if (show&&(a - standardValue)>=0) {
                 //    ff.ShowInfoTip("当前电压值-初始电压值："+(a- standardValue).ToString());
-                currentF = b2 - standardValue;
+                currentF = b2;
                 this.textBox5.Text = currentF.ToString();
                 this.chart1.Series[0].Points.AddXY(cisu, b2);
                
-                lastF = b2 - standardValue;
+               
             }
-            if (b2 - wjl < 0 && Math.Abs(wjl - wjltj) <= 1)
+            if (b2 - wjl < 0 && Math.Abs(wjl - wjltj) <= 1&&liangcheng>0)
             {
-                // 开启压力值
+                // 开始下降 压力值
                 Action tongdao1 = () =>
                 {
 
@@ -883,6 +770,8 @@ namespace WindowsFormsApplication1.Exam
                 this.Invoke(tongdao1);
 
                 showpoint(cisu);
+
+
             }
             Action tongdao = () =>
             {
@@ -908,11 +797,12 @@ namespace WindowsFormsApplication1.Exam
             this.Invoke(tongdao);
             dwq = a;
             wjl = b2;
-
+            lastF = b2;
         }
         int smin = 0;
         private void showpoint(int x)
         {
+          //  MessageBox.Show("" + x + "开启压力点");
             this.chart1.Series[0].Points[x].MarkerColor=Color.Red;
             this.chart1.Series[0].Points[x].MarkerSize = 20;
             this.chart1.Series[0].Points[x].MarkerStyle = MarkerStyle.Star6;
@@ -984,12 +874,56 @@ namespace WindowsFormsApplication1.Exam
         string index;
         List<Wucha> wuchas = new List<Wucha>();
         private double yali = 0;
-
+        bool last = false;
+        Fuc ff = new Fuc();
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
             datahelp.CurrentStep1 = 3;
-            if (DIS == "11111111")
+            if (last == false)
+            {
+                if (fm == true)
+                {
+                    g.updateGrade(azfm1, "azfm1", datahelp.QId);
+                    ff.ShowSuccessTip("阀帽归位得分");
+                }
+                else
+                {
+                    ff.ShowErrorTip("阀帽未归位不得分");
+
+                }
+                if (shy == true)
+                {
+                  //  g.updateGrade(, "dkxyf", datahelp.QId);
+                    ff.ShowSuccessTip("四合一归位得分");
+                }
+                else
+                {
+                    ff.ShowErrorTip("四合一未归位不得分");
+
+                }
+                if (gj == true)
+                {
+                  //  g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
+                    ff.ShowSuccessTip("工具归位正确");
+                }
+                else
+                {
+                    ff.ShowErrorTip("工具未归位");
+
+                }
+
+
+            }
+          //  g.updateGrade(0, "mfzjcl", datahelp.QId);
+            //g.updateGrade(0, "csfm1", datahelp.QId);
+          //  g.updateGrade(0, "wxxz1", datahelp.QId);
+           // g.updateGrade(0, "jyjg1", datahelp.QId);
+           // g.updateGrade(0, "azfm1", datahelp.QId);
+
+
+
+            if (DIS == "01100000")
             {
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();
@@ -1015,6 +949,7 @@ namespace WindowsFormsApplication1.Exam
 
                 serialPort2.Write(td1, 0, td1.Length);
                 Thread.Sleep(500);
+                
             }
 
         }
@@ -1037,6 +972,7 @@ namespace WindowsFormsApplication1.Exam
                         // AI0
 
                         this.button3.Text = "正在校验";
+                       
                         this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                         this.timer1.Start();
                         this.comboBox1.Enabled =false; this.comboBox2.Enabled =false;
@@ -1076,7 +1012,7 @@ namespace WindowsFormsApplication1.Exam
 
                 setstandard(dwq);
             }
-          
+            this.textBox1.Enabled = false;
         }
 
         private void chart1_GetToolTipText(object sender, ToolTipEventArgs e)
@@ -1112,6 +1048,7 @@ namespace WindowsFormsApplication1.Exam
                 // 其所选不在范围之内 不得分
                 ff.ShowErrorTip("误差选择错误，不得分");
                 this.comboBox1.Enabled = false;
+                g.updateGrade(wxxz1, "wxxz1", datahelp.QId);
             }
             else
             {
@@ -1128,6 +1065,11 @@ namespace WindowsFormsApplication1.Exam
         private void comboBox1_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void wucha1(string type)

@@ -51,6 +51,7 @@ namespace WindowsFormsApplication1.Exam
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
+                score =0;
                 ff.ShowErrorTip("误差选择错误，不得分");
             }
             else {
