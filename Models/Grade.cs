@@ -50,6 +50,8 @@ namespace WindowsFormsApplication1.Models
         public int wxxz1;
         public int yqzdyl;
 
+        public string mxpic;
+        public string lxpic;
         //    [csfm] INT DEFAULT((-1)) NULL,
         //[ylxz] INT DEFAULT((-1)) NULL,
         //[xygb] INT DEFAULT((-1)) NULL,
@@ -162,7 +164,8 @@ namespace WindowsFormsApplication1.Models
                 ymgcorrect = reader["ymgcorrect"].ToString().Trim();
                 score6 = reader["score6"].ToString().Trim();
                 wxxz = int.Parse(reader["wxxz"].ToString().Trim());
-              
+                mxpic = reader["mfpic"].ToString().Trim();
+                lxpic = reader["lxpic"].ToString().Trim();
             }
 
             con.Close();
