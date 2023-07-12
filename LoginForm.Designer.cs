@@ -62,7 +62,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Location = new System.Drawing.Point(116, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(603, 64);
+            this.label2.Size = new System.Drawing.Size(754, 80);
             this.label2.TabIndex = 2;
             this.label2.Text = "智能化安全阀校验考试系统";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -191,6 +191,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.ShowText = false;
             this.txtPassword.Size = new System.Drawing.Size(189, 29);
             this.txtPassword.TabIndex = 13;
@@ -221,7 +222,7 @@
             this.lblUsername.Location = new System.Drawing.Point(29, 139);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(63, 22);
+            this.lblUsername.Size = new System.Drawing.Size(78, 27);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "用户名:";
             // 
@@ -233,7 +234,7 @@
             this.lblPassword.Location = new System.Drawing.Point(29, 184);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(62, 22);
+            this.lblPassword.Size = new System.Drawing.Size(76, 27);
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "密   码:";
             // 

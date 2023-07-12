@@ -65,10 +65,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(45, 15);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Location = new System.Drawing.Point(60, 19);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(56, 24);
+            this.button4.Size = new System.Drawing.Size(75, 30);
             this.button4.TabIndex = 46;
             this.button4.Text = "全选";
             this.button4.UseVisualStyleBackColor = true;
@@ -76,10 +76,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(260, 15);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(347, 19);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 24);
+            this.button2.Size = new System.Drawing.Size(75, 30);
             this.button2.TabIndex = 45;
             this.button2.Text = "删除";
             this.button2.UseVisualStyleBackColor = true;
@@ -102,10 +102,10 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(367, 126);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(489, 158);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(447, 264);
+            this.panel1.Size = new System.Drawing.Size(596, 330);
             this.panel1.TabIndex = 44;
             // 
             // label5
@@ -113,19 +113,19 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(88, 174);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label5.Location = new System.Drawing.Point(117, 218);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 22);
+            this.label5.Size = new System.Drawing.Size(204, 27);
             this.label5.TabIndex = 62;
             this.label5.Text = "第三次测试压力Mpa:";
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(262, 174);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.textBox5.Location = new System.Drawing.Point(349, 218);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 20, 3, 2);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(95, 21);
+            this.textBox5.Size = new System.Drawing.Size(125, 25);
             this.textBox5.TabIndex = 61;
             // 
             // label3
@@ -133,27 +133,27 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(88, 138);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label3.Location = new System.Drawing.Point(117, 172);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 22);
+            this.label3.Size = new System.Drawing.Size(204, 27);
             this.label3.TabIndex = 60;
             this.label3.Text = "第二次测试压力Mpa:";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(262, 110);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.textBox3.Location = new System.Drawing.Point(349, 138);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(95, 21);
+            this.textBox3.Size = new System.Drawing.Size(125, 25);
             this.textBox3.TabIndex = 55;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(262, 138);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.textBox4.Location = new System.Drawing.Point(349, 172);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 20, 3, 2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(95, 21);
+            this.textBox4.Size = new System.Drawing.Size(125, 25);
             this.textBox4.TabIndex = 54;
             // 
             // label4
@@ -161,27 +161,27 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(88, 108);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label4.Location = new System.Drawing.Point(117, 135);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 22);
+            this.label4.Size = new System.Drawing.Size(204, 27);
             this.label4.TabIndex = 52;
             this.label4.Text = "第一次测试压力Mpa:";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(360, 64);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.textBox2.Location = new System.Drawing.Point(480, 80);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(51, 21);
+            this.textBox2.Size = new System.Drawing.Size(67, 25);
             this.textBox2.TabIndex = 51;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(149, 64);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(199, 80);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(56, 21);
+            this.textBox1.Size = new System.Drawing.Size(73, 25);
             this.textBox1.TabIndex = 50;
             // 
             // label2
@@ -189,20 +189,20 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(218, 64);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label2.Location = new System.Drawing.Point(291, 80);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 22);
+            this.label2.Size = new System.Drawing.Size(184, 27);
             this.label2.TabIndex = 47;
             this.label2.Text = "初次测试压力Mpa:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(141, 222);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(38, 24, 2, 2);
+            this.btnLogin.Location = new System.Drawing.Point(188, 278);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(51, 30, 3, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(49, 30);
+            this.btnLogin.Size = new System.Drawing.Size(65, 38);
             this.btnLogin.TabIndex = 45;
             this.btnLogin.Text = "新增";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -210,10 +210,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(244, 222);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(52, 24, 2, 2);
+            this.btnExit.Location = new System.Drawing.Point(325, 278);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(69, 30, 3, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(49, 30);
+            this.btnExit.Size = new System.Drawing.Size(65, 38);
             this.btnExit.TabIndex = 46;
             this.btnExit.Text = "关闭";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -224,10 +224,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(8, 64);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label1.Location = new System.Drawing.Point(11, 80);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 22);
+            this.label1.Size = new System.Drawing.Size(184, 27);
             this.label1.TabIndex = 36;
             this.label1.Text = "要求整定压力Mpa:";
             // 
@@ -236,28 +236,28 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblUsername.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUsername.Location = new System.Drawing.Point(8, 24);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.lblUsername.Location = new System.Drawing.Point(11, 30);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(58, 22);
+            this.lblUsername.Size = new System.Drawing.Size(72, 27);
             this.lblUsername.TabIndex = 34;
             this.lblUsername.Text = "项目：";
             this.lblUsername.Click += new System.EventHandler(this.lblUsername_Click_1);
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(81, 24);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.txtUsername.Location = new System.Drawing.Point(108, 30);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 20, 3, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(330, 21);
+            this.txtUsername.Size = new System.Drawing.Size(439, 25);
             this.txtUsername.TabIndex = 35;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(116, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(155, 19);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 24);
+            this.button1.Size = new System.Drawing.Size(75, 30);
             this.button1.TabIndex = 43;
             this.button1.Text = "新增";
             this.button1.UseVisualStyleBackColor = true;
@@ -283,12 +283,12 @@
             this.f2,
             this.f3,
             this.f4});
-            this.dataGridView1.Location = new System.Drawing.Point(20, 55);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 69);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(862, 335);
+            this.dataGridView1.Size = new System.Drawing.Size(1149, 419);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
@@ -357,10 +357,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(330, 15);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Location = new System.Drawing.Point(440, 19);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(56, 24);
+            this.button6.Size = new System.Drawing.Size(75, 30);
             this.button6.TabIndex = 41;
             this.button6.Text = "关闭";
             this.button6.UseVisualStyleBackColor = true;
@@ -368,10 +368,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(192, 15);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(256, 19);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(56, 24);
+            this.button3.Size = new System.Drawing.Size(75, 30);
             this.button3.TabIndex = 40;
             this.button3.Text = "刷新";
             this.button3.UseVisualStyleBackColor = true;
@@ -383,18 +383,18 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(0, 423);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label6.Location = new System.Drawing.Point(0, 528);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(625, 19);
+            this.label6.Size = new System.Drawing.Size(758, 24);
             this.label6.TabIndex = 47;
             this.label6.Text = "注意：提取规则，上一次提取调压需要紧定压螺母，本次抽题需要松定压螺母，因此抽考题需要注意\r\n";
             // 
             // Pressure
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 442);
+            this.ClientSize = new System.Drawing.Size(1211, 552);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button4);
@@ -403,7 +403,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Pressure";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试压力";

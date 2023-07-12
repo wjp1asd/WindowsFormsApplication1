@@ -190,7 +190,7 @@ namespace WindowsFormsApplication1.Exam
                 datahelp.LxTime--;
                 int min = datahelp.LxTime / 60;
                 int sec = datahelp.LxTime % 60;
-                this.label1.Text = string.Format("{0:00}:{1:00}", min, sec);
+                this.lbltime.Text = string.Format("{0:00}:{1:00}", min, sec);
                
               
 
@@ -879,6 +879,12 @@ namespace WindowsFormsApplication1.Exam
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+          
+             //   reada.Abort();
+            
+           
+            this.timer1.Dispose();
+            this.timer2.Dispose();  
             datahelp.CurrentStep1 = 3;
             if (last == false)
             {
@@ -939,7 +945,7 @@ namespace WindowsFormsApplication1.Exam
             }
           
         }
-        Thread readAI;
+        Thread reada;
 
         private void ReadAI()
         {
@@ -967,8 +973,8 @@ namespace WindowsFormsApplication1.Exam
 
                     if (serialPort2.IsOpen)
                     {
-                        readAI = new Thread(ReadAI);
-                        readAI.Start();
+                        reada = new Thread(ReadAI);
+                        reada.Start();
                         // AI0
 
                         this.button3.Text = "正在校验";

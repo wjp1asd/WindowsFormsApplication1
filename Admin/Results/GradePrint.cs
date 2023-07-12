@@ -99,17 +99,19 @@ namespace WindowsFormsApplication1.Admin.Results
             a12.Text = a1.idcard;
             a13.Text = a1.testid;
             a14.Text = a1.lxcorrect.Replace("1","√").Replace("0","×");
-            a15.Text = a1.score1;
+            a15.Text = a1.score1.Replace("-1", "未考试"); 
             a16.Text = a1.zxcorrect.Replace("1", "√").Replace("0", "×");
-            a17.Text = a1.score2;
+            a17.Text = a1.score2.Replace("-1", "未考试");
             a18.Text = a1.jycorrect.Replace("1", "√").Replace("0", "×");
-            a19.Text = a1.score3;
+            a19.Text = a1.score3.Replace("-1", "未考试");
             a20.Text = a1.xhcorrect.Replace("1", "√").Replace("0", "×");
-            a21.Text = a1.score4;
+            a21.Text = a1.score4.Replace("-1", "未考试");
             a22.Text = a1.lpjcorrect.Replace("1", "√").Replace("0", "×");
-            a23.Text = a1.score5;
+            a23.Text = a1.score5.Replace("-1", "未考试");
             a24.Text = a1.ymgcorrect.Replace("1", "√").Replace("0", "×");
-            a25.Text = a1.score6;
+            a25.Text = a1.score6.Replace("-1", "未考试");
+            this.pictureBox1.ImageLocation = a1.lxpic;
+            this.pictureBox2.ImageLocation = a1.mxpic;
         }
     }
 }

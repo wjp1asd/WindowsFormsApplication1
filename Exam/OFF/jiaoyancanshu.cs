@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1.Exam
         
         private void wucha(string type)
         {
-           Wucha w= new Wucha();
+              Wucha w= new Wucha();
              wuchas = w.GetAll(type);
             List<string> ports =new List<string>();
             foreach (var item in wuchas)
@@ -31,8 +31,9 @@ namespace WindowsFormsApplication1.Exam
                 ports.Add(item.Value1.ToString().Trim()) ;
             }
             comboBox1.DataSource=ports;
-            comboBox1.SelectedIndex=0;
-            index = wuchas[comboBox1.SelectedIndex].Id;
+            MessageBox.Show(type + wuchas.Count);
+          //  comboBox1.SelectedIndex=0;
+           // index = wuchas[0].Id;
         }
         Fuc ff = new Fuc();
         float score = 0;

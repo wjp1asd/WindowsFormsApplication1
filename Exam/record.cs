@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using OpenCvSharp;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,7 @@ namespace WindowsFormsApplication1.Exam
             Initc();
             this.label2.Text = type + this.label2.Text;
             this.printDocument1.OriginAtMargins = true;//启用页边距
+           // 初始化成绩
             InitScore();
 
         }
@@ -56,13 +58,12 @@ namespace WindowsFormsApplication1.Exam
             dscyl = sc.getScore("dscyl");
             mfsyyl = sc.getScore("mfsyyl");
             jyjg1 = sc.getScore("jyjg1");
-       //     this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
+            this.label11.Text = "编号："+datahelp.QId;
             g.updateGrade(0, "yqzdyl", datahelp.QId);
             g.updateGrade(0, "gctj", datahelp.QId);
             g.updateGrade(0, "dycyl", datahelp.QId);
             g.updateGrade(0, "decyl", datahelp.QId);
             g.updateGrade(0, "dscyl", datahelp.QId);
-
             g.updateGrade(0, "mfsyyl", datahelp.QId);
             g.updateGrade(0, "jyjg1", datahelp.QId);
 
@@ -161,14 +162,24 @@ namespace WindowsFormsApplication1.Exam
             e.Graphics.DrawImage(myFormImage, 0, 0);
         }
         Grade g = new Grade();
-        Fuc ff=new Fuc();
+
+        private void result_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.result.Checked == true) {
+                g.updateGrade(jyjg1, "jyjg1", datahelp.QId);
+            
+            }
+
+        }
+
+        Fuc ff =new Fuc();
         private void record_Load(object sender, EventArgs e)
         {
             //g.getOne(datahelp.QId);
 
             if (tper == "离线")
             {
-                if (g.getGrade("yqzdyl",datahelp.QId) > -1)
+                if (g.getGrade("yqzdyl",datahelp.QId) > 100)
                 {
 
                     ff.ShowErrorDialog("重复考试");
@@ -199,11 +210,62 @@ namespace WindowsFormsApplication1.Exam
                
 
             }
-              
-        }
+            pp = p.getAll();
+            //
 
+            t = t.getRecord(datahelp.QId);
+
+            foreach (var p in pp)
+            {
+                if (double.Parse(t.Lxyl) == p.f0)
+                {
+                    // 离线压力等于
+                    ap = p;
+
+                    }
+
+                if (double.Parse(t.Zxyl) == p.f0)
+                {
+                    // 在线压力等于
+
+                    ap = p;
+                }
+
+
+
+            }
+        }
+        pressure p = new pressure();
+        pressure ap = new pressure();
+        List<pressure> pp = new List<pressure>();
+        TestRecord t = new TestRecord();
         private void button2_Click(object sender, EventArgs e)
         {
+            if (tper == "离线")
+            {
+                double f1 = double.Parse(this.yi1.Text.Trim());
+                double f2 = double.Parse(this.yi2.Text.Trim());
+                double f3 = double.Parse(this.yi3.Text.Trim());
+                double mf = double.Parse(this.mf.Text.Trim());
+                MessageBox.Show(f1 + "" + f2 + "" + f3 + "" + mf + "a" + ap.f1 + "a" + ap.f2 + "a" + ap.f3 + "a" + ap.f0 * 0.9);
+                if (f1 == ap.f1)
+                {
+                    g.updateGrade(dycyl, "dycyl", datahelp.QId);
+                }
+                if (f2 == ap.f1)
+                {
+                    g.updateGrade(decyl, "decyl", datahelp.QId);
+                }
+                if (f3 == ap.f1)
+                {
+                    g.updateGrade(dscyl, "dscyl", datahelp.QId);
+                }
+                if (mf == ap.f0 * 0.9)
+                {
+                    g.updateGrade(mfsyyl, "mfsyyl", datahelp.QId);
+                }
+
+            } 
             //string connectionString = ConfigurationManager.AppSettings["sqlc"];
             //SqlConnection con = new SqlConnection(connectionString);
             //string a = this.edyl.Text.Trim();

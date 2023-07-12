@@ -1,19 +1,18 @@
 ﻿using AutoWindowsSize;
 using Emgu.CV;
-using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -22,7 +21,7 @@ namespace WindowsFormsApplication1.Exam
         TestRecord t = new TestRecord();
         Wucha wucha = new Wucha();
         DateTime currentTime = DateTime.Now;
-       
+
         string url;
         private string serialPortName;
         byte[] first = new byte[] { 0x02, 0x00, 0x00, 0x04, 0x06 };
@@ -76,7 +75,7 @@ namespace WindowsFormsApplication1.Exam
         float cxfm, ylxz, xygb, zdyltz, sjlmsj, azfm, dkxyf, gbylbqh, bycs = 0;
         private void InitScore()
         {
-            ylxz= sc.getScore("ylxz");
+            ylxz = sc.getScore("ylxz");
             cxfm = sc.getScore("cxfm");
             zdyltz = sc.getScore("zdyltz");
             sjlmsj = sc.getScore("sjlmsj");
@@ -88,7 +87,7 @@ namespace WindowsFormsApplication1.Exam
             //    azfm1 = sc.getScore("azfm1");
             this.label7.Text = "压力选择得分：" + ylxz + "拆卸阀帽得分：" + cxfm + "整定压力调整得分：" + zdyltz + "锁紧螺母得分：" + sjlmsj
 
-              + "安装阀帽得分：" + azfm+"打开泄压阀得分："+dkxyf+"关闭压力表切换"+gbylbqh+"保压测试得分"+bycs;
+              + "安装阀帽得分：" + azfm + "打开泄压阀得分：" + dkxyf + "关闭压力表切换" + gbylbqh + "保压测试得分" + bycs;
             g.updateGrade(0, "ylxz", datahelp.QId);
             g.updateGrade(0, "csfm", datahelp.QId);
             g.updateGrade(0, "zdyltz", datahelp.QId);
@@ -98,17 +97,17 @@ namespace WindowsFormsApplication1.Exam
             g.updateGrade(0, "gbylbqh", datahelp.QId);
             g.updateGrade(0, "bycs", datahelp.QId);
         }
-        Grade g=new Grade();
+        Grade g = new Grade();
         private void fenxi()
         {
 
             if (DIS[7 - qiehuanfa1] + "" == "0")
             {
                 dishow("1.6Mpa量程选择");
-                liangcheng =1;
+                liangcheng = 1;
                 qiehuastate = true;
                 // 压力表选择得分
-                g.updateGrade(ylxz,"ylxz",datahelp.QId);
+                g.updateGrade(ylxz, "ylxz", datahelp.QId);
             }
             else
             {
@@ -155,10 +154,10 @@ namespace WindowsFormsApplication1.Exam
             {
                 dishow("阀帽拆卸");
                 famaostate = false;
-                
+
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                 chaixiefamao();
+                chaixiefamao();
             }
 
 
@@ -171,7 +170,8 @@ namespace WindowsFormsApplication1.Exam
 
             }
             else
-            {   gongjustate = false;    
+            {
+                gongjustate = false;
                 dishow("工具离开");
                 // richTextBox1.Text += "工具离开";
             }
@@ -180,8 +180,8 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - xieya] + "" == "0")
             {
                 dishow("卸压阀打开");
-                xieyastate = true;  
-                if (a<119000)
+                xieyastate = true;
+                if (a < 119000)
                 {
 
                     byte[] d3 = new byte[] {
@@ -190,7 +190,7 @@ namespace WindowsFormsApplication1.Exam
                 0x02, 0x00, 0xC4,
                 0x09};
 
-                   serialPort1.Write(d3, 0, d3.Length);
+                    serialPort1.Write(d3, 0, d3.Length);
 
                 }
                 //richTextBox2.Text += "卸压阀打开";
@@ -230,7 +230,7 @@ namespace WindowsFormsApplication1.Exam
             // 考点
             switch (step)
             {
-                
+
                 case 1:
                     //初次压力
                     test1();
@@ -288,7 +288,7 @@ namespace WindowsFormsApplication1.Exam
                 // 
 
 
-                if (DIS[7 - xieya] + "" == "0"&& ta>0)
+                if (DIS[7 - xieya] + "" == "0" && ta > 0)
                     ta = 60;
 
             }
@@ -306,8 +306,8 @@ namespace WindowsFormsApplication1.Exam
             ff.ShowInfoTip("量程归0判断30秒");
             if (current > 119000)
             {
-               Thread.Sleep(500);
-                  shot();
+                Thread.Sleep(500);
+                shot();
             }
 
         }
@@ -333,10 +333,10 @@ namespace WindowsFormsApplication1.Exam
                 if (double.Parse(t.Lxyl) == p.f0)
                 {
                     double x = p.f1;
-                    
-                    ap=p;
+
+                    ap = p;
                     //舵机码值=初次设置码值 比如整定1.0 初次1.2
-                    
+
                     foreach (var p1 in pp)
                     {
                         if (p.f1 == p1.f0)
@@ -357,7 +357,7 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
-           // MessageBox.Show("初次码值："+maz+"保压码值："+maz90);
+            // MessageBox.Show("初次码值："+maz+"保压码值："+maz90);
             // 需要获取算分标准
             InitScore();
             showMsg();
@@ -365,14 +365,14 @@ namespace WindowsFormsApplication1.Exam
             //  Task t1 = new Task(backCamera); 
             //t1.Start();
         }
-      
+
         private void shot()
         {
             // step = 1;
             string loc1 = ConfigurationManager.AppSettings["loc"];
-         //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-          
-           
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+
+
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
@@ -385,7 +385,7 @@ namespace WindowsFormsApplication1.Exam
         }
         // DI 输入的集合
 
-       
+
 
         private void showMsg()
         {
@@ -441,33 +441,44 @@ namespace WindowsFormsApplication1.Exam
             //获得算分标准
             goal g = new goal();
             goals = g.getall();
-            v=new VideoCapture(0);
+            v = new VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
 
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
-            url ="\\考试照片\\"+timestamp;
-            // 获得标定信息
-            //for (int i = 0; i < goals.Count; i++)
-            //{
-            //   ff.ShowInfoTip(goals[i].sub+goals[i].name+goals[i].des+ goals[i].score);
-            //}
+            url = "\\考试照片\\" + timestamp;
+
 
 
         }
 
         VideoCapture v;
-        Mat mat;
+        Mat mat =new Mat();
         private void Application_Idle(object sender, EventArgs e)
         {
+            if (last == false) {
 
-             mat = new Mat();
-            v.Read(mat);
-            if (!mat.IsEmpty)
-            {
-                Image<Bgr, byte> imageFrame = mat.ToImage<Bgr, byte>(); // 将帧转换为Emgu CV的图像类型
-                pictureBox1.Image = imageFrame.ToBitmap(); // 显示图像
+                try
+                {
+                    //   mat = new Mat();
+                    v.Read(mat);
+
+                    if (!mat.IsEmpty)
+                    {
+                        Image<Bgr, byte> imageFrame = mat.ToImage<Bgr, byte>(); // 将帧转换为Emgu CV的图像类型
+                        pictureBox1.Image = imageFrame.ToBitmap(); // 显示图像
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
 
             }
+          
+
+            
 
         }
         Thread readAI;
@@ -678,7 +689,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -970,15 +981,16 @@ namespace WindowsFormsApplication1.Exam
             Action tongdao = () =>
             {
                 //  richTextBox3.Clear();
-                richTextBox3.AppendText(v+ sb1.ToString());
+                richTextBox3.AppendText(v + sb1.ToString());
                 richTextBox3.AppendText(v + "当前电压差：" + (sjdwq - a1));
-                richTextBox3.AppendText(v+"当前电位器码值（电压值）：" + a1);
+                richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a1);
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
 
                 if ((a1 - sjdwq) > 0)
                 {
                     richTextBox2.AppendText(v + "正在锁紧");
-                    if (correct2 == true && ap.f0>ap.f1) {
+                    if (correct2 == true && ap.f0 > ap.f1)
+                    {
                         // 整定压力 大于 初次压力
                         g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
                         ff.ShowSuccessTip("第二次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
@@ -1037,7 +1049,7 @@ namespace WindowsFormsApplication1.Exam
         {
 
             int a = Convert.ToInt32(sb1.ToString(), 16);
-            current =a;
+            current = a;
             int b = Convert.ToInt32(t8.ToString(), 16);
             dwqcha = dwq - a;
             Action tongdao = () =>
@@ -1063,35 +1075,36 @@ namespace WindowsFormsApplication1.Exam
 
             if (Math.Abs(a) < 119000)
             {
-               
-               
-                    // 开启一个1分值计时
-                   
-               
+
+
+                // 开启一个1分值计时
+
+
                 SendServo1(a, 0);
 
-               
+
 
             }
             else
             {
 
 
-                if (DIS[7 - xieya] + "" == "0"&&step==1&&ta>0)
+                if (DIS[7 - xieya] + "" == "0" && step == 1 && ta > 0)
                 {
                     ff.ShowInfoTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
                     correct1 = true;
-                    if (famaostate == false) {
+                    if (famaostate == false)
+                    {
                         g.updateGrade(cxfm, "csfm", datahelp.QId);
                     }
-                  
-                        
-                    
+
+
+
                 }
 
-                if (DIS[7 - xieya] + "" == "0" && step ==2 && ta > 0)
+                if (DIS[7 - xieya] + "" == "0" && step == 2 && ta > 0)
                 {
-                   // 方向判分
+                    // 方向判分
                     if (famaostate == false)
                     {
                         correct2 = true;
@@ -1100,7 +1113,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 if (DIS[7 - xieya] + "" == "0" && step == 3 && ta > 0)
                 {
-                      correct3 = true;
+                    correct3 = true;
                     g.updateGrade(0, "zdyltz", datahelp.QId);
                     ff.ShowSuccessTip("第三次测试：校验阀关闭，泄压阀打开，量程表归 0 得分");
 
@@ -1115,10 +1128,10 @@ namespace WindowsFormsApplication1.Exam
 
                         //
                         //g.updateGrade(0, "sjlmsj", datahelp.QId);
-                       
+
                         g.updateGrade(0, "bycs", datahelp.QId);
                         ff.ShowSuccessTip("密封测试：校验阀关闭，泄压阀打开，量程表归 0 在时间范围内 得分");
-                      
+
                     }
                 }
 
@@ -1221,7 +1234,7 @@ namespace WindowsFormsApplication1.Exam
         int smin = 1000;
         int cisu = 0;
 
-   
+
         private void button9_Click(object sender, EventArgs e)
         {
             // 模拟红外距离变化
@@ -1260,7 +1273,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void closed(object sender, FormClosedEventArgs e)
         {
-            
+
         }
 
         private void uiLedLabel4_Click(object sender, EventArgs e)
@@ -1296,8 +1309,8 @@ namespace WindowsFormsApplication1.Exam
                 case 1:
                     this.button1.Text = "第一次测试";
                     MessageBox.Show("第一次测试");
-                    maz =ap.maz;
-                    maz90=ap.maz90;
+                    maz = ap.maz;
+                    maz90 = ap.maz90;
                     ta = 60;
                     this.timer2.ReStart();
                     ff.ShowInfoTip("请在一分钟内正确操作");
@@ -1322,9 +1335,9 @@ namespace WindowsFormsApplication1.Exam
                     MessageBox.Show("密封性能测试");
 
                     ff.ShowInfoTip("保压测试开始，倒计时3分钟");
-                   
+
                     maz = maz90;
-                  
+
                     ta2 = 180;
 
                     this.timer3.ReStart();
@@ -1341,17 +1354,23 @@ namespace WindowsFormsApplication1.Exam
         // 最后判分 点击结束校验
         bool last = false;
         private void button2_Click(object sender, EventArgs e)
+
         {
+            
+            mat.Dispose();
+         //   Process.GetCurrentProcess()?.Kill();
             datahelp.CurrentStep1 = 3;
-            if (last == false) {
+            if (last == false)
+            {
                 if (famaostate == true)
                 {
                     g.updateGrade(azfm, "azfm", datahelp.QId);
                     ff.ShowSuccessTip("阀帽归位得分");
                 }
-                else {
+                else
+                {
                     ff.ShowErrorTip("阀帽未归位不得分");
-                
+
                 }
                 if (xieyastate == true)
                 {
@@ -1373,12 +1392,12 @@ namespace WindowsFormsApplication1.Exam
                     ff.ShowErrorTip("打开压力表不得分");
 
                 }
-                
+
 
             }
-           
 
-            if (DIS == "1111001" || DIS =="0111001")
+
+            if (DIS == "1111001" || DIS == "0111001")
             {
 
 
@@ -1387,12 +1406,13 @@ namespace WindowsFormsApplication1.Exam
                 this.Close();
                 serialPort1.Close();
                 serialPort2.Close();
-                return;
+                
             }
             else
             {
                 string str = "";
-                if (qiehuastate == true) {
+                if (qiehuastate == true)
+                {
                     str += "压力表没有归位，";
                 }
                 if (gongjustate == false)
@@ -1431,7 +1451,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void uiButton1_Click(object sender, EventArgs e)
         {
-           
+
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
@@ -1444,8 +1464,8 @@ namespace WindowsFormsApplication1.Exam
             if (ta2 > 0)
             {
                 ta2--;
-                int min = ta / (60*5);
-                int sec = ta % (60*5);
+                int min = ta / (60 * 5);
+                int sec = ta % (60 * 5);
                 this.label10.Text = string.Format("{0:00}:{1:00}", min, sec);
             }
             else

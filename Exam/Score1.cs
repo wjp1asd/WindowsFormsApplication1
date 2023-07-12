@@ -139,7 +139,7 @@ namespace WindowsFormsApplication1.Exam
                     rate = float.Parse(sc.getScore("ymgsb").ToString());
                     break;
             }
-            this.label2.Text = this.Text + "完成";
+           // this.label2.Text = this.Text + "完成";
           //  MessageBox.Show(rate+"");
                  ShowScore();
            // AddStudentScore();

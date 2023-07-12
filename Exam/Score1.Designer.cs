@@ -36,7 +36,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.Location = new System.Drawing.Point(347, 378);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 32);
             this.button1.TabIndex = 19;
@@ -49,13 +49,12 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(103, 99);
+            this.label2.Location = new System.Drawing.Point(152, 103);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(305, 156);
+            this.label2.Size = new System.Drawing.Size(545, 156);
             this.label2.TabIndex = 22;
-            this.label2.Text = "得分";
-            this.label2.Visible = false;
+            this.label2.Text = "完成答题";
             // 
             // Score1
             // 
