@@ -28,9 +28,9 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
             //   ff.ShowInfoTip(a.color1);
 
-            
 
-          this.change();
+
+            this.change();
 
 
         }
@@ -74,7 +74,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             }
         }
 
-       
+
         private void Online_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
@@ -84,7 +84,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
 
         private void button3_Click(object sender, EventArgs e)
         {
-            JiaoYan a= new JiaoYan();
+            JiaoYan a = new JiaoYan();
             a.Show();
             this.Close();
         }

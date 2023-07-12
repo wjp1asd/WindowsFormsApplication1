@@ -27,13 +27,13 @@ namespace WindowsFormsApplication1
             InitTotal();
         }
 
-        Score sc=new Score();
+        Score sc = new Score();
         private void InitTotal()
         {
             string total = "";
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = " select sum(score) from "+TableName;
+            string sql = " select sum(score) from " + TableName;
             SqlCommand com1 = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com1.ExecuteReader();
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1
             {
                 total = reader[0].ToString();
             }
-            this.label1.Text = "总分："+total;
+            this.label1.Text = "总分：" + total;
         }
 
         private void InitTable(string sql)
@@ -143,14 +143,14 @@ namespace WindowsFormsApplication1
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "' where id = " + id;
-                   //MessageBox.Show(strcomm);
+                //MessageBox.Show(strcomm);
 
                 con.Open();
                 SqlCommand comm = new SqlCommand(strcomm, con);
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
                 InitTotal();
             }
         }
@@ -196,7 +196,7 @@ namespace WindowsFormsApplication1
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
+                    ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
@@ -205,7 +205,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
         }
 
@@ -218,12 +218,13 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (this.textBox8.Text.Length > 0) {
+            if (this.textBox8.Text.Length > 0)
+            {
                 string sql = "select * from " + TableName + " where  concat(name,sub,des)  like '%" + this.textBox8.Text + "%'";
 
                 this.InitTable(sql);
             }
-          
+
 
         }
 
@@ -258,7 +259,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-       
+
         private void GoalSet_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);

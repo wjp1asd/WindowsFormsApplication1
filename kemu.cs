@@ -25,9 +25,9 @@ namespace WindowsFormsApplication1
             }
             else if (e.ColumnIndex == 1)
             {
-                if (DialogResult.Yes ==MessageBox.Show("是否删除科目:" + this.dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString(), "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                if (DialogResult.Yes == MessageBox.Show("是否删除科目:" + this.dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString(), "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                 {
-                   ff.ShowInfoTip("删除成功");
+                    ff.ShowInfoTip("删除成功");
                 }
             }
 

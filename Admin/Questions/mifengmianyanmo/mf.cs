@@ -103,7 +103,7 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
 
         private void StudentSet_Load(object sender, EventArgs e)
         {
-           
+
         }
         private void mf_Load(object sender, EventArgs e)
         {
@@ -114,7 +114,7 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-          QuestionSet y= new QuestionSet();  
+            QuestionSet y = new QuestionSet();
             y.Show();
             this.Close();
         }

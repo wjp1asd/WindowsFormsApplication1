@@ -4,7 +4,6 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
-using WindowsFormsApplication1.Admin.Questions.lixian;
 using WindowsFormsApplication1.Questions;
 
 namespace WindowsFormsApplication1
@@ -13,7 +12,7 @@ namespace WindowsFormsApplication1
     {
 
 
-   
+
 
         string Id = "1";
         public Record(string id)
@@ -21,12 +20,12 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             Id = id;
             Initc();
-          
+
             this.printDocument1.OriginAtMargins = true;//启用页边距
-       
+
         }
 
-       
+
 
         public void Initc()
         {

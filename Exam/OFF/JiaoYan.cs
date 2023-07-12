@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -452,10 +451,11 @@ namespace WindowsFormsApplication1.Exam
         }
 
         VideoCapture v;
-        Mat mat =new Mat();
+        Mat mat = new Mat();
         private void Application_Idle(object sender, EventArgs e)
         {
-            if (last == false) {
+            if (last == false)
+            {
 
                 try
                 {
@@ -476,9 +476,9 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
-          
 
-            
+
+
 
         }
         Thread readAI;
@@ -1356,9 +1356,9 @@ namespace WindowsFormsApplication1.Exam
         private void button2_Click(object sender, EventArgs e)
 
         {
-            
+
             mat.Dispose();
-         //   Process.GetCurrentProcess()?.Kill();
+            //   Process.GetCurrentProcess()?.Kill();
             datahelp.CurrentStep1 = 3;
             if (last == false)
             {
@@ -1406,7 +1406,7 @@ namespace WindowsFormsApplication1.Exam
                 this.Close();
                 serialPort1.Close();
                 serialPort2.Close();
-                
+
             }
             else
             {

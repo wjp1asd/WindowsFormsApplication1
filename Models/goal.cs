@@ -1,14 +1,12 @@
-﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
     public class goal
     {
- 
+
         // USB 接口定义
         public string id;
         public string sub;
@@ -16,16 +14,16 @@ namespace WindowsFormsApplication1
         public string des;
         public string state;
         public string score;
-        
-    
-        
-        public List<goal> getall(string sub="离线校验")
+
+
+
+        public List<goal> getall(string sub = "离线校验")
         {
             List<goal> goals = new List<goal>();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from sct where sub ='"+sub+"'";
-           
+            string sql = "select * from sct where sub ='" + sub + "'";
+
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
@@ -41,7 +39,7 @@ namespace WindowsFormsApplication1
                 a.sub = reader["sub"].ToString();
                 goals.Add(a);
             }
-           
+
             reader.Close();
             con.Close();
             return goals;

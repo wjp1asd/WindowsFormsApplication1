@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1.Questions
             this.SizeChanged += groupBox1_Resize;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
-     
+
         private void button1_Click(object sender, EventArgs e)
         {
             questions oq = new questions("1");

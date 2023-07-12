@@ -1,12 +1,11 @@
 ﻿using AutoWindowsSize;
-using Sunny.UI;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Windows.Forms;
-using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Exam;
+using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -16,12 +15,12 @@ namespace WindowsFormsApplication1
 
     {
         int num = 1;
-       
+
         Fuc f = new Fuc();
         TestRecord t;
         QuestionA qq = new QuestionA();
-        Grade g=new Grade();    
-        string []correct;
+        Grade g = new Grade();
+        string[] correct;
         public QuestionForm()
         {
             InitializeComponent();
@@ -29,12 +28,12 @@ namespace WindowsFormsApplication1
             this.label7.Hide();
             this.label8.Hide();
             this.label9.Hide();
-           
+
         }
         public QuestionForm(String qrcode, String subtype = "1")
         {
             InitializeComponent();
-            
+
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
@@ -65,7 +64,7 @@ namespace WindowsFormsApplication1
                 t.Gyquestions = reader["gyquestions"].ToString().Trim();
                 t.Ymgquestions = reader["ymgquestions"].ToString().Trim();
 
-                   t.Adfxh = reader["aqfxh"].ToString();
+                t.Adfxh = reader["aqfxh"].ToString();
 
                 t.Qrcode = reader["qrcode"].ToString();
             }
@@ -89,13 +88,14 @@ namespace WindowsFormsApplication1
                         //    this.btnNext.Enabled = false;   
                         //}
                         //g.updateGrade(0,"score2",datahelp.QId);
-                       
-                    }
-                    else {
 
-                       f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
                     }
-                   
+                    else
+                    {
+
+                        f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
+                    }
+
                     break;
                 case "2":
                     this.Text = "在线校验答题";
@@ -115,7 +115,8 @@ namespace WindowsFormsApplication1
 
                         //g.updateGrade(0, "score1", datahelp.QId);
                     }
-                    else {
+                    else
+                    {
                         f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
 
                     }
@@ -143,16 +144,16 @@ namespace WindowsFormsApplication1
 
                     }
                     break;
-              
+
                 case "4":
                     this.Text = "研磨膏答题";
                     if (t.Ymgquestions.Length > 0)
                     {
-                     //   MessageBox.Show(t.Ymgquestions.Trim().Split(',') + ""+ t.Ymgquestions.Trim());
+                        //   MessageBox.Show(t.Ymgquestions.Trim().Split(',') + ""+ t.Ymgquestions.Trim());
 
                         datahelp.QuestionIds = t.Ymgquestions.Trim().Split(',');
 
-                        
+
                         datahelp.SubId = 4;
 
                         //if (int.Parse(g.score7) > -1)
@@ -190,13 +191,14 @@ namespace WindowsFormsApplication1
 
         private void Form4_Load(object sender, EventArgs e)
         {
-             datahelp c = new datahelp();
-             c.Initc();
-            switch(datahelp.SubId){
+            datahelp c = new datahelp();
+            c.Initc();
+            switch (datahelp.SubId)
+            {
                 case 1:
                     num = c.lxnum;
                     break;
-                    case 2:
+                case 2:
                     num = c.zxnum;
                     break;
                 case 3:
@@ -208,7 +210,7 @@ namespace WindowsFormsApplication1
 
 
             }
-            
+
             this.label2.Text = "总题数：" + (num) + "，当前：";
             datahelp.Answer = new string[num];
             datahelp.UserAnswer = new string[num];
@@ -248,7 +250,7 @@ namespace WindowsFormsApplication1
         }
         private void LoadQuestion()
         {
-          
+
             string questionId = datahelp.QuestionIds[datahelp.CurrentQuestion - 1];
 
 
@@ -265,7 +267,7 @@ namespace WindowsFormsApplication1
                 string b = reader["optionB"].ToString();
                 string c = reader["optionC"].ToString();
                 string d = reader["optionD"].ToString();
-                datahelp.curAnswer= reader["answer"].ToString();
+                datahelp.curAnswer = reader["answer"].ToString();
                 this.label7.Text = datahelp.curAnswer;
                 this.label10.Text = "[" + reader["type"].ToString().Trim() + "]";
                 if (reader["type"].ToString().Trim() == "判断题")
@@ -288,7 +290,7 @@ namespace WindowsFormsApplication1
                     this.rdbA.Tag = "A";
                     this.rdbB.Show();
                     this.rdbB.Tag = "B";
-                    this.rdbC.Show();   
+                    this.rdbC.Show();
                     this.rdbC.Tag = "C";
                     this.rdbD.Show();
                     this.rdbD.Tag = "D";
@@ -297,7 +299,8 @@ namespace WindowsFormsApplication1
                     {
                         this.rdbA.Text = "A: " + a;
                     }
-                    else {
+                    else
+                    {
                         this.rdbA.Hide();
                     }
                     if (b.Trim().Length > 0)
@@ -324,9 +327,9 @@ namespace WindowsFormsApplication1
                     {
                         this.rdbD.Hide();
                     }
-                 
-                   
-                  
+
+
+
 
                 }
 
@@ -340,32 +343,33 @@ namespace WindowsFormsApplication1
 
         private void ShowInfo()
         {
-             this.label3.Text = ""+ (int.Parse(datahelp.CurrentQuestion.ToString()));
+            this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
-           this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
+            this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
 
         }
         private Fuc ff = new Fuc();
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (datahelp.UserAnswer[datahelp.CurrentQuestion - 1]!=null)
+            if (datahelp.UserAnswer[datahelp.CurrentQuestion - 1] != null)
             {
                 checkanswer();
             }
-            else {
+            else
+            {
 
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
                 return;
             }
-        
+
             option = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
 
             if (datahelp.CurrentQuestion < num)
             {
-             
-                    datahelp.CurrentQuestion++;
-              
+
+                datahelp.CurrentQuestion++;
+
                 CheckNextButtonText();
                 LoadQuestion();
                 this.rdbA.Checked = false;
@@ -377,18 +381,19 @@ namespace WindowsFormsApplication1
 
                     SelectOption();
                 }
-                else {
+                else
+                {
                     option = "";
-                    
+
                 }
-              
+
 
                 ShowInfo();
             }
             else
             {
                 this.btnNext.Text = "提交";
-               
+
                 btnAnswer_Click(sender, e);
             }
         }
@@ -396,11 +401,11 @@ namespace WindowsFormsApplication1
         private void checkanswer()
         {
             // 用户答案 与系统答案
-            string a=datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
+            string a = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
             string b = datahelp.curAnswer;
             if (a.Length == b.Length)
             {
-             
+
                 char[] a2 = a.ToCharArray();
                 char[] b2 = b.ToCharArray();
                 int cao = 0;
@@ -419,17 +424,19 @@ namespace WindowsFormsApplication1
                 {
                     datahelp.Correct[datahelp.CurrentQuestion - 1] = "1";
                 }
-                else {
+                else
+                {
                     datahelp.Correct[datahelp.CurrentQuestion - 1] = "0";
                 }
 
             }
-            else {
+            else
+            {
                 datahelp.Correct[datahelp.CurrentQuestion - 1] = "0";
 
 
             }
-            
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -446,12 +453,12 @@ namespace WindowsFormsApplication1
             {
                 this.timer1.Stop();
 
-               ff.ShowInfoTip("时间到了，请交卷");
+                ff.ShowInfoTip("时间到了，请交卷");
                 this.Close();
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
-               
+
             }
 
 
@@ -473,9 +480,9 @@ namespace WindowsFormsApplication1
 
         private void btnAnswer_Click(object sender, EventArgs e)
         {
-          this.Hide();
+            this.Hide();
             AnswerForm frm = new AnswerForm();
-           
+
             frm.Show();
             //this.Close();
         }
@@ -501,9 +508,10 @@ namespace WindowsFormsApplication1
                         break;
                     case "B":
                         this.rdbB.Checked = true;
-                       
+
                         break;
-                    case "N": this.rdbB.Checked = true;
+                    case "N":
+                        this.rdbB.Checked = true;
                         this.rdbB.Tag = "N";
                         this.rdbD.Hide();
                         this.rdbC.Hide();
@@ -525,18 +533,19 @@ namespace WindowsFormsApplication1
                 char[] a2 = a.ToCharArray();
                 foreach (char c in a2)
                 {
-                   
-                    switch (""+c)
+
+                    switch ("" + c)
                     {
-                        case "A": this.rdbA.Checked = true; break;
-                        
+                        case "A":
+                            this.rdbA.Checked = true; break;
+
                             break;
                         case "B":
                             this.rdbB.Checked = true;
-                         
+
                             break;
 
-                      
+
                         case "C": this.rdbC.Checked = true; break;
                         case "D": this.rdbD.Checked = true; break;
                         default:
@@ -549,8 +558,8 @@ namespace WindowsFormsApplication1
 
                 }
             }
-            
-           
+
+
         }
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -564,7 +573,7 @@ namespace WindowsFormsApplication1
                 this.rdbC.Show();
                 this.rdbD.Show();
                 ShowInfo();
-               
+
                 LoadQuestion();
                 SelectOption();
 
@@ -586,29 +595,30 @@ namespace WindowsFormsApplication1
             }
         }
 
-        string  option="";
+        string option = "";
 
         private void rdbA_Click(object sender, EventArgs e)
         {
             CheckBox rdb = (CheckBox)sender;
-           // option = "";
+            // option = "";
 
             if (rdb.Checked)
+            {
+                if (!option.Contains(rdb.Tag.ToString()) && option.Length < 4)
                 {
-                    if (!option.Contains(rdb.Tag.ToString())&& option.Length < 4) {
-                        option += rdb.Tag.ToString();
-                    }
+                    option += rdb.Tag.ToString();
+                }
 
-                   
-                }
-                else
-                {
-                  option=  option.Replace(rdb.Tag.ToString(),string.Empty);
-                }
-            
-          
-            datahelp.UserAnswer[datahelp.CurrentQuestion-1] = option;
-           
+
+            }
+            else
+            {
+                option = option.Replace(rdb.Tag.ToString(), string.Empty);
+            }
+
+
+            datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
+
 
         }
 
@@ -693,7 +703,7 @@ namespace WindowsFormsApplication1
                     datahelp.CurrentStep1 = 2;
                     OFF of = new OFF(datahelp.QId);
                     of.Show();
-                   // this.Close();
+                    // this.Close();
 
                     break;
                 case 2:
@@ -703,15 +713,15 @@ namespace WindowsFormsApplication1
                     //on.Show();
                     zaixianjiaoyan x = new zaixianjiaoyan();
                     x.Show();
-                   // this.Close();
+                    // this.Close();
                     break;
                 case 3:
-                    
+
                     datahelp.CurrentStep = 2;
                     datahelp.CurrentStep1 = 2;
                     ON on1 = new ON(datahelp.QId);
                     on1.Show();
-                  //
+                    //
                     break;
 
                 case 5:
@@ -720,19 +730,19 @@ namespace WindowsFormsApplication1
 
                     MF1 mf = new MF1();
                     mf.Show();
-                  //  this.Close();
+                    //  this.Close();
                     break;
                 case 6:
                     datahelp.CurrentStep = 3;
                     MF1 mf1 = new MF1();
                     mf1.Show();
-                 //   this.Close();
+                    //   this.Close();
                     break;
                 case 4:
                     datahelp.CurrentStep = 4;
                     MF1 mf2 = new MF1();
                     mf2.Show();
-                  //  this.Close();
+                    //  this.Close();
                     break;
             }
 

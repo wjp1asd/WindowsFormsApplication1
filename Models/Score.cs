@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -14,9 +9,10 @@ namespace WindowsFormsApplication1.Models
         String score;
         String id;
         String state;
-       
 
-        public float getScore(string can) {
+
+        public float getScore(string can)
+        {
             float score1 = 0;
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
@@ -32,14 +28,14 @@ namespace WindowsFormsApplication1.Models
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
-               
-                
-                float.TryParse(reader["score"].ToString(),out score1);
+
+
+                float.TryParse(reader["score"].ToString(), out score1);
                 //MessageBox.Show(reader["score"].ToString()+score1);
             }
 
 
-                return score1;
+            return score1;
         }
     }
 }

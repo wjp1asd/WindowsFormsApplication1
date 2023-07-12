@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
 
@@ -49,44 +48,44 @@ namespace WindowsFormsApplication1
                 awt.FormSizeChanged();
             }
         }
-        Grade g1 =new Grade();
-       
+        Grade g1 = new Grade();
+
         Graphics back;
-        TestRecord t = new TestRecord();  
-    Score sc=new Score();
+        TestRecord t = new TestRecord();
+        Score sc = new Score();
         private void MFYM_Load(object sender, EventArgs e)
         {
-           // awt = new AutoAdaptWindowsSize(this);
+            // awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-          
+
             this.uiLine1.Hide();
             this.uiLine2.Hide();
             InitScore();
-       
+
             t = t.getRecord(datahelp.QId);
-            this.label3.Text = "考生："+t.Ksname;
-            this.label4.Text ="身份证："+ t.KsId;
+            this.label3.Text = "考生：" + t.Ksname;
+            this.label4.Text = "身份证：" + t.KsId;
             // back.new Rectangle(this.uiLine1.Location.X, this.uiLine1.Location.Y, 500, 500);
         }
         private void InitScore()
         {
             score = sc.getScore("ymff");
-            
+
             this.label6.Text = "研磨得分：" + score;
         }
         private void initBound()
         {
             Graphics graphics = this.CreateGraphics();
-            Rectangle gle = new Rectangle(this.uiLine1.Location.X+50, this.uiLine1.Location.Y+10, this.Size.Width-100, this.Size.Height - 400);
+            Rectangle gle = new Rectangle(this.uiLine1.Location.X + 50, this.uiLine1.Location.Y + 10, this.Size.Width - 100, this.Size.Height - 400);
             Pen a = new Pen(Color.Red);
 
-            
+
             Point p = this.PointToScreen(new Point(this.uiLine1.Location.X + 50, this.uiLine1.Location.Y + 10));
             graphics.DrawRectangle(pen, gle);
 
             this.Cursor = new Cursor(this.Cursor.Handle);
-             Cursor.Position =new Point(this.Size.Width/2, this.Size.Height/2);
-            Cursor.Clip = new Rectangle(p.X,p.Y, this.Size.Width - 100, this.Size.Height - 400);
+            Cursor.Position = new Point(this.Size.Width / 2, this.Size.Height / 2);
+            Cursor.Clip = new Rectangle(p.X, p.Y, this.Size.Width - 100, this.Size.Height - 400);
             MessageBox.Show("点击开始研磨");
             //MessageBox.Show(p.X+"-"+ p.Y + "-" + (this.Size.Width - 100) + "-" + (this.Size.Height - 400));
         }
@@ -96,7 +95,8 @@ namespace WindowsFormsApplication1
         Point lastPoint;
         private void _018_MouseMove(object sender, MouseEventArgs e)
         {
-            if (draw == false) {
+            if (draw == false)
+            {
 
                 return;
             }
@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
                 graphics.DrawLine(pen, currentPoint, lastPoint);//绘图
             }
             lastPoint = new Point(e.X, e.Y);//记录鼠标当前位置
-         //ff.ShowInfoTip("X:Y" + Cursor.Position.X + "" + Cursor.Position.Y);
+                                            //ff.ShowInfoTip("X:Y" + Cursor.Position.X + "" + Cursor.Position.Y);
 
         }
 
@@ -162,11 +162,11 @@ namespace WindowsFormsApplication1
             bt.MakeTransparent();
             //本地保存
             string loc = ConfigurationManager.AppSettings["loc"];
-            string connectionString = Application.StartupPath + "\\Images\\研磨照片\\"+t.Qrcode+t.Ksname+".bmp";
+            string connectionString = Application.StartupPath + "\\Images\\研磨照片\\" + t.Qrcode + t.Ksname + ".bmp";
             //   string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
             string connectionString1 = loc + "\\研磨照片\\" + t.Qrcode + t.Ksname + ".bmp";
             bt.Save(connectionString, System.Drawing.Imaging.ImageFormat.Bmp);
-           
+
             //try
             //{
             //    bt.Save(connectionString1, System.Drawing.Imaging.ImageFormat.Bmp);
@@ -178,14 +178,14 @@ namespace WindowsFormsApplication1
             //}
             if (File.Exists(connectionString))
             {
-                g1.updatepath(connectionString1,"mfpic",datahelp.QId);
-               // g1.updateGrade()
-                ff.ShowSuccessTip("得分"+score);
+                g1.updatepath(connectionString1, "mfpic", datahelp.QId);
+                // g1.updateGrade()
+                ff.ShowSuccessTip("得分" + score);
                 // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
-              // ff.ShowInfoTip("截图成功！");
-                
+                // ff.ShowInfoTip("截图成功！");
+
             }
-            datahelp.CurrentStep = 5;   
+            datahelp.CurrentStep = 5;
             this.Close();
             MF1 mF = new MF1();
             mF.Show();
@@ -199,7 +199,7 @@ namespace WindowsFormsApplication1
         private void MFYM_KeyDown(object sender, KeyEventArgs e)
 
         {
-           
+
             if (e.KeyCode == Keys.Escape)
             {
                 ff.ShowInfoTip("ESC");
@@ -216,6 +216,6 @@ namespace WindowsFormsApplication1
             this.draw = true;
         }
 
-       
+
     }
 }

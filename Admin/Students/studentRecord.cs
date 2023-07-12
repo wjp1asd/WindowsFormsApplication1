@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 using WindowsFormsApplication1.Models;
-using AutoWindowsSize;
 
 namespace WindowsFormsApplication1.Admin.Students
 {
-   
+
     public partial class studentRecord : Form
     {
 
@@ -26,14 +20,15 @@ namespace WindowsFormsApplication1.Admin.Students
         StringBuilder s1;
         public studentRecord(string id)
         {
-            if (id.Length==0) {
-               
-               ff.ShowInfoTip("当前学生信息有误");
+            if (id.Length == 0)
+            {
+
+                ff.ShowInfoTip("当前学生信息有误");
                 return;
             }
-           // Select TestRecord. *from TestRecord where TestRecord.ksid = (select idcard from student where id = 9) 
+            // Select TestRecord. *from TestRecord where TestRecord.ksid = (select idcard from student where id = 9) 
             InitializeComponent();
-            string sql = "select * from " + TableName + " where  ksid = (select idcard from student where id = " + id.Trim()+")"; 
+            string sql = "select * from " + TableName + " where  ksid = (select idcard from student where id = " + id.Trim() + ")";
             InitTable(sql);
         }
         private void InitTable(string sql)
@@ -73,7 +68,7 @@ namespace WindowsFormsApplication1.Admin.Students
 
         private void StudentSet_Load(object sender, EventArgs e)
         {
-          
+
         }
         private void studentRecord_Load(object sender, EventArgs e)
         {

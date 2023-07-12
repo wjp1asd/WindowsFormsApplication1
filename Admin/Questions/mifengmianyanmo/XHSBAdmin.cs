@@ -102,7 +102,7 @@ namespace WindowsFormsApplication1.YanMO
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
             }
         }
         private Fuc ff = new Fuc();
@@ -186,7 +186,7 @@ namespace WindowsFormsApplication1.YanMO
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
+                    ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName + " where aid=" + Subtype;
 
                     this.InitTable(sql);
@@ -195,11 +195,11 @@ namespace WindowsFormsApplication1.YanMO
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
 
         }
-           private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -227,7 +227,7 @@ namespace WindowsFormsApplication1.YanMO
                 oc.Length == 0 || od.Length == 0
                 )
             {
-               ff.ShowInfoTip("字段不能为空");
+                ff.ShowInfoTip("字段不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -242,7 +242,7 @@ namespace WindowsFormsApplication1.YanMO
                   "'" + od.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-          // ff.ShowInfoTip(strcomm);
+            // ff.ShowInfoTip(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
@@ -250,7 +250,7 @@ namespace WindowsFormsApplication1.YanMO
 
             this.InitTable(sql);
             con.Close();
-           ff.ShowInfoTip("已更新");
+            ff.ShowInfoTip("已更新");
         }
 
         private void button6_Click_1(object sender, EventArgs e)
@@ -277,7 +277,7 @@ namespace WindowsFormsApplication1.YanMO
         }
 
 
- 
+
         private void XHSBAdmin_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);

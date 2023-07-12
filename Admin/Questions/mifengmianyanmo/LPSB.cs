@@ -5,7 +5,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
@@ -101,7 +100,7 @@ namespace WindowsFormsApplication1.YanMO
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
                 this.panel1.Hide();
             }
         }
@@ -112,7 +111,7 @@ namespace WindowsFormsApplication1.YanMO
             f.Show();
             this.Close();
 
-            
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -185,7 +184,7 @@ namespace WindowsFormsApplication1.YanMO
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
+                    ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
@@ -194,7 +193,7 @@ namespace WindowsFormsApplication1.YanMO
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
 
         }
@@ -227,7 +226,7 @@ namespace WindowsFormsApplication1.YanMO
                 oc.Length == 0 || od.Length == 0
                 )
             {
-               ff.ShowInfoTip("字段不能为空");
+                ff.ShowInfoTip("字段不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -241,7 +240,7 @@ namespace WindowsFormsApplication1.YanMO
                   "'" + od.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-          // ff.ShowInfoTip(strcomm);
+            // ff.ShowInfoTip(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
@@ -250,7 +249,7 @@ namespace WindowsFormsApplication1.YanMO
             string sql = "select * from " + TableName;
 
             this.InitTable(sql);
-           ff.ShowInfoTip("已更新");
+            ff.ShowInfoTip("已更新");
         }
 
         private void button6_Click_1(object sender, EventArgs e)
@@ -296,10 +295,10 @@ namespace WindowsFormsApplication1.YanMO
         private void button5_Click_2(object sender, EventArgs e)
         {
             //   string sPath1 = Application.StartupPath + "\\Images\\题库照片\\";
-            string sPath1 = loc+"\\题库照片\\";
+            string sPath1 = loc + "\\题库照片\\";
             FolderBrowserDialog openFileDialog = new FolderBrowserDialog();
 
-           //openFileDialog.SelectedPath = sPath1;
+            //openFileDialog.SelectedPath = sPath1;
 
             DirectoryInfo dir = new DirectoryInfo(sPath1);
 
@@ -345,7 +344,7 @@ namespace WindowsFormsApplication1.YanMO
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
             this.panel1.Hide();
-          loc = ConfigurationManager.AppSettings["loc"];
+            loc = ConfigurationManager.AppSettings["loc"];
 
             this.label6.Text += ":图片必须放在共享路" + loc;
         }
@@ -364,7 +363,7 @@ namespace WindowsFormsApplication1.YanMO
 
                     return;
                 }
-               ff.ShowInfoTip("点击率");
+                ff.ShowInfoTip("点击率");
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
                 this.pictureBox1.LoadAsync(value);

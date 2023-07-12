@@ -129,7 +129,7 @@ namespace WindowsFormsApplication1
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
             }
         }
         private Fuc ff = new Fuc();
@@ -148,7 +148,7 @@ namespace WindowsFormsApplication1
             if (sub.Length == 0 || f0.Length == 0 || f1.Length == 0 ||
                 f2.Length == 0 || f3.Length == 0 || f4.Length == 0)
             {
-               ff.ShowInfoTip("字段不能为空");
+                ff.ShowInfoTip("字段不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -163,13 +163,13 @@ namespace WindowsFormsApplication1
               "'" + f3.ToString() + "'" + ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-         // ff.ShowInfoTip(strcomm);
+            // ff.ShowInfoTip(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
 
             con.Close();
-           ff.ShowInfoTip("已更新");
+            ff.ShowInfoTip("已更新");
 
             string sql = "select id,name,bumen,login" +
                 "id,password,status,phone,confirm from " + TableName + " where  power >1";
@@ -216,7 +216,7 @@ namespace WindowsFormsApplication1
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
+                    ff.ShowInfoTip("已删除");
 
                     string sql = "select id,name,bumen,login" +
                         "id,password,status,phone,confirm from " + TableName + " where  power >1";
@@ -227,7 +227,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
         }
 
@@ -241,13 +241,14 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (this.textBox8.Text.Length > 0) {
+            if (this.textBox8.Text.Length > 0)
+            {
                 string sql = "select id,name,bumen,loginid,password,status,phone,confirm from " + TableName + " where power>1 and name like '%" + this.textBox8.Text + "%'";
 
                 this.InitTable(sql);
 
             }
-          
+
 
         }
 

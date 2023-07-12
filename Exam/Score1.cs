@@ -1,10 +1,7 @@
-﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
 
@@ -15,27 +12,27 @@ namespace WindowsFormsApplication1.Exam
         public Score1()
         {
             InitializeComponent();
-           
+
         }
         float rate = 0;
 
         private void Form6_Load(object sender, EventArgs e)
         {
 
-           
-           // AddStudentScore();
+
+            // AddStudentScore();
         }
         private void AddStudentScore()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string strcomm = "insert into score ([studentid],[score],[subid],[tid]) VALUES(" +
-               "'" + datahelp.StudentId.Trim() +"'" + "," +
+               "'" + datahelp.StudentId.Trim() + "'" + "," +
               "'" + score.ToString() + "'" + "," +
               "'" + datahelp.SubId + "'" + "," +
               "'" + datahelp.QId.Trim() + "'"
               + ")";
-         // ff.ShowInfoTip(strcomm);
+            // ff.ShowInfoTip(strcomm);
             SqlCommand com = new SqlCommand(strcomm, con);
             con.Open();
             com.ExecuteNonQuery();
@@ -45,11 +42,11 @@ namespace WindowsFormsApplication1.Exam
         private void ShowScore()
         {
             int count = 0;
-        string [] a=    datahelp.Correct;
+            string[] a = datahelp.Correct;
             for (int i = 0; i < a.Length; i++)
             {
                 // 答对题的数量
-                if (a[i]=="1")
+                if (a[i] == "1")
                 {
                     count++;
                 }
@@ -115,7 +112,7 @@ namespace WindowsFormsApplication1.Exam
                 case 1:
                     this.Text = "离线校验";
                     rate = float.Parse(sc.getScore("lxt").ToString());
-                   
+
                     break;
                 case 2:
                     this.Text = "在线校验";
@@ -139,10 +136,10 @@ namespace WindowsFormsApplication1.Exam
                     rate = float.Parse(sc.getScore("ymgsb").ToString());
                     break;
             }
-           // this.label2.Text = this.Text + "完成";
-          //  MessageBox.Show(rate+"");
-                 ShowScore();
-           // AddStudentScore();
+            // this.label2.Text = this.Text + "完成";
+            //  MessageBox.Show(rate+"");
+            ShowScore();
+            // AddStudentScore();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -152,7 +149,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
                     datahelp.CurrentStep = 2;
-                    datahelp.CurrentStep1 =2;
+                    datahelp.CurrentStep1 = 2;
                     OFF of = new OFF(datahelp.QId);
                     of.Show();
                     this.Close();
@@ -178,7 +175,7 @@ namespace WindowsFormsApplication1.Exam
                 case 5:
                     datahelp.CurrentStep = 2;
                     datahelp.CurrentStep1 = 2;
-                   
+
                     MF1 mf = new MF1();
                     mf.Show();
                     this.Close();
@@ -197,25 +194,25 @@ namespace WindowsFormsApplication1.Exam
                     break;
             }
 
-          
+
         }
         private Fuc ff = new Fuc();
         private void UpdateGrades()
         {
-   
+
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string a = string.Join(",", datahelp.QuestionIds);
-            string b = string.Join(",",datahelp.UserAnswer);
+            string b = string.Join(",", datahelp.UserAnswer);
             string c = string.Join(",", datahelp.Correct);
             double d = score;
             string str1 = "";
             switch (datahelp.SubId)
             {
                 case 1:
-                  
+
                     str1 = "Update Grade set lxquestions='" + a + "',lxanswer='" + b + "',lxcorrect='" + c + "',score2='" + d
-              
+
                 + "' where testid= '" + datahelp.QId.Trim() + "'";
                     break;
                 case 2:
@@ -246,7 +243,7 @@ namespace WindowsFormsApplication1.Exam
                 case 4:
                     str1 = "Update Grade set ymgquestions='" + a + "',ymganswer='" + b + "',ymgcorrect='" + c + "',score7='" + d
 
-            + "' where testid= '" + datahelp.QId.Trim()+"'";
+            + "' where testid= '" + datahelp.QId.Trim() + "'";
 
                     break;
 
@@ -254,7 +251,7 @@ namespace WindowsFormsApplication1.Exam
             }
             //this.label2.Text =str1;
 
-        //   ff.ShowInfoTip(str1);
+            //   ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             com.ExecuteNonQuery();

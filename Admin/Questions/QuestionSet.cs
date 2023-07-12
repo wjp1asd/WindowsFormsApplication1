@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
-          
+
 
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
             this.button4.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
         {
 
             ff.fullsreen(this.button1, this);
-           
+
             ff.fullsreen(this.button3, this);
             ff.fullsreen(this.button4, this);
 
@@ -93,7 +93,7 @@ namespace WindowsFormsApplication1
             this.Close();
 
         }
-     
+
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
         {
@@ -103,7 +103,7 @@ namespace WindowsFormsApplication1
                 awt.FormSizeChanged();
             }
         }
-       
+
         private void QuestionSet_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
@@ -111,6 +111,6 @@ namespace WindowsFormsApplication1
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
-       
+
     }
 }

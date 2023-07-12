@@ -1,15 +1,8 @@
 ﻿using AutoWindowsSize;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -21,7 +14,7 @@ namespace WindowsFormsApplication1.Exam.MF
         {
             InitializeComponent();
         }
- 
+
         int num = 1;
 
         Fuc f = new Fuc();
@@ -29,7 +22,7 @@ namespace WindowsFormsApplication1.Exam.MF
         QuestionA qq = new QuestionA();
         string[] correct;
         Grade g = new Grade();
-       
+
         public XHForm(string qrcode)
         {
             InitializeComponent();
@@ -59,7 +52,7 @@ namespace WindowsFormsApplication1.Exam.MF
                 t.Zxyl = reader["zxyl"].ToString();
 
                 t.Zxlx = reader["zxlx"].ToString();
-                
+
                 t.Xhquestions = reader["xhquestions"].ToString().Trim();
 
                 t.Adfxh = reader["aqfxh"].ToString();
@@ -71,27 +64,27 @@ namespace WindowsFormsApplication1.Exam.MF
             datahelp.CurrentQuestion = 1;
 
             this.Text = "型号答题";
-                    if (t.Xhquestions.Length > 0)
-                    {
-                        datahelp.QuestionIds = t.Xhquestions.Split(',');
-                        datahelp.SubId = 5;
-               // if (int.Parse(g.score4) > -1)
-               // {
+            if (t.Xhquestions.Length > 0)
+            {
+                datahelp.QuestionIds = t.Xhquestions.Split(',');
+                datahelp.SubId = 5;
+                // if (int.Parse(g.score4) > -1)
+                // {
 
-               //     f.ShowErrorDialog("重复考试");
+                //     f.ShowErrorDialog("重复考试");
 
-                 //   this.Enabled = false;
-              //  }
-               // g.updateGrade(0, "score4", datahelp.QId);
+                //   this.Enabled = false;
+                //  }
+                // g.updateGrade(0, "score4", datahelp.QId);
 
             }
-                    else
-                    {
-                        f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
+            else
+            {
+                f.ShowErrorDialog("题目已不存在于当前题库，请重新抽题");
 
-                    }
-                   
-            
+            }
+
+
             if (qrcode.Length == 0)
             {
                 f.ShowErrorDialog("考试信息有误");
@@ -113,8 +106,8 @@ namespace WindowsFormsApplication1.Exam.MF
             c.Initc();
             num = c.xhnum;
             this.label2.Text = "总题数：" + (num) + "，当前：";
-            datahelp.Answer = new string[num ];
-            datahelp.UserAnswer = new string[num ];
+            datahelp.Answer = new string[num];
+            datahelp.UserAnswer = new string[num];
             datahelp.Correct = new string[num];
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
@@ -186,53 +179,53 @@ namespace WindowsFormsApplication1.Exam.MF
                 //}
                 //else
                 //{
-                    this.txtQuestionContent.Text = reader["question"].ToString();
-                    this.rdbA.Show();
-                    this.rdbA.Tag = "A";
-                    this.rdbB.Show();
-                    this.rdbB.Tag = "B";
-                    this.rdbC.Show();
-                    this.rdbC.Tag = "C";
-                    this.rdbD.Show();
-                    this.rdbD.Tag = "D";
+                this.txtQuestionContent.Text = reader["question"].ToString();
+                this.rdbA.Show();
+                this.rdbA.Tag = "A";
+                this.rdbB.Show();
+                this.rdbB.Tag = "B";
+                this.rdbC.Show();
+                this.rdbC.Tag = "C";
+                this.rdbD.Show();
+                this.rdbD.Tag = "D";
 
-                    if (a.Trim().Length > 0)
-                    {
-                        this.rdbA.Text = "A: " + a;
-                    }
-                    else
-                    {
-                        this.rdbA.Hide();
-                    }
-                    if (b.Trim().Length > 0)
-                    {
-                        this.rdbB.Text = "B: " + b;
-                    }
-                    else
-                    {
-                        this.rdbB.Hide();
-                    }
-                    if (c.Trim().Length > 0)
-                    {
-                        this.rdbC.Text = "C: " + c;
-                    }
-                    else
-                    {
-                        this.rdbC.Hide();
-                    }
-                    if (d.Trim().Length > 0)
-                    {
-                        this.rdbD.Text = "D: " + d;
-                    }
-                    else
-                    {
-                        this.rdbD.Hide();
-                    }
-
-
-
-
+                if (a.Trim().Length > 0)
+                {
+                    this.rdbA.Text = "A: " + a;
                 }
+                else
+                {
+                    this.rdbA.Hide();
+                }
+                if (b.Trim().Length > 0)
+                {
+                    this.rdbB.Text = "B: " + b;
+                }
+                else
+                {
+                    this.rdbB.Hide();
+                }
+                if (c.Trim().Length > 0)
+                {
+                    this.rdbC.Text = "C: " + c;
+                }
+                else
+                {
+                    this.rdbC.Hide();
+                }
+                if (d.Trim().Length > 0)
+                {
+                    this.rdbD.Text = "D: " + d;
+                }
+                else
+                {
+                    this.rdbD.Hide();
+                }
+
+
+
+
+            }
 
             //}
 
@@ -260,7 +253,7 @@ namespace WindowsFormsApplication1.Exam.MF
             else
             {
 
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
                 return;
             }
 
@@ -352,7 +345,7 @@ namespace WindowsFormsApplication1.Exam.MF
             else
             {
                 this.timer1.Stop();
-               ff.ShowInfoTip("时间到了，请交卷");
+                ff.ShowInfoTip("时间到了，请交卷");
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -535,7 +528,7 @@ namespace WindowsFormsApplication1.Exam.MF
             }
         }
 
-        
+
 
         private void Choose_Load(object sender, EventArgs e)
         {

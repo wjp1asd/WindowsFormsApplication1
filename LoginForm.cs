@@ -2,13 +2,12 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Admin.Results;
 using WindowsFormsApplication1.Exam;
+using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
-using WindowsFormsApplication1.YanMO;
 using WindowsFormsApplication1.Settings;
-using WindowsFormsApplication1.Admin.Results;
-using WindowsFormsApplication1.Exam.MF;
 
 namespace WindowsFormsApplication1
 {
@@ -50,9 +49,9 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-              
+
                 this.button8.Hide();
-                
+
                 this.button10.Hide();
                 this.button11.Hide();
                 this.button12.Hide();
@@ -62,7 +61,7 @@ namespace WindowsFormsApplication1
                 // 考生登录
 
                 this.button2.Left += 150;
-                this.button2.Top= 160;
+                this.button2.Top = 160;
                 this.button3.Left = this.button2.Left;
                 this.button1.Hide();
                 this.pictureBox1.Hide();
@@ -71,9 +70,9 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-              
+
                 this.button8.Hide();
-              
+
                 this.button10.Hide();
                 this.button11.Hide();
                 this.button12.Hide();
@@ -81,7 +80,7 @@ namespace WindowsFormsApplication1
             else if (x == "2")
             {
                 //考试机登录
-             
+
                 this.button1.Hide();
                 this.button1.Enabled = false;
                 this.pictureBox1.Hide();
@@ -93,14 +92,14 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-               
+
                 this.button8.Hide();
-               
+
                 this.button10.Hide();
                 this.button11.Hide();
                 this.button12.Hide();
             }
-            else if (x == "2"|| x == "3"|| x == "4")
+            else if (x == "2" || x == "3" || x == "4")
             {
                 //考试机登录
 
@@ -115,9 +114,9 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-                
+
                 this.button8.Hide();
-                
+
                 this.button10.Hide();
                 this.button11.Hide();
                 this.button12.Hide();
@@ -133,7 +132,7 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-               
+
                 this.button1.Hide();
                 this.button2.Hide();
                 this.button3.Hide();
@@ -219,7 +218,7 @@ namespace WindowsFormsApplication1
             // ft.showloading();
 
             initsetp();
-           
+
         }
 
         private void initsetp()
@@ -248,7 +247,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-         //   Application.Exit();
+            //   Application.Exit();
             System.Environment.Exit(0);
         }
 
@@ -274,11 +273,11 @@ namespace WindowsFormsApplication1
         private void button4_Click(object sender, EventArgs e)
         {
             //Choose c = new Choose("321084199510025535");
-          //  this.Close();
+            //  this.Close();
             zaixianjiaoyan2 c = new zaixianjiaoyan2();
             c.Show();
-         
-           this.Hide();
+
+            this.Hide();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -293,7 +292,7 @@ namespace WindowsFormsApplication1
             //jiaoyancanshu  jy = new jiaoyancanshu();    
             //jy.Show();
             OFF off = new OFF(datahelp.QId);
-            off.Show(); 
+            off.Show();
             this.Hide();
         }
 
@@ -306,7 +305,7 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            
+
             MF1 mf = new MF1();
             mf.Show();
             this.Hide();
@@ -320,10 +319,10 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            jiaoyancanshu  jy = new jiaoyancanshu();    
+            jiaoyancanshu jy = new jiaoyancanshu();
             jy.Show();
 
-           // XHSB xh =new XHSB();
+            // XHSB xh =new XHSB();
             //xh.Show();
         }
 

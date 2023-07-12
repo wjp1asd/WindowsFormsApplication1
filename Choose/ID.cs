@@ -14,7 +14,7 @@ using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
-   
+
 
     public partial class ID : Form
     {
@@ -28,9 +28,9 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             this.Change();
-           // this.UpdataInfo(Id);
+            // this.UpdataInfo(Id);
         }
-       
+
         private void Change()
         {
             ff.fullsreen(this.label2, this);
@@ -56,10 +56,10 @@ namespace WindowsFormsApplication1
                         nReaderPort = IDCardReader.GetSAMID(ref tmp[0]);
                         if (nReaderPort != 0)
                         {
-                           ff.ShowInfoTip("初始化失败,请选择设备");
+                            ff.ShowInfoTip("初始化失败,请选择设备");
                             return;
                         }
-                       
+
                         this.label2.ForeColor = Color.Green;
                         //开启请求
                         th = new Thread(AutoReadCard);
@@ -68,12 +68,12 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                       ff.ShowInfoTip("初始化失败,请选择设备");
+                        ff.ShowInfoTip("初始化失败,请选择设备");
                     }
                 }
                 catch (Exception ex)
                 {
-                   ff.ShowInfoTip(ex.ToString());
+                    ff.ShowInfoTip(ex.ToString());
                 }
             }
         }
@@ -99,45 +99,47 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          //  awt = new AutoAdaptWindowsSize(this);
+            //  awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             // this.SizeChanged += groupBox1_Resize;
             InitConfig();
-           // this.groupBox1.s
+            // this.groupBox1.s
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-         
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
-        int authenticate =-1;
+        int authenticate = -1;
         int readContent = -1;
         private void AutoReadCard()
         {
-            while (true) {
+            while (true)
+            {
                 Thread.Sleep(1000);
-              
+
                 if (nReaderPort == 0)
                 {
-                    if (authenticate == -1) {
+                    if (authenticate == -1)
+                    {
 
                         authenticate = IDCardReader.Authenticate();
                     }
-                    
+
                     if (authenticate == 0)
                     {
-                        if ( readContent == -1)
+                        if (readContent == -1)
                         {
 
                             readContent = IDCardReader.Read_Content(1);
                         }
-                      
+
 
                         Action tongdao = () =>
                         {
@@ -145,7 +147,7 @@ namespace WindowsFormsApplication1
                         };
                         this.Invoke(tongdao);
 
-                         
+
 
                         if (IDCardReader.IsFPRIDCard() == 1)
                         {
@@ -204,14 +206,14 @@ namespace WindowsFormsApplication1
                                         {
                                             File.Copy("ZP.bmp", url);
 
-                                          
+
                                         }
                                         this.pictureBox2.ImageLocation = url;
 
                                     }
                                     catch (Exception e)
                                     {
-                                       ff.ShowInfoTip("保存图片异常" + e.ToString());
+                                        ff.ShowInfoTip("保存图片异常" + e.ToString());
                                         throw;
                                     }
 
@@ -276,13 +278,13 @@ namespace WindowsFormsApplication1
                                         {
                                             File.Copy("ZP.bmp", url);
 
-                                           
+
                                         }
                                         this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
-                                       ff.ShowInfoTip("保存图片异常" + e.ToString());
+                                        ff.ShowInfoTip("保存图片异常" + e.ToString());
                                         throw;
                                     }
                                 }
@@ -291,7 +293,7 @@ namespace WindowsFormsApplication1
                         else
                         {
 
-                        
+
 
                             lblAddress.Visible = true;
                             lblDept.Visible = true;
@@ -326,7 +328,7 @@ namespace WindowsFormsApplication1
                                 lblName.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
 
                                 IDCardReader.GetNation2(ref arrTmp[0], ref nLen);
-                             //   lblNation.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
+                                //   lblNation.Text = System.Text.Encoding.GetEncoding("GB2312").GetString(arrTmp, 0, nLen);
 
                                 IDCardReader.GetStartDate2(ref arrTmp[0], ref nLen);
                                 lblValidDate.Text = "";
@@ -346,24 +348,24 @@ namespace WindowsFormsApplication1
                                         {
                                             File.Copy("ZP.bmp", url);
 
-                                        
+
                                         }
 
                                         this.pictureBox2.ImageLocation = url;
                                     }
                                     catch (Exception e)
                                     {
-                                       ff.ShowInfoTip("保存图片异常" + e.ToString());
+                                        ff.ShowInfoTip("保存图片异常" + e.ToString());
                                         throw;
                                     }
                                 }
                             }
                             else
                             {
-                               ff.ShowErrorTip( "读卡操作失败！");
+                                ff.ShowErrorTip("读卡操作失败！");
                                 MessageBox.Show("警告：请联系管理员充气设备再进行抽题");
                                 break;
-                               // InitConfig();
+                                // InitConfig();
                                 // this.label2.ForeColor = Color.Red;
                                 //   authenticate = IDCardReader.Authenticate();
                             }
@@ -374,15 +376,15 @@ namespace WindowsFormsApplication1
                             this.groupBox1.Show();
 
                             Id = lblIdCard.Text.ToString().Trim();
-                           UpdataInfo(Id);
+                            UpdataInfo(Id);
                             break;
                         }
-                       
+
                     }
                     else
                     {
                         ff.ShowInfoTip("请放身份证!");
-                      //  authenticate = IDCardReader.Authenticate();
+                        //  authenticate = IDCardReader.Authenticate();
                         //  this.label2.Text = "请放身份证!";
                         // this.label2.ForeColor = Color.Red;
 
@@ -397,18 +399,18 @@ namespace WindowsFormsApplication1
 
 
             }
-         
-        
 
-          
+
+
+
         }
         public string a, b, c, d, f;
         public Fuc ff = new Fuc();
         private void button4_Click(object sender, EventArgs e)
         {
-               this.Close();
-               Choose a = new Choose(Id.ToString().Trim());
-               a.Show();
+            this.Close();
+            Choose a = new Choose(Id.ToString().Trim());
+            a.Show();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -440,7 +442,7 @@ namespace WindowsFormsApplication1
             string sql = "select id from student where idcard='" + Id.ToString() + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-            string path =url;
+            string path = url;
             string id = "";
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
@@ -452,17 +454,17 @@ namespace WindowsFormsApplication1
             if (id.Length > 0)
             {
                 datahelp.StudentId = Id.ToString();
-               
+
                 string strcomm = "update student  set avatar='" + path + "' where id = " + id;
-                
+
                 con.Open();
                 com = new SqlCommand(strcomm, con);
-                 
-              
-                
-                    ff.ShowSuccessTip("更新信息成功！");
-             
-                
+
+
+
+                ff.ShowSuccessTip("更新信息成功！");
+
+
                 con.Close();
             }
             else

@@ -50,7 +50,7 @@ namespace WindowsFormsApplication1.Exam
             this.Close();
             gongyijiaoyan gongyijiaoyan = new gongyijiaoyan();
             gongyijiaoyan.Show();
-           
+
 
         }
         AutoAdaptWindowsSize awt;
@@ -86,21 +86,21 @@ namespace WindowsFormsApplication1.Exam
                     this.button3.Enabled = true;
                     this.button1.Enabled = false;
                     this.button2.Enabled = false;
-                   
+
                     break;
                 case 2:
                     this.button3.Enabled = false;
                     this.button1.Enabled = true;
                     this.button2.Enabled = false;
-                 
+
                     break;
                 case 3:
                     this.button3.Enabled = false;
                     this.button1.Enabled = false;
                     this.button2.Enabled = true;
-                    
+
                     break;
-              
+
 
             }
         }
@@ -123,7 +123,7 @@ namespace WindowsFormsApplication1.Exam
         {
             this.Close();
 
-            ProjectInfo projectInfo = new ProjectInfo();    
+            ProjectInfo projectInfo = new ProjectInfo();
             projectInfo.Show();
         }
     }

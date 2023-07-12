@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
         // 考试状态
         public static int status = 0;
         //考试步走 
-        public static int CurrentStep= 1;
+        public static int CurrentStep = 1;
         public static int CurrentStep1 = 1;
         // USB 接口定义
         public string id;
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
         public string camera1;
         public string camera2;
         public string plc;
-        public string plcbt, plcjy, plcst, plcsp,servo, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy, MC;
+        public string plcbt, plcjy, plcst, plcsp, servo, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy, MC;
         public string plc1;
         public string plcbt1, plcjy1, plcst1, plcsp1, servo1;
         public string link;
@@ -48,8 +48,8 @@ namespace WindowsFormsApplication1
         public string mfzj = "1";
         // 题型数量
         public int lxnum, zxnum, gynum, xhnum, lpjnum, ymgnum;
-    
-        
+
+
         public void Initc()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
                 camera1 = reader["camera1"].ToString();
                 mouse = reader["mouse"].ToString();
                 link = reader["link"].ToString().Trim();
-                
+
                 color1 = reader["color1"].ToString();
                 color2 = reader["color2"].ToString();
                 color3 = reader["color3"].ToString();

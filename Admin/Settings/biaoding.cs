@@ -17,7 +17,8 @@ namespace WindowsFormsApplication1.Admin.Settings
         Boolean all = false;
         StringBuilder s1;
 
-        public biaoding() {
+        public biaoding()
+        {
             InitializeComponent();
 
             string sql = "select * from " + TableName;
@@ -27,7 +28,7 @@ namespace WindowsFormsApplication1.Admin.Settings
 
         private void InitTable(string sql)
         {
-         
+
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
 
@@ -124,14 +125,14 @@ namespace WindowsFormsApplication1.Admin.Settings
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "' where id = " + id;
-              // ff.ShowInfoTip(strcomm);
+                // ff.ShowInfoTip(strcomm);
 
                 con.Open();
                 SqlCommand comm = new SqlCommand(strcomm, con);
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
             }
         }
         private void btnLogin_Click(object sender, EventArgs e)
@@ -154,10 +155,11 @@ namespace WindowsFormsApplication1.Admin.Settings
                     s1.Append(this.dataGridView1.Rows[i].Cells[1].Value + ",");
                 // }
             }
-            if(s1.Length > 1){
+            if (s1.Length > 1)
+            {
                 s1.Remove(s1.Length - 1, 1);
             }
-          
+
             // ff.ShowInfoTip(s1.ToString());
             if (s1.Length != 0)
             {
@@ -179,7 +181,7 @@ namespace WindowsFormsApplication1.Admin.Settings
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
+                    ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
@@ -188,7 +190,7 @@ namespace WindowsFormsApplication1.Admin.Settings
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
         }
 
@@ -221,7 +223,7 @@ namespace WindowsFormsApplication1.Admin.Settings
 
         }
 
-      
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -240,7 +242,7 @@ namespace WindowsFormsApplication1.Admin.Settings
         }
 
 
-  
+
 
         private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
         {
@@ -258,6 +260,6 @@ namespace WindowsFormsApplication1.Admin.Settings
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
-     
+
     }
 }

@@ -131,14 +131,14 @@ namespace WindowsFormsApplication1
 
 
 
-                   ff.ShowInfoTip("已更新");
+                    ff.ShowInfoTip("已更新");
 
                 }
 
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
 
 
@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1
                 if (!url.Contains("xlsx"))
                 {
 
-                   ff.ShowInfoTip("请上传有效文件");
+                    ff.ShowInfoTip("请上传有效文件");
                     return;
 
 

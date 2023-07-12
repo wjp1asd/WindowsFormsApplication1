@@ -9,31 +9,31 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class jiaoyancanshu : Form
     {
-        string index ="";
+        string index = "";
         public jiaoyancanshu()
         {
             InitializeComponent();
 
 
-          
+
         }
         List<Wucha> wuchas = new List<Wucha>();
         private double yali = 0;
-        Grade g=new Grade();  
-        
+        Grade g = new Grade();
+
         private void wucha(string type)
         {
-              Wucha w= new Wucha();
-             wuchas = w.GetAll(type);
-            List<string> ports =new List<string>();
+            Wucha w = new Wucha();
+            wuchas = w.GetAll(type);
+            List<string> ports = new List<string>();
             foreach (var item in wuchas)
             {
-                ports.Add(item.Value1.ToString().Trim()) ;
+                ports.Add(item.Value1.ToString().Trim());
             }
-            comboBox1.DataSource=ports;
+            comboBox1.DataSource = ports;
             MessageBox.Show(type + wuchas.Count);
-          //  comboBox1.SelectedIndex=0;
-           // index = wuchas[0].Id;
+            //  comboBox1.SelectedIndex=0;
+            // index = wuchas[0].Id;
         }
         Fuc ff = new Fuc();
         float score = 0;
@@ -43,39 +43,40 @@ namespace WindowsFormsApplication1.Exam
             //yali
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
-           
-             double a= double.Parse(a1);
-             double b =double.Parse(b2);
+
+            double a = double.Parse(a1);
+            double b = double.Parse(b2);
             yali = double.Parse(this.label1.Text.Trim());
 
-           
+
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
-                score =0;
+                score = 0;
                 ff.ShowErrorTip("误差选择错误，不得分");
             }
-            else {
-                ff.ShowSuccessTip("选择正确，得分"+score);
-            
+            else
+            {
+                ff.ShowSuccessTip("选择正确，得分" + score);
+
             }
-            int i=  g.updateGrade(score,"wxxz", datahelp.QId.Trim());
-           
+            int i = g.updateGrade(score, "wxxz", datahelp.QId.Trim());
+
             //MessageBox.Show(""+ff.RC1(url).Length);
-           
-                this.Close();
-                JiaoYan j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
-                j.Show();
-            
-          
-            
-           
+
+            this.Close();
+            JiaoYan j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
+            j.Show();
+
+
+
+
         }
 
         private void jiaoyancanshu_Load(object sender, EventArgs e)
         {
             TestRecord t = new TestRecord();
-         
+
             //if (g.getGrade("wxxz",datahelp.QId) > -1)
             //{
 
@@ -115,24 +116,24 @@ namespace WindowsFormsApplication1.Exam
 
                 t.Zxlx = reader["zxlx"].ToString().Trim();
 
-               
+
 
                 t.Adfxh = reader["aqfxh"].ToString();
 
                 t.Qrcode = reader["qrcode"].ToString();
             }
             con.Close();
-            this.label3.Text = "考生："+t.Ksname;
+            this.label3.Text = "考生：" + t.Ksname;
             this.label4.Text = "身份证：" + t.KsId;
             this.label1.Text = t.Lxyl
                 ;
-          //  yali = int.Parse(t.Lxyl);
-            this.label5.Text = "使用设备类型：" + t.Lxlx ;
+            //  yali = int.Parse(t.Lxyl);
+            this.label5.Text = "使用设备类型：" + t.Lxlx;
             wucha(t.Lxlx);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            Score c= new Score();
-            score =  c.getScore("wxxz");
-           
+            Score c = new Score();
+            score = c.getScore("wxxz");
+
 
         }
 

@@ -1,5 +1,4 @@
-﻿using OpenCvSharp;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -97,7 +96,7 @@ namespace WindowsFormsApplication1.YanMO
             this.panel1.Show();
         }
 
-      
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -122,12 +121,12 @@ namespace WindowsFormsApplication1.YanMO
 
 
 
-             
+
 
 
 
                 string strrow = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();//获取焦点触发行的第一个值
-               string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//获取焦点触发行的第一个值
+                string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//获取焦点触发行的第一个值
                 string value = dataGridView1.CurrentCell.Value.ToString();//获取当前点击的活动单元格的值
 
                 string strcomm = "update " + TableName + " set " + strcolumn + "='" + value + "'where id = " + id;
@@ -138,7 +137,7 @@ namespace WindowsFormsApplication1.YanMO
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
             }
         }
         private Fuc ff = new Fuc();
@@ -148,7 +147,7 @@ namespace WindowsFormsApplication1.YanMO
 
             if (sub.Length == 0)
             {
-               ff.ShowInfoTip("字段不能为空");
+                ff.ShowInfoTip("字段不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -164,7 +163,7 @@ namespace WindowsFormsApplication1.YanMO
             comm.ExecuteNonQuery();
 
             con.Close();
-           ff.ShowInfoTip("已更新");
+            ff.ShowInfoTip("已更新");
 
 
             string sql = "select * from " + TableName;
@@ -213,7 +212,7 @@ namespace WindowsFormsApplication1.YanMO
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
+                    ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
@@ -222,7 +221,7 @@ namespace WindowsFormsApplication1.YanMO
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
         }
 
@@ -269,7 +268,7 @@ namespace WindowsFormsApplication1.YanMO
         }
 
 
-    
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -279,10 +278,10 @@ namespace WindowsFormsApplication1.YanMO
                 if (column is DataGridViewButtonColumn)
                 {
                     //这里可以编写你需要的任意关于按钮事件的操作~
-                     string id = dataGridView1.Rows[a].Cells[1].Value.ToString();//获取焦点触发行的第一个值
+                    string id = dataGridView1.Rows[a].Cells[1].Value.ToString();//获取焦点触发行的第一个值
                     string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
                                                                                             //  ff.ShowInfoTip("按钮被点击" + strcolumn);
-                   
+
                     if (strcolumn == "选取")
                     {
 
@@ -292,8 +291,8 @@ namespace WindowsFormsApplication1.YanMO
 
                     if (strcolumn == "cz")
                     {
-                       
-                      
+
+
                         XHSBAdmin x = new XHSBAdmin(id);
                         x.Show();
                     }

@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1.Exam
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
-          
+
 
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
@@ -47,8 +47,8 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            ON o =new ON(datahelp.QId.Trim());
-            o.Show();   
+            ON o = new ON(datahelp.QId.Trim());
+            o.Show();
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)

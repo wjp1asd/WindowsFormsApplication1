@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
         }
 
-        public LBJForm(String qrcode )
+        public LBJForm(String qrcode)
         {
 
 
@@ -66,7 +66,7 @@ namespace WindowsFormsApplication1.Exam
                 datahelp.QuestionIds = t.Lpjuestions.Split(',');
                 datahelp.SubId = 6;
 
-              //  MessageBox.Show(t.Lpjuestions);
+                //  MessageBox.Show(t.Lpjuestions);
             }
             else
             {
@@ -83,14 +83,14 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 // 加载题库
-                
 
-             
+
+
                 LoadQuestion();
             }
 
         }
-        
+
         int num = 1;
         private void Form4_Load(object sender, EventArgs e)
         {
@@ -108,7 +108,7 @@ namespace WindowsFormsApplication1.Exam
             InitbtnNext();
             ShowInfo();
 
-           
+
 
         }
         private void InitbtnUp()
@@ -147,7 +147,7 @@ namespace WindowsFormsApplication1.Exam
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
             string sql = "select * from ymg where id =" + questionId.ToString().Trim();
-          // ff.ShowInfoTip(sql);
+            // ff.ShowInfoTip(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
@@ -213,7 +213,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void ShowInfo()
         {
-           // this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
+            // this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
             this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
@@ -229,7 +229,7 @@ namespace WindowsFormsApplication1.Exam
             else
             {
 
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
                 return;
             }
 
@@ -321,7 +321,7 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 this.timer1.Stop();
-               ff.ShowInfoTip("时间到了，请交卷");
+                ff.ShowInfoTip("时间到了，请交卷");
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
                 frm.Show();
@@ -348,7 +348,7 @@ namespace WindowsFormsApplication1.Exam
         private void btnAnswer_Click(object sender, EventArgs e)
         {
             AnswerForm frm = new AnswerForm();
-                 frm.Show();
+            frm.Show();
             this.Close();
 
         }
@@ -542,7 +542,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void LBJForm_Load(object sender, EventArgs e)
         {
-           
+
         }
     }
 }

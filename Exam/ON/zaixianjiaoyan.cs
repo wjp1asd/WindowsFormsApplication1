@@ -50,9 +50,9 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
-           // 在线题 开始考试
+            // 在线题 开始考试
             datahelp.SubId = 2;
-            QuestionForm a = new QuestionForm(datahelp.QId,"2");
+            QuestionForm a = new QuestionForm(datahelp.QId, "2");
             a.Show();
         }
         AutoAdaptWindowsSize awt;
@@ -109,21 +109,21 @@ namespace WindowsFormsApplication1.Exam
 
         private void button1_Click(object sender, EventArgs e)
         {
-            zaixianjiaoyan2 z=new zaixianjiaoyan2();
-            z.Show();   
+            zaixianjiaoyan2 z = new zaixianjiaoyan2();
+            z.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
-            ProjectInfo p =new ProjectInfo();
+            ProjectInfo p = new ProjectInfo();
             p.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-            record a=new record("1","在线");
+            record a = new record("1", "在线");
             a.Show();
         }
     }

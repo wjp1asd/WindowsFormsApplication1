@@ -1,4 +1,5 @@
 ﻿
+using AutoWindowsSize;
 using System;
 using System.Configuration;
 using System.Data;
@@ -8,7 +9,6 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Questions.jiaoyangongyi;
 using WindowsFormsApplication1.Admin.Questions.mifengmianyanmo;
 using WindowsFormsApplication1.Admin.Questions.zaixian;
-using AutoWindowsSize;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Questions
@@ -121,7 +121,7 @@ namespace WindowsFormsApplication1.Questions
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
 
             }
         }
@@ -162,12 +162,13 @@ namespace WindowsFormsApplication1.Questions
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (this.textBox1.Text.ToString().Length>0) {
+            if (this.textBox1.Text.ToString().Length > 0)
+            {
                 string sql = "select * from " + TableName + " where subId=" + Subtype + " and concat(id,question,answer) like '%" + this.textBox1.Text + "%'";
 
                 this.InitTable(sql);
             }
-          
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -232,8 +233,8 @@ namespace WindowsFormsApplication1.Questions
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
-                    string sql = "select * from " + TableName + " where subId=" + Subtype ;
+                    ff.ShowInfoTip("已删除");
+                    string sql = "select * from " + TableName + " where subId=" + Subtype;
 
                     this.InitTable(sql);
                 }
@@ -241,7 +242,7 @@ namespace WindowsFormsApplication1.Questions
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
 
         }
@@ -269,11 +270,11 @@ namespace WindowsFormsApplication1.Questions
             string ob = this.textBox9.Text;
             string oc = this.textBox8.Text;
             string od = this.textBox7.Text;
-            string tt= this.uiComboBox1.Text;
+            string tt = this.uiComboBox1.Text;
             if (question.Length == 0 || answer.Length == 0
                 )
             {
-               ff.ShowInfoTip("题目或答案不能为空");
+                ff.ShowInfoTip("题目或答案不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -295,9 +296,9 @@ namespace WindowsFormsApplication1.Questions
             comm.ExecuteNonQuery();
 
             con.Close();
-           ff.ShowInfoTip("已更新");
+            ff.ShowInfoTip("已更新");
             this.panel1.Hide();
-            string sql = "select * from " + TableName + " where subId=" + Subtype ;
+            string sql = "select * from " + TableName + " where subId=" + Subtype;
 
             this.InitTable(sql);
         }
@@ -305,7 +306,7 @@ namespace WindowsFormsApplication1.Questions
         private void Online_Questions_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
-          
+
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
@@ -319,7 +320,7 @@ namespace WindowsFormsApplication1.Questions
             if (this.uiComboBox1.SelectedIndex == 2)
             {
                 // 判断题
-               // this.uiComboBox1.items;
+                // this.uiComboBox1.items;
                 this.textBox10.Hide();
                 this.textBox9.Hide();
                 this.textBox8.Hide();
@@ -338,7 +339,8 @@ namespace WindowsFormsApplication1.Questions
 
         private void questions_SizeChanged(object sender, EventArgs e)
         {
-            if (awt != null) {
+            if (awt != null)
+            {
 
                 awt.FormSizeChanged();
             }

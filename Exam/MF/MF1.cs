@@ -64,7 +64,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
         private void ON_Load(object sender, EventArgs e)
         {
-          // ff.ShowInfoTip(datahelp.CurrentStep+"+");
+            // ff.ShowInfoTip(datahelp.CurrentStep+"+");
             switch (datahelp.CurrentStep)
             {
                 case 1:
@@ -153,7 +153,7 @@ namespace WindowsFormsApplication1.Exam.MF
         {
             this.Close();
             MFYM mf = new MFYM(datahelp.QId);
-            mf.Show();  
+            mf.Show();
         }
     }
 }

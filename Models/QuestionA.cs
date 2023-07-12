@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -18,7 +17,7 @@ namespace WindowsFormsApplication1
         String optionD1;
         String type;
         String subtype;
-       
+
 
         public string question { get => question1; set => question1 = value; }
         public string answer { get => answer1; set => answer1 = value; }
@@ -49,32 +48,32 @@ namespace WindowsFormsApplication1
         {
             //返回抽题数据
 
-           
-                String answer;
-                List<String> answerList = new List<string>();
-                string connectionString = ConfigurationManager.AppSettings["sqlc"];
-                SqlConnection con = new SqlConnection(connectionString);
-                string sql = "select answer from question  where id in (" + xx.Trim() + ")";
 
-                SqlCommand com = new SqlCommand(sql, con);
-                con.Open();
-             // ff.ShowInfoTip(sql);
-                SqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                    answerList.Add(reader["answer"].ToString());
+            String answer;
+            List<String> answerList = new List<string>();
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select answer from question  where id in (" + xx.Trim() + ")";
 
-                }
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+            // ff.ShowInfoTip(sql);
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                answerList.Add(reader["answer"].ToString());
 
-                answer = string.Join(",", answerList);
-                if (answer.Length == 0)
-                {
+            }
 
-                   ff.ShowInfoTip("题目已不存在于当前题库，请重新抽题");
+            answer = string.Join(",", answerList);
+            if (answer.Length == 0)
+            {
+
+                ff.ShowInfoTip("题目已不存在于当前题库，请重新抽题");
 
 
-                }
-           //ff.ShowInfoTip(answer);
+            }
+            //ff.ShowInfoTip(answer);
             return answer;
         }
 

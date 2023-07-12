@@ -134,7 +134,7 @@ namespace WindowsFormsApplication1
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
             }
         }
         private Fuc ff = new Fuc();
@@ -153,7 +153,7 @@ namespace WindowsFormsApplication1
             if (sub.Length == 0 || f0.Length == 0 || f1.Length == 0 ||
                 f2.Length == 0 || f3.Length == 0 || f4.Length == 0)
             {
-               ff.ShowInfoTip("字段不能为空");
+                ff.ShowInfoTip("字段不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -174,7 +174,7 @@ namespace WindowsFormsApplication1
             comm.ExecuteNonQuery();
 
             con.Close();
-           ff.ShowInfoTip("已更新");
+            ff.ShowInfoTip("已更新");
             this.panel1.Hide();
             string sql = "select id,name,bumen," +
                 "idcard,status,phone,date,sex from " + TableName + " where power =1 and name like '%" + this.textBox8.Text + "%'";
@@ -204,7 +204,7 @@ namespace WindowsFormsApplication1
             if (s1.Length != 0)
             {
 
-               
+
                 if (MessageBox.Show("确定删除id" + s1.ToString() + " ? ", "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
 
                 {
@@ -223,7 +223,7 @@ namespace WindowsFormsApplication1
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
+                    ff.ShowInfoTip("已删除");
                     string sql = "select id,name,bumen," +
                 "idcard,status,phone,date,sex from " + TableName + " where  power =1";
 
@@ -233,7 +233,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
         }
 
@@ -247,13 +247,14 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (this.textBox8.Text.Length > 0) {
+            if (this.textBox8.Text.Length > 0)
+            {
                 string sql = "select id,name,bumen," +
                 "idcard,status,phone,date,sex from " + TableName + " where power =1 and name like '%" + this.textBox8.Text + "%'";
 
                 this.InitTable(sql);
             }
-          
+
 
         }
 
@@ -276,14 +277,15 @@ namespace WindowsFormsApplication1
         {
             for (int i = 0; i < row; i++)
             {
-                if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True") {
+                if (this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
+                {
 
                     //this.Hide();
                     studentRecord st = new studentRecord(this.dataGridView1.Rows[i].Cells[1].Value.ToString().Trim());
                     st.Show();
                 }
 
-              
+
             }
         }
         AutoAdaptWindowsSize awt;
@@ -298,7 +300,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-      
+
         private void StudentSet_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);

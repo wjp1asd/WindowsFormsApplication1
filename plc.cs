@@ -1,16 +1,12 @@
-﻿using System;
-using System.IO.Ports;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Security.Policy;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Windows.Forms;
-using Emgu.CV;
+﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
-using Sunny.UI;
+using System;
+using System.IO.Ports;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -34,7 +30,7 @@ namespace WindowsFormsApplication1
     //DI3 泄压阀
 
 
-   
+
 
     public partial class plc : Form
     {
@@ -51,7 +47,7 @@ namespace WindowsFormsApplication1
         //02 12 00 0C 01 01 01 01 01 01 01 01 1C
         byte[] ta1 = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x1C };
         byte[] ta = new byte[] { 0x02, 0x12, 0x00, 0x0C, 0x01, 0x1C };
-      
+
 
         public plc()
         {
@@ -83,27 +79,27 @@ namespace WindowsFormsApplication1
                     {
                         serialPort2.Open();//打开串口
                         button1.Text = "关闭串口";//按钮显示关闭串口
-                       ff.ShowInfoTip("连接串口成功");
+                        ff.ShowInfoTip("连接串口成功");
                         serialPort2.WriteLine("02 00 00 04 06");
                     }
                     catch (Exception err)
                     {
-                       ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
+                        ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                         throw;
                     }
-                   
-                   
+
+
                 }
                 catch (Exception err)
                 {
-                   ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
+                    ff.ShowInfoTip("打开失败" + err.ToString());//对话框显示打开失败
                 }
             }
             else
             {//要关闭串口
                 try
                 {//防止意外错误
-                   ff.ShowInfoTip("关闭串口成功");
+                    ff.ShowInfoTip("关闭串口成功");
                     serialPort2.Close();//关闭串口
                 }
                 catch (Exception) { }
@@ -162,29 +158,33 @@ namespace WindowsFormsApplication1
         {
 
         }
-        Mat f1= new Mat();
+        Mat f1 = new Mat();
         private void button6_Click(object sender, EventArgs e)
         {
             VideoCapture v = new VideoCapture(0);
             v.SetCaptureProperty(CapProp.FrameHeight, 720);
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
-            if (!v.IsOpened) {
-               ff.ShowInfoTip("open video fail");
+            if (!v.IsOpened)
+            {
+                ff.ShowInfoTip("open video fail");
                 return;
             }
 
             Mat f = new Mat();
-            while (true) {
-              
-                v.Read(f);
-                if (f.IsEmpty) {
+            while (true)
+            {
 
-                   ff.ShowInfoTip("show fail");
+                v.Read(f);
+                if (f.IsEmpty)
+                {
+
+                    ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
                 CvInvoke.Imshow("摄像头1：", f);
-                if (CvInvoke.WaitKey(30) == 27) {
+                if (CvInvoke.WaitKey(30) == 27)
+                {
 
                     break;
                 }
@@ -199,7 +199,7 @@ namespace WindowsFormsApplication1
             v.SetCaptureProperty(CapProp.FrameWidth, 1280);
             if (!v.IsOpened)
             {
-               ff.ShowInfoTip("open video fail");
+                ff.ShowInfoTip("open video fail");
                 return;
             }
             Mat f = new Mat();
@@ -211,7 +211,7 @@ namespace WindowsFormsApplication1
                 if (f.IsEmpty)
                 {
 
-                   ff.ShowInfoTip("show fail");
+                    ff.ShowInfoTip("show fail");
                     break;
                 }
                 f1 = f;
@@ -223,16 +223,16 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-        string url = "//BNY-PC/Users/BNY/Desktop/考试图片/"+DateTime.Now.ToString("yy-mm-dd-hh-ii-ss");
+        string url = "//BNY-PC/Users/BNY/Desktop/考试图片/" + DateTime.Now.ToString("yy-mm-dd-hh-ii-ss");
         private void button8_Click(object sender, EventArgs e)
         {
-            CvInvoke.Imwrite(url+"shot.png",f1);
-           ff.ShowInfoTip("拍照成");
+            CvInvoke.Imwrite(url + "shot.png", f1);
+            ff.ShowInfoTip("拍照成");
         }
         // DI 输入的集合
 
 
-        string DIS ;
+        string DIS;
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(500);
@@ -272,14 +272,16 @@ namespace WindowsFormsApplication1
                 byte[] tt8 = buff.Skip(32).Take(4).ToArray();
                 t8 = ShowBy(tt8, 8);
             }
-          
-            if(buff.Length==6){
+
+            if (buff.Length == 6)
+            {
                 // DI 读取 10jinzhi fanhui
                 byte[] tt1 = buff.Skip(4).Take(1).ToArray();
                 string a = Convert.ToString(tt1[0], 2);
                 textBox3.Text = "DI back:" + a;
                 string b = "";
-                switch (a.Length) {
+                switch (a.Length)
+                {
 
                     case 1:
                         b = "0000000" + a;
@@ -307,14 +309,15 @@ namespace WindowsFormsApplication1
                         break;
                 }
 
-                
-               DIS= b;
-             textBox3.Text = "DI back:"+DIS;
-                if (DIS.Length == 8) {
+
+                DIS = b;
+                textBox3.Text = "DI back:" + DIS;
+                if (DIS.Length == 8)
+                {
 
                     fenxi();
                 }
-               
+
 
             }
         }
@@ -332,21 +335,22 @@ namespace WindowsFormsApplication1
 
                 this.uiLight1.Style = Sunny.UI.UIStyle.Red;
             }
-            else { 
-           
+            else
+            {
+
             }
 
-            if (DIS[7-hongwai] + "" == "0")
+            if (DIS[7 - hongwai] + "" == "0")
             {
-              textBox3.Text += "阀帽存在";
+                textBox3.Text += "阀帽存在";
                 this.uiLight2.Style = Sunny.UI.UIStyle.Red;
             }
-            if (DIS[7-(gongju)] + "" == "0")
+            if (DIS[7 - (gongju)] + "" == "0")
             {
-               textBox3.Text += "工具归位";
+                textBox3.Text += "工具归位";
                 this.uiLight3.Style = Sunny.UI.UIStyle.Red;
             }
-            if (DIS[7-( xieya)] + "" == "0")
+            if (DIS[7 - (xieya)] + "" == "0")
             {
                 textBox3.Text += "卸压阀打开";
                 this.uiLight4.Style = Sunny.UI.UIStyle.Red;
@@ -398,27 +402,27 @@ namespace WindowsFormsApplication1
                 case 1:
                     voldetla(sb1, t1);
                     break;
-                //case 2:
-                //    voldetla(sb1, t2);
-                //    break;
-                //case 3:
-                //    voldetla(sb1, t3);
-                //    break;
-                //case 4:
-                //   voldetla(sb1, t4);
-                //    break;
-                //case 5:
-                //   voldetla(sb1, t5);
-                //    break;
-                //case 6:
-                //    voldetla(sb1, t6);
-                //    break;
-                //case 7:
-                //    voldetla(sb1, t7);
-                //    break;
-                //case 8:
-                //    voldetla(sb1, t8);
-                //    break;
+                    //case 2:
+                    //    voldetla(sb1, t2);
+                    //    break;
+                    //case 3:
+                    //    voldetla(sb1, t3);
+                    //    break;
+                    //case 4:
+                    //   voldetla(sb1, t4);
+                    //    break;
+                    //case 5:
+                    //   voldetla(sb1, t5);
+                    //    break;
+                    //case 6:
+                    //    voldetla(sb1, t6);
+                    //    break;
+                    //case 7:
+                    //    voldetla(sb1, t7);
+                    //    break;
+                    //case 8:
+                    //    voldetla(sb1, t8);
+                    //    break;
 
             }
 
@@ -513,7 +517,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-           ff.ShowInfoTip("关闭串口成功");
+            ff.ShowInfoTip("关闭串口成功");
 
             serialPort2.Close();
         }
@@ -546,17 +550,18 @@ namespace WindowsFormsApplication1
             comboBox3.Text = "1";/*默认停止位:1*/
             comboBox4.Text = "8";/*默认数据位:8*/
             comboBox5.Text = "无";/*默认奇偶校验位:无*/
-            v=new VideoCapture(0);
+            v = new VideoCapture(0);
             Application.Idle += Application_Idle;
         }
         VideoCapture v;
         private void Application_Idle(object sender, EventArgs e)
         {
 
-          Mat t=new Mat();
+            Mat t = new Mat();
             v.Read(t);
-            if (!t.IsEmpty) {
-                Image<Bgr, byte> imageFrame =t.ToImage<Bgr, byte>(); // 将帧转换为Emgu CV的图像类型
+            if (!t.IsEmpty)
+            {
+                Image<Bgr, byte> imageFrame = t.ToImage<Bgr, byte>(); // 将帧转换为Emgu CV的图像类型
                 pictureBox1.Image = imageFrame.ToBitmap(); // 显示图像
 
             }
@@ -568,7 +573,7 @@ namespace WindowsFormsApplication1
             if (!serialPort2.IsOpen)
             {
 
-               ff.ShowInfoTip("open串口");
+                ff.ShowInfoTip("open串口");
                 return;
             }
 
@@ -587,15 +592,16 @@ namespace WindowsFormsApplication1
         Thread readDI;
         private void button4_Click_1(object sender, EventArgs e)
         {
-            if (!serialPort2.IsOpen) {
+            if (!serialPort2.IsOpen)
+            {
 
-              ff.ShowInfoTip("open串口");
+                ff.ShowInfoTip("open串口");
                 return;
             }
-           
 
-             readDI = new Thread(ReadDI);
-             readDI.Start();
+
+            readDI = new Thread(ReadDI);
+            readDI.Start();
         }
         int interval = 500;
 
@@ -605,7 +611,7 @@ namespace WindowsFormsApplication1
 
         private void ReadDI()
         {
-            
+
             while (true)
             {
                 serialPort2.Write(dio, 0, dio.Length);
@@ -613,7 +619,7 @@ namespace WindowsFormsApplication1
                 System.Threading.Thread.Sleep(1000);
                 a++;
 
-                
+
             }
             textBox3.Text = "DI读取：" + a;
         }

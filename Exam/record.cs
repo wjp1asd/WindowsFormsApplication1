@@ -1,26 +1,19 @@
-﻿using OpenCvSharp;
-using Sunny.UI;
+﻿using Sunny.UI;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
-using WindowsFormsApplication1.Questions;
 
 namespace WindowsFormsApplication1.Exam
 {
     public partial class record : Form
     {
 
-        
+
         public record()
         {
             InitializeComponent();
@@ -28,15 +21,15 @@ namespace WindowsFormsApplication1.Exam
         string tper = "";
 
         string Id = "1";
-        public record(string id,string type="离线")
+        public record(string id, string type = "离线")
         {
             InitializeComponent();
             Id = id;
-            tper = type;    
+            tper = type;
             Initc();
             this.label2.Text = type + this.label2.Text;
             this.printDocument1.OriginAtMargins = true;//启用页边距
-           // 初始化成绩
+                                                       // 初始化成绩
             InitScore();
 
         }
@@ -45,9 +38,9 @@ namespace WindowsFormsApplication1.Exam
         float yqzdyl = 0;
         float gctj = 0;
         float yldj = 0;
-        float dycyl,decyl,dscyl,mfsyyl = 0;
+        float dycyl, decyl, dscyl, mfsyyl = 0;
         float jyjg1 = 0;
-      //  Grade g = new Grade();
+        //  Grade g = new Grade();
         private void InitScore()
         {
             yqzdyl = sc.getScore("yqzdyl");
@@ -58,7 +51,7 @@ namespace WindowsFormsApplication1.Exam
             dscyl = sc.getScore("dscyl");
             mfsyyl = sc.getScore("mfsyyl");
             jyjg1 = sc.getScore("jyjg1");
-            this.label11.Text = "编号："+datahelp.QId;
+            this.label11.Text = "编号：" + datahelp.QId;
             g.updateGrade(0, "yqzdyl", datahelp.QId);
             g.updateGrade(0, "gctj", datahelp.QId);
             g.updateGrade(0, "dycyl", datahelp.QId);
@@ -75,7 +68,7 @@ namespace WindowsFormsApplication1.Exam
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from lxjl where id= 1" ;
+            string sql = "select * from lxjl where id= 1";
             datahelp a = new datahelp();
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
@@ -136,15 +129,16 @@ namespace WindowsFormsApplication1.Exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-          
-            if (tper == "离线") {
+
+            if (tper == "离线")
+            {
                 OFF off = new OFF(datahelp.QId);
                 off.Show();
                 datahelp.CurrentStep1 = 4;
             }
             if (tper == "在线")
             {
-                zaixianjiaoyan z=new zaixianjiaoyan();
+                zaixianjiaoyan z = new zaixianjiaoyan();
                 z.Show();
                 datahelp.CurrentStep1 = 4;
             }
@@ -165,26 +159,27 @@ namespace WindowsFormsApplication1.Exam
 
         private void result_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.result.Checked == true) {
+            if (this.result.Checked == true)
+            {
                 g.updateGrade(jyjg1, "jyjg1", datahelp.QId);
-            
+
             }
 
         }
 
-        Fuc ff =new Fuc();
+        Fuc ff = new Fuc();
         private void record_Load(object sender, EventArgs e)
         {
             //g.getOne(datahelp.QId);
 
             if (tper == "离线")
             {
-                if (g.getGrade("yqzdyl",datahelp.QId) > 100)
+                if (g.getGrade("yqzdyl", datahelp.QId) > 100)
                 {
 
                     ff.ShowErrorDialog("重复考试");
 
-                    
+
                     if (tper == "离线")
                     {
                         OFF off = new OFF(datahelp.QId);
@@ -206,8 +201,9 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            else {
-               
+            else
+            {
+
 
             }
             pp = p.getAll();
@@ -222,7 +218,7 @@ namespace WindowsFormsApplication1.Exam
                     // 离线压力等于
                     ap = p;
 
-                    }
+                }
 
                 if (double.Parse(t.Zxyl) == p.f0)
                 {
@@ -265,7 +261,7 @@ namespace WindowsFormsApplication1.Exam
                     g.updateGrade(mfsyyl, "mfsyyl", datahelp.QId);
                 }
 
-            } 
+            }
             //string connectionString = ConfigurationManager.AppSettings["sqlc"];
             //SqlConnection con = new SqlConnection(connectionString);
             //string a = this.edyl.Text.Trim();

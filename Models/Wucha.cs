@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -27,10 +22,10 @@ namespace WindowsFormsApplication1.Models
 
         public Wucha GetOne(string id)
         {
-             Wucha w=new Wucha();
+            Wucha w = new Wucha();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from wucha where id="+id.Trim();
+            string sql = "select * from wucha where id=" + id.Trim();
 
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
@@ -42,8 +37,8 @@ namespace WindowsFormsApplication1.Models
                 w.Type1 = reader["Type"].ToString();
                 w.Value1 = reader["Value"].ToString();
                 w.Area1 = reader["Area"].ToString();
-                w.min = reader["min"].ToString().Trim();   
-                w.max = reader["max"].ToString().Trim();   
+                w.min = reader["min"].ToString().Trim();
+                w.max = reader["max"].ToString().Trim();
             }
 
             con.Close();
@@ -60,9 +55,9 @@ namespace WindowsFormsApplication1.Models
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-          //  string sql = "select * from wucha where Type = '" + type.Trim() + "'";
+            //  string sql = "select * from wucha where Type = '" + type.Trim() + "'";
             string sql = "select * from wucha";
-         //   ff.ShowInfoTip(sql);
+            //   ff.ShowInfoTip(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
@@ -74,8 +69,8 @@ namespace WindowsFormsApplication1.Models
                 wu.Type1 = reader["Type"].ToString();
                 wu.Value1 = reader["Value"].ToString();
                 wu.Area1 = reader["Area"].ToString();
-                wu.Min = reader["min"].ToString();  
-                wu.max = reader["max"].ToString() ; 
+                wu.Min = reader["min"].ToString();
+                wu.max = reader["max"].ToString();
                 wucha.Add(wu);
             }
 
@@ -87,5 +82,5 @@ namespace WindowsFormsApplication1.Models
 
     }
 
-  
+
 }

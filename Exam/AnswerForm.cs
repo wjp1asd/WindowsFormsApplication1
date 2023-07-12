@@ -16,14 +16,14 @@ namespace WindowsFormsApplication1
         private void Form5_Load(object sender, EventArgs e)
         {
             ShowButtoAndLable();
-           // this.WindowState = FormWindowState.Maximized;
+            // this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void ShowButtoAndLable()
         {
 
-            datahelp c=new datahelp();
+            datahelp c = new datahelp();
             c.Initc();
             int num = c.lxnum;
             switch (datahelp.SubId)
@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1
                     break;
 
             }
-            
+
             int btnX = 20;
             int btnY = 60;
             int IblX = 90;
@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
                 btn.Location = new Point(btnX, btnY);
                 btn.Text = string.Format("第{0}题", i + 1);
                 btn.Tag = i;
-               // btn.Click += new EventHandler(btn_Click);
+                // btn.Click += new EventHandler(btn_Click);
                 btn.Size = new Size(60, 30);
                 Label Ibl = new Label();
                 Ibl.Location = new Point(IblX, IblY);
@@ -108,7 +108,7 @@ namespace WindowsFormsApplication1
             else
             {
                 this.timer1.Stop();
-               ff.ShowInfoTip("时间到了，请交卷");
+                ff.ShowInfoTip("时间到了，请交卷");
                 Score1 s = new Score1();
                 s.Show();
                 this.Close();

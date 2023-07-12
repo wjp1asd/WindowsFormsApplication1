@@ -20,12 +20,12 @@ namespace WindowsFormsApplication1.Settings
         }
 
         public string a, b, c, d, f;
-        public string a1, a2, a3, a4, a5, a6, a7, a8,a9;
+        public string a1, a2, a3, a4, a5, a6, a7, a8, a9;
         public string a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23;
 
         private void button9_Click(object sender, EventArgs e)
         {
-            biaoding b= new biaoding();
+            biaoding b = new biaoding();
             b.Show();
         }
 
@@ -55,7 +55,7 @@ namespace WindowsFormsApplication1.Settings
             PLCtextBox8.Items.Clear();//清除comboBox里面的数据
             PLCtextBox8.Items.AddRange(ports);//给comboBox1添加数据
 
-            servo.Items.Clear();    
+            servo.Items.Clear();
             servo.Items.AddRange(ports);
         }
 
@@ -72,23 +72,23 @@ namespace WindowsFormsApplication1.Settings
                     string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
                     stop.Items.Clear();//清除comboBox里面的数据
                     stop.Items.AddRange(ports);//给comboBox1添加数据
-              
+
                 }
                 else if (m.WParam.ToInt32() == 0x8000)
                 {//usb串口连接上
                     string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
                     stop.Items.Clear();
                     stop.Items.AddRange(ports);
-                    
+
                 }
             }
             base.WndProc(ref m);
         }
         private void button8_Click(object sender, EventArgs e)
         {
-           SerialPort port = new SerialPort();
-           string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
-           stop.Items.AddRange(ports);
+            SerialPort port = new SerialPort();
+            string[] ports = System.IO.Ports.SerialPort.GetPortNames();//重新获取串口
+            stop.Items.AddRange(ports);
         }
 
         public string b11, b12, b13, b14, b15, b16;
@@ -112,7 +112,7 @@ namespace WindowsFormsApplication1.Settings
         }
 
 
-     
+
 
         private void Settings1_Load(object sender, EventArgs e)
         {
@@ -139,7 +139,7 @@ namespace WindowsFormsApplication1.Settings
             this.Close();
         }
 
-     
+
         private void InitC()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -171,7 +171,7 @@ namespace WindowsFormsApplication1.Settings
                 a6 = this.servo1.Text = reader["servo1"].ToString();
 
                 a7 = this.link.Text = reader["link"].ToString();
-                
+
                 a8 = this.PLCtextBox8.Text = reader["plc"].ToString();
                 a9 = this.servo.Text = reader["servo"].ToString();
                 //   plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy,MC
@@ -181,7 +181,7 @@ namespace WindowsFormsApplication1.Settings
                 a12 = this.start.Text = reader["plcst"].ToString();
                 a13 = this.stop.Text = reader["plcsp"].ToString();
 
-               
+
 
 
                 b11 = this.textBox1.Text = reader["lxnum"].ToString();
@@ -195,7 +195,7 @@ namespace WindowsFormsApplication1.Settings
 
             reader.Close();
             con.Close();
-           //ff.ShowInfoTip("系统配置加载成功");
+            //ff.ShowInfoTip("系统配置加载成功");
 
         }
 
@@ -232,7 +232,7 @@ namespace WindowsFormsApplication1.Settings
             a12 = this.start.Text.Trim();
             a13 = this.stop.Text.Trim();
 
-          
+
 
             b11 = this.textBox1.Text;
             b12 = this.textBox2.Text;
@@ -245,12 +245,12 @@ namespace WindowsFormsApplication1.Settings
             SqlConnection con = new SqlConnection(connectionString);
 
             String str1 = "Update settings set color1='" + a + "',color2='" + b + "',color3='" + c + "',color4='" + d
-                + "',color5='" + f 
-                
-                + "',plc1='" + a1 + "',plcbt1='" + a2 + "',plcjy1='" + a3
-                + "',plcst1='"+a4 + "',plcsp1='" + a5 + "',servo1='" + a6
+                + "',color5='" + f
 
-                + "',link='" + a7 
+                + "',plc1='" + a1 + "',plcbt1='" + a2 + "',plcjy1='" + a3
+                + "',plcst1='" + a4 + "',plcsp1='" + a5 + "',servo1='" + a6
+
+                + "',link='" + a7
                 + "',plc='" + a8 + "',plcbt='" + a11 + "',plcjy='" + a19
                 + "',plcst='" + a12 + "',plcsp='" + a13 + "',servo='" + a9
                  + "', zxnum='" + b11 + "', lxnum='" + b12 + "', gynum='" + b13 + "', xhnum='" + b14
@@ -258,13 +258,13 @@ namespace WindowsFormsApplication1.Settings
                 + "' where id=1";
 
 
-         // ff.ShowInfoTip(str1);
+            // ff.ShowInfoTip(str1);
             SqlCommand com = new SqlCommand(str1, con);
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
 
 
-           ff.ShowInfoTip("保存成功！,退出程序后加载");
+            ff.ShowInfoTip("保存成功！,退出程序后加载");
             con.Close();
 
             AdminIndex admin = new AdminIndex();

@@ -8,7 +8,7 @@ namespace WindowsFormsApplication1.Exam
     public partial class OFF : Form
     {
         String qr;
-        Grade g=new Grade();
+        Grade g = new Grade();
         public OFF(String qrcode)
         {
             qr = qrcode;
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1.Exam
 
             this.label2.Text = "离线校验";
 
-           
+
 
             this.change();
 
@@ -54,9 +54,9 @@ namespace WindowsFormsApplication1.Exam
         private void button3_Click(object sender, EventArgs e)
         {
             datahelp.SubId = 1;
-           
+
             this.Close();
-           
+
             QuestionForm a = new QuestionForm(qr);
             a.Show();
         }
@@ -64,9 +64,9 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             datahelp.CurrentStep1 = 3;
-         
+
             this.Close();
-        
+
             jiaoyancanshu j = new jiaoyancanshu();
             j.Show();
         }
@@ -92,7 +92,8 @@ namespace WindowsFormsApplication1.Exam
         }
         private void OFF_Load(object sender, EventArgs e)
         {
-            switch (datahelp.CurrentStep1) {
+            switch (datahelp.CurrentStep1)
+            {
                 case 1:
 
                     this.button3.Enabled = true;
@@ -133,22 +134,22 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
-          
+
             datahelp.CurrentStep = 4;
             this.Close();
-            record r= new record(datahelp.QId);
+            record r = new record(datahelp.QId);
             r.Show();
-            
+
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            datahelp.status=1;
+            datahelp.status = 1;
             this.Close();
             ProjectInfo p = new ProjectInfo();
             p.Show();
-            
+
 
         }
     }

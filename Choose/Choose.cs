@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1.Exam
             ff.fullsreen(this.button7, this);
             ff.fullsreen(this.label2, this);
 
-            this.button3.Left -=100;
+            this.button3.Left -= 100;
             this.button7.Left -= 100;
             this.label2.Left -= 100;
 
@@ -274,11 +274,11 @@ namespace WindowsFormsApplication1.Exam
             ff.ShowInfoTip("已创建考试信息，排队号0" + que);
             qrcode = a;
             //生成考试清单
-            ff.formGrade(qrcode,ksname,ksid);
+            ff.formGrade(qrcode, ksname, ksid);
             Print p = new Print(qrcode);
             p.Show();
 
-           // String sql1 = "select * from Grade where testid like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
+            // String sql1 = "select * from Grade where testid like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
             this.Close();
 
         }

@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1.Questions
             }
             Subtype = subtype;
             string sql = "select * from " + TableName;
-         //  ff.ShowInfoTip(sql);
+            //  ff.ShowInfoTip(sql);
             InitTable(sql);
             this.panel1.Hide();
         }
@@ -146,7 +146,7 @@ namespace WindowsFormsApplication1.Questions
                 comm.ExecuteNonQuery();
 
                 con.Close();
-               ff.ShowInfoTip("已更新");
+                ff.ShowInfoTip("已更新");
             }
         }
         private void btnLogin_Click(object sender, EventArgs e)
@@ -162,13 +162,13 @@ namespace WindowsFormsApplication1.Questions
             {
                 this.textBox2.Text = "+∞";
             }
-            string area = this.textBox4.Text+" " + this.comboBox3.Text + " 整定压力 " +this.comboBox3.Text +  " " + this.textBox2.Text;
+            string area = this.textBox4.Text + " " + this.comboBox3.Text + " 整定压力 " + this.comboBox3.Text + " " + this.textBox2.Text;
 
 
             if (value.Length == 0 || type.Length == 0 || area.Length == 0
                 )
             {
-               ff.ShowInfoTip("字段不能为空");
+                ff.ShowInfoTip("字段不能为空");
                 return;
             }
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -179,11 +179,11 @@ namespace WindowsFormsApplication1.Questions
                "'" + value.ToString() + "'" + "," +
                "'" + area.ToString() + "'" + "," +
                  "'" + this.textBox4.Text.Trim() + "'" + "," +
-                   "'" + this.textBox2.Text.Trim() + "'"  +
+                   "'" + this.textBox2.Text.Trim() + "'" +
                ")"
               ;
             //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
-          // ff.ShowInfoTip(strcomm);
+            // ff.ShowInfoTip(strcomm);
             con.Open();
             SqlCommand comm = new SqlCommand(strcomm, con);
             comm.ExecuteNonQuery();
@@ -193,7 +193,7 @@ namespace WindowsFormsApplication1.Questions
             string sql = "select * from " + TableName;
 
             this.InitTable(sql);
-           ff.ShowInfoTip("已更新");
+            ff.ShowInfoTip("已更新");
         }
         private Fuc ff = new Fuc();
         private void button2_Click(object sender, EventArgs e)
@@ -236,7 +236,7 @@ namespace WindowsFormsApplication1.Questions
                     comm.ExecuteNonQuery();
 
                     con.Close();
-                   ff.ShowInfoTip("已删除");
+                    ff.ShowInfoTip("已删除");
                     string sql = "select * from " + TableName;
 
                     this.InitTable(sql);
@@ -245,7 +245,7 @@ namespace WindowsFormsApplication1.Questions
             }
             else
             {
-               ff.ShowInfoTip("当前没有选择");
+                ff.ShowInfoTip("当前没有选择");
             }
         }
 

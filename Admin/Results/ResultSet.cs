@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
             row = this.dataGridView1.RowCount;
         }
 
-      
+
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -63,7 +63,7 @@ namespace WindowsFormsApplication1
 
         private void StudentSet_Load(object sender, EventArgs e)
         {
-          
+
         }
         private void ResultSet_Load(object sender, EventArgs e)
         {

@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1.Exam
         public Exam1(String qrcode = "mXjjwVcvXizfGcnbOF9CKw==")
         {
             InitializeComponent();
-            datahelp.QId=qrcode;
+            datahelp.QId = qrcode;
             InitUI();
             qr = qrcode;
 
@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1.Exam
             this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
             string x = ConfigurationManager.AppSettings["machine"];
-         
+
 
             //   ff.ShowInfoTip(a.color1);
             switch (int.Parse(x))
@@ -62,7 +62,7 @@ namespace WindowsFormsApplication1.Exam
                     break;
 
             }
-           // this.label2.Text = a.link;
+            // this.label2.Text = a.link;
             // 最大化 
             this.change();
 
@@ -80,7 +80,7 @@ namespace WindowsFormsApplication1.Exam
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-            MF1 mf = new MF1();   
+            MF1 mf = new MF1();
             mf.Show();
         }
         AutoAdaptWindowsSize awt;
