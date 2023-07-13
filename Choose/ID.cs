@@ -343,7 +343,7 @@ namespace WindowsFormsApplication1
                                 {
                                     try
                                     {
-                                        url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                        url = loc + lblName.Text + "_" + lblIdCard.Text+new DateTime()+ ".bmp";
                                         if (!File.Exists(url))
                                         {
                                             File.Copy("ZP.bmp", url);
