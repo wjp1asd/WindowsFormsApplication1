@@ -28,21 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcard = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bumen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cz = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.path = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcard = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,116 +54,42 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.pick,
-            this.ID,
-            this.status,
+            this.cz,
+            this.path,
             this.name,
             this.idcard,
-            this.sex,
-            this.bumen,
-            this.phone,
+            this.testid,
             this.date});
             this.dataGridView1.Location = new System.Drawing.Point(29, 90);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(1117, 426);
             this.dataGridView1.TabIndex = 52;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // pick
-            // 
-            this.pick.HeaderText = "选择";
-            this.pick.MinimumWidth = 6;
-            this.pick.Name = "pick";
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "Id";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.FalseValue = "0";
-            this.status.HeaderText = "状态";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.TrueValue = "1";
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "姓名";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            // 
-            // idcard
-            // 
-            this.idcard.DataPropertyName = "idcard";
-            this.idcard.HeaderText = "身份证";
-            this.idcard.MinimumWidth = 6;
-            this.idcard.Name = "idcard";
-            // 
-            // sex
-            // 
-            this.sex.DataPropertyName = "sex";
-            this.sex.HeaderText = "性别";
-            this.sex.MinimumWidth = 6;
-            this.sex.Name = "sex";
-            // 
-            // bumen
-            // 
-            this.bumen.DataPropertyName = "bumen";
-            this.bumen.HeaderText = "单位";
-            this.bumen.MinimumWidth = 6;
-            this.bumen.Name = "bumen";
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "电话";
-            this.phone.MinimumWidth = 6;
-            this.phone.Name = "phone";
-            // 
-            // date
-            // 
-            this.date.DataPropertyName = "date";
-            this.date.HeaderText = "考试日期";
-            this.date.MinimumWidth = 6;
-            this.date.Name = "date";
-            // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(398, 26);
+            this.textBox8.Location = new System.Drawing.Point(29, 26);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(220, 25);
             this.textBox8.TabIndex = 56;
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(636, 26);
+            this.button5.Location = new System.Drawing.Point(255, 26);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(67, 30);
             this.button5.TabIndex = 55;
             this.button5.Text = "查询\r\n";
             this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(31, 26);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 30);
-            this.button4.TabIndex = 54;
-            this.button4.Text = "全选";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(264, 26);
+            this.button6.Location = new System.Drawing.Point(328, 26);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 30);
             this.button6.TabIndex = 53;
@@ -174,29 +97,79 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button1
+            // cz
             // 
-            this.button1.Location = new System.Drawing.Point(145, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "打印";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cz.DataPropertyName = "testid";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "操作";
+            this.cz.DefaultCellStyle = dataGridViewCellStyle3;
+            this.cz.HeaderText = "打印";
+            this.cz.MinimumWidth = 6;
+            this.cz.Name = "cz";
+            this.cz.ReadOnly = true;
+            this.cz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cz.Text = "打印";
+            this.cz.ToolTipText = "打印";
+            this.cz.UseColumnTextForButtonValue = true;
+            // 
+            // path
+            // 
+            this.path.DataPropertyName = "path";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.path.DefaultCellStyle = dataGridViewCellStyle4;
+            this.path.HeaderText = "成绩";
+            this.path.MinimumWidth = 6;
+            this.path.Name = "path";
+            this.path.ReadOnly = true;
+            this.path.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.path.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "姓名";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // idcard
+            // 
+            this.idcard.DataPropertyName = "idcard";
+            this.idcard.HeaderText = "身份证";
+            this.idcard.MinimumWidth = 6;
+            this.idcard.Name = "idcard";
+            this.idcard.ReadOnly = true;
+            // 
+            // testid
+            // 
+            this.testid.DataPropertyName = "testid";
+            this.testid.HeaderText = "考试码";
+            this.testid.MinimumWidth = 6;
+            this.testid.Name = "testid";
+            this.testid.ReadOnly = true;
+            // 
+            // date
+            // 
+            this.date.DataPropertyName = "ksdate";
+            this.date.HeaderText = "考试日期";
+            this.date.MinimumWidth = 6;
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
             // 
             // ResultSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 553);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ResultSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "成绩管理";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ResultSet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -209,17 +182,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn pick;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn status;
+        private System.Windows.Forms.DataGridViewButtonColumn cz;
+        private System.Windows.Forms.DataGridViewTextBoxColumn path;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn idcard;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bumen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testid;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
     }
 }

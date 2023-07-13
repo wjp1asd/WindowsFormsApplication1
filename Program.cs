@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
             // Application.Run(new StudentSet());
             //   Application.Run(new Settings1());
             //  Application.Run(new Print("mXjjwVcvXizfGcnbOF9CKw=="));
-            //  Application.Run(new plc());
+            //    Application.Run(new ResultSet());
             Application.Run(new form1());
             // Application.Run(new zaixianjiaoyan2());
             // Application.Run(new Exam1());

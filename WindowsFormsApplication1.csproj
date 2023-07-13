@@ -369,18 +369,6 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\TestRecord.cs" />
     <Compile Include="Models\Wucha.cs" />
-    <Compile Include="Opencv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Opencv.Designer.cs">
-      <DependentUpon>Opencv.cs</DependentUpon>
-    </Compile>
-    <Compile Include="plc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="plc.Designer.cs">
-      <DependentUpon>plc.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -404,12 +392,6 @@
     </Compile>
     <Compile Include="Admin\Questions\lixian\Record.Designer.cs">
       <DependentUpon>Record.cs</DependentUpon>
-    </Compile>
-    <Compile Include="kemu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="kemu.Designer.cs">
-      <DependentUpon>kemu.cs</DependentUpon>
     </Compile>
     <Compile Include="Choose\ID.cs">
       <SubType>Form</SubType>
@@ -633,12 +615,6 @@
     <EmbeddedResource Include="Admin\People\PeopleSet.resx">
       <DependentUpon>PeopleSet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Opencv.resx">
-      <DependentUpon>Opencv.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="plc.resx">
-      <DependentUpon>plc.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Questions\lixian\Offline.resx">
       <DependentUpon>Offline.cs</DependentUpon>
     </EmbeddedResource>
@@ -662,9 +638,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Questions\lixian\Record.resx">
       <DependentUpon>Record.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="kemu.resx">
-      <DependentUpon>kemu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

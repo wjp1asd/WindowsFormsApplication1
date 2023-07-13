@@ -56,6 +56,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
         {
             questions q = new questions("2");
             q.Show();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

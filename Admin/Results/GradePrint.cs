@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -6,11 +7,13 @@ using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Admin.Results
 {
+
     public partial class GradePrint : Form
     {
         public GradePrint(string qid)
         {
             datahelp.QId = qid;
+            //  MessageBox.Show(qid);
             InitializeComponent();
         }
         private void printDocument_PrintA4Page(object sender, PrintPageEventArgs e)
@@ -78,7 +81,7 @@ namespace WindowsFormsApplication1.Admin.Results
         {
 
             a1.getOne(datahelp.QId);
-
+            // MessageBox.Show(datahelp.QId);
             InitUi();
         }
 
@@ -89,19 +92,71 @@ namespace WindowsFormsApplication1.Admin.Results
             a12.Text = a1.idcard;
             a13.Text = a1.testid;
             a14.Text = a1.lxcorrect.Replace("1", "√").Replace("0", "×");
-            a15.Text = a1.score1.Replace("-1", "未考试");
+            a15.Text = a1.score1.ToString().Replace("-1", "未考试");
             a16.Text = a1.zxcorrect.Replace("1", "√").Replace("0", "×");
-            a17.Text = a1.score2.Replace("-1", "未考试");
+            a17.Text = a1.score2.ToString().Replace("-1", "未考试");
             a18.Text = a1.jycorrect.Replace("1", "√").Replace("0", "×");
-            a19.Text = a1.score3.Replace("-1", "未考试");
+            a19.Text = a1.score3.ToString().Replace("-1", "未考试");
             a20.Text = a1.xhcorrect.Replace("1", "√").Replace("0", "×");
-            a21.Text = a1.score4.Replace("-1", "未考试");
+            a21.Text = a1.score4.ToString().Replace("-1", "未考试");
             a22.Text = a1.lpjcorrect.Replace("1", "√").Replace("0", "×");
-            a23.Text = a1.score5.Replace("-1", "未考试");
+            a23.Text = a1.score5.ToString().Replace("-1", "未考试");
             a24.Text = a1.ymgcorrect.Replace("1", "√").Replace("0", "×");
-            a25.Text = a1.score6.Replace("-1", "未考试");
+            a25.Text = a1.score6.ToString().Replace("-1", "未考试");
             this.pictureBox1.ImageLocation = a1.lxpic;
             this.pictureBox2.ImageLocation = a1.mxpic;
+          
+            // 离线前
+            label33.Text = a1.xygb.ToString().Replace("-1", "未考试");
+            label9.Text = a1.csfm.ToString().Replace("-1", "未考试");
+            label34.Text = a1.wxxz.ToString().Replace("-1", "未考试");
+            label35.Text = a1.zdyltz.ToString().Replace("-1", "未考试");
+
+            // 离线中
+            label21.Text = a1.sjlmsj.ToString().Replace("-1", "未考试");
+            label23.Text = a1.azfm.ToString().Replace("-1", "未考试");
+            label25.Text = a1.bycs.ToString().Replace("-1", "未考试");
+
+            // 离线后
+            label45.Text = a1.dkxyf.ToString().Replace("-1", "未考试");
+            label44.Text = a1.gbylbqh.ToString().Replace("-1", "未考试");
+            // 填写记录
+            label51.Text = a1.yqzdyl.ToString().Replace("-1", "未考试");
+            label50.Text = a1.gctj.ToString().Replace("-1", "未考试");
+            label52.Text = a1.yldj.ToString().Replace("-1", "未考试");
+            label53.Text = a1.dycyl.ToString().Replace("-1", "未考试");
+            label61.Text = a1.decyl.ToString().Replace("-1", "未考试");
+            label60.Text = a1.dscyl.ToString().Replace("-1", "未考试");
+            label62.Text = a1.mfsyyl.ToString().Replace("-1", "未考试");
+            label63.Text = a1.jyjl.ToString().Replace("-1", "未考试");
+           
+
+            // 在线
+            label70.Text = a1.azfm1.ToString().Replace("-1", "未考试");
+            label77.Text = a1.mfzjcl.ToString().Replace("-1", "未考试");
+            label71.Text = a1.wxxz1.ToString().Replace("-1", "未考试");
+            label72.Text = a1.cxfm1.ToString().Replace("-1", "未考试");
+            label74.Text = a1.jyjg1.ToString().Replace("-1", "未考试");
+            calctotal();
+           
+        }
+
+        private void calctotal()
+        {
+            float a = 0;
+            a = a1.score1 + a1.score2 + a1.score3 + a1.score4 + a1.score5 + a1.score6 +
+               a1.xygb + a1.csfm + a1.wxxz + a1.zdyltz +
+               a1.sjlmsj + a1.azfm + a1.bycs + a1.gbylbqh + a1.dkxyf +
+               a1.yqzdyl + a1.gctj + a1.yldj + a1.dycyl + a1.decyl + a1.dscyl + a1.mfsyyl + a1.mfsyyl + a1.jyjl +
+               a1.azfm1 + a1.mfzjcl + a1.wxxz1 + a1.cxfm1 + a1.jyjg1;
+            MessageBox.Show("总分"+a);
+            a1.updateGrade(a,"path",datahelp.QId);
+           // this.label37.Text += a1.score1 + a1.score2 + a1.score3 + a1.score4 + a1.score5 + a1.score6;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

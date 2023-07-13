@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1.Exam
                 ports.Add(item.Value1.ToString().Trim());
             }
             comboBox1.DataSource = ports;
-            MessageBox.Show(type + wuchas.Count);
+           // MessageBox.Show(type + wuchas.Count);
             //  comboBox1.SelectedIndex=0;
             // index = wuchas[0].Id;
         }

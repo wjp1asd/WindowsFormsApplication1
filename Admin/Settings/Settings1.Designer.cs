@@ -91,7 +91,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -219,7 +223,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(16, 299);
+            this.label13.Location = new System.Drawing.Point(37, 41);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(61, 15);
             this.label13.TabIndex = 30;
@@ -239,7 +243,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.IndianRed;
-            this.label9.Location = new System.Drawing.Point(16, 267);
+            this.label9.Location = new System.Drawing.Point(17, 16);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(247, 15);
             this.label9.TabIndex = 33;
@@ -248,7 +252,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(320, 299);
+            this.label15.Location = new System.Drawing.Point(341, 41);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(52, 15);
             this.label15.TabIndex = 37;
@@ -258,7 +262,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(161, 299);
+            this.label16.Location = new System.Drawing.Point(182, 41);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(52, 15);
             this.label16.TabIndex = 38;
@@ -268,7 +272,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(484, 299);
+            this.label17.Location = new System.Drawing.Point(505, 41);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(52, 15);
             this.label17.TabIndex = 39;
@@ -277,7 +281,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(486, 334);
+            this.label18.Location = new System.Drawing.Point(507, 76);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(52, 15);
             this.label18.TabIndex = 41;
@@ -287,7 +291,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(14, 339);
+            this.label23.Location = new System.Drawing.Point(35, 81);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(67, 15);
             this.label23.TabIndex = 42;
@@ -295,27 +299,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.servo1);
-            this.groupBox1.Controls.Add(this.stop1);
-            this.groupBox1.Controls.Add(this.start1);
-            this.groupBox1.Controls.Add(this.jy1);
-            this.groupBox1.Controls.Add(this.bt1);
-            this.groupBox1.Controls.Add(this.plc1);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label38);
-            this.groupBox1.Controls.Add(this.servo);
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.stop);
-            this.groupBox1.Controls.Add(this.start);
-            this.groupBox1.Controls.Add(this.jy);
-            this.groupBox1.Controls.Add(this.bt);
-            this.groupBox1.Controls.Add(this.PLCtextBox8);
-            this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.label34);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.label33);
@@ -329,14 +315,7 @@
             this.groupBox1.Controls.Add(this.label29);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.link);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.button6);
@@ -371,7 +350,7 @@
             "COM7",
             "COM8",
             "COM9"});
-            this.servo1.Location = new System.Drawing.Point(83, 440);
+            this.servo1.Location = new System.Drawing.Point(86, 77);
             this.servo1.Name = "servo1";
             this.servo1.Size = new System.Drawing.Size(72, 23);
             this.servo1.TabIndex = 102;
@@ -381,7 +360,7 @@
             this.stop1.FormattingEnabled = true;
             this.stop1.Items.AddRange(new object[] {
             "1"});
-            this.stop1.Location = new System.Drawing.Point(551, 435);
+            this.stop1.Location = new System.Drawing.Point(554, 72);
             this.stop1.Name = "stop1";
             this.stop1.Size = new System.Drawing.Size(90, 23);
             this.stop1.TabIndex = 101;
@@ -391,7 +370,7 @@
             this.start1.FormattingEnabled = true;
             this.start1.Items.AddRange(new object[] {
             "1"});
-            this.start1.Location = new System.Drawing.Point(551, 404);
+            this.start1.Location = new System.Drawing.Point(554, 41);
             this.start1.Name = "start1";
             this.start1.Size = new System.Drawing.Size(90, 23);
             this.start1.TabIndex = 100;
@@ -401,7 +380,7 @@
             this.jy1.FormattingEnabled = true;
             this.jy1.Items.AddRange(new object[] {
             "8"});
-            this.jy1.Location = new System.Drawing.Point(376, 405);
+            this.jy1.Location = new System.Drawing.Point(379, 42);
             this.jy1.Name = "jy1";
             this.jy1.Size = new System.Drawing.Size(90, 23);
             this.jy1.TabIndex = 99;
@@ -412,7 +391,7 @@
             this.bt1.Items.AddRange(new object[] {
             "115200",
             "9600"});
-            this.bt1.Location = new System.Drawing.Point(224, 405);
+            this.bt1.Location = new System.Drawing.Point(227, 42);
             this.bt1.Name = "bt1";
             this.bt1.Size = new System.Drawing.Size(90, 23);
             this.bt1.TabIndex = 98;
@@ -430,7 +409,7 @@
             "COM7",
             "COM8",
             "COM9"});
-            this.plc1.Location = new System.Drawing.Point(83, 405);
+            this.plc1.Location = new System.Drawing.Point(86, 42);
             this.plc1.Name = "plc1";
             this.plc1.Size = new System.Drawing.Size(72, 23);
             this.plc1.TabIndex = 97;
@@ -438,7 +417,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 448);
+            this.label7.Location = new System.Drawing.Point(17, 85);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 15);
             this.label7.TabIndex = 96;
@@ -447,7 +426,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(486, 443);
+            this.label8.Location = new System.Drawing.Point(489, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 15);
             this.label8.TabIndex = 95;
@@ -456,7 +435,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(484, 408);
+            this.label10.Location = new System.Drawing.Point(487, 45);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(52, 15);
             this.label10.TabIndex = 94;
@@ -465,7 +444,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(161, 408);
+            this.label11.Location = new System.Drawing.Point(164, 45);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 15);
             this.label11.TabIndex = 93;
@@ -474,7 +453,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(320, 408);
+            this.label12.Location = new System.Drawing.Point(323, 45);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(52, 15);
             this.label12.TabIndex = 92;
@@ -484,7 +463,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.IndianRed;
-            this.label14.Location = new System.Drawing.Point(16, 376);
+            this.label14.Location = new System.Drawing.Point(19, 13);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(247, 15);
             this.label14.TabIndex = 91;
@@ -493,7 +472,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(16, 408);
+            this.label38.Location = new System.Drawing.Point(19, 45);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(61, 15);
             this.label38.TabIndex = 90;
@@ -512,7 +491,7 @@
             "COM7",
             "COM8",
             "COM9"});
-            this.servo.Location = new System.Drawing.Point(83, 331);
+            this.servo.Location = new System.Drawing.Point(104, 73);
             this.servo.Name = "servo";
             this.servo.Size = new System.Drawing.Size(72, 23);
             this.servo.TabIndex = 88;
@@ -532,7 +511,7 @@
             this.stop.FormattingEnabled = true;
             this.stop.Items.AddRange(new object[] {
             "1"});
-            this.stop.Location = new System.Drawing.Point(551, 326);
+            this.stop.Location = new System.Drawing.Point(572, 68);
             this.stop.Name = "stop";
             this.stop.Size = new System.Drawing.Size(90, 23);
             this.stop.TabIndex = 80;
@@ -542,7 +521,7 @@
             this.start.FormattingEnabled = true;
             this.start.Items.AddRange(new object[] {
             "1"});
-            this.start.Location = new System.Drawing.Point(551, 295);
+            this.start.Location = new System.Drawing.Point(572, 37);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(90, 23);
             this.start.TabIndex = 79;
@@ -553,7 +532,7 @@
             this.jy.FormattingEnabled = true;
             this.jy.Items.AddRange(new object[] {
             "8"});
-            this.jy.Location = new System.Drawing.Point(376, 296);
+            this.jy.Location = new System.Drawing.Point(397, 38);
             this.jy.Name = "jy";
             this.jy.Size = new System.Drawing.Size(90, 23);
             this.jy.TabIndex = 78;
@@ -564,7 +543,7 @@
             this.bt.Items.AddRange(new object[] {
             "115200",
             "9600"});
-            this.bt.Location = new System.Drawing.Point(224, 296);
+            this.bt.Location = new System.Drawing.Point(245, 38);
             this.bt.Name = "bt";
             this.bt.Size = new System.Drawing.Size(90, 23);
             this.bt.TabIndex = 77;
@@ -582,14 +561,14 @@
             "COM7",
             "COM8",
             "COM9"});
-            this.PLCtextBox8.Location = new System.Drawing.Point(83, 296);
+            this.PLCtextBox8.Location = new System.Drawing.Point(104, 38);
             this.PLCtextBox8.Name = "PLCtextBox8";
             this.PLCtextBox8.Size = new System.Drawing.Size(72, 23);
             this.PLCtextBox8.TabIndex = 76;
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(480, 266);
+            this.button8.Location = new System.Drawing.Point(501, 8);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(161, 23);
             this.button8.TabIndex = 75;
@@ -704,6 +683,51 @@
             this.label24.TabIndex = 60;
             this.label24.Text = "离线题：";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.PLCtextBox8);
+            this.groupBox2.Controls.Add(this.bt);
+            this.groupBox2.Controls.Add(this.jy);
+            this.groupBox2.Controls.Add(this.start);
+            this.groupBox2.Controls.Add(this.stop);
+            this.groupBox2.Controls.Add(this.servo);
+            this.groupBox2.Location = new System.Drawing.Point(10, 240);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(674, 133);
+            this.groupBox2.TabIndex = 103;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Visible = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.label38);
+            this.groupBox3.Controls.Add(this.servo1);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.stop1);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.start1);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.jy1);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.bt1);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.plc1);
+            this.groupBox3.Location = new System.Drawing.Point(10, 379);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(674, 105);
+            this.groupBox3.TabIndex = 104;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Visible = false;
+            // 
             // Settings1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -718,6 +742,10 @@
             this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Settings1_Scroll);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -785,5 +813,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

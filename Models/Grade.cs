@@ -1,5 +1,7 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
+using WindowsFormsApplication1.Exam;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -14,67 +16,53 @@ namespace WindowsFormsApplication1.Models
         public string lxanswer;
         // 离线正确性
         public string lxcorrect;
-        public string score1;
+        public float score1;
         // 在线题
         public string zxquestions;
         public string zxanswer;
         public string zxcorrect;
-        public string score2;
+        public float score2;
         //校验题
         public string jyquestions;
         public string jyanswer;
         public string jycorrect;
-        public string score3;
+        public float score3;
         //型号题
         public string xhquestions;
         public string xhanswer;
         public string xhcorrect;
-        public string score4;
+        public float score4;
         //public   //零配件
         public string lpjquestions;
         public string lpjanswer;
         public string lpjcorrect;
-        public string score5;
+        public float score5;
         //研磨膏
         public string ymganswer;
         public string ymgquestions;
         public string ymgcorrect;
-        public string score6;
+        public float score6;
         //密封面
         public string path;
-        public string score7;
+        public float score7;
         // 步骤分题
 
         // 离线校验考试次数判断，在线考试，
-        public int wxxz;
-        public int wxxz1;
-        public int yqzdyl;
+       
 
         public string mxpic;
         public string lxpic;
-        //    [csfm] INT DEFAULT((-1)) NULL,
-        //[ylxz] INT DEFAULT((-1)) NULL,
-        //[xygb] INT DEFAULT((-1)) NULL,
-        //[wxxz] INT DEFAULT((-1)) NULL,
-        //[zdyltz] INT DEFAULT((-1)) NULL,
-        //[sjlmsj] INT DEFAULT((-1)) NULL,
-        //[azfm] INT DEFAULT((-1)) NULL,
-        //[dkxyf] INT DEFAULT((-1)) NULL,
-        //[gbylbqh] INT DEFAULT((-1)) NULL,
-        //[yqzdyl] INT DEFAULT((-1)) NULL,
-        //[gctj] INT DEFAULT((-1)) NULL,
-        //[yldj] INT DEFAULT((-1)) NULL,
-        //[dycyl] INT DEFAULT((-1)) NULL,
-        //[decyl] INT DEFAULT((-1)) NULL,
-        //[dscyl] INT DEFAULT((-1)) NULL,
-        //[mfsyyl] INT DEFAULT((-1)) NULL,
-        //[jyjl] INT DEFAULT((-1)) NULL,
-        //[mfzjcl] INT DEFAULT((-1)) NULL,
-        //[cxfm1] INT DEFAULT((-1)) NULL,
-        //[wxxz1] INT DEFAULT((-1)) NULL,
-        //[jyjg1] INT DEFAULT((-1)) NULL,
-        //[azfm1] INT DEFAULT((-1)) NULL,
-        //[bycs] INT DEFAULT((-1)) NULL,
+        public float  csfm,ylxz,xygb,wxxz,zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,yqzdyl,gctj,yldj,dycyl,decyl,dscyl;
+        public float mfsyyl, jyjl, mfzjcl, cxfm1, wxxz1,jyjg1, azfm1, bycs,score8;
+       
+        //[] INT DEFAULT((-1)) NULL,
+        //[] INT DEFAULT((-1)) NULL,
+        //[] INT DEFAULT((-1)) NULL,
+        //[] INT DEFAULT((-1)) NULL,
+        //[] INT DEFAULT((-1)) NULL,
+        //[] INT DEFAULT((-1)) NULL,
+        //[] INT DEFAULT((-1)) NULL,
+        //[] INT DEFAULT((-1)) NULL,
         public int updateGrade(float score, string mode, string tid)
         {
             int i = 0;
@@ -144,7 +132,11 @@ namespace WindowsFormsApplication1.Models
 
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-
+         
+   
+    
+ 
+  
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
@@ -152,18 +144,50 @@ namespace WindowsFormsApplication1.Models
                 idcard = reader["idcard"].ToString().Trim();
                 testid = reader["testid"].ToString().Trim();
                 lxcorrect = reader["lxcorrect"].ToString().Trim();
-                score1 = reader["score1"].ToString().Trim();
+                score1 = float.Parse(reader["score1"].ToString().Trim());
                 zxcorrect = reader["zxcorrect"].ToString().Trim();
-                score2 = reader["score2"].ToString().Trim();
+                score2 = float.Parse(reader["score2"].ToString().Trim());
                 jycorrect = reader["jycorrect"].ToString().Trim();
-                score3 = reader["score3"].ToString().Trim();
+                score3 = float.Parse(reader["score3"].ToString().Trim());
                 xhcorrect = reader["xhcorrect"].ToString().Trim();
-                score4 = reader["score4"].ToString().Trim();
+                score4 = float.Parse(reader["score4"].ToString().Trim());
                 lpjcorrect = reader["lpjcorrect"].ToString().Trim();
-                score5 = reader["score5"].ToString().Trim();
+                score5 = float.Parse(reader["score5"].ToString().Trim());
                 ymgcorrect = reader["ymgcorrect"].ToString().Trim();
-                score6 = reader["score6"].ToString().Trim();
-                wxxz = int.Parse(reader["wxxz"].ToString().Trim());
+                score6 = float.Parse(reader["score6"].ToString().Trim());
+                //在线
+
+
+                azfm1 = float.Parse(reader["azfm1"].ToString().Trim());
+                cxfm1 = float.Parse(reader["cxfm1"].ToString().Trim());
+                wxxz1 = float.Parse(reader["wxxz1"].ToString().Trim());
+                jyjg1 = float.Parse(reader["jyjg1"].ToString().Trim());
+                mfzjcl = float.Parse(reader["mfzjcl"].ToString().Trim());
+
+
+                //离线
+                sjlmsj = float.Parse(reader["sjlmsj"].ToString().Trim());
+                zdyltz = float.Parse(reader["zdyltz"].ToString().Trim());
+                xygb = float.Parse(reader["xygb"].ToString().Trim());
+                ylxz = float.Parse(reader["ylxz"].ToString().Trim());
+                csfm = float.Parse(reader["csfm"].ToString().Trim());
+                gbylbqh = float.Parse(reader["gbylbqh"].ToString().Trim());
+                dkxyf = float.Parse(reader["dkxyf"].ToString().Trim());
+                azfm = float.Parse(reader["azfm"].ToString().Trim());
+                mfsyyl = float.Parse(reader["mfsyyl"].ToString().Trim());
+                yldj = float.Parse(reader["yldj"].ToString().Trim());
+                gctj = float.Parse(reader["gctj"].ToString().Trim());
+
+                dycyl = float.Parse(reader["dycyl"].ToString().Trim());
+                decyl = float.Parse(reader["decyl"].ToString().Trim());
+                dscyl = float.Parse(reader["dscyl"].ToString().Trim());
+                wxxz = float.Parse(reader["wxxz"].ToString().Trim());
+                bycs = float.Parse(reader["bycs"].ToString().Trim());
+
+
+                score8 = float.Parse(reader["score8"].ToString().Trim());
+               
+                //图片
                 mxpic = reader["mfpic"].ToString().Trim();
                 lxpic = reader["lxpic"].ToString().Trim();
             }

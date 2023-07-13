@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -53,8 +53,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label6 = new System.Windows.Forms.Label();
             this.选取 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,11 +61,12 @@
             this.optionC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -93,13 +92,13 @@
             this.panel1.Location = new System.Drawing.Point(109, 115);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(622, 279);
+            this.panel1.Size = new System.Drawing.Size(831, 379);
             this.panel1.TabIndex = 39;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Location = new System.Drawing.Point(435, 55);
+            this.pictureBox2.Location = new System.Drawing.Point(584, 51);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(160, 136);
@@ -126,10 +125,10 @@
             "ABCD",
             "Y",
             "N"});
-            this.comboBox2.Location = new System.Drawing.Point(73, 16);
+            this.comboBox2.Location = new System.Drawing.Point(99, 25);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(239, 20);
+            this.comboBox2.Size = new System.Drawing.Size(239, 23);
             this.comboBox2.TabIndex = 18;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -298,7 +297,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(660, 115);
+            this.pictureBox1.Location = new System.Drawing.Point(889, 79);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(213, 170);
@@ -370,7 +369,7 @@
             this.optionD,
             this.answer});
             this.dataGridView1.Location = new System.Drawing.Point(17, 79);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -381,20 +380,6 @@
             this.dataGridView1.Visible = false;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(340, 30);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 12);
-            this.label6.TabIndex = 41;
-            this.label6.Text = "双击地址可查看内容";
             // 
             // 选取
             // 
@@ -421,8 +406,8 @@
             // optionA
             // 
             this.optionA.DataPropertyName = "optionA";
-            dataGridViewCellStyle1.NullValue = "操作";
-            this.optionA.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.NullValue = "操作";
+            this.optionA.DefaultCellStyle = dataGridViewCellStyle5;
             this.optionA.HeaderText = "选项A";
             this.optionA.MinimumWidth = 6;
             this.optionA.Name = "optionA";
@@ -431,8 +416,8 @@
             // optionB
             // 
             this.optionB.DataPropertyName = "optionB";
-            dataGridViewCellStyle2.NullValue = "删除";
-            this.optionB.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.NullValue = "删除";
+            this.optionB.DefaultCellStyle = dataGridViewCellStyle6;
             this.optionB.HeaderText = "选项B";
             this.optionB.MinimumWidth = 6;
             this.optionB.Name = "optionB";
@@ -459,6 +444,20 @@
             this.answer.MinimumWidth = 6;
             this.answer.Name = "answer";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(712, 30);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(142, 15);
+            this.label6.TabIndex = 41;
+            this.label6.Text = "双击地址可查看内容";
+            // 
             // LPSB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -482,7 +481,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

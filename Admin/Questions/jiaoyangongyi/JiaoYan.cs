@@ -44,6 +44,7 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
         {
             questions a = new questions("3");
             a.Show();
+            this.Close();
         }
 
         private void button7_Click(object sender, EventArgs e)

@@ -119,6 +119,22 @@ namespace WindowsFormsApplication1.Settings
             awt = new AutoAdaptWindowsSize(this);
             this.SizeChanged += groupBox1_Resize;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+
+            string x = ConfigurationManager.AppSettings["machine"];
+            switch (x)
+            {
+                case "2":
+                    this.groupBox2.Visible = true;
+                    break;
+                case "3":
+                    this.groupBox3.Visible = true;
+                    break;
+                case "-1":
+                    this.groupBox2.Visible = true;
+                    this.groupBox3.Visible = true;
+                    break;
+
+            }
         }
 
         private void label16_Click(object sender, EventArgs e)

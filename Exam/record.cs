@@ -233,6 +233,12 @@ namespace WindowsFormsApplication1.Exam
         }
         pressure p = new pressure();
         pressure ap = new pressure();
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         List<pressure> pp = new List<pressure>();
         TestRecord t = new TestRecord();
         private void button2_Click(object sender, EventArgs e)

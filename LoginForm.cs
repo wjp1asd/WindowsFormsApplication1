@@ -296,12 +296,7 @@ namespace WindowsFormsApplication1
             this.Hide();
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            plc c = new plc();
-            c.Show();
-            this.Hide();
-        }
+      
 
         private void button8_Click(object sender, EventArgs e)
         {
