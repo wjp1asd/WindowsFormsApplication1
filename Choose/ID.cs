@@ -339,7 +339,8 @@ namespace WindowsFormsApplication1
                                 //指纹信息
 
                                 //照片
-                                if (System.IO.File.Exists("ZP.bmp"))
+                                if (System.IO.File.Exists("ZP.bmp"))                      
+
                                 {
                                     try
                                     {
