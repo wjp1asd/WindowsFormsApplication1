@@ -10,6 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using WindowsFormsApplication1.Models;
+using ZedGraph;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -67,7 +68,7 @@ namespace WindowsFormsApplication1.Exam
         public zaixianjiaoyan2()
         {
             InitializeComponent();
-            // this.richTextBox2.Hide();
+             this.richTextBox2.Show();
             //    this.uiLedLabel4.Hide();
             this.timer1.Stop();
             InitScore();
@@ -134,14 +135,14 @@ namespace WindowsFormsApplication1.Exam
                     if (fb == false && youbiao == false && step == 1)
                     {
 
-                        ff.ShowSuccessTip("得分:" + mfzjcl);
+                        //  ff.ShowSuccessTip("得分:" + mfzjcl);
                         g.updateGrade(mfzjcl, "mfzjcl", datahelp.QId);
 
                     }
                     else
                     {
 
-                        ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
+                        //     ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
 
                     }
                 }
@@ -211,6 +212,7 @@ namespace WindowsFormsApplication1.Exam
             this.chart1.BackColor = Color.Azure;             //图表背景色  
             this.chart1.Titles.Add("安全阀校验");                //图表标题
                                                             //新建连接 
+            this.chart1.ChartAreas[0].AxisX.Maximum = 400;
 
             //注意数据绑定后，它的series是1而不是0  本来正常应该是1   博文后注
             this.chart1.Series[0].ChartType = SeriesChartType.Spline;
@@ -218,13 +220,12 @@ namespace WindowsFormsApplication1.Exam
 
             this.chart1.Series[0].IsValueShownAsLabel = false;             //是否显示数据      
             this.chart1.Series[0].IsVisibleInLegend = false;              //是否显示数据说明  
-            this.chart1.Series[0].MarkerStyle = MarkerStyle.Circle;        //线条上的数据点标志类型  
-            this.chart1.Series[0].MarkerSize = 8;                          //标志大小  
+                               //标志大小  
             this.chart1.Series[0].Color = Color.Blue;
 
             this.chart1.ChartAreas[0].AxisX.LineWidth = 2;                     //X轴宽度
             this.chart1.ChartAreas[0].AxisY.LineWidth = 2;                      //Y轴宽度  
-            this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                                                                                //  this.chart1.ChartAreas[0].AxisX.Maximum = 500;
             this.chart1.Width = this.Width;
         }
 
@@ -301,7 +302,8 @@ namespace WindowsFormsApplication1.Exam
                 try
                 {
                     serialPort2.Open();//打开串口
-                    button3.Text = "正在连接";//按钮显示关闭串口
+                    button3.Text = "连接系统";//按钮显示关闭串口
+                                          // comboBox1.Enabled = true;
 
                     serialPort2.WriteLine("02 00 00 04 06");
                     richTextBox2.Clear();
@@ -327,20 +329,7 @@ namespace WindowsFormsApplication1.Exam
         }
 
 
-        private void SetZero1()
-        {
-            //舵机归零
-
-            byte[] d1 = new byte[] {
-                0xFF,0x01,0x00,0x0a,0x00,
-                0xFF, 0x02, 0x00, 0xC4,0x09
-            };
-
-            //  MessageBox.Show(BitConverter.ToString(d1)) ;
-            // serialPort1.Write(d1, 0, d1.Length);
-            Thread.Sleep(1000);
-        }
-
+    
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
             this.plcinit();
@@ -486,8 +475,6 @@ namespace WindowsFormsApplication1.Exam
                 t1 = "";
                 t2 = ShowBy(ttt2, 2);
                 // DI解析
-
-                cisu++;
 
 
             }
@@ -650,23 +637,7 @@ namespace WindowsFormsApplication1.Exam
                     }
 
                     break;
-                    //case 3:
-                    //    voldetla(sb1, t3);
-                    //    break;
-                    //case 4:
-                    //   voldetla(sb1, t4);
-                    //    break;
-                    //case 5:
-                    //   voldetla(sb1, t5);
-                    //    break;
-                    //case 6:
-                    //    voldetla(sb1, t6);
-                    //    break;
-                    //case 7:
-                    //    voldetla(sb1, t7);
-                    //    break;
-                    //case 8:
-                    //    voldetla(sb1, t8);
+                   
                     //    break;
 
             }
@@ -684,6 +655,9 @@ namespace WindowsFormsApplication1.Exam
         string cz;
         int interval = 200;
         float standardValue = 0;
+
+        public float standardValue1 { get; private set; }
+
         // 基础线绘制
         bool standard = false;
         float currentF = 0;
@@ -713,15 +687,15 @@ namespace WindowsFormsApplication1.Exam
                     k = 1.39F;
                     //33.33F;
                     b2 = b1 * 200 * k;
-                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
-                    //推荐力Y的1.2倍
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 400;
+                    //推荐力Y的1.2倍                    
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //20 * 0.6;
                     break;
                 case 2:
                     k = 1.34F;
                     //13.33F;
-                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 400;
                     b2 = b1 * 500 * k;
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //50 * 0.6;
@@ -730,7 +704,7 @@ namespace WindowsFormsApplication1.Exam
                     k = 1.34F;
                     //3.33F;
                     b2 = b1 * 2000 * k;
-                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 400;
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //200 * 0.6; 
                     break;
@@ -738,7 +712,7 @@ namespace WindowsFormsApplication1.Exam
                     k = 1.34F;
                     //1.33F;
                     b2 = b1 * 5000 * k;
-                    this.chart1.ChartAreas[0].AxisX.Maximum = 500;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = 400;
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //500 * 0.6; 
                     break;
@@ -747,29 +721,46 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-            if (show && (a - standardValue) >= 0)
+            if (show && b2 >= 0 )
             {
                 //    ff.ShowInfoTip("当前电压值-初始电压值："+(a- standardValue).ToString());
                 currentF = b2;
-                this.textBox5.Text = currentF.ToString();
-                this.chart1.Series[0].Points.AddXY(cisu, b2);
-
-
-            }
-            if (b2 - wjl < 0 && Math.Abs(wjl - wjltj) <= 1 && liangcheng > 0)
-            {
-                // 开始下降 压力值
-                Action tongdao1 = () =>
+                // this.textBox5.Text = currentF.ToString();
+                this.chart1.Invoke((MethodInvoker)delegate
                 {
+                    if (Math.Round(wjltj) < b2)
+                    {
+                        this.chart1.Series[0].Points.AddXY(cisu, Math.Round(wjltj));
+                    }
+                    else {
 
-                    this.textBox5.Text = b2.ToString();
-                };
-                this.Invoke(tongdao1);
+                        this.chart1.Series[0].Points.AddXY(cisu, b2);
+                    }
+                  
 
-                showpoint(cisu);
+                  
+                        showpoint();
+                    
 
+                });
+                
+                  
+
+
+                 //   MessageBox.Show("开启点" + x);
+
+                
 
             }
+            
+            Action tongdao11 = () =>
+            {
+
+                this.label17.Text ="初始值："+standardValue1+ "上次压力" + wjl+ "当前压力：" + b2 + "推荐力" + wjltj + "量程" + liangcheng ;
+
+            };
+            this.Invoke(tongdao11);
+           
             Action tongdao = () =>
             {
                 richTextBox2.Clear();
@@ -793,16 +784,62 @@ namespace WindowsFormsApplication1.Exam
             };
             this.Invoke(tongdao);
             dwq = a;
-            wjl = b2;
+            if (b2 >= 0) {
+                wjl = b2;
+            }
+            
             lastF = b2;
+            cisu++;
+
+            if (cisu == 399)
+            {
+                cisu = 0;
+
+                this.chart1.Series["Series1"].Points.Clear();
+            }
         }
         int smin = 0;
-        private void showpoint(int x)
+        private void showpoint()
         {
-            //  MessageBox.Show("" + x + "开启压力点");
-            this.chart1.Series[0].Points[x].MarkerColor = Color.Red;
-            this.chart1.Series[0].Points[x].MarkerSize = 20;
-            this.chart1.Series[0].Points[x].MarkerStyle = MarkerStyle.Star6;
+            DataPointCollection dataPoints = chart1.Series[0].Points;
+
+            foreach (System.Windows.Forms.DataVisualization.Charting.DataPoint a in dataPoints
+                ) {
+                if (Math.Abs(a.YValues[0] - wjltj) < 1 && a.YValues[0] < wjl ) {
+
+                    a.MarkerStyle = MarkerStyle.Circle;
+                    a.MarkerSize = 10;
+                    a.MarkerColor = System.Drawing.Color.Red;
+
+                    this.textBox5.Text = a.YValues[0].ToString();
+
+                }
+                this.chart1.Invalidate();
+            }
+
+           System.Windows.Forms.DataVisualization.Charting.DataPoint point = dataPoints[dataPoints.Count-1];
+            //if (b2 - wjl < 0 && Math.Abs(b2 - wjltj) <= 5 && liangcheng > 0)
+            //{
+            //    // 开始下降  
+            //    Action tongdao1 = () =>
+            //    {
+
+            //        this.textBox5.Text = b2.ToString();
+            //        //
+            //    };
+            //    this.Invoke(tongdao1);
+            //   MessageBox.Show("开启点"+dataPoints.Count);
+
+            //    //System.Windows.Forms.DataVisualization.Charting.DataPoint point = this.chart1.Series[0].Points[cisu];
+            //    point.MarkerStyle = MarkerStyle.Circle;
+            //    point.MarkerSize = 20;
+            //    point.MarkerColor = System.Drawing.Color.Red;
+
+
+
+            //   // MessageBox.Show("开启点" + cisu);
+            //}  
+
 
         }
 
@@ -810,13 +847,14 @@ namespace WindowsFormsApplication1.Exam
         {
             if (standard == false)
             {
-                standardValue = a;
+                standardValue =a;
+                standardValue1 = wjl;
                 //MessageBox.Show(""+a);
                 StripLine s = new StripLine();
                 s.BackColor = Color.Red;
                 s.Interval = 0;
                 s.StripWidth = 1;
-                s.IntervalOffset = currentF;
+                s.IntervalOffset = wjl;
                 this.chart1.ChartAreas[0].AxisY.StripLines.Add(s);
                 standard = true;
             }
@@ -980,7 +1018,8 @@ namespace WindowsFormsApplication1.Exam
 
                         this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                         this.timer1.Start();
-                        this.comboBox1.Enabled = false; this.comboBox2.Enabled = false;
+                        this.comboBox1.Enabled = false;
+                        this.comboBox2.Enabled = false;
                         this.button1.Enabled = true;
                         this.button2.Enabled = true;
                         this.button4.Enabled = true;
@@ -1035,6 +1074,10 @@ namespace WindowsFormsApplication1.Exam
         private void button4_Click(object sender, EventArgs e)
         {
             show = false;
+        //   MessageBox.Show(""+this.chart1.Series[0].Points.Count);
+           // showpoint(this.chart1.Series[0].Points.Count-2);
+           
+
         }
         bool wuc = false;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1053,13 +1096,13 @@ namespace WindowsFormsApplication1.Exam
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
-                ff.ShowErrorTip("误差选择错误，不得分");
+              //  ff.ShowErrorTip("误差选择错误，不得分");
                 this.comboBox1.Enabled = false;
                 g.updateGrade(wxxz1, "wxxz1", datahelp.QId);
             }
             else
             {
-                ff.ShowSuccessTip("选择正确，得分" + wxxz1);
+              //  ff.ShowSuccessTip("选择正确，得分" + wxxz1);
                 this.comboBox1.Enabled = false;
             }
         }
