@@ -40,6 +40,7 @@ namespace WindowsFormsApplication1.Exam
         // 算分模块 密封面直径测量得分 拆卸阀帽得分 误差选择得分 校验结果得分
         Score sc = new Score();
         float mfzjcl = 0;
+        double  mfzj = 0;
         float cxfm1 = 0;
         float wxxz1 = 0;
         float jyjg1 = 0;
@@ -117,7 +118,7 @@ namespace WindowsFormsApplication1.Exam
 
                 try
                 {
-                    double mfzj = double.Parse(textBox1.Text.Trim());
+                    mfzj = double.Parse(textBox1.Text.Trim());
                     //  double zdyl = double.Parse(t.Zxyl);
                     double zdyl = 1.0;
                     double xtyl = double.Parse(textBox2.Text.Trim());
@@ -226,7 +227,13 @@ namespace WindowsFormsApplication1.Exam
             this.chart1.ChartAreas[0].AxisX.LineWidth = 2;                     //X轴宽度
             this.chart1.ChartAreas[0].AxisY.LineWidth = 2;                      //Y轴宽度  
                                                                                 //  this.chart1.ChartAreas[0].AxisX.Maximum = 500;
-            this.chart1.Width = this.Width;
+            this.chart1.Width =this.Width;
+            this.chart1.Height =2*this.Height/3;
+
+            chart1.ChartAreas[0].AxisX.IsStartedFromZero = false;
+            chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = false;
+            chart1.ChartAreas[0].AxisX.ScrollBar.Enabled = false;   
+
         }
 
         public static byte CalcLRC(byte[] data)
@@ -665,6 +672,7 @@ namespace WindowsFormsApplication1.Exam
         //标定k值
         float k = 1;
         float wjl = 0;
+        int maxinum =60;
         private void voldetla(string sb1, string t8)
         {
             //cz从离线压力设置-初次测试压力中取值
@@ -684,35 +692,44 @@ namespace WindowsFormsApplication1.Exam
             switch (liangcheng)
             {
                 case 1:
-                    k = 1.39F;
+                    k = 1.007F;
+                    //0.984F;
+                    //0.735F;
                     //33.33F;
                     b2 = b1 * 200 * k;
-                    this.chart1.ChartAreas[0].AxisX.Maximum = 400;
+                    this.chart1.ChartAreas[0].AxisX.Maximum =maxinum;
                     //推荐力Y的1.2倍                    
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //20 * 0.6;
                     break;
                 case 2:
-                    k = 1.34F;
+                    k = 1F;
+                    //0.908F;
+                    //0.678F;
                     //13.33F;
-                    this.chart1.ChartAreas[0].AxisX.Maximum = 400;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = maxinum;
+                      // 300;
                     b2 = b1 * 500 * k;
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //50 * 0.6;
                     break;
                 case 3:
-                    k = 1.34F;
+                    k = 0.961F;
+                    //0.720F;
+                    //1.34F;
                     //3.33F;
                     b2 = b1 * 2000 * k;
-                    this.chart1.ChartAreas[0].AxisX.Maximum = 400;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = maxinum;
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 *1.2;
                     //200 * 0.6; 
                     break;
                 case 4:
-                    k = 1.34F;
+                    k = 0.908F;
+                    //0.678F;
+                    //1.34F;
                     //1.33F;
                     b2 = b1 * 5000 * k;
-                    this.chart1.ChartAreas[0].AxisX.Maximum = 400;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = maxinum;
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //500 * 0.6; 
                     break;
@@ -730,16 +747,40 @@ namespace WindowsFormsApplication1.Exam
                 {
                     if (Math.Round(wjltj) < b2)
                     {
-                        this.chart1.Series[0].Points.AddXY(cisu, Math.Round(wjltj));
+                        this.chart1.Series[0].Points.AddXY(cisu, b2);
+                        if ((maxinum-cisu) == 3)
+                        {
+                            maxinum += 50;
+                          //  chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
+                         //   chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu-10, cisu + 100);
+                        }
+                        cisu++;
+                        //    this.chart1.Series[0].Points.AddXY(cisu, Math.Round(wjltj));
                     }
                     else {
 
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
+                        if( (maxinum-cisu) ==3)
+                        {
+                           maxinum += 50;
+                           // chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
+                          //  chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu-10, cisu + 100);
+                            //    chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
+                            //   chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu - 20, cisu + 100);
+                        }
+                        cisu++;
                     }
-                  
-
-                  
-                        showpoint();
+                    if (cisu == 200)
+                    {
+                        //    cisu = 0;
+                        MessageBox.Show("曲线停止采集");
+                        serialPort2.Dispose();
+                       // this.chart1.Series["Series1"].Points.Clear();
+                        return;
+                    }
+                    chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
+                    chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu - 50, cisu + 50);
+                    showpoint();
                     
 
                 });
@@ -789,35 +830,48 @@ namespace WindowsFormsApplication1.Exam
             }
             
             lastF = b2;
-            cisu++;
+          
 
-            if (cisu == 399)
-            {
-                cisu = 0;
-
-                this.chart1.Series["Series1"].Points.Clear();
-            }
+          
         }
         int smin = 0;
+
+        bool b2 = true;   
         private void showpoint()
         {
             DataPointCollection dataPoints = chart1.Series[0].Points;
-
+           // double max = dataPoints.Max().YValues[0];
+           // MessageBox.Show(""+max);
+           // int maxpoint = int.Parse(); dataPoints.Max().XValue;
             foreach (System.Windows.Forms.DataVisualization.Charting.DataPoint a in dataPoints
                 ) {
-                if (Math.Abs(a.YValues[0] - wjltj) < 1 && a.YValues[0] < wjl ) {
+                //点位大于推荐值 并且误差在1个以内，并且处于下降区间
+
+            
+                if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=1 && b2 == true)
+                {
 
                     a.MarkerStyle = MarkerStyle.Circle;
                     a.MarkerSize = 10;
                     a.MarkerColor = System.Drawing.Color.Red;
+                    a.Label = Math.Round(wjltj).ToString() + "KG";
+                    a.LabelForeColor = System.Drawing.Color.Red;
 
-                    this.textBox5.Text = a.YValues[0].ToString();
+                    double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
 
+                    this.textBox5.Text = PS.ToString();
+                    b2 = false;
+                }
+                if ((a.YValues[0] - wjltj) < 0 )
+                {
+
+                   
+                    b2 = true;
                 }
                 this.chart1.Invalidate();
             }
 
-           System.Windows.Forms.DataVisualization.Charting.DataPoint point = dataPoints[dataPoints.Count-1];
+       
             //if (b2 - wjl < 0 && Math.Abs(b2 - wjltj) <= 5 && liangcheng > 0)
             //{
             //    // 开始下降  
@@ -855,6 +909,7 @@ namespace WindowsFormsApplication1.Exam
                 s.Interval = 0;
                 s.StripWidth = 1;
                 s.IntervalOffset = wjl;
+                s.Text = wjl.ToString();
                 this.chart1.ChartAreas[0].AxisY.StripLines.Add(s);
                 standard = true;
             }
@@ -1118,6 +1173,11 @@ namespace WindowsFormsApplication1.Exam
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
