@@ -228,8 +228,9 @@ namespace WindowsFormsApplication1.Exam
             this.chart1.ChartAreas[0].AxisY.LineWidth = 2;                      //Y轴宽度  
                                                                                 //  this.chart1.ChartAreas[0].AxisX.Maximum = 500;
             this.chart1.Width =this.Width;
-            this.chart1.Height =2*this.Height/3;
-
+            this.chart1.Height =1*this.Height/2;
+            chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
+           
             chart1.ChartAreas[0].AxisX.IsStartedFromZero = false;
             chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = false;
             chart1.ChartAreas[0].AxisX.ScrollBar.Enabled = false;   
@@ -848,7 +849,7 @@ namespace WindowsFormsApplication1.Exam
                 //点位大于推荐值 并且误差在1个以内，并且处于下降区间
 
             
-                if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=1 && b2 == true)
+                if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
                 {
 
                     a.MarkerStyle = MarkerStyle.Circle;
@@ -909,6 +910,7 @@ namespace WindowsFormsApplication1.Exam
                 s.Interval = 0;
                 s.StripWidth = 1;
                 s.IntervalOffset = wjl;
+                chart1.ChartAreas[0].AxisY.Crossing = wjl;
                 s.Text = wjl.ToString();
                 this.chart1.ChartAreas[0].AxisY.StripLines.Add(s);
                 standard = true;
