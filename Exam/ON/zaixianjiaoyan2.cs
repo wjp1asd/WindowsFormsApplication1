@@ -1,4 +1,6 @@
 ﻿using AutoWindowsSize;
+using Emgu.CV;
+using Emgu.CV.Structure;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -165,7 +167,7 @@ namespace WindowsFormsApplication1.Exam
         private void zaixianjiaoyan2_Load(object sender, EventArgs e)
         {
 
-            Initchart();
+           
 
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
@@ -174,14 +176,55 @@ namespace WindowsFormsApplication1.Exam
             showMsg();
             topheader.CopyTo(td1, 0);
             content.CopyTo(td1, topheader.Length);
-
+            Initchart();
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
             this.richTextBox2.Hide();
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
             this.timer1.Start();
+            v = new VideoCapture(0);
+            System.Windows.Forms.Application.Idle += Application_Idle;
+
+            string timestamp = currentTime.ToString("yyyyMMddHHmmss");
+            url = "\\考试照片\\" + timestamp;
+
+
+
         }
+        DateTime currentTime = DateTime.Now;
+        VideoCapture v;
+        Mat mat = new Mat();
+        private void Application_Idle(object sender, EventArgs e)
+        {
+            if (last == false)
+            {
+
+                try
+                {
+                    //   mat = new Mat();
+                    v.Read(mat);
+
+                    if (!mat.IsEmpty)
+                    {
+                        Image<Bgr, byte> imageFrame = mat.ToImage<Bgr, byte>(); // 将帧转换为Emgu CV的图像类型
+                        pictureBox1.Image = imageFrame.ToBitmap(); // 显示图像
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+
+
+
+
+        }
+     
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (datahelp.LxTime > 0)
@@ -228,7 +271,7 @@ namespace WindowsFormsApplication1.Exam
             this.chart1.ChartAreas[0].AxisX.LineWidth = 2;                     //X轴宽度
             this.chart1.ChartAreas[0].AxisY.LineWidth = 2;                      //Y轴宽度  
                                                                                 //  this.chart1.ChartAreas[0].AxisX.Maximum = 500;
-            this.chart1.Width =this.Width;
+            this.chart1.Width =this.Width-200;
             this.chart1.Height =1*this.Height/2;
             chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
            
@@ -772,11 +815,11 @@ namespace WindowsFormsApplication1.Exam
                         }
                         cisu++;
                     }
-                    if (cisu == 200)
+                    if (cisu == 20000)
                     {
                         //    cisu = 0;
                         MessageBox.Show("曲线停止采集");
-                        serialPort2.Dispose();
+                        serialPort2.Close();
                        // this.chart1.Series["Series1"].Points.Clear();
                         return;
                     }
@@ -1023,12 +1066,12 @@ namespace WindowsFormsApplication1.Exam
 
 
 //DIS == "01110000"||
-            if ( DIS == "0110000")
+            if ( DIS == "01100000")
             {
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();
                 this.Close();
-                serialPort2.Close();
+           
 
             }
             else
@@ -1044,7 +1087,7 @@ namespace WindowsFormsApplication1.Exam
         private void ReadAI()
         {
             // MessageBox.Show(BitConverter.ToString(td1));
-            while (true)
+            while (true&&serialPort2.IsOpen)
             {
 
                 serialPort2.Write(td1, 0, td1.Length);
@@ -1068,7 +1111,7 @@ namespace WindowsFormsApplication1.Exam
 
                     if (serialPort2.IsOpen)
                     {
-                        reada = new Thread(ReadAI);
+                       reada = new Thread(ReadAI);
                         reada.Start();
                         // AI0
 
@@ -1183,6 +1226,35 @@ namespace WindowsFormsApplication1.Exam
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void JiaoYan_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (v != null)
+            {
+                v.Stop(); // 停止视频捕获
+                v.Dispose(); // 释放资源
+
+            }
+            if (serialPort2 != null && serialPort2.IsOpen)
+            {
+                serialPort2.Close();
+                serialPort2.Dispose();
+                reada.Abort();
+            }
+           
+            this.timer1.Dispose();
+            this.timer2.Dispose();
+        }
+
+        private void uiButton1_Click(object sender, EventArgs e)
+        {
+
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+            CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
+            MessageBox.Show("本地拍照成功");
         }
 
         private void wucha1(string type)
