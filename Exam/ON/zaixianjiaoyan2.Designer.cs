@@ -72,8 +72,12 @@
             this.label20 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.lbltime = new System.Windows.Forms.Label();
+            this.uiButton1 = new Sunny.UI.UIButton();
+            this.label21 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -348,7 +352,7 @@
             series1.Name = "外加力";
             series1.YValuesPerPoint = 2;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1055, 266);
+            this.chart1.Size = new System.Drawing.Size(946, 266);
             this.chart1.TabIndex = 69;
             this.chart1.Text = "chart1";
             this.chart1.GetToolTipText += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs>(this.chart1_GetToolTipText);
@@ -464,7 +468,7 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(967, 347);
+            this.richTextBox2.Location = new System.Drawing.Point(1005, 240);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(129, 78);
@@ -574,12 +578,53 @@
             this.lbltime.TabIndex = 107;
             this.lbltime.Text = "          ";
             // 
+            // uiButton1
+            // 
+            this.uiButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton1.Location = new System.Drawing.Point(1029, 495);
+            this.uiButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Size = new System.Drawing.Size(75, 28);
+            this.uiButton1.TabIndex = 112;
+            this.uiButton1.Text = "拍照";
+            this.uiButton1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label21.Location = new System.Drawing.Point(1027, 348);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(83, 12);
+            this.label21.TabIndex = 111;
+            this.label21.Text = "在线校验实景";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Location = new System.Drawing.Point(991, 363);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 160);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 110;
+            this.pictureBox1.TabStop = false;
+            // 
             // zaixianjiaoyan2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1225, 602);
+            this.Controls.Add(this.uiButton1);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.label20);
@@ -617,9 +662,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "在线校验";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JiaoYan_FormClosing);
             this.Load += new System.EventHandler(this.zaixianjiaoyan2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -666,5 +713,8 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label lbltime;
+        private Sunny.UI.UIButton uiButton1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

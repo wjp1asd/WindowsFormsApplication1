@@ -1443,8 +1443,16 @@ namespace WindowsFormsApplication1.Exam
                 v.Dispose(); // 释放资源
 
             }
-            this.serialPort1.Dispose();
-            this.serialPort2.Dispose();
+            if (serialPort2 != null && serialPort2.IsOpen)
+            {
+                serialPort2.Close();
+                serialPort2.Dispose();
+                serialPort1.Close();
+                serialPort1.Dispose();
+               readDI.Abort();
+            }
+
+          
             this.timer1.Dispose();
             this.timer2.Dispose();
         }
@@ -1477,6 +1485,17 @@ namespace WindowsFormsApplication1.Exam
         }
 
         Thread readDI;
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void button4_Click_1(object sender, EventArgs e)
         {
             if (!serialPort2.IsOpen)
