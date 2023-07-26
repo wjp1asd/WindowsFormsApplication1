@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1.Scan
         {
             InitializeComponent();
             this.change();
+            this.groupBox1.Hide();
         }
         private Fuc ff = new Fuc();
         public void change()
@@ -32,22 +33,12 @@ namespace WindowsFormsApplication1.Scan
         {
 
             // 自动登录
-            if (this.textBox1.Text.ToString().Length == 22 && read == true)
+            if (this.textBox1.Text.ToString().Length > 20 && read == true)
             {
-
-                string sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
-
-                MessageBox.Show("success");
-                if (ff.RC(sql).Length > 0)
-                {
-
-
-                    //   this.Close();
-                    //   Exam1 ex = new Exam1(ff.RC(sql));
-                    //  ex.Show();
-                }
-                read = false;
+              
+               
                 this.textBox1.Enabled = false;
+                xuanti();
             }
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml("Green");
@@ -61,20 +52,22 @@ namespace WindowsFormsApplication1.Scan
         {
             this.textBox1.Focus();
             this.button7.Enabled = false;
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             //查询数据 是否有选题记录
-            xuanti();
-
-
-
+            if (read) {
+                xuanti();
+            }
+          
+        
 
         }
-
+        bool a=false;
+        string qrcode = "";
         private void xuanti()
         {
             if (this.textBox1.Text.ToString().Length < 19)
@@ -88,45 +81,32 @@ namespace WindowsFormsApplication1.Scan
 
             if (ff.RC(sql).Length > 0)
             {
-
-                string qrcode = ff.RC(sql);
-
-                string x = ConfigurationManager.AppSettings["machine"];
-                switch (x)
-                {
-                    case "2":
-                        this.button7.Text = "离线考试";
-                        break;
-                    case "3":
-                        this.button7.Text = "在线考试";
-                        break;
-                    case "4":
-                        this.button7.Text = "研磨考试";
-                        break;
-
-                }
-                this.button7.Text = "确认考试";
-
-                // Print p=new Print(this.textBox1.Text);
-                //  p.Show();
-
+             
+              
+                 qrcode = ff.RC(sql);
+                
+                t = t.getRecord(qrcode);
+                this.groupBox1.Show();
+                this.groupBox1.Left = this.button1.Left - 100;
+                this.groupBox1.Top = this.button1.Top +100;
+                Student s = new Student(t.KsId);
+              //  MessageBox.Show(s.ava);
+                this.label10.Text += t.Ksname;
+                this.label3.Text +=s.Sex;
+                this.label8.Text += t.KsId;
+                this.pictureBox2.ImageLocation = s.ava;
+                read = false;
             }
             else
             {
 
                 ff.ShowErrorDialog("未找到合适记录");
             }
-            if (this.button7.Text == "确认考试")
-            {
-                // 开始进入考试 读取不同设备参数 进行定向跳转    < !--1是管理员  0是考生抽题 2是离线考试 3 在线考试 4 研磨 - 1是上帝模式-- >
-                this.Close();
-                Task.Delay(3000);
-                Exam1 ex = new Exam1(ff.RC(sql));
-                ex.Show();
+                           // 开始进入考试 读取不同设备参数 进行定向跳转    < !--1是管理员  0是考生抽题 2是离线考试 3 在线考试 4 研磨 - 1是上帝模式-- >
+              
 
-            }
         }
-
+        TestRecord t=new TestRecord();
         private void button1_Click(object sender, EventArgs e)
         {
             // this.Close();
@@ -136,6 +116,24 @@ namespace WindowsFormsApplication1.Scan
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.groupBox1.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+             Exam1 ex = new Exam1(qrcode);
+             ex.Show();
+        }
+
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

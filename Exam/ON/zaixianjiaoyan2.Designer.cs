@@ -482,7 +482,7 @@
             this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.uiLedLabel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLedLabel4.Name = "uiLedLabel4";
-            this.uiLedLabel4.Size = new System.Drawing.Size(139, 28);
+            this.uiLedLabel4.Size = new System.Drawing.Size(264, 28);
             this.uiLedLabel4.Style = Sunny.UI.UIStyle.Custom;
             this.uiLedLabel4.StyleCustomMode = true;
             this.uiLedLabel4.TabIndex = 100;

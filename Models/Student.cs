@@ -6,10 +6,11 @@ namespace WindowsFormsApplication1.Models
 {
     internal class Student
     {
-        String name;
-        String ID;
-        String Sex;
-        String Bumen;
+      public  String name;
+      public  String ID;
+      public  String Sex;
+      public  String Bumen;
+        public string ava;
 
         //     [id] INT IDENTITY(1, 1) NOT NULL,
 
@@ -48,7 +49,7 @@ namespace WindowsFormsApplication1.Models
 
                 Name = reader["name"].ToString();
                 ID = reader["idcard"].ToString();
-
+                ava = reader["avatar"].ToString();
                 Sex1 = reader["sex"].ToString();
                 switch (Sex)
                 {

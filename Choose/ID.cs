@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Security.Policy;
 using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
@@ -111,7 +112,7 @@ namespace WindowsFormsApplication1
 
 
         }
-
+        string url1;
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -202,6 +203,8 @@ namespace WindowsFormsApplication1
                                     try
                                     {
                                         url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                        string loc1 = ConfigurationManager.AppSettings["loc"];
+                                        url1 = loc1 + "身份证照片/" + lblName.Text + "_" + lblIdCard.Text + new DateTime() + ".bmp";
                                         if (!File.Exists(url))
                                         {
                                             File.Copy("ZP.bmp", url);
@@ -274,6 +277,8 @@ namespace WindowsFormsApplication1
                                     try
                                     {
                                         url = loc + lblName.Text + "_" + lblIdCard.Text + ".bmp";
+                                        string loc1 = ConfigurationManager.AppSettings["loc"];
+                                        url1 = loc1 + "身份证照片/" + lblName.Text + "_" + lblIdCard.Text + new DateTime() + ".bmp";
                                         if (!File.Exists(url))
                                         {
                                             File.Copy("ZP.bmp", url);
@@ -345,6 +350,8 @@ namespace WindowsFormsApplication1
                                     try
                                     {
                                         url = loc + lblName.Text + "_" + lblIdCard.Text+new DateTime()+ ".bmp";
+                                        string loc1 = ConfigurationManager.AppSettings["loc"];
+                                        url1=loc1+"身份证照片/"+ lblName.Text + "_" + lblIdCard.Text + new DateTime() + ".bmp";
                                         if (!File.Exists(url))
                                         {
                                             File.Copy("ZP.bmp", url);
@@ -443,7 +450,7 @@ namespace WindowsFormsApplication1
             string sql = "select id from student where idcard='" + Id.ToString() + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-            string path = url;
+            string path = url1;
             string id = "";
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())

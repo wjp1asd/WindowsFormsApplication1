@@ -173,7 +173,35 @@ namespace WindowsFormsApplication1.Models
 
             return a;
         }
+        public TestRecord getRecord1(string qrcode)
+        {
+            TestRecord t = new TestRecord();
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select * from TestRecord where qrcode  like '" + qrcode + "'";
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
 
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                t.queque = reader["queue"].ToString().Trim();
+                t.ksdate = reader["ksdate"].ToString().Trim();
+                t.ksname = reader["ksname"].ToString().Trim();
+                t.ksId = reader["ksId"].ToString().Trim();
+                t.lxyl = reader["lxyl"].ToString().Trim();
+                t.zxyl = reader["zxyl"].ToString().Trim();
+                t.lxlx = reader["lxlx"].ToString().Trim();
+                t.zxlx = reader["zxlx"].ToString().Trim();
+                t.adfxh = reader["aqfxh"].ToString().Trim();
+                t.qrcode = reader["qrcode"].ToString().Trim();
+                t.lxquestions = reader["lxquestions"].ToString();
+                t.zquestions = reader["zxquestions"].ToString();
+            }
+
+            con.Close();
+            return t;
+        }
         public TestRecord getRecord(string qrcode)
         {
             TestRecord t = new TestRecord();

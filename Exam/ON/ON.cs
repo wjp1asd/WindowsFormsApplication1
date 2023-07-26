@@ -112,11 +112,12 @@ namespace WindowsFormsApplication1.Exam
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Close();
             datahelp.SubId = 2;
             datahelp.CurrentStep1 = 1;
             zaixianjiaoyan a = new zaixianjiaoyan();
             a.Show();
-            this.Close();
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
