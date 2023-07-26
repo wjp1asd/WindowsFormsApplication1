@@ -109,6 +109,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Close();
             zaixianjiaoyan2 z = new zaixianjiaoyan2();
             z.Show();
         }

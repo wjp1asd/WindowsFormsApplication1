@@ -132,8 +132,9 @@ namespace WindowsFormsApplication1.Exam
 
                     this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
                     // 游标卡尺和 阀瓣拿起 zxc
-
-                    if (fb == false && youbiao == false && step == 1)
+                    datahelp c=new datahelp();
+                    c.Initc();
+                    if (fb == false && youbiao == false && step == 1 &&mfzj==double.Parse(c.mfzj))
                     {
 
                         //  ff.ShowSuccessTip("得分:" + mfzjcl);
@@ -178,7 +179,7 @@ namespace WindowsFormsApplication1.Exam
             td1[12] = (byte)a;
             this.richTextBox2.Hide();
             this.plcinit();
-
+            MessageBox.Show("安装检测设备后，点击链接设备");
             this.timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -228,8 +229,9 @@ namespace WindowsFormsApplication1.Exam
             this.chart1.ChartAreas[0].AxisY.LineWidth = 2;                      //Y轴宽度  
                                                                                 //  this.chart1.ChartAreas[0].AxisX.Maximum = 500;
             this.chart1.Width =this.Width;
-            this.chart1.Height =2*this.Height/3;
-
+            this.chart1.Height =1*this.Height/2;
+            chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
+           
             chart1.ChartAreas[0].AxisX.IsStartedFromZero = false;
             chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = false;
             chart1.ChartAreas[0].AxisX.ScrollBar.Enabled = false;   
@@ -344,7 +346,7 @@ namespace WindowsFormsApplication1.Exam
 
 
         string DIS0;
-        string DIS = "11111111";
+        string DIS = "01110000";
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -848,7 +850,7 @@ namespace WindowsFormsApplication1.Exam
                 //点位大于推荐值 并且误差在1个以内，并且处于下降区间
 
             
-                if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=1 && b2 == true)
+                if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
                 {
 
                     a.MarkerStyle = MarkerStyle.Circle;
@@ -909,6 +911,7 @@ namespace WindowsFormsApplication1.Exam
                 s.Interval = 0;
                 s.StripWidth = 1;
                 s.IntervalOffset = wjl;
+                chart1.ChartAreas[0].AxisY.Crossing = wjl;
                 s.Text = wjl.ToString();
                 this.chart1.ChartAreas[0].AxisY.StripLines.Add(s);
                 standard = true;
@@ -969,44 +972,44 @@ namespace WindowsFormsApplication1.Exam
         Fuc ff = new Fuc();
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
 
             //   reada.Abort();
 
 
-            this.timer1.Dispose();
-            this.timer2.Dispose();
+            this.timer1.Stop();
+            this.timer2.Stop();
             datahelp.CurrentStep1 = 3;
             if (last == false)
             {
                 if (fm == true)
                 {
                     g.updateGrade(azfm1, "azfm1", datahelp.QId);
-                    ff.ShowSuccessTip("阀帽归位得分");
+                 //   ff.ShowSuccessTip("阀帽归位得分");
                 }
                 else
                 {
-                    ff.ShowErrorTip("阀帽未归位不得分");
+                //    ff.ShowErrorTip("阀帽未归位不得分");
 
                 }
                 if (shy == true)
                 {
                     //  g.updateGrade(, "dkxyf", datahelp.QId);
-                    ff.ShowSuccessTip("四合一归位得分");
+                //    ff.ShowSuccessTip("四合一归位得分");
                 }
                 else
                 {
-                    ff.ShowErrorTip("四合一未归位不得分");
+                //    ff.ShowErrorTip("四合一未归位不得分");
 
                 }
                 if (gj == true)
                 {
                     //  g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
-                    ff.ShowSuccessTip("工具归位正确");
+                //    ff.ShowSuccessTip("工具归位正确");
                 }
                 else
                 {
-                    ff.ShowErrorTip("工具未归位");
+                //    ff.ShowErrorTip("工具未归位");
 
                 }
 
@@ -1019,8 +1022,8 @@ namespace WindowsFormsApplication1.Exam
             // g.updateGrade(0, "azfm1", datahelp.QId);
 
 
-
-            if (DIS == "01100000")
+//DIS == "01110000"||
+            if ( DIS == "0110000")
             {
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();
