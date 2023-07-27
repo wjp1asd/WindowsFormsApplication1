@@ -188,8 +188,16 @@ namespace WindowsFormsApplication1.Exam
                 0x0a,0x00,0xFF,
                 0x02, 0x00, 0xC4,
                 0x09};
+                    try
+                    {
+                        serialPort1.Write(d3, 0, d3.Length);
 
-                    serialPort1.Write(d3, 0, d3.Length);
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
 
                 }
                 //richTextBox2.Text += "卸压阀打开";
@@ -374,17 +382,33 @@ namespace WindowsFormsApplication1.Exam
 
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
-            Bitmap bt = new Bitmap(loc + url + t.Ksname + "-shot.png");
+            CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-shot.png");
 
-            bt.Save(loc1 + url + t.Ksname + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
-            string mm = loc1 + url + t.Ksname + "-shot.png";
+            bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url +t.Qrcode + "-shot.png";
             g.updatepath(mm, "lxpic", datahelp.QId);
             MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 
+        private void shot1()
+        {
+            // step = 1;
+            string loc1 = ConfigurationManager.AppSettings["loc"];
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
 
+
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+            CvInvoke.Imwrite(loc + url +t.Qrcode+ "-azshot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-azshot.png");
+
+            bt.Save(loc1 + url + t.Qrcode + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Ksname + "-azshot.png";
+            g.updatepath(mm, "lxpic1", datahelp.QId);
+            MessageBox.Show("拍照成功");
+        }
 
         private void showMsg()
         {
@@ -434,7 +458,7 @@ namespace WindowsFormsApplication1.Exam
 
             topheader.CopyTo(td1, 0);
             content.CopyTo(td1, topheader.Length);
-
+           // this.ControlBox=false;
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
             //获得算分标准
@@ -445,8 +469,8 @@ namespace WindowsFormsApplication1.Exam
 
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
             url = "\\考试照片\\" + timestamp;
-
-
+            this.button2.Enabled=false;
+            // this.button2.BackColor=System.Drawing.ColorTranslator.FromHtml("grey");
 
         }
 
@@ -486,11 +510,19 @@ namespace WindowsFormsApplication1.Exam
         private void ReadAI()
         {
             //ff.ShowInfoTip(BitConverter.ToString(td1));
-            while (true)
+            while (true&&serialPort2.IsOpen)
             {
+                try
+                {
+                    serialPort2.Write(td1, 0, td1.Length);
+                    Thread.Sleep(500);
+                }
+                catch (Exception)
+                {
 
-                serialPort2.Write(td1, 0, td1.Length);
-                Thread.Sleep(500);
+                    throw;
+                }
+
             }
 
         }
@@ -504,10 +536,10 @@ namespace WindowsFormsApplication1.Exam
                 readDI = new Thread(ReadAI);
                 readDI.Start();
                 // AI0
-
+                this.button3.Enabled=false;
                 this.button3.Text = "正在校验";
-                this.button1.Text = "初次测试";
-                this.step = 0;
+                this.button1.Text = "未开始";
+                this.step = -1;
                 this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                 this.timer1.Start();
             }
@@ -682,9 +714,18 @@ namespace WindowsFormsApplication1.Exam
                 0xFF, 0x02, 0x00, 0xC4,0x09
             };
 
-            // ff.ShowInfoTip(BitConverter.ToString(d1)) ;
-            serialPort1.Write(d1, 0, d1.Length);
-            Thread.Sleep(1000);
+            //ff.ShowInfoTip(BitConverter.ToString(d1));
+            try
+            {
+                serialPort1.Write(d1, 0, d1.Length);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+            // Thread.Sleep(1000);
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -1073,7 +1114,7 @@ namespace WindowsFormsApplication1.Exam
             };
             this.Invoke(tongdao);
 
-            if (Math.Abs(a) < 119000)
+            if (Math.Abs(a) < 119000&&last==false&&step>=0)
             {
 
 
@@ -1142,8 +1183,12 @@ namespace WindowsFormsApplication1.Exam
 
         private void SendServo1(int a, int pos)
         {
+            if (last==true)
+            {
 
-
+                return;
+            }
+            ff.ShowInfoTip("舵机"+maz);
 
             //舵机驱动
 
@@ -1158,8 +1203,16 @@ namespace WindowsFormsApplication1.Exam
             //目标码值（离线压力设置-初次测试压力）
             d3[9] = (byte)((maz >> 8) & 0xff);
             d3[8] = (byte)(maz & 0x00ff);
+            try
+            {
+                serialPort1.Write(d3, 0, d3.Length);
+            }
+            catch (Exception)
+            {
 
-            serialPort1.Write(d3, 0, d3.Length);
+                throw;
+            }
+
             //  MessageBox.Show(BitConverter.ToString(d3));
 
             if (dwq - a > 100)
@@ -1200,34 +1253,34 @@ namespace WindowsFormsApplication1.Exam
             }
         }
 
-        private void SetZero()
-        {
-            //舵机归零
-            byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
-                //通道1
-                0x01, 0x09, 0xC4,
-                //通道2
-                0x01, 0x09, 0xC4,
-                //通道3
-                0x01,  0x09, 0xC4,
-                //通道4
-                0x01,  0x09, 0xC4,
-                //通道5
-                0x01,  0x09, 0xC4,
-                //通道6
-                0x01, 0x09, 0xC4,
-                //通道7
-                0x01,  0x09, 0xC4,
-                //通道8
-                0x01,  0x09, 0xC4,
+        //private void SetZero()
+        //{
+        //    //舵机归零
+        //    byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
+        //        //通道1
+        //        0x01, 0x09, 0xC4,
+        //        //通道2
+        //        0x01, 0x09, 0xC4,
+        //        //通道3
+        //        0x01,  0x09, 0xC4,
+        //        //通道4
+        //        0x01,  0x09, 0xC4,
+        //        //通道5
+        //        0x01,  0x09, 0xC4,
+        //        //通道6
+        //        0x01, 0x09, 0xC4,
+        //        //通道7
+        //        0x01,  0x09, 0xC4,
+        //        //通道8
+        //        0x01,  0x09, 0xC4,
 
-                 0x5B
-            };
+        //         0x5B
+        //    };
 
-            // ff.ShowInfoTip(BitConverter.ToString(d1)) ;
-            serialPort2.Write(d1, 0, d1.Length);
-            Thread.Sleep(1000);
-        }
+        //    // ff.ShowInfoTip(BitConverter.ToString(d1)) ;
+        //    serialPort2.Write(d1, 0, d1.Length);
+        //    Thread.Sleep(1000);
+        //}
         //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
         int maz = 1111;
         int maz90 = 0;
@@ -1294,6 +1347,7 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
 
+            step++;
             switch (step)
             {
                 case -1:
@@ -1339,7 +1393,7 @@ namespace WindowsFormsApplication1.Exam
                     maz = maz90;
 
                     ta2 = 180;
-
+                    this.button2.Enabled=true;
                     this.timer3.ReStart();
                     break;
             }
@@ -1347,7 +1401,7 @@ namespace WindowsFormsApplication1.Exam
             // 开启1分钟判分倒计时  保压测试显示3分钟 实际30秒走完
 
             ta = 60;
-            step++;
+            
 
 
         }
@@ -1357,13 +1411,16 @@ namespace WindowsFormsApplication1.Exam
 
         {
 
-            mat.Dispose();
+
             //   Process.GetCurrentProcess()?.Kill();
             datahelp.CurrentStep1 = 3;
             if (last == false)
             {
                 if (famaostate == true)
                 {
+
+                    Thread a = new Thread(shot1);
+                    a.Start();
                     g.updateGrade(azfm, "azfm", datahelp.QId);
                     ff.ShowSuccessTip("阀帽归位得分");
                 }
@@ -1404,8 +1461,6 @@ namespace WindowsFormsApplication1.Exam
                 OFF of = new OFF(datahelp.QId);
                 of.Show();
                 this.Close();
-                serialPort1.Close();
-                serialPort2.Close();
 
             }
             else
@@ -1428,8 +1483,8 @@ namespace WindowsFormsApplication1.Exam
                 {
                     str += "泄压阀关闭，";
                 }
-                ff.ShowErrorDialog(str);
-                // MessageBox.Show("请完成复位再退出");
+                //ff.ShowErrorDialog(str);
+                MessageBox.Show("请完成复位再退出");
 
             }
             last = true;
@@ -1449,10 +1504,10 @@ namespace WindowsFormsApplication1.Exam
                 serialPort2.Dispose();
                 serialPort1.Close();
                 serialPort1.Dispose();
-               readDI.Abort();
+                readDI.Abort();
             }
 
-          
+
             this.timer1.Dispose();
             this.timer2.Dispose();
         }
@@ -1462,7 +1517,7 @@ namespace WindowsFormsApplication1.Exam
 
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
+            CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
             MessageBox.Show("本地拍照成功");
         }
 
