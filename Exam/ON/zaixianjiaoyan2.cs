@@ -1308,7 +1308,7 @@ namespace WindowsFormsApplication1.Exam
 
             double a = double.Parse(a1);
             double b = double.Parse(b2);
-            ff.ShowInfoTip("" + a + b + yali);
+           // ff.ShowInfoTip("" + a + b + yali);
             if (step == 0) { return; }
             if (yali < a || yali > b)
             {

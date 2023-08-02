@@ -92,7 +92,7 @@
             this.comboBox1.TabIndex = 57;
             this.comboBox1.Text = "考生选择";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.comboBox1.Click += new System.EventHandler(this.comboBox1_Click);
+            this.comboBox1.Click += new System.EventHandler(this.label7_Click);
             // 
             // label7
             // 
