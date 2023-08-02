@@ -200,6 +200,7 @@
             this.uiLedLabel4.StyleCustomMode = true;
             this.uiLedLabel4.TabIndex = 99;
             this.uiLedLabel4.Text = "1111111";
+            this.uiLedLabel4.Visible = false;
             this.uiLedLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.uiLedLabel4.Click += new System.EventHandler(this.uiLedLabel4_Click);
             // 

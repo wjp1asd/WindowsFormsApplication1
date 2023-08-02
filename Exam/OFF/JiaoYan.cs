@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -416,11 +417,12 @@ namespace WindowsFormsApplication1.Exam
 
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc + url +t.Qrcode+ "-azshot.png", mat);
+            CvInvoke.Imwrite(loc + url + t.Qrcode + "-azshot.png", mat);
             Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-azshot.png");
 
             bt.Save(loc1 + url + t.Qrcode + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
-            string mm = loc1 + url + t.Ksname + "-azshot.png";
+            string mm = loc1 + url +t.Qrcode + "-azshot.png";
+           // g.updatepath(mm, "lxpic", datahelp.QId);
             g.updatepath(mm, "lxpic1", datahelp.QId);
             //MessageBox.Show("拍照成功");
         }
@@ -487,7 +489,8 @@ namespace WindowsFormsApplication1.Exam
             this.button2.Enabled=false;
             this.button1.Enabled=false;
             // this.button2.BackColor=System.Drawing.ColorTranslator.FromHtml("grey");
-
+            this.timer3.Stop();
+            this.timer2.Stop();
         }
 
         VideoCapture v;
@@ -573,7 +576,31 @@ namespace WindowsFormsApplication1.Exam
 
         private void label2_Click(object sender, EventArgs e)
         {
+            //   Process.GetCurrentProcess()?.Kill();
+            last = true;
+            if (v != null)
+            {
+                v.Stop(); // 停止视频捕获
+                v.Dispose(); // 释放资源
 
+            }
+            if (serialPort2 != null && serialPort2.IsOpen)
+            {
+                serialPort2.Close();
+                serialPort2.Dispose();
+                serialPort1.Close();
+                serialPort1.Dispose();
+                readDI.Abort();
+            }
+
+            // Process.GetCurrentProcess()?.Kill();
+            this.timer1.Dispose();
+            this.timer2.Dispose();
+            datahelp.CurrentStep1 = 3;
+            OFF of = new OFF(datahelp.QId);
+            of.Show();
+            this.Close();
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1426,7 +1453,7 @@ namespace WindowsFormsApplication1.Exam
                     MessageBox.Show("密封性能测试");
 
                     ff.ShowInfoTip("保压测试开始，倒计时3分钟");
-
+                    this.timer2.Stop();
                     maz = maz90;
                     this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("gray");
                     this.button1.Enabled= false;
@@ -1449,7 +1476,24 @@ namespace WindowsFormsApplication1.Exam
 
         {
 
+            if (v != null)
+            {
+                v.Stop(); // 停止视频捕获
+                v.Dispose(); // 释放资源
 
+            }
+            if (serialPort2 != null && serialPort2.IsOpen)
+            {
+                serialPort2.Close();
+                serialPort2.Dispose();
+                serialPort1.Close();
+                serialPort1.Dispose();
+                readDI.Abort();
+            }
+
+            // Process.GetCurrentProcess()?.Kill();
+            this.timer1.Dispose();
+            this.timer2.Dispose();
             //   Process.GetCurrentProcess()?.Kill();
             datahelp.CurrentStep1 = 3;
             if (last == false)
@@ -1489,7 +1533,7 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-
+            last = true;
             // MessageBox.Show(DIS);
             if (DIS == "11111001" || DIS == "01111001"||DIS=="11111000")
             {
@@ -1524,7 +1568,7 @@ namespace WindowsFormsApplication1.Exam
                 MessageBox.Show("请完成复位再退出");
 
             }
-            last = true;
+            
         }
 
         private void JiaoYan_FormClosing(object sender, FormClosingEventArgs e)
@@ -1544,7 +1588,7 @@ namespace WindowsFormsApplication1.Exam
                 readDI.Abort();
             }
 
-
+           // Process.GetCurrentProcess()?.Kill();
             this.timer1.Dispose();
             this.timer2.Dispose();
         }

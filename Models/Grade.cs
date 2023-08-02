@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 
 namespace WindowsFormsApplication1.Models
@@ -193,6 +194,7 @@ namespace WindowsFormsApplication1.Models
                 zxpic1 = reader["zxpic1"].ToString().Trim();
                 lxpic1 = reader["lxpic1"].ToString().Trim();
                 mxpic = reader["mfpic"].ToString().Trim();
+               // MessageBox.Show(lxpic1);
 
             }
 

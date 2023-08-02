@@ -241,10 +241,10 @@ namespace WindowsFormsApplication1.Exam
                     break;
 
                 case 4:
-                    str1 = "Update Grade set ymgquestions='" + a + "',ymganswer='" + b + "',ymgcorrect='" + c + "',score7='" + d
+                    str1 = "Update Grade set ymgquestions='" + a + "',ymganswer='" + b + "',ymgcorrect='" + c + "',score6='" + d
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
-
+                  //  MessageBox.Show(str1);
                     break;
 
 

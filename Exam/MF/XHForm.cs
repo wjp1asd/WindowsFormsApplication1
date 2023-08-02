@@ -627,5 +627,28 @@ namespace WindowsFormsApplication1.Exam.MF
         {
 
         }
+
+        private void timer1_Tick1(object sender, EventArgs e)
+        {
+
+            if (datahelp.RemainTime > 0)
+            {
+                datahelp.RemainTime--;
+                int min = datahelp.RemainTime / 60;
+                int sec = datahelp.RemainTime % 60;
+                this.lbltime.Text = string.Format("{0:00}:{1:00}", min, sec);
+            }
+            else
+            {
+                this.timer1.Stop();
+                ff.ShowInfoTip("时间到了，请交卷");
+                AnswerForm frm = new AnswerForm();
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+                this.Close();
+            }
+
+
+        }
     }
 }

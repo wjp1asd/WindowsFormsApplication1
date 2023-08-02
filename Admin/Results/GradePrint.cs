@@ -173,5 +173,10 @@ namespace WindowsFormsApplication1.Admin.Results
         {
 
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
