@@ -160,6 +160,45 @@ namespace WindowsFormsApplication1.Exam
 
 
         }
+
+        private void shot()
+        {
+            // step = 1;
+            string loc1 = ConfigurationManager.AppSettings["loc"];
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+
+
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+            CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-shot.png");
+
+            bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Qrcode + "-shot.png";
+            g.updatepath(mm, "zxpic", datahelp.QId);
+            zxpic = 1;
+            //MessageBox.Show("拍照成功");
+        }
+        // DI 输入的集合
+
+        private void shot1()
+        {
+            // step = 1;
+            string loc1 = ConfigurationManager.AppSettings["loc"];
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+
+
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+            CvInvoke.Imwrite(loc + url + t.Qrcode + "-azshot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-azshot.png");
+
+            bt.Save(loc1 + url + t.Qrcode + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Qrcode + "-azshot.png";
+            // g.updatepath(mm, "lxpic", datahelp.QId);
+            g.updatepath(mm, "zxpic1", datahelp.QId);
+            //MessageBox.Show("拍照成功");
+        }
         Thread tj;
         int x = 0;
         int y = 1;
@@ -185,7 +224,7 @@ namespace WindowsFormsApplication1.Exam
             this.timer1.Start();
             v = new VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
-
+            this.richTextBox1.Hide();
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
             url = "\\考试照片\\" + timestamp;
 
@@ -604,13 +643,23 @@ namespace WindowsFormsApplication1.Exam
                 //richTextBox2.Text += "阀帽存在";
               //  dishow("在线阀帽存在");
                 fm = true;
+                
+                    
+               
+                
             }
             else
             {
                 fm = false;
-              //  dishow("在线阀帽拆卸");
+                //  dishow("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
+                if (zxpic!=1)
+                {
+                    g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
+                    Thread a = new Thread(shot);
+                    a.Start();
+                }
                 //   chaixiefamao();
             }
 
@@ -793,7 +842,7 @@ namespace WindowsFormsApplication1.Exam
                     if (Math.Round(wjltj) < b2)
                     {
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
-                        this.richTextBox1.Text += b2 + ",";
+                        //this.richTextBox1.Text += b2 + ",";
                         if ((maxinum-cisu) == 3)
                         {
                             maxinum += 50;
@@ -806,7 +855,7 @@ namespace WindowsFormsApplication1.Exam
                     else {
 
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
-                        this.richTextBox1.Text += b2 + ",";
+                       // this.richTextBox1.Text += b2 + ",";
 
                         if( (maxinum-cisu) ==3)
                         {
@@ -1070,6 +1119,13 @@ namespace WindowsFormsApplication1.Exam
             {
                 if (fm == true)
                 {
+                   
+                        //点击结束开始拍照
+                        //g.updateGrade(azfm1, "azfm1", datahelp.QId);
+                        Thread a = new Thread(shot1);
+                        a.Start();
+
+                    
                     g.updateGrade(azfm1, "azfm1", datahelp.QId);
                  //   ff.ShowSuccessTip("阀帽归位得分");
                 }
@@ -1224,6 +1280,8 @@ namespace WindowsFormsApplication1.Exam
 
         }
         bool wuc = false;
+        private int zxpic;
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //获取初始值
