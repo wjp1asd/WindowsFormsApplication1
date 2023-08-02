@@ -211,12 +211,12 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
 
-                    str1 = "Update Grade set lxquestions='" + a + "',lxanswer='" + b + "',lxcorrect='" + c + "',score2='" + d
+                    str1 = "Update Grade set lxquestions='" + a + "',lxanswer='" + b + "',lxcorrect='" + c + "',score1='" + d
 
                 + "' where testid= '" + datahelp.QId.Trim() + "'";
                     break;
                 case 2:
-                    str1 = "Update Grade set zxquestions='" + a + "',zxanswer='" + b + "',zxcorrect='" + c + "',score1='" + d
+                    str1 = "Update Grade set zxquestions='" + a + "',zxanswer='" + b + "',zxcorrect='" + c + "',score2='" + d
 
               + "' where testid= '" + datahelp.QId.Trim() + "'";
                     break;
