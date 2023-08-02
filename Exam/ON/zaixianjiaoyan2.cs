@@ -124,8 +124,9 @@ namespace WindowsFormsApplication1.Exam
                     //  double zdyl = double.Parse(t.Zxyl);
                     double zdyl = 1.0;
                     double xtyl = double.Parse(textBox2.Text.Trim());
-
-                    double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2 / 10;
+                    datahelp c = new datahelp();
+                    c.Initc();
+                    double F = (zdyl - xtyl) * (double.Parse(c.mfzj) / 2) * (double.Parse(c.mfzj) / 2) * 3.2 / 10;
 
                     this.textBox3.Text = F.ToString();
                     wjltj = F;
@@ -134,8 +135,7 @@ namespace WindowsFormsApplication1.Exam
 
                     this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
                     // 游标卡尺和 阀瓣拿起 zxc
-                    datahelp c=new datahelp();
-                    c.Initc();
+                  
                     if (fb == false && youbiao == false && step == 1 &&mfzj==double.Parse(c.mfzj))
                     {
 
@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1.Exam
             Initchart();
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
-            this.richTextBox2.Hide();
+           // this.richTextBox2.Hide();
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
             this.timer1.Start();
@@ -793,6 +793,7 @@ namespace WindowsFormsApplication1.Exam
                     if (Math.Round(wjltj) < b2)
                     {
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
+                        this.richTextBox1.Text += b2 + ",";
                         if ((maxinum-cisu) == 3)
                         {
                             maxinum += 50;
@@ -805,6 +806,8 @@ namespace WindowsFormsApplication1.Exam
                     else {
 
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
+                        this.richTextBox1.Text += b2 + ",";
+
                         if( (maxinum-cisu) ==3)
                         {
                            maxinum += 50;
@@ -881,66 +884,106 @@ namespace WindowsFormsApplication1.Exam
         }
         int smin = 0;
 
-        bool b2 = true;   
+        bool b12 = true;   
         private void showpoint()
         {
             DataPointCollection dataPoints = chart1.Series[0].Points;
-           // double max = dataPoints.Max().YValues[0];
-           // MessageBox.Show(""+max);
-           // int maxpoint = int.Parse(); dataPoints.Max().XValue;
-            foreach (System.Windows.Forms.DataVisualization.Charting.DataPoint a in dataPoints
-                ) {
-                //点位大于推荐值 并且误差在1个以内，并且处于下降区间
 
-            
-                if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
-                {
+            System.Windows.Forms.DataVisualization.Charting.DataPoint a = dataPoints[dataPoints.Count-1];
+            if (a.YValues[0] < 134 && a.YValues[0] > 129 && b12 == true)
+            //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
+            {
 
-                    a.MarkerStyle = MarkerStyle.Circle;
-                    a.MarkerSize = 10;
-                    a.MarkerColor = System.Drawing.Color.Red;
-                    a.Label = Math.Round(wjltj).ToString() + "KG";
-                    a.LabelForeColor = System.Drawing.Color.Red;
+                a.MarkerStyle = MarkerStyle.Circle;
+                a.MarkerSize = 10;
+                a.MarkerColor = System.Drawing.Color.Red;
+                a.Label = Math.Round(wjltj).ToString() + "KG";
+                a.LabelForeColor = System.Drawing.Color.Red;
 
-                    double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
+                double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
 
-                    this.textBox5.Text = PS.ToString();
-                    b2 = false;
-                }
-                if ((a.YValues[0] - wjltj) < 0 )
-                {
-
-                   
-                    b2 = true;
-                }
-                this.chart1.Invalidate();
+                this.textBox5.Text = PS.ToString();
+                b12 = false;
+               // MessageBox.Show("" + b12);
             }
 
-       
-            //if (b2 - wjl < 0 && Math.Abs(b2 - wjltj) <= 5 && liangcheng > 0)
-            //{
-            //    // 开始下降  
-            //    Action tongdao1 = () =>
+            if (a.YValues[0] >134.55 && b12 == true)
+            //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
+            {
+
+                a.MarkerStyle = MarkerStyle.Circle;
+                a.MarkerSize = 10;
+                a.MarkerColor = System.Drawing.Color.Red;
+                a.Label = "超压开启" + Math.Round(wjltj).ToString() + "KG";
+                a.LabelForeColor = System.Drawing.Color.Red;
+
+                double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
+
+                this.textBox5.Text = PS.ToString();
+                b12 = false;
+                // MessageBox.Show("" + b12);
+            }
+            if ((a.YValues[0] ) < 10)
+            {
+
+
+                b12 = true;
+            }
+            this.chart1.Invalidate();
+            //foreach (System.Windows.Forms.DataVisualization.Charting.DataPoint a in dataPoints
+            //    ) {
+            //    //点位大于推荐值 并且误差在1个以内，并且处于下降区间
+
+            //    if (a.YValues[0] <134 && a.YValues[0] >129 && b12 == true)
+            //  //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
             //    {
 
-            //        this.textBox5.Text = b2.ToString();
-            //        //
-            //    };
-            //    this.Invoke(tongdao1);
-            //   MessageBox.Show("开启点"+dataPoints.Count);
+            //        a.MarkerStyle = MarkerStyle.Circle;
+            //        a.MarkerSize = 10;
+            //        a.MarkerColor = System.Drawing.Color.Red;
+            //        a.Label = Math.Round(wjltj).ToString() + "KG";
+            //        a.LabelForeColor = System.Drawing.Color.Red;
 
-            //    //System.Windows.Forms.DataVisualization.Charting.DataPoint point = this.chart1.Series[0].Points[cisu];
-            //    point.MarkerStyle = MarkerStyle.Circle;
-            //    point.MarkerSize = 20;
-            //    point.MarkerColor = System.Drawing.Color.Red;
+            //        double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
+
+            //        this.textBox5.Text = PS.ToString();
+            //        b12 = false;
+            //        MessageBox.Show(""+b12);
+            //    }
+            //    if ((a.YValues[0] - wjltj) < 10 )
+            //    {
 
 
-
-            //   // MessageBox.Show("开启点" + cisu);
-            //}  
-
-
+            //        b12 = true;
+            //    }
+            //    this.chart1.Invalidate();
         }
+
+
+        //if (b2 - wjl < 0 && Math.Abs(b2 - wjltj) <= 5 && liangcheng > 0)
+        //{
+        //    // 开始下降  
+        //    Action tongdao1 = () =>
+        //    {
+
+        //        this.textBox5.Text = b2.ToString();
+        //        //
+        //    };
+        //    this.Invoke(tongdao1);
+        //   MessageBox.Show("开启点"+dataPoints.Count);
+
+        //    //System.Windows.Forms.DataVisualization.Charting.DataPoint point = this.chart1.Series[0].Points[cisu];
+        //    point.MarkerStyle = MarkerStyle.Circle;
+        //    point.MarkerSize = 20;
+        //    point.MarkerColor = System.Drawing.Color.Red;
+
+
+
+        //   // MessageBox.Show("开启点" + cisu);
+        //}  
+
+
+    
 
         private void setstandard(float a)
         {
@@ -1066,7 +1109,7 @@ namespace WindowsFormsApplication1.Exam
 
 
 //DIS == "01110000"||
-            if ( DIS == "01100000")
+            if ( DIS == "01100011")
             {
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();

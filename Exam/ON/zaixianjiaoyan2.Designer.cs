@@ -75,6 +75,7 @@
             this.uiButton1 = new Sunny.UI.UIButton();
             this.label21 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -468,13 +469,12 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(1005, 240);
+            this.richTextBox2.Location = new System.Drawing.Point(0, 0);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(129, 78);
+            this.richTextBox2.Size = new System.Drawing.Size(1225, 78);
             this.richTextBox2.TabIndex = 81;
             this.richTextBox2.Text = "";
-            this.richTextBox2.Visible = false;
             // 
             // uiLedLabel4
             // 
@@ -616,12 +616,23 @@
             this.pictureBox1.TabIndex = 110;
             this.pictureBox1.TabStop = false;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(1225, 78);
+            this.richTextBox1.TabIndex = 113;
+            this.richTextBox1.Text = "";
+            // 
             // zaixianjiaoyan2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1225, 602);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.pictureBox1);
@@ -716,5 +727,6 @@
         private Sunny.UI.UIButton uiButton1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
