@@ -60,6 +60,11 @@ namespace WindowsFormsApplication1.Exam
                     this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml("Gray");
                     break;
+                case -1:
+                    this.button3.Enabled = true;
+                    this.button1.Enabled = true;
+                    this.button2.Enabled =  true;
+                    break;
 
             }
             // this.label2.Text = a.link;

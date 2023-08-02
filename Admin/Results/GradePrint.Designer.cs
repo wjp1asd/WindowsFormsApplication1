@@ -33,6 +33,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label37 = new System.Windows.Forms.Label();
             this.flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
@@ -165,6 +171,9 @@
             this.a13 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.flowLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel26.SuspendLayout();
             this.tableLayoutPanel27.SuspendLayout();
@@ -219,7 +228,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(824, 23);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 34);
             this.button1.TabIndex = 1;
@@ -240,6 +249,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label79);
+            this.groupBox1.Controls.Add(this.pictureBox5);
+            this.groupBox1.Controls.Add(this.label75);
+            this.groupBox1.Controls.Add(this.label78);
+            this.groupBox1.Controls.Add(this.pictureBox3);
+            this.groupBox1.Controls.Add(this.pictureBox4);
             this.groupBox1.Controls.Add(this.label37);
             this.groupBox1.Controls.Add(this.flowLayoutPanel12);
             this.groupBox1.Controls.Add(this.flowLayoutPanel11);
@@ -258,13 +273,73 @@
             this.groupBox1.Controls.Add(this.flowLayoutPanel2);
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
             this.groupBox1.Location = new System.Drawing.Point(2, 60);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(973, 1530);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(668, 1114);
+            this.label79.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(53, 12);
+            this.label79.TabIndex = 34;
+            this.label79.Text = "研磨方法";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Location = new System.Drawing.Point(667, 1142);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(254, 231);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 33;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(672, 842);
+            this.label75.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(53, 12);
+            this.label75.TabIndex = 32;
+            this.label75.Text = "在线拍照";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(670, 574);
+            this.label78.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(53, 12);
+            this.label78.TabIndex = 31;
+            this.label78.Text = "在线拍照";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(670, 870);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(254, 231);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 30;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(670, 595);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(254, 231);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 29;
+            this.pictureBox4.TabStop = false;
             // 
             // label37
             // 
@@ -284,7 +359,7 @@
             this.flowLayoutPanel12.Controls.Add(this.tableLayoutPanel26);
             this.flowLayoutPanel12.Controls.Add(this.tableLayoutPanel27);
             this.flowLayoutPanel12.Location = new System.Drawing.Point(4, 1136);
-            this.flowLayoutPanel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel12.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel12.Name = "flowLayoutPanel12";
             this.flowLayoutPanel12.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel12.TabIndex = 27;
@@ -306,10 +381,10 @@
             this.tableLayoutPanel26.Controls.Add(this.label65, 4, 0);
             this.tableLayoutPanel26.Controls.Add(this.label66, 1, 0);
             this.tableLayoutPanel26.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel26.Name = "tableLayoutPanel26";
             this.tableLayoutPanel26.RowCount = 1;
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel26.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel26.TabIndex = 3;
             // 
@@ -332,7 +407,7 @@
             this.label67.Location = new System.Drawing.Point(297, 9);
             this.label67.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(85, 25);
+            this.label67.Size = new System.Drawing.Size(85, 27);
             this.label67.TabIndex = 2;
             this.label67.Text = "误差范围选择";
             this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -356,7 +431,7 @@
             this.label69.Location = new System.Drawing.Point(9, 9);
             this.label69.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(85, 25);
+            this.label69.Size = new System.Drawing.Size(85, 27);
             this.label69.TabIndex = 0;
             this.label69.Text = "在线校验前";
             this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -380,7 +455,7 @@
             this.label66.Location = new System.Drawing.Point(201, 9);
             this.label66.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(85, 25);
+            this.label66.Size = new System.Drawing.Size(85, 27);
             this.label66.TabIndex = 4;
             this.label66.Text = "密封直径测量";
             this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -402,10 +477,10 @@
             this.tableLayoutPanel27.Controls.Add(this.label74, 4, 0);
             this.tableLayoutPanel27.Controls.Add(this.label77, 1, 0);
             this.tableLayoutPanel27.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel27.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel27.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel27.Name = "tableLayoutPanel27";
             this.tableLayoutPanel27.RowCount = 1;
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel27.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel27.TabIndex = 4;
             // 
@@ -428,7 +503,7 @@
             this.label71.Location = new System.Drawing.Point(297, 9);
             this.label71.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(85, 25);
+            this.label71.Size = new System.Drawing.Size(85, 27);
             this.label71.TabIndex = 2;
             this.label71.Text = "误差范围选择";
             this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -452,7 +527,7 @@
             this.label73.Location = new System.Drawing.Point(9, 9);
             this.label73.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(85, 25);
+            this.label73.Size = new System.Drawing.Size(85, 27);
             this.label73.TabIndex = 0;
             this.label73.Text = "在线得分  ";
             this.label73.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -476,7 +551,7 @@
             this.label77.Location = new System.Drawing.Point(201, 9);
             this.label77.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(85, 25);
+            this.label77.Size = new System.Drawing.Size(85, 27);
             this.label77.TabIndex = 4;
             this.label77.Text = "密封直径测量";
             this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -489,7 +564,7 @@
             this.flowLayoutPanel11.Controls.Add(this.tableLayoutPanel24);
             this.flowLayoutPanel11.Controls.Add(this.tableLayoutPanel25);
             this.flowLayoutPanel11.Location = new System.Drawing.Point(4, 980);
-            this.flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel11.Name = "flowLayoutPanel11";
             this.flowLayoutPanel11.Size = new System.Drawing.Size(588, 142);
             this.flowLayoutPanel11.TabIndex = 26;
@@ -509,10 +584,10 @@
             this.tableLayoutPanel22.Controls.Add(this.label47, 1, 0);
             this.tableLayoutPanel22.Controls.Add(this.label49, 0, 0);
             this.tableLayoutPanel22.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel22.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel22.Name = "tableLayoutPanel22";
             this.tableLayoutPanel22.RowCount = 1;
-            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel22.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel22.TabIndex = 3;
             // 
@@ -591,10 +666,10 @@
             this.tableLayoutPanel23.Controls.Add(this.label53, 1, 0);
             this.tableLayoutPanel23.Controls.Add(this.label54, 0, 0);
             this.tableLayoutPanel23.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel23.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
             this.tableLayoutPanel23.RowCount = 1;
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel23.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel23.TabIndex = 4;
             // 
@@ -617,7 +692,7 @@
             this.label51.Location = new System.Drawing.Point(124, 9);
             this.label51.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(104, 25);
+            this.label51.Size = new System.Drawing.Size(104, 27);
             this.label51.TabIndex = 4;
             this.label51.Text = "要求整定压力";
             this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -629,7 +704,7 @@
             this.label52.Location = new System.Drawing.Point(354, 9);
             this.label52.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(104, 25);
+            this.label52.Size = new System.Drawing.Size(104, 27);
             this.label52.TabIndex = 2;
             this.label52.Text = "压力等级范围";
             this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -673,10 +748,10 @@
             this.tableLayoutPanel24.Controls.Add(this.label58, 1, 0);
             this.tableLayoutPanel24.Controls.Add(this.label59, 0, 0);
             this.tableLayoutPanel24.Location = new System.Drawing.Point(2, 74);
-            this.tableLayoutPanel24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel24.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel24.Name = "tableLayoutPanel24";
             this.tableLayoutPanel24.RowCount = 1;
-            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel24.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel24.TabIndex = 5;
             // 
@@ -707,11 +782,11 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label57.Font = new System.Drawing.Font("宋体", 12F);
             this.label57.Location = new System.Drawing.Point(354, 9);
             this.label57.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(104, 25);
+            this.label57.Size = new System.Drawing.Size(103, 16);
             this.label57.TabIndex = 2;
             this.label57.Text = "密封试验压力";
             this.label57.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -755,10 +830,10 @@
             this.tableLayoutPanel25.Controls.Add(this.label63, 1, 0);
             this.tableLayoutPanel25.Controls.Add(this.label64, 0, 0);
             this.tableLayoutPanel25.Location = new System.Drawing.Point(2, 110);
-            this.tableLayoutPanel25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel25.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel25.Name = "tableLayoutPanel25";
             this.tableLayoutPanel25.RowCount = 1;
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel25.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel25.TabIndex = 6;
             // 
@@ -793,7 +868,7 @@
             this.label62.Location = new System.Drawing.Point(354, 9);
             this.label62.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(104, 25);
+            this.label62.Size = new System.Drawing.Size(104, 27);
             this.label62.TabIndex = 2;
             this.label62.Text = "密封试验压力";
             this.label62.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -828,7 +903,7 @@
             this.flowLayoutPanel10.Controls.Add(this.tableLayoutPanel20);
             this.flowLayoutPanel10.Controls.Add(this.tableLayoutPanel21);
             this.flowLayoutPanel10.Location = new System.Drawing.Point(4, 884);
-            this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
             this.flowLayoutPanel10.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel10.TabIndex = 25;
@@ -847,10 +922,10 @@
             this.tableLayoutPanel20.Controls.Add(this.label41, 1, 0);
             this.tableLayoutPanel20.Controls.Add(this.label43, 0, 0);
             this.tableLayoutPanel20.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel20.Name = "tableLayoutPanel20";
             this.tableLayoutPanel20.RowCount = 1;
-            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel20.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel20.TabIndex = 3;
             // 
@@ -914,10 +989,10 @@
             this.tableLayoutPanel21.Controls.Add(this.label45, 0, 0);
             this.tableLayoutPanel21.Controls.Add(this.label48, 0, 0);
             this.tableLayoutPanel21.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel21.Name = "tableLayoutPanel21";
             this.tableLayoutPanel21.RowCount = 1;
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel21.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel21.TabIndex = 4;
             // 
@@ -928,7 +1003,7 @@
             this.label44.Location = new System.Drawing.Point(239, 9);
             this.label44.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(104, 25);
+            this.label44.Size = new System.Drawing.Size(104, 27);
             this.label44.TabIndex = 5;
             this.label44.Text = "误差范围选择";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -963,7 +1038,7 @@
             this.flowLayoutPanel9.Controls.Add(this.tableLayoutPanel18);
             this.flowLayoutPanel9.Controls.Add(this.tableLayoutPanel19);
             this.flowLayoutPanel9.Location = new System.Drawing.Point(4, 789);
-            this.flowLayoutPanel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel9.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
             this.flowLayoutPanel9.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel9.TabIndex = 24;
@@ -982,10 +1057,10 @@
             this.tableLayoutPanel18.Controls.Add(this.label15, 1, 0);
             this.tableLayoutPanel18.Controls.Add(this.label19, 0, 0);
             this.tableLayoutPanel18.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 1;
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel18.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel18.TabIndex = 3;
             // 
@@ -1008,7 +1083,7 @@
             this.label13.Location = new System.Drawing.Point(124, 9);
             this.label13.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(104, 25);
+            this.label13.Size = new System.Drawing.Size(104, 27);
             this.label13.TabIndex = 4;
             this.label13.Text = "锁紧螺母锁紧";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1051,10 +1126,11 @@
             this.tableLayoutPanel19.Controls.Add(this.label25, 1, 0);
             this.tableLayoutPanel19.Controls.Add(this.label38, 0, 0);
             this.tableLayoutPanel19.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 1;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel19.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel19.TabIndex = 4;
             // 
@@ -1065,7 +1141,7 @@
             this.label21.Location = new System.Drawing.Point(239, 9);
             this.label21.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(104, 25);
+            this.label21.Size = new System.Drawing.Size(104, 27);
             this.label21.TabIndex = 5;
             this.label21.Text = "误差范围选择";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1089,7 +1165,7 @@
             this.label25.Location = new System.Drawing.Point(354, 9);
             this.label25.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(104, 25);
+            this.label25.Size = new System.Drawing.Size(104, 27);
             this.label25.TabIndex = 2;
             this.label25.Text = "误差范围选择";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1114,7 +1190,7 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(53, 12);
             this.label29.TabIndex = 23;
-            this.label29.Text = "研磨方法";
+            this.label29.Text = "离线安装";
             // 
             // label27
             // 
@@ -1124,22 +1200,23 @@
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(53, 12);
             this.label27.TabIndex = 22;
-            this.label27.Text = "离线拍照";
+            this.label27.Text = "离线拆卸";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(668, 329);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(254, 231);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(668, 54);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(254, 231);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1152,7 +1229,7 @@
             this.flowLayoutPanel8.Controls.Add(this.tableLayoutPanel16);
             this.flowLayoutPanel8.Controls.Add(this.tableLayoutPanel17);
             this.flowLayoutPanel8.Location = new System.Drawing.Point(4, 696);
-            this.flowLayoutPanel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel8.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
             this.flowLayoutPanel8.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel8.TabIndex = 17;
@@ -1172,10 +1249,10 @@
             this.tableLayoutPanel16.Controls.Add(this.label31, 1, 0);
             this.tableLayoutPanel16.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel16.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 1;
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel16.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel16.TabIndex = 3;
             // 
@@ -1210,7 +1287,7 @@
             this.label2.Location = new System.Drawing.Point(354, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 25);
+            this.label2.Size = new System.Drawing.Size(104, 27);
             this.label2.TabIndex = 2;
             this.label2.Text = "误差范围选择";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1222,7 +1299,7 @@
             this.label31.Location = new System.Drawing.Point(469, 9);
             this.label31.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(104, 25);
+            this.label31.Size = new System.Drawing.Size(104, 27);
             this.label31.TabIndex = 3;
             this.label31.Text = "整定压力调整";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1255,10 +1332,10 @@
             this.tableLayoutPanel17.Controls.Add(this.label35, 1, 0);
             this.tableLayoutPanel17.Controls.Add(this.label36, 0, 0);
             this.tableLayoutPanel17.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 1;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel17.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel17.TabIndex = 4;
             // 
@@ -1269,7 +1346,7 @@
             this.label9.Location = new System.Drawing.Point(239, 9);
             this.label9.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 25);
+            this.label9.Size = new System.Drawing.Size(104, 27);
             this.label9.TabIndex = 5;
             this.label9.Text = "误差范围选择";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1293,7 +1370,7 @@
             this.label34.Location = new System.Drawing.Point(354, 9);
             this.label34.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(104, 25);
+            this.label34.Size = new System.Drawing.Size(104, 27);
             this.label34.TabIndex = 2;
             this.label34.Text = "误差范围选择";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1305,7 +1382,7 @@
             this.label35.Location = new System.Drawing.Point(469, 9);
             this.label35.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(104, 25);
+            this.label35.Size = new System.Drawing.Size(104, 27);
             this.label35.TabIndex = 3;
             this.label35.Text = "整定压力调整";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1328,7 +1405,7 @@
             this.flowLayoutPanel7.Controls.Add(this.tableLayoutPanel14);
             this.flowLayoutPanel7.Controls.Add(this.tableLayoutPanel15);
             this.flowLayoutPanel7.Location = new System.Drawing.Point(4, 602);
-            this.flowLayoutPanel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
             this.flowLayoutPanel7.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel7.TabIndex = 16;
@@ -1342,7 +1419,7 @@
             this.tableLayoutPanel14.Controls.Add(this.a24, 1, 0);
             this.tableLayoutPanel14.Controls.Add(this.label28, 0, 0);
             this.tableLayoutPanel14.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1384,7 +1461,7 @@
             this.tableLayoutPanel15.Controls.Add(this.a25, 1, 0);
             this.tableLayoutPanel15.Controls.Add(this.label30, 0, 0);
             this.tableLayoutPanel15.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 1;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1423,7 +1500,7 @@
             this.flowLayoutPanel6.Controls.Add(this.tableLayoutPanel12);
             this.flowLayoutPanel6.Controls.Add(this.tableLayoutPanel13);
             this.flowLayoutPanel6.Location = new System.Drawing.Point(4, 515);
-            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
             this.flowLayoutPanel6.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel6.TabIndex = 15;
@@ -1437,7 +1514,7 @@
             this.tableLayoutPanel12.Controls.Add(this.a22, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.label24, 0, 0);
             this.tableLayoutPanel12.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1479,7 +1556,7 @@
             this.tableLayoutPanel13.Controls.Add(this.a23, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.label26, 0, 0);
             this.tableLayoutPanel13.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1518,7 +1595,7 @@
             this.flowLayoutPanel5.Controls.Add(this.tableLayoutPanel10);
             this.flowLayoutPanel5.Controls.Add(this.tableLayoutPanel11);
             this.flowLayoutPanel5.Location = new System.Drawing.Point(4, 428);
-            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             this.flowLayoutPanel5.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel5.TabIndex = 14;
@@ -1532,7 +1609,7 @@
             this.tableLayoutPanel10.Controls.Add(this.a20, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.label20, 0, 0);
             this.tableLayoutPanel10.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1574,7 +1651,7 @@
             this.tableLayoutPanel11.Controls.Add(this.a21, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.label22, 0, 0);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1613,7 +1690,7 @@
             this.flowLayoutPanel4.Controls.Add(this.tableLayoutPanel8);
             this.flowLayoutPanel4.Controls.Add(this.tableLayoutPanel9);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(4, 341);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel4.TabIndex = 13;
@@ -1627,7 +1704,7 @@
             this.tableLayoutPanel8.Controls.Add(this.a18, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1669,7 +1746,7 @@
             this.tableLayoutPanel9.Controls.Add(this.a19, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.label18, 0, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1708,7 +1785,7 @@
             this.flowLayoutPanel3.Controls.Add(this.tableLayoutPanel6);
             this.flowLayoutPanel3.Controls.Add(this.tableLayoutPanel7);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(4, 245);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel3.TabIndex = 12;
@@ -1722,7 +1799,7 @@
             this.tableLayoutPanel6.Controls.Add(this.a16, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1764,7 +1841,7 @@
             this.tableLayoutPanel7.Controls.Add(this.a17, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.label14, 0, 0);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1803,7 +1880,7 @@
             this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel4);
             this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel5);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 150);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(588, 82);
             this.flowLayoutPanel2.TabIndex = 11;
@@ -1817,7 +1894,7 @@
             this.tableLayoutPanel4.Controls.Add(this.a14, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label8, 0, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1859,7 +1936,7 @@
             this.tableLayoutPanel5.Controls.Add(this.a15, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1899,7 +1976,7 @@
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel3);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 18);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(588, 119);
             this.flowLayoutPanel1.TabIndex = 10;
@@ -1913,7 +1990,7 @@
             this.tableLayoutPanel2.Controls.Add(this.a11, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1955,7 +2032,7 @@
             this.tableLayoutPanel1.Controls.Add(this.a12, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 38);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1997,7 +2074,7 @@
             this.tableLayoutPanel3.Controls.Add(this.a13, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 74);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2039,7 +2116,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GradePrint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "成绩单";
@@ -2047,6 +2124,9 @@
             this.Load += new System.EventHandler(this.GradePrint_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.flowLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel26.ResumeLayout(false);
             this.tableLayoutPanel26.PerformLayout();
@@ -2258,5 +2338,11 @@
         private System.Windows.Forms.Label label74;
         private System.Windows.Forms.Label label77;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

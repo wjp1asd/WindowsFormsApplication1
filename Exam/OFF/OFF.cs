@@ -120,6 +120,13 @@ namespace WindowsFormsApplication1.Exam
                     this.button4.Enabled = true;
                     break;
 
+                case -1:
+                    this.button3.Enabled = true;
+                    this.button1.Enabled = true;
+                    this.button2.Enabled = true;
+                    this.button4.Enabled = true;
+                    break;
+
             }
 
             awt = new AutoAdaptWindowsSize(this);
@@ -136,7 +143,7 @@ namespace WindowsFormsApplication1.Exam
         {
 
             datahelp.CurrentStep = 4;
-            this.Close();
+           this.Close();
             record r = new record(datahelp.QId);
             r.Show();
 

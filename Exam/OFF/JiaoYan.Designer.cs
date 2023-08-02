@@ -66,7 +66,7 @@
             this.button2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.Location = new System.Drawing.Point(237, 253);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(170, 56);
             this.button2.TabIndex = 40;
@@ -79,8 +79,8 @@
             this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(237, 169);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(237, 167);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 56);
             this.button1.TabIndex = 39;
@@ -93,8 +93,8 @@
             this.button3.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(237, 79);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Location = new System.Drawing.Point(237, 80);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(170, 56);
             this.button3.TabIndex = 38;
@@ -122,7 +122,7 @@
             this.lbltime.BackColor = System.Drawing.Color.Transparent;
             this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbltime.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbltime.Location = new System.Drawing.Point(593, 39);
+            this.lbltime.Location = new System.Drawing.Point(593, 87);
             this.lbltime.Name = "lbltime";
             this.lbltime.Size = new System.Drawing.Size(116, 33);
             this.lbltime.TabIndex = 42;
@@ -164,7 +164,7 @@
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.richTextBox1.Location = new System.Drawing.Point(0, 540);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(729, 65);
             this.richTextBox1.TabIndex = 44;
@@ -176,7 +176,7 @@
             // 
             this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox2.Location = new System.Drawing.Point(593, 362);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(117, 61);
             this.richTextBox2.TabIndex = 45;
@@ -191,11 +191,11 @@
             this.uiLedLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiLedLabel4.ForeColor = System.Drawing.Color.Lime;
             this.uiLedLabel4.IntervalOn = 3;
-            this.uiLedLabel4.Location = new System.Drawing.Point(594, 242);
-            this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uiLedLabel4.Location = new System.Drawing.Point(538, 290);
+            this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.uiLedLabel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLedLabel4.Name = "uiLedLabel4";
-            this.uiLedLabel4.Size = new System.Drawing.Size(116, 28);
+            this.uiLedLabel4.Size = new System.Drawing.Size(172, 28);
             this.uiLedLabel4.Style = Sunny.UI.UIStyle.Custom;
             this.uiLedLabel4.StyleCustomMode = true;
             this.uiLedLabel4.TabIndex = 99;
@@ -237,7 +237,7 @@
             // 
             this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.richTextBox3.Location = new System.Drawing.Point(0, 442);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(729, 98);
             this.richTextBox3.TabIndex = 102;
@@ -250,7 +250,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(593, 103);
+            this.label4.Location = new System.Drawing.Point(593, 151);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 33);
             this.label4.TabIndex = 103;
@@ -260,7 +260,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(591, 17);
+            this.label5.Location = new System.Drawing.Point(591, 65);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
@@ -271,7 +271,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(591, 80);
+            this.label6.Location = new System.Drawing.Point(591, 128);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
@@ -322,7 +322,7 @@
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiButton1.Location = new System.Drawing.Point(65, 212);
-            this.uiButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uiButton1.Margin = new System.Windows.Forms.Padding(2);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(75, 28);
@@ -336,7 +336,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(592, 147);
+            this.label9.Location = new System.Drawing.Point(592, 195);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 12);
@@ -349,7 +349,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(594, 170);
+            this.label10.Location = new System.Drawing.Point(594, 218);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(116, 33);
             this.label10.TabIndex = 110;
@@ -358,7 +358,7 @@
             // timer3
             // 
             this.timer3.Enabled = true;
-            this.timer3.Interval = 1000;
+            this.timer3.Interval = 200;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // JiaoYan
@@ -387,7 +387,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "JiaoYan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "校验";
