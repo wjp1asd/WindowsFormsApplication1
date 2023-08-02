@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -114,7 +115,17 @@ namespace WindowsFormsApplication1.Exam
         //外加力值推荐值
         double wjltj = 0;
         private void CALCf(object sender, EventArgs e)
+
         {
+            TextBox textBox = (TextBox)sender;
+            string text = textBox.Text;
+
+            if (!Regex.IsMatch(text, "^[0-9]*$"))
+            {
+                textBox.Text = Regex.Replace(text, "[^0-9]", "");
+            }
+
+
             if (textBox1.Text.Trim().Length > 0)
             {
 
@@ -164,10 +175,11 @@ namespace WindowsFormsApplication1.Exam
         private void shot()
         {
             // step = 1;
+            zxpic = 1;
             string loc1 = ConfigurationManager.AppSettings["loc"];
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
 
-
+          //  MessageBox.Show("拍照成功");
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
@@ -176,8 +188,8 @@ namespace WindowsFormsApplication1.Exam
             bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
             string mm = loc1 + url + t.Qrcode + "-shot.png";
             g.updatepath(mm, "zxpic", datahelp.QId);
-            zxpic = 1;
-            //MessageBox.Show("拍照成功");
+           
+           
         }
         // DI 输入的集合
 
@@ -205,7 +217,7 @@ namespace WindowsFormsApplication1.Exam
         // 开启压力 F 红点外加力 S密封 直径 Po系统压力
         private void zaixianjiaoyan2_Load(object sender, EventArgs e)
         {
-
+            
            
 
             awt = new AutoAdaptWindowsSize(this);
@@ -218,7 +230,7 @@ namespace WindowsFormsApplication1.Exam
             Initchart();
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
-           // this.richTextBox2.Hide();
+            this.richTextBox2.Hide();
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
             this.timer1.Start();
@@ -654,7 +666,7 @@ namespace WindowsFormsApplication1.Exam
                 //  dishow("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                if (zxpic!=1)
+                if (zxpic != 1)
                 {
                     g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
                     Thread a = new Thread(shot);
@@ -666,13 +678,13 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - gongju] + "" == "0")
             {
-                dishow("在线工具归位");
+             //   dishow("在线工具归位");
                 //richTextBox2.Text += "工具归位";
                 gj = true;
             }
             else
             {
-                dishow("在线工具离开");
+             //   dishow("在线工具离开");
                 //richTextBox2.Text += "工具离开";
                 gj = false;
             }
@@ -1115,6 +1127,9 @@ namespace WindowsFormsApplication1.Exam
             this.timer1.Stop();
             this.timer2.Stop();
             datahelp.CurrentStep1 = 3;
+           // zaixianjiaoyan o = new zaixianjiaoyan();
+           // o.Show();
+            //this.Close();
             if (last == false)
             {
                 if (fm == true)
@@ -1360,7 +1375,28 @@ namespace WindowsFormsApplication1.Exam
 
         private void label2_Click(object sender, EventArgs e)
         {
+            last = true;
+            if (v != null)
+            {
+                v.Stop(); // 停止视频捕获
+                v.Dispose(); // 释放资源
 
+            }
+            if (serialPort2 != null && serialPort2.IsOpen)
+            {
+                serialPort2.Close();
+                serialPort2.Dispose();
+               ;
+               // ReadAI.Abort();
+            }
+
+            // Process.GetCurrentProcess()?.Kill();
+            this.timer1.Dispose();
+            this.timer2.Dispose();
+            datahelp.CurrentStep1 = 3;
+            zaixianjiaoyan o = new zaixianjiaoyan();
+            o.Show();
+            this.Close();
         }
 
         private void wucha1(string type)
