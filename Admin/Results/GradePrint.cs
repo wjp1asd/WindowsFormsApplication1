@@ -48,8 +48,19 @@ namespace WindowsFormsApplication1.Admin.Results
                 e.Graphics.DrawString("离线拍照：", fntTxt, brush, new System.Drawing.Point(80, 366));
                 e.Graphics.DrawImage(new Bitmap(a1.lxpic), new System.Drawing.Point(80, 396));
 
-                e.Graphics.DrawString("密封截图：", fntTxt, brush, new System.Drawing.Point(80, 836));
-                e.Graphics.DrawImage(new Bitmap(a1.mxpic), new System.Drawing.Point(80, 866));
+                e.Graphics.DrawString("离线拍照：", fntTxt, brush, new System.Drawing.Point(80, 836));
+                e.Graphics.DrawImage(new Bitmap(a1.lxpic1), new System.Drawing.Point(80, 866));
+
+           
+                e.Graphics.DrawString("在线拍照：", fntTxt, brush, new System.Drawing.Point(80, 1306));
+                e.Graphics.DrawImage(new Bitmap(a1.zxpic), new System.Drawing.Point(80, 1336));
+
+                e.Graphics.DrawString("在线拍照：", fntTxt, brush, new System.Drawing.Point(80, 1776));
+                e.Graphics.DrawImage(new Bitmap(a1.zxpic1), new System.Drawing.Point(80, 1806));
+
+                e.Graphics.DrawString("研磨方法：", fntTxt, brush, new System.Drawing.Point(80, 2246));
+                e.Graphics.DrawImage(new Bitmap(a1.mxpic), new System.Drawing.Point(80, 2276));
+
             }
             catch (Exception ee)
             {
@@ -104,8 +115,12 @@ namespace WindowsFormsApplication1.Admin.Results
             a24.Text = a1.ymgcorrect.Replace("1", "√").Replace("0", "×");
             a25.Text = a1.score6.ToString().Replace("-1", "未考试");
             this.pictureBox1.ImageLocation = a1.lxpic;
-            this.pictureBox2.ImageLocation = a1.mxpic;
-          
+            this.pictureBox2.ImageLocation = a1.lxpic1;
+            this.pictureBox3.ImageLocation = a1.zxpic;
+            this.pictureBox4.ImageLocation = a1.zxpic1;
+            this.pictureBox5.ImageLocation = a1.mxpic;
+           
+
             // 离线前
             label33.Text = a1.xygb.ToString().Replace("-1", "未考试");
             label9.Text = a1.csfm.ToString().Replace("-1", "未考试");

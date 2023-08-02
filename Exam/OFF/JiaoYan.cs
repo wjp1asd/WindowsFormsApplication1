@@ -150,7 +150,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 famaostate = true;
                 dishow("阀帽存在");
-                if (step==0&&chuchi==1)
+                if (chuchi==1)
                 {
                     ff.ShowInfoTip("初安装阀帽");
                    //chaixiefamao();
@@ -1545,8 +1545,8 @@ namespace WindowsFormsApplication1.Exam
             if (ta2 > 0)
             {
                 ta2--;
-                int min = ta / (60 * 5);
-                int sec = ta % (60 * 5);
+                int min = ta2 / 60 ;
+                int sec = ta2 % 60 ;
                 this.label10.Text = string.Format("{0:00}:{1:00}", min, sec);
             }
             else

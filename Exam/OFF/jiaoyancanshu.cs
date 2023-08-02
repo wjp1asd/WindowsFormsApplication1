@@ -125,7 +125,7 @@ namespace WindowsFormsApplication1.Exam
             con.Close();
             this.label3.Text = "考生：" + t.Ksname;
             this.label4.Text = "身份证：" + t.KsId;
-            this.label1.Text = t.Lxyl
+            this.label1.Text = t.Lxyl.Trim()+"Mpa";
                 ;
             //  yali = int.Parse(t.Lxyl);
             this.label5.Text = "使用设备类型：" + t.Lxlx;

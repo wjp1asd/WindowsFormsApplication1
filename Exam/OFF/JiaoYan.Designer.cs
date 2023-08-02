@@ -169,6 +169,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(729, 65);
             this.richTextBox1.TabIndex = 44;
             this.richTextBox1.Text = "";
+            this.richTextBox1.Visible = false;
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // richTextBox2
@@ -240,6 +241,7 @@
             this.richTextBox3.Size = new System.Drawing.Size(729, 98);
             this.richTextBox3.TabIndex = 102;
             this.richTextBox3.Text = "";
+            this.richTextBox3.Visible = false;
             // 
             // label4
             // 
@@ -355,7 +357,7 @@
             // timer3
             // 
             this.timer3.Enabled = true;
-            this.timer3.Interval = 1000;
+            this.timer3.Interval = 200;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // JiaoYan

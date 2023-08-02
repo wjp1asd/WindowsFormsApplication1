@@ -249,6 +249,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label79);
+            this.groupBox1.Controls.Add(this.pictureBox5);
             this.groupBox1.Controls.Add(this.label75);
             this.groupBox1.Controls.Add(this.label78);
             this.groupBox1.Controls.Add(this.pictureBox3);
@@ -720,11 +722,11 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label57.Font = new System.Drawing.Font("宋体", 12F);
             this.label57.Location = new System.Drawing.Point(354, 9);
             this.label57.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(104, 26);
+            this.label57.Size = new System.Drawing.Size(103, 16);
             this.label57.TabIndex = 2;
             this.label57.Text = "密封试验压力";
             this.label57.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1059,8 +1061,6 @@
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel19.Controls.Add(this.label79, 4, 0);
-            this.tableLayoutPanel19.Controls.Add(this.pictureBox5, 0, 1);
             this.tableLayoutPanel19.Controls.Add(this.label21, 0, 0);
             this.tableLayoutPanel19.Controls.Add(this.label23, 0, 0);
             this.tableLayoutPanel19.Controls.Add(this.label25, 1, 0);
@@ -1068,7 +1068,7 @@
             this.tableLayoutPanel19.Location = new System.Drawing.Point(2, 38);
             this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 2;
+            this.tableLayoutPanel19.RowCount = 1;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel19.Size = new System.Drawing.Size(580, 32);
@@ -2089,19 +2089,19 @@
             // label79
             // 
             this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(463, 1);
+            this.label79.Location = new System.Drawing.Point(668, 1114);
             this.label79.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label79.Name = "label79";
             this.label79.Size = new System.Drawing.Size(53, 12);
             this.label79.TabIndex = 34;
-            this.label79.Text = "在线拍照";
+            this.label79.Text = "研磨方法";
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(3, 38);
+            this.pictureBox5.Location = new System.Drawing.Point(667, 1142);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(110, 16);
+            this.pictureBox5.Size = new System.Drawing.Size(254, 231);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 33;
             this.pictureBox5.TabStop = false;
