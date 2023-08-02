@@ -104,7 +104,7 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - qiehuanfa1] + "" == "0")
             {
-                dishow("1.6Mpa量程选择");
+                // dishow("1.6Mpa量程选择");
                 liangcheng = 1;
                 qiehuastate = true;
                 // 压力表选择得分
@@ -112,7 +112,7 @@ namespace WindowsFormsApplication1.Exam
             }
             else
             {
-                dishow("1.6Mpa量程关闭");
+                // dishow("1.6Mpa量程关闭");
                 qiehuastate = false;
                 // richTextBox1.Text += "切换阀关闭";
             }
@@ -120,13 +120,13 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - qiehuanfa2] + "" == "0")
             {
-                dishow("4Mpa量程选择");
+                //   dishow("4Mpa量程选择");
                 liangcheng = 2;
                 qiehuastate = true;
             }
             else
             {
-                dishow("4Mpa量程关闭");
+                //  dishow("4Mpa量程关闭");
                 qiehuastate = false;
                 // richTextBox1.Text += "切换阀关闭";
             }
@@ -134,13 +134,13 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - qiehuanfa3] + "" == "0")
             {
-                dishow("25Mpa量程选择");
+                //  dishow("25Mpa量程选择");
                 liangcheng = 3;
                 qiehuastate = true;
             }
             else
             {
-                dishow("25Mpa量程关闭");
+                //  dishow("25Mpa量程关闭");
                 qiehuastate = false;
                 // richTextBox1.Text += "切换阀关闭";
             }
@@ -149,33 +149,34 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - famao] + "" == "0")
             {
                 famaostate = true;
-                dishow("阀帽存在");
+                //  dishow("阀帽存在");
                 if (chuchi==1)
                 {
-                    ff.ShowInfoTip("初安装阀帽");
-                   //chaixiefamao();
+                    //   ff.ShowInfoTip("初安装阀帽");
+                    //chaixiefamao();
                     g.updateGrade(azfm, "azfm", datahelp.QId);
                 }
             }
             else
             {
-                dishow("阀帽拆卸");
+                //   dishow("阀帽拆卸");
                 famaostate = false;
                 chuchi=1;
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
-                if (step==0) {
-                    ff.ShowInfoTip("初次拆阀帽");
+                if (step==0)
+                {
+                    //     ff.ShowInfoTip("初次拆阀帽");
                     chaixiefamao();
                     g.updateGrade(cxfm, "csfm", datahelp.QId);
                 }
-              
+
             }
 
 
             if (DIS[7 - gongju] + "" == "0")
             {
-                dishow("工具归位");
+                //   dishow("工具归位");
                 gongjustate = true;
 
                 // richTextBox1.Text += "工具归位";
@@ -184,21 +185,21 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 gongjustate = false;
-                dishow("工具离开");
+                //   dishow("工具离开");
                 // richTextBox1.Text += "工具离开";
             }
 
 
             if (DIS[7 - xieya] + "" == "0")
             {
-                dishow("卸压阀打开");
+                // dishow("卸压阀打开");
                 xieyastate = true;
                 if (a < 118000)
                 {
 
                     byte[] d3 = new byte[] {
                 0xFF,0x01,0x00,
-                0x0a,0x00,0xFF,
+                0x05,0x00,0xFF,
                 0x02, 0x00, 0xC4,
                 0x09};
                     try
@@ -219,17 +220,17 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 xieyastate = false;
-                dishow("卸压阀关闭");
+                //  dishow("卸压阀关闭");
                 //   richTextBox2.Text += "卸压阀关闭";
                 if (liangcheng > 0)
                 {
                     guanbixieyafa();
-                    
+
 
                 }
                 else
                 {
-                    dishow("未选择量程，算分异常");
+                    //    dishow("未选择量程，算分异常");
                 }
 
             }
@@ -305,7 +306,7 @@ namespace WindowsFormsApplication1.Exam
             //量程表归0
             if (Math.Abs(current) < 118000)
             {
-                ff.ShowInfoTip("初次测试" + "校验阀打开");
+                //  ff.ShowInfoTip("初次测试" + "校验阀打开");
                 // 
 
 
@@ -316,7 +317,7 @@ namespace WindowsFormsApplication1.Exam
             else
             {
 
-                ff.ShowInfoTip("初次测试" + "校验阀关闭");
+                //  ff.ShowInfoTip("初次测试" + "校验阀关闭");
             }
             // this.label1.Text = "泄压阀关闭，请打开校验阀";
         }
@@ -402,7 +403,7 @@ namespace WindowsFormsApplication1.Exam
             bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
             string mm = loc1 + url +t.Qrcode + "-shot.png";
             g.updatepath(mm, "lxpic", datahelp.QId);
-            MessageBox.Show("拍照成功");
+            //MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 
@@ -421,7 +422,7 @@ namespace WindowsFormsApplication1.Exam
             bt.Save(loc1 + url + t.Qrcode + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
             string mm = loc1 + url + t.Ksname + "-azshot.png";
             g.updatepath(mm, "lxpic1", datahelp.QId);
-            MessageBox.Show("拍照成功");
+            //MessageBox.Show("拍照成功");
         }
 
         private void showMsg()
@@ -472,7 +473,7 @@ namespace WindowsFormsApplication1.Exam
 
             topheader.CopyTo(td1, 0);
             content.CopyTo(td1, topheader.Length);
-           // this.ControlBox=false;
+            // this.ControlBox=false;
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
             //获得算分标准
@@ -740,7 +741,7 @@ namespace WindowsFormsApplication1.Exam
 
                 throw;
             }
-           
+
             // Thread.Sleep(1000);
         }
 
@@ -1050,7 +1051,7 @@ namespace WindowsFormsApplication1.Exam
                     {
                         // 整定压力 大于 初次压力
                         g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
-                        ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
+                        //  ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
 
                     }
                 }
@@ -1061,7 +1062,7 @@ namespace WindowsFormsApplication1.Exam
                     {
                         // 整定压力 小于于 初次压力
                         g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
-                        ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
+                        //  ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
 
                     }
                 }
@@ -1135,20 +1136,24 @@ namespace WindowsFormsApplication1.Exam
 
 
                 // 开启一个1分值计时
-            //    MessageBox.Show(a+""+xieyastate+liangcheng);
-                if (xieyastate==false&&liangcheng>0) {
-                    SendServo1(a, 0);
+                //    MessageBox.Show(a+""+xieyastate+liangcheng);
+                if (xieyastate==false&&liangcheng>0)
+                {
 
-                   
+                    int k = Math.Abs(a - b) / interval;
+                    //   MessageBox.Show("变化速度：" + );
+                    SendServo1(a, 0, k);
+
+
 
                     if (step==0)
                     {
-                        ff.ShowInfoTip("初次，泄压关闭，切换打开得分");
+                        //    ff.ShowInfoTip("初次，泄压关闭，切换打开得分");
                         g.updateGrade(xygb, "xygb", datahelp.QId);
                         g.updateGrade(ylxz, "ylxz", datahelp.QId);
 
 
-                        if ( ta > 0)
+                        if (ta > 0)
                         {
                             // 方向判分
                             if (famaostate == false)
@@ -1161,7 +1166,7 @@ namespace WindowsFormsApplication1.Exam
                         {
                             correct3 = true;
                             g.updateGrade(zdyltz, "zdyltz", datahelp.QId);
-                            ff.ShowSuccessTip("初次：整定调整 得分");
+                            //    ff.ShowSuccessTip("初次：整定调整 得分");
 
                         }
 
@@ -1174,17 +1179,17 @@ namespace WindowsFormsApplication1.Exam
                         if (qiehuastate == true)
                         {
 
-                      
+
 
                             g.updateGrade(bycs, "bycs", datahelp.QId);
-                            ff.ShowSuccessTip("密封测试：保压 得分");
+                            //  ff.ShowSuccessTip("密封测试：保压 得分");
 
                         }
                     }
                 }
                 // 初次算分
 
-             
+
 
 
 
@@ -1193,26 +1198,40 @@ namespace WindowsFormsApplication1.Exam
             {
 
 
-               
 
-               
-              
+
+
+
 
             }
         }
         int czmaz;
 
 
-        private void SendServo1(int a, int pos)
+        private void SendServo1(int a, int pos, int speed)
         {
-          
-            ff.ShowInfoTip("舵机"+maz);
+            byte nn = 0x05;
+            // ff.ShowInfoTip("舵机"+maz);
+            if (speed<=3)
+            {
 
+                nn = 0x03;
+            }
+
+            if (speed<=5&&speed>3)
+            {
+                nn = 0x05;
+            }
+            if (speed<=10 &&speed>5)
+            {
+                nn = 0x08;
+
+            }
             //舵机驱动
 
             byte[] d3 = new byte[] {
                 0xFF,0x01,0x00,
-                0x0a,0x00,0xFF,
+                nn,0x00,0xFF,
                 0x02, 0x00, 0xC4,
                 0x09};
             //高八度低八度取值
@@ -1420,7 +1439,7 @@ namespace WindowsFormsApplication1.Exam
             // 开启1分钟判分倒计时  保压测试显示3分钟 实际30秒走完
 
             ta = 60;
-            
+
 
 
         }
@@ -1440,17 +1459,17 @@ namespace WindowsFormsApplication1.Exam
 
                     Thread a = new Thread(shot1);
                     a.Start();
-                 
+
                 }
                 else
                 {
-                    ff.ShowErrorTip("阀帽未归位不得分");
+                    //  ff.ShowErrorTip("阀帽未归位不得分");
 
                 }
                 if (xieyastate == true)
                 {
                     g.updateGrade(dkxyf, "dkxyf", datahelp.QId);
-                    ff.ShowSuccessTip("泄压阀打开得分");
+                    //   ff.ShowSuccessTip("泄压阀打开得分");
                 }
                 else
                 {
@@ -1460,18 +1479,18 @@ namespace WindowsFormsApplication1.Exam
                 if (xieyastate == true)
                 {
                     g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
-                    ff.ShowSuccessTip("关闭压力表选择得分");
+                    //  ff.ShowSuccessTip("关闭压力表选择得分");
                 }
                 else
                 {
-                    ff.ShowErrorTip("打开压力表不得分");
+                    //   ff.ShowErrorTip("打开压力表不得分");
 
                 }
 
 
             }
 
-           // MessageBox.Show(DIS);
+            // MessageBox.Show(DIS);
             if (DIS == "11111001" || DIS == "01111001"||DIS=="11111000")
             {
 
@@ -1536,7 +1555,7 @@ namespace WindowsFormsApplication1.Exam
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
-            MessageBox.Show("本地拍照成功");
+            // MessageBox.Show("本地拍照成功");
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -1545,8 +1564,8 @@ namespace WindowsFormsApplication1.Exam
             if (ta2 > 0)
             {
                 ta2--;
-                int min = ta2 / 60 ;
-                int sec = ta2 % 60 ;
+                int min = ta2 / 60;
+                int sec = ta2 % 60;
                 this.label10.Text = string.Format("{0:00}:{1:00}", min, sec);
             }
             else
