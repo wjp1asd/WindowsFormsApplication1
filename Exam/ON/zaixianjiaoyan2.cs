@@ -562,23 +562,23 @@ namespace WindowsFormsApplication1.Exam
             }
             if (DIS[7 - lianjiegan] + "" == "0")
             {
-                dishow("连接杆归位");
+             //   dishow("连接杆归位");
                 ljg = true;
             }
             else
             {
-                dishow("连接杆离开");
+             //   dishow("连接杆离开");
                 ljg = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - siheyi] + "" == "0")
             {
-                dishow("四合一归位");
+              //  dishow("四合一归位");
                 shy = true;
             }
             else
             {
-                dishow("四合一离开");
+              //  dishow("四合一离开");
                 shy = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -602,13 +602,13 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - famao] + "" == "0")
             {
                 //richTextBox2.Text += "阀帽存在";
-                dishow("在线阀帽存在");
+              //  dishow("在线阀帽存在");
                 fm = true;
             }
             else
             {
                 fm = false;
-                dishow("在线阀帽拆卸");
+              //  dishow("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
                 //   chaixiefamao();
@@ -1107,7 +1107,7 @@ namespace WindowsFormsApplication1.Exam
             // g.updateGrade(0, "jyjg1", datahelp.QId);
             // g.updateGrade(0, "azfm1", datahelp.QId);
 
-
+            last = true;
 //DIS == "01110000"||
             if ( DIS == "01100011")
             {
@@ -1298,6 +1298,11 @@ namespace WindowsFormsApplication1.Exam
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
             MessageBox.Show("本地拍照成功");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void wucha1(string type)
