@@ -327,10 +327,11 @@ namespace WindowsFormsApplication1.Exam
         {
             // 10秒后拍照
             ff.ShowInfoTip("量程归0判断30秒");
-            if (current > 118000)
+            if (current > 118000&& lxpic!=1)
             {
                 Thread.Sleep(500);
-                shot();
+                Thread x = new Thread(shot);
+                x.Start();
             }
 
         }
@@ -404,6 +405,7 @@ namespace WindowsFormsApplication1.Exam
             bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
             string mm = loc1 + url +t.Qrcode + "-shot.png";
             g.updatepath(mm, "lxpic", datahelp.QId);
+            lxpic = 1;
             //MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
@@ -1682,6 +1684,7 @@ namespace WindowsFormsApplication1.Exam
         int ta = 60;
         int ta2 = 180;
         private int chuchi;
+        private int lxpic;
 
         private void timer2_Tick(object sender, EventArgs e)
         {
