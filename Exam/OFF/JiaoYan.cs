@@ -89,6 +89,7 @@ namespace WindowsFormsApplication1.Exam
             this.label7.Text = "压力选择得分：" + ylxz + "拆卸阀帽得分：" + cxfm + "整定压力调整得分：" + zdyltz + "锁紧螺母得分：" + sjlmsj
 
               + "安装阀帽得分：" + azfm + "打开泄压阀得分：" + dkxyf + "关闭压力表切换" + gbylbqh + "保压测试得分" + bycs;
+           // MessageBox.Show(this.label7.Text);
             g.updateGrade(0, "ylxz", datahelp.QId);
             g.updateGrade(0, "csfm", datahelp.QId);
             g.updateGrade(0, "zdyltz", datahelp.QId);
@@ -326,12 +327,12 @@ namespace WindowsFormsApplication1.Exam
         private void chaixiefamao()
         {
             // 10秒后拍照
-            ff.ShowInfoTip("量程归0判断30秒");
+           //ff.ShowInfoTip("量程归0判断30秒");
             if (current > 118000&& lxpic!=1)
             {
-                Thread.Sleep(500);
-                Thread x = new Thread(shot);
-                x.Start();
+
+                shot();
+               
             }
 
         }
@@ -406,7 +407,7 @@ namespace WindowsFormsApplication1.Exam
             string mm = loc1 + url +t.Qrcode + "-shot.png";
             g.updatepath(mm, "lxpic", datahelp.QId);
             lxpic = 1;
-            //MessageBox.Show("拍照成功");
+            MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 
@@ -419,11 +420,11 @@ namespace WindowsFormsApplication1.Exam
 
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc + url + t.Qrcode + "-azshot.png", mat);
-            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-azshot.png");
+            CvInvoke.Imwrite(loc + url + t.Ksname.Trim() + "离线-azshot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Ksname.Trim() + "离线-azshot.png");
 
-            bt.Save(loc1 + url + t.Qrcode + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
-            string mm = loc1 + url +t.Qrcode + "-azshot.png";
+            bt.Save(loc1 + url + t.Ksname.Trim() + "离线-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Ksname.Trim() + "离线-azshot.png";
            // g.updatepath(mm, "lxpic", datahelp.QId);
             g.updatepath(mm, "lxpic1", datahelp.QId);
             //MessageBox.Show("拍照成功");
@@ -531,7 +532,7 @@ namespace WindowsFormsApplication1.Exam
         private void ReadAI()
         {
             //ff.ShowInfoTip(BitConverter.ToString(td1));
-            while (true&&serialPort2.IsOpen)
+            while (true&&serialPort2.IsOpen&&last==false)
             {
                 try
                 {
@@ -1205,15 +1206,14 @@ namespace WindowsFormsApplication1.Exam
                     {
 
                         correct4 = true;
-                        if (qiehuastate == true)
-                        {
+                       
 
 
 
                             g.updateGrade(bycs, "bycs", datahelp.QId);
-                            //  ff.ShowSuccessTip("密封测试：保压 得分");
+                              ff.ShowSuccessTip("密封测试：保压 得分");
 
-                        }
+                        
                     }
                 }
                 // 初次算分
@@ -1478,25 +1478,7 @@ namespace WindowsFormsApplication1.Exam
 
         {
 
-            if (v != null)
-            {
-                v.Stop(); // 停止视频捕获
-                v.Dispose(); // 释放资源
-
-            }
-            if (serialPort2 != null && serialPort2.IsOpen)
-            {
-                serialPort2.Close();
-                serialPort2.Dispose();
-                serialPort1.Close();
-                serialPort1.Dispose();
-                readDI.Abort();
-            }
-
-            // Process.GetCurrentProcess()?.Kill();
-            this.timer1.Dispose();
-            this.timer2.Dispose();
-            //   Process.GetCurrentProcess()?.Kill();
+           
             datahelp.CurrentStep1 = 3;
             if (last == false)
             {
@@ -1505,7 +1487,7 @@ namespace WindowsFormsApplication1.Exam
 
                     Thread a = new Thread(shot1);
                     a.Start();
-
+                    //shot1();
                 }
                 else
                 {
@@ -1519,7 +1501,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 else
                 {
-                    ff.ShowErrorTip("泄压阀未打开不得分");
+                   // ff.ShowErrorTip("泄压阀未打开不得分");
 
                 }
                 if (xieyastate == true)
@@ -1537,13 +1519,13 @@ namespace WindowsFormsApplication1.Exam
             }
             last = true;
             // MessageBox.Show(DIS);
-            if (DIS == "11111001" || DIS == "01111001"||DIS=="11111000")
+            if (DIS == "11111001" || DIS == "01111001"||DIS=="11111000"||DIS=="01111000")
             {
 
-
+                this.Close();
                 OFF of = new OFF(datahelp.QId);
                 of.Show();
-                this.Close();
+               
 
             }
             else
@@ -1570,7 +1552,27 @@ namespace WindowsFormsApplication1.Exam
                 MessageBox.Show("请完成复位再退出");
 
             }
-            
+
+            Thread c = new Thread(csd);
+         c.Start();
+        }
+
+        private void csd()
+        {
+            if (v != null)
+            {
+                v.Stop(); // 停止视频捕获
+                v.Dispose(); // 释放资源
+
+            }
+            if (serialPort2 != null && serialPort2.IsOpen)
+            {
+                serialPort2.Close();
+                serialPort2.Dispose();
+                serialPort1.Close();
+                serialPort1.Dispose();
+                readDI.Abort();
+            }
         }
 
         private void JiaoYan_FormClosing(object sender, FormClosingEventArgs e)

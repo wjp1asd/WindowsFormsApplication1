@@ -128,8 +128,8 @@ namespace WindowsFormsApplication1.Admin.Results
             label35.Text = a1.zdyltz.ToString().Replace("-1", "未考试");
 
             // 离线中
-            label21.Text = a1.sjlmsj.ToString().Replace("-1", "未考试");
-            label23.Text = a1.azfm.ToString().Replace("-1", "未考试");
+            label23.Text = a1.sjlmsj.ToString().Replace("-1", "未考试");
+            label21.Text = a1.azfm.ToString().Replace("-1", "未考试");
             label25.Text = a1.bycs.ToString().Replace("-1", "未考试");
 
             // 离线后
