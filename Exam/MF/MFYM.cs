@@ -1,8 +1,11 @@
 ﻿using AutoWindowsSize;
+using Emgu.CV;
 using System;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
+using System.Security.Policy;
+using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
@@ -49,7 +52,7 @@ namespace WindowsFormsApplication1
             }
         }
         Grade g1 = new Grade();
-
+        DateTime currentTime = DateTime.Now;
         Graphics back;
         TestRecord t = new TestRecord();
         Score sc = new Score();
@@ -65,6 +68,8 @@ namespace WindowsFormsApplication1
             t = t.getRecord(datahelp.QId);
             this.label3.Text = "考生：" + t.Ksname;
             this.label4.Text = "身份证：" + t.KsId;
+            string timestamp = currentTime.ToString("yyyyMMddHHmmss");
+            url = "\\研磨照片\\" + timestamp;
             // back.new Rectangle(this.uiLine1.Location.X, this.uiLine1.Location.Y, 500, 500);
         }
         private void InitScore()
@@ -152,39 +157,41 @@ namespace WindowsFormsApplication1
         {
 
         }
+        Grade g=new Grade();
+        private void shot1()
+        {
+            // step = 1;
+            string loc1 = ConfigurationManager.AppSettings["loc"];
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+            Bitmap bt = new Bitmap(this.Width, this.Height);
+            Graphics gg = Graphics.FromImage(bt);
+            gg.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
+            bt.MakeTransparent();
+
+
+            bt.Save(loc1 + url + t.Ksname.Trim() + "离线-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Ksname.Trim() + "离线-azshot.png";
+             g.updatepath(mm, "mfpic", datahelp.QId);
+           
+        }
+            //MessageBox.Show(
         private Fuc ff = new Fuc();
+        private string url;
+
         private void button3_Click(object sender, EventArgs e)
         {
-            // 生成图片
-            Bitmap bt = new Bitmap(this.Width, this.Height);
-            Graphics g = Graphics.FromImage(bt);
-            g.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
-            bt.MakeTransparent();
-            //本地保存
-            string loc = ConfigurationManager.AppSettings["loc"];
-            string connectionString = Application.StartupPath + "\\Images\\研磨照片\\" + t.Qrcode + t.Ksname + ".bmp";
-            //   string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
-            string connectionString1 = loc + "\\研磨照片\\" + t.Qrcode + t.Ksname + ".bmp";
-            bt.Save(connectionString, System.Drawing.Imaging.ImageFormat.Bmp);
-
-            //try
-            //{
-            //    bt.Save(connectionString1, System.Drawing.Imaging.ImageFormat.Bmp);
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
-            if (File.Exists(connectionString))
+        
+            try
             {
-                g1.updatepath(connectionString1, "mfpic", datahelp.QId);
-                // g1.updateGrade()
-                ff.ShowSuccessTip("得分" + score);
-                // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
-                // ff.ShowInfoTip("截图成功！");
-
+                Thread x = new Thread(shot1);
+                x.Start();
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
             datahelp.CurrentStep = 5;
             this.Close();
             MF1 mF = new MF1();

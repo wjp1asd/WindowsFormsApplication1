@@ -119,8 +119,8 @@ namespace WindowsFormsApplication1.Admin.Results
             this.pictureBox3.ImageLocation = a1.zxpic;
             this.pictureBox4.ImageLocation = a1.zxpic1;
             this.pictureBox5.ImageLocation = a1.mxpic;
-           
-
+            MessageBox.Show(a1.zxpic1);
+            MessageBox.Show(a1.mxpic);
             // 离线前
             label33.Text = a1.xygb.ToString().Replace("-1", "未考试");
             label9.Text = a1.csfm.ToString().Replace("-1", "未考试");
