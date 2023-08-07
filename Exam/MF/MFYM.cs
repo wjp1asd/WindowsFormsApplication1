@@ -135,7 +135,7 @@ namespace WindowsFormsApplication1
 
             Graphics graphics = this.CreateGraphics();
             Rectangle gle = new Rectangle(this.uiLine1.Location.X, this.uiLine1.Location.Y, 500, 500);
-
+            //（）
             graphics.DrawRectangle(pen, gle);
         }
 
