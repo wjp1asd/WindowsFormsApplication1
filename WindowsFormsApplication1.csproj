@@ -24,7 +24,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <PublishUrl>C:\Users\U59021\OneDrive - Bühler\Desktop\AI\</PublishUrl>
-    <Install>true</Install>
+    <Install>false</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
