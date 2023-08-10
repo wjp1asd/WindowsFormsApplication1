@@ -62,7 +62,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Location = new System.Drawing.Point(116, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(603, 64);
+            this.label2.Size = new System.Drawing.Size(754, 80);
             this.label2.TabIndex = 2;
             this.label2.Text = "智能化安全阀校验考试系统";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -70,6 +70,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.setting;
             this.pictureBox1.Location = new System.Drawing.Point(906, 24);
@@ -222,7 +223,7 @@
             this.lblUsername.Location = new System.Drawing.Point(29, 139);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(63, 22);
+            this.lblUsername.Size = new System.Drawing.Size(78, 27);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "用户名:";
             // 
@@ -234,7 +235,7 @@
             this.lblPassword.Location = new System.Drawing.Point(29, 184);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(62, 22);
+            this.lblPassword.Size = new System.Drawing.Size(76, 27);
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "密   码:";
             // 
@@ -346,6 +347,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(982, 595);
             this.ControlBox = false;
             this.Controls.Add(this.button12);

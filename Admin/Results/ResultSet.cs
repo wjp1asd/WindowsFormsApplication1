@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Admin.Results;
+using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
@@ -97,16 +98,22 @@ namespace WindowsFormsApplication1
                 if (column is DataGridViewButtonColumn)
                 {
                     //这里可以编写你需要的任意关于按钮事件的操作~
-                    string id = dataGridView1.Rows[a].Cells[6].Value.ToString();//获取焦点触发行的第一个值
+                    string id = dataGridView1.Rows[a].Cells[7].Value.ToString();//获取焦点触发行的第一个值
                     string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
-                    ff.ShowInfoTip("按钮被点击" + id);
+                                                                                            // ff.ShowInfoTip("按钮被点击" + id+ dataGridView1.Rows[a].Cells[1].Value.ToString()+ dataGridView1.Rows[a].Cells[7].Value.ToString());
 
                     if (strcolumn == "选取")
                     {
 
                         return;
                     }
+                    if (strcolumn == "dick")
+                    {
 
+
+                        Print pp = new Print(id);
+                        pp.Show();
+                    }
 
                     if (strcolumn == "cz")
                     {

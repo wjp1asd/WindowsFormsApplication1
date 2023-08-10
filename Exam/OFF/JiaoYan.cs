@@ -532,20 +532,21 @@ namespace WindowsFormsApplication1.Exam
         private void ReadAI()
         {
             //ff.ShowInfoTip(BitConverter.ToString(td1));
-            while (true&&serialPort2.IsOpen&&last==false)
-            {
-                try
+            
+            while (true && serialPort2.IsOpen && last == false)
                 {
-                    serialPort2.Write(td1, 0, td1.Length);
-                    Thread.Sleep(500);
-                }
-                catch (Exception)
-                {
+                    try
+                    {
+                        serialPort2.Write(td1, 0, td1.Length);
+                        Thread.Sleep(500);
+                    }
+                    catch (Exception)
+                    {
 
-                    throw;
-                }
+                        throw;
+                    }
 
-            }
+                }
 
         }
         private void button3_Click(object sender, EventArgs e)
@@ -1521,7 +1522,7 @@ namespace WindowsFormsApplication1.Exam
             // MessageBox.Show(DIS);
             if (DIS == "11111001" || DIS == "01111001"||DIS=="11111000"||DIS=="01111000")
             {
-
+              
                 this.Close();
                 OFF of = new OFF(datahelp.QId);
                 of.Show();
@@ -1548,12 +1549,12 @@ namespace WindowsFormsApplication1.Exam
                 {
                     str += "泄压阀关闭，";
                 }
-                //ff.ShowErrorDialog(str);
+                ff.ShowErrorDialog(str);
                 MessageBox.Show("请完成复位再退出");
 
             }
 
-            Thread c = new Thread(csd);
+         Thread c = new Thread(csd);
          c.Start();
         }
 
@@ -1567,11 +1568,19 @@ namespace WindowsFormsApplication1.Exam
             }
             if (serialPort2 != null && serialPort2.IsOpen)
             {
-                serialPort2.Close();
-                serialPort2.Dispose();
-                serialPort1.Close();
-                serialPort1.Dispose();
-                readDI.Abort();
+                try
+                {
+                    serialPort1.Close();
+                    serialPort2.Close();
+                }
+                finally
+                {
+                  
+                    serialPort2.Dispose();
+                    serialPort1.Dispose();
+                    readDI.Abort();
+                }
+               
             }
         }
 

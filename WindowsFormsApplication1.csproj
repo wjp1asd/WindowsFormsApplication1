@@ -713,6 +713,8 @@
   <ItemGroup>
     <None Include="Resources\setting.png" />
     <None Include="Resources\zx.png" />
+    <Content Include="Resources\logo.jpg" />
+    <Content Include="Resources\提示音2.mp3" />
     <Content Include="termb.dll" />
     <Content Include="联机考试系统.ico" />
   </ItemGroup>
