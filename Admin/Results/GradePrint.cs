@@ -48,8 +48,19 @@ namespace WindowsFormsApplication1.Admin.Results
                 e.Graphics.DrawString("离线拍照：", fntTxt, brush, new System.Drawing.Point(80, 366));
                 e.Graphics.DrawImage(new Bitmap(a1.lxpic), new System.Drawing.Point(80, 396));
 
-                e.Graphics.DrawString("密封截图：", fntTxt, brush, new System.Drawing.Point(80, 836));
-                e.Graphics.DrawImage(new Bitmap(a1.mxpic), new System.Drawing.Point(80, 866));
+                e.Graphics.DrawString("离线拍照：", fntTxt, brush, new System.Drawing.Point(80, 836));
+                e.Graphics.DrawImage(new Bitmap(a1.lxpic1), new System.Drawing.Point(80, 866));
+
+           
+                e.Graphics.DrawString("在线拍照：", fntTxt, brush, new System.Drawing.Point(80, 1306));
+                e.Graphics.DrawImage(new Bitmap(a1.zxpic), new System.Drawing.Point(80, 1336));
+
+                e.Graphics.DrawString("在线拍照：", fntTxt, brush, new System.Drawing.Point(80, 1776));
+                e.Graphics.DrawImage(new Bitmap(a1.zxpic1), new System.Drawing.Point(80, 1806));
+
+                e.Graphics.DrawString("研磨方法：", fntTxt, brush, new System.Drawing.Point(80, 2246));
+                e.Graphics.DrawImage(new Bitmap(a1.mxpic), new System.Drawing.Point(80, 2276));
+
             }
             catch (Exception ee)
             {
@@ -104,8 +115,12 @@ namespace WindowsFormsApplication1.Admin.Results
             a24.Text = a1.ymgcorrect.Replace("1", "√").Replace("0", "×");
             a25.Text = a1.score6.ToString().Replace("-1", "未考试");
             this.pictureBox1.ImageLocation = a1.lxpic;
-            this.pictureBox2.ImageLocation = a1.mxpic;
-          
+            this.pictureBox2.ImageLocation = a1.lxpic1;
+            this.pictureBox3.ImageLocation = a1.zxpic;
+            this.pictureBox4.ImageLocation = a1.zxpic1;
+            this.pictureBox5.ImageLocation = a1.mxpic;
+            MessageBox.Show(a1.zxpic1);
+            MessageBox.Show(a1.mxpic);
             // 离线前
             label33.Text = a1.xygb.ToString().Replace("-1", "未考试");
             label9.Text = a1.csfm.ToString().Replace("-1", "未考试");
@@ -113,8 +128,8 @@ namespace WindowsFormsApplication1.Admin.Results
             label35.Text = a1.zdyltz.ToString().Replace("-1", "未考试");
 
             // 离线中
-            label21.Text = a1.sjlmsj.ToString().Replace("-1", "未考试");
-            label23.Text = a1.azfm.ToString().Replace("-1", "未考试");
+            label23.Text = a1.sjlmsj.ToString().Replace("-1", "未考试");
+            label21.Text = a1.azfm.ToString().Replace("-1", "未考试");
             label25.Text = a1.bycs.ToString().Replace("-1", "未考试");
 
             // 离线后
@@ -158,5 +173,49 @@ namespace WindowsFormsApplication1.Admin.Results
         {
 
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            reset("score1");
+        }
+
+        private void reset(string name)
+        {
+            a1.updateGrade(-1,name,datahelp.QId);
+            MessageBox.Show("当前考试重置成功");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            reset("score2");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            reset("score3");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            reset("score4");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            reset("score5");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            reset("score6");
+        }
     }
+
+   
 }

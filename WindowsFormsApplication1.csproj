@@ -24,7 +24,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <PublishUrl>C:\Users\U59021\OneDrive - Bühler\Desktop\AI\</PublishUrl>
-    <Install>true</Install>
+    <Install>false</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -713,6 +713,8 @@
   <ItemGroup>
     <None Include="Resources\setting.png" />
     <None Include="Resources\zx.png" />
+    <Content Include="Resources\logo.jpg" />
+    <Content Include="Resources\提示音2.mp3" />
     <Content Include="termb.dll" />
     <Content Include="联机考试系统.ico" />
   </ItemGroup>

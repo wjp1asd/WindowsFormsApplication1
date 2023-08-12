@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1.Models
             SqlCommand cmd = con.CreateCommand();
 
 
-            string sql = "select score from sct where can like  '%" + can + "%'";
+            string sql = "select score from sct where can = '" + can + "'";
 
 
             datahelp a = new datahelp();
@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1.Models
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
-            {
+            { 
 
 
                 float.TryParse(reader["score"].ToString(), out score1);

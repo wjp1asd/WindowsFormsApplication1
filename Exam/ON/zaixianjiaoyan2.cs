@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -114,7 +115,17 @@ namespace WindowsFormsApplication1.Exam
         //外加力值推荐值
         double wjltj = 0;
         private void CALCf(object sender, EventArgs e)
+
         {
+            TextBox textBox = (TextBox)sender;
+            string text = textBox.Text;
+
+            if (!Regex.IsMatch(text, "^[0-9]*$"))
+            {
+                textBox.Text = Regex.Replace(text, "[^0-9]", "");
+            }
+
+
             if (textBox1.Text.Trim().Length > 0)
             {
 
@@ -124,8 +135,9 @@ namespace WindowsFormsApplication1.Exam
                     //  double zdyl = double.Parse(t.Zxyl);
                     double zdyl = 1.0;
                     double xtyl = double.Parse(textBox2.Text.Trim());
-
-                    double F = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2 / 10;
+                    datahelp c = new datahelp();
+                    c.Initc();
+                    double F = (zdyl - xtyl) * (double.Parse(c.mfzj) / 2) * (double.Parse(c.mfzj) / 2) * 3.2 / 10;
 
                     this.textBox3.Text = F.ToString();
                     wjltj = F;
@@ -134,8 +146,7 @@ namespace WindowsFormsApplication1.Exam
 
                     this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
                     // 游标卡尺和 阀瓣拿起 zxc
-                    datahelp c=new datahelp();
-                    c.Initc();
+                  
                     if (fb == false && youbiao == false && step == 1 &&mfzj==double.Parse(c.mfzj))
                     {
 
@@ -160,13 +171,53 @@ namespace WindowsFormsApplication1.Exam
 
 
         }
+
+        private void shot()
+        {
+            // step = 1;
+            zxpic = 1;
+            string loc1 = ConfigurationManager.AppSettings["loc"];
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+
+          //  MessageBox.Show("拍照成功");
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+            CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-shot.png");
+
+            bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Qrcode + "-shot.png";
+            g.updatepath(mm, "zxpic", datahelp.QId);
+           
+           
+        }
+        // DI 输入的集合
+
+        private void shot1()
+        {
+            // step = 1;
+            string loc1 = ConfigurationManager.AppSettings["loc"];
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+
+
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+            //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
+            CvInvoke.Imwrite(loc + url + t.Qrcode + "-azshot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-azshot.png");
+
+            bt.Save(loc1 + url + t.Qrcode + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Qrcode + "-azshot.png";
+            // g.updatepath(mm, "lxpic", datahelp.QId);
+            g.updatepath(mm, "zxpic1", datahelp.QId);
+            //MessageBox.Show("拍照成功");
+        }
         Thread tj;
         int x = 0;
         int y = 1;
         // 开启压力 F 红点外加力 S密封 直径 Po系统压力
         private void zaixianjiaoyan2_Load(object sender, EventArgs e)
         {
-
+            
            
 
             awt = new AutoAdaptWindowsSize(this);
@@ -185,7 +236,7 @@ namespace WindowsFormsApplication1.Exam
             this.timer1.Start();
             v = new VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
-
+            this.richTextBox1.Hide();
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
             url = "\\考试照片\\" + timestamp;
 
@@ -562,23 +613,23 @@ namespace WindowsFormsApplication1.Exam
             }
             if (DIS[7 - lianjiegan] + "" == "0")
             {
-                dishow("连接杆归位");
+             //   dishow("连接杆归位");
                 ljg = true;
             }
             else
             {
-                dishow("连接杆离开");
+             //   dishow("连接杆离开");
                 ljg = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - siheyi] + "" == "0")
             {
-                dishow("四合一归位");
+              //  dishow("四合一归位");
                 shy = true;
             }
             else
             {
-                dishow("四合一离开");
+              //  dishow("四合一离开");
                 shy = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -602,28 +653,38 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - famao] + "" == "0")
             {
                 //richTextBox2.Text += "阀帽存在";
-                dishow("在线阀帽存在");
+              //  dishow("在线阀帽存在");
                 fm = true;
+                
+                    
+               
+                
             }
             else
             {
                 fm = false;
-                dishow("在线阀帽拆卸");
+                //  dishow("在线阀帽拆卸");
                 //richTextBox1.Text += "阀帽拆卸";
                 //开始拍照
+                if (zxpic != 1)
+                {
+                    g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
+                    Thread a = new Thread(shot);
+                    a.Start();
+                }
                 //   chaixiefamao();
             }
 
 
             if (DIS[7 - gongju] + "" == "0")
             {
-                dishow("在线工具归位");
+             //   dishow("在线工具归位");
                 //richTextBox2.Text += "工具归位";
                 gj = true;
             }
             else
             {
-                dishow("在线工具离开");
+             //   dishow("在线工具离开");
                 //richTextBox2.Text += "工具离开";
                 gj = false;
             }
@@ -732,7 +793,7 @@ namespace WindowsFormsApplication1.Exam
             float b1 = (a - standardValue) / 10000 / 5;
             //生成基准线
 
-
+            this.chart1.ChartAreas[0].AxisY.Minimum = -5;
             float b2 = 0;
             switch (liangcheng)
             {
@@ -745,6 +806,7 @@ namespace WindowsFormsApplication1.Exam
                     this.chart1.ChartAreas[0].AxisX.Maximum =maxinum;
                     //推荐力Y的1.2倍                    
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+
                     //20 * 0.6;
                     break;
                 case 2:
@@ -793,6 +855,7 @@ namespace WindowsFormsApplication1.Exam
                     if (Math.Round(wjltj) < b2)
                     {
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
+                        //this.richTextBox1.Text += b2 + ",";
                         if ((maxinum-cisu) == 3)
                         {
                             maxinum += 50;
@@ -805,6 +868,8 @@ namespace WindowsFormsApplication1.Exam
                     else {
 
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
+                       // this.richTextBox1.Text += b2 + ",";
+
                         if( (maxinum-cisu) ==3)
                         {
                            maxinum += 50;
@@ -881,66 +946,106 @@ namespace WindowsFormsApplication1.Exam
         }
         int smin = 0;
 
-        bool b2 = true;   
+        bool b12 = true;   
         private void showpoint()
         {
             DataPointCollection dataPoints = chart1.Series[0].Points;
-           // double max = dataPoints.Max().YValues[0];
-           // MessageBox.Show(""+max);
-           // int maxpoint = int.Parse(); dataPoints.Max().XValue;
-            foreach (System.Windows.Forms.DataVisualization.Charting.DataPoint a in dataPoints
-                ) {
-                //点位大于推荐值 并且误差在1个以内，并且处于下降区间
 
-            
-                if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
-                {
+            System.Windows.Forms.DataVisualization.Charting.DataPoint a = dataPoints[dataPoints.Count-1];
+            if (a.YValues[0] < 134 && a.YValues[0] > 129 && b12 == true)
+            //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
+            {
 
-                    a.MarkerStyle = MarkerStyle.Circle;
-                    a.MarkerSize = 10;
-                    a.MarkerColor = System.Drawing.Color.Red;
-                    a.Label = Math.Round(wjltj).ToString() + "KG";
-                    a.LabelForeColor = System.Drawing.Color.Red;
+                a.MarkerStyle = MarkerStyle.Circle;
+                a.MarkerSize = 10;
+                a.MarkerColor = System.Drawing.Color.Red;
+                a.Label = Math.Round(wjltj).ToString() + "KG";
+                a.LabelForeColor = System.Drawing.Color.Red;
 
-                    double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
+                double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
 
-                    this.textBox5.Text = PS.ToString();
-                    b2 = false;
-                }
-                if ((a.YValues[0] - wjltj) < 0 )
-                {
-
-                   
-                    b2 = true;
-                }
-                this.chart1.Invalidate();
+                this.textBox5.Text = PS.ToString();
+                b12 = false;
+               // MessageBox.Show("" + b12);
             }
 
-       
-            //if (b2 - wjl < 0 && Math.Abs(b2 - wjltj) <= 5 && liangcheng > 0)
-            //{
-            //    // 开始下降  
-            //    Action tongdao1 = () =>
+            if (a.YValues[0] >134.55 && b12 == true)
+            //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
+            {
+
+                a.MarkerStyle = MarkerStyle.Circle;
+                a.MarkerSize = 10;
+                a.MarkerColor = System.Drawing.Color.Red;
+                a.Label = "超压开启" + Math.Round(wjltj).ToString() + "KG";
+                a.LabelForeColor = System.Drawing.Color.Red;
+
+                double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
+
+                this.textBox5.Text = PS.ToString();
+                b12 = false;
+                // MessageBox.Show("" + b12);
+            }
+            if ((a.YValues[0] ) < 10)
+            {
+
+
+                b12 = true;
+            }
+            this.chart1.Invalidate();
+            //foreach (System.Windows.Forms.DataVisualization.Charting.DataPoint a in dataPoints
+            //    ) {
+            //    //点位大于推荐值 并且误差在1个以内，并且处于下降区间
+
+            //    if (a.YValues[0] <134 && a.YValues[0] >129 && b12 == true)
+            //  //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
             //    {
 
-            //        this.textBox5.Text = b2.ToString();
-            //        //
-            //    };
-            //    this.Invoke(tongdao1);
-            //   MessageBox.Show("开启点"+dataPoints.Count);
+            //        a.MarkerStyle = MarkerStyle.Circle;
+            //        a.MarkerSize = 10;
+            //        a.MarkerColor = System.Drawing.Color.Red;
+            //        a.Label = Math.Round(wjltj).ToString() + "KG";
+            //        a.LabelForeColor = System.Drawing.Color.Red;
 
-            //    //System.Windows.Forms.DataVisualization.Charting.DataPoint point = this.chart1.Series[0].Points[cisu];
-            //    point.MarkerStyle = MarkerStyle.Circle;
-            //    point.MarkerSize = 20;
-            //    point.MarkerColor = System.Drawing.Color.Red;
+            //        double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
+
+            //        this.textBox5.Text = PS.ToString();
+            //        b12 = false;
+            //        MessageBox.Show(""+b12);
+            //    }
+            //    if ((a.YValues[0] - wjltj) < 10 )
+            //    {
 
 
-
-            //   // MessageBox.Show("开启点" + cisu);
-            //}  
-
-
+            //        b12 = true;
+            //    }
+            //    this.chart1.Invalidate();
         }
+
+
+        //if (b2 - wjl < 0 && Math.Abs(b2 - wjltj) <= 5 && liangcheng > 0)
+        //{
+        //    // 开始下降  
+        //    Action tongdao1 = () =>
+        //    {
+
+        //        this.textBox5.Text = b2.ToString();
+        //        //
+        //    };
+        //    this.Invoke(tongdao1);
+        //   MessageBox.Show("开启点"+dataPoints.Count);
+
+        //    //System.Windows.Forms.DataVisualization.Charting.DataPoint point = this.chart1.Series[0].Points[cisu];
+        //    point.MarkerStyle = MarkerStyle.Circle;
+        //    point.MarkerSize = 20;
+        //    point.MarkerColor = System.Drawing.Color.Red;
+
+
+
+        //   // MessageBox.Show("开启点" + cisu);
+        //}  
+
+
+    
 
         private void setstandard(float a)
         {
@@ -1023,10 +1128,20 @@ namespace WindowsFormsApplication1.Exam
             this.timer1.Stop();
             this.timer2.Stop();
             datahelp.CurrentStep1 = 3;
+           // zaixianjiaoyan o = new zaixianjiaoyan();
+           // o.Show();
+            //this.Close();
             if (last == false)
             {
                 if (fm == true)
                 {
+                   
+                        //点击结束开始拍照
+                        //g.updateGrade(azfm1, "azfm1", datahelp.QId);
+                        Thread a = new Thread(shot1);
+                        a.Start();
+
+                    
                     g.updateGrade(azfm1, "azfm1", datahelp.QId);
                  //   ff.ShowSuccessTip("阀帽归位得分");
                 }
@@ -1064,13 +1179,17 @@ namespace WindowsFormsApplication1.Exam
             // g.updateGrade(0, "jyjg1", datahelp.QId);
             // g.updateGrade(0, "azfm1", datahelp.QId);
 
-
+            last = true;
 //DIS == "01110000"||
-            if ( DIS == "01100000")
+            if ( DIS == "01100011")
             {
+
+                Thread x = new Thread(cxs);
+                x.Start();
+                this.Close();
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();
-                this.Close();
+              
            
 
             }
@@ -1087,7 +1206,7 @@ namespace WindowsFormsApplication1.Exam
         private void ReadAI()
         {
             // MessageBox.Show(BitConverter.ToString(td1));
-            while (true&&serialPort2.IsOpen)
+            while (true&&serialPort2.IsOpen&&last==false)
             {
 
                 serialPort2.Write(td1, 0, td1.Length);
@@ -1181,6 +1300,8 @@ namespace WindowsFormsApplication1.Exam
 
         }
         bool wuc = false;
+        private int zxpic;
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //获取初始值
@@ -1192,7 +1313,7 @@ namespace WindowsFormsApplication1.Exam
 
             double a = double.Parse(a1);
             double b = double.Parse(b2);
-            ff.ShowInfoTip("" + a + b + yali);
+           // ff.ShowInfoTip("" + a + b + yali);
             if (step == 0) { return; }
             if (yali < a || yali > b)
             {
@@ -1255,6 +1376,43 @@ namespace WindowsFormsApplication1.Exam
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Ksname + "-shot.png", mat);
             MessageBox.Show("本地拍照成功");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            last = true;
+         
+            datahelp.CurrentStep1 = 3;
+            zaixianjiaoyan o = new zaixianjiaoyan();
+            o.Show();
+            this.Close();
+        }
+
+        private void cxs()
+        {
+          
+            if (v != null)
+            {
+                v.Stop(); // 停止视频捕获
+                v.Dispose(); // 释放资源
+
+            }
+            if (serialPort2 != null && serialPort2.IsOpen)
+            {
+                serialPort2.Close();
+                serialPort2.Dispose();
+                ;
+                // ReadAI.Abort();
+            }
+
+            // Process.GetCurrentProcess()?.Kill();
+            this.timer1.Dispose();
+            this.timer2.Dispose(); 
+        }
+
+        private void JiaoYormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
 
         private void wucha1(string type)

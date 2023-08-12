@@ -53,11 +53,11 @@ namespace WindowsFormsApplication1.Exam
             {
                 // 其所选不在范围之内 不得分
                 score = 0;
-                ff.ShowErrorTip("误差选择错误，不得分");
+            //    ff.ShowErrorTip("误差选择错误，不得分");
             }
             else
             {
-                ff.ShowSuccessTip("选择正确，得分" + score);
+           //    ff.ShowSuccessTip("选择正确，得分" + score);
 
             }
             int i = g.updateGrade(score, "wxxz", datahelp.QId.Trim());
@@ -125,7 +125,7 @@ namespace WindowsFormsApplication1.Exam
             con.Close();
             this.label3.Text = "考生：" + t.Ksname;
             this.label4.Text = "身份证：" + t.KsId;
-            this.label1.Text = t.Lxyl
+            this.label1.Text = t.Lxyl.Trim();
                 ;
             //  yali = int.Parse(t.Lxyl);
             this.label5.Text = "使用设备类型：" + t.Lxlx;
@@ -138,6 +138,11 @@ namespace WindowsFormsApplication1.Exam
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }
