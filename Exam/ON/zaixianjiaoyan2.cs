@@ -793,7 +793,7 @@ namespace WindowsFormsApplication1.Exam
             float b1 = (a - standardValue) / 10000 / 5;
             //生成基准线
 
-
+            this.chart1.ChartAreas[0].AxisY.Minimum = -5;
             float b2 = 0;
             switch (liangcheng)
             {
@@ -806,6 +806,7 @@ namespace WindowsFormsApplication1.Exam
                     this.chart1.ChartAreas[0].AxisX.Maximum =maxinum;
                     //推荐力Y的1.2倍                    
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
+
                     //20 * 0.6;
                     break;
                 case 2:
@@ -1182,9 +1183,13 @@ namespace WindowsFormsApplication1.Exam
 //DIS == "01110000"||
             if ( DIS == "01100011")
             {
+
+                Thread x = new Thread(cxs);
+                x.Start();
+                this.Close();
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();
-                this.Close();
+              
            
 
             }
@@ -1201,7 +1206,7 @@ namespace WindowsFormsApplication1.Exam
         private void ReadAI()
         {
             // MessageBox.Show(BitConverter.ToString(td1));
-            while (true&&serialPort2.IsOpen)
+            while (true&&serialPort2.IsOpen&&last==false)
             {
 
                 serialPort2.Write(td1, 0, td1.Length);
@@ -1376,6 +1381,16 @@ namespace WindowsFormsApplication1.Exam
         private void label2_Click(object sender, EventArgs e)
         {
             last = true;
+         
+            datahelp.CurrentStep1 = 3;
+            zaixianjiaoyan o = new zaixianjiaoyan();
+            o.Show();
+            this.Close();
+        }
+
+        private void cxs()
+        {
+          
             if (v != null)
             {
                 v.Stop(); // 停止视频捕获
@@ -1386,17 +1401,18 @@ namespace WindowsFormsApplication1.Exam
             {
                 serialPort2.Close();
                 serialPort2.Dispose();
-               ;
-               // ReadAI.Abort();
+                ;
+                // ReadAI.Abort();
             }
 
             // Process.GetCurrentProcess()?.Kill();
             this.timer1.Dispose();
-            this.timer2.Dispose();
-            datahelp.CurrentStep1 = 3;
-            zaixianjiaoyan o = new zaixianjiaoyan();
-            o.Show();
-            this.Close();
+            this.timer2.Dispose(); 
+        }
+
+        private void JiaoYormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
 
         private void wucha1(string type)

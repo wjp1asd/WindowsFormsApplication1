@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -30,14 +31,30 @@ namespace WindowsFormsApplication1
             //   Application.Run(new Settings1());
             //  Application.Run(new Print("mXjjwVcvXizfGcnbOF9CKw=="));
             //    Application.Run(new ResultSet());
-            Application.Run(new form1());
+            //Application.Run(new form1());
             // Application.Run(new zaixianjiaoyan2());
             // Application.Run(new Exam1());
-            //Application.Run(new MFYM());
+            Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
             // Application.Run(new ScanLogin());
             // Application.Run(new SubjectForm());
         }
+        static void AddStartupEntry(string appName, string appPath)
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
+            {
+                // 添加开机启动项
+                key.SetValue(appName, appPath);
+            }
+        }
 
+        static void RemoveStartupEntry(string appName)
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
+            {
+                // 删除开机启动项
+                key.DeleteValue(appName, false);
+            }
+        }
         private static void Initc()
         {
             string sPath = Application.StartupPath + "\\Images\\身份证照片\\";

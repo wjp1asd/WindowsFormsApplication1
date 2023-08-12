@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoWindowsSize;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -25,9 +26,21 @@ namespace WindowsFormsApplication1
             InitUI();
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-
+            this.change();
         }
+        private Fuc ff = new Fuc();
+        public void change()
+        {
 
+            ff.fullsreen(this.button1, this);
+            ff.fullsreen(this.button2, this);
+            ff.fullsreen(this.button3, this);
+            ff.fullsreen(this.uiButton1, this);
+         //   ff.fullsreen(this.button5, this);
+          //  ff.fullsreen(this.button6, this);
+
+            ff.fullsreen(this.label2, this);
+        }
         private void InitUI()
         {
             datahelp a = new datahelp();
@@ -212,13 +225,27 @@ namespace WindowsFormsApplication1
             Application.Exit();
 
         }
+        AutoAdaptWindowsSize awt;
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+            if (awt != null)
+            {
 
+                awt.FormSizeChanged();
+            }
+        }
+
+
+        private void GoalSet_Load(object sender, EventArgs e)
+        {
+            
+        }
         private void form1_Load(object sender, EventArgs e)
         {
             // ft.showloading();
 
             initsetp();
-
+         
         }
 
         private void initsetp()

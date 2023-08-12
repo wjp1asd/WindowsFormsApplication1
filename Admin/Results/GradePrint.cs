@@ -119,8 +119,8 @@ namespace WindowsFormsApplication1.Admin.Results
             this.pictureBox3.ImageLocation = a1.zxpic;
             this.pictureBox4.ImageLocation = a1.zxpic1;
             this.pictureBox5.ImageLocation = a1.mxpic;
-           
-
+            MessageBox.Show(a1.zxpic1);
+            MessageBox.Show(a1.mxpic);
             // 离线前
             label33.Text = a1.xygb.ToString().Replace("-1", "未考试");
             label9.Text = a1.csfm.ToString().Replace("-1", "未考试");
@@ -178,5 +178,44 @@ namespace WindowsFormsApplication1.Admin.Results
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            reset("score1");
+        }
+
+        private void reset(string name)
+        {
+            a1.updateGrade(-1,name,datahelp.QId);
+            MessageBox.Show("当前考试重置成功");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            reset("score2");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            reset("score3");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            reset("score4");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            reset("score5");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            reset("score6");
+        }
     }
+
+   
 }

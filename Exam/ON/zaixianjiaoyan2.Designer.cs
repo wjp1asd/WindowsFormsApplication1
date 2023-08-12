@@ -676,7 +676,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "在线校验";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JiaoYan_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JiaoYormClosing);
             this.Load += new System.EventHandler(this.zaixianjiaoyan2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox1.ResumeLayout(false);

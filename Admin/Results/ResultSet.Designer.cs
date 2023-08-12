@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.cz = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dick = new System.Windows.Forms.DataGridViewButtonColumn();
             this.path = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idcard = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +56,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cz,
+            this.dick,
             this.path,
             this.name,
             this.idcard,
@@ -100,9 +102,9 @@
             // cz
             // 
             this.cz.DataPropertyName = "testid";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = "操作";
-            this.cz.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = "操作";
+            this.cz.DefaultCellStyle = dataGridViewCellStyle1;
             this.cz.HeaderText = "打印";
             this.cz.MinimumWidth = 6;
             this.cz.Name = "cz";
@@ -113,11 +115,24 @@
             this.cz.ToolTipText = "打印";
             this.cz.UseColumnTextForButtonValue = true;
             // 
+            // dick
+            // 
+            this.dick.DataPropertyName = "testid";
+            this.dick.HeaderText = "补打考试条";
+            this.dick.MinimumWidth = 6;
+            this.dick.Name = "dick";
+            this.dick.ReadOnly = true;
+            this.dick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dick.Text = "补打考试条";
+            this.dick.ToolTipText = "补打考试条";
+            this.dick.UseColumnTextForButtonValue = true;
+            // 
             // path
             // 
             this.path.DataPropertyName = "path";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.path.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.path.DefaultCellStyle = dataGridViewCellStyle2;
             this.path.HeaderText = "成绩";
             this.path.MinimumWidth = 6;
             this.path.Name = "path";
@@ -184,6 +199,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridViewButtonColumn cz;
+        private System.Windows.Forms.DataGridViewButtonColumn dick;
         private System.Windows.Forms.DataGridViewTextBoxColumn path;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn idcard;
