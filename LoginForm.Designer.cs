@@ -62,7 +62,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Location = new System.Drawing.Point(116, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(754, 80);
+            this.label2.Size = new System.Drawing.Size(603, 64);
             this.label2.TabIndex = 2;
             this.label2.Text = "智能化安全阀校验考试系统";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -222,7 +222,7 @@
             this.lblUsername.Location = new System.Drawing.Point(29, 139);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(78, 27);
+            this.lblUsername.Size = new System.Drawing.Size(63, 22);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "用户名:";
             // 
@@ -234,7 +234,7 @@
             this.lblPassword.Location = new System.Drawing.Point(29, 184);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(76, 27);
+            this.lblPassword.Size = new System.Drawing.Size(62, 22);
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "密   码:";
             // 
@@ -271,6 +271,7 @@
             this.button4.TabIndex = 19;
             this.button4.Text = "在线";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
@@ -281,6 +282,7 @@
             this.button5.TabIndex = 20;
             this.button5.Text = "扫码测试";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
@@ -301,6 +303,7 @@
             this.button8.TabIndex = 23;
             this.button8.Text = "密封面测试";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Visible = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button10
@@ -311,6 +314,7 @@
             this.button10.TabIndex = 25;
             this.button10.Text = "离线";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Visible = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
@@ -321,6 +325,7 @@
             this.button11.TabIndex = 26;
             this.button11.Text = "在线测试";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Visible = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
@@ -331,6 +336,7 @@
             this.button12.TabIndex = 27;
             this.button12.Text = "成绩单";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Visible = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // form1

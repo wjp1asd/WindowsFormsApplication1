@@ -196,12 +196,13 @@ namespace WindowsFormsApplication1.Exam
             {
                 // dishow("卸压阀打开");
                 xieyastate = true;
-                if (a < 118000)
+               // MessageBox.Show(a.ToString());
+                if (a < 117500)
                 {
 
                     byte[] d3 = new byte[] {
                 0xFF,0x01,0x00,
-                0x05,0x00,0xFF,
+                0x0A,0x00,0xFF,
                 0x02, 0x00, 0xC4,
                 0x09};
                     try
@@ -306,7 +307,7 @@ namespace WindowsFormsApplication1.Exam
             //                 正确     量程表转（转的码值参考《计算 码值、公斤值》中的码值表）
             //关闭校验阀、打开泄压阀（无先后顺序） 
             //量程表归0
-            if (Math.Abs(current) < 118000)
+            if (Math.Abs(current) < 117500)
             {
                 //  ff.ShowInfoTip("初次测试" + "校验阀打开");
                 // 
@@ -328,7 +329,7 @@ namespace WindowsFormsApplication1.Exam
         {
             // 10秒后拍照
            //ff.ShowInfoTip("量程归0判断30秒");
-            if (current > 118000&& lxpic!=1)
+            if (current > 117500&& lxpic!=1)
             {
 
                 shot();
@@ -1161,7 +1162,7 @@ namespace WindowsFormsApplication1.Exam
             };
             this.Invoke(tongdao);
 
-            if (Math.Abs(a) < 118000&&last==false&&step>=0)
+            if (Math.Abs(a) < 117500&&last==false&&step>=0)
             {
 
 
@@ -1241,19 +1242,27 @@ namespace WindowsFormsApplication1.Exam
         {
             byte nn = 0x05;
             // ff.ShowInfoTip("舵机"+maz);
-            if (speed<=3)
+            if (speed<=2&& speed>0)
             {
 
+                nn = 0x01;
+            }
+            if (speed<=5&&speed>2)
+            {
                 nn = 0x03;
             }
-
-            if (speed<=5&&speed>3)
+            if (speed<=8&&speed>5)
             {
                 nn = 0x05;
             }
-            if (speed<=10 &&speed>5)
+            if (speed<=10 &&speed>8)
             {
                 nn = 0x08;
+
+            }
+            if (speed>=10 )
+            {
+                nn = 0x0A;
 
             }
             //舵机驱动
@@ -1263,9 +1272,10 @@ namespace WindowsFormsApplication1.Exam
                 nn,0x00,0xFF,
                 0x02, 0x00, 0xC4,
                 0x09};
+             
             //高八度低八度取值
-            d3[3] = (byte)(maz & 0x00ff);
-            d3[4] = (byte)((maz >> 8) & 0xff);
+            //d3[3] = (byte)(maz & 0x00ff);
+            //d3[4] = (byte)((maz >> 8) & 0xff);
             //目标码值（离线压力设置-初次测试压力）
             d3[9] = (byte)((maz >> 8) & 0xff);
             d3[8] = (byte)(maz & 0x00ff);
@@ -1278,8 +1288,8 @@ namespace WindowsFormsApplication1.Exam
 
                 throw;
             }
+         // MessageBox.Show(BitConverter.ToString(d3));
 
-            //  MessageBox.Show(BitConverter.ToString(d3));
 
             if (dwq - a > 100)
             {
@@ -1288,7 +1298,7 @@ namespace WindowsFormsApplication1.Exam
 
             }
             Thread.Sleep(1000);
-            if (a < 118000)
+            if (a < 117500)
             { dwq = a; }
             if (maz > 1)
             {
