@@ -211,12 +211,12 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
 
-                    str1 = "Update Grade set lxquestions='" + a + "',lxanswer='" + b + "',lxcorrect='" + c + "',score2='" + d
+                    str1 = "Update Grade set lxquestions='" + a + "',lxanswer='" + b + "',lxcorrect='" + c + "',score1='" + d
 
                 + "' where testid= '" + datahelp.QId.Trim() + "'";
                     break;
                 case 2:
-                    str1 = "Update Grade set zxquestions='" + a + "',zxanswer='" + b + "',zxcorrect='" + c + "',score1='" + d
+                    str1 = "Update Grade set zxquestions='" + a + "',zxanswer='" + b + "',zxcorrect='" + c + "',score2='" + d
 
               + "' where testid= '" + datahelp.QId.Trim() + "'";
                     break;
@@ -241,10 +241,10 @@ namespace WindowsFormsApplication1.Exam
                     break;
 
                 case 4:
-                    str1 = "Update Grade set ymgquestions='" + a + "',ymganswer='" + b + "',ymgcorrect='" + c + "',score7='" + d
+                    str1 = "Update Grade set ymgquestions='" + a + "',ymganswer='" + b + "',ymgcorrect='" + c + "',score6='" + d
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
-
+                  //  MessageBox.Show(str1);
                     break;
 
 

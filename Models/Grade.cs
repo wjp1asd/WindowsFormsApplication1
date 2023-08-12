@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 
 namespace WindowsFormsApplication1.Models
@@ -51,7 +52,7 @@ namespace WindowsFormsApplication1.Models
        
 
         public string mxpic;
-        public string lxpic;
+        public string lxpic,lxpic1,zxpic,zxpic1;
         public float  csfm,ylxz,xygb,wxxz,zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,yqzdyl,gctj,yldj,dycyl,decyl,dscyl;
         public float mfsyyl, jyjl, mfzjcl, cxfm1, wxxz1,jyjg1, azfm1, bycs,score8;
        
@@ -188,8 +189,13 @@ namespace WindowsFormsApplication1.Models
                 score8 = float.Parse(reader["score8"].ToString().Trim());
                
                 //图片
-                mxpic = reader["mfpic"].ToString().Trim();
+                zxpic = reader["zxpic"].ToString().Trim();
                 lxpic = reader["lxpic"].ToString().Trim();
+                zxpic1 = reader["zxpic1"].ToString().Trim();
+                lxpic1 = reader["lxpic1"].ToString().Trim();
+                mxpic = reader["mfpic"].ToString().Trim();
+               // MessageBox.Show(lxpic1);
+
             }
 
             con.Close();

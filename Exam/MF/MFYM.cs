@@ -1,4 +1,6 @@
 ﻿using AutoWindowsSize;
+using Emgu.CV;
+using Sunny.UI;
 using System;
 using System.Configuration;
 using System.Drawing;
@@ -50,7 +52,7 @@ namespace WindowsFormsApplication1
             }
         }
         Grade g1 = new Grade();
-
+        DateTime currentTime = DateTime.Now;
         Graphics back;
         TestRecord t = new TestRecord();
         Score sc = new Score();
@@ -67,7 +69,11 @@ namespace WindowsFormsApplication1
             t = t.getRecord(datahelp.QId);
             this.label3.Text = "考生：" + t.Ksname;
             this.label4.Text = "身份证：" + t.KsId;
+            string timestamp = currentTime.ToString("yyyyMMddHHmmss");
+            url = "\\研磨照片\\" + timestamp;
             // back.new Rectangle(this.uiLine1.Location.X, this.uiLine1.Location.Y, 500, 500);
+
+            Cursor.Position = new System.Drawing.Point(screenWidthInPixels / 2, screenHeightInPixels / 2);
         }
         private void InitScore()
         {
@@ -93,7 +99,8 @@ namespace WindowsFormsApplication1
             //调用鼠标移动方法
             SetMouseSpeed( (uint)System.Windows.Forms.SystemInformation.MouseSpeed);
         }
-
+        int screenWidthInPixels = Screen.PrimaryScreen.Bounds.Width;
+        int screenHeightInPixels = Screen.PrimaryScreen.Bounds.Height;
         bool G_MouseFlag;
         Pen pen = new Pen(Color.Red);
         Point lastPoint;
@@ -159,6 +166,8 @@ namespace WindowsFormsApplication1
 
         }
       
+        // 定义屏幕的显示大小
+       
         private void _018_MouseDown(object sender, MouseEventArgs e)
         {
             G_MouseFlag = true;//开始绘图标识设置为true
@@ -174,7 +183,7 @@ namespace WindowsFormsApplication1
 
             Graphics graphics = this.CreateGraphics();
             Rectangle gle = new Rectangle(this.uiLine1.Location.X, this.uiLine1.Location.Y, 500, 500);
-
+            //（）
             graphics.DrawRectangle(pen, gle);
         }
 
@@ -196,8 +205,8 @@ namespace WindowsFormsApplication1
         {
 
         }
-        private Fuc ff = new Fuc();
-        private void button3_Click(object sender, EventArgs e)
+        Grade g=new Grade();
+        private void shot1()
         {
            
             //显示光标
@@ -209,34 +218,34 @@ namespace WindowsFormsApplication1
 
             // 生成图片
             Bitmap bt = new Bitmap(this.Width, this.Height);
-            Graphics g = Graphics.FromImage(bt);
-            g.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
+            Graphics gg = Graphics.FromImage(bt);
+            gg.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
             bt.MakeTransparent();
-            //本地保存
-            string loc = ConfigurationManager.AppSettings["loc"];
-            string connectionString = Application.StartupPath + "\\Images\\研磨照片\\" + t.Qrcode + t.Ksname + ".bmp";
-            //   string connectionString = Application.StartupPath + "\\研磨图片\\1.bmp";
-            string connectionString1 = loc + "\\研磨照片\\" + t.Qrcode + t.Ksname + ".bmp";
-            bt.Save(connectionString, System.Drawing.Imaging.ImageFormat.Bmp);
 
-            //try
-            //{
-            //    bt.Save(connectionString1, System.Drawing.Imaging.ImageFormat.Bmp);
-            //}
-            //catch (Exception)
-            //{
 
-            //    throw;
-            //}
-            if (File.Exists(connectionString))
+            bt.Save(loc1 + url + t.Ksname.Trim() + "离线-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+            string mm = loc1 + url + t.Ksname.Trim() + "离线-azshot.png";
+             g.updatepath(mm, "mfpic", datahelp.QId);
+           
+        }
+            //MessageBox.Show(
+        private Fuc ff = new Fuc();
+        private string url;
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+        
+            try
             {
-                g1.updatepath(connectionString1, "mfpic", datahelp.QId);
-                // g1.updateGrade()
-                ff.ShowSuccessTip("得分" + score);
-                // File.Copy(connectionString, Application.StartupPath+ "\\密封面图片\\1.bmp");
-                // ff.ShowInfoTip("截图成功！");
-
+                Thread x = new Thread(shot1);
+                x.Start();
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
             datahelp.CurrentStep = 5;
             this.Close();
             MF1 mF = new MF1();
@@ -258,6 +267,7 @@ namespace WindowsFormsApplication1
                 Screen[] ss = Screen.AllScreens;
                 this.Cursor = new Cursor(this.Cursor.Handle);
                 Cursor.Clip = ss[0].Bounds;
+                this.draw = false;
 
             }
         }

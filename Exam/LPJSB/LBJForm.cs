@@ -107,7 +107,7 @@ namespace WindowsFormsApplication1.Exam
             InitbtnUp();
             InitbtnNext();
             ShowInfo();
-
+            this.timer1.Start();
 
 
         }
