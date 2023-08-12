@@ -30,10 +30,10 @@ namespace WindowsFormsApplication1
             //   Application.Run(new Settings1());
             //  Application.Run(new Print("mXjjwVcvXizfGcnbOF9CKw=="));
             //    Application.Run(new ResultSet());
-            Application.Run(new form1());
+            //Application.Run(new form1());
             // Application.Run(new zaixianjiaoyan2());
             // Application.Run(new Exam1());
-            //Application.Run(new MFYM());
+            Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
             // Application.Run(new ScanLogin());
             // Application.Run(new SubjectForm());
         }
