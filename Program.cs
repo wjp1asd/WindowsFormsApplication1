@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Scan;
 
 namespace WindowsFormsApplication1
 {
@@ -34,8 +35,8 @@ namespace WindowsFormsApplication1
             //Application.Run(new form1());
             // Application.Run(new zaixianjiaoyan2());
             // Application.Run(new Exam1());
-            Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
-            // Application.Run(new ScanLogin());
+          // Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
+             Application.Run(new ScanLogin());
             // Application.Run(new SubjectForm());
         }
         static void AddStartupEntry(string appName, string appPath)

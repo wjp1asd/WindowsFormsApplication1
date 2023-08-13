@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
@@ -54,6 +55,21 @@ namespace WindowsFormsApplication1.Scan
             this.button7.Enabled = false;
             //this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+
+            SoundPlayer player = new SoundPlayer();
+
+            // 设置音频文件的路径
+            player.SoundLocation = @"C:\Path    o\audio.wav";
+
+            // 播放音频
+            player.Play();
+
+            // 等待音频播放完毕
+            player.PlaySync();
+
+            // 释放资源
+            player.Dispose();
+
         }
 
         private void button7_Click(object sender, EventArgs e)
