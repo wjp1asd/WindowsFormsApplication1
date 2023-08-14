@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Scan;
 
 namespace WindowsFormsApplication1
 {
@@ -31,11 +33,18 @@ namespace WindowsFormsApplication1
             //   Application.Run(new Settings1());
             //  Application.Run(new Print("mXjjwVcvXizfGcnbOF9CKw=="));
             //    Application.Run(new ResultSet());
-            //Application.Run(new form1());
+            string x = ConfigurationManager.AppSettings["machine"];
+            if (int.Parse(x)<2) {
+                Application.Run(new form1());
+            }
+            else {
+                Application.Run(new ScanLogin());
+            }
+          
             // Application.Run(new zaixianjiaoyan2());
             // Application.Run(new Exam1());
-            Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
-            // Application.Run(new ScanLogin());
+          // Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
+           //  Application.Run(new ScanLogin());
             // Application.Run(new SubjectForm());
         }
         static void AddStartupEntry(string appName, string appPath)

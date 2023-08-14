@@ -966,6 +966,8 @@ namespace WindowsFormsApplication1.Exam
 
                 this.textBox5.Text = PS.ToString();
                 b12 = false;
+
+                ff.sound();
                // MessageBox.Show("" + b12);
             }
 
@@ -983,6 +985,7 @@ namespace WindowsFormsApplication1.Exam
 
                 this.textBox5.Text = PS.ToString();
                 b12 = false;
+                ff.sound();
                 // MessageBox.Show("" + b12);
             }
             if ((a.YValues[0] ) < 10)
