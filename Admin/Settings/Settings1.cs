@@ -150,8 +150,8 @@ namespace WindowsFormsApplication1.Settings
         private void button7_Click(object sender, EventArgs e)
         {
             this.InitC();
-            AdminIndex admin = new AdminIndex();
-            admin.Show();
+           // AdminIndex admin = new AdminIndex();
+           // admin.Show();
             this.Close();
         }
 

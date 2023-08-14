@@ -152,6 +152,8 @@ namespace WindowsFormsApplication1.Exam
             {
                 famaostate = true;
                 //  dishow("阀帽存在");
+
+                if()
                 if (chuchi==1)
                 {
                     //   ff.ShowInfoTip("初安装阀帽");
@@ -1078,9 +1080,17 @@ namespace WindowsFormsApplication1.Exam
 
                 if ((a1 - sjdwq) > 0&&step==0)
                 {
+                   
+            
                     richTextBox2.AppendText(v + "正在锁紧");
                     if (correct2 == true && ap.f0 > ap.f1)
                     {
+                        if (xieyastate == false)
+                        {
+                            MessageBox.Show("严重错误：未泄压，当前考试不得分");
+                            this.InitScore();
+                        }
+
                         // 整定压力 大于 初次压力
                         g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
                         //  ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
@@ -1089,9 +1099,16 @@ namespace WindowsFormsApplication1.Exam
                 }
                 else if ((a1 - sjdwq) < 0&&step==0)
                 {
+
                     richTextBox2.AppendText(v + "正在放松");
                     if (correct2 == true && ap.f0 < ap.f1)
                     {
+
+                        if (xieyastate == false)
+                        {
+                            MessageBox.Show("严重错误：未泄压，当前考试不得分");
+                            this.InitScore();
+                        }
                         // 整定压力 小于于 初次压力
                         g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
                         //  ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
@@ -1564,10 +1581,11 @@ namespace WindowsFormsApplication1.Exam
 
             }
 
-         Thread c = new Thread(csd);
+         c = new Thread(csd);
          c.Start();
+         c.Join();
         }
-
+        Thread c;
         private void csd()
         {
             if (v != null)

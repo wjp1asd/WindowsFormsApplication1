@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
@@ -104,8 +105,7 @@ namespace WindowsFormsApplication1
         bool G_MouseFlag;
         Pen pen = new Pen(Color.Red);
         Point lastPoint;
-        int screenWidthInPixels = Screen.PrimaryScreen.Bounds.Width;
-        int screenHeightInPixels = Screen.PrimaryScreen.Bounds.Height;
+       
         //声明给鼠标赋速度
         [DllImport("User32.dll")]
         static extern Boolean SystemParametersInfo(UInt32 uiaction,UInt32 uiparam, UInt32 pvparam, UInt32 fwinini);
@@ -222,7 +222,7 @@ namespace WindowsFormsApplication1
             gg.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
             bt.MakeTransparent();
 
-
+            string loc1 = ConfigurationManager.AppSettings["loc"];
             bt.Save(loc1 + url + t.Ksname.Trim() + "离线-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
             string mm = loc1 + url + t.Ksname.Trim() + "离线-azshot.png";
              g.updatepath(mm, "mfpic", datahelp.QId);

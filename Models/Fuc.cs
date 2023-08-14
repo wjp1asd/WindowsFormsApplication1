@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Media;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -72,6 +73,27 @@ namespace WindowsFormsApplication1.Models
 
             }
             // c.Left += (c.Left+ f.Width) / 2-50;
+
+
+        }
+        public void sound() {
+
+            SoundPlayer player = new SoundPlayer();
+
+            // 设置音频文件的路径
+
+            player.Stream = WindowsFormsApplication1.Properties.Resources.提示音2;
+            // player.SoundLocation =WindowsFormsApplication1.Properties.Resources.提示音2.ToString();
+
+            // MessageBox.Show(WindowsFormsApplication1.Properties.Resources.提示音2.ToString());
+            // 播放音频
+            player.Play();
+
+            // 等待音频播放完毕
+            player.PlaySync();
+
+            // 释放资源
+            player.Dispose();
 
 
         }

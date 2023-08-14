@@ -50,19 +50,24 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(116, 37);
+            this.label2.Location = new System.Drawing.Point(293, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(603, 64);
+            this.label2.Size = new System.Drawing.Size(754, 80);
             this.label2.TabIndex = 2;
             this.label2.Text = "智能化安全阀校验考试系统";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -73,7 +78,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.setting;
-            this.pictureBox1.Location = new System.Drawing.Point(906, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(1328, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(47, 36);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -83,6 +88,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
@@ -91,7 +97,7 @@
             this.button1.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(207, 158);
+            this.button1.Location = new System.Drawing.Point(502, 161);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
             this.button1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
@@ -108,9 +114,10 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(207, 281);
+            this.button2.Location = new System.Drawing.Point(502, 284);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(260, 90);
@@ -122,9 +129,10 @@
             // 
             // button3
             // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(574, 281);
+            this.button3.Location = new System.Drawing.Point(502, 422);
             this.button3.MinimumSize = new System.Drawing.Size(1, 1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(260, 90);
@@ -136,6 +144,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel1.Controls.Add(this.uiButton2);
             this.flowLayoutPanel1.Controls.Add(this.btnLogin);
             this.flowLayoutPanel1.Controls.Add(this.txtPassword);
@@ -144,7 +153,7 @@
             this.flowLayoutPanel1.Controls.Add(this.lblPassword);
             this.flowLayoutPanel1.Controls.Add(this.uiAvatar1);
             this.flowLayoutPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(339, 122);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(520, 195);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -223,7 +232,7 @@
             this.lblUsername.Location = new System.Drawing.Point(29, 139);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(63, 22);
+            this.lblUsername.Size = new System.Drawing.Size(78, 27);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "用户名:";
             // 
@@ -235,7 +244,7 @@
             this.lblPassword.Location = new System.Drawing.Point(29, 184);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(62, 22);
+            this.lblPassword.Size = new System.Drawing.Size(76, 27);
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "密   码:";
             // 
@@ -254,92 +263,113 @@
             // 
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.uiButton1.Location = new System.Drawing.Point(574, 158);
+            this.uiButton1.Location = new System.Drawing.Point(1115, 130);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(260, 90);
             this.uiButton1.TabIndex = 18;
             this.uiButton1.Text = "扫描登录";
             this.uiButton1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton1.Visible = false;
             this.uiButton1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(64, 512);
+            this.button4.Location = new System.Drawing.Point(282, 723);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(131, 50);
             this.button4.TabIndex = 19;
             this.button4.Text = "在线";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(218, 514);
+            this.button5.Location = new System.Drawing.Point(436, 725);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(131, 48);
             this.button5.TabIndex = 20;
             this.button5.Text = "扫码测试";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(401, 514);
+            this.button6.Location = new System.Drawing.Point(619, 725);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(131, 48);
             this.button6.TabIndex = 21;
             this.button6.Text = "离线测试";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(733, 514);
+            this.button8.Location = new System.Drawing.Point(951, 725);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(131, 48);
             this.button8.TabIndex = 23;
             this.button8.Text = "密封面测试";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Visible = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(64, 458);
+            this.button10.Location = new System.Drawing.Point(282, 669);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(131, 48);
             this.button10.TabIndex = 25;
             this.button10.Text = "离线";
             this.button10.UseVisualStyleBackColor = true;
-            this.button10.Visible = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(569, 514);
+            this.button11.Location = new System.Drawing.Point(787, 725);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(131, 48);
             this.button11.TabIndex = 26;
             this.button11.Text = "在线测试";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Visible = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(218, 458);
+            this.button12.Location = new System.Drawing.Point(436, 669);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(131, 48);
             this.button12.TabIndex = 27;
             this.button12.Text = "成绩单";
             this.button12.UseVisualStyleBackColor = true;
-            this.button12.Visible = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.logo;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox2.ErrorImage = null;
+            this.pictureBox2.InitialImage = null;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 726);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1404, 62);
+            this.pictureBox2.TabIndex = 35;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox3.ErrorImage = null;
+            this.pictureBox3.Image = global::WindowsFormsApplication1.Properties.Resources.logo;
+            this.pictureBox3.Location = new System.Drawing.Point(503, 572);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(259, 50);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 36;
+            this.pictureBox3.TabStop = false;
             // 
             // form1
             // 
@@ -348,8 +378,10 @@
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(982, 595);
+            this.ClientSize = new System.Drawing.Size(1404, 788);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
@@ -371,11 +403,14 @@
             this.Name = "form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "智能化安全阀校验考试系统";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form1_FormClosed);
             this.Load += new System.EventHandler(this.form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,6 +438,8 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

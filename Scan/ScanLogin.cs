@@ -5,6 +5,7 @@ using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
+using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Scan
@@ -14,7 +15,9 @@ namespace WindowsFormsApplication1.Scan
         public ScanLogin()
         {
             InitializeComponent();
-            this.change();
+            // this.change();
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.groupBox1.Hide();
         }
         private Fuc ff = new Fuc();
@@ -56,19 +59,7 @@ namespace WindowsFormsApplication1.Scan
             //this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
 
-            SoundPlayer player = new SoundPlayer();
-
-            // 设置音频文件的路径
-            player.SoundLocation = @"C:\Path    o\audio.wav";
-
-            // 播放音频
-            player.Play();
-
-            // 等待音频播放完毕
-            player.PlaySync();
-
-            // 释放资源
-            player.Dispose();
+          
 
         }
 
@@ -140,18 +131,58 @@ namespace WindowsFormsApplication1.Scan
         {
             this.groupBox1.Hide();
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Close();
-             Exam1 ex = new Exam1(qrcode);
-             ex.Show();
+            //this.Close();
+            string x = ConfigurationManager.AppSettings["machine"];
+
+
+            //   ff.ShowInfoTip(a.color1);
+            switch (int.Parse(x))
+            {
+                case 2:
+                    datahelp.CurrentStep = 2;
+                    OFF of = new OFF(qrcode);
+                    of.Show();
+                    break;
+                case 3:
+                    datahelp.CurrentStep = 2;
+                    zaixianjiaoyan on = new zaixianjiaoyan();   
+                    on.Show();
+                    break;
+                case 4:
+                    datahelp.CurrentStep = 3;
+                    MF1 mf = new MF1();
+                    mf.Show();
+                    break;
+                case -1:
+                  //  datahelp.CurrentStep = 3;
+                   Exam1 ex=new Exam1();
+                    ex.Show();
+                    break;
+
+            }
+           
         }
 
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
