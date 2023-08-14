@@ -104,8 +104,8 @@ namespace WindowsFormsApplication1
         bool G_MouseFlag;
         Pen pen = new Pen(Color.Red);
         Point lastPoint;
-        int screenWidthInPixels = Screen.PrimaryScreen.Bounds.Width;
-        int screenHeightInPixels = Screen.PrimaryScreen.Bounds.Height;
+       // int screenWidthInPixels = Screen.PrimaryScreen.Bounds.Width;
+       // int screenHeightInPixels = Screen.PrimaryScreen.Bounds.Height;
         //声明给鼠标赋速度
         [DllImport("User32.dll")]
         static extern Boolean SystemParametersInfo(UInt32 uiaction,UInt32 uiparam, UInt32 pvparam, UInt32 fwinini);
