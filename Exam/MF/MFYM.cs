@@ -85,7 +85,7 @@ namespace WindowsFormsApplication1
         private void initBound()
         {
             Graphics graphics = this.CreateGraphics();
-            Rectangle gle = new Rectangle(this.uiLine1.Location.X + 50, this.uiLine1.Location.Y + 10, this.Size.Width - 100, this.Size.Height - 225);
+            Rectangle gle = new Rectangle(this.uiLine1.Location.X + 50, this.uiLine1.Location.Y + 10, this.Size.Width - 100, this.Size.Height - 125);
             Pen a = new Pen(Color.Red);
 
 
