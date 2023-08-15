@@ -286,5 +286,25 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (datahelp.LxTime > 0)
+            {
+                datahelp.LxTime--;
+                int min = datahelp.LxTime / 60;
+                int sec = datahelp.LxTime % 60;
+                this.lbltime.Text = string.Format("{0:00}:{1:00}", min, sec);
+            }
+            else
+            {
+                this.timer1.Stop();
+                ff.ShowInfoTip("时间到了");
+                //AnswerForm frm = new AnswerForm();
+                //frm.MdiParent = this.MdiParent;
+                //frm.Show();
+                //this.Close();
+            }
+        }
     }
 }
