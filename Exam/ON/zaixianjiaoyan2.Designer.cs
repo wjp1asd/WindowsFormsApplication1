@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation2 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -86,7 +86,7 @@
             this.comboBox1.Font = new System.Drawing.Font("宋体", 14F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(580, 147);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 27);
             this.comboBox1.TabIndex = 57;
@@ -114,7 +114,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.label5.Location = new System.Drawing.Point(824, 134);
+            this.label5.Location = new System.Drawing.Point(854, 107);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(181, 25);
             this.label5.TabIndex = 55;
@@ -165,10 +165,10 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.label1.Location = new System.Drawing.Point(1272, 82);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(1156, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 25);
+            this.label1.Size = new System.Drawing.Size(111, 38);
             this.label1.TabIndex = 51;
             this.label1.Text = "倒计时:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -204,7 +204,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("宋体", 14F);
             this.textBox1.Location = new System.Drawing.Point(139, 193);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.MaxLength = 10;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(141, 29);
@@ -241,7 +241,7 @@
             // 
             this.textBox2.Font = new System.Drawing.Font("宋体", 14F);
             this.textBox2.Location = new System.Drawing.Point(580, 195);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(142, 29);
             this.textBox2.TabIndex = 62;
@@ -270,7 +270,7 @@
             "2000",
             "5000"});
             this.comboBox2.Location = new System.Drawing.Point(1000, 147);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(134, 27);
             this.comboBox2.TabIndex = 65;
@@ -307,7 +307,7 @@
             // 
             this.textBox3.Font = new System.Drawing.Font("宋体", 14F);
             this.textBox3.Location = new System.Drawing.Point(1000, 192);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(134, 29);
@@ -328,31 +328,31 @@
             // 
             // chart1
             // 
-            lineAnnotation2.Name = "LineAnnotation1";
-            this.chart1.Annotations.Add(lineAnnotation2);
-            chartArea2.BorderColor = System.Drawing.Color.DimGray;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            lineAnnotation1.Name = "LineAnnotation1";
+            this.chart1.Annotations.Add(lineAnnotation1);
+            chartArea1.BorderColor = System.Drawing.Color.DimGray;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Cursor = System.Windows.Forms.Cursors.Cross;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(0, 376);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(0, 344);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series2.BorderColor = System.Drawing.Color.Silver;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.MarkerBorderColor = System.Drawing.Color.Red;
-            series2.MarkerBorderWidth = 0;
-            series2.MarkerColor = System.Drawing.Color.Red;
-            series2.MarkerSize = 20;
-            series2.Name = "外加力";
-            series2.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(1261, 332);
+            series1.BorderColor = System.Drawing.Color.Silver;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.MarkerBorderColor = System.Drawing.Color.Red;
+            series1.MarkerBorderWidth = 0;
+            series1.MarkerColor = System.Drawing.Color.Red;
+            series1.MarkerSize = 20;
+            series1.Name = "外加力";
+            series1.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1120, 332);
             this.chart1.TabIndex = 69;
             this.chart1.Text = "chart1";
             this.chart1.GetToolTipText += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs>(this.chart1_GetToolTipText);
@@ -364,7 +364,7 @@
             this.button3.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button3.Location = new System.Drawing.Point(289, 11);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 34);
             this.button3.TabIndex = 70;
@@ -378,7 +378,7 @@
             this.button1.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(442, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 34);
             this.button1.TabIndex = 71;
@@ -392,7 +392,7 @@
             this.button2.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.Location = new System.Drawing.Point(802, 11);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 34);
             this.button2.TabIndex = 73;
@@ -406,7 +406,7 @@
             this.button4.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button4.Location = new System.Drawing.Point(624, 11);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(98, 34);
             this.button4.TabIndex = 72;
@@ -418,7 +418,7 @@
             // 
             this.textBox4.Font = new System.Drawing.Font("宋体", 14F);
             this.textBox4.Location = new System.Drawing.Point(139, 254);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(141, 29);
@@ -469,7 +469,7 @@
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(1005, 240);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(129, 78);
             this.richTextBox2.TabIndex = 81;
@@ -483,7 +483,7 @@
             this.uiLedLabel4.ForeColor = System.Drawing.Color.Lime;
             this.uiLedLabel4.IntervalOn = 3;
             this.uiLedLabel4.Location = new System.Drawing.Point(555, 66);
-            this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.uiLedLabel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLedLabel4.Name = "uiLedLabel4";
             this.uiLedLabel4.Size = new System.Drawing.Size(264, 28);
@@ -524,10 +524,10 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 655);
+            this.groupBox1.Location = new System.Drawing.Point(0, 819);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1609, 62);
+            this.groupBox1.Size = new System.Drawing.Size(1444, 62);
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -562,7 +562,7 @@
             // 
             this.textBox5.Font = new System.Drawing.Font("宋体", 14F);
             this.textBox5.Location = new System.Drawing.Point(580, 249);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(142, 29);
@@ -574,10 +574,10 @@
             this.lbltime.BackColor = System.Drawing.Color.Transparent;
             this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbltime.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.lbltime.Location = new System.Drawing.Point(1382, 75);
+            this.lbltime.Location = new System.Drawing.Point(1274, 62);
             this.lbltime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(116, 31);
+            this.lbltime.Size = new System.Drawing.Size(141, 42);
             this.lbltime.TabIndex = 107;
             this.lbltime.Text = "          ";
             // 
@@ -586,7 +586,7 @@
             this.uiButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton1.Location = new System.Drawing.Point(1408, 612);
+            this.uiButton1.Location = new System.Drawing.Point(1301, 608);
             this.uiButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
@@ -602,7 +602,7 @@
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(1405, 429);
+            this.label21.Location = new System.Drawing.Point(1293, 428);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(83, 12);
             this.label21.TabIndex = 111;
@@ -611,7 +611,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(1357, 448);
+            this.pictureBox1.Location = new System.Drawing.Point(1250, 444);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(150, 160);
@@ -634,7 +634,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1609, 950);
+            this.ClientSize = new System.Drawing.Size(1444, 881);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.pictureBox1);
@@ -670,7 +670,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chart1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "zaixianjiaoyan2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "在线校验";

@@ -92,7 +92,7 @@ namespace WindowsFormsApplication1.Exam
                 justcheck(this.checkBow7, reader["c1"].ToString().Trim());
                 justcheck(this.checkBow8, reader["c2"].ToString().Trim());
                 justcheck(this.checkBow9, reader["c3"].ToString().Trim());
-                justcheck(this.result, reader["result"].ToString().Trim());
+              //  justcheck(this.result, reader["result"].ToString().Trim());
                 //     this.checkBoxw1.Checked = reader["shebeidaima"].ToString();
 
             }
