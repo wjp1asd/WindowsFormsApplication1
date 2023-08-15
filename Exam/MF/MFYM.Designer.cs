@@ -38,7 +38,6 @@
             this.uiLine2 = new Sunny.UI.UILine();
             this.uiLine1 = new Sunny.UI.UILine();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.lbltime = new System.Windows.Forms.Label();
@@ -106,7 +105,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 711);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1808, 38);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1562, 38);
             this.flowLayoutPanel2.TabIndex = 50;
             // 
             // uiLine2
@@ -150,21 +149,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(1192, 18);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 42);
-            this.button2.TabIndex = 74;
-            this.button2.Text = "重新研磨";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -196,8 +180,8 @@
             this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbltime.BackColor = System.Drawing.Color.Transparent;
             this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 11.5F);
-            this.lbltime.Location = new System.Drawing.Point(1554, 19);
+            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.lbltime.Location = new System.Drawing.Point(1308, 19);
             this.lbltime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltime.Name = "lbltime";
             this.lbltime.Size = new System.Drawing.Size(155, 41);
@@ -215,11 +199,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1808, 749);
+            this.ClientSize = new System.Drawing.Size(1562, 749);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.uiLine1);
             this.Controls.Add(this.flowLayoutPanel2);
@@ -255,7 +238,6 @@
         private Sunny.UI.UILine uiLine2;
         private Sunny.UI.UILine uiLine1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbltime;

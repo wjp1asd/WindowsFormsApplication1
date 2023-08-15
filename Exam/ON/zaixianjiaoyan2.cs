@@ -1189,6 +1189,7 @@ namespace WindowsFormsApplication1.Exam
 
                 Thread x = new Thread(cxs);
                 x.Start();
+                x.Join();
                 this.Close();
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();

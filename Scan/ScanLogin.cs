@@ -92,8 +92,9 @@ namespace WindowsFormsApplication1.Scan
                 qrcode = ff.RC(sql);
 
                 t = t.getRecord(qrcode);
+                
                 this.groupBox1.Show();
-                this.groupBox1.Left = this.button1.Left - 100;
+                this.groupBox1.Left = this.button1.Left - 220;
                 this.groupBox1.Top = this.button1.Top + 100;
                 Student s = new Student(t.KsId);
                 //  MessageBox.Show(s.ava);
@@ -107,6 +108,10 @@ namespace WindowsFormsApplication1.Scan
             {
 
                 ff.ShowErrorDialog("未找到合适记录");
+                this.textBox1.Clear();
+                this.textBox1.Focus();
+                this.button7.Enabled = false;
+
             }
             // 开始进入考试 读取不同设备参数 进行定向跳转    < !--1是管理员  0是考生抽题 2是离线考试 3 在线考试 4 研磨 - 1是上帝模式-- >
 
@@ -129,6 +134,9 @@ namespace WindowsFormsApplication1.Scan
         private void button3_Click(object sender, EventArgs e)
         {
             this.groupBox1.Hide();
+            this.textBox1.Clear();
+            this.textBox1.Focus();
+            this.button7.Enabled = false;
         }
         protected override CreateParams CreateParams //防止界面闪烁
         {
