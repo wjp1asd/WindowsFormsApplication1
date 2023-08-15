@@ -153,7 +153,7 @@ namespace WindowsFormsApplication1.Exam
                 famaostate = true;
                 //  dishow("阀帽存在");
 
-                if()
+               
                 if (chuchi==1)
                 {
                     //   ff.ShowInfoTip("初安装阀帽");
@@ -1581,9 +1581,9 @@ namespace WindowsFormsApplication1.Exam
 
             }
 
-         c = new Thread(csd);
-         c.Start();
-         c.Join();
+        // c = new Thread(csd);
+       // c.Start();
+        // c.Join();
         }
         Thread c;
         private void csd()
