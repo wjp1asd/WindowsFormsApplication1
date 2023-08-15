@@ -34,17 +34,19 @@ namespace WindowsFormsApplication1
             //  Application.Run(new Print("mXjjwVcvXizfGcnbOF9CKw=="));
             //    Application.Run(new ResultSet());
             string x = ConfigurationManager.AppSettings["machine"];
-            if (int.Parse(x)<2) {
+            if (int.Parse(x) < 2)
+            {
                 Application.Run(new form1());
             }
-            else {
+            else
+            {
                 Application.Run(new ScanLogin());
             }
-          
+
             // Application.Run(new zaixianjiaoyan2());
             // Application.Run(new Exam1());
-          // Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
-           //  Application.Run(new ScanLogin());
+            // Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
+            //  Application.Run(new ScanLogin());
             // Application.Run(new SubjectForm());
         }
         static void AddStartupEntry(string appName, string appPath)

@@ -51,8 +51,8 @@ namespace WindowsFormsApplication1
 
             int btnX = 20;
             int btnY = 60;
-            int IblX = 90;
-            int IblY = 65;
+            int IblX = 120;
+            int IblY = 80;
             for (int i = 0; i < num; i++)
             {
                 Button btn = new Button();
@@ -69,12 +69,12 @@ namespace WindowsFormsApplication1
                 Ibl.Size = new Size(61, 32);
                 this.Controls.Add(Ibl);
                 this.Controls.Add(btn);
-                btnX += 140;
-                IblX += 140;
+                btnX += 240;
+                IblX += 240;
                 if ((i + 1) % 4 == 0)
                 {
                     btnX = 20;
-                    IblX = 90;
+                    IblX = 120;
                     btnY += 70;
                     IblY += 70;
 
@@ -127,7 +127,10 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void lbltime_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 
 }
