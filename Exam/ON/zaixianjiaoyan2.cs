@@ -1184,11 +1184,11 @@ namespace WindowsFormsApplication1.Exam
 
             last = true;
 //DIS == "01110000"||
-            if ( DIS == "01100011")
+            if ( DIS == "01100011"||DIS == "01100000")
             {
 
-                Thread x = new Thread(cxs);
-                x.Start();
+               // Thread x = new Thread(cxs);
+              // x.Start();
                 this.Close();
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();
