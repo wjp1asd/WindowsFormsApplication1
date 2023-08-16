@@ -235,7 +235,7 @@ namespace WindowsFormsApplication1.Exam
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
             this.timer1.Start();
-            v = new VideoCapture(0);
+            v = new Emgu.CV.VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
             this.richTextBox1.Hide();
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
@@ -245,8 +245,8 @@ namespace WindowsFormsApplication1.Exam
 
         }
         DateTime currentTime = DateTime.Now;
-        VideoCapture v;
-        Mat mat = new Mat();
+        Emgu.CV.VideoCapture v;
+        Emgu.CV.Mat mat = new Emgu.CV.Mat();
         private void Application_Idle(object sender, EventArgs e)
         {
             if (last == false)
@@ -1036,7 +1036,7 @@ namespace WindowsFormsApplication1.Exam
             //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
             {
                 ff.sound();
-                a.MarkerStyle = MarkerStyle.Circle;
+                a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
                 a.Label = Math.Round(wjltj).ToString() + "KG";
@@ -1055,7 +1055,7 @@ namespace WindowsFormsApplication1.Exam
             //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
             {
                 ff.sound();
-                a.MarkerStyle = MarkerStyle.Circle;
+                a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
                 a.Label = "超压开启" + Math.Round(wjltj).ToString() + "KG";

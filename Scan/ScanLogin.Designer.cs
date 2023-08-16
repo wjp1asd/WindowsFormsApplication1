@@ -122,7 +122,7 @@
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox3.ErrorImage = null;
             this.pictureBox3.Image = global::WindowsFormsApplication1.Properties.Resources.logo;
-            this.pictureBox3.Location = new System.Drawing.Point(424, 535);
+            this.pictureBox3.Location = new System.Drawing.Point(400, 535);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(417, 109);
@@ -297,7 +297,6 @@
             this.groupBox1.Size = new System.Drawing.Size(700, 281);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
-            this.groupBox1.UseWaitCursor = true;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label1
