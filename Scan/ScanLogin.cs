@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1.Scan
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.groupBox1.Hide();
+            this.Opacity = 0;
         }
         private Fuc ff = new Fuc();
         public void change()
@@ -25,7 +26,7 @@ namespace WindowsFormsApplication1.Scan
             ff.fullsreen(this.button1, this);
             ff.fullsreen(this.textBox1, this);
 
-            ff.fullsreen(this.button7, this);
+         
           //  ff.fullsreen(this.label2, this);
 
 
@@ -43,9 +44,7 @@ namespace WindowsFormsApplication1.Scan
                 xuanti();
             }
 
-            this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml("Green");
-            this.button7.Enabled = true;
-            this.button7.Text = "查询结果";
+        
 
 
         }
@@ -53,7 +52,7 @@ namespace WindowsFormsApplication1.Scan
         private void ScanLogin_Load(object sender, EventArgs e)
         {
             this.textBox1.Focus();
-            this.button7.Enabled = false;
+           
             //this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
 
@@ -110,7 +109,7 @@ namespace WindowsFormsApplication1.Scan
                 ff.ShowErrorDialog("未找到合适记录");
                 this.textBox1.Clear();
                 this.textBox1.Focus();
-                this.button7.Enabled = false;
+              
 
             }
             // 开始进入考试 读取不同设备参数 进行定向跳转    < !--1是管理员  0是考生抽题 2是离线考试 3 在线考试 4 研磨 - 1是上帝模式-- >
@@ -122,8 +121,9 @@ namespace WindowsFormsApplication1.Scan
         {
             // this.Close();
             // ff.backlogin();
-            Application.Restart();
-            Process.GetCurrentProcess()?.Kill();
+
+           Application.Exit();
+         //   Process.GetCurrentProcess()?.Kill();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -136,7 +136,7 @@ namespace WindowsFormsApplication1.Scan
             this.groupBox1.Hide();
             this.textBox1.Clear();
             this.textBox1.Focus();
-            this.button7.Enabled = false;
+       
         }
         //protected override CreateParams CreateParams //防止界面闪烁
         //{
