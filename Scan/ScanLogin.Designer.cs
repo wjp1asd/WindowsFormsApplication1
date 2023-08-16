@@ -253,7 +253,6 @@
             this.groupBox1.Size = new System.Drawing.Size(537, 256);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
-            this.groupBox1.UseWaitCursor = true;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // ScanLogin
