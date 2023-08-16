@@ -138,8 +138,8 @@ namespace WindowsFormsApplication1.Exam
                     datahelp c = new datahelp();
                     c.Initc();
                     double F = (zdyl - xtyl) * (double.Parse(c.mfzj) / 2) * (double.Parse(c.mfzj) / 2) * 3.2 / 10;
-
-                    this.textBox3.Text = F.ToString();
+                    double F1 = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2 / 10;
+                    this.textBox3.Text = F1.ToString();
                     wjltj = F;
                     double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
                     this.richTextBox2.Text += "开启压力" + PS;
