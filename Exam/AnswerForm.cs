@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1
                 btn.Text = string.Format("第{0}题", i + 1);
                 btn.Tag = i;
                 // btn.Click += new EventHandler(btn_Click);
-                btn.Size = new Size(80, 50);
+                btn.Size = new Size(60, 40);
                 Label Ibl = new Label();
                 Ibl.Location = new Point(IblX, IblY);
 

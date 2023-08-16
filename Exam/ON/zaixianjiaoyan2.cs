@@ -1,6 +1,7 @@
 ﻿using AutoWindowsSize;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -281,6 +282,9 @@ namespace WindowsFormsApplication1.Exam
             if (datahelp.LxTime > 0)
             {
                 datahelp.LxTime--;
+                if (datahelp.LxTime == 60) { 
+                this.lbltime.ForeColor = Color.Red;
+                }
                 int min = datahelp.LxTime / 60;
                 int sec = datahelp.LxTime % 60;
                 this.lbltime.Text = string.Format("{0:00}:{1:00}", min, sec);
@@ -437,8 +441,8 @@ namespace WindowsFormsApplication1.Exam
         {
             this.plcinit();
         }
-
-
+        // 2分钟没反应，弹框 显示 500ms
+        int limit = 240;
         string DIS0;
         string DIS = "01110000";
 
@@ -478,11 +482,87 @@ namespace WindowsFormsApplication1.Exam
                 Console.WriteLine("Di:" + a);
                 // MessageBox.Show(a);
                 string b = "";
-                //if (DIS0 == a)
-                //{
-                //    dishow("DI无变化");
-                //    return;
-                //}
+                if (DIS0 == a)
+                {
+                    // 500ms 1循环
+                    dishow("DI无变化");
+                    limit--;
+                    if (limit == 0) {
+
+                        MessageBox.Show("超过2分钟时间未操作，考试即将关闭");
+                        g.updateGrade(0, "mfzjcl", datahelp.QId);
+                        g.updateGrade(0, "csfm1", datahelp.QId);
+                        g.updateGrade(0, "wxxz1", datahelp.QId);
+                        g.updateGrade(0, "jyjg1", datahelp.QId);
+                        g.updateGrade(0, "azfm1", datahelp.QId);
+
+                        Thread.Sleep(1000);
+                        this.Close();
+                        string str ="";
+                        if (last == false)
+                        {
+                            if (fm == true)
+                            {
+
+                             
+                            }
+                            else
+                            {
+                                str += "阀帽未归位";
+                                //    ff.ShowErrorTip("阀帽未归位不得分");
+
+                            }
+                            if (shy == true)
+                            {
+                                //  g.updateGrade(, "dkxyf", datahelp.QId);
+                                //    ff.ShowSuccessTip("四合一归位得分");
+                            }
+                            else
+                            {
+                                str += "四合一未归位";
+                                //    ff.ShowErrorTip("四合一未归位不得分");
+
+                            }
+                            if (gj == true)
+                            {
+
+                                //  g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
+                                //    ff.ShowSuccessTip("工具归位正确");
+                            }
+                            else
+                            {
+                                //    ff.ShowErrorTip("工具未归位");
+                                str += "工具未归位";
+                            }
+
+
+                        }
+                        
+                        last = true;
+                        //DIS == "01110000"||
+                        if (DIS == "01100011" || DIS == "01100000")
+                        {
+
+                            // Thread x = new Thread(cxs);
+                            // x.Start();
+                            this.Close();
+                            zaixianjiaoyan o = new zaixianjiaoyan();
+                            o.Show();
+
+
+
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("请完成复位再退出:" + str);
+
+                        }
+                    }
+                    
+
+                    return;
+                }
                 //else
                 {
 
@@ -995,57 +1075,9 @@ namespace WindowsFormsApplication1.Exam
                 b12 = true;
             }
             this.chart1.Invalidate();
-            //foreach (System.Windows.Forms.DataVisualization.Charting.DataPoint a in dataPoints
-            //    ) {
-            //    //点位大于推荐值 并且误差在1个以内，并且处于下降区间
-
-            //    if (a.YValues[0] <134 && a.YValues[0] >129 && b12 == true)
-            //  //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
-            //    {
-
-            //        a.MarkerStyle = MarkerStyle.Circle;
-            //        a.MarkerSize = 10;
-            //        a.MarkerColor = System.Drawing.Color.Red;
-            //        a.Label = Math.Round(wjltj).ToString() + "KG";
-            //        a.LabelForeColor = System.Drawing.Color.Red;
-
-            //        double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
-
-            //        this.textBox5.Text = PS.ToString();
-            //        b12 = false;
-            //        MessageBox.Show(""+b12);
-            //    }
-            //    if ((a.YValues[0] - wjltj) < 10 )
-            //    {
-
-
-            //        b12 = true;
-            //    }
-            //    this.chart1.Invalidate();
+        
         }
 
-
-        //if (b2 - wjl < 0 && Math.Abs(b2 - wjltj) <= 5 && liangcheng > 0)
-        //{
-        //    // 开始下降  
-        //    Action tongdao1 = () =>
-        //    {
-
-        //        this.textBox5.Text = b2.ToString();
-        //        //
-        //    };
-        //    this.Invoke(tongdao1);
-        //   MessageBox.Show("开启点"+dataPoints.Count);
-
-        //    //System.Windows.Forms.DataVisualization.Charting.DataPoint point = this.chart1.Series[0].Points[cisu];
-        //    point.MarkerStyle = MarkerStyle.Circle;
-        //    point.MarkerSize = 20;
-        //    point.MarkerColor = System.Drawing.Color.Red;
-
-
-
-        //   // MessageBox.Show("开启点" + cisu);
-        //}  
 
 
     
@@ -1131,9 +1163,10 @@ namespace WindowsFormsApplication1.Exam
             this.timer1.Stop();
             this.timer2.Stop();
             datahelp.CurrentStep1 = 3;
-           // zaixianjiaoyan o = new zaixianjiaoyan();
-           // o.Show();
+            // zaixianjiaoyan o = new zaixianjiaoyan();
+            // o.Show();
             //this.Close();
+            string str = "";
             if (last == false)
             {
                 if (fm == true)
@@ -1150,7 +1183,8 @@ namespace WindowsFormsApplication1.Exam
                 }
                 else
                 {
-                //    ff.ShowErrorTip("阀帽未归位不得分");
+                    str += "阀帽未归位";
+                    //    ff.ShowErrorTip("阀帽未归位不得分");
 
                 }
                 if (shy == true)
@@ -1160,18 +1194,20 @@ namespace WindowsFormsApplication1.Exam
                 }
                 else
                 {
+                    str += "四合一未归位";
                 //    ff.ShowErrorTip("四合一未归位不得分");
 
                 }
                 if (gj == true)
                 {
+
                     //  g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
                 //    ff.ShowSuccessTip("工具归位正确");
                 }
                 else
                 {
-                //    ff.ShowErrorTip("工具未归位");
-
+                    //    ff.ShowErrorTip("工具未归位");
+                    str += "工具未归位";
                 }
 
 
@@ -1199,7 +1235,7 @@ namespace WindowsFormsApplication1.Exam
             else
             {
 
-                MessageBox.Show("请完成复位再退出");
+                MessageBox.Show("请完成复位再退出:"+str);
 
             }
 
@@ -1369,7 +1405,7 @@ namespace WindowsFormsApplication1.Exam
             }
            
             this.timer1.Dispose();
-            this.timer2.Dispose();
+          //  this.timer2.Dispose();
         }
 
         private void uiButton1_Click(object sender, EventArgs e)
@@ -1410,7 +1446,7 @@ namespace WindowsFormsApplication1.Exam
 
             // Process.GetCurrentProcess()?.Kill();
             this.timer1.Dispose();
-            this.timer2.Dispose(); 
+           // this.timer2.Dispose(); 
         }
 
         private void JiaoYormClosing(object sender, FormClosingEventArgs e)

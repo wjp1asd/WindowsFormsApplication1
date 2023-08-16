@@ -30,7 +30,6 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -48,6 +47,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -58,13 +58,12 @@
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox1.Font = new System.Drawing.Font("宋体", 34F);
             this.textBox1.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.textBox1.Location = new System.Drawing.Point(473, 174);
+            this.textBox1.Location = new System.Drawing.Point(460, 449);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(280, 80);
             this.textBox1.TabIndex = 0;
-            this.textBox1.UseWaitCursor = true;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button7
@@ -84,26 +83,10 @@
             this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(464, 115);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(302, 52);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "二维码对准扫描";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.UseWaitCursor = true;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackColor = System.Drawing.Color.Gray;
+            this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(501, 354);
@@ -111,7 +94,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(209, 62);
             this.button1.TabIndex = 32;
-            this.button1.Text = "重启";
+            this.button1.Text = "退出";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.UseWaitCursor = true;
             this.button1.Visible = false;
@@ -139,14 +122,13 @@
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox3.ErrorImage = null;
             this.pictureBox3.Image = global::WindowsFormsApplication1.Properties.Resources.logo;
-            this.pictureBox3.Location = new System.Drawing.Point(420, 518);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(424, 535);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(417, 109);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 37;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.UseWaitCursor = true;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // label10
@@ -308,7 +290,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Location = new System.Drawing.Point(265, 187);
+            this.groupBox1.Location = new System.Drawing.Point(265, 164);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -318,6 +300,20 @@
             this.groupBox1.UseWaitCursor = true;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(251, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(754, 80);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "智能化安全阀校验考试系统";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // ScanLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -326,11 +322,11 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1261, 640);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -338,7 +334,6 @@
             this.Name = "ScanLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "扫描验证";
-            this.UseWaitCursor = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ScanLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -354,7 +349,6 @@
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -372,5 +366,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

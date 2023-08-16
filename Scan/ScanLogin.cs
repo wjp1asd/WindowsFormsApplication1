@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1.Scan
             ff.fullsreen(this.textBox1, this);
 
             ff.fullsreen(this.button7, this);
-            ff.fullsreen(this.label2, this);
+          //  ff.fullsreen(this.label2, this);
 
 
         }
@@ -138,15 +138,15 @@ namespace WindowsFormsApplication1.Scan
             this.textBox1.Focus();
             this.button7.Enabled = false;
         }
-        protected override CreateParams CreateParams //防止界面闪烁
-        {
-            get
-            {
-                CreateParams paras = base.CreateParams;
-                paras.ExStyle |= 0x02000000;
-                return paras;
-            }
-        }
+        //protected override CreateParams CreateParams //防止界面闪烁
+        //{
+        //    get
+        //    {
+        //        CreateParams paras = base.CreateParams;
+        //        paras.ExStyle |= 0x02000000;
+        //        return paras;
+        //    }
+        //}
         private void button4_Click(object sender, EventArgs e)
         {
             //this.Close();
