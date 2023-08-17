@@ -2,6 +2,7 @@
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -784,7 +785,7 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
-
+        int limit = 240;
         string DIS0;
         string DIS = "1111001";
 
@@ -988,6 +989,71 @@ namespace WindowsFormsApplication1.Exam
                     DIS0 = a;
                     //di状态分析
                     fenxi();
+
+
+                    if (DIS0 == a)
+                    {
+
+                        //    ff.ShowInfoTip("无操作" + limit);
+                        limit--;
+                        if (limit == 0)
+                        {
+
+                            MessageBox.Show("超过2分钟时间未操作，考试结束，请点击右下角退出");
+
+                            ////g.updateGrade(0, "mfzjcl", datahelp.QId);
+                            ////g.updateGrade(0, "csfm1", datahelp.QId);
+                            ////g.updateGrade(0, "wxxz1", datahelp.QId);
+                            ////g.updateGrade(0, "jyjg1", datahelp.QId);
+                            ////g.updateGrade(0, "azfm1", datahelp.QId);
+
+
+
+                            string str = "";
+                            if (last == false)
+                            {
+                           
+                                
+                                if (qiehuastate == true)
+                                {
+                                    str += "压力表没有归位，";
+                                }
+                                if (gongjustate == false)
+                                {
+                                    str += "扳手没有归位，";
+                                }
+                                if (famaostate == false)
+                                {
+                                    str += "阀帽没有归位，";
+                                }
+
+                                if (xieyastate == false)
+                                {
+                                    str += "泄压阀关闭，";
+                                }
+
+                              
+                            }
+                            last = true;
+                            // MessageBox.Show(DIS);
+                            if (DIS == "11111001" || DIS == "01111001" || DIS == "11111000" || DIS == "01111000")
+                            {
+
+
+
+
+
+                            }
+                            else { MessageBox.Show("请完成复位再退出:" + str); }
+                          
+                        }
+
+
+
+                    }
+
+
+
                 }
 
 
@@ -1549,10 +1615,15 @@ namespace WindowsFormsApplication1.Exam
             // MessageBox.Show(DIS);
             if (DIS == "11111001" || DIS == "01111001"||DIS=="11111000"||DIS=="01111000")
             {
-              
+                
+            Action x = () =>
+            {
                 this.Close();
                 OFF of = new OFF(datahelp.QId);
                 of.Show();
+            };
+            this.Invoke(x);
+              
                
 
             }
@@ -1581,9 +1652,7 @@ namespace WindowsFormsApplication1.Exam
 
             }
 
-         c = new Thread(csd);
-         c.Start();
-         c.Join();
+      
         }
         Thread c;
         private void csd()

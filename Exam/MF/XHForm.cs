@@ -26,6 +26,7 @@ namespace WindowsFormsApplication1.Exam.MF
         public XHForm(string qrcode)
         {
             InitializeComponent();
+            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
             g.getOne(qrcode);
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -491,9 +492,13 @@ namespace WindowsFormsApplication1.Exam.MF
         {
             CheckBox rdb = (CheckBox)sender;
             // option = "";
-
+            if (option.Length > 2) {
+                MessageBox.Show("只能单选");
+                return;
+            }
             if (rdb.Checked)
             {
+                //d单选
                 if (!option.Contains(rdb.Tag.ToString()) && option.Length < 4)
                 {
                     option += rdb.Tag.ToString();

@@ -247,6 +247,8 @@ namespace WindowsFormsApplication1
             this.Close();
             MF1 mF = new MF1();
             mF.Show();
+            //光标显示
+            System.Windows.Forms.Cursor.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)

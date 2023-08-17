@@ -101,11 +101,61 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap 在线校验界面副本 {
+            get {
+                object obj = ResourceManager.GetObject("在线校验界面副本", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap 密封面研磨界面副本 {
+            get {
+                object obj = ResourceManager.GetObject("密封面研磨界面副本", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         /// </summary>
         public static System.IO.UnmanagedMemoryStream 提示音2 {
             get {
                 return ResourceManager.GetStream("提示音2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap 离线校验界面副本 {
+            get {
+                object obj = ResourceManager.GetObject("离线校验界面副本", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap 空白界面副本 {
+            get {
+                object obj = ResourceManager.GetObject("空白界面副本", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap 管理员界面副本 {
+            get {
+                object obj = ResourceManager.GetObject("管理员界面副本", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

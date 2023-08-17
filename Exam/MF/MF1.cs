@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1.Exam.MF
             InitializeComponent();
           
             InitUI();
-
+            ff.same(this);
         }
         private void InitUI()
         {

@@ -328,5 +328,12 @@ namespace WindowsFormsApplication1.Models
         {
             UINotifierHelper.ShowNotifier(desc, clickEvent, UINotifierType.ERROR, UILocalize.ErrorTitle, timeout);
         }
+
+        internal void same(Form f)
+        {
+            f.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
+            f.ControlBox = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+        }
     }
 }

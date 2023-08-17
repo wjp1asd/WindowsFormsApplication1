@@ -601,7 +601,11 @@ namespace WindowsFormsApplication1
         {
             CheckBox rdb = (CheckBox)sender;
             // option = "";
-
+            if (option.Length > 2)
+            {
+                MessageBox.Show("只能单选");
+                return;
+            }
             if (rdb.Checked)
             {
                 if (!option.Contains(rdb.Tag.ToString()) && option.Length < 4)

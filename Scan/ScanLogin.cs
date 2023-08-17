@@ -17,7 +17,28 @@ namespace WindowsFormsApplication1.Scan
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.groupBox1.Hide();
-            this.Opacity = 0;
+            //this.Close();
+            string x = ConfigurationManager.AppSettings["machine"];
+
+
+            //   ff.ShowInfoTip(a.color1);
+            switch (int.Parse(x))
+            {
+                case 2:
+                    this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.离线校验界面副本;
+                    break;
+                case 3:
+                    this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.在线校验界面副本;
+                    break;
+                case 4:
+                    this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.密封面研磨界面副本;
+                    break;
+                case -1:
+                    //  datahelp.CurrentStep = 3;
+                    this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
+                    break;
+
+            }
         }
         private Fuc ff = new Fuc();
         public void change()
@@ -93,23 +114,26 @@ namespace WindowsFormsApplication1.Scan
                 t = t.getRecord(qrcode);
                 
                 this.groupBox1.Show();
-                this.groupBox1.Left = this.button1.Left - 220;
-                this.groupBox1.Top = this.button1.Top + 100;
+              
                 Student s = new Student(t.KsId);
-                //  MessageBox.Show(s.ava);
+                
                 this.label10.Text += t.Ksname;
                 this.label3.Text += s.Sex;
                 this.label8.Text += t.KsId;
                 this.pictureBox2.ImageLocation = s.ava;
+               // this.textBox1.Enabled = true;
+                this.textBox1.Clear();
+                this.textBox1.Focus();
                 read = false;
             }
             else
             {
 
                 ff.ShowErrorDialog("未找到合适记录");
+                 this.textBox1.Enabled = true;
                 this.textBox1.Clear();
                 this.textBox1.Focus();
-              
+                read = true;
 
             }
             // 开始进入考试 读取不同设备参数 进行定向跳转    < !--1是管理员  0是考生抽题 2是离线考试 3 在线考试 4 研磨 - 1是上帝模式-- >
@@ -134,9 +158,11 @@ namespace WindowsFormsApplication1.Scan
         private void button3_Click(object sender, EventArgs e)
         {
             this.groupBox1.Hide();
+            this.textBox1.Enabled = true;
             this.textBox1.Clear();
             this.textBox1.Focus();
-       
+            read = true;
+
         }
         //protected override CreateParams CreateParams //防止界面闪烁
         //{
@@ -149,7 +175,7 @@ namespace WindowsFormsApplication1.Scan
         //}
         private void button4_Click(object sender, EventArgs e)
         {
-            //this.Close();
+            this.Hide();
             string x = ConfigurationManager.AppSettings["machine"];
 
 
@@ -189,12 +215,18 @@ namespace WindowsFormsApplication1.Scan
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (read == true)
+            {
+                Application.Exit();
+            }
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (read == true) {
+                Application.Exit();
+            }
+                                                     
         }
     }
 }

@@ -707,10 +707,15 @@
     <None Include="bk.jpg" />
     <Content Include="Resources\logo.jpg" />
     <Content Include="Resources\在线校验界面副本.jpg" />
+    <None Include="Resources\在线校验界面副本1.jpg" />
     <Content Include="Resources\密封面研磨界面副本.jpg" />
+    <None Include="Resources\密封面研磨界面副本1.jpg" />
     <Content Include="Resources\提示音2.wav" />
     <Content Include="Resources\离线校验界面副本.png" />
+    <None Include="Resources\空白界面副本1.jpg" />
+    <None Include="Resources\离线校验界面副本1.jpg" />
     <Content Include="Resources\管理员界面副本.jpg" />
+    <None Include="Resources\管理员界面副本1.jpg" />
     <Content Include="termb.dll" />
     <Content Include="联机考试系统.ico" />
   </ItemGroup>

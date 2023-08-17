@@ -26,6 +26,7 @@ namespace WindowsFormsApplication1
             InitUI();
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
+
           //   this.change();
         }
         private Fuc ff = new Fuc();
@@ -53,9 +54,9 @@ namespace WindowsFormsApplication1
             if (x == "1")
             {
                 // 管理员权限
-
-             //   this.button1.Left += 150;
-               this.button1.Top = this.button2.Top;
+             //   this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.管理员界面副本;
+                //   this.button1.Left += 150;
+                this.button1.Top = this.button2.Top;
 
                 this.button2.Hide();
                 this.uiButton1.Hide();
@@ -253,7 +254,7 @@ namespace WindowsFormsApplication1
         private void form1_Load(object sender, EventArgs e)
         {
             // ft.showloading();
-
+          
             initsetp();
          
         }
@@ -328,6 +329,7 @@ namespace WindowsFormsApplication1
         {
             //jiaoyancanshu  jy = new jiaoyancanshu();    
             //jy.Show();
+            datahelp.CurrentStep = 2;
             OFF off = new OFF(datahelp.QId);
             off.Show();
           //  this.Hide();
@@ -337,7 +339,7 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            datahelp.CurrentStep = 3;
             MF1 mf = new MF1();
             mf.Show();
            // this.Hide();
@@ -360,7 +362,7 @@ namespace WindowsFormsApplication1
 
         private void button11_Click(object sender, EventArgs e)
         {
-            //zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
+            datahelp.CurrentStep = 2;//zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
             //zaixianjiaoyan.Show();
             ON on = new ON(datahelp.QId);
             on.Show();
@@ -374,6 +376,11 @@ namespace WindowsFormsApplication1
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Click(object sender, EventArgs e)
         {
 
         }
