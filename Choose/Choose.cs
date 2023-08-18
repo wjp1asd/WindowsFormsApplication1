@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1.Exam
             ts = new TestRecord();
             InitializeComponent();
             this.change();
-
+            ff.same(this);
             idcard = id;
             this.uiLabel2.Text = st.Name;
 

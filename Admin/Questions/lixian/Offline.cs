@@ -11,6 +11,7 @@ namespace WindowsFormsApplication1.Questions
         {
             InitializeComponent();
             InitUI();
+            c.same(this);
 
         }
         Fuc c = new Fuc();

@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1.Exam
             datahelp.QId = qrcode;
             InitUI();
             qr = qrcode;
-
+            ff.same(this);
 
         }
         private void InitUI()

@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
         {
             InitializeComponent();
             InitUI();
+            c.same(this);
 
         }
         private void InitUI()

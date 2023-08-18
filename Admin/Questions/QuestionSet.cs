@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             InitUI();
-
+            ff.same(this);
         }
         private void InitUI()
         {

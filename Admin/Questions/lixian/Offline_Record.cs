@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1.Questions
 
             InitializeComponent();
             InitUI();
-
+            ff.same(this);
         }
         private void InitUI()
         {

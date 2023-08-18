@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1.Exam
             qr = qrcode;
             InitializeComponent();
             InitUI();
-
+            ff.same(this);
         }
         private void InitUI()
         {

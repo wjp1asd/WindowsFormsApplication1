@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
 
             InitUI();
-
+            ff.same(this);
         }
         private Fuc ff = new Fuc();
         public void change()

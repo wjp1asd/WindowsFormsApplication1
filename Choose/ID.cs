@@ -30,6 +30,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             this.Change();
             // this.UpdataInfo(Id);
+            ff.same(this);
         }
 
         private void Change()

@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1.Settings
             InitializeComponent();
 
             InitC();
+            ff.same(this);
         }
 
         public string a, b, c, d, f;
