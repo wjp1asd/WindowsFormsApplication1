@@ -470,7 +470,15 @@ namespace WindowsFormsApplication1.Exam
                 awt.FormSizeChanged();
             }
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         List<goal> goals = new List<goal>();
 
 

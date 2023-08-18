@@ -30,6 +30,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             this.Change();
             // this.UpdataInfo(Id);
+            ff.same(this);
         }
 
         private void Change()
@@ -95,8 +96,15 @@ namespace WindowsFormsApplication1
             }
         }
 
-
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

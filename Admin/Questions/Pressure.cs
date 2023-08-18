@@ -253,6 +253,15 @@ namespace WindowsFormsApplication1.Questions
         {
 
         }
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
         {

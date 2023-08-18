@@ -12,6 +12,16 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
             InitUI();
 
+            ff.same(this);
+        }
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
         }
         private void InitUI()
         {
@@ -32,10 +42,12 @@ namespace WindowsFormsApplication1.Exam
 
             ff.same(this);
 
-           // this.change();
-
-
+            // this.change();
+         z = new zaixianjiaoyan2();
+            z.Visible = false;
+            z.Show();
         }
+        zaixianjiaoyan2 z;
         private Fuc ff = new Fuc();
         public void change()
         {
@@ -67,7 +79,7 @@ namespace WindowsFormsApplication1.Exam
             }
         }
 
-
+       
 
         private void zaixianjiaoyan_Load(object sender, EventArgs e)
         {
@@ -110,8 +122,7 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            zaixianjiaoyan2 z = new zaixianjiaoyan2();
-            z.Show();
+           z.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

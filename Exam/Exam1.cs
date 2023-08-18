@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1.Exam
             datahelp.QId = qrcode;
             InitUI();
             qr = qrcode;
-
+            ff.same(this);
 
         }
         private void InitUI()
@@ -108,7 +108,15 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void Exam1_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
