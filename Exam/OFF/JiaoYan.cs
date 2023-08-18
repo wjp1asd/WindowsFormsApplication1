@@ -409,7 +409,7 @@ namespace WindowsFormsApplication1.Exam
             string mm = loc1 + url + t.Qrcode + "-shot.png";
             g.updatepath(mm, "lxpic", datahelp.QId);
             lxpic = 1;
-            MessageBox.Show("拍照成功");
+        //    MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 
@@ -542,7 +542,7 @@ namespace WindowsFormsApplication1.Exam
         private void ReadAI()
         {
             //ff.ShowInfoTip(BitConverter.ToString(td1));
-
+·
             while (true && serialPort2.IsOpen && last == false)
             {
                 try
@@ -1302,7 +1302,7 @@ namespace WindowsFormsApplication1.Exam
 
 
                         g.updateGrade(bycs, "bycs", datahelp.QId);
-                        ff.ShowSuccessTip("密封测试：保压 得分");
+                     //   ff.ShowSuccessTip("密封测试：保压 得分");
 
 
                     }
