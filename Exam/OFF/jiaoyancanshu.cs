@@ -9,14 +9,12 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class jiaoyancanshu : Form
     {
-        string index = "";
+      //  string index = "";
         public jiaoyancanshu()
         {
             InitializeComponent();
 
-            j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
-            j.Show();
-            j.Visible = true;
+         
 
         }
         List<Wucha> wuchas = new List<Wucha>();
@@ -44,6 +42,9 @@ namespace WindowsFormsApplication1.Exam
         {
             // 判读选择情况
             //yali
+            j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
+            j.Show();
+            j.Visible = true;
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
 

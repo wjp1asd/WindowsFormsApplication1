@@ -1577,7 +1577,7 @@ namespace WindowsFormsApplication1.Exam
         private void button2_Click(object sender, EventArgs e)
 
         {
-
+            string str = "";
 
             datahelp.CurrentStep1 = 3;
             if (last == false)
@@ -1635,7 +1635,7 @@ namespace WindowsFormsApplication1.Exam
             }
             else
             {
-                string str = "";
+               
                 if (qiehuastate == true)
                 {
                     str += "压力表没有归位，";
@@ -1653,8 +1653,8 @@ namespace WindowsFormsApplication1.Exam
                 {
                     str += "泄压阀关闭，";
                 }
-                ff.ShowErrorDialog(str);
-                MessageBox.Show("请完成复位再退出");
+              
+                MessageBox.Show("请完成复位再退出"+str);
 
             }
 

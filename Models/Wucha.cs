@@ -55,9 +55,9 @@ namespace WindowsFormsApplication1.Models
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from wucha where Type = '" + type.Trim() + "'";
-            //  string sql = "select * from wucha";
-            //   ff.ShowInfoTip(sql);
+           // string sql = "select * from wucha where Type = '" + type.Trim() + "'";
+             string sql = "select * from wucha";
+            //ff.ShowInfoTip(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
 
