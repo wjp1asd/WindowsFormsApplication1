@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1.Exam
         {
             InitializeComponent();
             InitUI();
-
+            ff.same(this);
         }
         private void InitUI()
         {
@@ -29,9 +29,11 @@ namespace WindowsFormsApplication1.Exam
 
             this.label2.Text = "在线校验";
 
-
-
-            this.change();
+            ff.same(this);
+            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
+            // this.change();
 
 
         }
@@ -66,7 +68,15 @@ namespace WindowsFormsApplication1.Exam
         }
 
 
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void Choose_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
@@ -117,7 +127,7 @@ namespace WindowsFormsApplication1.Exam
             datahelp.CurrentStep1 = 1;
             zaixianjiaoyan a = new zaixianjiaoyan();
             a.Show();
-          
+
         }
 
         private void button2_Click(object sender, EventArgs e)

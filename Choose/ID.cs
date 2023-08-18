@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Security.Policy;
 using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
@@ -30,6 +29,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             this.Change();
             // this.UpdataInfo(Id);
+            ff.same(this);
         }
 
         private void Change()
@@ -95,8 +95,15 @@ namespace WindowsFormsApplication1
             }
         }
 
-
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -344,14 +351,14 @@ namespace WindowsFormsApplication1
                                 //指纹信息
 
                                 //照片
-                                if (System.IO.File.Exists("ZP.bmp"))                      
+                                if (System.IO.File.Exists("ZP.bmp"))
 
                                 {
                                     try
                                     {
                                         url = loc + lblName.Text.Trim() + "_" + lblIdCard.Text.Trim() + ".bmp";
                                         string loc1 = ConfigurationManager.AppSettings["loc"];
-                                        url1=loc1+"身份证照片/"+ lblName.Text.Trim() + "_" + lblIdCard.Text.Trim() + ".bmp";
+                                        url1 = loc1 + "身份证照片/" + lblName.Text.Trim() + "_" + lblIdCard.Text.Trim() + ".bmp";
                                         if (!File.Exists(url))
                                         {
                                             File.Copy("ZP.bmp", url);

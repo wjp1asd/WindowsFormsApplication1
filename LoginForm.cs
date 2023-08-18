@@ -26,7 +26,8 @@ namespace WindowsFormsApplication1
             InitUI();
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-          //   this.change();
+
+            //   this.change();
         }
         private Fuc ff = new Fuc();
         public void change()
@@ -35,9 +36,9 @@ namespace WindowsFormsApplication1
             ff.fullsreen(this.button1, this);
             ff.fullsreen(this.button2, this);
             ff.fullsreen(this.button3, this);
-           // ff.fullsreen(this.uiButton1, this);
-         //   ff.fullsreen(this.button5, this);
-          //  ff.fullsreen(this.button6, this);
+            // ff.fullsreen(this.uiButton1, this);
+            //   ff.fullsreen(this.button5, this);
+            //  ff.fullsreen(this.button6, this);
 
             ff.fullsreen(this.label2, this);
         }
@@ -49,13 +50,13 @@ namespace WindowsFormsApplication1
 
             string x = ConfigurationManager.AppSettings["machine"];
             this.label2.Text = a.link.Trim();
-           // this.label2.Left += 100;
+            // this.label2.Left += 100;
             if (x == "1")
             {
                 // 管理员权限
-
-             //   this.button1.Left += 150;
-               this.button1.Top = this.button2.Top;
+                //   this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.管理员界面副本;
+                //   this.button1.Left += 150;
+                this.button1.Top = this.button2.Top;
 
                 this.button2.Hide();
                 this.uiButton1.Hide();
@@ -73,9 +74,9 @@ namespace WindowsFormsApplication1
             {
                 // 考生登录
 
-              //  this.button2.Left += 150;
-              //  this.button2.Top = 160;
-              //  this.button3.Left = this.button2.Left;
+                //  this.button2.Left += 150;
+                //  this.button2.Top = 160;
+                //  this.button3.Left = this.button2.Left;
                 this.button1.Hide();
                 this.pictureBox1.Hide();
                 this.uiButton1.Hide();
@@ -115,8 +116,8 @@ namespace WindowsFormsApplication1
             else if (x == "2" || x == "3" || x == "4")
             {
                 //考试机登录
-             this.Hide();
-                ScanLogin sc= new ScanLogin();
+                this.Hide();
+                ScanLogin sc = new ScanLogin();
                 sc.Show();
                 this.button1.Hide();
                 this.button1.Enabled = false;
@@ -124,8 +125,8 @@ namespace WindowsFormsApplication1
                 this.button2.Hide();
                 this.button2.Enabled = false;
 
-               // this.button3.Left -= 200;
-               // this.uiButton1.Left -= 200;
+                // this.button3.Left -= 200;
+                // this.uiButton1.Left -= 200;
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
@@ -248,14 +249,14 @@ namespace WindowsFormsApplication1
 
         private void GoalSet_Load(object sender, EventArgs e)
         {
-            
+
         }
         private void form1_Load(object sender, EventArgs e)
         {
             // ft.showloading();
 
             initsetp();
-         
+
         }
 
         private void initsetp()
@@ -279,7 +280,7 @@ namespace WindowsFormsApplication1
         {
             ID f1 = new ID();
             f1.Show();
-          //  this.Hide();
+            //  this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -304,7 +305,7 @@ namespace WindowsFormsApplication1
         {
             ScanLogin s = new ScanLogin();
             s.Show();
-          //  this.Hide();
+            //  this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -314,33 +315,34 @@ namespace WindowsFormsApplication1
             zaixianjiaoyan2 c = new zaixianjiaoyan2();
             c.Show();
 
-           // this.Hide();
+            // this.Hide();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             ScanLogin sc = new ScanLogin();
             sc.Show();
-          //  this.Hide();
+            //  this.Hide();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             //jiaoyancanshu  jy = new jiaoyancanshu();    
             //jy.Show();
+            datahelp.CurrentStep = 2;
             OFF off = new OFF(datahelp.QId);
             off.Show();
-          //  this.Hide();
+            //  this.Hide();
         }
 
-      
+
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            datahelp.CurrentStep = 3;
             MF1 mf = new MF1();
             mf.Show();
-           // this.Hide();
+            // this.Hide();
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -360,11 +362,11 @@ namespace WindowsFormsApplication1
 
         private void button11_Click(object sender, EventArgs e)
         {
-            //zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
+            datahelp.CurrentStep = 2;//zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
             //zaixianjiaoyan.Show();
             ON on = new ON(datahelp.QId);
             on.Show();
-           // this.Hide();
+            // this.Hide();
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -374,6 +376,11 @@ namespace WindowsFormsApplication1
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Click(object sender, EventArgs e)
         {
 
         }

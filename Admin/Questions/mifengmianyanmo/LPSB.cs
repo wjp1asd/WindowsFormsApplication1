@@ -349,7 +349,15 @@ namespace WindowsFormsApplication1.YanMO
             this.label6.Text += ":图片必须放在共享路" + loc;
         }
 
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)

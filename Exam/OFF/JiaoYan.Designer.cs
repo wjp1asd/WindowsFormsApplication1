@@ -65,6 +65,8 @@
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(237, 253);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Location = new System.Drawing.Point(223, 257);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
@@ -200,7 +202,6 @@
             this.uiLedLabel4.StyleCustomMode = true;
             this.uiLedLabel4.TabIndex = 99;
             this.uiLedLabel4.Text = "1111111";
-            this.uiLedLabel4.Visible = false;
             this.uiLedLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.uiLedLabel4.Click += new System.EventHandler(this.uiLedLabel4_Click);
             // 

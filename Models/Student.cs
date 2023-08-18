@@ -6,10 +6,10 @@ namespace WindowsFormsApplication1.Models
 {
     internal class Student
     {
-      public  String name;
-      public  String ID;
-      public  String Sex;
-      public  String Bumen;
+        public String name;
+        public String ID;
+        public String Sex;
+        public String Bumen;
         public string ava;
 
         //     [id] INT IDENTITY(1, 1) NOT NULL,

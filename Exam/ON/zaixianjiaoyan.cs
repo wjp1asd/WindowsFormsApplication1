@@ -12,6 +12,16 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
             InitUI();
 
+            ff.same(this);
+        }
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
         }
         private void InitUI()
         {
@@ -30,12 +40,14 @@ namespace WindowsFormsApplication1.Exam
 
             this.label2.Text = "在线校验";
 
+            ff.same(this);
 
-
-            this.change();
-
-
+            // this.change();
+            z = new zaixianjiaoyan2();
+            z.Visible = false;
+            z.Show();
         }
+        zaixianjiaoyan2 z;
         private Fuc ff = new Fuc();
         public void change()
         {
@@ -74,7 +86,7 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
-
+            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
             switch (datahelp.CurrentStep1)
             {
                 case 1:
@@ -110,7 +122,6 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            zaixianjiaoyan2 z = new zaixianjiaoyan2();
             z.Show();
         }
 

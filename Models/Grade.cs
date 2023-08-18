@@ -1,8 +1,5 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Windows.Forms;
-using WindowsFormsApplication1.Exam;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -49,13 +46,13 @@ namespace WindowsFormsApplication1.Models
         // 步骤分题
 
         // 离线校验考试次数判断，在线考试，
-       
+
 
         public string mxpic;
-        public string lxpic,lxpic1,zxpic,zxpic1;
-        public float  csfm,ylxz,xygb,wxxz,zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,yqzdyl,gctj,yldj,dycyl,decyl,dscyl;
-        public float mfsyyl, jyjl, mfzjcl, cxfm1, wxxz1,jyjg1, azfm1, bycs,score8;
-       
+        public string lxpic, lxpic1, zxpic, zxpic1;
+        public float csfm, ylxz, xygb, wxxz, zdyltz, sjlmsj, azfm, dkxyf, gbylbqh, yqzdyl, gctj, yldj, dycyl, decyl, dscyl;
+        public float mfsyyl, jyjl, mfzjcl, cxfm1, wxxz1, jyjg1, azfm1, bycs, score8;
+
         //[] INT DEFAULT((-1)) NULL,
         //[] INT DEFAULT((-1)) NULL,
         //[] INT DEFAULT((-1)) NULL,
@@ -133,11 +130,11 @@ namespace WindowsFormsApplication1.Models
 
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-         
-   
-    
- 
-  
+
+
+
+
+
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
@@ -187,14 +184,14 @@ namespace WindowsFormsApplication1.Models
 
 
                 score8 = float.Parse(reader["score8"].ToString().Trim());
-               
+
                 //图片
                 zxpic = reader["zxpic"].ToString().Trim();
                 lxpic = reader["lxpic"].ToString().Trim();
                 zxpic1 = reader["zxpic1"].ToString().Trim();
                 lxpic1 = reader["lxpic1"].ToString().Trim();
                 mxpic = reader["mfpic"].ToString().Trim();
-               // MessageBox.Show(lxpic1);
+                // MessageBox.Show(lxpic1);
 
             }
 

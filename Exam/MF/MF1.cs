@@ -10,9 +10,9 @@ namespace WindowsFormsApplication1.Exam.MF
         public MF1()
         {
             InitializeComponent();
-          
-            InitUI();
 
+            InitUI();
+            ff.same(this);
         }
         private void InitUI()
         {
@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1.Exam.MF
         {
             // 型号识别
             this.Close();
-           
+
             datahelp.SubId = 5;
             XHForm x = new XHForm(datahelp.QId);
             x.Show();
@@ -63,7 +63,15 @@ namespace WindowsFormsApplication1.Exam.MF
         }
 
 
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void ON_Load(object sender, EventArgs e)
         {
             // ff.ShowInfoTip(datahelp.CurrentStep+"+");

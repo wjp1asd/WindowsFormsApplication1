@@ -49,6 +49,15 @@ namespace WindowsFormsApplication1
                 awt.FormSizeChanged();
             }
         }
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         Grade g1 = new Grade();
         DateTime currentTime = DateTime.Now;
         Graphics back;
@@ -247,6 +256,8 @@ namespace WindowsFormsApplication1
             this.Close();
             MF1 mF = new MF1();
             mF.Show();
+            //光标显示
+            System.Windows.Forms.Cursor.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)

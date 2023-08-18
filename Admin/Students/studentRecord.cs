@@ -5,8 +5,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
-using WindowsFormsApplication1.Admin.Results;
-using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Admin.Students
@@ -71,7 +69,7 @@ namespace WindowsFormsApplication1.Admin.Students
                     }
 
 
-                 
+
 
                 }
             }
@@ -88,6 +86,15 @@ namespace WindowsFormsApplication1.Admin.Students
             }
         }
 
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
 
         private void StudentSet_Load(object sender, EventArgs e)
         {

@@ -90,7 +90,15 @@ namespace WindowsFormsApplication1.Exam
             }
 
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         int num = 1;
         private void Form4_Load(object sender, EventArgs e)
         {
@@ -467,7 +475,11 @@ namespace WindowsFormsApplication1.Exam
         {
             CheckBox rdb = (CheckBox)sender;
             // option = "";
-
+            if (option.Length > 2)
+            {
+                MessageBox.Show("只能单选");
+                return;
+            }
             if (rdb.Checked)
             {
                 if (!option.Contains(rdb.Tag.ToString()) && option.Length < 4)
