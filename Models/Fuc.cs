@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Media;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
@@ -77,6 +78,7 @@ namespace WindowsFormsApplication1.Models
 
         }
         public void sound() {
+            Thread.Sleep(4719);
 
             SoundPlayer player = new SoundPlayer();
 
