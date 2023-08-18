@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1.Exam
                 ports.Add(item.Value1.ToString().Trim());
             }
             comboBox1.DataSource = ports;
-           // MessageBox.Show(type + wuchas.Count);
+            // MessageBox.Show(type + wuchas.Count);
             //  comboBox1.SelectedIndex=0;
             // index = wuchas[0].Id;
         }
@@ -56,11 +56,11 @@ namespace WindowsFormsApplication1.Exam
             {
                 // 其所选不在范围之内 不得分
                 score = 0;
-            //    ff.ShowErrorTip("误差选择错误，不得分");
+                //    ff.ShowErrorTip("误差选择错误，不得分");
             }
             else
             {
-           //    ff.ShowSuccessTip("选择正确，得分" + score);
+                //    ff.ShowSuccessTip("选择正确，得分" + score);
 
             }
             int i = g.updateGrade(score, "wxxz", datahelp.QId.Trim());
@@ -68,13 +68,13 @@ namespace WindowsFormsApplication1.Exam
             //MessageBox.Show(""+ff.RC1(url).Length);
 
             this.Close();
-           
+
             j.Visible = true;
 
 
 
         }
-      
+
         private void jiaoyancanshu_Load(object sender, EventArgs e)
         {
             TestRecord t = new TestRecord();
@@ -128,7 +128,7 @@ namespace WindowsFormsApplication1.Exam
             this.label3.Text = "考生：" + t.Ksname;
             this.label4.Text = "身份证：" + t.KsId;
             this.label1.Text = t.Lxyl.Trim();
-                ;
+            ;
             //  yali = int.Parse(t.Lxyl);
             this.label5.Text = "使用设备类型：" + t.Lxlx;
             wucha(t.Lxlx);

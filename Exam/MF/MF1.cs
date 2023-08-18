@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1.Exam.MF
         public MF1()
         {
             InitializeComponent();
-          
+
             InitUI();
             ff.same(this);
         }
@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1.Exam.MF
         {
             // 型号识别
             this.Close();
-           
+
             datahelp.SubId = 5;
             XHForm x = new XHForm(datahelp.QId);
             x.Show();

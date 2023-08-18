@@ -92,7 +92,7 @@ namespace WindowsFormsApplication1.Exam
                 justcheck(this.checkBow7, reader["c1"].ToString().Trim());
                 justcheck(this.checkBow8, reader["c2"].ToString().Trim());
                 justcheck(this.checkBow9, reader["c3"].ToString().Trim());
-              //  justcheck(this.result, reader["result"].ToString().Trim());
+                //  justcheck(this.result, reader["result"].ToString().Trim());
                 //     this.checkBoxw1.Checked = reader["shebeidaima"].ToString();
 
             }
@@ -136,16 +136,16 @@ namespace WindowsFormsApplication1.Exam
             {
                 OFF off = new OFF(datahelp.QId);
                 off.Show();
-              
+
             }
             if (tper == "在线")
             {
                 zaixianjiaoyan z = new zaixianjiaoyan();
                 z.Show();
-               
+
             }
 
-            
+
         }
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
@@ -181,7 +181,7 @@ namespace WindowsFormsApplication1.Exam
         private void record_Load(object sender, EventArgs e)
         {
             //g.getOne(datahelp.QId);
-            this.label1.Text="编号："+datahelp.QId;
+            this.label1.Text = "编号：" + datahelp.QId;
             if (tper == "离线")
             {
                 if (g.getGrade("yqzdyl", datahelp.QId) > 100)
@@ -259,7 +259,7 @@ namespace WindowsFormsApplication1.Exam
                 double f2 = double.Parse(this.yi2.Text.Trim());
                 double f3 = double.Parse(this.yi3.Text.Trim());
                 double mf = double.Parse(this.mf.Text.Trim());
-               // MessageBox.Show(f1 + "" + f2 + "" + f3 + "" + mf + "a" + ap.f1 + "a" + ap.f2 + "a" + ap.f3 + "a" + ap.f0 * 0.9);
+                // MessageBox.Show(f1 + "" + f2 + "" + f3 + "" + mf + "a" + ap.f1 + "a" + ap.f2 + "a" + ap.f3 + "a" + ap.f0 * 0.9);
                 if (f1 == ap.f1)
                 {
                     g.updateGrade(dycyl, "dycyl", datahelp.QId);

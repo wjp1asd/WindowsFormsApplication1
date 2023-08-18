@@ -151,7 +151,7 @@ namespace WindowsFormsApplication1.Exam
         {
 
             datahelp.CurrentStep = 4;
-           this.Close();
+            this.Close();
             record r = new record(datahelp.QId);
             r.Show();
 

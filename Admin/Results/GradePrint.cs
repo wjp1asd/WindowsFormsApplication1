@@ -1,5 +1,4 @@
-﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -51,7 +50,7 @@ namespace WindowsFormsApplication1.Admin.Results
                 e.Graphics.DrawString("离线拍照：", fntTxt, brush, new System.Drawing.Point(80, 836));
                 e.Graphics.DrawImage(new Bitmap(a1.lxpic1), new System.Drawing.Point(80, 866));
 
-           
+
                 e.Graphics.DrawString("在线拍照：", fntTxt, brush, new System.Drawing.Point(80, 1306));
                 e.Graphics.DrawImage(new Bitmap(a1.zxpic), new System.Drawing.Point(80, 1336));
 
@@ -152,7 +151,7 @@ namespace WindowsFormsApplication1.Admin.Results
             label60.Text = a1.dscyl.ToString().Replace("-1", "未考试");
             label62.Text = a1.mfsyyl.ToString().Replace("-1", "未考试");
             label63.Text = a1.jyjl.ToString().Replace("-1", "未考试");
-           
+
 
             // 在线
             label70.Text = a1.azfm1.ToString().Replace("-1", "未考试");
@@ -161,7 +160,7 @@ namespace WindowsFormsApplication1.Admin.Results
             label72.Text = a1.cxfm1.ToString().Replace("-1", "未考试");
             label74.Text = a1.jyjg1.ToString().Replace("-1", "未考试");
             calctotal();
-           
+
         }
 
         private void calctotal()
@@ -172,9 +171,9 @@ namespace WindowsFormsApplication1.Admin.Results
                a1.sjlmsj + a1.azfm + a1.bycs + a1.gbylbqh + a1.dkxyf +
                a1.yqzdyl + a1.gctj + a1.yldj + a1.dycyl + a1.decyl + a1.dscyl + a1.mfsyyl + a1.mfsyyl + a1.jyjl +
                a1.azfm1 + a1.mfzjcl + a1.wxxz1 + a1.cxfm1 + a1.jyjg1;
-            MessageBox.Show("总分"+a);
-            a1.updateGrade(a,"path",datahelp.QId);
-           // this.label37.Text += a1.score1 + a1.score2 + a1.score3 + a1.score4 + a1.score5 + a1.score6;
+            MessageBox.Show("总分" + a);
+            a1.updateGrade(a, "path", datahelp.QId);
+            // this.label37.Text += a1.score1 + a1.score2 + a1.score3 + a1.score4 + a1.score5 + a1.score6;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -189,13 +188,13 @@ namespace WindowsFormsApplication1.Admin.Results
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             reset("score1");
         }
 
         private void reset(string name)
         {
-            a1.updateGrade(-1,name,datahelp.QId);
+            a1.updateGrade(-1, name, datahelp.QId);
             MessageBox.Show("当前考试重置成功");
         }
 
@@ -225,5 +224,5 @@ namespace WindowsFormsApplication1.Admin.Results
         }
     }
 
-   
+
 }

@@ -55,8 +55,8 @@ namespace WindowsFormsApplication1.Exam
 
             score = count * rate;
             // MessageBox.Show(count+""+rate+""+score);
-           // this.label2.Hide();
-           // this.label2.Text = "得分:" + score.ToString();
+            // this.label2.Hide();
+            // this.label2.Text = "得分:" + score.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -252,7 +252,7 @@ namespace WindowsFormsApplication1.Exam
                     str1 = "Update Grade set ymgquestions='" + a + "',ymganswer='" + b + "',ymgcorrect='" + c + "',score6='" + d
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
-                  //  MessageBox.Show(str1);
+                    //  MessageBox.Show(str1);
                     break;
 
 
