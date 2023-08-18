@@ -974,7 +974,9 @@ namespace WindowsFormsApplication1.Exam
                     }
                     chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
                     chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu - 50, cisu + 50);
-                    showpoint();
+                    Action x = () => { showpoint(); };
+                    this.Invoke(x);
+                   // showpoint();
                     
 
                 });
@@ -1036,11 +1038,12 @@ namespace WindowsFormsApplication1.Exam
         private void showpoint()
         {
             DataPointCollection dataPoints = chart1.Series[0].Points;
-
+           
             System.Windows.Forms.DataVisualization.Charting.DataPoint a = dataPoints[dataPoints.Count-1];
             if (a.YValues[0] < 134 && a.YValues[0] > 129 && b12 == true)
             //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
             {
+               
                 ff.sound();
                 a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
                 a.MarkerSize = 10;
@@ -1049,7 +1052,7 @@ namespace WindowsFormsApplication1.Exam
                 a.LabelForeColor = System.Drawing.Color.Red;
                 point++;
                 double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
-
+               
                 switch (point)
                 {
                     case 1:
