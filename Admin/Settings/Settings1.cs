@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1.Settings
             InitializeComponent();
 
             InitC();
+            ff.same(this);
         }
 
         public string a, b, c, d, f;
@@ -112,8 +113,6 @@ namespace WindowsFormsApplication1.Settings
         }
 
 
-
-
         private void Settings1_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
@@ -150,8 +149,8 @@ namespace WindowsFormsApplication1.Settings
         private void button7_Click(object sender, EventArgs e)
         {
             this.InitC();
-           // AdminIndex admin = new AdminIndex();
-           // admin.Show();
+            // AdminIndex admin = new AdminIndex();
+            // admin.Show();
             this.Close();
         }
 

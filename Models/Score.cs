@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1.Models
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
-            { 
+            {
 
 
                 float.TryParse(reader["score"].ToString(), out score1);

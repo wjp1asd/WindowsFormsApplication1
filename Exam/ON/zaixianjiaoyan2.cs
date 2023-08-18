@@ -13,7 +13,6 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using WindowsFormsApplication1.Models;
-using ZedGraph;
 
 namespace WindowsFormsApplication1.Exam
 {
@@ -43,7 +42,7 @@ namespace WindowsFormsApplication1.Exam
         // 算分模块 密封面直径测量得分 拆卸阀帽得分 误差选择得分 校验结果得分
         Score sc = new Score();
         float mfzjcl = 0;
-        double  mfzj = 0;
+        double mfzj = 0;
         float cxfm1 = 0;
         float wxxz1 = 0;
         float jyjg1 = 0;
@@ -72,13 +71,16 @@ namespace WindowsFormsApplication1.Exam
         public zaixianjiaoyan2()
         {
             InitializeComponent();
-             this.richTextBox2.Show();
+            this.richTextBox2.Show();
             //    this.uiLedLabel4.Hide();
             this.timer1.Stop();
             InitScore();
             //this.button2.Enabled = false;
             this.button1.Enabled = false;
             this.button4.Enabled = false;
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
+            // ff.same(this);
         }
         Grade g = new Grade();
         private void InitScore()
@@ -138,16 +140,16 @@ namespace WindowsFormsApplication1.Exam
                     datahelp c = new datahelp();
                     c.Initc();
                     double F = (zdyl - xtyl) * (double.Parse(c.mfzj) / 2) * (double.Parse(c.mfzj) / 2) * 3.2 / 10;
-
-                    this.textBox3.Text = F.ToString();
+                    double F1 = (zdyl - xtyl) * (mfzj / 2) * (mfzj / 2) * 3.2 / 10;
+                    this.textBox3.Text = F1.ToString();
                     wjltj = F;
                     double PS = F * 10 / (mfzj / 2) * (mfzj / 2) * 3.2 + xtyl;
                     this.richTextBox2.Text += "开启压力" + PS;
 
                     this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
                     // 游标卡尺和 阀瓣拿起 zxc
-                  
-                    if (fb == false && youbiao == false && step == 1 &&mfzj==double.Parse(c.mfzj))
+
+                    if (fb == false && youbiao == false && step == 1 && mfzj == double.Parse(c.mfzj))
                     {
 
                         //  ff.ShowSuccessTip("得分:" + mfzjcl);
@@ -179,7 +181,7 @@ namespace WindowsFormsApplication1.Exam
             string loc1 = ConfigurationManager.AppSettings["loc"];
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
 
-          //  MessageBox.Show("拍照成功");
+            //  MessageBox.Show("拍照成功");
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
@@ -188,8 +190,8 @@ namespace WindowsFormsApplication1.Exam
             bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
             string mm = loc1 + url + t.Qrcode + "-shot.png";
             g.updatepath(mm, "zxpic", datahelp.QId);
-           
-           
+
+
         }
         // DI 输入的集合
 
@@ -211,18 +213,29 @@ namespace WindowsFormsApplication1.Exam
             g.updatepath(mm, "zxpic1", datahelp.QId);
             //MessageBox.Show("拍照成功");
         }
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         Thread tj;
         int x = 0;
         int y = 1;
         // 开启压力 F 红点外加力 S密封 直径 Po系统压力
         private void zaixianjiaoyan2_Load(object sender, EventArgs e)
         {
-            
-           
+
+
 
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+
+            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
             t = t.getRecord(datahelp.QId);
             showMsg();
             topheader.CopyTo(td1, 0);
@@ -234,7 +247,7 @@ namespace WindowsFormsApplication1.Exam
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
             this.timer1.Start();
-            v = new VideoCapture(0);
+            v = new Emgu.CV.VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
             this.richTextBox1.Hide();
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
@@ -244,8 +257,8 @@ namespace WindowsFormsApplication1.Exam
 
         }
         DateTime currentTime = DateTime.Now;
-        VideoCapture v;
-        Mat mat = new Mat();
+        Emgu.CV.VideoCapture v;
+        Emgu.CV.Mat mat = new Emgu.CV.Mat();
         private void Application_Idle(object sender, EventArgs e)
         {
             if (last == false)
@@ -275,12 +288,16 @@ namespace WindowsFormsApplication1.Exam
 
 
         }
-     
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (datahelp.LxTime > 0)
             {
                 datahelp.LxTime--;
+                if (datahelp.LxTime == 60)
+                {
+                    this.lbltime.ForeColor = Color.Red;
+                }
                 int min = datahelp.LxTime / 60;
                 int sec = datahelp.LxTime % 60;
                 this.lbltime.Text = string.Format("{0:00}:{1:00}", min, sec);
@@ -307,7 +324,8 @@ namespace WindowsFormsApplication1.Exam
             chart1.Series[0].Points.AddXY(0, 0);
             this.chart1.BackColor = Color.Azure;             //图表背景色  
             this.chart1.Titles.Add("安全阀校验");                //图表标题
-                                                            //新建连接 
+
+            //新建连接 
             this.chart1.ChartAreas[0].AxisX.Maximum = 400;
 
             //注意数据绑定后，它的series是1而不是0  本来正常应该是1   博文后注
@@ -316,19 +334,19 @@ namespace WindowsFormsApplication1.Exam
 
             this.chart1.Series[0].IsValueShownAsLabel = false;             //是否显示数据      
             this.chart1.Series[0].IsVisibleInLegend = false;              //是否显示数据说明  
-                               //标志大小  
+                                                                          //标志大小  
             this.chart1.Series[0].Color = Color.Blue;
 
             this.chart1.ChartAreas[0].AxisX.LineWidth = 2;                     //X轴宽度
             this.chart1.ChartAreas[0].AxisY.LineWidth = 2;                      //Y轴宽度  
                                                                                 //  this.chart1.ChartAreas[0].AxisX.Maximum = 500;
-            this.chart1.Width =this.Width-200;
-            this.chart1.Height =1*this.Height/2;
+            this.chart1.Width = this.Width - 200;
+            this.chart1.Height = 1 * this.Height / 2;
             chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
-           
+
             chart1.ChartAreas[0].AxisX.IsStartedFromZero = false;
             chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = false;
-            chart1.ChartAreas[0].AxisX.ScrollBar.Enabled = false;   
+            chart1.ChartAreas[0].AxisX.ScrollBar.Enabled = false;
 
         }
 
@@ -432,13 +450,13 @@ namespace WindowsFormsApplication1.Exam
         }
 
 
-    
+
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
             this.plcinit();
         }
-
-
+        // 2分钟没反应，弹框 显示 500ms
+        int limit = 240;
         string DIS0;
         string DIS = "01110000";
 
@@ -455,14 +473,7 @@ namespace WindowsFormsApplication1.Exam
 
             if (buff.Length == 38)
             {
-                //Action t = () =>
-                //{
-                //   richTextBox2.Clear();
 
-                //};
-                //this.Invoke(t);
-                //dishow(BitConverter.ToString(buff));
-                //richTextBox2.Clear();
                 //38位
                 //MessageBox.Show(BitConverter.ToString(buff));
                 // AI解析
@@ -478,57 +489,134 @@ namespace WindowsFormsApplication1.Exam
                 Console.WriteLine("Di:" + a);
                 // MessageBox.Show(a);
                 string b = "";
-                //if (DIS0 == a)
-                //{
-                //    dishow("DI无变化");
-                //    return;
-                //}
+
                 //else
+
+
+                switch (a.Length)
                 {
 
-                    switch (a.Length)
+                    case 1:
+                        b = "0000000" + a;
+                        break;
+                    case 2:
+                        b = "000000" + a;
+                        break;
+                    case 3:
+                        b = "00000" + a;
+                        break;
+                    case 4:
+                        b = "0000" + a;
+                        break;
+                    case 5:
+                        b = "000" + a;
+                        break;
+                    case 6:
+                        b = "00" + a;
+                        break;
+                    case 7:
+                        b = "0" + a;
+                        break;
+                    case 8:
+                        b = a;
+                        break;
+                }
+
+
+                DIS = b;
+                Action tongdao = () =>
+                {
+                    uiLedLabel4.Text = DIS;
+                };
+                this.Invoke(tongdao);
+
+                if (DIS.Length == 8)
+                {
+                    DIS0 = a;
+                    //di状态分析
+                    fenxi();
+
+                    if (DIS0 == a)
                     {
 
-                        case 1:
-                            b = "0000000" + a;
-                            break;
-                        case 2:
-                            b = "000000" + a;
-                            break;
-                        case 3:
-                            b = "00000" + a;
-                            break;
-                        case 4:
-                            b = "0000" + a;
-                            break;
-                        case 5:
-                            b = "000" + a;
-                            break;
-                        case 6:
-                            b = "00" + a;
-                            break;
-                        case 7:
-                            b = "0" + a;
-                            break;
-                        case 8:
-                            b = a;
-                            break;
+                        //    ff.ShowInfoTip("无操作" + limit);
+                        limit--;
+                        if (limit == 0)
+                        {
+
+                            MessageBox.Show("超过2分钟时间未操作，考试结束，请点击右下角退出");
+
+                            ////g.updateGrade(0, "mfzjcl", datahelp.QId);
+                            ////g.updateGrade(0, "csfm1", datahelp.QId);
+                            ////g.updateGrade(0, "wxxz1", datahelp.QId);
+                            ////g.updateGrade(0, "jyjg1", datahelp.QId);
+                            ////g.updateGrade(0, "azfm1", datahelp.QId);
+
+
+
+                            string str = "";
+                            if (last == false)
+                            {
+                                if (fm == true)
+                                {
+
+
+                                }
+                                else
+                                {
+                                    str += "阀帽未归位";
+                                    ff.ShowErrorTip("阀帽未归位不得分");
+
+                                }
+                                if (shy == true)
+                                {
+                                    ////g.updateGrade(dkxyf, "dkxyf", datahelp.QId);
+                                    ////ff.ShowSuccessTip("四合一归位得分");
+                                }
+                                else
+                                {
+                                    str += "四合一未归位";
+                                    ff.ShowErrorTip("四合一未归位不得分");
+
+                                }
+                                if (gj == true)
+                                {
+
+                                    //g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
+                                    //ff.ShowSuccessTip("工具归位正确");
+                                }
+                                else
+                                {
+                                    ff.ShowErrorTip("工具未归位");
+                                    str += "工具未归位";
+                                }
+
+
+                            }
+
+                            last = true;
+
+                            if (DIS == "01100011" || DIS == "01100000")
+                            {
+
+
+
+
+
+                            }
+                            else
+                            {
+
+                                MessageBox.Show("请完成复位再退出:" + str);
+
+                            }
+                        }
+
+
+
                     }
 
-
-                    DIS = b;
-                    Action tongdao = () =>
-                    {
-                        uiLedLabel4.Text = DIS;
-                    };
-                    this.Invoke(tongdao);
-
-                    if (DIS.Length == 8)
-                    {
-                        DIS0 = a;
-                        //di状态分析
-                        fenxi();
-                    }
+                    //}
 
 
 
@@ -581,13 +669,7 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            else
-            {
-                //this.label3.Text=""+buff.Length;
-                // ff.ShowErrorDialog("设备无反应");
 
-
-            }
         }
 
         private void fenxi()
@@ -613,23 +695,23 @@ namespace WindowsFormsApplication1.Exam
             }
             if (DIS[7 - lianjiegan] + "" == "0")
             {
-             //   dishow("连接杆归位");
+                //   dishow("连接杆归位");
                 ljg = true;
             }
             else
             {
-             //   dishow("连接杆离开");
+                //   dishow("连接杆离开");
                 ljg = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
             if (DIS[7 - siheyi] + "" == "0")
             {
-              //  dishow("四合一归位");
+                //  dishow("四合一归位");
                 shy = true;
             }
             else
             {
-              //  dishow("四合一离开");
+                //  dishow("四合一离开");
                 shy = false;
                 //richTextBox2.Text += "切换阀关闭";
             }
@@ -653,12 +735,12 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - famao] + "" == "0")
             {
                 //richTextBox2.Text += "阀帽存在";
-              //  dishow("在线阀帽存在");
+                //  dishow("在线阀帽存在");
                 fm = true;
-                
-                    
-               
-                
+
+
+
+
             }
             else
             {
@@ -678,13 +760,13 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - gongju] + "" == "0")
             {
-             //   dishow("在线工具归位");
+                //   dishow("在线工具归位");
                 //richTextBox2.Text += "工具归位";
                 gj = true;
             }
             else
             {
-             //   dishow("在线工具离开");
+                //   dishow("在线工具离开");
                 //richTextBox2.Text += "工具离开";
                 gj = false;
             }
@@ -750,7 +832,7 @@ namespace WindowsFormsApplication1.Exam
                     }
 
                     break;
-                   
+
                     //    break;
 
             }
@@ -778,7 +860,7 @@ namespace WindowsFormsApplication1.Exam
         //标定k值
         float k = 1;
         float wjl = 0;
-        int maxinum =60;
+        int maxinum = 60;
         private void voldetla(string sb1, string t8)
         {
             //cz从离线压力设置-初次测试压力中取值
@@ -803,7 +885,7 @@ namespace WindowsFormsApplication1.Exam
                     //0.735F;
                     //33.33F;
                     b2 = b1 * 200 * k;
-                    this.chart1.ChartAreas[0].AxisX.Maximum =maxinum;
+                    this.chart1.ChartAreas[0].AxisX.Maximum = maxinum;
                     //推荐力Y的1.2倍                    
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
 
@@ -815,7 +897,7 @@ namespace WindowsFormsApplication1.Exam
                     //0.678F;
                     //13.33F;
                     this.chart1.ChartAreas[0].AxisX.Maximum = maxinum;
-                      // 300;
+                    // 300;
                     b2 = b1 * 500 * k;
                     this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //50 * 0.6;
@@ -827,7 +909,7 @@ namespace WindowsFormsApplication1.Exam
                     //3.33F;
                     b2 = b1 * 2000 * k;
                     this.chart1.ChartAreas[0].AxisX.Maximum = maxinum;
-                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 *1.2;
+                    this.chart1.ChartAreas[0].AxisY.Maximum = 134.48 * 1.2;
                     //200 * 0.6; 
                     break;
                 case 4:
@@ -845,7 +927,7 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-            if (show && b2 >= 0 )
+            if (show && b2 >= 0)
             {
                 //    ff.ShowInfoTip("当前电压值-初始电压值："+(a- standardValue).ToString());
                 currentF = b2;
@@ -856,25 +938,26 @@ namespace WindowsFormsApplication1.Exam
                     {
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
                         //this.richTextBox1.Text += b2 + ",";
-                        if ((maxinum-cisu) == 3)
+                        if ((maxinum - cisu) == 3)
                         {
                             maxinum += 50;
-                          //  chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
-                         //   chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu-10, cisu + 100);
+                            //  chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
+                            //   chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu-10, cisu + 100);
                         }
                         cisu++;
                         //    this.chart1.Series[0].Points.AddXY(cisu, Math.Round(wjltj));
                     }
-                    else {
+                    else
+                    {
 
                         this.chart1.Series[0].Points.AddXY(cisu, b2);
-                       // this.richTextBox1.Text += b2 + ",";
+                        // this.richTextBox1.Text += b2 + ",";
 
-                        if( (maxinum-cisu) ==3)
+                        if ((maxinum - cisu) == 3)
                         {
-                           maxinum += 50;
-                           // chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
-                          //  chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu-10, cisu + 100);
+                            maxinum += 50;
+                            // chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
+                            //  chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu-10, cisu + 100);
                             //    chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
                             //   chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu - 20, cisu + 100);
                         }
@@ -885,33 +968,35 @@ namespace WindowsFormsApplication1.Exam
                         //    cisu = 0;
                         MessageBox.Show("曲线停止采集");
                         serialPort2.Close();
-                       // this.chart1.Series["Series1"].Points.Clear();
+                        // this.chart1.Series["Series1"].Points.Clear();
                         return;
                     }
                     chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
                     chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu - 50, cisu + 50);
-                    showpoint();
-                    
+                    Action x = () => { showpoint(); };
+                    this.Invoke(x);
+                    // showpoint();
+
 
                 });
-                
-                  
 
 
-                 //   MessageBox.Show("开启点" + x);
 
-                
+
+                //   MessageBox.Show("开启点" + x);
+
+
 
             }
-            
+
             Action tongdao11 = () =>
             {
 
-                this.label17.Text ="初始值："+standardValue1+ "上次压力" + wjl+ "当前压力：" + b2 + "推荐力" + wjltj + "量程" + liangcheng ;
+                this.label17.Text = "初始值：" + standardValue1 + "上次压力" + wjl + "当前压力：" + b2 + "推荐力" + wjltj + "量程" + liangcheng;
 
             };
             this.Invoke(tongdao11);
-           
+
             Action tongdao = () =>
             {
                 richTextBox2.Clear();
@@ -920,7 +1005,9 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox2.AppendText("当前电压差：" + (dwq - a));
 
                 richTextBox2.AppendText("当前压力：" + b2 + "KG");
-                this.textBox4.Text = "" + (b2);
+                //  this.textBox4.Text = "" + (b2);
+                //  this.textBox7.Text = "" + (b2);
+                //  this.textBox9.Text = "" + (b2);
                 richTextBox2.AppendText("当前循环次数：" + cisu);
                 richTextBox2.AppendText("上次电位器码值码值：" + dwq);
 
@@ -935,126 +1022,120 @@ namespace WindowsFormsApplication1.Exam
             };
             this.Invoke(tongdao);
             dwq = a;
-            if (b2 >= 0) {
+            if (b2 >= 0)
+            {
                 wjl = b2;
             }
-            
-            lastF = b2;
-          
 
-          
+            lastF = b2;
+
+
+
         }
         int smin = 0;
-
-        bool b12 = true;   
+        int point = 0;
+        bool b12 = true;
         private void showpoint()
         {
             DataPointCollection dataPoints = chart1.Series[0].Points;
 
-            System.Windows.Forms.DataVisualization.Charting.DataPoint a = dataPoints[dataPoints.Count-1];
+            System.Windows.Forms.DataVisualization.Charting.DataPoint a = dataPoints[dataPoints.Count - 1];
             if (a.YValues[0] < 134 && a.YValues[0] > 129 && b12 == true)
             //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
             {
 
-                a.MarkerStyle = MarkerStyle.Circle;
+                ff.sound();
+                a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
-                a.Label = Math.Round(wjltj).ToString() + "KG";
+                a.Label = Math.Round(wjltj).ToString() + "Kg";
                 a.LabelForeColor = System.Drawing.Color.Red;
-
+                point++;
                 double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
 
-                this.textBox5.Text = PS.ToString();
+                switch (point)
+                {
+                    case 1:
+                        this.textBox4.Text = "" + Math.Round(a.YValues[0]);
+                        this.textBox4.Enabled = false;
+                        this.textBox5.Text = PS.ToString();
+                        this.textBox5.ForeColor = Color.Red;
+                        break;
+                    case 2:
+                        this.textBox7.Text = "" + Math.Round(a.YValues[0]);
+                        this.textBox7.Enabled = false;
+                        this.textBox6.Text = PS.ToString();
+                        this.textBox6.ForeColor = Color.Red;
+                        break;
+                    case 3:
+                        this.textBox9.Text = "" + Math.Round(a.YValues[0]);
+                        this.textBox9.Enabled = false;
+                        this.textBox8.Text = PS.ToString();
+                        this.textBox8.ForeColor = Color.Red;
+                        break;
+                }
                 b12 = false;
 
-                ff.sound();
-               // MessageBox.Show("" + b12);
-            }
-
-            if (a.YValues[0] >134.55 && b12 == true)
-            //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
-            {
-
-                a.MarkerStyle = MarkerStyle.Circle;
-                a.MarkerSize = 10;
-                a.MarkerColor = System.Drawing.Color.Red;
-                a.Label = "超压开启" + Math.Round(wjltj).ToString() + "KG";
-                a.LabelForeColor = System.Drawing.Color.Red;
-
-                double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
-
-                this.textBox5.Text = PS.ToString();
-                b12 = false;
-                ff.sound();
+                // 7 6 9 8
                 // MessageBox.Show("" + b12);
             }
-            if ((a.YValues[0] ) < 10)
+
+            if (a.YValues[0] > 134.55 && b12 == true)
+            //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
+            {
+                ff.sound();
+                a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+                a.MarkerSize = 10;
+                a.MarkerColor = System.Drawing.Color.Red;
+                a.Label = Math.Round(wjltj).ToString() + "Kg";
+                a.LabelForeColor = System.Drawing.Color.Red;
+                point++;
+                double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
+                switch (point)
+                {
+                    case 1:
+                        this.textBox4.Text = "" + 134.55;
+                        this.textBox4.Enabled = false;
+                        this.textBox5.Text = PS.ToString();
+                        this.textBox5.ForeColor = Color.Red;
+                        break;
+                    case 2:
+                        this.textBox7.Text = "" + 134.48;
+                        this.textBox7.Enabled = false;
+                        this.textBox6.Text = PS.ToString();
+                        this.textBox6.ForeColor = Color.Red;
+                        break;
+                    case 3:
+                        this.textBox9.Text = "" + 134.32;
+                        this.textBox9.Enabled = false;
+                        this.textBox8.Text = PS.ToString();
+                        this.textBox8.ForeColor = Color.Red;
+                        break;
+                }
+
+                b12 = false;
+
+                // MessageBox.Show("" + b12);
+            }
+            if ((a.YValues[0]) < 10)
             {
 
 
                 b12 = true;
             }
             this.chart1.Invalidate();
-            //foreach (System.Windows.Forms.DataVisualization.Charting.DataPoint a in dataPoints
-            //    ) {
-            //    //点位大于推荐值 并且误差在1个以内，并且处于下降区间
 
-            //    if (a.YValues[0] <134 && a.YValues[0] >129 && b12 == true)
-            //  //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
-            //    {
-
-            //        a.MarkerStyle = MarkerStyle.Circle;
-            //        a.MarkerSize = 10;
-            //        a.MarkerColor = System.Drawing.Color.Red;
-            //        a.Label = Math.Round(wjltj).ToString() + "KG";
-            //        a.LabelForeColor = System.Drawing.Color.Red;
-
-            //        double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
-
-            //        this.textBox5.Text = PS.ToString();
-            //        b12 = false;
-            //        MessageBox.Show(""+b12);
-            //    }
-            //    if ((a.YValues[0] - wjltj) < 10 )
-            //    {
-
-
-            //        b12 = true;
-            //    }
-            //    this.chart1.Invalidate();
         }
 
 
-        //if (b2 - wjl < 0 && Math.Abs(b2 - wjltj) <= 5 && liangcheng > 0)
-        //{
-        //    // 开始下降  
-        //    Action tongdao1 = () =>
-        //    {
-
-        //        this.textBox5.Text = b2.ToString();
-        //        //
-        //    };
-        //    this.Invoke(tongdao1);
-        //   MessageBox.Show("开启点"+dataPoints.Count);
-
-        //    //System.Windows.Forms.DataVisualization.Charting.DataPoint point = this.chart1.Series[0].Points[cisu];
-        //    point.MarkerStyle = MarkerStyle.Circle;
-        //    point.MarkerSize = 20;
-        //    point.MarkerColor = System.Drawing.Color.Red;
 
 
-
-        //   // MessageBox.Show("开启点" + cisu);
-        //}  
-
-
-    
 
         private void setstandard(float a)
         {
             if (standard == false)
             {
-                standardValue =a;
+                standardValue = a;
                 standardValue1 = wjl;
                 //MessageBox.Show(""+a);
                 StripLine s = new StripLine();
@@ -1102,10 +1183,10 @@ namespace WindowsFormsApplication1.Exam
         private void showMsg()
         {
             t.Zxyl = "1.0";
-            this.label3.Text = "考生：" + t.Ksname.Trim();
-            this.label4.Text = "身份证：" + t.KsId.Trim();
-            this.label5.Text = "设备类型：" + t.Zxlx.Trim();
-            this.label6.Text = "整定压力：" + t.Zxyl.Trim() + "Mpa";
+            this.label3.Text = t.Ksname.Trim();
+            this.label4.Text = t.KsId.Trim();
+            this.label5.Text = t.Zxlx.Trim();
+            this.label6.Text = t.Zxyl.Trim() + "Mpa";
 
             richTextBox2.Text += "考试码：" + datahelp.QId;
 
@@ -1131,47 +1212,51 @@ namespace WindowsFormsApplication1.Exam
             this.timer1.Stop();
             this.timer2.Stop();
             datahelp.CurrentStep1 = 3;
-           // zaixianjiaoyan o = new zaixianjiaoyan();
-           // o.Show();
+            // zaixianjiaoyan o = new zaixianjiaoyan();
+            // o.Show();
             //this.Close();
+            string str = "";
             if (last == false)
             {
                 if (fm == true)
                 {
-                   
-                        //点击结束开始拍照
-                        //g.updateGrade(azfm1, "azfm1", datahelp.QId);
-                        Thread a = new Thread(shot1);
-                        a.Start();
 
-                    
+                    //点击结束开始拍照
+                    //g.updateGrade(azfm1, "azfm1", datahelp.QId);
+                    Thread a = new Thread(shot1);
+                    a.Start();
+
+
                     g.updateGrade(azfm1, "azfm1", datahelp.QId);
-                 //   ff.ShowSuccessTip("阀帽归位得分");
+                    //   ff.ShowSuccessTip("阀帽归位得分");
                 }
                 else
                 {
-                //    ff.ShowErrorTip("阀帽未归位不得分");
+                    str += "阀帽未归位";
+                    //    ff.ShowErrorTip("阀帽未归位不得分");
 
                 }
                 if (shy == true)
                 {
                     //  g.updateGrade(, "dkxyf", datahelp.QId);
-                //    ff.ShowSuccessTip("四合一归位得分");
+                    //    ff.ShowSuccessTip("四合一归位得分");
                 }
                 else
                 {
-                //    ff.ShowErrorTip("四合一未归位不得分");
+                    str += "四合一未归位";
+                    //    ff.ShowErrorTip("四合一未归位不得分");
 
                 }
                 if (gj == true)
                 {
+
                     //  g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
-                //    ff.ShowSuccessTip("工具归位正确");
+                    //    ff.ShowSuccessTip("工具归位正确");
                 }
                 else
                 {
-                //    ff.ShowErrorTip("工具未归位");
-
+                    //    ff.ShowErrorTip("工具未归位");
+                    str += "工具未归位";
                 }
 
 
@@ -1183,33 +1268,40 @@ namespace WindowsFormsApplication1.Exam
             // g.updateGrade(0, "azfm1", datahelp.QId);
 
             last = true;
-//DIS == "01110000"||
-            if ( DIS == "01100011")
+            //DIS == "01110000"||
+            if (DIS == "01100011" || DIS == "01100000")
             {
 
-                Thread x = new Thread(cxs);
-                x.Start();
-                this.Close();
-                zaixianjiaoyan o = new zaixianjiaoyan();
-                o.Show();
-              
-           
+                // Thread x = new Thread(cxs);
+                // x.Start();
+                Action tongdao = () =>
+                {
+                    xc();
+                };
+                this.Invoke(tongdao);
+
+
 
             }
             else
             {
 
-                MessageBox.Show("请完成复位再退出");
+                MessageBox.Show("请完成复位再退出:" + str);
 
             }
 
         }
         Thread reada;
-
+        private void xc()
+        {
+            this.Close();
+            zaixianjiaoyan o = new zaixianjiaoyan();
+            o.Show();
+        }
         private void ReadAI()
         {
             // MessageBox.Show(BitConverter.ToString(td1));
-            while (true&&serialPort2.IsOpen&&last==false)
+            while (true && serialPort2.IsOpen && last == false)
             {
 
                 serialPort2.Write(td1, 0, td1.Length);
@@ -1233,7 +1325,7 @@ namespace WindowsFormsApplication1.Exam
 
                     if (serialPort2.IsOpen)
                     {
-                       reada = new Thread(ReadAI);
+                        reada = new Thread(ReadAI);
                         reada.Start();
                         // AI0
 
@@ -1297,9 +1389,9 @@ namespace WindowsFormsApplication1.Exam
         private void button4_Click(object sender, EventArgs e)
         {
             show = false;
-        //   MessageBox.Show(""+this.chart1.Series[0].Points.Count);
-           // showpoint(this.chart1.Series[0].Points.Count-2);
-           
+            //   MessageBox.Show(""+this.chart1.Series[0].Points.Count);
+            // showpoint(this.chart1.Series[0].Points.Count-2);
+
 
         }
         bool wuc = false;
@@ -1316,18 +1408,18 @@ namespace WindowsFormsApplication1.Exam
 
             double a = double.Parse(a1);
             double b = double.Parse(b2);
-           // ff.ShowInfoTip("" + a + b + yali);
+            // ff.ShowInfoTip("" + a + b + yali);
             if (step == 0) { return; }
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
-              //  ff.ShowErrorTip("误差选择错误，不得分");
+                //  ff.ShowErrorTip("误差选择错误，不得分");
                 this.comboBox1.Enabled = false;
                 g.updateGrade(wxxz1, "wxxz1", datahelp.QId);
             }
             else
             {
-              //  ff.ShowSuccessTip("选择正确，得分" + wxxz1);
+                //  ff.ShowSuccessTip("选择正确，得分" + wxxz1);
                 this.comboBox1.Enabled = false;
             }
         }
@@ -1367,9 +1459,9 @@ namespace WindowsFormsApplication1.Exam
                 serialPort2.Dispose();
                 reada.Abort();
             }
-           
+
             this.timer1.Dispose();
-            this.timer2.Dispose();
+            //  this.timer2.Dispose();
         }
 
         private void uiButton1_Click(object sender, EventArgs e)
@@ -1384,7 +1476,7 @@ namespace WindowsFormsApplication1.Exam
         private void label2_Click(object sender, EventArgs e)
         {
             last = true;
-         
+
             datahelp.CurrentStep1 = 3;
             zaixianjiaoyan o = new zaixianjiaoyan();
             o.Show();
@@ -1393,13 +1485,19 @@ namespace WindowsFormsApplication1.Exam
 
         private void cxs()
         {
-          
-            if (v != null)
-            {
-                v.Stop(); // 停止视频捕获
-                v.Dispose(); // 释放资源
+            //  this.Opacity = 0;
+            datahelp.CurrentStep1 = 3;
+            zaixianjiaoyan o = new zaixianjiaoyan();
+            o.Show();
+            o.TopMost = true;
+            //   this.Close();
 
-            }
+            //if (v != null)
+            //{
+            //    v.Stop(); // 停止视频捕获
+            //    v.Dispose(); // 释放资源
+
+            //}
             if (serialPort2 != null && serialPort2.IsOpen)
             {
                 serialPort2.Close();
@@ -1409,11 +1507,31 @@ namespace WindowsFormsApplication1.Exam
             }
 
             // Process.GetCurrentProcess()?.Kill();
-            this.timer1.Dispose();
-            this.timer2.Dispose(); 
+            this.timer1.Stop();
+            // this.timer2.Dispose(); 
         }
 
         private void JiaoYormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void label29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label26_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
@@ -1431,5 +1549,6 @@ namespace WindowsFormsApplication1.Exam
 
             index = wuchas[comboBox1.SelectedIndex].Id;
         }
+
     }
 }

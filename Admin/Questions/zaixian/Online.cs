@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
         {
             InitializeComponent();
             InitUI();
-
+            ff.same(this);
         }
         private void InitUI()
         {
@@ -75,7 +75,15 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             }
         }
 
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void Online_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);

@@ -36,10 +36,11 @@
             // 
             // btnsend
             // 
+            this.btnsend.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnsend.BackColor = System.Drawing.Color.Turquoise;
             this.btnsend.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnsend.ForeColor = System.Drawing.Color.Transparent;
-            this.btnsend.Location = new System.Drawing.Point(318, 400);
+            this.btnsend.Location = new System.Drawing.Point(430, 400);
             this.btnsend.Margin = new System.Windows.Forms.Padding(4);
             this.btnsend.Name = "btnsend";
             this.btnsend.Size = new System.Drawing.Size(119, 45);
@@ -50,14 +51,16 @@
             // 
             // lbltime
             // 
+            this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbltime.BackColor = System.Drawing.Color.Transparent;
             this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbltime.Font = new System.Drawing.Font("微软雅黑", 11.5F);
-            this.lbltime.Location = new System.Drawing.Point(595, 9);
+            this.lbltime.Location = new System.Drawing.Point(790, 9);
             this.lbltime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltime.Name = "lbltime";
             this.lbltime.Size = new System.Drawing.Size(155, 39);
             this.lbltime.TabIndex = 1;
+            this.lbltime.Click += new System.EventHandler(this.lbltime_Click);
             // 
             // timer1
             // 
@@ -70,7 +73,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(763, 458);
+            this.ClientSize = new System.Drawing.Size(1006, 458);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.btnsend);
             this.Margin = new System.Windows.Forms.Padding(4);

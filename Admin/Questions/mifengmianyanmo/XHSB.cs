@@ -266,7 +266,15 @@ namespace WindowsFormsApplication1.YanMO
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)

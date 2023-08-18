@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1.Questions
 
             InitializeComponent();
             InitUI();
-
+            ff.same(this);
         }
         private void InitUI()
         {
@@ -63,7 +63,15 @@ namespace WindowsFormsApplication1.Questions
             c.Show();
             this.Close();
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void Offline_Record_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;

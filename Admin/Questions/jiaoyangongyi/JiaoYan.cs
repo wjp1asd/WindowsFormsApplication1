@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
         {
             InitializeComponent();
             InitUI();
+            c.same(this);
 
         }
         private void InitUI()
@@ -62,7 +63,15 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
                 awt.FormSizeChanged();
             }
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void JiaoYan_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);

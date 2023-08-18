@@ -277,7 +277,15 @@ namespace WindowsFormsApplication1
                 awt.FormSizeChanged();
             }
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void PeopleSet_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
