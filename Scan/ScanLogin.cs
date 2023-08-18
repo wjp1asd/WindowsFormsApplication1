@@ -57,6 +57,8 @@ namespace WindowsFormsApplication1.Scan
         {
 
             // 自动登录
+
+            this.button1.Visible = false;
             if (this.textBox1.Text.ToString().Length > 20 && read == true)
             {
 
@@ -116,7 +118,7 @@ namespace WindowsFormsApplication1.Scan
                 this.groupBox1.Show();
               
                 Student s = new Student(t.KsId);
-                
+                this.button1.Visible = false;
                 this.label10.Text += t.Ksname;
                 this.label3.Text += s.Sex;
                 this.label8.Text += t.KsId;
@@ -133,6 +135,7 @@ namespace WindowsFormsApplication1.Scan
                  this.textBox1.Enabled = true;
                 this.textBox1.Clear();
                 this.textBox1.Focus();
+                this.button1.Visible = true;
                 read = true;
 
             }
@@ -157,6 +160,7 @@ namespace WindowsFormsApplication1.Scan
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.button1.Visible = true;
             this.groupBox1.Hide();
             this.textBox1.Enabled = true;
             this.textBox1.Clear();
@@ -176,6 +180,7 @@ namespace WindowsFormsApplication1.Scan
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             string x = ConfigurationManager.AppSettings["machine"];
 
 
