@@ -955,7 +955,7 @@ namespace WindowsFormsApplication1.Exam
             if (a.YValues[0] < 134 && a.YValues[0] > 129 && b12 == true)
             //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
             {
-
+                ff.sound();
                 a.MarkerStyle = MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
@@ -967,14 +967,14 @@ namespace WindowsFormsApplication1.Exam
                 this.textBox5.Text = PS.ToString();
                 b12 = false;
 
-                ff.sound();
+               
                // MessageBox.Show("" + b12);
             }
 
             if (a.YValues[0] >134.55 && b12 == true)
             //      if ((a.YValues[0] - wjltj) >= 0 && (wjl - a.YValues[0] < 0) &&(a.YValues[0] - wjltj)<=0.5 && b2 == true)
             {
-
+                ff.sound();
                 a.MarkerStyle = MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
@@ -985,7 +985,7 @@ namespace WindowsFormsApplication1.Exam
 
                 this.textBox5.Text = PS.ToString();
                 b12 = false;
-                ff.sound();
+               
                 // MessageBox.Show("" + b12);
             }
             if ((a.YValues[0] ) < 10)
@@ -1184,11 +1184,11 @@ namespace WindowsFormsApplication1.Exam
 
             last = true;
 //DIS == "01110000"||
-            if ( DIS == "01100011")
+            if ( DIS == "01100011"||DIS == "01100000")
             {
 
-                Thread x = new Thread(cxs);
-                x.Start();
+               // Thread x = new Thread(cxs);
+              // x.Start();
                 this.Close();
                 zaixianjiaoyan o = new zaixianjiaoyan();
                 o.Show();

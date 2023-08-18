@@ -98,7 +98,7 @@
             // 
             this.txtQuestionContent.Font = new System.Drawing.Font("宋体", 14F);
             this.txtQuestionContent.Location = new System.Drawing.Point(173, 110);
-            this.txtQuestionContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQuestionContent.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuestionContent.Multiline = true;
             this.txtQuestionContent.Name = "txtQuestionContent";
             this.txtQuestionContent.ReadOnly = true;
@@ -112,7 +112,7 @@
             this.btnNext.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnNext.ForeColor = System.Drawing.SystemColors.Control;
             this.btnNext.Location = new System.Drawing.Point(573, 24);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(133, 54);
             this.btnNext.TabIndex = 5;
@@ -146,9 +146,10 @@
             // 
             // lbltime
             // 
+            this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbltime.BackColor = System.Drawing.Color.Transparent;
             this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.lbltime.Location = new System.Drawing.Point(1122, 21);
             this.lbltime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltime.Name = "lbltime";
@@ -169,7 +170,7 @@
             this.btnUp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnUp.ForeColor = System.Drawing.SystemColors.Control;
             this.btnUp.Location = new System.Drawing.Point(271, 24);
-            this.btnUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(124, 54);
             this.btnUp.TabIndex = 9;
@@ -214,9 +215,9 @@
             this.groupBox2.Controls.Add(this.btnNext);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Location = new System.Drawing.Point(3, 451);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1293, 85);
             this.groupBox2.TabIndex = 104;
             this.groupBox2.TabStop = false;
@@ -227,7 +228,7 @@
             this.button1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(903, 24);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 54);
             this.button1.TabIndex = 20;
@@ -382,7 +383,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblCurrent);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "QuestionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "回答问题";
