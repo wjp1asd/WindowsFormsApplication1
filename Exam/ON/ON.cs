@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1.Exam
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-           // this.change();
+            // this.change();
 
 
         }
@@ -88,7 +88,7 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
-           
+
             switch (datahelp.CurrentStep)
             {
                 case 1:
@@ -127,7 +127,7 @@ namespace WindowsFormsApplication1.Exam
             datahelp.CurrentStep1 = 1;
             zaixianjiaoyan a = new zaixianjiaoyan();
             a.Show();
-          
+
         }
 
         private void button2_Click(object sender, EventArgs e)

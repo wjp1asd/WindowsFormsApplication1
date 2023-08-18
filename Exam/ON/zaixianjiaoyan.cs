@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1.Exam
             ff.same(this);
 
             // this.change();
-         z = new zaixianjiaoyan2();
+            z = new zaixianjiaoyan2();
             z.Visible = false;
             z.Show();
         }
@@ -79,7 +79,7 @@ namespace WindowsFormsApplication1.Exam
             }
         }
 
-       
+
 
         private void zaixianjiaoyan_Load(object sender, EventArgs e)
         {
@@ -122,7 +122,7 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-           z.Show();
+            z.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

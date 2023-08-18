@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Exam.MF;
@@ -47,8 +46,8 @@ namespace WindowsFormsApplication1.Scan
             ff.fullsreen(this.button1, this);
             ff.fullsreen(this.textBox1, this);
 
-         
-          //  ff.fullsreen(this.label2, this);
+
+            //  ff.fullsreen(this.label2, this);
 
 
         }
@@ -67,7 +66,7 @@ namespace WindowsFormsApplication1.Scan
                 xuanti();
             }
 
-        
+
 
 
         }
@@ -75,7 +74,7 @@ namespace WindowsFormsApplication1.Scan
         private void ScanLogin_Load(object sender, EventArgs e)
         {
             this.textBox1.Focus();
-           
+
 
             //this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
@@ -115,16 +114,16 @@ namespace WindowsFormsApplication1.Scan
                 qrcode = ff.RC(sql);
 
                 t = t.getRecord(qrcode);
-                
+
                 this.groupBox1.Show();
-              
+
                 Student s = new Student(t.KsId);
                 this.button1.Visible = false;
                 this.label10.Text += t.Ksname;
                 this.label3.Text += s.Sex;
                 this.label8.Text += t.KsId;
                 this.pictureBox2.ImageLocation = s.ava;
-               // this.textBox1.Enabled = true;
+                // this.textBox1.Enabled = true;
                 this.textBox1.Clear();
                 this.textBox1.Focus();
                 read = false;
@@ -133,7 +132,7 @@ namespace WindowsFormsApplication1.Scan
             {
 
                 ff.ShowErrorDialog("未找到合适记录");
-                 this.textBox1.Enabled = true;
+                this.textBox1.Enabled = true;
                 this.textBox1.Clear();
                 this.textBox1.Focus();
                 this.button1.Visible = true;
@@ -150,8 +149,8 @@ namespace WindowsFormsApplication1.Scan
             // this.Close();
             // ff.backlogin();
 
-           Application.Exit();
-         //   Process.GetCurrentProcess()?.Kill();
+            Application.Exit();
+            //   Process.GetCurrentProcess()?.Kill();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -229,10 +228,11 @@ namespace WindowsFormsApplication1.Scan
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            if (read == true) {
+            if (read == true)
+            {
                 Application.Exit();
             }
-                                                     
+
         }
     }
 }

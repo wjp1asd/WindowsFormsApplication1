@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
         {
             InitializeComponent();
             InitUI();
-           ff.same(this);
+            ff.same(this);
         }
         private void InitUI()
         {

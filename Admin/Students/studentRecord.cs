@@ -5,8 +5,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
-using WindowsFormsApplication1.Admin.Results;
-using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Admin.Students
@@ -71,7 +69,7 @@ namespace WindowsFormsApplication1.Admin.Students
                     }
 
 
-                 
+
 
                 }
             }

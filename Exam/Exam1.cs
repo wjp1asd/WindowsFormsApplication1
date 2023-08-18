@@ -63,7 +63,7 @@ namespace WindowsFormsApplication1.Exam
                 case -1:
                     this.button3.Enabled = true;
                     this.button1.Enabled = true;
-                    this.button2.Enabled =  true;
+                    this.button2.Enabled = true;
                     break;
 
             }
