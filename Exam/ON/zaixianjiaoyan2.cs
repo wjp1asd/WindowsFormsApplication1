@@ -216,6 +216,15 @@ namespace WindowsFormsApplication1.Exam
             g.updatepath(mm, "zxpic1", datahelp.QId);
             //MessageBox.Show("拍照成功");
         }
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         Thread tj;
         int x = 0;
         int y = 1;
@@ -1535,14 +1544,6 @@ namespace WindowsFormsApplication1.Exam
 
             index = wuchas[comboBox1.SelectedIndex].Id;
         }
-        protected override CreateParams CreateParams //防止界面闪烁
-        {
-            get
-            {
-                CreateParams paras = base.CreateParams;
-                paras.ExStyle |= 0x02000000;
-                return paras;
-            }
-        }
+       
     }
 }

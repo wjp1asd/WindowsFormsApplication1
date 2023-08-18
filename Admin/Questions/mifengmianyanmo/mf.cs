@@ -105,6 +105,15 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
         {
 
         }
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void mf_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Media;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
@@ -77,25 +78,27 @@ namespace WindowsFormsApplication1.Models
 
         }
         public void sound() {
+            Task.Run(() => {
 
-            SoundPlayer player = new SoundPlayer();
+                SoundPlayer player = new SoundPlayer();
 
-            // 设置音频文件的路径
+                // 设置音频文件的路径
 
-            player.Stream = WindowsFormsApplication1.Properties.Resources.提示音2;
-            // player.SoundLocation =WindowsFormsApplication1.Properties.Resources.提示音2.ToString();
+                player.Stream = WindowsFormsApplication1.Properties.Resources.提示音2;
+                // player.SoundLocation =WindowsFormsApplication1.Properties.Resources.提示音2.ToString();
 
-            // MessageBox.Show(WindowsFormsApplication1.Properties.Resources.提示音2.ToString());
-            // 播放音频
-            player.Play();
+                // MessageBox.Show(WindowsFormsApplication1.Properties.Resources.提示音2.ToString());
+                // 播放音频
+                player.Play();
 
-            // 等待音频播放完毕
-            player.PlaySync();
+                // 等待音频播放完毕
+                player.PlaySync();
 
-            // 释放资源
-            player.Dispose();
+                // 释放资源
+                player.Dispose();
+            });
 
-
+            
         }
         public String Md5(string plaintext)
         {
@@ -328,12 +331,17 @@ namespace WindowsFormsApplication1.Models
         {
             UINotifierHelper.ShowNotifier(desc, clickEvent, UINotifierType.ERROR, UILocalize.ErrorTitle, timeout);
         }
-
+       
         internal void same(Form f)
         {
             f.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
             f.ControlBox = false;
             f.FormBorderStyle = FormBorderStyle.None;
+            f.BackgroundImageLayout = ImageLayout.Stretch;
+          //  f.DoubleBuffered = true;
+
+
+        
         }
     }
 }

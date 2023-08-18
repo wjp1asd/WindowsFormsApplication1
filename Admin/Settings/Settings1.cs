@@ -112,9 +112,7 @@ namespace WindowsFormsApplication1.Settings
             }
         }
 
-
-
-
+       
         private void Settings1_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);

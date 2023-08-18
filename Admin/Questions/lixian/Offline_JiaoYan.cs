@@ -68,7 +68,15 @@ namespace WindowsFormsApplication1.Questions
             p.Show();
             this.Close();
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void Offline_JiaoYan_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;

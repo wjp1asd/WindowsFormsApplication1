@@ -63,7 +63,15 @@ namespace WindowsFormsApplication1.Exam
         }
 
 
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void Choose_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);

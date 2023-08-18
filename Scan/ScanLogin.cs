@@ -76,6 +76,7 @@ namespace WindowsFormsApplication1.Scan
         {
             this.textBox1.Focus();
            
+
             //this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
 
@@ -168,15 +169,15 @@ namespace WindowsFormsApplication1.Scan
             read = true;
 
         }
-        //protected override CreateParams CreateParams //防止界面闪烁
-        //{
-        //    get
-        //    {
-        //        CreateParams paras = base.CreateParams;
-        //        paras.ExStyle |= 0x02000000;
-        //        return paras;
-        //    }
-        //}
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();

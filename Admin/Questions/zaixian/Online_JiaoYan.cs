@@ -65,7 +65,15 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
             //ff.ShowInfoTip("保存成功！,退出程序后加载");
             con.Close();
         }
-
+        protected override CreateParams CreateParams //防止界面闪烁
+        {
+            get
+            {
+                CreateParams paras = base.CreateParams;
+                paras.ExStyle |= 0x02000000;
+                return paras;
+            }
+        }
         private void Online_JiaoYan_Load(object sender, EventArgs e)
         {
 

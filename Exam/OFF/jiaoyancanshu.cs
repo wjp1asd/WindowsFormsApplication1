@@ -14,7 +14,9 @@ namespace WindowsFormsApplication1.Exam
         {
             InitializeComponent();
 
-
+            j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
+            j.Show();
+            j.Visible = true;
 
         }
         List<Wucha> wuchas = new List<Wucha>();
@@ -37,6 +39,7 @@ namespace WindowsFormsApplication1.Exam
         }
         Fuc ff = new Fuc();
         float score = 0;
+        JiaoYan j;
         private void button1_Click(object sender, EventArgs e)
         {
             // 判读选择情况
@@ -65,14 +68,13 @@ namespace WindowsFormsApplication1.Exam
             //MessageBox.Show(""+ff.RC1(url).Length);
 
             this.Close();
-            JiaoYan j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
-            j.Show();
-
+           
+            j.Visible = true;
 
 
 
         }
-
+      
         private void jiaoyancanshu_Load(object sender, EventArgs e)
         {
             TestRecord t = new TestRecord();
