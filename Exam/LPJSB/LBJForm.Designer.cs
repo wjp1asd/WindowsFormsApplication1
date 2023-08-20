@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbltime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -48,6 +47,7 @@
             this.rdbB = new System.Windows.Forms.CheckBox();
             this.rdbA = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbltime = new Sunny.UI.UILedLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             this.btnUp.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnUp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnUp.Location = new System.Drawing.Point(421, 11);
-            this.btnUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(124, 60);
             this.btnUp.TabIndex = 24;
@@ -83,7 +83,7 @@
             this.btnNext.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnNext.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnNext.Location = new System.Drawing.Point(753, 11);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(133, 60);
             this.btnNext.TabIndex = 21;
@@ -102,19 +102,6 @@
             this.label5.Size = new System.Drawing.Size(39, 20);
             this.label5.TabIndex = 22;
             this.label5.Text = "选项";
-            // 
-            // lbltime
-            // 
-            this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbltime.BackColor = System.Drawing.Color.Transparent;
-            this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 11.5F);
-            this.lbltime.Location = new System.Drawing.Point(1108, 9);
-            this.lbltime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(155, 39);
-            this.lbltime.TabIndex = 23;
-            this.lbltime.Text = "          ";
             // 
             // label2
             // 
@@ -286,18 +273,37 @@
             this.groupBox1.Controls.Add(this.btnNext);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(0, 459);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1276, 79);
             this.groupBox1.TabIndex = 104;
             this.groupBox1.TabStop = false;
+            // 
+            // lbltime
+            // 
+            this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbltime.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 21F);
+            this.lbltime.ForeColor = System.Drawing.Color.Black;
+            this.lbltime.IntervalOn = 3;
+            this.lbltime.Location = new System.Drawing.Point(1109, 22);
+            this.lbltime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbltime.MinimumSize = new System.Drawing.Size(1, 1);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(155, 52);
+            this.lbltime.Style = Sunny.UI.UIStyle.Custom;
+            this.lbltime.StyleCustomMode = true;
+            this.lbltime.TabIndex = 116;
+            this.lbltime.Text = "--:--";
+            this.lbltime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // LBJForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 634);
+            this.Controls.Add(this.lbltime);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rdbD);
             this.Controls.Add(this.rdbC);
@@ -311,7 +317,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.lbltime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -333,7 +338,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbltime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
@@ -348,5 +352,6 @@
         private System.Windows.Forms.CheckBox rdbB;
         public System.Windows.Forms.CheckBox rdbA;
         private System.Windows.Forms.GroupBox groupBox1;
+        private Sunny.UI.UILedLabel lbltime;
     }
 }

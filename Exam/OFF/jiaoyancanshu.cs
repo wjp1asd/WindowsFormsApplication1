@@ -142,7 +142,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.button1.Focus();   
         }
 
         private void label8_Click(object sender, EventArgs e)

@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
 
 
-            this.change();
+          //this.change();
 
 
         }

@@ -116,7 +116,7 @@ namespace WindowsFormsApplication1.Scan
                 t = t.getRecord(qrcode);
 
                 this.groupBox1.Show();
-
+                this.button4.Focus();
                 Student s = new Student(t.KsId);
                 this.button1.Visible = false;
                 this.label10.Text += t.Ksname;
@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1.Scan
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Hide();
+          //this.Hide();
 
             string x = ConfigurationManager.AppSettings["machine"];
 

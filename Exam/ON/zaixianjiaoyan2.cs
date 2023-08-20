@@ -253,7 +253,7 @@ namespace WindowsFormsApplication1.Exam
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
             url = "\\考试照片\\" + timestamp;
 
-
+        //this.ControlBox = false;
 
         }
         DateTime currentTime = DateTime.Now;

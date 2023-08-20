@@ -66,7 +66,7 @@
             this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(1437, 770);
+            this.button1.Location = new System.Drawing.Point(1419, 748);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(209, 62);
@@ -195,6 +195,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button4.Location = new System.Drawing.Point(160, 230);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -203,7 +204,6 @@
             this.button4.TabIndex = 34;
             this.button4.Text = "确认登录";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.UseWaitCursor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // pictureBox2

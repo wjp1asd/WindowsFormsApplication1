@@ -24,15 +24,7 @@ namespace WindowsFormsApplication1
             Initc();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new Offline_Questions());
-            // Application.Run(new Offline_JiaoYan());
-            //Application.Run(new Import(1));
-            // Application.Run(new plc());
-            // Application.Run(new Offline());
-            // Application.Run(new StudentSet());
-            //   Application.Run(new Settings1());
-            //  Application.Run(new Print("mXjjwVcvXizfGcnbOF9CKw=="));
-            //    Application.Run(new ResultSet());
+            
             string x = ConfigurationManager.AppSettings["machine"];
             if (int.Parse(x) < 2)
             {
@@ -43,11 +35,9 @@ namespace WindowsFormsApplication1
                 Application.Run(new ScanLogin());
             }
 
-            // Application.Run(new zaixianjiaoyan2());
-            // Application.Run(new Exam1());
-            // Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
-            //  Application.Run(new ScanLogin());
-            // Application.Run(new SubjectForm());
+            
+         //Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
+           
         }
         static void AddStartupEntry(string appName, string appPath)
         {
