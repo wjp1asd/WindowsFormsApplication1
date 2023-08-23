@@ -542,7 +542,7 @@ namespace WindowsFormsApplication1.Exam
         private void ReadAI()
         {
             //ff.ShowInfoTip(BitConverter.ToString(td1));
-·
+
             while (true && serialPort2.IsOpen && last == false)
             {
                 try

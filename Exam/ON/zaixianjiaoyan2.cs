@@ -323,7 +323,7 @@ namespace WindowsFormsApplication1.Exam
             chart1.Series[0].Points.Clear();
             chart1.Series[0].Points.AddXY(0, 0);
             this.chart1.BackColor = Color.Azure;             //图表背景色  
-            this.chart1.Titles.Add("安全阀校验");                //图表标题
+           //this.chart1.Titles.Add("安全阀校验");                //图表标题
 
             //新建连接 
             this.chart1.ChartAreas[0].AxisX.Maximum = 400;
