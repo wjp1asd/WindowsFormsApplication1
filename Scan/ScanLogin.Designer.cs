@@ -205,6 +205,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button4.Location = new System.Drawing.Point(120, 184);
             this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -213,7 +214,6 @@
             this.button4.TabIndex = 34;
             this.button4.Text = "确认登录";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.UseWaitCursor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // pictureBox2

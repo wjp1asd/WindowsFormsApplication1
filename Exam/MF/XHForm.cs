@@ -492,11 +492,7 @@ namespace WindowsFormsApplication1.Exam.MF
         {
             CheckBox rdb = (CheckBox)sender;
             // option = "";
-            if (option.Length > 2)
-            {
-                MessageBox.Show("只能单选");
-                return;
-            }
+           
             if (rdb.Checked)
             {
                 //d单选

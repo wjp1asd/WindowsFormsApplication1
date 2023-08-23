@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbltime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -48,6 +47,7 @@
             this.rdbB = new System.Windows.Forms.CheckBox();
             this.rdbA = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbltime = new Sunny.UI.UILedLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -281,6 +281,24 @@
             this.groupBox1.TabIndex = 104;
             this.groupBox1.TabStop = false;
             // 
+            // lbltime
+            // 
+            this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbltime.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 21F);
+            this.lbltime.ForeColor = System.Drawing.Color.Black;
+            this.lbltime.IntervalOn = 3;
+            this.lbltime.Location = new System.Drawing.Point(1109, 22);
+            this.lbltime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbltime.MinimumSize = new System.Drawing.Size(1, 1);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(155, 52);
+            this.lbltime.Style = Sunny.UI.UIStyle.Custom;
+            this.lbltime.StyleCustomMode = true;
+            this.lbltime.TabIndex = 116;
+            this.lbltime.Text = "--:--";
+            this.lbltime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // LBJForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -299,7 +317,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.lbltime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -321,7 +338,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbltime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
@@ -336,5 +352,6 @@
         private System.Windows.Forms.CheckBox rdbB;
         public System.Windows.Forms.CheckBox rdbA;
         private System.Windows.Forms.GroupBox groupBox1;
+        private Sunny.UI.UILedLabel lbltime;
     }
 }

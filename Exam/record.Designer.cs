@@ -196,7 +196,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 22;
-            this.label1.Text = "编号：******";
+            this.label1.Text = "编号：******_**_****";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2

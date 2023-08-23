@@ -49,15 +49,7 @@ namespace WindowsFormsApplication1
                 awt.FormSizeChanged();
             }
         }
-        protected override CreateParams CreateParams //防止界面闪烁
-        {
-            get
-            {
-                CreateParams paras = base.CreateParams;
-                paras.ExStyle |= 0x02000000;
-                return paras;
-            }
-        }
+      
         Grade g1 = new Grade();
         DateTime currentTime = DateTime.Now;
         Graphics back;

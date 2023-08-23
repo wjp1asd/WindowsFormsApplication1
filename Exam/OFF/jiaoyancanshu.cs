@@ -9,12 +9,12 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class jiaoyancanshu : Form
     {
-      //  string index = "";
+        
         public jiaoyancanshu()
         {
             InitializeComponent();
 
-         
+            
 
         }
         List<Wucha> wuchas = new List<Wucha>();
@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1.Exam
             //yali
             j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
             j.Show();
-            j.Visible = true;
+            j.Visible = false;
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
 
@@ -132,7 +132,7 @@ namespace WindowsFormsApplication1.Exam
             ;
             //  yali = int.Parse(t.Lxyl);
             this.label5.Text = "使用设备类型：" + t.Lxlx;
-            wucha(t.Lxlx);
+            wucha(t.Lxlx.Trim());
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             Score c = new Score();
             score = c.getScore("wxxz");
@@ -142,7 +142,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.button1.Focus();   
         }
 
         private void label8_Click(object sender, EventArgs e)

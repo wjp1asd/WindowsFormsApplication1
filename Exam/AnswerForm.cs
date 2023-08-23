@@ -51,8 +51,8 @@ namespace WindowsFormsApplication1
 
             int btnX = 20;
             int btnY = 60;
-            int IblX = 120;
-            int IblY = 80;
+            int IblX = 90;
+            int IblY = 65;
             for (int i = 0; i < num; i++)
             {
                 Button btn = new Button();
@@ -60,23 +60,23 @@ namespace WindowsFormsApplication1
                 btn.Text = string.Format("第{0}题", i + 1);
                 btn.Tag = i;
                 // btn.Click += new EventHandler(btn_Click);
-                btn.Size = new Size(60, 40);
+                btn.Size = new Size(60, 30);
                 Label Ibl = new Label();
                 Ibl.Location = new Point(IblX, IblY);
 
                 Ibl.BackColor = System.Drawing.Color.Transparent;
                 Ibl.Text = datahelp.UserAnswer[i].Trim();
-                Ibl.Size = new Size(61, 32);
+                Ibl.Size = new Size(41, 12);
                 this.Controls.Add(Ibl);
                 this.Controls.Add(btn);
-                btnX += 240;
-                IblX += 240;
+                btnX += 140;
+                IblX += 140;
                 if ((i + 1) % 4 == 0)
                 {
                     btnX = 20;
-                    IblX = 120;
-                    btnY += 70;
-                    IblY += 70;
+                    IblX = 90;
+                    btnY += 50;
+                    IblY += 50;
 
                 }
             }

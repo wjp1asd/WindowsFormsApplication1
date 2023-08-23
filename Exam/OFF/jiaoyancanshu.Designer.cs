@@ -62,7 +62,7 @@
             this.label3.Location = new System.Drawing.Point(98, 96);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 27);
+            this.label3.Size = new System.Drawing.Size(133, 32);
             this.label3.TabIndex = 44;
             this.label3.Text = "考生：****";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -75,7 +75,7 @@
             this.label4.Location = new System.Drawing.Point(456, 96);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 27);
+            this.label4.Size = new System.Drawing.Size(208, 32);
             this.label4.TabIndex = 45;
             this.label4.Text = "身份证号码：****";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -85,10 +85,9 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.label5.Location = new System.Drawing.Point(436, 154);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(581, 192);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(188, 27);
+            this.label5.Size = new System.Drawing.Size(233, 32);
             this.label5.TabIndex = 47;
             this.label5.Text = "使用设备类型：****";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -98,10 +97,9 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.label6.Location = new System.Drawing.Point(20, 154);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(27, 192);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(152, 27);
+            this.label6.Size = new System.Drawing.Size(189, 32);
             this.label6.TabIndex = 46;
             this.label6.Text = "要求整定压力：";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -114,7 +112,7 @@
             this.label7.Location = new System.Drawing.Point(38, 212);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 31);
+            this.label7.Size = new System.Drawing.Size(167, 39);
             this.label7.TabIndex = 48;
             this.label7.Text = "误差范围：";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -137,7 +135,7 @@
             this.button1.Location = new System.Drawing.Point(338, 279);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 53);
+            this.button1.Size = new System.Drawing.Size(173, 66);
             this.button1.TabIndex = 50;
             this.button1.Text = "下一步";
             this.button1.UseVisualStyleBackColor = false;
@@ -151,7 +149,7 @@
             this.label1.Location = new System.Drawing.Point(157, 154);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 31);
+            this.label1.Size = new System.Drawing.Size(73, 39);
             this.label1.TabIndex = 51;
             this.label1.Text = "****";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -164,7 +162,7 @@
             this.label8.Location = new System.Drawing.Point(219, 154);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 27);
+            this.label8.Size = new System.Drawing.Size(68, 32);
             this.label8.TabIndex = 52;
             this.label8.Text = "Mpa";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -172,9 +170,9 @@
             // 
             // jiaoyancanshu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 360);
+            this.ClientSize = new System.Drawing.Size(1083, 450);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
