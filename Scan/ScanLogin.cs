@@ -180,7 +180,7 @@ namespace WindowsFormsApplication1.Scan
         private void button4_Click(object sender, EventArgs e)
         {
             this.groupBox1.Hide();
-
+            ff.showloading();
             string x = ConfigurationManager.AppSettings["machine"];
 
 

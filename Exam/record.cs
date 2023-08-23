@@ -250,6 +250,11 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
+        private void label42_Click(object sender, EventArgs e)
+        {
+
+        }
+
         List<pressure> pp = new List<pressure>();
         TestRecord t = new TestRecord();
         private void button2_Click(object sender, EventArgs e)

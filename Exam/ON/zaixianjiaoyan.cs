@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1.Exam
         {
             datahelp a = new datahelp();
             a.Initc();
+            this.label2.Focus();
             this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);

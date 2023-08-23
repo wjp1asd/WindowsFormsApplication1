@@ -223,6 +223,8 @@ namespace WindowsFormsApplication1.Exam
                 return paras;
             }
         }
+        // 2分钟停止判断
+        bool stop = false;
         Thread tj;
         int x = 0;
         int y = 1;
@@ -537,7 +539,7 @@ namespace WindowsFormsApplication1.Exam
                     //di状态分析
                     fenxi();
 
-                    if (DIS0 == a)
+                    if (DIS0 == a && stop == false)
                     {
 
                         //    ff.ShowInfoTip("无操作" + limit);
@@ -566,7 +568,7 @@ namespace WindowsFormsApplication1.Exam
                                 else
                                 {
                                     str += "阀帽未归位";
-                                  //  ff.ShowErrorTip("阀帽未归位不得分");
+                                    //  ff.ShowErrorTip("阀帽未归位不得分");
 
                                 }
                                 if (shy == true)
@@ -577,7 +579,7 @@ namespace WindowsFormsApplication1.Exam
                                 else
                                 {
                                     str += "四合一未归位";
-                                   // ff.ShowErrorTip("四合一未归位不得分");
+                                    // ff.ShowErrorTip("四合一未归位不得分");
 
                                 }
                                 if (gj == true)
@@ -589,14 +591,14 @@ namespace WindowsFormsApplication1.Exam
                                 else
                                 {
                                     ff.ShowErrorTip("工具未归位");
-                                //    str += "工具未归位";
+                                    //    str += "工具未归位";
                                 }
 
 
                             }
 
                             last = true;
-                            
+
                             if (DIS == "01100011" || DIS == "01100000")
                             {
 
@@ -628,7 +630,9 @@ namespace WindowsFormsApplication1.Exam
 
 
                     }
-
+                    else {
+                        stop = true;
+                    }
                     //}
 
 

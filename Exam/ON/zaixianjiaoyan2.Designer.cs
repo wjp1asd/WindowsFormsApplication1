@@ -506,6 +506,7 @@
             this.uiLedLabel4.StyleCustomMode = true;
             this.uiLedLabel4.TabIndex = 100;
             this.uiLedLabel4.Text = "1111111";
+            this.uiLedLabel4.Visible = false;
             this.uiLedLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label19
