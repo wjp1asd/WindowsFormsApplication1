@@ -11,8 +11,9 @@ namespace WindowsFormsApplication1.Exam
         {
             InitializeComponent();
             InitUI();
-
-        
+            ff.same(this);
+          
+           
         }
         protected override CreateParams CreateParams //防止界面闪烁
         {
@@ -121,9 +122,8 @@ namespace WindowsFormsApplication1.Exam
         {
             this.Close();
             z = new zaixianjiaoyan2();
-           
             z.Show();
-            
+
         }
 
         private void button4_Click(object sender, EventArgs e)

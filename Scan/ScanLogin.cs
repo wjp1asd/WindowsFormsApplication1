@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1.Scan
         }
         private void button4_Click(object sender, EventArgs e)
         {
-          //this.Hide();
+            this.groupBox1.Hide();
 
             string x = ConfigurationManager.AppSettings["machine"];
 

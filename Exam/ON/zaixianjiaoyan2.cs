@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -235,7 +236,7 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
 
-            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
+          
             t = t.getRecord(datahelp.QId);
             showMsg();
             topheader.CopyTo(td1, 0);
@@ -544,7 +545,7 @@ namespace WindowsFormsApplication1.Exam
                         if (limit == 0)
                         {
 
-                            MessageBox.Show("超过2分钟时间未操作，考试结束，请点击右下角退出");
+                            MessageBox.Show("超过2分钟时间未操作，考试结束");
 
                             ////g.updateGrade(0, "mfzjcl", datahelp.QId);
                             ////g.updateGrade(0, "csfm1", datahelp.QId);
@@ -565,7 +566,7 @@ namespace WindowsFormsApplication1.Exam
                                 else
                                 {
                                     str += "阀帽未归位";
-                                    ff.ShowErrorTip("阀帽未归位不得分");
+                                  //  ff.ShowErrorTip("阀帽未归位不得分");
 
                                 }
                                 if (shy == true)
@@ -576,7 +577,7 @@ namespace WindowsFormsApplication1.Exam
                                 else
                                 {
                                     str += "四合一未归位";
-                                    ff.ShowErrorTip("四合一未归位不得分");
+                                   // ff.ShowErrorTip("四合一未归位不得分");
 
                                 }
                                 if (gj == true)
@@ -588,18 +589,23 @@ namespace WindowsFormsApplication1.Exam
                                 else
                                 {
                                     ff.ShowErrorTip("工具未归位");
-                                    str += "工具未归位";
+                                //    str += "工具未归位";
                                 }
 
 
                             }
 
                             last = true;
-
+                            
                             if (DIS == "01100011" || DIS == "01100000")
                             {
 
-
+                                Action tongdao1 = () =>
+                                {
+                                    Application.Restart();
+                                    Process.GetCurrentProcess()?.Kill();
+                                };
+                                this.Invoke(tongdao1);
 
 
 
@@ -607,7 +613,14 @@ namespace WindowsFormsApplication1.Exam
                             else
                             {
 
-                                MessageBox.Show("请完成复位再退出:" + str);
+                                MessageBox.Show("未复位:" + str);
+                                Action tongdao1 = () =>
+                                {
+                                    Application.Restart();
+                                    Process.GetCurrentProcess()?.Kill();
+                                };
+                                this.Invoke(tongdao1);
+
 
                             }
                         }
@@ -1287,7 +1300,11 @@ namespace WindowsFormsApplication1.Exam
             {
 
                 MessageBox.Show("请完成复位再退出:" + str);
-
+                Action tongdao = () =>
+                {
+                    xc();
+                };
+                this.Invoke(tongdao);
             }
 
         }
