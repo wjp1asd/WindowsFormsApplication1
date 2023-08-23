@@ -121,7 +121,7 @@
             // 
             this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbltime.BackColor = System.Drawing.Color.Transparent;
-            this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        
             this.lbltime.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.lbltime.Location = new System.Drawing.Point(581, 185);
             this.lbltime.Name = "lbltime";
@@ -246,7 +246,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+       
             this.label4.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.label4.ForeColor = System.Drawing.Color.Red;
             this.label4.Location = new System.Drawing.Point(581, 249);
@@ -347,7 +347,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        
             this.label10.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.label10.Location = new System.Drawing.Point(582, 316);
             this.label10.Name = "label10";
@@ -414,7 +414,7 @@
             this.label10.TabIndex = 116;
             this.label10.Text = "--:--";
             this.label10.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.label10.Click += new System.EventHandler(this.label10_Click);
+       
             // 
             // JiaoYan
             // 

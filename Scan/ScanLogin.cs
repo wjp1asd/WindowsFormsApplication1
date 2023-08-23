@@ -114,7 +114,7 @@ namespace WindowsFormsApplication1.Scan
                 qrcode = ff.RC(sql);
 
                 t = t.getRecord(qrcode);
-
+                datahelp.QId = qrcode;
                 this.groupBox1.Show();
                 this.button4.Focus();
                 Student s = new Student(t.KsId);

@@ -80,7 +80,7 @@ namespace WindowsFormsApplication1.Exam
             this.button4.Enabled = false;
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-            // ff.same(this);
+           
         }
         Grade g = new Grade();
         private void InitScore()

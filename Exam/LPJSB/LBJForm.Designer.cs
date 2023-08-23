@@ -103,7 +103,7 @@
             // 
             this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbltime.BackColor = System.Drawing.Color.Transparent;
-            this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         
             this.lbltime.Font = new System.Drawing.Font("微软雅黑", 11.5F);
             this.lbltime.Location = new System.Drawing.Point(831, 7);
             this.lbltime.Name = "lbltime";
