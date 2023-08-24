@@ -40,10 +40,9 @@
             this.btnsend.BackColor = System.Drawing.Color.Turquoise;
             this.btnsend.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnsend.ForeColor = System.Drawing.Color.Transparent;
-            this.btnsend.Location = new System.Drawing.Point(314, 400);
-            this.btnsend.Margin = new System.Windows.Forms.Padding(4);
+            this.btnsend.Location = new System.Drawing.Point(236, 320);
             this.btnsend.Name = "btnsend";
-            this.btnsend.Size = new System.Drawing.Size(119, 45);
+            this.btnsend.Size = new System.Drawing.Size(89, 36);
             this.btnsend.TabIndex = 0;
             this.btnsend.Text = "提交";
             this.btnsend.UseVisualStyleBackColor = false;
@@ -62,11 +61,11 @@
             this.lbltime.Font = new System.Drawing.Font("微软雅黑", 21F);
             this.lbltime.ForeColor = System.Drawing.Color.Black;
             this.lbltime.IntervalOn = 3;
-            this.lbltime.Location = new System.Drawing.Point(599, 11);
-            this.lbltime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbltime.Location = new System.Drawing.Point(449, 9);
+            this.lbltime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbltime.MinimumSize = new System.Drawing.Size(1, 1);
             this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(155, 52);
+            this.lbltime.Size = new System.Drawing.Size(116, 42);
             this.lbltime.Style = Sunny.UI.UIStyle.Custom;
             this.lbltime.StyleCustomMode = true;
             this.lbltime.TabIndex = 116;
@@ -75,13 +74,14 @@
             // 
             // AnswerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(775, 458);
+            this.ClientSize = new System.Drawing.Size(581, 366);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.btnsend);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AnswerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "答题卡";

@@ -38,11 +38,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(180, 173);
+            this.label1.Location = new System.Drawing.Point(146, 171);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 19);
+            this.label1.Size = new System.Drawing.Size(167, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "恭喜，完成考试";
             // 
@@ -51,6 +51,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(63, 54);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(363, 64);
@@ -64,7 +65,7 @@
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button3.Location = new System.Drawing.Point(151, 255);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(154, 56);
             this.button3.TabIndex = 40;
@@ -74,14 +75,15 @@
             // 
             // ProjectInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(472, 386);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ProjectInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "温馨提示";

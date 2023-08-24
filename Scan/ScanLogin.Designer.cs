@@ -66,7 +66,7 @@
             this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(909, 598);
+            this.button1.Location = new System.Drawing.Point(886, 581);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 50);
@@ -191,6 +191,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.button3.Font = new System.Drawing.Font("宋体", 12F);
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button3.Location = new System.Drawing.Point(318, 184);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
@@ -206,6 +207,7 @@
             // 
             this.button4.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.Font = new System.Drawing.Font("宋体", 12F);
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button4.Location = new System.Drawing.Point(120, 184);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
@@ -244,7 +246,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Location = new System.Drawing.Point(456, 275);
+            this.groupBox1.Location = new System.Drawing.Point(454, 143);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);

@@ -280,5 +280,10 @@ namespace WindowsFormsApplication1.Questions
 
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
+
+        private void lblUsername_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

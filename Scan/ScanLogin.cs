@@ -164,7 +164,7 @@ namespace WindowsFormsApplication1.Scan
             this.groupBox1.Hide();
             this.textBox1.Enabled = true;
             this.textBox1.Clear();
-            this.textBox1.Focus();
+          //  this.textBox1.Focus();
             read = true;
 
         }
@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1.Scan
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            this.groupBox1.Hide();
+            //this.groupBox1.Hide();
             ff.showloading();
             string x = ConfigurationManager.AppSettings["machine"];
 
@@ -209,7 +209,7 @@ namespace WindowsFormsApplication1.Scan
                     break;
 
             }
-
+            this.groupBox1.Hide();
         }
 
 

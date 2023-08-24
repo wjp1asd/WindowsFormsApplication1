@@ -31,6 +31,14 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.min = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.max = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -48,23 +56,16 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.pick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.min = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.max = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(439, 25);
+            this.button6.Location = new System.Drawing.Point(329, 20);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 30);
+            this.button6.Size = new System.Drawing.Size(56, 24);
             this.button6.TabIndex = 19;
             this.button6.Text = "关闭";
             this.button6.UseVisualStyleBackColor = true;
@@ -72,9 +73,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(255, 25);
+            this.button3.Location = new System.Drawing.Point(191, 20);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 30);
+            this.button3.Size = new System.Drawing.Size(56, 24);
             this.button3.TabIndex = 18;
             this.button3.Text = "刷新";
             this.button3.UseVisualStyleBackColor = true;
@@ -99,207 +101,15 @@
             this.Area,
             this.min,
             this.max});
-            this.dataGridView1.Location = new System.Drawing.Point(26, 75);
+            this.dataGridView1.Location = new System.Drawing.Point(20, 60);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1153, 443);
+            this.dataGridView1.Size = new System.Drawing.Size(865, 354);
             this.dataGridView1.TabIndex = 35;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(153, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "新增";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.btnLogin);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.comboBox3);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.lblUsername);
-            this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(278, 135);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(596, 330);
-            this.panel1.TabIndex = 37;
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(188, 277);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(50, 30, 3, 3);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(65, 38);
-            this.btnLogin.TabIndex = 45;
-            this.btnLogin.Text = "新增";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(326, 277);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(70, 30, 3, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(65, 38);
-            this.btnExit.TabIndex = 46;
-            this.btnExit.Text = "关闭";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "<",
-            ">",
-            "≤",
-            "≥"});
-            this.comboBox3.Location = new System.Drawing.Point(296, 178);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(203, 23);
-            this.comboBox3.TabIndex = 44;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "压力容器和管道",
-            "蒸汽锅炉"});
-            this.comboBox2.Location = new System.Drawing.Point(296, 80);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(203, 23);
-            this.comboBox2.TabIndex = 43;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.comboBox1.Items.AddRange(new object[] {
-            "%",
-            "Mpa"});
-            this.comboBox1.Location = new System.Drawing.Point(384, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(115, 23);
-            this.comboBox1.TabIndex = 42;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(193, 131);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 27);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "最小值";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(296, 131);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(203, 25);
-            this.textBox4.TabIndex = 41;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(233, 173);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 27);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "域";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(193, 220);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 27);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "最大值";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(296, 224);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(203, 25);
-            this.textBox2.TabIndex = 38;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(137, 79);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 27);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "使用设备类型";
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lblUsername.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUsername.Location = new System.Drawing.Point(142, 32);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(127, 27);
-            this.lblUsername.TabIndex = 34;
-            this.lblUsername.Text = "误差范围：±";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(296, 32);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(82, 25);
-            this.txtUsername.TabIndex = 35;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(346, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
-            this.button2.TabIndex = 38;
-            this.button2.Text = "删除";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(59, 25);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 30);
-            this.button4.TabIndex = 39;
-            this.button4.Text = "全选";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // pick
             // 
@@ -357,12 +167,213 @@
             this.max.MinimumWidth = 6;
             this.max.Name = "max";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(115, 20);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 24);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "新增";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnLogin);
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.comboBox3);
+            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblUsername);
+            this.panel1.Controls.Add(this.txtUsername);
+            this.panel1.Location = new System.Drawing.Point(429, 232);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(447, 264);
+            this.panel1.TabIndex = 37;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(141, 222);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(38, 24, 2, 2);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(49, 30);
+            this.btnLogin.TabIndex = 45;
+            this.btnLogin.Text = "新增";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(244, 222);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(52, 24, 2, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(49, 30);
+            this.btnExit.TabIndex = 46;
+            this.btnExit.Text = "关闭";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "<",
+            ">",
+            "≤",
+            "≥"});
+            this.comboBox3.Location = new System.Drawing.Point(222, 142);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(153, 20);
+            this.comboBox3.TabIndex = 44;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "压力容器和管道",
+            "蒸汽锅炉"});
+            this.comboBox2.Location = new System.Drawing.Point(222, 64);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(153, 20);
+            this.comboBox2.TabIndex = 43;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.comboBox1.Items.AddRange(new object[] {
+            "%",
+            "Mpa"});
+            this.comboBox1.Location = new System.Drawing.Point(319, 26);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(56, 20);
+            this.comboBox1.TabIndex = 42;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(145, 105);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 22);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "最小值：";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(222, 105);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(153, 21);
+            this.textBox4.TabIndex = 41;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(175, 138);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 22);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "域：";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(145, 176);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 22);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "最大值：";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(222, 179);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(153, 21);
+            this.textBox2.TabIndex = 38;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(97, 64);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 22);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "使用设备类型：";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsername.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblUsername.Location = new System.Drawing.Point(128, 26);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(107, 22);
+            this.lblUsername.TabIndex = 34;
+            this.lblUsername.Text = "误差范围： ±";
+            this.lblUsername.Click += new System.EventHandler(this.lblUsername_Click_1);
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(253, 26);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(62, 21);
+            this.txtUsername.TabIndex = 35;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(260, 20);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(56, 24);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "删除";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(44, 20);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(56, 24);
+            this.button4.TabIndex = 39;
+            this.button4.Text = "全选";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Wucha_Settings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1222, 553);
+            this.ClientSize = new System.Drawing.Size(916, 442);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
@@ -370,6 +381,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Wucha_Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "误差设置";

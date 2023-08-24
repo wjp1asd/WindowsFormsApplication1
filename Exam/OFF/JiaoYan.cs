@@ -1770,6 +1770,11 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
         byte[] dio = new byte[] { 0x02, 0x20, 0x00, 0x0C, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x2E };
         int a = 0;
 

@@ -151,12 +151,13 @@
             // 
             // label4
             // 
+            this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.label4.Location = new System.Drawing.Point(589, 107);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(174, 25);
+            this.label4.Size = new System.Drawing.Size(48, 25);
             this.label4.TabIndex = 53;
             this.label4.Text = "****";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -378,7 +379,7 @@
             this.button3.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(289, 11);
+            this.button3.Location = new System.Drawing.Point(361, 11);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(111, 45);
@@ -392,7 +393,7 @@
             this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(455, 11);
+            this.button1.Location = new System.Drawing.Point(527, 11);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 45);
@@ -406,7 +407,7 @@
             this.button2.BackColor = System.Drawing.Color.DarkOrange;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(797, 11);
+            this.button2.Location = new System.Drawing.Point(869, 11);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(111, 45);
@@ -420,7 +421,7 @@
             this.button4.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button4.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(624, 11);
+            this.button4.Location = new System.Drawing.Point(696, 11);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(111, 45);

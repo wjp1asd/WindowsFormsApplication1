@@ -277,6 +277,11 @@ namespace WindowsFormsApplication1.Questions
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
