@@ -33,6 +33,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox7status = new System.Windows.Forms.TextBox();
@@ -62,7 +63,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -106,7 +106,8 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
@@ -123,17 +124,24 @@
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(329, 155);
+            this.panel1.Location = new System.Drawing.Point(237, 149);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(564, 330);
+            this.panel1.Size = new System.Drawing.Size(621, 304);
             this.panel1.TabIndex = 53;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(383, 136);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(171, 25);
+            this.dateTimePicker1.TabIndex = 57;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(237, 134);
+            this.label6.Location = new System.Drawing.Point(261, 134);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 27);
@@ -185,7 +193,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(241, 82);
+            this.label2.Location = new System.Drawing.Point(281, 82);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 27);
@@ -194,7 +202,7 @@
             // 
             // textBox2lid
             // 
-            this.textBox2lid.Location = new System.Drawing.Point(354, 88);
+            this.textBox2lid.Location = new System.Drawing.Point(383, 87);
             this.textBox2lid.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.textBox2lid.Name = "textBox2lid";
             this.textBox2lid.Size = new System.Drawing.Size(171, 25);
@@ -225,7 +233,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(261, 32);
+            this.label1.Location = new System.Drawing.Point(301, 35);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 27);
@@ -234,7 +242,7 @@
             // 
             // textBox1bumen
             // 
-            this.textBox1bumen.Location = new System.Drawing.Point(354, 36);
+            this.textBox1bumen.Location = new System.Drawing.Point(383, 37);
             this.textBox1bumen.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.textBox1bumen.Name = "textBox1bumen";
             this.textBox1bumen.Size = new System.Drawing.Size(171, 25);
@@ -415,13 +423,6 @@
             this.button7.Text = "管理";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(354, 136);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 25);
-            this.dateTimePicker1.TabIndex = 57;
             // 
             // StudentSet
             // 

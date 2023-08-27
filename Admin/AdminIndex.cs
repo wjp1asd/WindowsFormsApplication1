@@ -19,13 +19,13 @@ namespace WindowsFormsApplication1
 
 
             InitUI();
-
+            ff.same(this);
         }
         private void InitUI()
         {
             datahelp a = new datahelp();
             a.Initc();
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
+          
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
@@ -49,14 +49,16 @@ namespace WindowsFormsApplication1
         public void change()
         {
 
-            ff.fullsreen(this.button1, this);
-            ff.fullsreen(this.button2, this);
-            ff.fullsreen(this.button3, this);
-            ff.fullsreen(this.button4, this);
-            ff.fullsreen(this.button5, this);
-            ff.fullsreen(this.button6, this);
-            ff.fullsreen(this.button7, this);
-            ff.fullsreen(this.label2, this);
+            ff.button(this.button1);
+            ff.button(this.button2);
+            ff.button(this.button3);
+            ff.button(this.button4);
+
+            ff.button(this.button5);
+            ff.button(this.button6);
+            ff.button(this.button7);
+          
+           
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -102,7 +104,7 @@ namespace WindowsFormsApplication1
         {
             Settings1 q = new Settings1();
             q.Show();
-            this.Close();
+           // this.Close();
         }
 
         private void button7_Click(object sender, EventArgs e)

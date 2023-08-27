@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1.YanMO
             string sql = "select * from " + TableName;
             this.panel1.Hide();
             InitTable(sql);
+            ff.dataview(this.dataGridView1);
         }
         private void InitTable(string sql)
         {
@@ -244,10 +245,12 @@ namespace WindowsFormsApplication1.YanMO
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (this.textBox1.Text.Length > 0)
+            {
+                string sql = "select * from " + TableName + " where  subname  like '%" + this.textBox1.Text + "%'";
 
-            string sql = "select * from " + TableName + " where  subname  like '%" + this.textBox1.Text + "%'";
-
-            this.InitTable(sql);
+                this.InitTable(sql);
+            }
         }
 
         private void btnExit_Click_1(object sender, EventArgs e)

@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
             //   ff.fullsreen(this.button5, this);
             //  ff.fullsreen(this.button6, this);
 
-            ff.fullsreen(this.label2, this);
+         //   ff.fullsreen(this.label2, this);
         }
         private void InitUI()
         {
@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
 
 
             string x = ConfigurationManager.AppSettings["machine"];
-            this.label2.Text = a.link.Trim();
+        //    this.label2.Text = a.link.Trim();
             // this.label2.Left += 100;
             if (x == "1")
             {

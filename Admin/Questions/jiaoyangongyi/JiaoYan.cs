@@ -30,11 +30,10 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
             //   ff.ShowInfoTip(a.color1);
 
-            c.fullsreen(this.label2, this);
 
-            c.fullsreen(this.button1, this);
-            c.fullsreen(this.button7, this);
-
+            c.button(this.button1);
+           
+            c.button(this.button7);
 
 
 

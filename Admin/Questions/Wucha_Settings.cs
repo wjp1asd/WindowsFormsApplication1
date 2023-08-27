@@ -37,6 +37,7 @@ namespace WindowsFormsApplication1.Questions
             //  ff.ShowInfoTip(sql);
             InitTable(sql);
             this.panel1.Hide();
+            ff.dataview(this.dataGridView1);
         }
         private void InitTable(string sql)
         {

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
+using WindowsFormsApplication1.Settings;
 
 namespace WindowsFormsApplication1.Scan
 {
@@ -233,6 +234,12 @@ namespace WindowsFormsApplication1.Scan
                 Application.Exit();
             }
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Settings1 s1 = new Settings1();
+            s1.Show();
         }
     }
 }

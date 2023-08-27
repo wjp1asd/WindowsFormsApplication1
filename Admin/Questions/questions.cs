@@ -46,6 +46,7 @@ namespace WindowsFormsApplication1.Questions
             string sql = "select * from " + TableName + " where subid=" + Subtype;
             this.panel1.Hide();
             InitTable(sql);
+            ff.dataview(this.dataGridView1);
         }
         //List<QuestionA> qs;
         private void InitTable(string sql)

@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1.YanMO
             string sql = "select * from " + TableName;
             this.panel1.Hide();
             InitTable(sql);
+                ff.dataview(this.dataGridView1);
         }
         //List<QuestionA> qs;
         private void InitTable(string sql)

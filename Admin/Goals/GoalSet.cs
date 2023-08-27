@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1
 
             InitTable(sql);
             InitTotal();
+            ff.dataview(this.dataGridView1);
         }
 
         Score sc = new Score();
