@@ -130,6 +130,16 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 模板 {
+            get {
+                object obj = ResourceManager.GetObject("模板", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         public static System.Drawing.Bitmap 离线校验界面副本 {
