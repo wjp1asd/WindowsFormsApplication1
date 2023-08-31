@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
 
 
 
-            this.change();
+           // this.change();
 
 
         }

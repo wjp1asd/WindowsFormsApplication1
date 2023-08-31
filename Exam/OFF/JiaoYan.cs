@@ -1,6 +1,7 @@
 ﻿using AutoWindowsSize;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using OpenCvSharp;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
@@ -344,7 +345,7 @@ namespace WindowsFormsApplication1.Exam
         public JiaoYan(string wuchaid)
         {
             InitializeComponent();
-            this.change();
+            //this.change();
 
             datahelp.Initc();
             wucha = wucha.GetOne(wuchaid);
@@ -494,7 +495,7 @@ namespace WindowsFormsApplication1.Exam
             //获得算分标准
             goal g = new goal();
             goals = g.getall();
-            v = new VideoCapture(0);
+           v = new Emgu.CV.VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
 
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
@@ -508,8 +509,8 @@ namespace WindowsFormsApplication1.Exam
             this.FormBorderStyle = FormBorderStyle.None;
         }
 
-        VideoCapture v;
-        Mat mat = new Mat();
+        Emgu.CV.VideoCapture v;
+        Emgu.CV.Mat mat = new Emgu.CV.Mat();
         private void Application_Idle(object sender, EventArgs e)
         {
             if (last == false)
@@ -1520,43 +1521,44 @@ namespace WindowsFormsApplication1.Exam
             {
                 case -1:
                     this.button1.Text = "测试未开始";
-                    MessageBox.Show("测试未开始");
+                 //   ff.ShowInfoTip("请完成复位再退出" + str);
+                    ff.ShowInfoTip("测试未开始");
                     break;
 
                 case 0:
                     this.button1.Text = "初次测试";
-                    MessageBox.Show("初次测试");
+                    ff.ShowInfoTip("初次测试");
                     break;
 
                 case 1:
                     this.button1.Text = "第一次测试";
-                    MessageBox.Show("第一次测试");
+                   
                     maz = ap.maz;
                     maz90 = ap.maz90;
                     ta = 60;
                     this.timer2.ReStart();
-                    ff.ShowInfoTip("请在一分钟内正确操作");
+                    ff.ShowInfoTip("第一次测试"+"请在一分钟内正确操作");
                     break;
                 case 2:
                     this.button1.Text = "第二次测试";
-                    MessageBox.Show("第二次测试");
+                 
                     ta = 60;
                     this.timer2.ReStart();
-                    ff.ShowInfoTip("请在一分钟内正确操作");
+                    ff.ShowInfoTip("第二次测试"+"请在一分钟内正确操作");
                     break;
                 case 3:
                     this.button1.Text = "第三次测试";
-                    MessageBox.Show("第三次测试");
+                  
                     ta = 60;
                     this.timer2.ReStart();
-                    ff.ShowInfoTip("请在一分钟内正确操作");
+                    ff.ShowInfoTip("第三次测试"+"请在一分钟内正确操作");
 
                     break;
                 case 4:
                     this.button1.Text = "密封性能测试";
-                    MessageBox.Show("密封性能测试");
+               
 
-                    ff.ShowInfoTip("保压测试开始，倒计时3分钟");
+                    ff.ShowInfoTip("密封性能测试"+"保压测试开始，倒计时3分钟");
                     this.timer2.Stop();
                     maz = maz90;
                     this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("gray");
@@ -1655,9 +1657,17 @@ namespace WindowsFormsApplication1.Exam
                 {
                     str += "泄压阀关闭，";
                 }
-              
-                MessageBox.Show("请完成复位再退出"+str);
 
+                ff.ShowInfoDialog("请完成复位再退出" + str);
+              //  MessageBox.Show("请完成复位再退出"+str);
+
+                Action x = () =>
+                {
+                    this.Close();
+                    OFF of = new OFF(datahelp.QId);
+                    of.Show();
+                };
+                this.Invoke(x);
             }
 
 

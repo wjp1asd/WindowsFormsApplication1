@@ -221,9 +221,15 @@ namespace WindowsFormsApplication1
         {
             if (this.textBox8.Text.Length > 0)
             {
-                string sql = "select * from " + TableName + " where  concat(name,sub,des)  like '%" + this.textBox8.Text + "%'";
-
+                string sql = "select * from " + TableName + " where name or des  like '%" + this.textBox8.Text.Trim() + "%'";
+                  MessageBox.Show(sql);
                 this.InitTable(sql);
+            }
+            else
+            {
+                string sql = "select * from " + TableName;
+
+                InitTable(sql);
             }
 
 

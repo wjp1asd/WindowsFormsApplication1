@@ -36,11 +36,11 @@ namespace WindowsFormsApplication1.Questions
             //c.fullsreen(this.button3, this);
             //c.fullsreen(this.button7, this);
 
-            c.button(this.button1);
+            /*c.button(this.button1);
             c.button(this.button2);
             c.button(this.button3);
            
-            c.button(this.button7);
+            c.button(this.button7);*/
 
         }
         AutoAdaptWindowsSize awt;

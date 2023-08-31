@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
 
 
 
-            this.change();
+            //this.change();
 
 
         }

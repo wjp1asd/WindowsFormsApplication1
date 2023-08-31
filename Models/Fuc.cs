@@ -340,7 +340,8 @@ namespace WindowsFormsApplication1.Models
         }
         public void button(Button b) {
 
-            b.Size = new System.Drawing.Size(260,90);
+            b.Size = new System.Drawing.Size(250, 80);
+            //b.Margin.Top =20;
             
         }
 

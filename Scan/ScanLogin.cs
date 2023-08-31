@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Exam.MF;
@@ -117,7 +118,7 @@ namespace WindowsFormsApplication1.Scan
                 t = t.getRecord(qrcode);
                 datahelp.QId = qrcode;
                 this.groupBox1.Show();
-                this.button4.Focus();
+              //  this.button4.Focus();
                 Student s = new Student(t.KsId);
                 this.button1.Visible = false;
                 this.label10.Text += t.Ksname;
@@ -181,7 +182,10 @@ namespace WindowsFormsApplication1.Scan
         private void button4_Click(object sender, EventArgs e)
         {
             //this.groupBox1.Hide();
-            ff.showloading();
+            //  ff.showloading();
+            ff.ShowInfoTip("加载中");
+           // ff.ShowInfoNotifier("加载中",true,5000);
+            Thread.Sleep(1000);
             string x = ConfigurationManager.AppSettings["machine"];
 
 
@@ -211,6 +215,7 @@ namespace WindowsFormsApplication1.Scan
 
             }
             this.groupBox1.Hide();
+            this.button1.Visible = true;
         }
 
 

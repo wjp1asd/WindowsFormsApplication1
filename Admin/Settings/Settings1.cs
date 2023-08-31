@@ -137,6 +137,11 @@ namespace WindowsFormsApplication1.Settings
                     this.groupBox3.Visible = true;
                     this.button9.Visible = true;
                     break;
+                //case "1":
+                //    this.groupBox2.Visible = true;
+                //    this.groupBox3.Visible = true;
+                //    this.button9.Visible = true;
+                //    break;
 
             }
         }

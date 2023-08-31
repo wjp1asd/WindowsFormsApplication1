@@ -42,9 +42,8 @@ namespace WindowsFormsApplication1.Exam
         {
             // 判读选择情况
             //yali
-            j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
-            j.Show();
-            j.Visible = false;
+            
+           
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
 
@@ -68,11 +67,15 @@ namespace WindowsFormsApplication1.Exam
 
             //MessageBox.Show(""+ff.RC1(url).Length);
 
-            this.Close();
+            Action x = () =>
+            {
+                this.Close();
 
-            j.Visible = true;
-
-
+                ff.showloading();
+                j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
+                j.Show();
+            };
+            this.Invoke(x);
 
         }
 

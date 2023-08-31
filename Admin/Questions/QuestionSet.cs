@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1
             //   ff.ShowInfoTip(a.color1);
 
 
-            this.change();
+            //this.change();
 
 
         }

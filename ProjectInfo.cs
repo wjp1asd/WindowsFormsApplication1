@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Scan;
 
 namespace WindowsFormsApplication1
 {
@@ -33,9 +35,21 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Close();
+            string x = ConfigurationManager.AppSettings["machine"];
+            if (int.Parse(x) < 2)
+            {
+             form1 c =new form1();
+                c.Show();
+            }
+            else
+            {
+                ScanLogin p = new ScanLogin();
+                p.Show();
+            }
 
-            Application.Restart();
-            Process.GetCurrentProcess()?.Kill();
+            //   Application.Restart();
+            // Process.GetCurrentProcess()?.Kill();
         }
     }
 }

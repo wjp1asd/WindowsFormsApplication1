@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -71,9 +71,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(56, 19);
+            this.button4.Location = new System.Drawing.Point(42, 15);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 30);
+            this.button4.Size = new System.Drawing.Size(56, 24);
             this.button4.TabIndex = 46;
             this.button4.Text = "全选";
             this.button4.UseVisualStyleBackColor = true;
@@ -81,9 +82,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(343, 19);
+            this.button2.Location = new System.Drawing.Point(257, 15);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
+            this.button2.Size = new System.Drawing.Size(56, 24);
             this.button2.TabIndex = 45;
             this.button2.Text = "删除";
             this.button2.UseVisualStyleBackColor = true;
@@ -109,9 +111,10 @@
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(275, 142);
+            this.panel1.Location = new System.Drawing.Point(206, 114);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(564, 330);
+            this.panel1.Size = new System.Drawing.Size(423, 264);
             this.panel1.TabIndex = 44;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -120,19 +123,19 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(322, 139);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label6.Location = new System.Drawing.Point(242, 111);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 27);
+            this.label6.Size = new System.Drawing.Size(58, 22);
             this.label6.TabIndex = 51;
             this.label6.Text = "确认：";
             // 
             // textBox4con
             // 
-            this.textBox4con.Location = new System.Drawing.Point(399, 139);
-            this.textBox4con.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox4con.Location = new System.Drawing.Point(304, 110);
+            this.textBox4con.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
             this.textBox4con.Name = "textBox4con";
-            this.textBox4con.Size = new System.Drawing.Size(126, 25);
+            this.textBox4con.Size = new System.Drawing.Size(96, 21);
             this.textBox4con.TabIndex = 56;
             // 
             // label7
@@ -140,19 +143,19 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(20, 179);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label7.Location = new System.Drawing.Point(15, 143);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 27);
+            this.label7.Size = new System.Drawing.Size(58, 22);
             this.label7.TabIndex = 49;
             this.label7.Text = "状态：";
             // 
             // textBox7status
             // 
-            this.textBox7status.Location = new System.Drawing.Point(97, 180);
-            this.textBox7status.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox7status.Location = new System.Drawing.Point(73, 144);
+            this.textBox7status.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
             this.textBox7status.Name = "textBox7status";
-            this.textBox7status.Size = new System.Drawing.Size(135, 25);
+            this.textBox7status.Size = new System.Drawing.Size(102, 21);
             this.textBox7status.TabIndex = 50;
             // 
             // label5
@@ -160,19 +163,19 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(20, 132);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label5.Location = new System.Drawing.Point(15, 106);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 27);
+            this.label5.Size = new System.Drawing.Size(58, 22);
             this.label5.TabIndex = 53;
             this.label5.Text = "密码：";
             // 
             // textBox5pass
             // 
-            this.textBox5pass.Location = new System.Drawing.Point(97, 132);
-            this.textBox5pass.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox5pass.Location = new System.Drawing.Point(73, 106);
+            this.textBox5pass.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
             this.textBox5pass.Name = "textBox5pass";
-            this.textBox5pass.Size = new System.Drawing.Size(135, 25);
+            this.textBox5pass.Size = new System.Drawing.Size(102, 21);
             this.textBox5pass.TabIndex = 54;
             // 
             // label2
@@ -180,19 +183,19 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(322, 84);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label2.Location = new System.Drawing.Point(242, 67);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 27);
+            this.label2.Size = new System.Drawing.Size(58, 22);
             this.label2.TabIndex = 51;
             this.label2.Text = "账号：";
             // 
             // textBox2lid
             // 
-            this.textBox2lid.Location = new System.Drawing.Point(399, 88);
-            this.textBox2lid.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox2lid.Location = new System.Drawing.Point(304, 69);
+            this.textBox2lid.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
             this.textBox2lid.Name = "textBox2lid";
-            this.textBox2lid.Size = new System.Drawing.Size(126, 25);
+            this.textBox2lid.Size = new System.Drawing.Size(96, 21);
             this.textBox2lid.TabIndex = 52;
             // 
             // label3
@@ -200,19 +203,19 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(20, 82);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label3.Location = new System.Drawing.Point(15, 66);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 27);
+            this.label3.Size = new System.Drawing.Size(58, 22);
             this.label3.TabIndex = 49;
             this.label3.Text = "电话：";
             // 
             // textBox3phone
             // 
-            this.textBox3phone.Location = new System.Drawing.Point(97, 84);
-            this.textBox3phone.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox3phone.Location = new System.Drawing.Point(73, 67);
+            this.textBox3phone.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
             this.textBox3phone.Name = "textBox3phone";
-            this.textBox3phone.Size = new System.Drawing.Size(135, 25);
+            this.textBox3phone.Size = new System.Drawing.Size(102, 21);
             this.textBox3phone.TabIndex = 50;
             // 
             // label1
@@ -220,27 +223,27 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(322, 34);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.label1.Location = new System.Drawing.Point(242, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 27);
+            this.label1.Size = new System.Drawing.Size(58, 22);
             this.label1.TabIndex = 47;
             this.label1.Text = "部门：";
             // 
             // textBox1bumen
             // 
-            this.textBox1bumen.Location = new System.Drawing.Point(399, 36);
-            this.textBox1bumen.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox1bumen.Location = new System.Drawing.Point(304, 28);
+            this.textBox1bumen.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
             this.textBox1bumen.Name = "textBox1bumen";
-            this.textBox1bumen.Size = new System.Drawing.Size(126, 25);
+            this.textBox1bumen.Size = new System.Drawing.Size(96, 21);
             this.textBox1bumen.TabIndex = 48;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(176, 250);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(50, 30, 3, 3);
+            this.btnLogin.Location = new System.Drawing.Point(132, 200);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(38, 24, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(65, 38);
+            this.btnLogin.Size = new System.Drawing.Size(49, 30);
             this.btnLogin.TabIndex = 45;
             this.btnLogin.Text = "新增";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -248,10 +251,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(314, 250);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(70, 30, 3, 3);
+            this.btnExit.Location = new System.Drawing.Point(236, 200);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(52, 24, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(65, 38);
+            this.btnExit.Size = new System.Drawing.Size(49, 30);
             this.btnExit.TabIndex = 46;
             this.btnExit.Text = "关闭";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -262,26 +265,27 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblUsername.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUsername.Location = new System.Drawing.Point(20, 32);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
+            this.lblUsername.Location = new System.Drawing.Point(15, 26);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 16, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(72, 27);
+            this.lblUsername.Size = new System.Drawing.Size(58, 22);
             this.lblUsername.TabIndex = 34;
             this.lblUsername.Text = "姓名：";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(97, 32);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.txtUsername.Location = new System.Drawing.Point(73, 26);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 16, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(135, 25);
+            this.txtUsername.Size = new System.Drawing.Size(102, 21);
             this.txtUsername.TabIndex = 35;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(150, 19);
+            this.button1.Location = new System.Drawing.Point(112, 15);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
+            this.button1.Size = new System.Drawing.Size(56, 24);
             this.button1.TabIndex = 43;
             this.button1.Text = "新增";
             this.button1.UseVisualStyleBackColor = true;
@@ -291,8 +295,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -300,14 +304,14 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeight = 32;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pick,
@@ -319,19 +323,20 @@
             this.loginid,
             this.password,
             this.confirm});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 69);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.Location = new System.Drawing.Point(9, 55);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1158, 474);
+            this.dataGridView1.Size = new System.Drawing.Size(868, 379);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -403,9 +408,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(436, 19);
+            this.button6.Location = new System.Drawing.Point(327, 15);
+            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 30);
+            this.button6.Size = new System.Drawing.Size(56, 24);
             this.button6.TabIndex = 41;
             this.button6.Text = "关闭";
             this.button6.UseVisualStyleBackColor = true;
@@ -413,9 +419,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(252, 19);
+            this.button3.Location = new System.Drawing.Point(189, 15);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 30);
+            this.button3.Size = new System.Drawing.Size(56, 24);
             this.button3.TabIndex = 40;
             this.button3.Text = "刷新";
             this.button3.UseVisualStyleBackColor = true;
@@ -423,17 +430,19 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(546, 19);
+            this.textBox8.Location = new System.Drawing.Point(410, 15);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(220, 25);
+            this.textBox8.Size = new System.Drawing.Size(166, 21);
             this.textBox8.TabIndex = 48;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(772, 19);
+            this.button5.Location = new System.Drawing.Point(579, 15);
+            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(67, 30);
+            this.button5.Size = new System.Drawing.Size(50, 24);
             this.button5.TabIndex = 47;
             this.button5.Text = "查询\r\n";
             this.button5.UseVisualStyleBackColor = true;
@@ -441,9 +450,9 @@
             // 
             // PeopleSet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 555);
+            this.ClientSize = new System.Drawing.Size(886, 444);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.button5);
@@ -453,6 +462,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PeopleSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "人员管理";

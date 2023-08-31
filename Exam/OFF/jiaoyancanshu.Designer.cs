@@ -126,7 +126,7 @@
             this.comboBox1.Location = new System.Drawing.Point(159, 210);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(119, 27);
+            this.comboBox1.Size = new System.Drawing.Size(139, 27);
             this.comboBox1.TabIndex = 49;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 

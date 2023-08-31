@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1.Questions
 
 
 
-            this.change();
+           // this.change();
 
 
         }

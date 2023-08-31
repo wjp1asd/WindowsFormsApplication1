@@ -13,6 +13,9 @@ namespace WindowsFormsApplication1.Exam.MF
         public XHForm()
         {
             InitializeComponent();
+            
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         int num = 1;

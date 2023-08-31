@@ -28,6 +28,8 @@ namespace WindowsFormsApplication1
             this.label7.Hide();
             this.label8.Hide();
             this.label9.Hide();
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
 
         }
         public QuestionForm(String qrcode, String subtype = "1")
@@ -699,6 +701,8 @@ namespace WindowsFormsApplication1
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
         private void groupBox1_Enter(object sender, EventArgs e)
         {

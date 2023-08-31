@@ -384,5 +384,10 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void form1_Shown(object sender, EventArgs e)
+        {
+            ff.ShowInfoTip("123");
+        }
     }
 }

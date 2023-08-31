@@ -1315,7 +1315,7 @@ namespace WindowsFormsApplication1.Exam
         Thread reada;
         private void xc()
         {
-            this.Close();
+            this.Visible = false;
             zaixianjiaoyan o = new zaixianjiaoyan();
             o.Show();
         }
