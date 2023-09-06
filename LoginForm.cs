@@ -329,6 +329,7 @@ namespace WindowsFormsApplication1
         {
             //jiaoyancanshu  jy = new jiaoyancanshu();    
             //jy.Show();
+            datahelp.CurrentStep1 = 1;
             datahelp.CurrentStep = 2;
             OFF off = new OFF(datahelp.QId);
             off.Show();
@@ -339,6 +340,7 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
+            datahelp.CurrentStep1 = 1;
             datahelp.CurrentStep = 3;
             MF1 mf = new MF1();
             mf.Show();
@@ -353,6 +355,8 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
+            datahelp.CurrentStep1 = 1;
+            datahelp.CurrentStep = 2;
             jiaoyancanshu jy = new jiaoyancanshu();
             jy.Show();
 
@@ -363,9 +367,11 @@ namespace WindowsFormsApplication1
         private void button11_Click(object sender, EventArgs e)
         {
             datahelp.CurrentStep = 2;//zaixianjiaoyan2 zaixianjiaoyan = new zaixianjiaoyan2();
-            //zaixianjiaoyan.Show();
-            ON on = new ON(datahelp.QId);
+            datahelp.CurrentStep1 =2;                     //zaixianjiaoyan.Show();
+            zaixianjiaoyan on = new zaixianjiaoyan();
             on.Show();
+           // ON on = new ON(datahelp.QId);
+           // on.Show();
             // this.Hide();
         }
 
@@ -387,7 +393,7 @@ namespace WindowsFormsApplication1
 
         private void form1_Shown(object sender, EventArgs e)
         {
-            ff.ShowInfoTip("123");
+            //ff.ShowInfoTip("123");
         }
     }
 }

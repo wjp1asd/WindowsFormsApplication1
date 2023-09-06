@@ -121,9 +121,9 @@ namespace WindowsFormsApplication1.Scan
               //  this.button4.Focus();
                 Student s = new Student(t.KsId);
                 this.button1.Visible = false;
-                this.label10.Text += t.Ksname;
-                this.label3.Text += s.Sex;
-                this.label8.Text += t.KsId;
+                this.label10.Text ="学    生：" + t.Ksname;
+                this.label3.Text = "性    别：" + s.Sex;
+                this.label8.Text = "身份证号：" + t.KsId;
                 this.pictureBox2.ImageLocation = s.ava;
                 // this.textBox1.Enabled = true;
                 this.textBox1.Clear();
@@ -245,6 +245,11 @@ namespace WindowsFormsApplication1.Scan
         {
             Settings1 s1 = new Settings1();
             s1.Show();
+        }
+
+        private void ScanLogin_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.textBox1.Focus();
         }
     }
 }

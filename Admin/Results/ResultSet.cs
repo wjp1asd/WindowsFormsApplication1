@@ -83,7 +83,8 @@ namespace WindowsFormsApplication1
             if (this.textBox8.Text.Trim().Length > 0)
             {
 
-                string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode" + " and  concat(idcard,name) like '%" + this.textBox8.Text.Trim() + "%'";
+                string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode"
+                    + " and  concat(idcard,name) like '%" + this.textBox8.Text.Trim() + "%'";
 
                 InitTable(sql);
             }
