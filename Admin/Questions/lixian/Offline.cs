@@ -84,7 +84,8 @@ namespace WindowsFormsApplication1.Questions
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Offline_Record a = new Offline_Record();
+            //Offline_Record a = new Offline_Record();
+            Record a = new Record("1");
             a.Show();
             this.Close();
         }

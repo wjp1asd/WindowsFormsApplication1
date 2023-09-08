@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<web:queryNjScpc>
+			<web:in0>TSZK31001</web:in0>
+			<web:in1>F123456</web:in1>
+			<web:in2>2023-09-04</web:in2>
+		</web:queryNjScpc>
+	</soapenv:Body>
+</soapenv:Envelope>

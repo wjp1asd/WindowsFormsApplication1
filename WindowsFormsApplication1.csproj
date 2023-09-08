@@ -325,7 +325,14 @@
     <Compile Include="Exam\ON\zaixianjiaoyan2.Designer.cs">
       <DependentUpon>zaixianjiaoyan2.cs</DependentUpon>
     </Compile>
+    <Compile Include="SD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SD.Designer.cs">
+      <DependentUpon>SD.cs</DependentUpon>
+    </Compile>
     <Compile Include="IDCardReader.cs" />
+    <Compile Include="Models\Api.cs" />
     <Compile Include="Models\AutoWindowsSize.cs" />
     <Compile Include="Models\goal.cs" />
     <Compile Include="Models\Dll.cs" />
@@ -638,6 +645,9 @@
     <EmbeddedResource Include="Admin\Questions\lixian\Record.resx">
       <DependentUpon>Record.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SD.resx">
+      <DependentUpon>SD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -711,6 +721,7 @@
     <None Include="Resources\zx.png" />
     <None Include="bk.jpg" />
     <Content Include="Resources\logo.jpg" />
+    <Content Include="Resources\XMLFile1.xml" />
     <Content Include="Resources\在线校验界面副本.jpg" />
     <None Include="Resources\在线校验界面副本1.jpg" />
     <Content Include="Resources\密封面研磨界面副本.jpg" />

@@ -165,9 +165,20 @@ namespace WindowsFormsApplication1.Questions
         {
             if (this.textBox1.Text.ToString().Length > 0)
             {
-                string sql = "select * from " + TableName + " where subId=" + Subtype 
-                    + " and concat(id,question,answer) like '%" + this.textBox1.Text + "%'";
+                // select* from question where subId = 4 and question like '%1%' or answer like '%1%'
+                //string sql = "select * from " + TableName + "   where subId =" + Subtype
+                //+ " and answer like '%" + this.textBox1.Text.Trim() + "%'" + " or question like '%" + this.textBox1.Text.Trim() + "%'";
+                string sql = "select * from " + TableName + "   where subId =" + Subtype
+               + " and question like '%" + this.textBox1.Text.Trim() + "%'";
 
+
+                //MessageBox.Show(sql);
+                this.InitTable(sql);
+            }
+            else {
+                string sql = "select * from " + TableName + "   where subId =" + Subtype;
+                 
+                MessageBox.Show(sql);
                 this.InitTable(sql);
             }
 
