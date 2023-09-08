@@ -24,16 +24,16 @@ namespace WindowsFormsApplication1
             Initc();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            string x = ConfigurationManager.AppSettings["machine"];
-            if (int.Parse(x) < 2)
-            {
-                Application.Run(new form1());
-            }
-            else
-            {
-                Application.Run(new ScanLogin());
-            }
+            Application.Run(new SD());
+            //string x = ConfigurationManager.AppSettings["machine"];
+            //if (int.Parse(x) < 2)
+            //{
+            //    Application.Run(new form1());
+            //}
+            //else
+            //{
+            //    Application.Run(new ScanLogin());
+            //}
 
             
          //Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
