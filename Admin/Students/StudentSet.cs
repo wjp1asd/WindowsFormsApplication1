@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1
             string sql = "select id,name,bumen,idcard,date,status,phone,sex from " + TableName + " where  power =1";
             this.panel1.Hide();
             InitTable(sql);
+            ff.dataview(this.dataGridView1);
         }
         private void InitTable(string sql)
         {

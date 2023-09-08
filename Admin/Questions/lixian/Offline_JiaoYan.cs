@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1.Questions
 
 
 
-            this.change();
+           // this.change();
 
 
         }
@@ -40,11 +40,11 @@ namespace WindowsFormsApplication1.Questions
         public void change()
         {
 
-            ff.fullsreen(this.button1, this);
-            ff.fullsreen(this.button2, this);
 
-            ff.fullsreen(this.button7, this);
-            ff.fullsreen(this.label2, this);
+            ff.button(this.button1);
+            ff.button(this.button2);
+           
+            ff.button(this.button7);
         }
 
         private void button7_Click(object sender, EventArgs e)

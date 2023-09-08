@@ -37,10 +37,10 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbltime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnUp = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbltime = new Sunny.UI.UILedLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -105,11 +105,11 @@
             // btnNext
             // 
             this.btnNext.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnNext.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnNext.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.btnNext.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnNext.Location = new System.Drawing.Point(430, 19);
+            this.btnNext.Location = new System.Drawing.Point(558, 20);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(100, 43);
+            this.btnNext.Size = new System.Drawing.Size(121, 43);
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "下一题";
             this.btnNext.UseVisualStyleBackColor = false;
@@ -130,25 +130,12 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(130, 241);
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label5.Location = new System.Drawing.Point(130, 256);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 17);
+            this.label5.Size = new System.Drawing.Size(69, 25);
             this.label5.TabIndex = 7;
-            this.label5.Text = "选项";
-            // 
-            // lbltime
-            // 
-            this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbltime.BackColor = System.Drawing.Color.Transparent;
-            this.lbltime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.lbltime.Location = new System.Drawing.Point(842, 17);
-            this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(116, 31);
-            this.lbltime.TabIndex = 8;
-            this.lbltime.Text = "          ";
-            this.lbltime.Click += new System.EventHandler(this.lbltime_Click);
+            this.label5.Text = "选项：";
             // 
             // timer1
             // 
@@ -159,11 +146,11 @@
             // btnUp
             // 
             this.btnUp.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnUp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnUp.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.btnUp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUp.Location = new System.Drawing.Point(203, 19);
+            this.btnUp.Location = new System.Drawing.Point(285, 20);
             this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(93, 43);
+            this.btnUp.Size = new System.Drawing.Size(128, 43);
             this.btnUp.TabIndex = 9;
             this.btnUp.Text = "上一题";
             this.btnUp.UseVisualStyleBackColor = false;
@@ -172,6 +159,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.lbltime);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -185,19 +173,36 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.lbltime);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtQuestionContent);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(974, 507);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(974, 587);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lbltime
+            // 
+            this.lbltime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbltime.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lbltime.Font = new System.Drawing.Font("微软雅黑", 21F);
+            this.lbltime.ForeColor = System.Drawing.Color.Black;
+            this.lbltime.IntervalOn = 3;
+            this.lbltime.Location = new System.Drawing.Point(842, 16);
+            this.lbltime.Margin = new System.Windows.Forms.Padding(2);
+            this.lbltime.MinimumSize = new System.Drawing.Size(1, 1);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(116, 42);
+            this.lbltime.Style = Sunny.UI.UIStyle.Custom;
+            this.lbltime.StyleCustomMode = true;
+            this.lbltime.TabIndex = 115;
+            this.lbltime.Text = "--:--";
+            this.lbltime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // groupBox2
             // 
@@ -205,20 +210,20 @@
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnNext);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(2, 361);
+            this.groupBox2.Location = new System.Drawing.Point(2, 440);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(970, 68);
+            this.groupBox2.Size = new System.Drawing.Size(970, 69);
             this.groupBox2.TabIndex = 104;
             this.groupBox2.TabStop = false;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.OrangeRed;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(677, 19);
+            this.button1.Location = new System.Drawing.Point(813, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 43);
+            this.button1.Size = new System.Drawing.Size(121, 43);
             this.button1.TabIndex = 20;
             this.button1.Text = "结束";
             this.button1.UseVisualStyleBackColor = false;
@@ -229,7 +234,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(326, 51);
+            this.label10.Location = new System.Drawing.Point(336, 51);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 19);
             this.label10.TabIndex = 19;
@@ -241,7 +246,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label9.Font = new System.Drawing.Font("宋体", 14F);
-            this.label9.Location = new System.Drawing.Point(2, 429);
+            this.label9.Location = new System.Drawing.Point(2, 509);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(181, 19);
             this.label9.TabIndex = 18;
@@ -255,7 +260,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label8.Font = new System.Drawing.Font("宋体", 14F);
-            this.label8.Location = new System.Drawing.Point(2, 448);
+            this.label8.Location = new System.Drawing.Point(2, 528);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(181, 19);
             this.label8.TabIndex = 17;
@@ -266,50 +271,53 @@
             // 
             this.rdbD.AutoSize = true;
             this.rdbD.Font = new System.Drawing.Font("宋体", 18F);
-            this.rdbD.Location = new System.Drawing.Point(130, 355);
-            this.rdbD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbD.Location = new System.Drawing.Point(130, 376);
+            this.rdbD.Margin = new System.Windows.Forms.Padding(2);
             this.rdbD.Name = "rdbD";
             this.rdbD.Size = new System.Drawing.Size(137, 28);
             this.rdbD.TabIndex = 16;
             this.rdbD.Tag = "D";
             this.rdbD.Text = "checkBox4";
             this.rdbD.UseVisualStyleBackColor = true;
+            this.rdbD.CheckedChanged += new System.EventHandler(this.rdbA_CheckedChanged_1);
             this.rdbD.Click += new System.EventHandler(this.rdbA_Click);
             // 
             // rdbC
             // 
             this.rdbC.AutoSize = true;
             this.rdbC.Font = new System.Drawing.Font("宋体", 18F);
-            this.rdbC.Location = new System.Drawing.Point(130, 328);
-            this.rdbC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbC.Location = new System.Drawing.Point(130, 349);
+            this.rdbC.Margin = new System.Windows.Forms.Padding(2);
             this.rdbC.Name = "rdbC";
             this.rdbC.Size = new System.Drawing.Size(137, 28);
             this.rdbC.TabIndex = 15;
             this.rdbC.Tag = "C";
             this.rdbC.Text = "checkBox3";
             this.rdbC.UseVisualStyleBackColor = true;
+            this.rdbC.CheckedChanged += new System.EventHandler(this.rdbA_CheckedChanged_1);
             this.rdbC.Click += new System.EventHandler(this.rdbA_Click);
             // 
             // rdbB
             // 
             this.rdbB.AutoSize = true;
             this.rdbB.Font = new System.Drawing.Font("宋体", 18F);
-            this.rdbB.Location = new System.Drawing.Point(130, 299);
-            this.rdbB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbB.Location = new System.Drawing.Point(130, 320);
+            this.rdbB.Margin = new System.Windows.Forms.Padding(2);
             this.rdbB.Name = "rdbB";
             this.rdbB.Size = new System.Drawing.Size(137, 28);
             this.rdbB.TabIndex = 14;
             this.rdbB.Tag = "B";
             this.rdbB.Text = "checkBox2";
             this.rdbB.UseVisualStyleBackColor = true;
+            this.rdbB.CheckStateChanged += new System.EventHandler(this.rdbA_CheckedChanged_1);
             this.rdbB.Click += new System.EventHandler(this.rdbA_Click);
             // 
             // rdbA
             // 
             this.rdbA.AutoSize = true;
             this.rdbA.Font = new System.Drawing.Font("宋体", 18F);
-            this.rdbA.Location = new System.Drawing.Point(130, 272);
-            this.rdbA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbA.Location = new System.Drawing.Point(130, 293);
+            this.rdbA.Margin = new System.Windows.Forms.Padding(2);
             this.rdbA.Name = "rdbA";
             this.rdbA.Size = new System.Drawing.Size(137, 28);
             this.rdbA.TabIndex = 13;
@@ -325,7 +333,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label7.Font = new System.Drawing.Font("宋体", 14F);
-            this.label7.Location = new System.Drawing.Point(2, 467);
+            this.label7.Location = new System.Drawing.Point(2, 547);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(181, 19);
             this.label7.TabIndex = 12;
@@ -338,7 +346,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label6.Font = new System.Drawing.Font("宋体", 14F);
-            this.label6.Location = new System.Drawing.Point(2, 486);
+            this.label6.Location = new System.Drawing.Point(2, 566);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(181, 19);
             this.label6.TabIndex = 11;
@@ -363,10 +371,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(974, 507);
+            this.ClientSize = new System.Drawing.Size(974, 587);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblCurrent);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "QuestionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "回答问题";
@@ -389,7 +399,6 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblCurrent;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbltime;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -405,5 +414,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private Sunny.UI.UILedLabel lbltime;
     }
 }

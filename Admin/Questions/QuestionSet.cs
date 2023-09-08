@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1
             //   ff.ShowInfoTip(a.color1);
 
 
-            this.change();
+            //this.change();
 
 
         }
@@ -42,13 +42,13 @@ namespace WindowsFormsApplication1
         public void change()
         {
 
-            ff.fullsreen(this.button1, this);
 
-            ff.fullsreen(this.button3, this);
-            ff.fullsreen(this.button4, this);
+            ff.button(this.button1);
+          
+            ff.button(this.button3);
+            ff.button(this.button4);
 
-            ff.fullsreen(this.button7, this);
-            ff.fullsreen(this.label2, this);
+            ff.button(this.button7);
         }
 
 

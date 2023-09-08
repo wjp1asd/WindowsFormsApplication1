@@ -17,7 +17,9 @@ namespace WindowsFormsApplication1.Settings
             InitializeComponent();
 
             InitC();
-            ff.same(this);
+         
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         public string a, b, c, d, f;
@@ -124,14 +126,22 @@ namespace WindowsFormsApplication1.Settings
             {
                 case "2":
                     this.groupBox2.Visible = true;
+                    this.button9.Visible = true;
                     break;
                 case "3":
                     this.groupBox3.Visible = true;
+                    this.button9.Visible = true;
                     break;
                 case "-1":
                     this.groupBox2.Visible = true;
                     this.groupBox3.Visible = true;
+                    this.button9.Visible = true;
                     break;
+                //case "1":
+                //    this.groupBox2.Visible = true;
+                //    this.groupBox3.Visible = true;
+                //    this.button9.Visible = true;
+                //    break;
 
             }
         }
@@ -149,8 +159,6 @@ namespace WindowsFormsApplication1.Settings
         private void button7_Click(object sender, EventArgs e)
         {
             this.InitC();
-            // AdminIndex admin = new AdminIndex();
-            // admin.Show();
             this.Close();
         }
 

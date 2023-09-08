@@ -30,12 +30,17 @@ namespace WindowsFormsApplication1.Questions
 
             this.button7.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color2);
             //   ff.ShowInfoTip(a.color1);
-            c.fullsreen(this.label2, this);
-            c.fullsreen(this.button1, this);
-            c.fullsreen(this.button2, this);
-            c.fullsreen(this.button3, this);
-            c.fullsreen(this.button7, this);
+            //c.fullsreen(this.label2, this);
+            //c.fullsreen(this.button1, this);
+            //c.fullsreen(this.button2, this);
+            //c.fullsreen(this.button3, this);
+            //c.fullsreen(this.button7, this);
 
+            /*c.button(this.button1);
+            c.button(this.button2);
+            c.button(this.button3);
+           
+            c.button(this.button7);*/
 
         }
         AutoAdaptWindowsSize awt;
@@ -79,7 +84,8 @@ namespace WindowsFormsApplication1.Questions
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Offline_Record a = new Offline_Record();
+            //Offline_Record a = new Offline_Record();
+            Record a = new Record("1");
             a.Show();
             this.Close();
         }

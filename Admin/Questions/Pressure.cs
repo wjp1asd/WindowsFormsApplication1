@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1.Questions
             string sql = "select * from " + TableName + " where type = " + Subtype;
             this.panel1.Hide();
             InitTable(sql);
-
+            ff.dataview(this.dataGridView1);
         }
         private void InitTable(string sql)
         {
@@ -182,6 +182,9 @@ namespace WindowsFormsApplication1.Questions
 
             con.Close();
             ff.ShowInfoTip("已更新");
+            string sql = "select * from " + TableName + " where type = " + Subtype; ;
+
+            this.InitTable(sql);
         }
         private Fuc ff = new Fuc();
         private void button2_Click(object sender, EventArgs e)
@@ -276,6 +279,11 @@ namespace WindowsFormsApplication1.Questions
             this.WindowState = FormWindowState.Maximized;
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

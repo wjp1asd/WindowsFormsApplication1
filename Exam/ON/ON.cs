@@ -30,9 +30,7 @@ namespace WindowsFormsApplication1.Exam
             this.label2.Text = "在线校验";
 
             ff.same(this);
-            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
-            this.ControlBox = false;
-            this.FormBorderStyle = FormBorderStyle.None;
+         
             // this.change();
 
 

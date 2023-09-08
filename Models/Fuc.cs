@@ -4,11 +4,15 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Media;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -115,6 +119,7 @@ namespace WindowsFormsApplication1.Models
         public void showloading(String t = "系统加载中......")
         {
             UIStatusFormService.ShowStatusForm(100, t, 0);
+          
             for (int i = 0; i < 88; i++)
             {
                 SystemEx.Delay(50);
@@ -333,15 +338,33 @@ namespace WindowsFormsApplication1.Models
         {
             UINotifierHelper.ShowNotifier(desc, clickEvent, UINotifierType.ERROR, UILocalize.ErrorTitle, timeout);
         }
+        public void button(Button b) {
 
+            b.Size = new System.Drawing.Size(250, 80);
+            //b.Margin.Top =20;
+            
+        }
+
+        public void dataview(DataGridView dg)
+        {
+          dg.GridColor = Color.PowderBlue;
+          dg.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(255, 235, 243, 255);
+            dg.ColumnHeadersHeight = 32;
+          dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dg.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dg.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255,80,160,255);
+            dg.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dg.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dg.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("微软雅黑", 12F);
+            dg.DefaultCellStyle.Font = new System.Drawing.Font("微软雅黑", 12F);
+        }
         internal void same(Form f)
         {
             f.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
             f.ControlBox = false;
             f.FormBorderStyle = FormBorderStyle.None;
             f.BackgroundImageLayout = ImageLayout.Stretch;
-            //  f.DoubleBuffered = true;
-
+          
 
 
         }

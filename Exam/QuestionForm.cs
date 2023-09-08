@@ -28,6 +28,8 @@ namespace WindowsFormsApplication1
             this.label7.Hide();
             this.label8.Hide();
             this.label9.Hide();
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
 
         }
         public QuestionForm(String qrcode, String subtype = "1")
@@ -248,6 +250,7 @@ namespace WindowsFormsApplication1
             }
 
         }
+        string tt = "";
         private void LoadQuestion()
         {
 
@@ -270,6 +273,7 @@ namespace WindowsFormsApplication1
                 datahelp.curAnswer = reader["answer"].ToString();
                 this.label7.Text = datahelp.curAnswer;
                 this.label10.Text = "[" + reader["type"].ToString().Trim() + "]";
+                tt = reader["type"].ToString().Trim();
                 if (reader["type"].ToString().Trim() == "判断题")
                 {
                     this.txtQuestionContent.Text = reader["question"].ToString();
@@ -601,24 +605,67 @@ namespace WindowsFormsApplication1
         {
             CheckBox rdb = (CheckBox)sender;
             // option = "";
-            if (option.Length > 2)
+
+            if (tt == "多选题")
             {
-                MessageBox.Show("只能单选");
-                return;
-            }
-            if (rdb.Checked)
-            {
-                if (!option.Contains(rdb.Tag.ToString()) && option.Length < 4)
+                if (rdb.Checked)
                 {
-                    option += rdb.Tag.ToString();
+                    if (!option.Contains(rdb.Tag.ToString()) && option.Length < 4)
+                    {
+                        option += rdb.Tag.ToString();
+                    }
+
+
                 }
+                else
+                {
+                    option = option.Replace(rdb.Tag.ToString(), string.Empty);
+                }
+            }
+            else {
+                if (rdb.Checked)
+                {
 
 
+                    option = rdb.Tag.ToString();
+                    switch (rdb.Tag.ToString())
+                    {
+                        case "A":
+                            //  this.rdbA.Checked = false;
+                            this.rdbB.Checked = false;
+                            this.rdbC.Checked = false;
+                            this.rdbD.Checked = false;
+                            break;
+
+                        case "B":
+                            this.rdbA.Checked = false;
+                            //   this.rdbB.Checked = false;
+                            this.rdbC.Checked = false;
+                            this.rdbD.Checked = false;
+                            break;
+
+                        case "C":
+                            this.rdbA.Checked = false;
+                            this.rdbB.Checked = false;
+                            // this.rdbC.Checked = false;
+                            this.rdbD.Checked = false;
+                            break;
+
+                        case "D":
+                            this.rdbA.Checked = false;
+                            this.rdbB.Checked = false;
+                            this.rdbC.Checked = false;
+                            //   this.rdbD.Checked = false;
+                            break;
+                    }
+
+
+                }
+                //多选算法
+
             }
-            else
-            {
-                option = option.Replace(rdb.Tag.ToString(), string.Empty);
-            }
+
+
 
 
             datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
@@ -654,6 +701,8 @@ namespace WindowsFormsApplication1
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
         private void groupBox1_Enter(object sender, EventArgs e)
         {

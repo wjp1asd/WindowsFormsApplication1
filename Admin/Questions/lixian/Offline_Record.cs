@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1.Questions
 
 
 
-            this.change();
+            //this.change();
 
 
         }
@@ -40,10 +40,11 @@ namespace WindowsFormsApplication1.Questions
         {
 
 
-            ff.fullsreen(this.button2, this);
-
-            ff.fullsreen(this.button7, this);
-            ff.fullsreen(this.label2, this);
+           
+            ff.button(this.button2);
+         
+            ff.button(this.button7);
+            
         }
         private void label2_Click(object sender, EventArgs e)
         {

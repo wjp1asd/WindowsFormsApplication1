@@ -1,0 +1,1 @@
+﻿select * from question where subId =4 and  question like '%2%' or answer like '%1%' 

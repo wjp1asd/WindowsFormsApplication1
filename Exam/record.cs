@@ -31,7 +31,8 @@ namespace WindowsFormsApplication1.Exam
             this.printDocument1.OriginAtMargins = true;//启用页边距
                                                        // 初始化成绩
             InitScore();
-
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
         Score sc = new Score();
         //要求整定压力 公称直径 压力等级范围 第一次 第二次 第三次 密封压力
@@ -51,7 +52,7 @@ namespace WindowsFormsApplication1.Exam
             dscyl = sc.getScore("dscyl");
             mfsyyl = sc.getScore("mfsyyl");
             jyjg1 = sc.getScore("jyjg1");
-            this.label11.Text = "编号：" + datahelp.QId;
+        //  this.label11.Text = "编号：" + datahelp.QId;
             g.updateGrade(0, "yqzdyl", datahelp.QId);
             g.updateGrade(0, "gctj", datahelp.QId);
             g.updateGrade(0, "dycyl", datahelp.QId);
@@ -79,7 +80,7 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-                this.label1.Text = "编号：" + reader["bianhao"].ToString().Trim();
+           //   this.label1.Text = "编号：" + reader["bianhao"].ToString().Trim();
                 this.label40.Text = reader["shiyongdanwei"].ToString().Trim();
                 this.label41.Text = reader["shebeidaima"].ToString().Trim();
 
@@ -181,7 +182,7 @@ namespace WindowsFormsApplication1.Exam
         private void record_Load(object sender, EventArgs e)
         {
             //g.getOne(datahelp.QId);
-            this.label1.Text = "编号：" + datahelp.QId;
+          //this.label1.Text = "编号：" + datahelp.QId;
             if (tper == "离线")
             {
                 if (g.getGrade("yqzdyl", datahelp.QId) > 100)
@@ -245,6 +246,11 @@ namespace WindowsFormsApplication1.Exam
         pressure ap = new pressure();
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label42_Click(object sender, EventArgs e)
         {
 
         }

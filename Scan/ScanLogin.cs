@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Configuration;
+using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Exam.MF;
 using WindowsFormsApplication1.Models;
+using WindowsFormsApplication1.Settings;
 
 namespace WindowsFormsApplication1.Scan
 {
@@ -114,14 +116,14 @@ namespace WindowsFormsApplication1.Scan
                 qrcode = ff.RC(sql);
 
                 t = t.getRecord(qrcode);
-
+                datahelp.QId = qrcode;
                 this.groupBox1.Show();
-
+              //  this.button4.Focus();
                 Student s = new Student(t.KsId);
                 this.button1.Visible = false;
-                this.label10.Text += t.Ksname;
-                this.label3.Text += s.Sex;
-                this.label8.Text += t.KsId;
+                this.label10.Text ="学    生：" + t.Ksname;
+                this.label3.Text = "性    别：" + s.Sex;
+                this.label8.Text = "身份证号：" + t.KsId;
                 this.pictureBox2.ImageLocation = s.ava;
                 // this.textBox1.Enabled = true;
                 this.textBox1.Clear();
@@ -164,7 +166,7 @@ namespace WindowsFormsApplication1.Scan
             this.groupBox1.Hide();
             this.textBox1.Enabled = true;
             this.textBox1.Clear();
-            this.textBox1.Focus();
+          //  this.textBox1.Focus();
             read = true;
 
         }
@@ -179,8 +181,11 @@ namespace WindowsFormsApplication1.Scan
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
+            //this.groupBox1.Hide();
+            //  ff.showloading();
+            ff.ShowInfoTip("加载中");
+           // ff.ShowInfoNotifier("加载中",true,5000);
+            Thread.Sleep(1000);
             string x = ConfigurationManager.AppSettings["machine"];
 
 
@@ -209,7 +214,8 @@ namespace WindowsFormsApplication1.Scan
                     break;
 
             }
-
+            this.groupBox1.Hide();
+            this.button1.Visible = true;
         }
 
 
@@ -233,6 +239,17 @@ namespace WindowsFormsApplication1.Scan
                 Application.Exit();
             }
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Settings1 s1 = new Settings1();
+            s1.Show();
+        }
+
+        private void ScanLogin_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.textBox1.Focus();
         }
     }
 }

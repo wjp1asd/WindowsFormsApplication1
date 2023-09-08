@@ -11,8 +11,9 @@ namespace WindowsFormsApplication1.Exam
         {
             InitializeComponent();
             InitUI();
-
             ff.same(this);
+          
+           
         }
         protected override CreateParams CreateParams //防止界面闪烁
         {
@@ -27,6 +28,7 @@ namespace WindowsFormsApplication1.Exam
         {
             datahelp a = new datahelp();
             a.Initc();
+            this.label2.Focus();
             this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
@@ -40,12 +42,10 @@ namespace WindowsFormsApplication1.Exam
 
             this.label2.Text = "在线校验";
 
-            ff.same(this);
+          
 
             // this.change();
-            z = new zaixianjiaoyan2();
-            z.Visible = false;
-            z.Show();
+         
         }
         zaixianjiaoyan2 z;
         private Fuc ff = new Fuc();
@@ -122,7 +122,9 @@ namespace WindowsFormsApplication1.Exam
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+            z = new zaixianjiaoyan2();
             z.Show();
+
         }
 
         private void button4_Click(object sender, EventArgs e)

@@ -37,6 +37,7 @@ namespace WindowsFormsApplication1.Questions
             //  ff.ShowInfoTip(sql);
             InitTable(sql);
             this.panel1.Hide();
+            ff.dataview(this.dataGridView1);
         }
         private void InitTable(string sql)
         {
@@ -279,6 +280,11 @@ namespace WindowsFormsApplication1.Questions
             awt = new AutoAdaptWindowsSize(this);
 
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+        }
+
+        private void lblUsername_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

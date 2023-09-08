@@ -30,6 +30,7 @@ namespace WindowsFormsApplication1.Admin.Students
             InitializeComponent();
             string sql = "select * from " + TableName + " where  ksid = (select idcard from student where id = " + id.Trim() + ")";
             InitTable(sql);
+            ff.dataview(this.dataGridView1);
         }
         private void InitTable(string sql)
         {

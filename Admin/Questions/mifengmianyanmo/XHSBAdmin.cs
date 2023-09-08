@@ -27,6 +27,7 @@ namespace WindowsFormsApplication1.YanMO
             this.lll.Text = "安全阀型号ID：" + subtype;
 
             InitTable(sql);
+            ff.dataview(this.dataGridView1);
         }
         //List<QuestionA> qs;
         private void InitTable(string sql)

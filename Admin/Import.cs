@@ -1,6 +1,7 @@
 ﻿
-using MiniExcelLibs;
 using System;
+using Microsoft.Office.Interop.Excel;
+using MiniExcelLibs;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -8,6 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
+using System.IO;
 
 namespace WindowsFormsApplication1
 {
@@ -238,6 +240,45 @@ namespace WindowsFormsApplication1
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+            // 获取资源文件中的Excel文件字节数组
+            try
+            {
+                byte[] excelBytes = global::WindowsFormsApplication1.Properties.Resources.模板;
+
+                // 将Excel文件字节数组保存到本地临时文件
+                string tempFilePath = Path.GetTempFileName() + ".xlsx";
+                File.WriteAllBytes(tempFilePath, excelBytes);
+
+                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+
+                // 打开Excel文件
+                Workbook workbook = excelApp.Workbooks.Open(tempFilePath);
+
+                // 选择第一个工作表
+                Worksheet worksheet = workbook.Sheets[1];
+
+                // 打开Excel应用程序可见
+                excelApp.Visible = true;
+
+                // 释放资源
+                worksheet = null;
+                workbook = null;
+                excelApp = null;
+
+                // 等待用户操作
+                Console.ReadLine();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
         }
     }
 }

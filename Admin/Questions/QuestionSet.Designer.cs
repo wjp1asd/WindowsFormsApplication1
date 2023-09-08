@@ -37,12 +37,14 @@
             // 
             // button4
             // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button4.BackColor = System.Drawing.Color.Red;
             this.button4.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(274, 317);
+            this.button4.Location = new System.Drawing.Point(229, 371);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(220, 70);
+            this.button4.Size = new System.Drawing.Size(165, 62);
             this.button4.TabIndex = 14;
             this.button4.Text = "密封面研磨";
             this.button4.UseVisualStyleBackColor = false;
@@ -50,12 +52,14 @@
             // 
             // button3
             // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button3.BackColor = System.Drawing.Color.Red;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(274, 216);
+            this.button3.Location = new System.Drawing.Point(229, 289);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(220, 70);
+            this.button3.Size = new System.Drawing.Size(165, 62);
             this.button3.TabIndex = 13;
             this.button3.Text = "在线检验";
             this.button3.UseVisualStyleBackColor = false;
@@ -63,12 +67,14 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(274, 110);
+            this.button1.Location = new System.Drawing.Point(229, 204);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 70);
+            this.button1.Size = new System.Drawing.Size(165, 61);
             this.button1.TabIndex = 11;
             this.button1.Text = "离线校验";
             this.button1.UseVisualStyleBackColor = false;
@@ -76,13 +82,15 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(289, 25);
+            this.label2.Location = new System.Drawing.Point(202, 111);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 52);
+            this.label2.Size = new System.Drawing.Size(219, 64);
             this.label2.TabIndex = 15;
             this.label2.Text = "题库管理";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -90,12 +98,14 @@
             // 
             // button7
             // 
+            this.button7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button7.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(274, 431);
+            this.button7.Location = new System.Drawing.Point(229, 461);
+            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(220, 63);
+            this.button7.Size = new System.Drawing.Size(165, 55);
             this.button7.TabIndex = 16;
             this.button7.Text = "<返回>";
             this.button7.UseVisualStyleBackColor = false;
@@ -103,15 +113,18 @@
             // 
             // QuestionSet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(782, 553);
+            this.ClientSize = new System.Drawing.Size(660, 650);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "QuestionSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "题库管理";

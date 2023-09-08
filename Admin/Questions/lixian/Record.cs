@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
             Id = id;
             Initc();
 
-            this.printDocument1.OriginAtMargins = true;//启用页边距
+            //this.printDocument1.OriginAtMargins = true;//启用页边距
 
         }
 
@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
 
 
 
-                this.label1.Text = "编号：" + reader["bianhao"].ToString().Trim();
+                //this.label1.Text = "编号：" + reader["bianhao"].ToString().Trim();
                 this.label40.Text = reader["shiyongdanwei"].ToString().Trim();
                 this.label41.Text = reader["shebeidaima"].ToString().Trim();
 

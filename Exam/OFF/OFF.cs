@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-            this.change();
+           // this.change();
 
 
         }

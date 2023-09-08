@@ -91,6 +91,26 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
+        ///   查找类似 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:web=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+        ///	&lt;soapenv:Header/&gt;
+        ///	&lt;soapenv:Body&gt;
+        ///		&lt;web:queryNjScpc&gt;
+        ///			&lt;web:in0&gt;TSZK31001&lt;/web:in0&gt;
+        ///			&lt;web:in1&gt;F123456&lt;/web:in1&gt;
+        ///			&lt;web:in2&gt;2023-09-04&lt;/web:in2&gt;
+        ///		&lt;/web:queryNjScpc&gt;
+        ///	&lt;/soapenv:Body&gt;
+        ///&lt;/soapenv:Envelope&gt;
+        /// 的本地化字符串。
+        /// </summary>
+        public static string XMLFile1 {
+            get {
+                return ResourceManager.GetString("XMLFile1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         public static System.Drawing.Bitmap zx {
@@ -126,6 +146,16 @@ namespace WindowsFormsApplication1.Properties {
         public static System.IO.UnmanagedMemoryStream 提示音2 {
             get {
                 return ResourceManager.GetStream("提示音2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 模板 {
+            get {
+                object obj = ResourceManager.GetObject("模板", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

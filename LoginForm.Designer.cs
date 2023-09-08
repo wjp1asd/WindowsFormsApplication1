@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form1));
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new Sunny.UI.UIButton();
             this.button2 = new Sunny.UI.UIButton();
@@ -53,21 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(410, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(603, 64);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "智能化安全阀校验考试系统";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pictureBox1
             // 
@@ -93,7 +77,7 @@
             this.button1.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(585, 188);
+            this.button1.Location = new System.Drawing.Point(555, 239);
             this.button1.MinimumSize = new System.Drawing.Size(1, 1);
             this.button1.Name = "button1";
             this.button1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
@@ -113,7 +97,7 @@
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(585, 311);
+            this.button2.Location = new System.Drawing.Point(555, 367);
             this.button2.MinimumSize = new System.Drawing.Size(1, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(260, 90);
@@ -128,7 +112,7 @@
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(585, 449);
+            this.button3.Location = new System.Drawing.Point(555, 498);
             this.button3.MinimumSize = new System.Drawing.Size(1, 1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(260, 90);
@@ -149,13 +133,13 @@
             this.flowLayoutPanel1.Controls.Add(this.lblPassword);
             this.flowLayoutPanel1.Controls.Add(this.uiAvatar1);
             this.flowLayoutPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(528, 202);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(504, 239);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.flowLayoutPanel1.ShowText = false;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(361, 337);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(361, 349);
             this.flowLayoutPanel1.TabIndex = 17;
             this.flowLayoutPanel1.Text = "管理员登录";
             this.flowLayoutPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -166,7 +150,7 @@
             // 
             this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton2.Location = new System.Drawing.Point(186, 270);
+            this.uiButton2.Location = new System.Drawing.Point(200, 275);
             this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton2.Name = "uiButton2";
             this.uiButton2.Size = new System.Drawing.Size(100, 35);
@@ -180,7 +164,7 @@
             // 
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnLogin.Location = new System.Drawing.Point(60, 270);
+            this.btnLogin.Location = new System.Drawing.Point(65, 275);
             this.btnLogin.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 35);
@@ -346,7 +330,7 @@
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
+            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.管理员界面副本;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 788);
             this.ControlBox = false;
@@ -363,7 +347,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -374,16 +357,15 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form1_FormClosed);
             this.Load += new System.EventHandler(this.form1_Load);
+            this.Shown += new System.EventHandler(this.form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Sunny.UI.UIButton button1;
         private Sunny.UI.UIButton button2;

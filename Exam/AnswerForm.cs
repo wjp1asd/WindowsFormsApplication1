@@ -49,34 +49,38 @@ namespace WindowsFormsApplication1
 
             }
 
-            int btnX = 20;
-            int btnY = 60;
-            int IblX = 120;
-            int IblY = 80;
+            int btnX = 60;
+            int btnY = 140;
+            int IblX = 60;
+            int IblY = 200;
             for (int i = 0; i < num; i++)
             {
                 Button btn = new Button();
                 btn.Location = new Point(btnX, btnY);
                 btn.Text = string.Format("第{0}题", i + 1);
+                btn.Font = new Font("微软雅黑", 14);
                 btn.Tag = i;
-                // btn.Click += new EventHandler(btn_Click);
-                btn.Size = new Size(60, 40);
+                //btn.Click += new EventHandler(btn_Click);
+                btn.Size = new Size(100, 50);
                 Label Ibl = new Label();
-                Ibl.Location = new Point(IblX, IblY);
 
-                Ibl.BackColor = System.Drawing.Color.Transparent;
+                Ibl.Location = new Point(IblX, IblY);
+                Ibl.TextAlign = ContentAlignment.MiddleCenter;
+
+
                 Ibl.Text = datahelp.UserAnswer[i].Trim();
-                Ibl.Size = new Size(61, 32);
+                Ibl.Font = new Font("微软雅黑", 14);
+                Ibl.Size = new Size(100, 50);
                 this.Controls.Add(Ibl);
                 this.Controls.Add(btn);
-                btnX += 240;
-                IblX += 240;
-                if ((i + 1) % 4 == 0)
+                btnX += 140;
+                IblX += 140;
+                if ((i + 1) % 5 == 0)
                 {
-                    btnX = 20;
-                    IblX = 120;
-                    btnY += 70;
-                    IblY += 70;
+                    btnX = 50;
+                    IblX = 50;
+                    btnY += 100;
+                    IblY += 100;
 
                 }
             }

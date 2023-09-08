@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
             string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode";
 
             InitTable(sql);
+            ff.dataview(this.dataGridView1);
         }
         private void InitTable(string sql)
         {
@@ -79,9 +80,14 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode" + " and  concat(idcard,name) like '%" + this.textBox8.Text + "%'";
+            if (this.textBox8.Text.Trim().Length > 0)
+            {
 
-            InitTable(sql);
+                string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode"
+                    + " and  concat(idcard,name) like '%" + this.textBox8.Text.Trim() + "%'";
+
+                InitTable(sql);
+            }
         }
 
         private void textBox8_TextChanged(object sender, EventArgs e)

@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1.Admin.Settings
             string sql = "select * from " + TableName;
 
             InitTable(sql);
+            ff.dataview(this.dataGridView1);
         }
 
         private void InitTable(string sql)

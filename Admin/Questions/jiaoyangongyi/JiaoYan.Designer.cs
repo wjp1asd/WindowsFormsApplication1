@@ -35,12 +35,14 @@
             // 
             // button7
             // 
+            this.button7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button7.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(300, 243);
+            this.button7.Location = new System.Drawing.Point(279, 262);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(209, 63);
+            this.button7.Size = new System.Drawing.Size(209, 62);
             this.button7.TabIndex = 29;
             this.button7.Text = "<返回>";
             this.button7.UseVisualStyleBackColor = false;
@@ -48,10 +50,12 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(304, 143);
+            this.button1.Location = new System.Drawing.Point(283, 162);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(205, 70);
             this.button1.TabIndex = 27;
@@ -61,12 +65,12 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(291, 50);
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(135, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(262, 52);
+            this.label2.Size = new System.Drawing.Size(525, 100);
             this.label2.TabIndex = 26;
             this.label2.Text = "校验工艺设置";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -79,13 +83,13 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "JiaoYan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "校验工艺设置";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.JiaoYan_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
