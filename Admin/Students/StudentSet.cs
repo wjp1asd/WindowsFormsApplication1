@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Admin;
 using WindowsFormsApplication1.Admin.Students;
 using WindowsFormsApplication1.Models;
 
@@ -315,6 +316,12 @@ namespace WindowsFormsApplication1
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Import1 import1 = new Import1();
+            import1.Show();
         }
     }
 }
