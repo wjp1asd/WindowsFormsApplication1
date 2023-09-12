@@ -48,13 +48,12 @@ namespace WindowsFormsApplication1.Exam.MF
         private void button3_Click(object sender, EventArgs e)
         {
             // 型号识别
-            this.Close();
+          
 
             datahelp.SubId = 5;
             XHForm x = new XHForm(datahelp.QId);
             x.Show();
-            // QuestionForm a = new QuestionForm(datahelp.QId, "5");
-            //  a.Show();
+            this.Close();
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -137,10 +136,11 @@ namespace WindowsFormsApplication1.Exam.MF
         private void button1_Click_1(object sender, EventArgs e)
         {
             // 零配件识别
-            this.Close();
+            
             datahelp.SubId = 6;
             LBJForm lBJ = new LBJForm(datahelp.QId);
             lBJ.Show();
+          //  this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -154,9 +154,10 @@ namespace WindowsFormsApplication1.Exam.MF
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Close();
+           
             ProjectInfo projectInfo = new ProjectInfo();
             projectInfo.Show();
+            this.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)

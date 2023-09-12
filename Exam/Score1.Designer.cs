@@ -37,9 +37,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 48F);
-            this.label2.Location = new System.Drawing.Point(156, 85);
+            this.label2.Location = new System.Drawing.Point(208, 106);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(291, 83);
+            this.label2.Size = new System.Drawing.Size(364, 104);
             this.label2.TabIndex = 22;
             this.label2.Text = "完成答题";
             // 
@@ -48,10 +49,10 @@
             this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button2.Font = new System.Drawing.Font("宋体", 12F);
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(241, 244);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(302, 305);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 53);
+            this.button2.Size = new System.Drawing.Size(173, 66);
             this.button2.TabIndex = 51;
             this.button2.Text = "下一步";
             this.button2.UseVisualStyleBackColor = false;
@@ -59,12 +60,12 @@
             // 
             // Score1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Score1";

@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1.Exam.MF
         public XHForm(string qrcode)
         {
             InitializeComponent();
-            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
+           
             g.getOne(qrcode);
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -113,9 +113,9 @@ namespace WindowsFormsApplication1.Exam.MF
             datahelp.Answer = new string[num];
             datahelp.UserAnswer = new string[num];
             datahelp.Correct = new string[num];
-            awt = new AutoAdaptWindowsSize(this);
+           // awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
+           // this.SizeChanged += groupBox1_Resize;
             InitbtnUp();
             InitbtnNext();
             ShowInfo();
@@ -238,14 +238,14 @@ namespace WindowsFormsApplication1.Exam.MF
 
 
         }
-
+        Score sc = new Score();
         private void ShowInfo()
         {
             this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
             this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
-
+            this.label10.Text = "分值：" + sc.getScore("lp" + datahelp.CurrentQuestion);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -661,6 +661,16 @@ namespace WindowsFormsApplication1.Exam.MF
                 this.Close();
             }
 
+
+        }
+
+        private void rdbC_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdbB_CheckedChanged_1(object sender, EventArgs e)
+        {
 
         }
     }

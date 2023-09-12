@@ -84,7 +84,7 @@ namespace WindowsFormsApplication1
             {
 
                 string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode"
-                    + " and  concat(idcard,name) like '%" + this.textBox8.Text.Trim() + "%'";
+                    + " and name like '%" + this.textBox8.Text.Trim() + "%'";
 
                 InitTable(sql);
             }

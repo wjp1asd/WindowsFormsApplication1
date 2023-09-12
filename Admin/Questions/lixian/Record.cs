@@ -173,7 +173,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Offline_Record r = new Offline_Record();
+            Offline r = new Offline();
             r.Show();
             this.Close();
         }

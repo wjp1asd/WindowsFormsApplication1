@@ -222,6 +222,11 @@ namespace WindowsFormsApplication1.Admin.Results
         {
             reset("score6");
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
 
