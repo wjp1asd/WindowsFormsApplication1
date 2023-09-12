@@ -201,6 +201,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Import1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Import1.Designer.cs">
+      <DependentUpon>Import1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Questions\jiaoyangongyi\JiaoYan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +331,8 @@
     <Compile Include="Exam\ON\zaixianjiaoyan2.Designer.cs">
       <DependentUpon>zaixianjiaoyan2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\batch1.cs" />
+    <Compile Include="Models\batch.cs" />
     <Compile Include="SD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -529,6 +537,9 @@
     </Compile>
     <EmbeddedResource Include="Admin\AdminIndex.resx">
       <DependentUpon>AdminIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Import1.resx">
+      <DependentUpon>Import1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Questions\jiaoyangongyi\JiaoYan.resx">
       <DependentUpon>JiaoYan.cs</DependentUpon>

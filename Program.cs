@@ -3,6 +3,7 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Admin;
 using WindowsFormsApplication1.Scan;
 
 namespace WindowsFormsApplication1
@@ -24,20 +25,21 @@ namespace WindowsFormsApplication1
             Initc();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SD());
-            //string x = ConfigurationManager.AppSettings["machine"];
-            //if (int.Parse(x) < 2)
-            //{
-            //    Application.Run(new form1());
-            //}
-            //else
-            //{
-            //    Application.Run(new ScanLogin());
-            //}
+         //   Application.Run(new Import1());
 
-            
-         //Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
-           
+            string x = ConfigurationManager.AppSettings["machine"];
+            if (int.Parse(x) < 2)
+            {
+                Application.Run(new form1());
+            }
+            else
+            {
+                Application.Run(new ScanLogin());
+            }
+
+
+            //Application.Run(new MFYM("EmcaBvClo9bJ6NkgbLWqRg=="));
+
         }
         static void AddStartupEntry(string appName, string appPath)
         {
