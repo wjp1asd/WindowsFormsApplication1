@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
 
         }
-        float rate = 0;
+        float rate1,rate2,rate3,rate4,rate5 = 0;
 
         private void Form6_Load(object sender, EventArgs e)
         {
@@ -41,22 +41,38 @@ namespace WindowsFormsApplication1.Exam
         private float score = 0;
         private void ShowScore()
         {
-            int count = 0;
+            float count = 0;
             string[] a = datahelp.Correct;
-            for (int i = 0; i < a.Length; i++)
-            {
+            
+          
                 // 答对题的数量
-                if (a[i] == "1")
+                if (a[0] == "1")
                 {
-                    count++;
+                    count += rate1;
                 }
-            }
+                if (a[1] == "1")
+                {
+                    count += rate2;
+                }
+                if (a[2] == "1")
+                {
+                    count += rate3;
+                }
+                if (a[3] == "1")
+                {
+                    count += rate4;
+                }
+                if (a[4] == "1")
+                {
+                    count += rate5;
+                }
+            
 
 
-            score = count * rate;
+               score = count;
             // MessageBox.Show(count+""+rate+""+score);
             // this.label2.Hide();
-            // this.label2.Text = "得分:" + score.ToString();
+            this.label2.Text = "得分:" + score;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -119,33 +135,57 @@ namespace WindowsFormsApplication1.Exam
             {
                 case 1:
                     this.Text = "离线校验";
-                    rate = float.Parse(sc.getScore("lxt").ToString());
-
+                    rate1 = float.Parse(sc.getScore("xh1").ToString());
+                    rate2 = float.Parse(sc.getScore("xh2").ToString());
+                    rate3 = float.Parse(sc.getScore("xh3").ToString());
+                    rate4 = float.Parse(sc.getScore("xh4").ToString());
+                    rate5 = float.Parse(sc.getScore("xh5").ToString());
                     break;
                 case 2:
                     this.Text = "在线校验";
-                    rate = float.Parse(sc.getScore("zxt").ToString());
+                    rate1 = float.Parse(sc.getScore("xh1").ToString());
+                    rate2 = float.Parse(sc.getScore("xh2").ToString());
+                    rate3 = float.Parse(sc.getScore("xh3").ToString());
+                    rate4 = float.Parse(sc.getScore("xh4").ToString());
+                    rate5 = float.Parse(sc.getScore("xh5").ToString());
                     break;
                 case 3:
                     this.Text = "校验工艺";
-                    rate = float.Parse(sc.getScore("gyt").ToString());
+                    rate1 = float.Parse(sc.getScore("xh1").ToString());
+                    rate2 = float.Parse(sc.getScore("xh2").ToString());
+                    rate3 = float.Parse(sc.getScore("xh3").ToString());
+                    rate4 = float.Parse(sc.getScore("xh4").ToString());
+                    rate5 = float.Parse(sc.getScore("xh5").ToString());
                     break;
 
                 case 5:
                     this.Text = "型号识别";
-                    rate = float.Parse(sc.getScore("xhsb").ToString());
+                    rate1 = float.Parse(sc.getScore("xh1").ToString());
+                    rate2 = float.Parse(sc.getScore("xh2").ToString());
+                    rate3 = float.Parse(sc.getScore("xh3").ToString());
+                    rate4 = float.Parse(sc.getScore("xh4").ToString());
+                    rate5 = float.Parse(sc.getScore("xh5").ToString());
                     break;
                 case 6:
                     this.Text = "零配件识别";
-                    rate = float.Parse(sc.getScore("lpjsb").ToString());
+                    rate1 = float.Parse(sc.getScore("lp1").ToString());
+                    rate2 = float.Parse(sc.getScore("lp2").ToString());
+                    rate3 = float.Parse(sc.getScore("lp3").ToString());
+                    rate4 = float.Parse(sc.getScore("lp4").ToString());
+                    rate5 = float.Parse(sc.getScore("lp5").ToString());
                     break;
                 case 4:
                     this.Text = "密封面研磨";
-                    rate = float.Parse(sc.getScore("ymgsb").ToString());
+                    rate1 = float.Parse(sc.getScore("ym1").ToString());
+                    rate2 = float.Parse(sc.getScore("ym2").ToString());
+                    rate3 = float.Parse(sc.getScore("ym3").ToString());
+                    rate4 = float.Parse(sc.getScore("ym4").ToString());
+                    rate5 = float.Parse(sc.getScore("ym5").ToString());
                     break;
             }
-            // this.label2.Text = this.Text + "完成";
-            //  MessageBox.Show(rate+"");
+           //  this.label2.Text += rate1+""+rate2+"" + rate3 +""+rate4+""+rate5+"";
+          
+          //  MessageBox.Show(this.Text+rate1 + "-" + rate2 + "-" + rate3 + "-" + rate4 + "-" + rate5 + "-");
             ShowScore();
             // AddStudentScore();
         }

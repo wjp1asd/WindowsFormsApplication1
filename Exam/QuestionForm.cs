@@ -213,7 +213,14 @@ namespace WindowsFormsApplication1
 
 
             }
-
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) != 1)
+            {
+                this.label10.Visible = false;
+                this.label9.Visible = false;
+                this.label8.Visible = false;
+                this.label7.Visible = false;
+            }
             this.label2.Text = "总题数：" + (num) + "，当前：";
             datahelp.Answer = new string[num];
             datahelp.UserAnswer = new string[num];
@@ -353,7 +360,7 @@ namespace WindowsFormsApplication1
             this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
             if (sub == "4") {
-                this.label10.Text = "分值：" + sc.getScore("ym" + datahelp.CurrentQuestion);
+                this.label11.Text = "分值：" + sc.getScore("ym" + datahelp.CurrentQuestion);
             }
            
         }
@@ -810,6 +817,11 @@ namespace WindowsFormsApplication1
                     //  this.Close();
                     break;
             }
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
 
         }
     }

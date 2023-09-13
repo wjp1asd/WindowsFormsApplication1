@@ -111,10 +111,19 @@ namespace WindowsFormsApplication1.Exam
             datahelp.Correct = new string[num];
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.ControlBox = false;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.MaximizeBox = true; this.MinimizeBox = true;
-            // this.SizeChanged += groupBox1_Resize;
+           this.ControlBox = false;
+           this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x)!= 1)
+            {
+                this.label11.Visible = false;
+                this.label9.Visible = false;
+                this.label8.Visible = false;
+                this.label6.Visible =false;
+                this.label3.Visible = false;
+            }
             InitbtnUp();
             InitbtnNext();
             ShowInfo();
@@ -329,7 +338,7 @@ namespace WindowsFormsApplication1.Exam
                 datahelp.RemainTime--;
                 int min = datahelp.RemainTime / 60;
                 int sec = datahelp.RemainTime % 60;
-                this.lbltime.Text = string.Format("{0:00}:{1:00}", min, sec);
+                this.uiLedLabel1.Text = string.Format("{0:00}:{1:00}", min, sec);
             }
             else
             {
@@ -480,27 +489,45 @@ namespace WindowsFormsApplication1.Exam
         {
             CheckBox rdb = (CheckBox)sender;
             // option = "";
-            if (option.Length > 2)
-            {
-                MessageBox.Show("只能单选");
-                return;
-            }
             if (rdb.Checked)
             {
-                if (!option.Contains(rdb.Tag.ToString()) && option.Length < 4)
+
+
+                option = rdb.Tag.ToString();
+                switch (rdb.Tag.ToString())
                 {
-                    option += rdb.Tag.ToString();
+                    case "A":
+                        //  this.rdbA.Checked = false;
+                        this.rdbB.Checked = false;
+                        this.rdbC.Checked = false;
+                        this.rdbD.Checked = false;
+                        break;
+
+                    case "B":
+                        this.rdbA.Checked = false;
+                        //   this.rdbB.Checked = false;
+                        this.rdbC.Checked = false;
+                        this.rdbD.Checked = false;
+                        break;
+
+                    case "C":
+                        this.rdbA.Checked = false;
+                        this.rdbB.Checked = false;
+                        // this.rdbC.Checked = false;
+                        this.rdbD.Checked = false;
+                        break;
+
+                    case "D":
+                        this.rdbA.Checked = false;
+                        this.rdbB.Checked = false;
+                        this.rdbC.Checked = false;
+                        //   this.rdbD.Checked = false;
+                        break;
                 }
-
-
-            }
-            else
-            {
-                option = option.Replace(rdb.Tag.ToString(), string.Empty);
             }
 
 
-            datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
+                datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
 
 
         }
@@ -510,11 +537,6 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
-
-        private void txtQuestionContent_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void closing(object sender, FormClosedEventArgs e)
         {
@@ -560,6 +582,16 @@ namespace WindowsFormsApplication1.Exam
         private void LBJForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

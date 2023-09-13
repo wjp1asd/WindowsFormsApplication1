@@ -41,9 +41,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(153, 163);
+            this.label1.Location = new System.Drawing.Point(256, 154);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 30);
+            this.label1.Size = new System.Drawing.Size(204, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "恭喜，完成考试";
             // 
@@ -54,9 +54,9 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(66, 42);
+            this.label6.Location = new System.Drawing.Point(127, 29);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(363, 64);
+            this.label6.Size = new System.Drawing.Size(454, 80);
             this.label6.TabIndex = 1;
             this.label6.Text = "安全阀考试系统";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -67,7 +67,7 @@
             this.button3.BackColor = System.Drawing.Color.Turquoise;
             this.button3.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(132, 254);
+            this.button3.Location = new System.Drawing.Point(261, 251);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(199, 65);
@@ -79,7 +79,7 @@
             // ProjectInfo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(472, 386);
+            this.ClientSize = new System.Drawing.Size(731, 386);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
