@@ -228,7 +228,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception)
             {
-                MessageBox.Show("保存图片异常");
+              ff.ShowErrorNotifier("保存图片异常");
                
             }
          
