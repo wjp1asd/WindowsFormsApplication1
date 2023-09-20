@@ -42,6 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbltime = new Sunny.UI.UILedLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -204,12 +205,26 @@
             this.lbltime.Text = "--:--";
             this.lbltime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label1.Location = new System.Drawing.Point(547, 86);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(223, 25);
+            this.label1.TabIndex = 117;
+            this.label1.Text = "身份证：***************";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // MFYM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1083, 608);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
@@ -255,5 +270,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Timer timer1;
         private Sunny.UI.UILedLabel lbltime;
+        private System.Windows.Forms.Label label1;
     }
 }

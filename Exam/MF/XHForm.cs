@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1.Exam.MF
         public XHForm(string qrcode)
         {
             InitializeComponent();
-            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
+           
             g.getOne(qrcode);
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -113,9 +113,17 @@ namespace WindowsFormsApplication1.Exam.MF
             datahelp.Answer = new string[num];
             datahelp.UserAnswer = new string[num];
             datahelp.Correct = new string[num];
-            awt = new AutoAdaptWindowsSize(this);
+           // awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-            this.SizeChanged += groupBox1_Resize;
+            // this.SizeChanged += groupBox1_Resize;
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) != 1)
+            {
+                this.label10.Visible = false;
+                this.label9.Visible = false;
+                this.label8.Visible = false;
+                this.label7.Visible = false;
+            }
             InitbtnUp();
             InitbtnNext();
             ShowInfo();
@@ -238,14 +246,14 @@ namespace WindowsFormsApplication1.Exam.MF
 
 
         }
-
+        Score sc = new Score();
         private void ShowInfo()
         {
             this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
-            this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
-            this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
-
+            this.label9.Text = "结果：" + string.Join(",", datahelp.Correct);
+          this.label8.Text = "上一次回答："+  datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
+            this.label10.Text = "分值：" + sc.getScore("lp" + datahelp.CurrentQuestion);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -348,7 +356,7 @@ namespace WindowsFormsApplication1.Exam.MF
             }
             else
             {
-                this.timer1.Stop();
+                this.timer2.Stop();
                 ff.ShowInfoTip("时间到了，请交卷");
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
@@ -495,24 +503,46 @@ namespace WindowsFormsApplication1.Exam.MF
         {
             CheckBox rdb = (CheckBox)sender;
             // option = "";
-           
+
             if (rdb.Checked)
             {
-                //d单选
-                if (!option.Contains(rdb.Tag.ToString()) && option.Length < 4)
+
+
+                option = rdb.Tag.ToString();
+                switch (rdb.Tag.ToString())
                 {
-                    option += rdb.Tag.ToString();
+                    case "A":
+                        //  this.rdbA.Checked = false;
+                        this.rdbB.Checked = false;
+                        this.rdbC.Checked = false;
+                        this.rdbD.Checked = false;
+                        break;
+
+                    case "B":
+                        this.rdbA.Checked = false;
+                        //   this.rdbB.Checked = false;
+                        this.rdbC.Checked = false;
+                        this.rdbD.Checked = false;
+                        break;
+
+                    case "C":
+                        this.rdbA.Checked = false;
+                        this.rdbB.Checked = false;
+                        // this.rdbC.Checked = false;
+                        this.rdbD.Checked = false;
+                        break;
+
+                    case "D":
+                        this.rdbA.Checked = false;
+                        this.rdbB.Checked = false;
+                        this.rdbC.Checked = false;
+                        //   this.rdbD.Checked = false;
+                        break;
                 }
-
-
-            }
-            else
-            {
-                option = option.Replace(rdb.Tag.ToString(), string.Empty);
             }
 
 
-            datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
+                datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
 
 
         }
@@ -548,11 +578,9 @@ namespace WindowsFormsApplication1.Exam.MF
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+           
         }
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void closing(object sender, FormClosedEventArgs e)
         {
@@ -653,7 +681,7 @@ namespace WindowsFormsApplication1.Exam.MF
             }
             else
             {
-                this.timer1.Stop();
+                this.timer2.Stop();
                 ff.ShowInfoTip("时间到了，请交卷");
                 AnswerForm frm = new AnswerForm();
                 frm.MdiParent = this.MdiParent;
@@ -661,6 +689,48 @@ namespace WindowsFormsApplication1.Exam.MF
                 this.Close();
             }
 
+
+        }
+
+        private void rdbC_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdbB_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (datahelp.RemainTime > 0)
+            {
+                datahelp.RemainTime--;
+                int min = datahelp.RemainTime / 60;
+                int sec = datahelp.RemainTime % 60;
+                this.uiLedLabel1.Text = string.Format("{0:00}:{1:00}", min, sec);
+            }
+            else
+            {
+                this.timer2.Stop();
+
+                ff.ShowInfoTip("时间到了，请交卷");
+                this.Close();
+                AnswerForm frm = new AnswerForm();
+                frm.MdiParent = this.MdiParent;
+                frm.Show();
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
     }

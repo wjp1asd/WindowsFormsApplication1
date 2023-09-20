@@ -40,6 +40,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnUp = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.lbltime = new Sunny.UI.UILedLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -104,10 +105,11 @@
             // 
             // btnNext
             // 
+            this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnNext.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnNext.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.btnNext.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnNext.Location = new System.Drawing.Point(558, 20);
+            this.btnNext.Location = new System.Drawing.Point(467, 20);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(121, 43);
             this.btnNext.TabIndex = 5;
@@ -145,10 +147,11 @@
             // 
             // btnUp
             // 
+            this.btnUp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnUp.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnUp.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.btnUp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUp.Location = new System.Drawing.Point(285, 20);
+            this.btnUp.Location = new System.Drawing.Point(194, 20);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(128, 43);
             this.btnUp.TabIndex = 9;
@@ -159,6 +162,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.lbltime);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label10);
@@ -178,13 +182,24 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Size = new System.Drawing.Size(974, 587);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(776, 349);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(31, 19);
+            this.label11.TabIndex = 116;
+            this.label11.Text = "[]";
             // 
             // lbltime
             // 
@@ -194,7 +209,7 @@
             this.lbltime.ForeColor = System.Drawing.Color.Black;
             this.lbltime.IntervalOn = 3;
             this.lbltime.Location = new System.Drawing.Point(842, 16);
-            this.lbltime.Margin = new System.Windows.Forms.Padding(2);
+            this.lbltime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbltime.MinimumSize = new System.Drawing.Size(1, 1);
             this.lbltime.Name = "lbltime";
             this.lbltime.Size = new System.Drawing.Size(116, 42);
@@ -210,18 +225,20 @@
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnNext);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(2, 440);
+            this.groupBox2.Location = new System.Drawing.Point(2, 516);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(970, 69);
             this.groupBox2.TabIndex = 104;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.OrangeRed;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(813, 20);
+            this.button1.Location = new System.Drawing.Point(722, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 43);
             this.button1.TabIndex = 20;
@@ -242,37 +259,35 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label9.Font = new System.Drawing.Font("宋体", 14F);
-            this.label9.Location = new System.Drawing.Point(2, 509);
+            this.label9.Location = new System.Drawing.Point(735, 382);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(181, 19);
             this.label9.TabIndex = 18;
             this.label9.Text = "总题数：20，当前：";
-            this.label9.Visible = false;
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label8.Font = new System.Drawing.Font("宋体", 14F);
-            this.label8.Location = new System.Drawing.Point(2, 528);
+            this.label8.Location = new System.Drawing.Point(735, 401);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(181, 19);
             this.label8.TabIndex = 17;
             this.label8.Text = "总题数：20，当前：";
-            this.label8.Visible = false;
             // 
             // rdbD
             // 
             this.rdbD.AutoSize = true;
             this.rdbD.Font = new System.Drawing.Font("宋体", 18F);
             this.rdbD.Location = new System.Drawing.Point(130, 376);
-            this.rdbD.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbD.Name = "rdbD";
             this.rdbD.Size = new System.Drawing.Size(137, 28);
             this.rdbD.TabIndex = 16;
@@ -287,7 +302,7 @@
             this.rdbC.AutoSize = true;
             this.rdbC.Font = new System.Drawing.Font("宋体", 18F);
             this.rdbC.Location = new System.Drawing.Point(130, 349);
-            this.rdbC.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbC.Name = "rdbC";
             this.rdbC.Size = new System.Drawing.Size(137, 28);
             this.rdbC.TabIndex = 15;
@@ -302,7 +317,7 @@
             this.rdbB.AutoSize = true;
             this.rdbB.Font = new System.Drawing.Font("宋体", 18F);
             this.rdbB.Location = new System.Drawing.Point(130, 320);
-            this.rdbB.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbB.Name = "rdbB";
             this.rdbB.Size = new System.Drawing.Size(137, 28);
             this.rdbB.TabIndex = 14;
@@ -317,7 +332,7 @@
             this.rdbA.AutoSize = true;
             this.rdbA.Font = new System.Drawing.Font("宋体", 18F);
             this.rdbA.Location = new System.Drawing.Point(130, 293);
-            this.rdbA.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbA.Name = "rdbA";
             this.rdbA.Size = new System.Drawing.Size(137, 28);
             this.rdbA.TabIndex = 13;
@@ -329,29 +344,27 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label7.Font = new System.Drawing.Font("宋体", 14F);
-            this.label7.Location = new System.Drawing.Point(2, 547);
+            this.label7.Location = new System.Drawing.Point(735, 420);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(181, 19);
             this.label7.TabIndex = 12;
             this.label7.Text = "总题数：20，当前：";
-            this.label7.Visible = false;
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label6.Font = new System.Drawing.Font("宋体", 14F);
-            this.label6.Location = new System.Drawing.Point(2, 566);
+            this.label6.Location = new System.Drawing.Point(735, 439);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(181, 19);
             this.label6.TabIndex = 11;
             this.label6.Text = "总题数：20，当前：";
-            this.label6.Visible = false;
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label3
@@ -415,5 +428,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
         private Sunny.UI.UILedLabel lbltime;
+        private System.Windows.Forms.Label label11;
     }
 }

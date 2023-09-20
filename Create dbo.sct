@@ -1,0 +1,21 @@
+﻿USE [aqfks]
+GO
+
+/****** 对象: Table [dbo].[sct] 脚本日期: 2023/9/11 20:25:55 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[sct1] (
+    [id]    INT        IDENTITY (1, 1) NOT NULL,
+    [sub]   NCHAR (10) NULL,
+    [name]  NCHAR (50) NULL,
+    [des]   NCHAR (50) NULL,
+    [state] INT        NULL,
+    [score] FLOAT (53) NULL,
+    [can]   NCHAR (10) NULL
+);
+
+

@@ -201,6 +201,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Goals\GoalSet1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Goals\GoalSet1.Designer.cs">
+      <DependentUpon>GoalSet1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Import1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -537,6 +543,9 @@
     </Compile>
     <EmbeddedResource Include="Admin\AdminIndex.resx">
       <DependentUpon>AdminIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Goals\GoalSet1.resx">
+      <DependentUpon>GoalSet1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Import1.resx">
       <DependentUpon>Import1.cs</DependentUpon>

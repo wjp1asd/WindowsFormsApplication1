@@ -81,7 +81,7 @@ namespace WindowsFormsApplication1.Scan
             //this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
 
-
+           
 
         }
 
@@ -203,9 +203,12 @@ namespace WindowsFormsApplication1.Scan
                     on.Show();
                     break;
                 case 4:
-                    datahelp.CurrentStep = 3;
+                   
+                    datahelp.CurrentStep =1;
                     MF1 mf = new MF1();
                     mf.Show();
+                    //this.WindowState = FormWindowState.Minimized;
+                   // this.Visible = false;
                     break;
                 case -1:
                     //  datahelp.CurrentStep = 3;

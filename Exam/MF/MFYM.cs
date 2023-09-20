@@ -76,9 +76,9 @@ namespace WindowsFormsApplication1
         }
         private void InitScore()
         {
-            score = sc.getScore("ymff");
+            score = sc.getScore("mfym");
 
-            this.label6.Text = "研磨得分：" + score;
+            this.label1.Text = "研磨得分：" + score;
         }
         private void initBound()
         {
@@ -212,18 +212,26 @@ namespace WindowsFormsApplication1
             //结束鼠标速度的限制
             SystemParametersInfo(0X0071, 0, 7, 0);
 
+            g.updateGrade(score,"score8",datahelp.QId);
+            try
+            {
+                // 生成图片
+                Bitmap bt = new Bitmap(this.Width, this.Height);
+                Graphics gg = Graphics.FromImage(bt);
+                gg.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
+                bt.MakeTransparent();
 
-
-            // 生成图片
-            Bitmap bt = new Bitmap(this.Width, this.Height);
-            Graphics gg = Graphics.FromImage(bt);
-            gg.CopyFromScreen(new Point(this.Left, this.Top), new Point(0, 0), this.Size);
-            bt.MakeTransparent();
-
-            string loc1 = ConfigurationManager.AppSettings["loc"];
-            bt.Save(loc1 + url + t.Ksname.Trim() + "离线-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
-            string mm = loc1 + url + t.Ksname.Trim() + "离线-azshot.png";
-            g.updatepath(mm, "mfpic", datahelp.QId);
+                string loc1 = ConfigurationManager.AppSettings["loc"];
+                bt.Save(loc1 + url + t.Ksname.Trim() + "离线-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+                string mm = loc1 + url + t.Ksname.Trim() + "离线-azshot.png";
+                g.updatepath(mm, "mfpic", datahelp.QId);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("保存图片异常");
+               
+            }
+         
 
         }
         //MessageBox.Show(

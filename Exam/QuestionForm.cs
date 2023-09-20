@@ -32,10 +32,11 @@ namespace WindowsFormsApplication1
             this.FormBorderStyle = FormBorderStyle.None;
 
         }
+        string sub = "";
         public QuestionForm(String qrcode, String subtype = "1")
         {
             InitializeComponent();
-
+            sub = subtype;
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
@@ -212,7 +213,14 @@ namespace WindowsFormsApplication1
 
 
             }
-
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) != 1)
+            {
+                this.label10.Visible = false;
+                this.label9.Visible = false;
+                this.label8.Visible = false;
+                this.label7.Visible = false;
+            }
             this.label2.Text = "总题数：" + (num) + "，当前：";
             datahelp.Answer = new string[num];
             datahelp.UserAnswer = new string[num];
@@ -344,14 +352,17 @@ namespace WindowsFormsApplication1
 
 
         }
-
+        Score sc=new Score();
         private void ShowInfo()
         {
             this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
             this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
-
+            if (sub == "4") {
+                this.label11.Text = "分值：" + sc.getScore("ym" + datahelp.CurrentQuestion);
+            }
+           
         }
         private Fuc ff = new Fuc();
         private void btnNext_Click(object sender, EventArgs e)
@@ -806,6 +817,11 @@ namespace WindowsFormsApplication1
                     //  this.Close();
                     break;
             }
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
 
         }
     }

@@ -395,5 +395,12 @@ namespace WindowsFormsApplication1
         {
             //ff.ShowInfoTip("123");
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Choose c = new Choose("321084199510025535");
+             
+            c.Show();
+        }
     }
 }

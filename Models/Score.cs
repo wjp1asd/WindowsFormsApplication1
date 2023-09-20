@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1.Models
             SqlCommand cmd = con.CreateCommand();
 
 
-            string sql = "select score from sct where can = '" + can + "'";
+            string sql = "select score from sct1 where can = '" + can + "'";
 
 
             datahelp a = new datahelp();
