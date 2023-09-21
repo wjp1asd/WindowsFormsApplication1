@@ -255,6 +255,11 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
         List<pressure> pp = new List<pressure>();
         TestRecord t = new TestRecord();
         private void button2_Click(object sender, EventArgs e)
@@ -284,17 +289,18 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
-            //string connectionString = ConfigurationManager.AppSettings["sqlc"];
-            //SqlConnection con = new SqlConnection(connectionString);
-            //string a = this.edyl.Text.Trim();
-            //string b = this.zj.Text.Trim();
-            //string c = string.Join(",", datahelp.Correct);
-            //double d = score;
-            //string str1 = "";
-            //string  str1 = "Update Grade set lxquestions='" + a + "',lxanswer='" + b + "',lxcorrect='" + c + "',score2='" + d
-
-            //  + "' where testid= '" + datahelp.QId.Trim() + "'";
-
+            else { 
+            // 在线记录 
+            
+            
+            
+            
+            
+            
+            
+            
+            }
+          
 
             this.ShowSuccessDialog("保存成功");
 

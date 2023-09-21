@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -56,14 +57,23 @@ namespace WindowsFormsApplication1.Exam
             {
                 // 其所选不在范围之内 不得分
                 score = 0;
-                //    ff.ShowErrorTip("误差选择错误，不得分");
+                log1.updatelog("误差选择错误，不得分", "lx-wxxz", 0, datahelp.QId);
+               
+                if (debug == 1)
+                {
+                    ff.ShowErrorTip("误差选择错误，不得分");
+                }
             }
             else
             {
-                //    ff.ShowSuccessTip("选择正确，得分" + score);
-
+                if (debug == 1) {
+                    ff.ShowSuccessTip("选择正确，得分" + score);
+                }
+             
+                log1.updatelog("误差选择正确得分", "lx-wxxz", score, datahelp.QId);
+                int i = g.updateGrade(score, "wxxz", datahelp.QId.Trim());
             }
-            int i = g.updateGrade(score, "wxxz", datahelp.QId.Trim());
+          
 
             //MessageBox.Show(""+ff.RC1(url).Length);
 
@@ -78,23 +88,17 @@ namespace WindowsFormsApplication1.Exam
             this.Invoke(x);
 
         }
-
+        int debug = 0;
+        Log log1= new Log();    
         private void jiaoyancanshu_Load(object sender, EventArgs e)
         {
             TestRecord t = new TestRecord();
-
-            //if (g.getGrade("wxxz",datahelp.QId) > -1)
-            //{
-
-            //    ff.ShowErrorDialog("重复考试");
-
-            //    this.Hide();
-            //    this.button1.Enabled = false;
-            //    datahelp.CurrentStep1 = 3;
-
-            //    OFF of = new OFF(datahelp.QId);
-            //    of.Show();
-            //}
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) == 1)
+            {
+                debug = 1;
+            }
+           
 
             g.updateGrade(0, "wxxz", datahelp.QId);
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -138,7 +142,7 @@ namespace WindowsFormsApplication1.Exam
             wucha(t.Lxlx.Trim());
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             Score c = new Score();
-            score = c.getScore("wxxz");
+            score = c.getScore("lx-wxxz");
 
 
         }

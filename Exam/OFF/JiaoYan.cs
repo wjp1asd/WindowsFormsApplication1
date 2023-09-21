@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -72,33 +73,67 @@ namespace WindowsFormsApplication1.Exam
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
-        float cxfm, ylxz, xygb, zdyltz, sjlmsj, azfm, dkxyf, gbylbqh, bycs = 0;
+        float cxfm, ylxz, xygb, zdyltz, sjlmsj, azfm, dkxyf4, gbylbqh4, dkxyf1, gbylbqh1, dkxyf2, gbylbqh2, dkxyf3, gbylbqh3,bycs = 0;
         private void InitScore()
         {
-            xygb = sc.getScore("xygb");
-            ylxz = sc.getScore("ylxz");
-            cxfm = sc.getScore("cxfm");
-            zdyltz = sc.getScore("zdyltz");
-            sjlmsj = sc.getScore("sjlmsj");
-            azfm = sc.getScore("azfm");
-            dkxyf = sc.getScore("dkxyf");
-            gbylbqh = sc.getScore("gbylbqh");
-            bycs = sc.getScore("bycs");
-            //    jyjg1 = sc.getScore("jyjg1");zdyltz,sjlmsj,azfm,dkxyf,gbylbqh,bycs           
-            //    azfm1 = sc.getScore("azfm1");
+            //初次
+            xygb = sc.getScore("lx-xyfgb");
+            ylxz = sc.getScore("lx-ylbxz");
+            cxfm = sc.getScore("lx-cxfm");
+            zdyltz = sc.getScore("lx-zdyltz");
+            //第一次
+            sjlmsj = sc.getScore("lx-sjlm-1");
+           
+            dkxyf1 = sc.getScore("lx-xyfkq-1");
+            gbylbqh1 = sc.getScore("lx-xyfgb-1");
+           
+            //第二次
+            azfm = sc.getScore("lx-azfm-2");
+         
+            dkxyf2 = sc.getScore("lx-xyfkq-2");
+            gbylbqh2 = sc.getScore("lx-xyfgb-2");
+            //第三次
+            dkxyf3 = sc.getScore("lx-xyfkq-3");
+            gbylbqh3 = sc.getScore("lx-xyfgb-3");
+            // 保压测试
+            dkxyf4 = sc.getScore("lx-xyfkq-4");
+            gbylbqh4 = sc.getScore("lx-xyfgb-4");
+
+            
+
+            bycs = sc.getScore("lx - ylbqhf");
+          
             this.label7.Text = "压力选择得分：" + ylxz + "拆卸阀帽得分：" + cxfm + "整定压力调整得分：" + zdyltz + "锁紧螺母得分：" + sjlmsj
 
-              + "安装阀帽得分：" + azfm + "打开泄压阀得分：" + dkxyf + "关闭压力表切换" + gbylbqh + "保压测试得分" + bycs;
+              + "安装阀帽得分：" + azfm + "初次打开泄压阀得分：" + dkxyf1 + "关闭压力表切换" + gbylbqh1+
+              "1次打开泄压阀得分：" + dkxyf2 + "1关闭压力表切换" + gbylbqh2
+               +  "2次打开泄压阀得分：" + dkxyf3 + "2关闭压力表切换" + gbylbqh3
+                 + "3次打开泄压阀得分：" + dkxyf4 + "3关闭压力表切换" + gbylbqh4
+              + "复位得分" + bycs;
             // MessageBox.Show(this.label7.Text);
+           //初次
+            g.updateGrade(0, "xygb", datahelp.QId);
             g.updateGrade(0, "ylxz", datahelp.QId);
             g.updateGrade(0, "csfm", datahelp.QId);
             g.updateGrade(0, "zdyltz", datahelp.QId);
+            //1次
             g.updateGrade(0, "sjlmsj", datahelp.QId);
             g.updateGrade(0, "azfm", datahelp.QId);
+            
             g.updateGrade(0, "dkxyf", datahelp.QId);
             g.updateGrade(0, "gbylbqh", datahelp.QId);
+            //2次
+            g.updateGrade(0, "dkxyf1", datahelp.QId);
+            g.updateGrade(0, "gbylbqh1", datahelp.QId);
+            //3次
+            g.updateGrade(0, "dkxyf2", datahelp.QId);
+            g.updateGrade(0, "gbylbqh2", datahelp.QId);
+            //4次
+            g.updateGrade(0, "dkxyf3", datahelp.QId);
+            g.updateGrade(0, "gbylbqh3", datahelp.QId);
+            //复位
             g.updateGrade(0, "bycs", datahelp.QId);
-            g.updateGrade(0, "xygb", datahelp.QId);
+           
         }
         Grade g = new Grade();
         private void fenxi()
@@ -495,7 +530,7 @@ namespace WindowsFormsApplication1.Exam
             //获得算分标准
             goal g = new goal();
             goals = g.getall();
-           v = new Emgu.CV.VideoCapture(0);
+         
             System.Windows.Forms.Application.Idle += Application_Idle;
 
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
@@ -507,13 +542,27 @@ namespace WindowsFormsApplication1.Exam
             this.timer2.Stop();
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-        }
 
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) == 1)
+            {
+                debug = 1;
+                label1.Visible = true;
+                label3.Visible = true;
+                label7.Visible = true;
+                richTextBox1.Visible=true; 
+                richTextBox2.Visible=true;  
+                richTextBox3.Visible=true;
+                uiLedLabel4.Visible=true;   
+            }
+
+        }
+        int debug = 1;
         Emgu.CV.VideoCapture v;
         Emgu.CV.Mat mat = new Emgu.CV.Mat();
         private void Application_Idle(object sender, EventArgs e)
         {
-            if (last == false)
+            if (last == false )
             {
 
                 try
@@ -531,7 +580,7 @@ namespace WindowsFormsApplication1.Exam
                 catch (Exception)
                 {
 
-                    throw;
+                    
                 }
 
             }
@@ -566,7 +615,7 @@ namespace WindowsFormsApplication1.Exam
         {
             // DI
             this.plcinit();
-
+            v = new Emgu.CV.VideoCapture(0);
             if (serialPort2.IsOpen)
             {
                 readDI = new Thread(ReadAI);
@@ -1000,66 +1049,66 @@ namespace WindowsFormsApplication1.Exam
                     fenxi();
 
 
-                    if (DIS0 == a)
-                    {
+                    //if (DIS0 == a)
+                    //{
 
-                        //    ff.ShowInfoTip("无操作" + limit);
-                        limit--;
-                        if (limit == 0)
-                        {
+                    //    //    ff.ShowInfoTip("无操作" + limit);
+                    //    limit--;
+                    //    if (limit == 0)
+                    //    {
 
-                            MessageBox.Show("超过2分钟时间未操作，考试结束，请点击右下角退出");
+                    //        MessageBox.Show("超过2分钟时间未操作，考试结束，请点击右下角退出");
 
-                            ////g.updateGrade(0, "mfzjcl", datahelp.QId);
-                            ////g.updateGrade(0, "csfm1", datahelp.QId);
-                            ////g.updateGrade(0, "wxxz1", datahelp.QId);
-                            ////g.updateGrade(0, "jyjg1", datahelp.QId);
-                            ////g.updateGrade(0, "azfm1", datahelp.QId);
-
-
-
-                            string str = "";
-                            if (last == false)
-                            {
-
-
-                                if (qiehuastate == true)
-                                {
-                                    str += "压力表没有归位，";
-                                }
-                                if (gongjustate == false)
-                                {
-                                    str += "扳手没有归位，";
-                                }
-                                if (famaostate == false)
-                                {
-                                    str += "阀帽没有归位，";
-                                }
-
-                                if (xieyastate == false)
-                                {
-                                    str += "泄压阀关闭，";
-                                }
-
-
-                            }
-                            last = true;
-                            // MessageBox.Show(DIS);
-                            if (DIS == "11111001" || DIS == "01111001" || DIS == "11111000" || DIS == "01111000")
-                            {
+                    //        ////g.updateGrade(0, "mfzjcl", datahelp.QId);
+                    //        ////g.updateGrade(0, "csfm1", datahelp.QId);
+                    //        ////g.updateGrade(0, "wxxz1", datahelp.QId);
+                    //        ////g.updateGrade(0, "jyjg1", datahelp.QId);
+                    //        ////g.updateGrade(0, "azfm1", datahelp.QId);
 
 
 
+                    //        string str = "";
+                    //        if (last == false)
+                    //        {
 
 
-                            }
-                            else { MessageBox.Show("请完成复位再退出:" + str); }
+                    //            if (qiehuastate == true)
+                    //            {
+                    //                str += "压力表没有归位，";
+                    //            }
+                    //            if (gongjustate == false)
+                    //            {
+                    //                str += "扳手没有归位，";
+                    //            }
+                    //            if (famaostate == false)
+                    //            {
+                    //                str += "阀帽没有归位，";
+                    //            }
 
-                        }
+                    //            if (xieyastate == false)
+                    //            {
+                    //                str += "泄压阀关闭，";
+                    //            }
+
+
+                    //        }
+                    //        last = true;
+                    //        // MessageBox.Show(DIS);
+                    //        if (DIS == "11111001" || DIS == "01111001" || DIS == "11111000" || DIS == "01111000")
+                    //        {
 
 
 
-                    }
+
+
+                    //        }
+                    //        else { MessageBox.Show("请完成复位再退出:" + str); }
+
+                    //    }
+
+
+
+                    //}
 
 
 
@@ -1600,7 +1649,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 if (xieyastate == true)
                 {
-                    g.updateGrade(dkxyf, "dkxyf", datahelp.QId);
+                    g.updateGrade(dkxyf1, "dkxyf", datahelp.QId);
                     //   ff.ShowSuccessTip("泄压阀打开得分");
                 }
                 else
@@ -1610,7 +1659,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 if (xieyastate == true)
                 {
-                    g.updateGrade(gbylbqh, "gbylbqh", datahelp.QId);
+                    g.updateGrade(gbylbqh1, "gbylbqh", datahelp.QId);
                     //  ff.ShowSuccessTip("关闭压力表选择得分");
                 }
                 else

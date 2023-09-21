@@ -1,5 +1,7 @@
 ﻿using AutoWindowsSize;
 using System;
+using System.Configuration;
+using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -79,7 +81,39 @@ namespace WindowsFormsApplication1.Exam
             }
         }
 
+        private void refreshButton()
+        {
+            switch (datahelp.CurrentStep1)
+            {
+                case 1:
 
+                    this.button3.Enabled = true;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+
+                    break;
+                case 2:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = true;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+                    break;
+                case 3:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = true;
+                    this.button4.Enabled = false;
+                    break;
+                case 4:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = true;
+                    break;
+
+            }
+        }
 
         private void zaixianjiaoyan_Load(object sender, EventArgs e)
         {
@@ -117,10 +151,27 @@ namespace WindowsFormsApplication1.Exam
                     break;
 
             }
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) == 1)
+            {
+                debug = 1;
+            }
         }
-
+        int debug = 0;
+        Grade g=new Grade();
         private void button1_Click(object sender, EventArgs e)
         {
+            float a = g.getGrade("cxfm1", datahelp.QId);
+            if (a > -1 && debug != 1)
+            {
+
+                ff.ShowErrorDialog("重复考试");
+                //datahelp.CurrentStep = 2;
+                datahelp.CurrentStep1 = 3;
+                this.refreshButton();
+                return;
+            }
+
             this.Close();
             z = new zaixianjiaoyan2();
             z.Show();
@@ -136,6 +187,17 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
+            float a1 = g.getGrade("jyjg1", datahelp.QId);
+            if (a1 > -1 && debug != 1)
+            {
+
+                ff.ShowErrorDialog("重复考试");
+               
+                datahelp.CurrentStep1 = 4;
+                this.refreshButton();
+                return;
+            }
+
             this.Close();
             record a = new record("1", "在线");
             a.Show();
