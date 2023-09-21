@@ -1,5 +1,6 @@
 ﻿
 using AutoWindowsSize;
+using OpenCvSharp;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -35,6 +36,9 @@ namespace WindowsFormsApplication1
         private void Change()
         {
             ff.fullsreen(this.label2, this);
+            this.pictureBox1.Top = this.Height / 2;
+            this.button7.Anchor = AnchorStyles.Top;
+           this.button7.Top = this.pictureBox1.Top + 300;
         }
 
         private void InitConfig()
@@ -124,12 +128,14 @@ namespace WindowsFormsApplication1
         {
 
         }
+        int rest = 10;
         int authenticate = -1;
         int readContent = -1;
         private void AutoReadCard()
         {
             while (true)
             {
+                rest--;
                 Thread.Sleep(1000);
 
                 if (nReaderPort == 0)
@@ -447,6 +453,21 @@ namespace WindowsFormsApplication1
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void ID_Shown(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ID_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (rest == 0) {
+                InitConfig();
+                ff.ShowInfoTip("10s,保活");
+                rest = 10;
+            }
+            
         }
 
         private void UpdataInfo(string Id)

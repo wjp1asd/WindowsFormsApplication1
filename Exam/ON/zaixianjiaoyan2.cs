@@ -125,9 +125,9 @@ namespace WindowsFormsApplication1.Exam
             TextBox textBox = (TextBox)sender;
             string text = textBox.Text;
 
-            if (!Regex.IsMatch(text, "^[0-9]*$"))
+            if (!Regex.IsMatch(text, "^[0-9][.]$"))
             {
-                textBox.Text = Regex.Replace(text, "[^0-9]", "");
+                textBox.Text = Regex.Replace(text, "[^0-9][.]", "");
             }
 
 
@@ -236,6 +236,9 @@ namespace WindowsFormsApplication1.Exam
             catch (Exception)
             {
                 ff.ShowErrorNotifier("图片保存异常");
+                throw;
+                  
+
             }
            
             //MessageBox.Show("拍照成功");
@@ -353,7 +356,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void Initchart()
         {
-
+            chart1.Width = this.Width*4/5;
             chart1.Series[0].Points.Clear();
             chart1.Series[0].Points.AddXY(0, 0);
             this.chart1.BackColor = Color.Azure;             //图表背景色  

@@ -399,7 +399,8 @@ namespace WindowsFormsApplication1.Exam
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ff.backlogin();
+            //ff.backlogin();
+            this.Close();
         }
 
         private void ksId_Click(object sender, EventArgs e)
