@@ -1116,11 +1116,11 @@ namespace WindowsFormsApplication1.Exam
                 a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
-                a.Label = Math.Round(wjltj).ToString() + "Kg";
+               // a.Label = Math.Round(wjltj).ToString() + "Kg";
                 a.LabelForeColor = System.Drawing.Color.Red;
                 point++;
                 double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
-
+                a.Label = Math.Round(a.YValues[0]) + "Kg";
                 switch (point)
                 {
                     case 1:
@@ -1155,7 +1155,7 @@ namespace WindowsFormsApplication1.Exam
                 a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
-                a.Label = Math.Round(wjltj).ToString() + "Kg";
+              // a.Label = Math.Round(wjltj).ToString() + "Kg";
                 a.LabelForeColor = System.Drawing.Color.Red;
                 point++;
                 double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
@@ -1163,18 +1163,21 @@ namespace WindowsFormsApplication1.Exam
                 {
                     case 1:
                         this.textBox4.Text = "" + 134.55;
+                        a.Label = "134.55Kg";
                         this.textBox4.Enabled = false;
                         this.textBox5.Text = PS.ToString();
                         this.textBox5.ForeColor = Color.Red;
                         break;
                     case 2:
                         this.textBox7.Text = "" + 134.48;
+                        a.Label = "134.48Kg";
                         this.textBox7.Enabled = false;
                         this.textBox6.Text = PS.ToString();
                         this.textBox6.ForeColor = Color.Red;
                         break;
                     case 3:
                         this.textBox9.Text = "" + 134.32;
+                        a.Label = "134.32Kg";
                         this.textBox9.Enabled = false;
                         this.textBox8.Text = PS.ToString();
                         this.textBox8.ForeColor = Color.Red;
