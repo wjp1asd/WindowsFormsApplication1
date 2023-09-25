@@ -283,10 +283,10 @@
     <Compile Include="Exam\LPJSB\LBJForm.Designer.cs">
       <DependentUpon>LBJForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\JYGY\gongyijiaoyan.cs">
+    <Compile Include="Del\JYGY\gongyijiaoyan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\JYGY\gongyijiaoyan.Designer.cs">
+    <Compile Include="Del\JYGY\gongyijiaoyan.Designer.cs">
       <DependentUpon>gongyijiaoyan.cs</DependentUpon>
     </Compile>
     <Compile Include="Exam\MF\MF1.cs">
@@ -339,6 +339,7 @@
     </Compile>
     <Compile Include="Models\batch1.cs" />
     <Compile Include="Models\batch.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="SD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,10 +366,10 @@
     <Compile Include="Exam\OFF\OFF.Designer.cs">
       <DependentUpon>OFF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Exam\ON\ON.cs">
+    <Compile Include="Del\ON.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exam\ON\ON.Designer.cs">
+    <Compile Include="Del\ON.Designer.cs">
       <DependentUpon>ON.cs</DependentUpon>
     </Compile>
     <Compile Include="Choose\Print.cs">
@@ -587,7 +588,7 @@
     <EmbeddedResource Include="Exam\Exam1.resx">
       <DependentUpon>Exam1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\JYGY\gongyijiaoyan.resx">
+    <EmbeddedResource Include="Del\JYGY\gongyijiaoyan.resx">
       <DependentUpon>gongyijiaoyan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Choose\ID.resx">
@@ -611,7 +612,7 @@
     <EmbeddedResource Include="Exam\OFF\OFF.resx">
       <DependentUpon>OFF.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exam\ON\ON.resx">
+    <EmbeddedResource Include="Del\ON.resx">
       <DependentUpon>ON.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Choose\Print.resx">

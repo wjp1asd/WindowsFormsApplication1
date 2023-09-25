@@ -1,5 +1,7 @@
 ﻿using AutoWindowsSize;
 using System;
+using System.Configuration;
+using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -75,6 +77,7 @@ namespace WindowsFormsApplication1.Exam
                 return paras;
             }
         }
+
         private void Choose_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
@@ -111,16 +114,30 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) == 1)
+            {
+                debug = 1;
+            }
         }
+        int debug = 0;
 
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
-
+        Grade g= new Grade();
+       // int debug
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //float a = g.getGrade("score4", datahelp.QId);
+            //if (a > -1 && debug != 1)
+            //{
+            //    ff.ShowErrorDialog("重复考试");
+            //    datahelp.CurrentStep = 3;
+            //    return;
+            //}
+                this.Close();
             datahelp.SubId = 2;
             datahelp.CurrentStep1 = 1;
             zaixianjiaoyan a = new zaixianjiaoyan();

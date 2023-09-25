@@ -1,5 +1,7 @@
 ﻿using AutoWindowsSize;
 using System;
+using System.Configuration;
+using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -22,6 +24,7 @@ namespace WindowsFormsApplication1.Exam
             a.Initc();
             this.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color4);
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
+
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
             this.button2.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
@@ -60,15 +63,61 @@ namespace WindowsFormsApplication1.Exam
             QuestionForm a = new QuestionForm(qr);
             a.Show();
         }
-
+        int debug = 0;
+        Grade g1 = new Grade();
         private void button1_Click(object sender, EventArgs e)
         {
+            float a = g1.getGrade("csfm", datahelp.QId);
+            if (a > -1 && debug != 1)
+            {
+
+                ff.ShowErrorDialog("重复考试");
+
+                datahelp.CurrentStep1 = 3;
+                this.refreshButton();
+                return;
+            }
+
             datahelp.CurrentStep1 = 3;
 
             this.Close();
 
             jiaoyancanshu j = new jiaoyancanshu();
             j.Show();
+        }
+
+        private void refreshButton()
+        {
+            switch (datahelp.CurrentStep1)
+            {
+                case 1:
+
+                    this.button3.Enabled = true;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+
+                    break;
+                case 2:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = true;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = false;
+                    break;
+                case 3:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = true;
+                    this.button4.Enabled = false;
+                    break;
+                case 4:
+                    this.button3.Enabled = false;
+                    this.button1.Enabled = false;
+                    this.button2.Enabled = false;
+                    this.button4.Enabled = true;
+                    break;
+
+            }
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -140,6 +189,11 @@ namespace WindowsFormsApplication1.Exam
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) == 1)
+            {
+                debug = 1;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -149,8 +203,17 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
+            float a = g1.getGrade("dycyl", datahelp.QId);
+            if (a > -1 && debug != 1)
+            {
 
-            datahelp.CurrentStep = 4;
+                ff.ShowErrorDialog("重复考试");
+
+                datahelp.CurrentStep1 = 4;
+                this.refreshButton();
+                return;
+            }
+            datahelp.CurrentStep1 = 4;
             this.Close();
             record r = new record(datahelp.QId);
             r.Show();

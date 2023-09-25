@@ -63,7 +63,7 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-
+                this.button7.Hide();
                 this.button8.Hide();
 
                 this.button10.Hide();
@@ -84,7 +84,7 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-
+                this.button7.Hide();
                 this.button8.Hide();
 
                 this.button10.Hide();
@@ -106,7 +106,7 @@ namespace WindowsFormsApplication1
                 this.button4.Hide();
                 this.button5.Hide();
                 this.button6.Hide();
-
+                this.button7.Hide();
                 this.button8.Hide();
 
                 this.button10.Hide();
@@ -124,7 +124,7 @@ namespace WindowsFormsApplication1
                 this.pictureBox1.Hide();
                 this.button2.Hide();
                 this.button2.Enabled = false;
-
+                this.button7.Hide();
                 // this.button3.Left -= 200;
                 // this.uiButton1.Left -= 200;
                 this.button4.Hide();

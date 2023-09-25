@@ -228,7 +228,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception)
             {
-                MessageBox.Show("保存图片异常");
+              ff.ShowErrorNotifier("保存图片异常");
                
             }
          
@@ -249,9 +249,9 @@ namespace WindowsFormsApplication1
             catch (Exception)
             {
 
-                throw;
+              //  throw;
             }
-
+            Thread.Sleep(2000);  
             datahelp.CurrentStep = 5;
             this.Close();
             MF1 mF = new MF1();
