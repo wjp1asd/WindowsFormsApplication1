@@ -193,21 +193,24 @@ namespace WindowsFormsApplication1.Exam
             string loc1 = ConfigurationManager.AppSettings["loc"];
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
 
-            //  MessageBox.Show("拍照成功");
-            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+             
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\";
+          //  MessageBox.Show("拍照成功" + loc + url + t.Qrcode.Trim() + "-shot.png");
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
-            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-shot.png");
+            CvInvoke.Imwrite(loc + url + t.Qrcode.Trim() + "-shot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Qrcode.Trim() + "-shot.png");
             try
             {
-                bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
-                string mm = loc1 + url + t.Qrcode + "-shot.png";
+                bt.Save(loc1 + url + t.Qrcode.Trim() + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+                string mm = loc1 + url + t.Qrcode.Trim() + "-shot.png";
                 g.updatepath(mm, "zxpic", datahelp.QId);
+                chaixie = 1;
             }
             catch (Exception)
             {
 
                 ff.ShowErrorNotifier("图片保存异常");
+                throw;
             }
            
 
@@ -224,12 +227,12 @@ namespace WindowsFormsApplication1.Exam
 
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc + url + t.Qrcode + "-azshot.png", mat);
-            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-azshot.png");
+            CvInvoke.Imwrite(loc + url + t.Qrcode.Trim() + "-azshot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Qrcode.Trim() + "-azshot.png");
             try
             {
-                bt.Save(loc1 + url + t.Qrcode + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
-                string mm = loc1 + url + t.Qrcode + "-azshot.png";
+                bt.Save(loc1 + url + t.Qrcode.Trim() + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+                string mm = loc1 + url + t.Qrcode.Trim() + "-azshot.png";
                 // g.updatepath(mm, "lxpic", datahelp.QId);
                 g.updatepath(mm, "zxpic1", datahelp.QId);
             }
@@ -262,7 +265,6 @@ namespace WindowsFormsApplication1.Exam
         {
 
 
-
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
@@ -278,6 +280,7 @@ namespace WindowsFormsApplication1.Exam
             this.richTextBox2.Hide();
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
+           
             this.timer1.Start();
             v = new Emgu.CV.VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
@@ -316,7 +319,7 @@ namespace WindowsFormsApplication1.Exam
                 catch (Exception)
                 {
 
-                    throw;
+                    
                 }
 
             }
@@ -808,10 +811,12 @@ namespace WindowsFormsApplication1.Exam
                         }
                         Log1.updatelog("在线阀帽拆卸得分" + cxfm1, "zx-cxfm", cxfm1, datahelp.QId);
                         g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
-                   
-                    
-                    Thread a = new Thread(shot);
-                    a.Start();
+
+                    if (chaixie != 1) {
+                        Thread a = new Thread(shot);
+                        a.Start();
+                    }
+                 
                 }
                 //   chaixiefamao();
             }
@@ -830,8 +835,18 @@ namespace WindowsFormsApplication1.Exam
                 gj = false;
             }
 
+            showlight();
 
+        }
 
+        private void showlight()
+        {
+            if (gj == true) { uiLight1.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
+            if (fm == true) { uiLight2.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
+            if (fb == true) { uiLight3.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
+            if (shy == true) { uiLight4.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
+            if (youbiao == true) { uiLight5.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
+            if (ljg == true) { uiLight6.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
         }
 
         private void dishow(string msg)
@@ -1485,6 +1500,7 @@ namespace WindowsFormsApplication1.Exam
         }
         bool wuc = false;
         private int zxpic;
+        private int chaixie;
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
