@@ -1,13 +1,11 @@
 ﻿using AutoWindowsSize;
 using Emgu.CV;
 using Emgu.CV.Structure;
-using OpenCvSharp;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -73,83 +71,107 @@ namespace WindowsFormsApplication1.Exam
             byte lrc = 0x00; for (int i = 0; i < data.Length; i++) { lrc ^= data[i]; }
             return lrc;
         }
-        float cxfm, ylxz, xygb, zdyltz, sjlmsj, azfm, dkxyf4, gbylbqh4, dkxyf1, gbylbqh1, dkxyf2, gbylbqh2, dkxyf3, gbylbqh3,bycs = 0;
+        float cxfm, ylxz, xyfkq, xygb, zdyltz, sjlmsj, azfm, dkxyf4, gbxyf4, dkxyf1, gbxyf1, dkxyf2, gbxyf2, dkxyf3, gbxyf3, bycs = 0;
         private void InitScore()
         {
-            //初次
+            //初次前,泄压阀关闭，压力表选择
             xygb = sc.getScore("lx-xyfgb");
             ylxz = sc.getScore("lx-ylbxz");
+
+            //初次 拆卸阀帽，整定压力调整，泄压阀开启
             cxfm = sc.getScore("lx-cxfm");
             zdyltz = sc.getScore("lx-zdyltz");
-            //第一次
+            xyfkq = sc.getScore("lx-xyfkq");
+            //第一次 锁紧螺母 打开泄压阀，关闭泄压阀
             sjlmsj = sc.getScore("lx-sjlm-1");
-           
             dkxyf1 = sc.getScore("lx-xyfkq-1");
-            gbylbqh1 = sc.getScore("lx-xyfgb-1");
-           
-            //第二次
+            gbxyf1 = sc.getScore("lx-xyfgb-1");
+
+            //第二次 安装阀帽 打开泄压阀，关闭泄压阀
             azfm = sc.getScore("lx-azfm-2");
-         
             dkxyf2 = sc.getScore("lx-xyfkq-2");
-            gbylbqh2 = sc.getScore("lx-xyfgb-2");
-            //第三次
+            gbxyf2 = sc.getScore("lx-xyfgb-2");
+            //第三次 打开泄压阀，关闭泄压阀 
             dkxyf3 = sc.getScore("lx-xyfkq-3");
-            gbylbqh3 = sc.getScore("lx-xyfgb-3");
-            // 保压测试
+            gbxyf3 = sc.getScore("lx-xyfgb-3");
+            //打开泄压阀 关闭泄压阀 保压测试
             dkxyf4 = sc.getScore("lx-xyfkq-4");
-            gbylbqh4 = sc.getScore("lx-xyfgb-4");
+            gbxyf4 = sc.getScore("lx-xyfgb-4");
+            bycs = sc.getScore("lx-ylbqhf");
 
-            
+            this.label7.Text = "校验前压力选择得分：" + ylxz + "校验前泄压阀关闭得分：" + xygb
+                + "初次拆卸阀帽得分：" + cxfm + "初次整定压力调整得分：" + zdyltz + "初次泄压阀开启得分：" + xyfkq
 
-            bycs = sc.getScore("lx - ylbqhf");
-          
-            this.label7.Text = "压力选择得分：" + ylxz + "拆卸阀帽得分：" + cxfm + "整定压力调整得分：" + zdyltz + "锁紧螺母得分：" + sjlmsj
-
-              + "安装阀帽得分：" + azfm + "初次打开泄压阀得分：" + dkxyf1 + "关闭压力表切换" + gbylbqh1+
-              "1次打开泄压阀得分：" + dkxyf2 + "1关闭压力表切换" + gbylbqh2
-               +  "2次打开泄压阀得分：" + dkxyf3 + "2关闭压力表切换" + gbylbqh3
-                 + "3次打开泄压阀得分：" + dkxyf4 + "3关闭压力表切换" + gbylbqh4
+                + "第一次锁紧螺母得分：" + sjlmsj + "第一次打开泄压阀得分：" + dkxyf1 + "第一次关闭泄压阀" + gbxyf1 +
+              "第二次安装阀帽得分：" + azfm +
+                "2次打开泄压阀得分：" + dkxyf2 + "2关闭泄压阀" + gbxyf2
+               + "3次打开泄压阀得分：" + dkxyf3 + "3关闭泄压阀" + gbxyf3
+                 + "4次打开泄压阀得分：" + dkxyf4 + "4关关闭泄压阀" + gbxyf4
               + "复位得分" + bycs;
             // MessageBox.Show(this.label7.Text);
-           //初次
-            g.updateGrade(0, "xygb", datahelp.QId);
+            //初次之前
+            g.updateGrade(0, "gbxyf", datahelp.QId);
             g.updateGrade(0, "ylxz", datahelp.QId);
+            //初次
+
             g.updateGrade(0, "csfm", datahelp.QId);
+            g.updateGrade(0, "dkxyf", datahelp.QId);
             g.updateGrade(0, "zdyltz", datahelp.QId);
+
             //1次
             g.updateGrade(0, "sjlmsj", datahelp.QId);
             g.updateGrade(0, "azfm", datahelp.QId);
-            
-            g.updateGrade(0, "dkxyf", datahelp.QId);
-            g.updateGrade(0, "gbylbqh", datahelp.QId);
-            //2次
+
             g.updateGrade(0, "dkxyf1", datahelp.QId);
-            g.updateGrade(0, "gbylbqh1", datahelp.QId);
-            //3次
+            g.updateGrade(0, "gbxyf1", datahelp.QId);
+            //2次
             g.updateGrade(0, "dkxyf2", datahelp.QId);
-            g.updateGrade(0, "gbylbqh2", datahelp.QId);
-            //4次
+            g.updateGrade(0, "gbxyf2", datahelp.QId);
+            //3次
             g.updateGrade(0, "dkxyf3", datahelp.QId);
-            g.updateGrade(0, "gbylbqh3", datahelp.QId);
+            g.updateGrade(0, "gbxyf3", datahelp.QId);
+            //4次
+            g.updateGrade(0, "dkxyf4", datahelp.QId);
+            g.updateGrade(0, "gbxyf4", datahelp.QId);
             //复位
             g.updateGrade(0, "bycs", datahelp.QId);
-           
+
         }
         Grade g = new Grade();
+        Log log1 = new Log();
         private void fenxi()
         {
 
             if (DIS[7 - qiehuanfa1] + "" == "0")
             {
-                // dishow("1.6Mpa量程选择");
+                // 
+                if (debug == 1)
+                {
+                    dishow("1.6Mpa量程选择");
+                }
                 liangcheng = 1;
                 qiehuastate = true;
                 // 压力表选择得分
-                g.updateGrade(ylxz, "ylxz", datahelp.QId);
+                if (step == -1)
+                {
+                    //初次校验，选择压力表 得分
+                    log1.updatelog("校验前，选择压力表得分", "lx-ylbxz", ylxz, datahelp.QId);
+                    g.updateGrade(ylxz, "ylxz", datahelp.QId);
+                }
+                else
+                {
+                    log1.updatelog("非校验前，选择压力表不得分", "lx-ylbxz", 0, datahelp.QId);
+
+                }
+
             }
             else
             {
-                // dishow("1.6Mpa量程关闭");
+                if (debug == 1)
+                {
+                    dishow("1.6Mpa量程关闭");
+                }
+                // 
                 qiehuastate = false;
                 // richTextBox1.Text += "切换阀关闭";
             }
@@ -157,7 +179,13 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - qiehuanfa2] + "" == "0")
             {
-                //   dishow("4Mpa量程选择");
+
+                if (debug == 1)
+                {
+                    dishow("4Mpa量程选择");
+
+                }//   
+                log1.updatelog("非校验前，选择压力表错误不得分", "lx-ylbxz", 0, datahelp.QId);
                 liangcheng = 2;
                 qiehuastate = true;
             }
@@ -172,6 +200,12 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - qiehuanfa3] + "" == "0")
             {
                 //  dishow("25Mpa量程选择");
+                if (debug == 1)
+                {
+                    dishow("25Mpa量程选择");
+
+                }//
+                log1.updatelog("非校验前，选择压力表错误不得分", "lx-ylbxz", 0, datahelp.QId);
                 liangcheng = 3;
                 qiehuastate = true;
             }
@@ -186,13 +220,19 @@ namespace WindowsFormsApplication1.Exam
             if (DIS[7 - famao] + "" == "0")
             {
                 famaostate = true;
+
                 //  dishow("阀帽存在");
 
 
                 if (chuchi == 1)
                 {
-                    //   ff.ShowInfoTip("初安装阀帽");
+                    if (debug == 1)
+                    {
+                        ff.ShowInfoTip("初次校验，安装阀帽得分");
+                    }
+                    //   
                     //chaixiefamao();
+                    log1.updatelog("初次校验，安装阀帽得分" + azfm, "lx-azfm-2", azfm, datahelp.QId);
                     g.updateGrade(azfm, "azfm", datahelp.QId);
                 }
             }
@@ -205,8 +245,13 @@ namespace WindowsFormsApplication1.Exam
                 //开始拍照
                 if (step == 0)
                 {
-                    //     ff.ShowInfoTip("初次拆阀帽");
+                    if (debug == 1)
+                    {
+                        ff.ShowInfoTip("初次拆阀帽得分");
+                    }
+                    //     
                     chaixiefamao();
+                    log1.updatelog("初次拆阀帽得分" + cxfm, "lx-cxfm", cxfm, datahelp.QId);
                     g.updateGrade(cxfm, "csfm", datahelp.QId);
                 }
 
@@ -231,8 +276,60 @@ namespace WindowsFormsApplication1.Exam
 
             if (DIS[7 - xieya] + "" == "0")
             {
-                // dishow("卸压阀打开");
+                // 
                 xieyastate = true;
+                if (step == 0)
+                {
+                    if (debug == 1)
+                    {
+                        dishow("卸压阀打开");
+
+                    }
+                    log1.updatelog("初次卸压阀打开得分" + xyfkq, "lx-xyfkq", xyfkq, datahelp.QId);
+                    g.updateGrade(xyfkq, "dkxyf", datahelp.QId);
+                }
+
+                if (step == 1)
+                {
+                    if (debug == 1)
+                    {
+                        dishow("第一次卸压阀打开得分" + dkxyf1);
+
+                    }
+                    log1.updatelog("第一次次卸压阀打开得分" + dkxyf1, "lx-xyfkq-1", dkxyf1, datahelp.QId);
+                    g.updateGrade(dkxyf1, "dkxyf1", datahelp.QId);
+                }
+                if (step == 2)
+                {
+                    if (debug == 1)
+                    {
+                        dishow("第二次卸压阀打开得分" + dkxyf2);
+
+                    }
+                    log1.updatelog("第二次卸压阀打开得分" + dkxyf2, "lx-xyfkq-2", dkxyf2, datahelp.QId);
+                    g.updateGrade(dkxyf2, "dkxyf2", datahelp.QId);
+                }
+
+                if (step == 3)
+                {
+                    if (debug == 1)
+                    {
+                        dishow("第三次卸压阀打开得分" + dkxyf3);
+
+                    }
+                    log1.updatelog("第三次卸压阀打开得分" + dkxyf3, "lx-xyfkq-3", dkxyf3, datahelp.QId);
+                    g.updateGrade(dkxyf3, "dkxyf3", datahelp.QId);
+                }
+                if (step == 4)
+                {
+                    if (debug == 1)
+                    {
+                        dishow("保压测试卸压阀打开得分" + dkxyf4);
+
+                    }
+                    log1.updatelog("保压测试卸压阀打开得分" + dkxyf4, "lx-xyfkq-4", dkxyf4, datahelp.QId);
+                    g.updateGrade(dkxyf4, "dkxyf4", datahelp.QId);
+                }
                 // MessageBox.Show(a.ToString());
                 if (a < 117500)
                 {
@@ -260,7 +357,71 @@ namespace WindowsFormsApplication1.Exam
             else
             {
                 xieyastate = false;
-                //  dishow("卸压阀关闭");
+                if (step == -1)
+                {
+
+                    if (debug == 1)
+                    {
+
+                        dishow("校验前，卸压阀关闭");
+
+                    }
+                    log1.updatelog("校验前，卸压阀关闭得分" + xygb, "lx-xyfgb", xygb, datahelp.QId);
+                    g.updateGrade(xygb, "gbxyf", datahelp.QId);
+                }
+                // 第一次
+                if (step == 1)
+                {
+
+                    if (debug == 1)
+                    {
+
+                        dishow("第一次，卸压阀关闭");
+
+                    }
+                    log1.updatelog("第一次，卸压阀关闭得分" + gbxyf1, "lx-xyfgb-1", gbxyf1, datahelp.QId);
+                    g.updateGrade(gbxyf1, "gbxyf1", datahelp.QId);
+                }
+
+                if (step == 2)
+                {
+
+                    if (debug == 1)
+                    {
+
+                        dishow("第二次，卸压阀关闭");
+
+                    }
+                    log1.updatelog("校验前，卸压阀关闭得分" + gbxyf2, "lx-xyfgb-2", gbxyf2, datahelp.QId);
+                    g.updateGrade(gbxyf2, "gbxyf2", datahelp.QId);
+                }
+
+                if (step == 3)
+                {
+
+                    if (debug == 1)
+                    {
+
+                        dishow("第三次，卸压阀关闭");
+
+                    }
+                    log1.updatelog("第三次，卸压阀关闭得分" + gbxyf3, "lx-xyfgb-3", gbxyf3, datahelp.QId);
+                    g.updateGrade(xygb, "gbxyf3", datahelp.QId);
+                }
+
+                if (step == 4)
+                {
+
+                    if (debug == 1)
+                    {
+
+                        dishow("密封性能测试，卸压阀关闭");
+
+                    }
+                    log1.updatelog("密封性能测试，卸压阀关闭得分" + gbxyf4, "lx-xyfgb-4", gbxyf4, datahelp.QId);
+                    g.updateGrade(gbxyf4, "gbxyf4", datahelp.QId);
+                }
+                //  
                 //   richTextBox2.Text += "卸压阀关闭";
                 if (liangcheng > 0)
                 {
@@ -445,7 +606,7 @@ namespace WindowsFormsApplication1.Exam
             string mm = loc1 + url + t.Qrcode + "-shot.png";
             g.updatepath(mm, "lxpic", datahelp.QId);
             lxpic = 1;
-         MessageBox.Show("拍照成功");
+            //    MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 
@@ -530,7 +691,7 @@ namespace WindowsFormsApplication1.Exam
             //获得算分标准
             goal g = new goal();
             goals = g.getall();
-         
+
             System.Windows.Forms.Application.Idle += Application_Idle;
 
             string timestamp = currentTime.ToString("yyyyMMddHHmmss");
@@ -550,10 +711,10 @@ namespace WindowsFormsApplication1.Exam
                 label1.Visible = true;
                 label3.Visible = true;
                 label7.Visible = true;
-                richTextBox1.Visible=true; 
-                richTextBox2.Visible=true;  
-                richTextBox3.Visible=true;
-                uiLedLabel4.Visible=true;   
+                richTextBox1.Visible = true;
+                richTextBox2.Visible = true;
+                richTextBox3.Visible = true;
+                uiLedLabel4.Visible = true;
             }
 
         }
@@ -562,7 +723,7 @@ namespace WindowsFormsApplication1.Exam
         Emgu.CV.Mat mat = new Emgu.CV.Mat();
         private void Application_Idle(object sender, EventArgs e)
         {
-            if (last == false )
+            if (last == false)
             {
 
                 try
@@ -580,7 +741,7 @@ namespace WindowsFormsApplication1.Exam
                 catch (Exception)
                 {
 
-                    
+
                 }
 
             }
@@ -1202,7 +1363,7 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a1);
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
 
-                if ((a1 - sjdwq) > 0 && step == 0)
+                if ((a1 - sjdwq) > 0 && step == 1)
                 {
 
 
@@ -1216,12 +1377,17 @@ namespace WindowsFormsApplication1.Exam
                         }
 
                         // 整定压力 大于 初次压力
-                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
-                        //  ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
+                        if (debug == 1)
+                        {
 
+                            ff.ShowSuccessTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
+
+                        }
+                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
+                        log1.updatelog("第一次测试：锁紧螺母得分" + sjlmsj, "lx-sjlm-1", sjlmsj, datahelp.QId);
                     }
                 }
-                else if ((a1 - sjdwq) < 0 && step == 0)
+                else if ((a1 - sjdwq) < 0 && step == 1)
                 {
 
                     richTextBox2.AppendText(v + "正在放松");
@@ -1235,8 +1401,14 @@ namespace WindowsFormsApplication1.Exam
                         }
                         // 整定压力 小于于 初次压力
                         g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
-                        //  ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
 
+                        if (debug == 1)
+                        {
+
+                            ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
+                        }
+                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
+                        log1.updatelog("第一次测试：锁紧螺母得分" + sjlmsj, "lx-sjlm-1", sjlmsj, datahelp.QId);
                     }
                 }
             };
@@ -1322,8 +1494,8 @@ namespace WindowsFormsApplication1.Exam
                     if (step == 0)
                     {
                         //    ff.ShowInfoTip("初次，泄压关闭，切换打开得分");
-                        g.updateGrade(xygb, "xygb", datahelp.QId);
-                        g.updateGrade(ylxz, "ylxz", datahelp.QId);
+
+
 
 
                         if (ta > 0)
@@ -1335,12 +1507,18 @@ namespace WindowsFormsApplication1.Exam
                             }
 
                         }
-                        if (ta > 0)
+                        if (ta > 0 && step == 0)
                         {
                             correct3 = true;
-                            g.updateGrade(zdyltz, "zdyltz", datahelp.QId);
-                            //    ff.ShowSuccessTip("初次：整定调整 得分");
 
+
+                            if (debug == 1)
+                            {
+                                ff.ShowSuccessTip("初次：整定调整 得分" + zdyltz);
+
+                            }
+                            g.updateGrade(zdyltz, "zdyltz", datahelp.QId);
+                            log1.updatelog("初次：整定调整得分" + zdyltz, "lx-zdyltz", zdyltz, datahelp.QId);
                         }
 
                     }
@@ -1350,11 +1528,14 @@ namespace WindowsFormsApplication1.Exam
 
                         correct4 = true;
 
-
+                        if (debug == 1)
+                        {
+                            ff.ShowSuccessTip("密封测试：保压 得分");
+                        }
 
 
                         g.updateGrade(bycs, "bycs", datahelp.QId);
-                     //   ff.ShowSuccessTip("密封测试：保压 得分");
+
 
 
                     }
@@ -1471,34 +1652,6 @@ namespace WindowsFormsApplication1.Exam
             }
         }
 
-        //private void SetZero()
-        //{
-        //    //舵机归零
-        //    byte[] d1 = new byte[] { 0x02, 0x45, 0x00, 0x1C,
-        //        //通道1
-        //        0x01, 0x09, 0xC4,
-        //        //通道2
-        //        0x01, 0x09, 0xC4,
-        //        //通道3
-        //        0x01,  0x09, 0xC4,
-        //        //通道4
-        //        0x01,  0x09, 0xC4,
-        //        //通道5
-        //        0x01,  0x09, 0xC4,
-        //        //通道6
-        //        0x01, 0x09, 0xC4,
-        //        //通道7
-        //        0x01,  0x09, 0xC4,
-        //        //通道8
-        //        0x01,  0x09, 0xC4,
-
-        //         0x5B
-        //    };
-
-        //    // ff.ShowInfoTip(BitConverter.ToString(d1)) ;
-        //    serialPort2.Write(d1, 0, d1.Length);
-        //    Thread.Sleep(1000);
-        //}
         //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
         int maz = 1111;
         int maz90 = 0;
@@ -1570,7 +1723,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 case -1:
                     this.button1.Text = "测试未开始";
-                 //   ff.ShowInfoTip("请完成复位再退出" + str);
+                    //   ff.ShowInfoTip("请完成复位再退出" + str);
                     ff.ShowInfoTip("测试未开始");
                     break;
 
@@ -1581,33 +1734,33 @@ namespace WindowsFormsApplication1.Exam
 
                 case 1:
                     this.button1.Text = "第一次测试";
-                   
+
                     maz = ap.maz;
                     maz90 = ap.maz90;
                     ta = 60;
                     this.timer2.ReStart();
-                    ff.ShowInfoTip("第一次测试"+"请在一分钟内正确操作");
+                    ff.ShowInfoTip("第一次测试" + "请在一分钟内正确操作");
                     break;
                 case 2:
                     this.button1.Text = "第二次测试";
-                 
+
                     ta = 60;
                     this.timer2.ReStart();
-                    ff.ShowInfoTip("第二次测试"+"请在一分钟内正确操作");
+                    ff.ShowInfoTip("第二次测试" + "请在一分钟内正确操作");
                     break;
                 case 3:
                     this.button1.Text = "第三次测试";
-                  
+
                     ta = 60;
                     this.timer2.ReStart();
-                    ff.ShowInfoTip("第三次测试"+"请在一分钟内正确操作");
+                    ff.ShowInfoTip("第三次测试" + "请在一分钟内正确操作");
 
                     break;
                 case 4:
                     this.button1.Text = "密封性能测试";
-               
 
-                    ff.ShowInfoTip("密封性能测试"+"保压测试开始，倒计时3分钟");
+
+                    ff.ShowInfoTip("密封性能测试" + "保压测试开始，倒计时3分钟");
                     this.timer2.Stop();
                     maz = maz90;
                     this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml("gray");
@@ -1640,41 +1793,22 @@ namespace WindowsFormsApplication1.Exam
 
                     Thread a = new Thread(shot1);
                     a.Start();
-                    //shot1();
+
                 }
                 else
                 {
-                    //  ff.ShowErrorTip("阀帽未归位不得分");
+                    ff.ShowErrorTip("阀帽未归位不得分");
 
                 }
-                if (xieyastate == true)
-                {
-                    g.updateGrade(dkxyf1, "dkxyf", datahelp.QId);
-                    //   ff.ShowSuccessTip("泄压阀打开得分");
-                }
-                else
-                {
-                    // ff.ShowErrorTip("泄压阀未打开不得分");
 
-                }
-                if (xieyastate == true)
-                {
-                    g.updateGrade(gbylbqh1, "gbylbqh", datahelp.QId);
-                    //  ff.ShowSuccessTip("关闭压力表选择得分");
-                }
-                else
-                {
-                    //   ff.ShowErrorTip("打开压力表不得分");
-
-                }
 
 
             }
             last = true;
-            // MessageBox.Show(DIS);
+
             if (DIS == "11111001" || DIS == "01111001" || DIS == "11111000" || DIS == "01111000")
             {
-
+                log1.updatelog("复位得分" + bycs, "lx-ylbqhf", bycs, datahelp.QId);
                 Action x = () =>
                 {
                     this.Close();
@@ -1688,7 +1822,7 @@ namespace WindowsFormsApplication1.Exam
             }
             else
             {
-               
+
                 if (qiehuastate == true)
                 {
                     str += "压力表没有归位，";
@@ -1708,7 +1842,7 @@ namespace WindowsFormsApplication1.Exam
                 }
 
                 ff.ShowInfoDialog("请完成复位再退出" + str);
-              //  MessageBox.Show("请完成复位再退出"+str);
+                //  MessageBox.Show("请完成复位再退出"+str);
 
                 Action x = () =>
                 {
@@ -1798,6 +1932,11 @@ namespace WindowsFormsApplication1.Exam
         }
 
         Thread readDI;
+
+        private void richTextBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

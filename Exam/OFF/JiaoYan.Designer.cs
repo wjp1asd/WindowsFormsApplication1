@@ -87,7 +87,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(227, 70);
             this.button1.TabIndex = 39;
-            this.button1.Text = "测试未开始";
+            this.button1.Text = "测试开始";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -155,11 +155,10 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 682);
+            this.richTextBox1.Location = new System.Drawing.Point(361, 641);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(972, 80);
+            this.richTextBox1.Size = new System.Drawing.Size(265, 91);
             this.richTextBox1.TabIndex = 44;
             this.richTextBox1.Text = "";
             this.richTextBox1.Visible = false;
@@ -168,10 +167,10 @@
             // richTextBox2
             // 
             this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox2.Location = new System.Drawing.Point(788, 479);
+            this.richTextBox2.Location = new System.Drawing.Point(691, 641);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(155, 75);
+            this.richTextBox2.Size = new System.Drawing.Size(266, 91);
             this.richTextBox2.TabIndex = 45;
             this.richTextBox2.Text = "";
             this.richTextBox2.Visible = false;
@@ -184,11 +183,11 @@
             this.uiLedLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiLedLabel4.ForeColor = System.Drawing.Color.Lime;
             this.uiLedLabel4.IntervalOn = 3;
-            this.uiLedLabel4.Location = new System.Drawing.Point(728, 549);
+            this.uiLedLabel4.Location = new System.Drawing.Point(774, 160);
             this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uiLedLabel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLedLabel4.Name = "uiLedLabel4";
-            this.uiLedLabel4.Size = new System.Drawing.Size(229, 35);
+            this.uiLedLabel4.Size = new System.Drawing.Size(169, 35);
             this.uiLedLabel4.Style = Sunny.UI.UIStyle.Custom;
             this.uiLedLabel4.StyleCustomMode = true;
             this.uiLedLabel4.TabIndex = 99;
@@ -201,10 +200,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 502);
+            this.label1.Font = new System.Drawing.Font("宋体", 9F);
+            this.label1.Location = new System.Drawing.Point(21, 587);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 31);
+            this.label1.Size = new System.Drawing.Size(97, 15);
             this.label1.TabIndex = 100;
             this.label1.Text = "压力选择范围";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -215,10 +214,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(3, 526);
+            this.label3.Font = new System.Drawing.Font("宋体", 9F);
+            this.label3.Location = new System.Drawing.Point(21, 613);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 31);
+            this.label3.Size = new System.Drawing.Size(82, 15);
             this.label3.TabIndex = 101;
             this.label3.Text = "当前压力：";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -226,14 +225,14 @@
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBox3.Location = new System.Drawing.Point(0, 560);
+            this.richTextBox3.Location = new System.Drawing.Point(12, 641);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(972, 122);
+            this.richTextBox3.Size = new System.Drawing.Size(317, 91);
             this.richTextBox3.TabIndex = 102;
             this.richTextBox3.Text = "";
             this.richTextBox3.Visible = false;
+            this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
             // 
             // label5
             // 
@@ -267,7 +266,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 487);
+            this.label7.Location = new System.Drawing.Point(21, 555);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 15);
             this.label7.TabIndex = 106;
