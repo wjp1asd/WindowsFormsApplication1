@@ -1,28 +1,34 @@
 ﻿using AutoWindowsSize;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApplication1.Admin.Results;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
-namespace WindowsFormsApplication1
+namespace WindowsFormsApplication1.Admin.Results
 {
-    public partial class ResultSet : Form
+    public partial class LogPrint : Form
     {
+       
         int row;
-        String TableName = "Grade";
-
+        String TableName = "log";
+        string uid;
         Boolean all = false;
         StringBuilder s1;
-        public ResultSet()
+        public LogPrint(string id)
         {
             InitializeComponent();
-            string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode";
-
+            string sql = "Select * from "+TableName+" Where qid = '"+id.Trim()+"'";
+            MessageBox.Show(sql);
+            uid = id;
             InitTable(sql);
             ff.dataview(this.dataGridView1);
         }
@@ -48,8 +54,7 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            AdminIndex a = new AdminIndex();
-            a.Show();
+          
             this.Close();
         }
         AutoAdaptWindowsSize awt;
@@ -69,7 +74,7 @@ namespace WindowsFormsApplication1
         {
 
         }
-        private void ResultSet_Load(object sender, EventArgs e)
+        private void LogPrint_Load(object sender, EventArgs e)
         {
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
@@ -83,8 +88,8 @@ namespace WindowsFormsApplication1
             if (this.textBox8.Text.Trim().Length > 0)
             {
 
-                string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode"
-                    + " and name like '%" + this.textBox8.Text.Trim() + "%'";
+                string sql = "Select * from " + TableName + " Where qid =" + uid
+                + " and itemname like '%" + this.textBox8.Text.Trim() + "%'";
 
                 InitTable(sql);
             }
@@ -104,9 +109,9 @@ namespace WindowsFormsApplication1
                 if (column is DataGridViewButtonColumn)
                 {
                     //这里可以编写你需要的任意关于按钮事件的操作~
-                    string id = dataGridView1.Rows[a].Cells[8].Value.ToString();//获取焦点触发行的第一个值
+                    string id = dataGridView1.Rows[a].Cells[7].Value.ToString();//获取焦点触发行的第一个值
                     string strcolumn = dataGridView1.Columns[e.ColumnIndex].Name.ToString();//获取列标题
-                                                                                           //ff.ShowInfoTip("按钮被点击" + id+ dataGridView1.Rows[a].Cells[1].Value.ToString()+ dataGridView1.Rows[a].Cells[7].Value.ToString());
+                                                                                            // ff.ShowInfoTip("按钮被点击" + id+ dataGridView1.Rows[a].Cells[1].Value.ToString()+ dataGridView1.Rows[a].Cells[7].Value.ToString());
 
                     if (strcolumn == "选取")
                     {
@@ -117,7 +122,7 @@ namespace WindowsFormsApplication1
                     {
 
 
-                        LogPrint pp = new LogPrint(id);
+                        Print pp = new Print(id);
                         pp.Show();
                     }
 

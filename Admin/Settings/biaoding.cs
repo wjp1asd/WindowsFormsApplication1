@@ -206,8 +206,13 @@ namespace WindowsFormsApplication1.Admin.Settings
         {
             if (this.textBox8.Text.Length > 0)
             {
-                string sql = "select * from " + TableName + " where  concat(beizhu,pin,machine)  like '%" + this.textBox8.Text + "%'";
+                string sql = "select * from " + TableName + " where beizhu like '%" + this.textBox8.Text + "%'";
 
+                this.InitTable(sql);
+            }
+            else {
+
+                string sql = "select * from " + TableName;
                 this.InitTable(sql);
             }
 

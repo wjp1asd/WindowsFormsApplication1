@@ -445,7 +445,7 @@ namespace WindowsFormsApplication1.Exam
             string mm = loc1 + url + t.Qrcode + "-shot.png";
             g.updatepath(mm, "lxpic", datahelp.QId);
             lxpic = 1;
-        //    MessageBox.Show("拍照成功");
+         MessageBox.Show("拍照成功");
         }
         // DI 输入的集合
 

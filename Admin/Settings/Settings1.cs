@@ -186,33 +186,31 @@ namespace WindowsFormsApplication1.Settings
                 f = System.Drawing.ColorTranslator.ToHtml(this.button6.BackColor);
                 a1 = this.plc1.Text = reader["plc1"].ToString();
                 //   plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy,MC
-                a2 = this.bt1.Text = reader["plcbt1"].ToString();
-                a3 = this.jy1.Text = reader["plcjy1"].ToString();
+                a2 = this.bt1.Text = reader["plcbt1"].ToString().Trim();
+                a3 = this.jy1.Text = reader["plcjy1"].ToString().Trim();
 
-                a4 = this.start1.Text = reader["plcst1"].ToString();
-                a5 = this.stop1.Text = reader["plcsp1"].ToString();
-                a6 = this.servo1.Text = reader["servo1"].ToString();
+                a4 = this.start1.Text = reader["plcst1"].ToString().Trim();
+                a5 = this.stop1.Text = reader["plcsp1"].ToString().Trim();
+                a6 = this.servo1.Text = reader["servo1"].ToString().Trim();
 
-                a7 = this.link.Text = reader["link"].ToString();
+                a7 = this.link.Text = reader["link"].ToString().Trim().Trim();
 
-                a8 = this.PLCtextBox8.Text = reader["plc"].ToString();
-                a9 = this.servo.Text = reader["servo"].ToString();
+                a8 = this.PLCtextBox8.Text = reader["plc"].ToString().Trim();
+                a9 = this.servo.Text = reader["servo"].ToString().Trim();
                 //   plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy,MC
-                a11 = this.bt.Text = reader["plcbt"].ToString();
-                a19 = this.jy.Text = reader["plcjy"].ToString();
+                a11 = this.bt.Text = reader["plcbt"].ToString().Trim();
+                a19 = this.jy.Text = reader["plcjy"].ToString().Trim();
 
-                a12 = this.start.Text = reader["plcst"].ToString();
-                a13 = this.stop.Text = reader["plcsp"].ToString();
-
+                a13 = this.stop.Text = reader["plcsp"].ToString().Trim();
 
 
 
-                b11 = this.textBox1.Text = reader["lxnum"].ToString();
-                b12 = this.textBox2.Text = reader["zxnum"].ToString();
-                b13 = this.textBox3.Text = reader["gynum"].ToString();
-                b14 = this.textBox4.Text = reader["xhnum"].ToString();
-                b15 = this.textBox5.Text = reader["lpjnum"].ToString();
-                b16 = this.textBox6.Text = reader["ymgnum"].ToString();
+
+                b12 = this.textBox2.Text = reader["zxnum"].ToString().Trim();
+                b13 = this.textBox3.Text = reader["gynum"].ToString().Trim();
+                b14 = this.textBox4.Text = reader["xhnum"].ToString().Trim();
+                b15 = this.textBox5.Text = reader["lpjnum"].ToString().Trim();
+                b16 = this.textBox6.Text = reader["ymgnum"].ToString().Trim();
 
             }
 
