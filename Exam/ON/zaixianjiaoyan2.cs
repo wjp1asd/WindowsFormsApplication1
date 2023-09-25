@@ -842,11 +842,11 @@ namespace WindowsFormsApplication1.Exam
         private void showlight()
         {
             if (gj == true) { uiLight1.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
-            if (fm == true) { uiLight2.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
-            if (fb == true) { uiLight3.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
-            if (shy == true) { uiLight4.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
-            if (youbiao == true) { uiLight5.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
-            if (ljg == true) { uiLight6.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
+            if (fm == true) { uiLight2.OnColor = Color.Green; } else { uiLight2.OnColor = Color.Red; }
+            if (fb == true) { uiLight3.OnColor = Color.Green; } else { uiLight3.OnColor = Color.Red; }
+            if (shy == true) { uiLight4.OnColor = Color.Green; } else { uiLight4.OnColor = Color.Red; }
+            if (youbiao == true) { uiLight5.OnColor = Color.Green; } else { uiLight5.OnColor = Color.Red; }
+            if (ljg == true) { uiLight6.OnColor = Color.Green; } else { uiLight6.OnColor = Color.Red; }
         }
 
         private void dishow(string msg)
