@@ -812,7 +812,7 @@ namespace WindowsFormsApplication1.Exam
                         Log1.updatelog("在线阀帽拆卸得分" + cxfm1, "zx-cxfm", cxfm1, datahelp.QId);
                         g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
 
-                    if (chaixie != 1) {
+                    if (zxpic != 1) {
                         Thread a = new Thread(shot);
                         a.Start();
                     }
