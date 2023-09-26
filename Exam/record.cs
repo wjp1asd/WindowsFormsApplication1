@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -165,7 +166,10 @@ namespace WindowsFormsApplication1.Exam
             if (this.result.Checked == true)
             {
                 g.updateGrade(jyjg1, "jyjg1", datahelp.QId);
-
+                g.updateGrade(jyjg1, "zx-jielun", datahelp.QId);
+                string x = "zx-jielun";
+                g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                Log1.updatelog("在线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
             }
 
         }
@@ -179,10 +183,17 @@ namespace WindowsFormsApplication1.Exam
             }
         }
         Fuc ff = new Fuc();
+        int debug = 0;
         private void record_Load(object sender, EventArgs e)
         {
             //g.getOne(datahelp.QId);
-          //this.label1.Text = "编号：" + datahelp.QId;
+            //this.label1.Text = "编号：" + datahelp.QId;
+
+            string x = ConfigurationManager.AppSettings["debug"];
+            if (int.Parse(x) == 1)
+            {
+                debug = 1;
+            }
             if (tper == "离线")
             {
                 if (g.getGrade("yqzdyl", datahelp.QId) > 100)
@@ -260,6 +271,8 @@ namespace WindowsFormsApplication1.Exam
 
         }
 
+
+        Log Log1 = new Log();
         List<pressure> pp = new List<pressure>();
         TestRecord t = new TestRecord();
         private void button2_Click(object sender, EventArgs e)
@@ -289,18 +302,108 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
-            else { 
-            // 在线记录 
-            
-            
-            
-            
-            
-            
-            
-            
+            else {
+                // 在线记录 
+                //public float zxzdyl, zxgczj, zxyldjfw, zxdyiyl, zxderyl, zxdsanyl, zxjielun;
+                if (debug == 1)
+                {
+                    MessageBox.Show(edyl.Text.Trim() + "==" + t.Zxyl);
+                    MessageBox.Show(zj.Text.Trim() + "==" + "50");
+                    MessageBox.Show(datahelp.f1 + "==" + yi1.Text.Trim());
+                    MessageBox.Show(datahelp.f2 + "==" + yi2.Text.Trim());
+                    MessageBox.Show(datahelp.f3 + "==" + yi3.Text.Trim());
+                    MessageBox.Show(y1.Text.Trim() + "==" + "1");
+                    MessageBox.Show(y2.Text.Trim() + "==" + "1.3");
+
+                }
+             
+                if (edyl.Text.Trim() ==t.Zxyl.Trim())
+                {
+                 
+                    string x = "zx-zdyl";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-整定压力得分", x,sc.getScore(x), datahelp.QId);
+                }
+                else {
+                    string x = "zx-zdyl";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-整定压力错误不得分", x,0, datahelp.QId);
+                }
+
+                if (zj.Text.Trim() == "50")
+                {
+                    string x = "zx-gczj";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-公称直径得分", x, sc.getScore(x), datahelp.QId);
+                }
+                else {
+                    string x = "zx-gczj";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-公称直径错误不得分", x, 0, datahelp.QId);
+
+                           }
+
+                if (datahelp.f1 == yi1.Text.Trim())
+                {
+                    string x = "zx-dyiyl";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-第一次压力得分", x, sc.getScore(x), datahelp.QId);
+                }
+                else
+                {
+                    string x = "zx-dyiyl";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-第一次压力错误不得分", x, 0, datahelp.QId);
+
+                }
+                if (datahelp.f2 == yi2.Text.Trim())
+                {
+                    string x = "zx-deryl";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-第二次压力得分", x, sc.getScore(x), datahelp.QId);
+                }
+                else
+                {
+                    string x = "zx-deryl";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-第二次压力错误不得分", x, 0, datahelp.QId);
+
+                }
+
+                if (datahelp.f3 == yi3.Text.Trim())
+                {
+                    string x = "zx-dsanyl";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-第三次压力得分", x, sc.getScore(x), datahelp.QId);
+                }
+                else
+                {
+                    string x = "zx-dsanyl";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-第三次压力错误不得分", x, 0, datahelp.QId);
+
+                }
+
+                if (
+                    int.Parse(y1.Text.Trim())==1 &&double.Parse(y2.Text.Trim())==1.3
+                    )
+                {
+                    string x = "zx-yldjfw";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-压力等级范围得分", x, sc.getScore(x), datahelp.QId);
+                }
+                else
+                {
+                    string x = "zx-yldjfw";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-压力等级范围错误不得分", x, 0, datahelp.QId);
+
+                }
+
+
+
             }
-          
+
 
             this.ShowSuccessDialog("保存成功");
 

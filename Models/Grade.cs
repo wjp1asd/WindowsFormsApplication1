@@ -1,5 +1,7 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -52,24 +54,19 @@ namespace WindowsFormsApplication1.Models
         public string lxpic, lxpic1, zxpic, zxpic1;
         public float csfm, ylxz, xygb, wxxz, zdyltz, sjlmsj, azfm, dkxyf, gbylbqh, yqzdyl, gctj, yldj, dycyl, decyl, dscyl;
         public float mfsyyl, jyjl, mfzjcl, cxfm1, wxxz1, jyjg1, azfm1, bycs, score8;
-
-        //[] INT DEFAULT((-1)) NULL,
-        //[] INT DEFAULT((-1)) NULL,
-        //[] INT DEFAULT((-1)) NULL,
-        //[] INT DEFAULT((-1)) NULL,
-        //[] INT DEFAULT((-1)) NULL,
-        //[] INT DEFAULT((-1)) NULL,
-        //[] INT DEFAULT((-1)) NULL,
-        //[] INT DEFAULT((-1)) NULL,
+        //在线填写记录
+        public float zxzdyl,zxgczj,zxyldjfw,zxdyiyl,zxderyl,zxdsanyl,zxjielun;
+    
         public int updateGrade(float score, string mode, string tid)
         {
             int i = 0;
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "update grade set " + mode + " = " + score + "where testid = '" + tid + "'";
+            string sql = "update grade set [" + mode + "] = " + score + " where testid = '" + tid + "'";
+            //MessageBox.Show(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-
+          
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
@@ -159,10 +156,16 @@ namespace WindowsFormsApplication1.Models
                 azfm1 = float.Parse(reader["azfm1"].ToString().Trim());
                 cxfm1 = float.Parse(reader["cxfm1"].ToString().Trim());
                 wxxz1 = float.Parse(reader["wxxz1"].ToString().Trim());
-                jyjg1 = float.Parse(reader["jyjg1"].ToString().Trim());
                 mfzjcl = float.Parse(reader["mfzjcl"].ToString().Trim());
-
-
+                //在线填写记录
+                //public float zxzdyl, zxgczj, zxyldjfw, zxdyiyl, zxderyl, zxdsanyl, zxjielun;
+                zxzdyl = float.Parse(reader["zx-zdyl"].ToString().Trim());
+                zxgczj = float.Parse(reader["zx-gczj"].ToString().Trim());
+                zxyldjfw = float.Parse(reader["zx-yldjfw"].ToString().Trim());
+                zxdsanyl = float.Parse(reader["zx-dsanyl"].ToString().Trim());
+                zxderyl = float.Parse(reader["zx-deryl"].ToString().Trim());
+               zxjielun = float.Parse(reader["zx-jielun"].ToString().Trim());
+               
                 //离线
                 sjlmsj = float.Parse(reader["sjlmsj"].ToString().Trim());
                 zdyltz = float.Parse(reader["zdyltz"].ToString().Trim());

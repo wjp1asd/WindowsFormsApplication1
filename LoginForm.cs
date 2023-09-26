@@ -341,7 +341,7 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e)
         {
             datahelp.CurrentStep1 = 1;
-            datahelp.CurrentStep = 3;
+            datahelp.CurrentStep = 1;
             MF1 mf = new MF1();
             mf.Show();
             // this.Hide();

@@ -42,6 +42,11 @@ namespace WindowsFormsApplication1.Settings
 
         }
 
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         private void Settings1_Scroll(object sender, ScrollEventArgs e)
         {
 
@@ -200,7 +205,7 @@ namespace WindowsFormsApplication1.Settings
                 //   plcbt, plcjy, plcst, plcsp, DIxy, DIhw, DIB1, DIB2, DIB3, AIY1, AIy2, AIjy,MC
                 a11 = this.bt.Text = reader["plcbt"].ToString().Trim();
                 a19 = this.jy.Text = reader["plcjy"].ToString().Trim();
-
+                a12 = this.start.Text = reader["plcst"].ToString().Trim();
                 a13 = this.stop.Text = reader["plcsp"].ToString().Trim();
 
 

@@ -46,6 +46,10 @@ namespace WindowsFormsApplication1
         public string color1, color2, color3, color4, color5;
         public string edyl = "1";
         public string mfzj = "1";
+
+        public static string f1="0";
+        public static string f2 = "0";
+        public static string f3= "0";
         // 题型数量
         public int lxnum, zxnum, gynum, xhnum, lpjnum, ymgnum;
 
