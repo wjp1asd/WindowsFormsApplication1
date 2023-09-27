@@ -400,7 +400,7 @@
             // uiLight6
             // 
             this.uiLight6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight6.Location = new System.Drawing.Point(627, 446);
+            this.uiLight6.Location = new System.Drawing.Point(661, 447);
             this.uiLight6.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight6.Name = "uiLight6";
             this.uiLight6.Radius = 35;
@@ -412,7 +412,7 @@
             // uiLight5
             // 
             this.uiLight5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight5.Location = new System.Drawing.Point(586, 446);
+            this.uiLight5.Location = new System.Drawing.Point(607, 446);
             this.uiLight5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight5.Name = "uiLight5";
             this.uiLight5.Radius = 35;
@@ -423,18 +423,19 @@
             // 
             // label34
             // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("宋体", 12F);
-            this.label34.Location = new System.Drawing.Point(374, 422);
+            this.label34.Location = new System.Drawing.Point(396, 427);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(343, 16);
+            this.label34.Size = new System.Drawing.Size(311, 16);
             this.label34.TabIndex = 141;
-            this.label34.Text = "工具，阀帽，阀瓣，四合一，游标卡尺，连接杆";
+            this.label34.Text = "阀帽，工具，泄压阀,量程1，量程2，量称3";
             // 
             // uiLight4
             // 
             this.uiLight4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight4.Location = new System.Drawing.Point(545, 446);
+            this.uiLight4.Location = new System.Drawing.Point(554, 446);
             this.uiLight4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight4.Name = "uiLight4";
             this.uiLight4.Radius = 35;
@@ -458,7 +459,7 @@
             // uiLight2
             // 
             this.uiLight2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight2.Location = new System.Drawing.Point(463, 446);
+            this.uiLight2.Location = new System.Drawing.Point(452, 446);
             this.uiLight2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight2.Name = "uiLight2";
             this.uiLight2.Radius = 35;
@@ -470,7 +471,7 @@
             // uiLight1
             // 
             this.uiLight1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight1.Location = new System.Drawing.Point(422, 446);
+            this.uiLight1.Location = new System.Drawing.Point(399, 447);
             this.uiLight1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight1.Name = "uiLight1";
             this.uiLight1.Radius = 35;

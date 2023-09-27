@@ -74,8 +74,8 @@ namespace WindowsFormsApplication1
                 p.Show();
             }
 
-            //   Application.Restart();
-            // Process.GetCurrentProcess()?.Kill();
+             Application.Restart();
+             Process.GetCurrentProcess()?.Kill();
         }
     }
 }

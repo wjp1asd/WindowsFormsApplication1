@@ -142,7 +142,31 @@ namespace WindowsFormsApplication1.Exam
             if (famaostate == true) { uiLight1.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
             if (gongjustate == true) { uiLight2.OnColor = Color.Green; } else { uiLight2.OnColor = Color.Red; }
             if (xieyastate == true) { uiLight3.OnColor = Color.Green; } else { uiLight3.OnColor = Color.Red; }
-                 }
+
+            switch (liangcheng)
+            {
+                case 0:
+                    uiLight4.OnColor = Color.Red;
+                    uiLight5.OnColor = Color.Red;
+                    uiLight6.OnColor = Color.Red;
+                    break;
+                case 1:
+                    uiLight4.OnColor = Color.Green;
+                    uiLight5.OnColor = Color.Red;
+                    uiLight6.OnColor = Color.Red;
+                    break;
+                case 2:
+                    uiLight4.OnColor = Color.Red;
+                    uiLight5.OnColor = Color.Green;
+                    uiLight6.OnColor = Color.Red;
+                    break;
+                case 3:
+                    uiLight4.OnColor = Color.Red;
+                    uiLight5.OnColor = Color.Red;
+                    uiLight6.OnColor = Color.Green;
+                    break;
+            }
+        }
 
         Grade g = new Grade();
         Log log1 = new Log();
@@ -292,7 +316,7 @@ namespace WindowsFormsApplication1.Exam
                         dishow("卸压阀打开");
 
                     }
-                    log1.updatelog("初次卸压阀打开得分" + xyfkq, "lx-xyfkq", xyfkq, datahelp.QId);
+                    log1.updatelog("离线=初次卸压阀打开得分" + xyfkq, "lx-xyfkq", xyfkq, datahelp.QId);
                     g.updateGrade(xyfkq, "dkxyf", datahelp.QId);
                 }
 
@@ -300,20 +324,20 @@ namespace WindowsFormsApplication1.Exam
                 {
                     if (debug == 1)
                     {
-                        dishow("第一次卸压阀打开得分" + dkxyf1);
+                        dishow("离线=第一次卸压阀打开得分" + dkxyf1);
 
                     }
-                    log1.updatelog("第一次次卸压阀打开得分" + dkxyf1, "lx-xyfkq-1", dkxyf1, datahelp.QId);
+                    log1.updatelog("离线=第一次次卸压阀打开得分" + dkxyf1, "lx-xyfkq-1", dkxyf1, datahelp.QId);
                     g.updateGrade(dkxyf1, "dkxyf1", datahelp.QId);
                 }
                 if (step == 2)
                 {
                     if (debug == 1)
                     {
-                        dishow("第二次卸压阀打开得分" + dkxyf2);
+                        dishow("离线=第二次卸压阀打开得分" + dkxyf2);
 
                     }
-                    log1.updatelog("第二次卸压阀打开得分" + dkxyf2, "lx-xyfkq-2", dkxyf2, datahelp.QId);
+                    log1.updatelog("离线=第二次卸压阀打开得分" + dkxyf2, "lx-xyfkq-2", dkxyf2, datahelp.QId);
                     g.updateGrade(dkxyf2, "dkxyf2", datahelp.QId);
                 }
 
@@ -321,20 +345,20 @@ namespace WindowsFormsApplication1.Exam
                 {
                     if (debug == 1)
                     {
-                        dishow("第三次卸压阀打开得分" + dkxyf3);
+                        dishow("离线=第三次卸压阀打开得分" + dkxyf3);
 
                     }
-                    log1.updatelog("第三次卸压阀打开得分" + dkxyf3, "lx-xyfkq-3", dkxyf3, datahelp.QId);
+                    log1.updatelog("离线=第三次卸压阀打开得分" + dkxyf3, "lx-xyfkq-3", dkxyf3, datahelp.QId);
                     g.updateGrade(dkxyf3, "dkxyf3", datahelp.QId);
                 }
                 if (step == 4)
                 {
                     if (debug == 1)
                     {
-                        dishow("保压测试卸压阀打开得分" + dkxyf4);
+                        dishow("离线=保压测试卸压阀打开得分" + dkxyf4);
 
                     }
-                    log1.updatelog("保压测试卸压阀打开得分" + dkxyf4, "lx-xyfkq-4", dkxyf4, datahelp.QId);
+                    log1.updatelog("离线=保压测试卸压阀打开得分" + dkxyf4, "lx-xyfkq-4", dkxyf4, datahelp.QId);
                     g.updateGrade(dkxyf4, "dkxyf4", datahelp.QId);
                 }
                 // MessageBox.Show(a.ToString());
@@ -370,10 +394,10 @@ namespace WindowsFormsApplication1.Exam
                     if (debug == 1)
                     {
 
-                        dishow("校验前，卸压阀关闭");
+                        dishow("离线=校验前，卸压阀关闭");
 
                     }
-                    log1.updatelog("校验前，卸压阀关闭得分" + xygb, "lx-xyfgb", xygb, datahelp.QId);
+                    log1.updatelog("离线=校验前，卸压阀关闭得分" + xygb, "lx-xyfgb", xygb, datahelp.QId);
                     g.updateGrade(xygb, "gbxyf", datahelp.QId);
                 }
                 // 第一次
@@ -1501,11 +1525,7 @@ namespace WindowsFormsApplication1.Exam
 
                     if (step == 0)
                     {
-                        //    ff.ShowInfoTip("初次，泄压关闭，切换打开得分");
-
-
-
-
+              
                         if (ta > 0)
                         {
                             // 方向判分
@@ -1522,11 +1542,11 @@ namespace WindowsFormsApplication1.Exam
 
                             if (debug == 1)
                             {
-                                ff.ShowSuccessTip("初次：整定调整 得分" + zdyltz);
+                                ff.ShowSuccessTip("离线=初次：整定调整 得分" + zdyltz);
 
                             }
                             g.updateGrade(zdyltz, "zdyltz", datahelp.QId);
-                            log1.updatelog("初次：整定调整得分" + zdyltz, "lx-zdyltz", zdyltz, datahelp.QId);
+                            log1.updatelog("离线=初次：整定调整得分" + zdyltz, "lx-zdyltz", zdyltz, datahelp.QId);
                         }
 
                     }

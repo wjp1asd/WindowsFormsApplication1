@@ -121,6 +121,7 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
+          
             switch (datahelp.CurrentStep1)
             {
                 case 1:

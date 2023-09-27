@@ -317,7 +317,7 @@ namespace WindowsFormsApplication1.Exam
 
                 }
              
-                if (edyl.Text.Trim() ==t.Zxyl.Trim())
+                if (edyl.Text.Trim() ==t.Zxyl.Trim()|| edyl.Text.Trim()=="1.0")
                 {
                  
                     string x = "zx-zdyl";
@@ -334,12 +334,12 @@ namespace WindowsFormsApplication1.Exam
                 {
                     string x = "zx-gczj";
                     g.updateGrade(sc.getScore(x), x, datahelp.QId);
-                    Log1.updatelog("在线=填写记录-公称直径得分", x, sc.getScore(x), datahelp.QId);
+                    Log1.updatelog("在线=填写记录-公称通径得分", x, sc.getScore(x), datahelp.QId);
                 }
                 else {
                     string x = "zx-gczj";
                     g.updateGrade(0, x, datahelp.QId);
-                    Log1.updatelog("在线=填写记录-公称直径错误不得分", x, 0, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-公称通径错误不得分", x, 0, datahelp.QId);
 
                            }
 
@@ -385,7 +385,7 @@ namespace WindowsFormsApplication1.Exam
                 }
 
                 if (
-                    int.Parse(y1.Text.Trim())==1 &&double.Parse(y2.Text.Trim())==1.3
+                    y1.Text.Trim()=="1.0"&&y2.Text.Trim()=="1.3"
                     )
                 {
                     string x = "zx-yldjfw";
