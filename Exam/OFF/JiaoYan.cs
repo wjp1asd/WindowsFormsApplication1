@@ -137,6 +137,13 @@ namespace WindowsFormsApplication1.Exam
             g.updateGrade(0, "bycs", datahelp.QId);
 
         }
+        private void showlight()
+        {
+            if (famaostate == true) { uiLight1.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
+            if (gongjustate == true) { uiLight2.OnColor = Color.Green; } else { uiLight2.OnColor = Color.Red; }
+            if (xieyastate == true) { uiLight3.OnColor = Color.Green; } else { uiLight3.OnColor = Color.Red; }
+                 }
+
         Grade g = new Grade();
         Log log1 = new Log();
         private void fenxi()
@@ -435,6 +442,7 @@ namespace WindowsFormsApplication1.Exam
                 }
 
             }
+            showlight();
         }
 
         private void dishow(string msg)

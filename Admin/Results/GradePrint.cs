@@ -129,7 +129,7 @@ namespace WindowsFormsApplication1.Admin.Results
             MessageBox.Show(a1.zxpic1);
             MessageBox.Show(a1.mxpic);
             // 离线前
-            label33.Text = a1.xygb.ToString().Replace("-1", "未考试");
+           // label33.Text = a1.xygb.ToString().Replace("-1", "未考试");
             label9.Text = a1.csfm.ToString().Replace("-1", "未考试");
             label34.Text = a1.wxxz.ToString().Replace("-1", "未考试");
             label35.Text = a1.zdyltz.ToString().Replace("-1", "未考试");
@@ -167,7 +167,7 @@ namespace WindowsFormsApplication1.Admin.Results
         {
             float a = 0;
             a = a1.score1 + a1.score2 + a1.score3 + a1.score4 + a1.score5 + a1.score6 +
-               a1.xygb + a1.csfm + a1.wxxz + a1.zdyltz +
+               a1.csfm + a1.csfm + a1.wxxz + a1.zdyltz +
                a1.sjlmsj + a1.azfm + a1.bycs + a1.gbylbqh + a1.dkxyf +
                a1.yqzdyl + a1.gctj + a1.yldj + a1.dycyl + a1.decyl + a1.dscyl + a1.mfsyyl + a1.mfsyyl + a1.jyjl +
                a1.azfm1 + a1.mfzjcl + a1.wxxz1 + a1.cxfm1 + a1.jyjg1;

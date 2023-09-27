@@ -245,6 +245,7 @@ namespace WindowsFormsApplication1.Exam
 
         }
         private Fuc ff = new Fuc();
+        Log log1=new Log(); 
         private void UpdateGrades()
         {
 
@@ -278,14 +279,14 @@ namespace WindowsFormsApplication1.Exam
                     str1 = "Update Grade set xhquestions='" + a + "',xhanswer='" + b + "',xhcorrect='" + c + "',score4='" + d
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
-
+                    log1.updatelog("密封型号答题得分" +d, "mf-xh",float.Parse(d+""), datahelp.QId);
                     break;
 
                 case 6:
                     str1 = "Update Grade set lpjquestions='" + a + "',lpjanswer='" + b + "',lpjcorrect='" + c + "',score5='" + d
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
-
+                    log1.updatelog("零配件答题得分" + d, "mf-lpj", float.Parse(d + ""), datahelp.QId);
                     break;
 
                 case 4:
@@ -293,6 +294,7 @@ namespace WindowsFormsApplication1.Exam
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
                     //  MessageBox.Show(str1);
+                    log1.updatelog("研磨膏答题得分" + d, "mf-ymg", float.Parse(d + ""), datahelp.QId);
                     break;
 
 

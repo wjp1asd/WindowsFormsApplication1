@@ -1,6 +1,7 @@
 ﻿using AutoWindowsSize;
 using System;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Admin.Goals;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Settings;
 
@@ -74,8 +75,8 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            GoalSet q = new GoalSet();
-            q.Show();
+          GoalSet1 goalSet1 = new GoalSet1();
+            goalSet1.Show();
             this.Close();
         }
 

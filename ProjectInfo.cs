@@ -2,7 +2,10 @@
 using System.Configuration;
 using System.Diagnostics;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Exam.MF;
+using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Scan;
+using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1
 {
@@ -27,10 +30,33 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+        Grade g = new Grade();
         private void Form7_Load(object sender, EventArgs e)
         {
+            g.getOne(datahelp.QId);
+            string x = ConfigurationManager.AppSettings["machine"];
+            switch (int.Parse(x))
+            {
+                case 2:
+                    this.label2.Text = "得分:" +(g.score4 + g.score5 + g.score6);
+                    break;
+                case 3:
+                this.label2.Text = "得分:" +(g.wxxz1 + g.azfm1 + g.mfzjcl+g.cxfm1+
+                        g.zxderyl+g.zxdsanyl+g.zxjielun+g.gctj+g.zxzdyl+g.zxyldjfw+g.zxjielun);
+                    break;
+                case 4:
+                    // 密封总得分
+                    this.label2.Text = "得分:" + (g.score4 + g.score5 + g.score6+g.score8);
 
+
+                    break;
+                case -1:
+                    //  datahelp.CurrentStep = 3;
+                    this.label2.Text = "得分:" + (g.wxxz1 + g.azfm1 + g.mfzjcl + g.cxfm1 +
+                             g.zxderyl + g.zxdsanyl + g.zxjielun + g.gctj + g.zxzdyl + g.zxyldjfw + g.zxjielun);
+                    break;
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

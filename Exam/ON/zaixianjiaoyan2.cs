@@ -95,7 +95,9 @@ namespace WindowsFormsApplication1.Exam
             azfm1 = sc.getScore("zx-azfm");
             this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
             g.updateGrade(0, "mfzjcl", datahelp.QId);
+          //  g.updateGrade(0, "azfm1", datahelp.QId);
             g.updateGrade(0, "cxfm1", datahelp.QId);
+            Log1.updatelog("在线未拆阀帽得分" +"0", "zx-cxfm", 0, datahelp.QId);
             g.updateGrade(0, "wxxz1", datahelp.QId);
             g.updateGrade(0, "jyjg1", datahelp.QId);
             g.updateGrade(0, "azfm1", datahelp.QId);
@@ -152,13 +154,13 @@ namespace WindowsFormsApplication1.Exam
                     this.chart1.ChartAreas[0].AxisY.Maximum = F * 1.2;
                     // 游标卡尺和 阀瓣拿起 zxc
 
-                    if (fb == false && youbiao == false && step == 1 && Math.Abs(mfzj - double.Parse(c.mfzj))<=0.5)
+                    if (Math.Abs(mfzj - double.Parse(c.mfzj))<=0.5)
                     {
                         if (debug == 1) {
-                            ff.ShowSuccessTip("得分:" + mfzjcl);
+                            ff.ShowSuccessTip("密封直径得分:" + mfzjcl);
                         }
                         //  ff.ShowSuccessTip("得分:" + mfzjcl);
-                        Log1.updatelog("游标卡尺、阀瓣拿起、密封直径得分"+ mfzjcl, "zx-zj",mfzjcl, datahelp.QId);
+                        Log1.updatelog("密封直径得分"+ mfzjcl, "zx-zj",mfzjcl, datahelp.QId);
                        
                         g.updateGrade(mfzjcl, "mfzjcl", datahelp.QId);
 
@@ -167,10 +169,10 @@ namespace WindowsFormsApplication1.Exam
                     {
                         if (debug == 1)
                         {
-                            ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
+                            ff.ShowErrorTip("密封直径不得分");
                         }
                         //     ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
-                        Log1.updatelog("游标卡尺、阀瓣未拿起、密封直径超差不得分" + mfzjcl, "zx-zj", 0, datahelp.QId);
+                        Log1.updatelog("密封直径超差不得分" + mfzjcl, "zx-zj", 0, datahelp.QId);
 
                         g.updateGrade(0, "mfzjcl", datahelp.QId);
                     }
@@ -193,21 +195,25 @@ namespace WindowsFormsApplication1.Exam
             string loc1 = ConfigurationManager.AppSettings["loc"];
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
 
-            //  MessageBox.Show("拍照成功");
-            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
+             
+            string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\";
+          //  MessageBox.Show("拍照成功" + loc + url + t.Qrcode.Trim() + "-shot.png");
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc + url + t.Qrcode + "-shot.png", mat);
-            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-shot.png");
+            CvInvoke.Imwrite(loc + url + t.Ksname.Trim() + "-shot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Ksname + "-shot.png");
             try
             {
-                bt.Save(loc1 + url + t.Qrcode + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
-                string mm = loc1 + url + t.Qrcode + "-shot.png";
+                bt.Save(loc1 + url + t.Ksname
+                    .Trim() + "-shot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+                string mm = loc1 + url + t.Ksname.Trim() + "-shot.png";
                 g.updatepath(mm, "zxpic", datahelp.QId);
+                chaixie = 1;
             }
             catch (Exception)
             {
 
                 ff.ShowErrorNotifier("图片保存异常");
+                throw;
             }
            
 
@@ -224,12 +230,13 @@ namespace WindowsFormsApplication1.Exam
 
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\"; ;
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
-            CvInvoke.Imwrite(loc + url + t.Qrcode + "-azshot.png", mat);
-            Bitmap bt = new Bitmap(loc + url + t.Qrcode + "-azshot.png");
+            CvInvoke.Imwrite(loc + url + t.Ksname.Trim() + "-azshot.png", mat);
+            Bitmap bt = new Bitmap(loc + url + t.Ksname.Trim() + "-azshot.png");
             try
             {
-                bt.Save(loc1 + url + t.Qrcode + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
-                string mm = loc1 + url + t.Qrcode + "-azshot.png";
+                bt.Save(loc1 + url + t.Ksname
+                    .Trim() + "-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
+                string mm = loc1 + url + t.Ksname.Trim() + "-azshot.png";
                 // g.updatepath(mm, "lxpic", datahelp.QId);
                 g.updatepath(mm, "zxpic1", datahelp.QId);
             }
@@ -262,7 +269,6 @@ namespace WindowsFormsApplication1.Exam
         {
 
 
-
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
@@ -278,6 +284,7 @@ namespace WindowsFormsApplication1.Exam
             this.richTextBox2.Hide();
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
+           
             this.timer1.Start();
             v = new Emgu.CV.VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
@@ -316,7 +323,7 @@ namespace WindowsFormsApplication1.Exam
                 catch (Exception)
                 {
 
-                    throw;
+                    
                 }
 
             }
@@ -808,10 +815,12 @@ namespace WindowsFormsApplication1.Exam
                         }
                         Log1.updatelog("在线阀帽拆卸得分" + cxfm1, "zx-cxfm", cxfm1, datahelp.QId);
                         g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
-                   
-                    
-                    Thread a = new Thread(shot);
-                    a.Start();
+
+                    if (zxpic != 1) {
+                        Thread a = new Thread(shot);
+                        a.Start();
+                    }
+                 
                 }
                 //   chaixiefamao();
             }
@@ -830,8 +839,18 @@ namespace WindowsFormsApplication1.Exam
                 gj = false;
             }
 
+            showlight();
 
+        }
 
+        private void showlight()
+        {
+            if (gj == true) { uiLight1.OnColor = Color.Green; } else { uiLight1.OnColor = Color.Red; }
+            if (fm == true) { uiLight2.OnColor = Color.Green; } else { uiLight2.OnColor = Color.Red; }
+            if (fb == true) { uiLight3.OnColor = Color.Green; } else { uiLight3.OnColor = Color.Red; }
+            if (shy == true) { uiLight4.OnColor = Color.Green; } else { uiLight4.OnColor = Color.Red; }
+            if (youbiao == true) { uiLight5.OnColor = Color.Green; } else { uiLight5.OnColor = Color.Red; }
+            if (ljg == true) { uiLight6.OnColor = Color.Green; } else { uiLight6.OnColor = Color.Red; }
         }
 
         private void dishow(string msg)
@@ -1125,18 +1144,21 @@ namespace WindowsFormsApplication1.Exam
                 {
                     case 1:
                         this.textBox4.Text = "" + Math.Round(a.YValues[0]);
+                        datahelp.f1 = this.textBox4.Text.Trim();
                         this.textBox4.Enabled = false;
                         this.textBox5.Text = PS.ToString();
                         this.textBox5.ForeColor = Color.Red;
                         break;
                     case 2:
                         this.textBox7.Text = "" + Math.Round(a.YValues[0]);
+                        datahelp.f2 = this.textBox7.Text.Trim();
                         this.textBox7.Enabled = false;
                         this.textBox6.Text = PS.ToString();
                         this.textBox6.ForeColor = Color.Red;
                         break;
                     case 3:
                         this.textBox9.Text = "" + Math.Round(a.YValues[0]);
+                        datahelp.f3 = this.textBox9.Text.Trim();
                         this.textBox9.Enabled = false;
                         this.textBox8.Text = PS.ToString();
                         this.textBox8.ForeColor = Color.Red;
@@ -1163,6 +1185,7 @@ namespace WindowsFormsApplication1.Exam
                 {
                     case 1:
                         this.textBox4.Text = "" + 134.55;
+                        datahelp.f1 = this.textBox4.Text.Trim();
                         a.Label = "134.55Kg";
                         this.textBox4.Enabled = false;
                         this.textBox5.Text = PS.ToString();
@@ -1170,6 +1193,7 @@ namespace WindowsFormsApplication1.Exam
                         break;
                     case 2:
                         this.textBox7.Text = "" + 134.48;
+                        datahelp.f2 = this.textBox7.Text.Trim();
                         a.Label = "134.48Kg";
                         this.textBox7.Enabled = false;
                         this.textBox6.Text = PS.ToString();
@@ -1177,6 +1201,7 @@ namespace WindowsFormsApplication1.Exam
                         break;
                     case 3:
                         this.textBox9.Text = "" + 134.32;
+                        datahelp.f3 = this.textBox9.Text.Trim();
                         a.Label = "134.32Kg";
                         this.textBox9.Enabled = false;
                         this.textBox8.Text = PS.ToString();
@@ -1485,6 +1510,7 @@ namespace WindowsFormsApplication1.Exam
         }
         bool wuc = false;
         private int zxpic;
+        private int chaixie;
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1507,7 +1533,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 Log1.updatelog("误差选择错误，不得分", "zx-wxxz",0,datahelp.QId);
                 //  ff.ShowErrorTip("误差选择错误，不得分");
-                this.comboBox1.Enabled = false;
+                //this.comboBox1.Enabled = false;
 
                 g.updateGrade(wxxz1, "wxxz1", datahelp.QId);
             }
@@ -1518,7 +1544,7 @@ namespace WindowsFormsApplication1.Exam
                     ff.ShowSuccessTip("选择正确，得分" + wxxz1);
                 }
                 //  ff.ShowSuccessTip("选择正确，得分" + wxxz1);
-                Log1.updatelog("选择正确，得分" + wxxz1, "zx-wxxz", wxxz1, datahelp.QId);
+                Log1.updatelog("误差选择正确，得分" + wxxz1, "zx-wxxz", wxxz1, datahelp.QId);
 
                 g.updateGrade(wxxz1, "wxxz1", datahelp.QId);
                 this.comboBox1.Enabled = false;

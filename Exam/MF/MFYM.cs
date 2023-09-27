@@ -213,6 +213,8 @@ namespace WindowsFormsApplication1
             SystemParametersInfo(0X0071, 0, 7, 0);
 
             g.updateGrade(score,"score8",datahelp.QId);
+            Log log =new Log();
+            log.updatelog("密封面研磨实操得分" + score, "mf-sc", score, datahelp.QId);
             try
             {
                 // 生成图片

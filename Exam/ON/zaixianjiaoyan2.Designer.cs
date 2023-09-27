@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation5 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation7 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -92,6 +92,13 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.uiLight1 = new Sunny.UI.UILight();
+            this.uiLight2 = new Sunny.UI.UILight();
+            this.uiLight3 = new Sunny.UI.UILight();
+            this.uiLight4 = new Sunny.UI.UILight();
+            this.label34 = new System.Windows.Forms.Label();
+            this.uiLight5 = new Sunny.UI.UILight();
+            this.uiLight6 = new Sunny.UI.UILight();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -343,31 +350,31 @@
             // 
             // chart1
             // 
-            lineAnnotation5.Name = "LineAnnotation1";
-            this.chart1.Annotations.Add(lineAnnotation5);
-            chartArea5.BorderColor = System.Drawing.Color.DimGray;
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
+            lineAnnotation7.Name = "LineAnnotation1";
+            this.chart1.Annotations.Add(lineAnnotation7);
+            chartArea7.BorderColor = System.Drawing.Color.DimGray;
+            chartArea7.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea7);
             this.chart1.Cursor = System.Windows.Forms.Cursors.Cross;
-            legend5.Name = "Legend1";
-            this.chart1.Legends.Add(legend5);
-            this.chart1.Location = new System.Drawing.Point(0, 344);
+            legend7.Name = "Legend1";
+            this.chart1.Legends.Add(legend7);
+            this.chart1.Location = new System.Drawing.Point(0, 353);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series5.BorderColor = System.Drawing.Color.Silver;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.IsValueShownAsLabel = true;
-            series5.Legend = "Legend1";
-            series5.MarkerBorderColor = System.Drawing.Color.Red;
-            series5.MarkerBorderWidth = 0;
-            series5.MarkerColor = System.Drawing.Color.Red;
-            series5.MarkerSize = 20;
-            series5.Name = "外加力";
-            series5.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series5);
-            this.chart1.Size = new System.Drawing.Size(1120, 332);
+            series7.BorderColor = System.Drawing.Color.Silver;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.IsValueShownAsLabel = true;
+            series7.Legend = "Legend1";
+            series7.MarkerBorderColor = System.Drawing.Color.Red;
+            series7.MarkerBorderWidth = 0;
+            series7.MarkerColor = System.Drawing.Color.Red;
+            series7.MarkerSize = 20;
+            series7.Name = "外加力";
+            series7.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series7);
+            this.chart1.Size = new System.Drawing.Size(1120, 323);
             this.chart1.TabIndex = 69;
             this.chart1.Text = "chart1";
             this.chart1.GetToolTipText += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs>(this.chart1_GetToolTipText);
@@ -535,10 +542,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.uiLight6);
             this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.uiLight5);
             this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.label34);
+            this.groupBox1.Controls.Add(this.uiLight4);
             this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.uiLight3);
             this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.uiLight2);
+            this.groupBox1.Controls.Add(this.uiLight1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(0, 683);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
@@ -849,6 +863,88 @@
             this.label33.Text = "要求整定压力：";
             this.label33.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // uiLight1
+            // 
+            this.uiLight1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLight1.Location = new System.Drawing.Point(45, 35);
+            this.uiLight1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLight1.Name = "uiLight1";
+            this.uiLight1.Radius = 35;
+            this.uiLight1.Size = new System.Drawing.Size(35, 35);
+            this.uiLight1.TabIndex = 130;
+            this.uiLight1.Text = "阀帽";
+            this.uiLight1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLight2
+            // 
+            this.uiLight2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLight2.Location = new System.Drawing.Point(86, 35);
+            this.uiLight2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLight2.Name = "uiLight2";
+            this.uiLight2.Radius = 35;
+            this.uiLight2.Size = new System.Drawing.Size(35, 35);
+            this.uiLight2.TabIndex = 131;
+            this.uiLight2.Text = "uiLight2";
+            this.uiLight2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLight3
+            // 
+            this.uiLight3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLight3.Location = new System.Drawing.Point(127, 35);
+            this.uiLight3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLight3.Name = "uiLight3";
+            this.uiLight3.Radius = 35;
+            this.uiLight3.Size = new System.Drawing.Size(35, 35);
+            this.uiLight3.TabIndex = 132;
+            this.uiLight3.Text = "uiLight3";
+            this.uiLight3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLight4
+            // 
+            this.uiLight4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLight4.Location = new System.Drawing.Point(168, 35);
+            this.uiLight4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLight4.Name = "uiLight4";
+            this.uiLight4.Radius = 35;
+            this.uiLight4.Size = new System.Drawing.Size(35, 35);
+            this.uiLight4.TabIndex = 133;
+            this.uiLight4.Text = "uiLight4";
+            this.uiLight4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("宋体", 12F);
+            this.label34.Location = new System.Drawing.Point(-3, 11);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(343, 16);
+            this.label34.TabIndex = 134;
+            this.label34.Text = "工具，阀帽，阀瓣，四合一，游标卡尺，连接杆";
+            // 
+            // uiLight5
+            // 
+            this.uiLight5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLight5.Location = new System.Drawing.Point(209, 35);
+            this.uiLight5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLight5.Name = "uiLight5";
+            this.uiLight5.Radius = 35;
+            this.uiLight5.Size = new System.Drawing.Size(35, 35);
+            this.uiLight5.TabIndex = 135;
+            this.uiLight5.Text = "uiLight5";
+            this.uiLight5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLight6
+            // 
+            this.uiLight6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLight6.Location = new System.Drawing.Point(250, 35);
+            this.uiLight6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLight6.Name = "uiLight6";
+            this.uiLight6.Radius = 35;
+            this.uiLight6.Size = new System.Drawing.Size(35, 35);
+            this.uiLight6.TabIndex = 136;
+            this.uiLight6.Text = "uiLight6";
+            this.uiLight6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // zaixianjiaoyan2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -909,12 +1005,12 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "zaixianjiaoyan2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "在线校验";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JiaoYormClosing);
             this.Load += new System.EventHandler(this.zaixianjiaoyan2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -982,5 +1078,12 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
+        private Sunny.UI.UILight uiLight1;
+        private Sunny.UI.UILight uiLight2;
+        private Sunny.UI.UILight uiLight3;
+        private Sunny.UI.UILight uiLight4;
+        private System.Windows.Forms.Label label34;
+        private Sunny.UI.UILight uiLight5;
+        private Sunny.UI.UILight uiLight6;
     }
 }
