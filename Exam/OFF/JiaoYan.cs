@@ -1395,55 +1395,63 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a1);
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
 
-                if ((a1 - sjdwq) > 0 && step == 1)
+                // 写法问题
+                if (correct2 == true && ap.f0 > ap.f1 && step <= 1)
                 {
-
-
-                    richTextBox2.AppendText(v + "正在锁紧");
-                    if (correct2 == true && ap.f0 > ap.f1)
+                    if (xieyastate == false)
                     {
-                        if (xieyastate == false)
-                        {
-                            MessageBox.Show("严重错误：未泄压，当前考试不得分");
-                            this.InitScore();
-                        }
-
-                        // 整定压力 大于 初次压力
-                        if (debug == 1)
-                        {
-
-                            ff.ShowSuccessTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
-
-                        }
-                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
-                        log1.updatelog("第一次测试：锁紧螺母得分" + sjlmsj, "lx-sjlm-1", sjlmsj, datahelp.QId);
+                        MessageBox.Show("严重错误：未泄压，当前考试不得分");
+                        this.InitScore();
                     }
+
+                    // 整定压力 大于 初次压力
+                    if (debug == 1)
+                    {
+
+                        ff.ShowSuccessTip("第一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
+
+                    }
+                    if ((a1 - sjdwq) > 0)
+                    {
+                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
+                        log1.updatelog("第一次测试：整定压力大于初次压力 当前应该锁紧，锁紧螺母得分" + sjlmsj, "lx-sjlm-1", sjlmsj, datahelp.QId);
+                    }
+                    else
+                    {
+                        g.updateGrade(0, "sjlmsj", datahelp.QId);
+                        log1.updatelog("第一次测试：整定压力大于初次压力 当前不能放松，锁紧螺母不得分", "lx-sjlm-1", 0, datahelp.QId);
+                    }
+
                 }
-                else if ((a1 - sjdwq) < 0 && step == 1)
+
+                if (correct2 == true && ap.f0 < ap.f1)
                 {
-
-                    richTextBox2.AppendText(v + "正在放松");
-                    if (correct2 == true && ap.f0 < ap.f1)
+                    if (xieyastate == false)
                     {
-
-                        if (xieyastate == false)
-                        {
-                            MessageBox.Show("严重错误：未泄压，当前考试不得分");
-                            this.InitScore();
-                        }
-                        // 整定压力 小于于 初次压力
-                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
-
-                        if (debug == 1)
-                        {
-
-                            ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
-                        }
-                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
-                        log1.updatelog("第一次测试：锁紧螺母得分" + sjlmsj, "lx-sjlm-1", sjlmsj, datahelp.QId);
+                        MessageBox.Show("严重错误：未泄压，当前考试不得分");
+                        this.InitScore();
                     }
+
+                    // 整定压力 大于 初次压力
+                    if (debug == 1)
+                    {
+                        ff.ShowSuccessTip("初次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
+
+                    }
+                    if ((a1 - sjdwq) < 0)
+                    {
+                        g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
+                        log1.updatelog("第一次测试：整定压力 小于 初次压力 当前应该放松,锁紧螺母得分" + sjlmsj, "lx-sjlm-1", sjlmsj, datahelp.QId);
+                    }
+                    else
+                    {
+                        g.updateGrade(0, "sjlmsj", datahelp.QId);
+                        log1.updatelog("第一次测试：整定压力 小于 初次压力 当前不能锁紧,锁紧螺母得分", "lx-sjlm-1", 0, datahelp.QId);
+                    }
+
                 }
             };
+               
             this.Invoke(tongdao);
         }
         private void voldetla2(string v, string sb1, string t1)
