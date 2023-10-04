@@ -166,10 +166,22 @@ namespace WindowsFormsApplication1.Exam
             if (this.result.Checked == true)
             {
                 g.updateGrade(jyjg1, "jyjg1", datahelp.QId);
-                g.updateGrade(jyjg1, "zx-jielun", datahelp.QId);
-                string x = "zx-jielun";
-                g.updateGrade(sc.getScore(x), x, datahelp.QId);
-                Log1.updatelog("在线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
+                if (tper == "离线")
+                {
+                    g.updateGrade(jyjg1, "zx-jielun", datahelp.QId);
+                    string x = "zx-jielun";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
+
+                }
+                if (tper == "在线")
+                {
+                    g.updateGrade(jyjg1, "zx-jielun", datahelp.QId);
+                    string x = "zx-jielun";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
+                }
+              
             }
 
         }
