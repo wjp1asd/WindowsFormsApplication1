@@ -151,5 +151,13 @@ namespace WindowsFormsApplication1.Admin.Results
                 return;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string sql = "delete  " + TableName + " Where qid = '" + uid+"'"
+           ;
+           // MessageBox.Show(sql);
+            InitTable(sql);
+        }
     }
 }
