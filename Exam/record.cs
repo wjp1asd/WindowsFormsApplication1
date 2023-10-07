@@ -55,14 +55,14 @@ namespace WindowsFormsApplication1.Exam
             jyjg = sc.getScore("lx-jielun");
             jyjg1 = sc.getScore("zx-jielun");
         //  this.label11.Text = "编号：" + datahelp.QId;
-            g.updateGrade(0, "yqzdyl", datahelp.QId);
-            g.updateGrade(0, "gctj", datahelp.QId);
-            g.updateGrade(0, "dycyl", datahelp.QId);
-            g.updateGrade(0, "decyl", datahelp.QId);
-            g.updateGrade(0, "dscyl", datahelp.QId);
-            g.updateGrade(0, "mfsyyl", datahelp.QId);
-            g.updateGrade(0, "jyjg1", datahelp.QId);
-            g.updateGrade(0, "jyjg", datahelp.QId);
+            g.updateGrade(0, "lx-yqzdyl", datahelp.QId);
+            g.updateGrade(0, "lx-gctj", datahelp.QId);
+            g.updateGrade(0, "lx-dycyl", datahelp.QId);
+            g.updateGrade(0, "lx-decyl", datahelp.QId);
+            g.updateGrade(0, "lx-dscyl", datahelp.QId);
+            g.updateGrade(0, "lx-mfsyyl", datahelp.QId);
+            g.updateGrade(0, "lx-jielun", datahelp.QId);
+           // g.updateGrade(0, "jyjg", datahelp.QId);
 
         }
 
