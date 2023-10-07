@@ -199,6 +199,7 @@ namespace WindowsFormsApplication1.Scan
                     break;
                 case 3:
                     datahelp.CurrentStep = 2;
+                    datahelp.CurrentStep1 = 2;
                     zaixianjiaoyan on = new zaixianjiaoyan();
                     on.Show();
                     break;

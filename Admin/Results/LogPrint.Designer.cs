@@ -31,15 +31,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kfdm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kffz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kssj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,36 +77,6 @@
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(892, 341);
             this.dataGridView1.TabIndex = 53;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(11, 11);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(166, 21);
-            this.textBox8.TabIndex = 59;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(180, 11);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(50, 24);
-            this.button5.TabIndex = 58;
-            this.button5.Text = "查询\r\n";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(235, 11);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(56, 24);
-            this.button6.TabIndex = 57;
-            this.button6.Text = "关闭";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // ID
             // 
@@ -164,11 +135,53 @@
             this.qid.Name = "qid";
             this.qid.ReadOnly = true;
             // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(11, 11);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(166, 21);
+            this.textBox8.TabIndex = 59;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(180, 11);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(50, 24);
+            this.button5.TabIndex = 58;
+            this.button5.Text = "查询\r\n";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(235, 11);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(56, 24);
+            this.button6.TabIndex = 57;
+            this.button6.Text = "关闭";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(295, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 24);
+            this.button1.TabIndex = 60;
+            this.button1.Text = "清空";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // LogPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
@@ -195,5 +208,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kffz;
         private System.Windows.Forms.DataGridViewTextBoxColumn kssj;
         private System.Windows.Forms.DataGridViewTextBoxColumn qid;
+        private System.Windows.Forms.Button button1;
     }
 }

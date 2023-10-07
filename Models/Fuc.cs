@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO.Ports;
 using System.Media;
 using System.Security.Cryptography;
 using System.Security.Policy;
@@ -26,6 +27,27 @@ namespace WindowsFormsApplication1.Models
 
             Application.Restart();
             Process.GetCurrentProcess()?.Kill();
+        }
+
+        public void closePorts() {
+
+            // 获取所有打开的串口  
+            var serialPorts = SerialPort.GetPortNames();
+
+            // 逐个关闭串口  
+            foreach (var portName in serialPorts)
+            {
+                var serialPort = new SerialPort(portName);
+
+                // 如果串口是打开的，则关闭它  
+                if (serialPort.IsOpen)
+                {
+                    serialPort.Close();
+                    Console.WriteLine($"串口 {portName} 已关闭");
+                }
+            }
+
+
         }
         public void fullsreen(System.Windows.Forms.Control c, Form f)
         {

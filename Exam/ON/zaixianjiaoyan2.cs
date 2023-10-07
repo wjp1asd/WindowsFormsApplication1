@@ -282,6 +282,7 @@ namespace WindowsFormsApplication1.Exam
             byte a = CalcLRC(td1);
             td1[12] = (byte)a;
             this.richTextBox2.Hide();
+            ff.closePorts();
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
            
@@ -404,6 +405,7 @@ namespace WindowsFormsApplication1.Exam
 
         public void plcinit()
         {
+            
             datahelp datahelp = new datahelp();
             datahelp.Initc();
 
@@ -464,9 +466,13 @@ namespace WindowsFormsApplication1.Exam
                 else if (datahelp.plcsp1.Trim() == "2") { serialPort2.StopBits = StopBits.Two; }
                 /*设置奇偶校验*/
                 serialPort2.Parity = Parity.None;
+               
                 try
                 {
-                    serialPort2.Open();//打开串口
+                    if (!serialPort2.IsOpen) {
+                        serialPort2.Open();//打开串口
+                    }
+                       
                     button3.Text = "连接系统";//按钮显示关闭串口
                                           // comboBox1.Enabled = true;
 
@@ -1144,24 +1150,27 @@ namespace WindowsFormsApplication1.Exam
                 {
                     case 1:
                         this.textBox4.Text = "" + Math.Round(a.YValues[0]);
-                        datahelp.f1 = this.textBox4.Text.Trim();
+                      
                         this.textBox4.Enabled = false;
                         this.textBox5.Text = PS.ToString();
                         this.textBox5.ForeColor = Color.Red;
+                        datahelp.f1 = this.textBox5.Text.Trim();
                         break;
                     case 2:
                         this.textBox7.Text = "" + Math.Round(a.YValues[0]);
-                        datahelp.f2 = this.textBox7.Text.Trim();
+                       
                         this.textBox7.Enabled = false;
                         this.textBox6.Text = PS.ToString();
                         this.textBox6.ForeColor = Color.Red;
+                        datahelp.f2 = this.textBox6.Text.Trim();
                         break;
                     case 3:
                         this.textBox9.Text = "" + Math.Round(a.YValues[0]);
-                        datahelp.f3 = this.textBox9.Text.Trim();
+                      
                         this.textBox9.Enabled = false;
                         this.textBox8.Text = PS.ToString();
                         this.textBox8.ForeColor = Color.Red;
+                        datahelp.f3 = this.textBox8.Text.Trim();
                         break;
                 }
                 b12 = false;
@@ -1185,27 +1194,30 @@ namespace WindowsFormsApplication1.Exam
                 {
                     case 1:
                         this.textBox4.Text = "" + 134.55;
-                        datahelp.f1 = this.textBox4.Text.Trim();
+                      
                         a.Label = "134.55Kg";
                         this.textBox4.Enabled = false;
                         this.textBox5.Text = PS.ToString();
                         this.textBox5.ForeColor = Color.Red;
+                        datahelp.f1 = this.textBox5.Text.Trim();
                         break;
                     case 2:
                         this.textBox7.Text = "" + 134.48;
-                        datahelp.f2 = this.textBox7.Text.Trim();
+                      
                         a.Label = "134.48Kg";
                         this.textBox7.Enabled = false;
                         this.textBox6.Text = PS.ToString();
                         this.textBox6.ForeColor = Color.Red;
+                        datahelp.f2 = this.textBox6.Text.Trim();
                         break;
                     case 3:
                         this.textBox9.Text = "" + 134.32;
-                        datahelp.f3 = this.textBox9.Text.Trim();
+                       
                         a.Label = "134.32Kg";
                         this.textBox9.Enabled = false;
                         this.textBox8.Text = PS.ToString();
                         this.textBox8.ForeColor = Color.Red;
+                        datahelp.f3 = this.textBox8.Text.Trim();
                         break;
                 }
 

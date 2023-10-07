@@ -57,11 +57,11 @@ namespace WindowsFormsApplication1.Exam
             {
                 // 其所选不在范围之内 不得分
                 score = 0;
-                log1.updatelog("误差选择错误，不得分", "lx-wxxz", 0, datahelp.QId);
+                log1.updatelog("离线=误差选择错误，不得分", "lx-wxxz", 0, datahelp.QId);
                
                 if (debug == 1)
                 {
-                    ff.ShowErrorTip("误差选择错误，不得分");
+                    ff.ShowErrorTip("离线=误差选择错误，不得分");
                 }
             }
             else
@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1.Exam
                     ff.ShowSuccessTip("选择正确，得分" + score);
                 }
              
-                log1.updatelog("误差选择正确得分", "lx-wxxz", score, datahelp.QId);
+                log1.updatelog("离线=误差选择正确得分", "lx-wxxz", score, datahelp.QId);
                 int i = g.updateGrade(score, "wxxz", datahelp.QId.Trim());
             }
           

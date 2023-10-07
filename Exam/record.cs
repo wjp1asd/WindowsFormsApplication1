@@ -41,18 +41,19 @@ namespace WindowsFormsApplication1.Exam
         float gctj = 0;
         float yldj = 0;
         float dycyl, decyl, dscyl, mfsyyl = 0;
-        float jyjg1 = 0;
+        float jyjg,jyjg1 = 0;
         //  Grade g = new Grade();
         private void InitScore()
         {
-            yqzdyl = sc.getScore("yqzdyl");
-            gctj = sc.getScore("gctj");
-            yldj = sc.getScore("yldj");
-            dycyl = sc.getScore("dycyl");
-            decyl = sc.getScore("decyl");
-            dscyl = sc.getScore("dscyl");
-            mfsyyl = sc.getScore("mfsyyl");
-            jyjg1 = sc.getScore("jyjg1");
+            yqzdyl = sc.getScore("lx-yqzdyl");
+            gctj = sc.getScore("lx-gctj");
+            yldj = sc.getScore("lx-yldjfw");
+            dycyl = sc.getScore("lx-dyiyl");
+            decyl = sc.getScore("lx-deryl");
+            dscyl = sc.getScore("lx-dsanyl");
+            mfsyyl = sc.getScore("lx-mfyl");
+            jyjg = sc.getScore("lx-jielun");
+            jyjg1 = sc.getScore("zx-jielun");
         //  this.label11.Text = "编号：" + datahelp.QId;
             g.updateGrade(0, "yqzdyl", datahelp.QId);
             g.updateGrade(0, "gctj", datahelp.QId);
@@ -61,7 +62,7 @@ namespace WindowsFormsApplication1.Exam
             g.updateGrade(0, "dscyl", datahelp.QId);
             g.updateGrade(0, "mfsyyl", datahelp.QId);
             g.updateGrade(0, "jyjg1", datahelp.QId);
-
+            g.updateGrade(0, "jyjg", datahelp.QId);
 
         }
 
@@ -165,11 +166,23 @@ namespace WindowsFormsApplication1.Exam
         {
             if (this.result.Checked == true)
             {
-                g.updateGrade(jyjg1, "jyjg1", datahelp.QId);
-                g.updateGrade(jyjg1, "zx-jielun", datahelp.QId);
-                string x = "zx-jielun";
-                g.updateGrade(sc.getScore(x), x, datahelp.QId);
-                Log1.updatelog("在线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
+             
+                if (tper == "离线")
+                {
+                    g.updateGrade(jyjg, "lx-jielun", datahelp.QId);
+                    string x = "lx-jielun";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("离线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
+
+                }
+                if (tper == "在线")
+                {
+                    g.updateGrade(jyjg1, "zx-jielun", datahelp.QId);
+                    string x = "zx-jielun";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
+                }
+              
             }
 
         }
@@ -283,16 +296,16 @@ namespace WindowsFormsApplication1.Exam
                 double f2 = double.Parse(this.yi2.Text.Trim());
                 double f3 = double.Parse(this.yi3.Text.Trim());
                 double mf = double.Parse(this.mf.Text.Trim());
-                // MessageBox.Show(f1 + "" + f2 + "" + f3 + "" + mf + "a" + ap.f1 + "a" + ap.f2 + "a" + ap.f3 + "a" + ap.f0 * 0.9);
+                 MessageBox.Show(f1 + "-" + f2 + "-" + f3 + "-" + mf + "a" + ap.f1 + "a" + ap.f2 + "a" + ap.f3 + "a" + ap.f0 * 0.9);
                 if (f1 == ap.f1)
                 {
                     g.updateGrade(dycyl, "dycyl", datahelp.QId);
                 }
-                if (f2 == ap.f1)
+                if (f2 == ap.f2)
                 {
                     g.updateGrade(decyl, "decyl", datahelp.QId);
                 }
-                if (f3 == ap.f1)
+                if (f3 == ap.f3)
                 {
                     g.updateGrade(dscyl, "dscyl", datahelp.QId);
                 }
@@ -317,7 +330,7 @@ namespace WindowsFormsApplication1.Exam
 
                 }
              
-                if (edyl.Text.Trim() ==t.Zxyl.Trim())
+                if (edyl.Text.Trim() ==t.Zxyl.Trim()|| edyl.Text.Trim()=="1.0")
                 {
                  
                     string x = "zx-zdyl";
@@ -334,12 +347,12 @@ namespace WindowsFormsApplication1.Exam
                 {
                     string x = "zx-gczj";
                     g.updateGrade(sc.getScore(x), x, datahelp.QId);
-                    Log1.updatelog("在线=填写记录-公称直径得分", x, sc.getScore(x), datahelp.QId);
+                    Log1.updatelog("在线=填写记录-公称通径得分", x, sc.getScore(x), datahelp.QId);
                 }
                 else {
                     string x = "zx-gczj";
                     g.updateGrade(0, x, datahelp.QId);
-                    Log1.updatelog("在线=填写记录-公称直径错误不得分", x, 0, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-公称通径错误不得分", x, 0, datahelp.QId);
 
                            }
 
@@ -385,7 +398,7 @@ namespace WindowsFormsApplication1.Exam
                 }
 
                 if (
-                    int.Parse(y1.Text.Trim())==1 &&double.Parse(y2.Text.Trim())==1.3
+                    y1.Text.Trim()=="1.0"&&y2.Text.Trim()=="1.3"
                     )
                 {
                     string x = "zx-yldjfw";
