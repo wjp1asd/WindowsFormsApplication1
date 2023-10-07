@@ -30,8 +30,10 @@ namespace WindowsFormsApplication1.Exam
             Initc();
             this.label2.Text = type + this.label2.Text;
             this.printDocument1.OriginAtMargins = true;//启用页边距
-                                                       // 初始化成绩
-            InitScore();
+            if (type== "离线") {
+                InitScore();
+            }                                          // 初始化成绩
+            
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
         }
@@ -65,7 +67,28 @@ namespace WindowsFormsApplication1.Exam
            // g.updateGrade(0, "jyjg", datahelp.QId);
 
         }
+        private void InitScore1()
+        {
+            yqzdyl = sc.getScore("lx-yqzdyl");
+            gctj = sc.getScore("lx-gctj");
+            yldj = sc.getScore("lx-yldjfw");
+            dycyl = sc.getScore("lx-dyiyl");
+            decyl = sc.getScore("lx-deryl");
+            dscyl = sc.getScore("lx-dsanyl");
+            mfsyyl = sc.getScore("lx-mfyl");
+            jyjg = sc.getScore("lx-jielun");
+            jyjg1 = sc.getScore("zx-jielun");
+            //  this.label11.Text = "编号：" + datahelp.QId;
+            g.updateGrade(0, "lx-yqzdyl", datahelp.QId);
+            g.updateGrade(0, "lx-gctj", datahelp.QId);
+            g.updateGrade(0, "lx-dycyl", datahelp.QId);
+            g.updateGrade(0, "lx-decyl", datahelp.QId);
+            g.updateGrade(0, "lx-dscyl", datahelp.QId);
+            g.updateGrade(0, "lx-mfsyyl", datahelp.QId);
+            g.updateGrade(0, "lx-jielun", datahelp.QId);
+            // g.updateGrade(0, "jyjg", datahelp.QId);
 
+        }
 
         public void Initc()
         {
@@ -209,7 +232,7 @@ namespace WindowsFormsApplication1.Exam
             }
             if (tper == "离线")
             {
-                if (g.getGrade("yqzdyl", datahelp.QId) > 100)
+                if (g.getGrade("lx-yqzdyl", datahelp.QId) > 100)
                 {
 
                     ff.ShowErrorDialog("重复考试");
@@ -232,7 +255,7 @@ namespace WindowsFormsApplication1.Exam
 
                 }
 
-                g.updateGrade(0, "yqzdyl", datahelp.QId);
+                g.updateGrade(0, "lx-yqzdyl", datahelp.QId);
 
 
             }
@@ -292,28 +315,110 @@ namespace WindowsFormsApplication1.Exam
         {
             if (tper == "离线")
             {
-                double f1 = double.Parse(this.yi1.Text.Trim());
-                double f2 = double.Parse(this.yi2.Text.Trim());
-                double f3 = double.Parse(this.yi3.Text.Trim());
-                double mf = double.Parse(this.mf.Text.Trim());
-                 MessageBox.Show(f1 + "-" + f2 + "-" + f3 + "-" + mf + "a" + ap.f1 + "a" + ap.f2 + "a" + ap.f3 + "a" + ap.f0 * 0.9);
-                if (f1 == ap.f1)
+                string f1 =this.yi1.Text.Trim();
+                string f2 = this.yi2.Text.Trim();
+                string f3 =this.yi3.Text.Trim();
+                string mf = this.mf.Text.Trim();
+                if (debug == 1)
                 {
-                    g.updateGrade(dycyl, "dycyl", datahelp.QId);
+                    MessageBox.Show(edyl.Text.Trim() + "==" + t.Lxyl);
+                    MessageBox.Show(zj.Text.Trim() + "==" + "50");
+
+                    MessageBox.Show(ap.f1+ "==" +f1);
+                    MessageBox.Show(ap.f2 + "==" +f2);
+                    MessageBox.Show(ap.f3 + "==" + f3);
+                    MessageBox.Show (ap.f0 * 0.9 + "==" +mf);
+                    MessageBox.Show(y1.Text.Trim() + "==" + "1");
+                    MessageBox.Show(y2.Text.Trim() + "==" + "1.3");
+                  //  MessageBox.Show(f1 + "=" + ap.f1+ f2 + "=" + ap.f2+ f3 + "="+ap.f3 + mf + "="+ ap.f0 * 0.9);
                 }
-                if (f2 == ap.f2)
+             
+
+
+                if (f1 == ap.f1.ToString())
                 {
-                    g.updateGrade(decyl, "decyl", datahelp.QId);
+                    g.updateGrade(dycyl, "lx-dycyl", datahelp.QId);
+                    Log1.updatelog("离线=填写记录-第一次压力得分", "lx-dycyl", dycyl, datahelp.QId);
                 }
-                if (f3 == ap.f3)
-                {
-                    g.updateGrade(dscyl, "dscyl", datahelp.QId);
+                else {
+                    g.updateGrade(0, "lx-dycyl", datahelp.QId);
+                    Log1.updatelog("离线=填写记录-第一次压力不得分", "lx-dycyl", 0, datahelp.QId);
                 }
-                if (mf == ap.f0 * 0.9)
+                if (f2 == ap.f2.ToString())
                 {
-                    g.updateGrade(mfsyyl, "mfsyyl", datahelp.QId);
+                    g.updateGrade(decyl, "lx-decyl", datahelp.QId);
+                    Log1.updatelog("离线=填写记录-第二次压力得分", "lx-decyl", decyl, datahelp.QId);
+                }
+                else {
+                    g.updateGrade(0, "lx-decyl", datahelp.QId);
+                    Log1.updatelog("离线=填写记录-第二次压力不得分", "lx-decyl", 0, datahelp.QId);
+
+                }
+                if (f3 == ap.f3.ToString())
+                {
+                    g.updateGrade(dscyl, "lx-dscyl", datahelp.QId);
+                    Log1.updatelog("离线=填写记录-第三次压力得分", "lx-dscyl", dscyl, datahelp.QId);
+                }
+                else {
+                    g.updateGrade(0, "lx-dscyl", datahelp.QId);
+                    Log1.updatelog("离线=填写记录-第三次压力得分", "lx-dscyl", 0, datahelp.QId);
+
+                }
+                if (mf ==""+ ap.f0 * 0.9)
+                {
+                    g.updateGrade(mfsyyl, "lx-mfsyyl", datahelp.QId);
+                    Log1.updatelog("离线=填写记录-密封压力得分", "lx-mfyl", mfsyyl, datahelp.QId);
+                }
+                else {
+                    g.updateGrade(0, "lx-mfsyyl", datahelp.QId);
+                    Log1.updatelog("离线=填写记录-密封压力得分", "lx-mfyl",0, datahelp.QId);
+
                 }
 
+
+                if (edyl.Text.Trim() ==t.Lxyl.Trim()|| edyl.Text.Trim()=="1.0")
+                {
+
+                    string x = "lx-yqzdyl";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("离线=填写记录-整定压力得分", x, sc.getScore(x), datahelp.QId);
+                }
+                else
+                {
+
+                    string x = "lx-yqzdyl";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("离线=填写记录-整定压力错误不得分", x, 0, datahelp.QId);
+                }
+
+                if (zj.Text.Trim() == "50")
+                {
+                    string x = "lx-gctj";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("离线=填写记录-公称通径得分", x, sc.getScore(x), datahelp.QId);
+                }
+                else
+                {
+                    string x = "lx-gctj";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("离线=填写记录-公称通径错误不得分", x, 0, datahelp.QId);
+
+                }
+                if (
+                   y1.Text.Trim()=="1.0"&&y2.Text.Trim()=="1.3"
+                   )
+                {
+                    string x = "lx-yldj";
+                    g.updateGrade(yldj, x, datahelp.QId);
+                    Log1.updatelog("离线=填写记录-压力等级范围得分", "lx-yldj",yldj, datahelp.QId);
+                }
+                else
+                {
+                    string x = "lx-yldj";
+                    g.updateGrade(0, x, datahelp.QId);
+                    Log1.updatelog("离线=填写记录-压力等级范围错误不得分", "lx-yldj", 0, datahelp.QId);
+
+                }
             }
             else {
                 // 在线记录 
@@ -322,9 +427,11 @@ namespace WindowsFormsApplication1.Exam
                 {
                     MessageBox.Show(edyl.Text.Trim() + "==" + t.Zxyl);
                     MessageBox.Show(zj.Text.Trim() + "==" + "50");
+
                     MessageBox.Show(datahelp.f1 + "==" + yi1.Text.Trim());
                     MessageBox.Show(datahelp.f2 + "==" + yi2.Text.Trim());
                     MessageBox.Show(datahelp.f3 + "==" + yi3.Text.Trim());
+
                     MessageBox.Show(y1.Text.Trim() + "==" + "1");
                     MessageBox.Show(y2.Text.Trim() + "==" + "1.3");
 

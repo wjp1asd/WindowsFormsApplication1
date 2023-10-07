@@ -81,7 +81,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.Close();
 
-                ff.showloading();
+               // ff.showloading();
                 j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
                 j.Show();
             };

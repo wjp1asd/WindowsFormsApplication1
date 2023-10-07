@@ -100,7 +100,7 @@ namespace WindowsFormsApplication1.Models
             SqlCommand cmd = con.CreateCommand();
 
 
-            string sql = "select " + can + " from Grade where testid like  '%" + qid + "%'";
+            string sql = "select [" + can + "] from Grade where testid like  '%" + qid + "%'";
 
 
             datahelp a = new datahelp();
@@ -175,13 +175,13 @@ namespace WindowsFormsApplication1.Models
                 gbylbqh = float.Parse(reader["gbylbqh"].ToString().Trim());
                 dkxyf = float.Parse(reader["dkxyf"].ToString().Trim());
                 azfm = float.Parse(reader["azfm"].ToString().Trim());
-                mfsyyl = float.Parse(reader["mfsyyl"].ToString().Trim());
-                yldj = float.Parse(reader["yldj"].ToString().Trim());
-                gctj = float.Parse(reader["gctj"].ToString().Trim());
+                mfsyyl = float.Parse(reader["lx-mfsyyl"].ToString().Trim());
+                yldj = float.Parse(reader["lx-yldj"].ToString().Trim());
+                gctj = float.Parse(reader["lx-gctj"].ToString().Trim());
 
-                dycyl = float.Parse(reader["dycyl"].ToString().Trim());
-                decyl = float.Parse(reader["decyl"].ToString().Trim());
-                dscyl = float.Parse(reader["dscyl"].ToString().Trim());
+                dycyl = float.Parse(reader["lx-dycyl"].ToString().Trim());
+                decyl = float.Parse(reader["lx-decyl"].ToString().Trim());
+                dscyl = float.Parse(reader["lx-dscyl"].ToString().Trim());
                 wxxz = float.Parse(reader["wxxz"].ToString().Trim());
                 bycs = float.Parse(reader["bycs"].ToString().Trim());
 
