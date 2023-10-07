@@ -255,7 +255,7 @@ namespace WindowsFormsApplication1.Exam
                 //  dishow("阀帽存在");
 
 
-                if (chuchi == 1)
+                if (chuchi == 1&&step==0)
                 {
                     if (debug == 1)
                     {
@@ -817,7 +817,7 @@ namespace WindowsFormsApplication1.Exam
                 this.button3.Enabled = false;
                 this.button3.Text = "正在校验";
                 this.button1.Enabled = true;
-                this.button1.Text = "未开始";
+                this.button1.Text = "开始";
                 this.step = -1;
                 this.button3.BackColor = System.Drawing.ColorTranslator.FromHtml("green");
                 this.timer1.Start();
@@ -1396,7 +1396,8 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
 
                 // 写法问题
-                if (correct2 == true && ap.f0 > ap.f1 && step <= 1)
+               ff.ShowInfoTip("整定"+ap.f0.ToString()+"初次"+ap.f1.ToString()+"阶段："+step+"电压差"+(a1 - sjdwq)+"-"+famaostate);
+                if (ap.f0 > ap.f1 && step == 1&&famaostate == false)
                 {
                     if (xieyastate == false)
                     {
@@ -1424,7 +1425,7 @@ namespace WindowsFormsApplication1.Exam
 
                 }
 
-                if (correct2 == true && ap.f0 < ap.f1)
+                if (step ==1 && ap.f0 < ap.f1&&famaostate==false)
                 {
                     if (xieyastate == false)
                     {
@@ -1450,6 +1451,7 @@ namespace WindowsFormsApplication1.Exam
                     }
 
                 }
+             
             };
                
             this.Invoke(tongdao);
