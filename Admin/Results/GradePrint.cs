@@ -171,8 +171,8 @@ namespace WindowsFormsApplication1.Admin.Results
                a1.sjlmsj + a1.azfm + a1.bycs + a1.gbylbqh + a1.dkxyf +
                a1.yqzdyl + a1.gctj + a1.yldj + a1.dycyl + a1.decyl + a1.dscyl + a1.mfsyyl + a1.mfsyyl + a1.jyjl +
                a1.azfm1 + a1.mfzjcl + a1.wxxz1 + a1.cxfm1 + a1.jyjg1;
-            MessageBox.Show("总分" + a);
-            a1.updateGrade(a, "path", datahelp.QId);
+            //MessageBox.Show("总分" + a);
+          //  a1.updateGrade(a, "path", datahelp.QId);
             // this.label37.Text += a1.score1 + a1.score2 + a1.score3 + a1.score4 + a1.score5 + a1.score6;
         }
 

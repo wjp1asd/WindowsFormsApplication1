@@ -33,14 +33,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label79 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label75 = new System.Windows.Forms.Label();
@@ -178,8 +177,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.a13 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -239,7 +239,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.Cyan;
-            this.button1.Location = new System.Drawing.Point(0, 56);
+            this.button1.Location = new System.Drawing.Point(-9, 56);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 40);
@@ -253,7 +253,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 20F);
-            this.label1.Location = new System.Drawing.Point(389, 7);
+            this.label1.Location = new System.Drawing.Point(380, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 27);
@@ -293,7 +293,7 @@
             this.groupBox1.Controls.Add(this.flowLayoutPanel3);
             this.groupBox1.Controls.Add(this.flowLayoutPanel2);
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox1.Location = new System.Drawing.Point(-7, 100);
+            this.groupBox1.Location = new System.Drawing.Point(-16, 100);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -301,6 +301,15 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(430, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.TabIndex = 39;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
             // 
             // button9
             // 
@@ -332,17 +341,6 @@
             this.button7.Text = "工艺答题重置";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(327, 56);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(55, 34);
-            this.button6.TabIndex = 38;
-            this.button6.Text = "在线答题重置";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -376,17 +374,6 @@
             this.button3.Text = "零配件重置";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(211, 56);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 34);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "离线答题重置";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label79
             // 
@@ -491,7 +478,7 @@
             this.tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel26.Name = "tableLayoutPanel26";
             this.tableLayoutPanel26.RowCount = 1;
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel26.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel26.TabIndex = 3;
             // 
@@ -514,7 +501,7 @@
             this.label67.Location = new System.Drawing.Point(297, 9);
             this.label67.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(85, 33);
+            this.label67.Size = new System.Drawing.Size(85, 35);
             this.label67.TabIndex = 2;
             this.label67.Text = "误差范围选择";
             this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -538,7 +525,7 @@
             this.label69.Location = new System.Drawing.Point(9, 9);
             this.label69.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(85, 33);
+            this.label69.Size = new System.Drawing.Size(85, 35);
             this.label69.TabIndex = 0;
             this.label69.Text = "在线校验前";
             this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -562,7 +549,7 @@
             this.label66.Location = new System.Drawing.Point(201, 9);
             this.label66.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(85, 33);
+            this.label66.Size = new System.Drawing.Size(85, 35);
             this.label66.TabIndex = 4;
             this.label66.Text = "密封直径测量";
             this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -587,7 +574,7 @@
             this.tableLayoutPanel27.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel27.Name = "tableLayoutPanel27";
             this.tableLayoutPanel27.RowCount = 1;
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel27.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel27.TabIndex = 4;
             // 
@@ -610,7 +597,7 @@
             this.label71.Location = new System.Drawing.Point(297, 9);
             this.label71.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(85, 33);
+            this.label71.Size = new System.Drawing.Size(85, 35);
             this.label71.TabIndex = 2;
             this.label71.Text = "误差范围选择";
             this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -634,7 +621,7 @@
             this.label73.Location = new System.Drawing.Point(9, 9);
             this.label73.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(85, 33);
+            this.label73.Size = new System.Drawing.Size(85, 35);
             this.label73.TabIndex = 0;
             this.label73.Text = "在线得分  ";
             this.label73.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -658,7 +645,7 @@
             this.label77.Location = new System.Drawing.Point(201, 9);
             this.label77.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(85, 33);
+            this.label77.Size = new System.Drawing.Size(85, 35);
             this.label77.TabIndex = 4;
             this.label77.Text = "密封直径测量";
             this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -694,7 +681,7 @@
             this.tableLayoutPanel22.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel22.Name = "tableLayoutPanel22";
             this.tableLayoutPanel22.RowCount = 1;
-            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel22.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel22.TabIndex = 3;
             // 
@@ -776,7 +763,7 @@
             this.tableLayoutPanel23.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
             this.tableLayoutPanel23.RowCount = 1;
-            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel23.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel23.TabIndex = 4;
             // 
@@ -799,7 +786,7 @@
             this.label51.Location = new System.Drawing.Point(124, 9);
             this.label51.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(104, 33);
+            this.label51.Size = new System.Drawing.Size(104, 35);
             this.label51.TabIndex = 4;
             this.label51.Text = "要求整定压力";
             this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -811,7 +798,7 @@
             this.label52.Location = new System.Drawing.Point(354, 9);
             this.label52.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(104, 33);
+            this.label52.Size = new System.Drawing.Size(104, 35);
             this.label52.TabIndex = 2;
             this.label52.Text = "压力等级范围";
             this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -858,7 +845,7 @@
             this.tableLayoutPanel24.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel24.Name = "tableLayoutPanel24";
             this.tableLayoutPanel24.RowCount = 1;
-            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel24.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel24.TabIndex = 5;
             // 
@@ -940,7 +927,7 @@
             this.tableLayoutPanel25.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel25.Name = "tableLayoutPanel25";
             this.tableLayoutPanel25.RowCount = 1;
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel25.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel25.TabIndex = 6;
             // 
@@ -975,7 +962,7 @@
             this.label62.Location = new System.Drawing.Point(354, 9);
             this.label62.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(104, 33);
+            this.label62.Size = new System.Drawing.Size(104, 35);
             this.label62.TabIndex = 2;
             this.label62.Text = "密封试验压力";
             this.label62.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1032,7 +1019,7 @@
             this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel20.Name = "tableLayoutPanel20";
             this.tableLayoutPanel20.RowCount = 1;
-            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel20.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel20.TabIndex = 3;
             // 
@@ -1099,7 +1086,7 @@
             this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel21.Name = "tableLayoutPanel21";
             this.tableLayoutPanel21.RowCount = 1;
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel21.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel21.TabIndex = 4;
             // 
@@ -1110,7 +1097,7 @@
             this.label44.Location = new System.Drawing.Point(239, 9);
             this.label44.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(104, 33);
+            this.label44.Size = new System.Drawing.Size(104, 35);
             this.label44.TabIndex = 5;
             this.label44.Text = "误差范围选择";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1167,7 +1154,7 @@
             this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 1;
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel18.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel18.TabIndex = 3;
             // 
@@ -1236,8 +1223,8 @@
             this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 1;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel19.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel19.TabIndex = 4;
             // 
@@ -1248,7 +1235,7 @@
             this.label21.Location = new System.Drawing.Point(239, 9);
             this.label21.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(104, 33);
+            this.label21.Size = new System.Drawing.Size(104, 35);
             this.label21.TabIndex = 5;
             this.label21.Text = "误差范围选择";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1272,7 +1259,7 @@
             this.label25.Location = new System.Drawing.Point(354, 9);
             this.label25.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(104, 33);
+            this.label25.Size = new System.Drawing.Size(104, 35);
             this.label25.TabIndex = 2;
             this.label25.Text = "误差范围选择";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1359,7 +1346,7 @@
             this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 1;
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel16.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel16.TabIndex = 3;
             // 
@@ -1442,7 +1429,7 @@
             this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 1;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel17.Size = new System.Drawing.Size(580, 32);
             this.tableLayoutPanel17.TabIndex = 4;
             // 
@@ -1453,7 +1440,7 @@
             this.label9.Location = new System.Drawing.Point(239, 9);
             this.label9.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 33);
+            this.label9.Size = new System.Drawing.Size(104, 35);
             this.label9.TabIndex = 5;
             this.label9.Text = "误差范围选择";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1477,7 +1464,7 @@
             this.label34.Location = new System.Drawing.Point(354, 9);
             this.label34.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(104, 33);
+            this.label34.Size = new System.Drawing.Size(104, 35);
             this.label34.TabIndex = 2;
             this.label34.Text = "误差范围选择";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1489,7 +1476,7 @@
             this.label35.Location = new System.Drawing.Point(469, 9);
             this.label35.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(104, 33);
+            this.label35.Size = new System.Drawing.Size(104, 35);
             this.label35.TabIndex = 3;
             this.label35.Text = "整定压力调整";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2217,11 +2204,33 @@
             this.label6.Text = "考试编号";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(327, 56);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(55, 34);
+            this.button6.TabIndex = 38;
+            this.button6.Text = "在线答题重置";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(211, 56);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 34);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "离线答题重置";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button10
             // 
             this.button10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button10.BackColor = System.Drawing.Color.Cyan;
-            this.button10.Location = new System.Drawing.Point(96, 56);
+            this.button10.Location = new System.Drawing.Point(87, 56);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(83, 40);
@@ -2230,22 +2239,13 @@
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(430, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 39;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
-            // 
             // GradePrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(992, 630);
+            this.ClientSize = new System.Drawing.Size(1009, 630);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
