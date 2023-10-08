@@ -216,6 +216,8 @@ namespace WindowsFormsApplication1.Models
                 // MessageBox.Show(lxpic1);gbylbqh弃用
                 gbylbqh = float.Parse(reader["gbylbqh"].ToString().Trim());
                 updateGrade(lxtotal+zxtotal+mftotal, "path", tid);
+               // total = float.Parse(reader["path"].ToString().Trim());
+                //  MessageBox.Show(lxtotal+""+zxtotal+""+mftotal);
             }
 
             con.Close();

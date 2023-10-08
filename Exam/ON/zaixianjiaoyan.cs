@@ -188,7 +188,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
-            float a1 = g.getGrade("jyjg1", datahelp.QId);
+            float a1 = g.getGrade("zx-jielun", datahelp.QId);
             if (a1 > -1 && debug != 1)
             {
 

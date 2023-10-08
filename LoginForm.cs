@@ -329,7 +329,7 @@ namespace WindowsFormsApplication1
         {
             //jiaoyancanshu  jy = new jiaoyancanshu();    
             //jy.Show();
-            datahelp.CurrentStep1 = 1;
+            datahelp.CurrentStep1 =2;
             datahelp.CurrentStep = 2;
             OFF off = new OFF(datahelp.QId);
             off.Show();

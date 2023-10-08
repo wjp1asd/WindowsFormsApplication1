@@ -97,9 +97,9 @@ namespace WindowsFormsApplication1.Exam
             g.updateGrade(0, "mfzjcl", datahelp.QId);
           //  g.updateGrade(0, "azfm1", datahelp.QId);
             g.updateGrade(0, "cxfm1", datahelp.QId);
-            Log1.updatelog("在线未拆阀帽得分" +"0", "zx-cxfm", 0, datahelp.QId);
+            Log1.updatelog("在线=未拆阀帽得分" +"0", "zx-cxfm", 0, datahelp.QId);
             g.updateGrade(0, "wxxz1", datahelp.QId);
-            g.updateGrade(0, "jyjg1", datahelp.QId);
+            g.updateGrade(0, "zx-jielun", datahelp.QId);
             g.updateGrade(0, "azfm1", datahelp.QId);
 
         }
@@ -817,9 +817,9 @@ namespace WindowsFormsApplication1.Exam
                    
                       if (debug == 1)
                         {
-                            ff.ShowErrorTip("在线阀帽拆卸得分"+cxfm1);
+                            ff.ShowErrorTip("在线=阀帽拆卸得分"+cxfm1);
                         }
-                        Log1.updatelog("在线阀帽拆卸得分" + cxfm1, "zx-cxfm", cxfm1, datahelp.QId);
+                        Log1.updatelog("在线=阀帽拆卸得分" + cxfm1, "zx-cxfm", cxfm1, datahelp.QId);
                         g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
 
                     if (zxpic != 1) {
@@ -1336,9 +1336,9 @@ namespace WindowsFormsApplication1.Exam
 
                     if (debug == 1)
                     {
-                        ff.ShowErrorTip("在线阀帽归位得分" + azfm1);
+                        ff.ShowErrorTip("在线=阀帽归位得分" + azfm1);
                     }
-                    Log1.updatelog("在线阀帽归位得分" + azfm1, "zx-azfm", azfm1, datahelp.QId);
+                    Log1.updatelog("在线=阀帽归位得分" + azfm1, "zx-azfm", azfm1, datahelp.QId);
                  //   g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
                     g.updateGrade(azfm1, "azfm1", datahelp.QId);
                     //   ff.ShowSuccessTip("阀帽归位得分");
@@ -1348,9 +1348,9 @@ namespace WindowsFormsApplication1.Exam
                     str += "阀帽未归位";
                     if (debug == 1)
                     {
-                        ff.ShowErrorTip("在线阀帽未归位不得分");
+                        ff.ShowErrorTip("在线=阀帽未归位不得分");
                     }
-                    Log1.updatelog("在线阀帽未归位不得分", "zx-azfm", 0, datahelp.QId);
+                    Log1.updatelog("在线=阀帽未归位不得分", "zx-azfm", 0, datahelp.QId);
                     //   g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
                     g.updateGrade(0, "azfm1", datahelp.QId);
 
