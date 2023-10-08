@@ -2,10 +2,8 @@
 using System.Configuration;
 using System.Diagnostics;
 using System.Windows.Forms;
-using WindowsFormsApplication1.Exam.MF;
-using WindowsFormsApplication1.Exam;
-using WindowsFormsApplication1.Scan;
 using WindowsFormsApplication1.Models;
+using WindowsFormsApplication1.Scan;
 
 namespace WindowsFormsApplication1
 {
@@ -43,14 +41,14 @@ namespace WindowsFormsApplication1
                     break;
                 case 3:
                     //在线得分
-                //this.label2.Text = "得分:" +(g.wxxz1 + g.azfm1 + g.mfzjcl+g.cxfm1+
-                //        g.zxderyl+g.zxdsanyl+g.zxjielun+g.gctj+g.zxzdyl+g.zxyldjfw+g.zxjielun);
+                    //this.label2.Text = "得分:" +(g.wxxz1 + g.azfm1 + g.mfzjcl+g.cxfm1+
+                    //        g.zxderyl+g.zxdsanyl+g.zxjielun+g.gctj+g.zxzdyl+g.zxyldjfw+g.zxjielun);
 
                     this.label2.Text = "在线得分:" +g.zxtotal;
                     break;
                 case 4:
                     // 密封总得分
-                   // this.label2.Text = "得分:" + (g.score4 + g.score5 + g.score6+g.score8);
+                    // this.label2.Text = "得分:" + (g.score4 + g.score5 + g.score6+g.score8);
                     this.label2.Text = "密封得分:" +g.mftotal;
 
                     break;
@@ -68,7 +66,7 @@ namespace WindowsFormsApplication1
             string x = ConfigurationManager.AppSettings["machine"];
             if (int.Parse(x) < 2)
             {
-             form1 c =new form1();
+                form1 c = new form1();
                 c.Show();
             }
             else
@@ -77,8 +75,8 @@ namespace WindowsFormsApplication1
                 p.Show();
             }
 
-             Application.Restart();
-             Process.GetCurrentProcess()?.Kill();
+            Application.Restart();
+            Process.GetCurrentProcess()?.Kill();
         }
     }
 }

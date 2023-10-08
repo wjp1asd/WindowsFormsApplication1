@@ -1,7 +1,5 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -52,14 +50,14 @@ namespace WindowsFormsApplication1.Models
 
         public string mxpic;
         public string lxpic, lxpic1, zxpic, zxpic1;
-        public float csfm, ylxz, xygb, xygb1, xygb2, xygb3, xygb4, wxxz, zdyltz, sjlmsj, azfm, dkxyf,dkxyf1,dkxyf2,dkxyf3,dkxyf4, gbylbqh, yqzdyl, gctj, yldj, dycyl, decyl, dscyl;
+        public float csfm, ylxz, xygb, xygb1, xygb2, xygb3, xygb4, wxxz, zdyltz, sjlmsj, azfm, dkxyf, dkxyf1, dkxyf2, dkxyf3, dkxyf4, gbylbqh, yqzdyl, gctj, yldj, dycyl, decyl, dscyl;
         private float lxyqzdyl;
         public float mfsyyl, jyjl, mfzjcl, cxfm1, wxxz1, jyjg1, azfm1, bycs, score8;
         private float lxjielun;
 
         //在线填写记录
-        public float zxzdyl,zxgczj,zxyldjfw,zxdyiyl,zxderyl,zxdsanyl,zxjielun;
-    
+        public float zxzdyl, zxgczj, zxyldjfw, zxdyiyl, zxderyl, zxdsanyl, zxjielun;
+
         public int updateGrade(float score, string mode, string tid)
         {
             int i = 0;
@@ -69,7 +67,7 @@ namespace WindowsFormsApplication1.Models
             //MessageBox.Show(sql);
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-          
+
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
@@ -174,7 +172,7 @@ namespace WindowsFormsApplication1.Models
                 //离线25个判分点
                 sjlmsj = float.Parse(reader["sjlmsj"].ToString().Trim());
                 zdyltz = float.Parse(reader["zdyltz"].ToString().Trim());
-               
+
                 xygb = float.Parse(reader["gbxyf"].ToString().Trim());
                 xygb1 = float.Parse(reader["gbxyf1"].ToString().Trim());
                 xygb2 = float.Parse(reader["gbxyf2"].ToString().Trim());
@@ -216,7 +214,7 @@ namespace WindowsFormsApplication1.Models
                 // MessageBox.Show(lxpic1);gbylbqh弃用
                 gbylbqh = float.Parse(reader["gbylbqh"].ToString().Trim());
                 updateGrade(lxtotal+zxtotal+mftotal, "path", tid);
-               // total = float.Parse(reader["path"].ToString().Trim());
+                // total = float.Parse(reader["path"].ToString().Trim());
                 //  MessageBox.Show(lxtotal+""+zxtotal+""+mftotal);
             }
 

@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -81,7 +80,7 @@ namespace WindowsFormsApplication1.Exam
             this.button4.Enabled = false;
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
-           
+
         }
         Grade g = new Grade();
         private void InitScore()
@@ -95,7 +94,7 @@ namespace WindowsFormsApplication1.Exam
             azfm1 = sc.getScore("zx-azfm");
             this.label17.Text = "密封面直径测量得分：" + mfzjcl + "拆卸阀帽得分：" + cxfm1 + "误差选择得分：" + wxxz1 + "校验结果得分：" + jyjg1 + "安装阀帽得分：" + azfm1;
             g.updateGrade(0, "mfzjcl", datahelp.QId);
-          //  g.updateGrade(0, "azfm1", datahelp.QId);
+            //  g.updateGrade(0, "azfm1", datahelp.QId);
             g.updateGrade(0, "cxfm1", datahelp.QId);
             Log1.updatelog("在线=未拆阀帽得分" +"0", "zx-cxfm", 0, datahelp.QId);
             g.updateGrade(0, "wxxz1", datahelp.QId);
@@ -156,12 +155,13 @@ namespace WindowsFormsApplication1.Exam
 
                     if (Math.Abs(mfzj - double.Parse(c.mfzj))<=0.5)
                     {
-                        if (debug == 1) {
+                        if (debug == 1)
+                        {
                             ff.ShowSuccessTip("密封直径得分:" + mfzjcl);
                         }
                         //  ff.ShowSuccessTip("得分:" + mfzjcl);
-                        Log1.updatelog("密封直径得分"+ mfzjcl, "zx-zj",mfzjcl, datahelp.QId);
-                       
+                        Log1.updatelog("密封直径得分"+ mfzjcl, "zx-zj", mfzjcl, datahelp.QId);
+
                         g.updateGrade(mfzjcl, "mfzjcl", datahelp.QId);
 
                     }
@@ -195,9 +195,9 @@ namespace WindowsFormsApplication1.Exam
             string loc1 = ConfigurationManager.AppSettings["loc"];
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
 
-             
+
             string loc = System.Windows.Forms.Application.StartupPath + "\\Images\\";
-          //  MessageBox.Show("拍照成功" + loc + url + t.Qrcode.Trim() + "-shot.png");
+            //  MessageBox.Show("拍照成功" + loc + url + t.Qrcode.Trim() + "-shot.png");
             //   CvInvoke.Imwrite(loc + url + "shot.png", mat);
             CvInvoke.Imwrite(loc + url + t.Ksname.Trim() + "-shot.png", mat);
             Bitmap bt = new Bitmap(loc + url + t.Ksname + "-shot.png");
@@ -215,7 +215,7 @@ namespace WindowsFormsApplication1.Exam
                 ff.ShowErrorNotifier("图片保存异常");
                 throw;
             }
-           
+
 
 
         }
@@ -244,10 +244,10 @@ namespace WindowsFormsApplication1.Exam
             {
                 ff.ShowErrorNotifier("图片保存异常");
                 throw;
-                  
+
 
             }
-           
+
             //MessageBox.Show("拍照成功");
         }
         protected override CreateParams CreateParams //防止界面闪烁
@@ -273,7 +273,7 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
 
-          
+
             t = t.getRecord(datahelp.QId);
             showMsg();
             topheader.CopyTo(td1, 0);
@@ -285,7 +285,7 @@ namespace WindowsFormsApplication1.Exam
             ff.closePorts();
             this.plcinit();
             MessageBox.Show("安装检测设备后，点击链接设备");
-           
+
             this.timer1.Start();
             v = new Emgu.CV.VideoCapture(0);
             System.Windows.Forms.Application.Idle += Application_Idle;
@@ -298,7 +298,7 @@ namespace WindowsFormsApplication1.Exam
                 this.label7.Visible = true;
                 debug = 1;
             }
-           
+
         }
         int debug = 0;
         DateTime currentTime = DateTime.Now;
@@ -324,7 +324,7 @@ namespace WindowsFormsApplication1.Exam
                 catch (Exception)
                 {
 
-                    
+
                 }
 
             }
@@ -368,7 +368,7 @@ namespace WindowsFormsApplication1.Exam
             chart1.Series[0].Points.Clear();
             chart1.Series[0].Points.AddXY(0, 0);
             this.chart1.BackColor = Color.Azure;             //图表背景色  
-           //this.chart1.Titles.Add("安全阀校验");                //图表标题
+                                                             //this.chart1.Titles.Add("安全阀校验");                //图表标题
 
             //新建连接 
             this.chart1.ChartAreas[0].AxisX.Maximum = 400;
@@ -405,7 +405,7 @@ namespace WindowsFormsApplication1.Exam
 
         public void plcinit()
         {
-            
+
             datahelp datahelp = new datahelp();
             datahelp.Initc();
 
@@ -466,13 +466,14 @@ namespace WindowsFormsApplication1.Exam
                 else if (datahelp.plcsp1.Trim() == "2") { serialPort2.StopBits = StopBits.Two; }
                 /*设置奇偶校验*/
                 serialPort2.Parity = Parity.None;
-               
+
                 try
                 {
-                    if (!serialPort2.IsOpen) {
+                    if (!serialPort2.IsOpen)
+                    {
                         serialPort2.Open();//打开串口
                     }
-                       
+
                     button3.Text = "连接系统";//按钮显示关闭串口
                                           // comboBox1.Enabled = true;
 
@@ -484,7 +485,7 @@ namespace WindowsFormsApplication1.Exam
                 catch (Exception err)
                 {
                     MessageBox.Show("打开失败" + err.ToString(), "提示!");//对话框显示打开失败
-                   
+
                 }
 
 
@@ -814,19 +815,20 @@ namespace WindowsFormsApplication1.Exam
                 //开始拍照
                 if (zxpic != 1)
                 {
-                   
-                      if (debug == 1)
-                        {
-                            ff.ShowErrorTip("在线=阀帽拆卸得分"+cxfm1);
-                        }
-                        Log1.updatelog("在线=阀帽拆卸得分" + cxfm1, "zx-cxfm", cxfm1, datahelp.QId);
-                        g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
 
-                    if (zxpic != 1) {
+                    if (debug == 1)
+                    {
+                        ff.ShowErrorTip("在线=阀帽拆卸得分"+cxfm1);
+                    }
+                    Log1.updatelog("在线=阀帽拆卸得分" + cxfm1, "zx-cxfm", cxfm1, datahelp.QId);
+                    g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
+
+                    if (zxpic != 1)
+                    {
                         Thread a = new Thread(shot);
                         a.Start();
                     }
-                 
+
                 }
                 //   chaixiefamao();
             }
@@ -1008,9 +1010,10 @@ namespace WindowsFormsApplication1.Exam
                     break;
             }
 
-            if (show == false && b2 > 0) {
-            //未点校验0
-            
+            if (show == false && b2 > 0)
+            {
+                //未点校验0
+
             }
 
 
@@ -1060,12 +1063,13 @@ namespace WindowsFormsApplication1.Exam
                     }
                     chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset(); // 重置缩放
                     chart1.ChartAreas[0].AxisX.ScaleView.Zoom(cisu - 50, cisu + 50);
-                    Action x = () => {
+                    Action x = () =>
+                    {
 
-                        
-                        showpoint(); 
-                    
-                    
+
+                        showpoint();
+
+
                     };
                     this.Invoke(x);
                     // showpoint();
@@ -1141,7 +1145,7 @@ namespace WindowsFormsApplication1.Exam
                 a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
-               // a.Label = Math.Round(wjltj).ToString() + "Kg";
+                // a.Label = Math.Round(wjltj).ToString() + "Kg";
                 a.LabelForeColor = System.Drawing.Color.Red;
                 point++;
                 double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
@@ -1150,7 +1154,7 @@ namespace WindowsFormsApplication1.Exam
                 {
                     case 1:
                         this.textBox4.Text = "" + Math.Round(a.YValues[0]);
-                      
+
                         this.textBox4.Enabled = false;
                         this.textBox5.Text = PS.ToString();
                         this.textBox5.ForeColor = Color.Red;
@@ -1158,7 +1162,7 @@ namespace WindowsFormsApplication1.Exam
                         break;
                     case 2:
                         this.textBox7.Text = "" + Math.Round(a.YValues[0]);
-                       
+
                         this.textBox7.Enabled = false;
                         this.textBox6.Text = PS.ToString();
                         this.textBox6.ForeColor = Color.Red;
@@ -1166,7 +1170,7 @@ namespace WindowsFormsApplication1.Exam
                         break;
                     case 3:
                         this.textBox9.Text = "" + Math.Round(a.YValues[0]);
-                      
+
                         this.textBox9.Enabled = false;
                         this.textBox8.Text = PS.ToString();
                         this.textBox8.ForeColor = Color.Red;
@@ -1186,7 +1190,7 @@ namespace WindowsFormsApplication1.Exam
                 a.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
                 a.MarkerSize = 10;
                 a.MarkerColor = System.Drawing.Color.Red;
-              // a.Label = Math.Round(wjltj).ToString() + "Kg";
+                // a.Label = Math.Round(wjltj).ToString() + "Kg";
                 a.LabelForeColor = System.Drawing.Color.Red;
                 point++;
                 double PS = Math.Round(a.YValues[0] * 10 / (mfzj / 2) / (mfzj / 2) / 3.2, 2, MidpointRounding.AwayFromZero);
@@ -1194,7 +1198,7 @@ namespace WindowsFormsApplication1.Exam
                 {
                     case 1:
                         this.textBox4.Text = "" + 134.55;
-                      
+
                         a.Label = "134.55Kg";
                         this.textBox4.Enabled = false;
                         this.textBox5.Text = PS.ToString();
@@ -1203,7 +1207,7 @@ namespace WindowsFormsApplication1.Exam
                         break;
                     case 2:
                         this.textBox7.Text = "" + 134.48;
-                      
+
                         a.Label = "134.48Kg";
                         this.textBox7.Enabled = false;
                         this.textBox6.Text = PS.ToString();
@@ -1212,7 +1216,7 @@ namespace WindowsFormsApplication1.Exam
                         break;
                     case 3:
                         this.textBox9.Text = "" + 134.32;
-                       
+
                         a.Label = "134.32Kg";
                         this.textBox9.Enabled = false;
                         this.textBox8.Text = PS.ToString();
@@ -1339,7 +1343,7 @@ namespace WindowsFormsApplication1.Exam
                         ff.ShowErrorTip("在线=阀帽归位得分" + azfm1);
                     }
                     Log1.updatelog("在线=阀帽归位得分" + azfm1, "zx-azfm", azfm1, datahelp.QId);
-                 //   g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
+                    //   g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
                     g.updateGrade(azfm1, "azfm1", datahelp.QId);
                     //   ff.ShowSuccessTip("阀帽归位得分");
                 }
@@ -1354,7 +1358,7 @@ namespace WindowsFormsApplication1.Exam
                     //   g.updateGrade(cxfm1, "cxfm1", datahelp.QId);
                     g.updateGrade(0, "azfm1", datahelp.QId);
 
-                   
+
 
                 }
                 if (shy == true)
@@ -1540,10 +1544,11 @@ namespace WindowsFormsApplication1.Exam
             if (yali < a || yali > b)
             {
                 // 其所选不在范围之内 不得分
-                if (debug == 1) {
+                if (debug == 1)
+                {
                     ff.ShowErrorTip("误差选择错误，不得分");
                 }
-                Log1.updatelog("误差选择错误，不得分", "zx-wxxz",0,datahelp.QId);
+                Log1.updatelog("误差选择错误，不得分", "zx-wxxz", 0, datahelp.QId);
                 //  ff.ShowErrorTip("误差选择错误，不得分");
                 //this.comboBox1.Enabled = false;
 

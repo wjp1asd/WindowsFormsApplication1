@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             ff.dataview(this.dataGridView1);
-            
+
             string sql = "select id,name,bumen,loginid,password,status,phone,confirm from " + TableName + " where  power >1";
             this.panel1.Hide();
             InitTable(sql);

@@ -1420,11 +1420,11 @@ namespace WindowsFormsApplication1.Exam
                 richTextBox3.AppendText(v + "当前电压差：" + (sjdwq - a1));
                 richTextBox3.AppendText(v + "当前电位器码值（电压值）：" + a1);
                 richTextBox3.AppendText(v + "上次电位器码值码值：" + sjdwq);
-               
+
                 // 写法问题
                 if (step==1)
                 {
-                   // ff.ShowInfoTip("整定"+ap.f0.ToString()+"初次"+ap.f1.ToString()+"阶段："+step+"电压差"+(a1 - sjdwq)+"-"+famaostate);
+                    // ff.ShowInfoTip("整定"+ap.f0.ToString()+"初次"+ap.f1.ToString()+"阶段："+step+"电压差"+(a1 - sjdwq)+"-"+famaostate);
                     if (ap.f0 > ap.f1)
                     {
                         //if (xieyastate == false)
@@ -1437,7 +1437,7 @@ namespace WindowsFormsApplication1.Exam
                         if (debug == 1)
                         {
                             ff.ShowInfoTip("当前"+a1+"上次"+sjdwq+"电压差"+(a1 - sjdwq));
-                          //  ff.ShowSuccessTip("离线=第一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
+                            //  ff.ShowSuccessTip("离线=第一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
 
                         }
                         if ((a1 - sjdwq) > 40)
@@ -1473,7 +1473,7 @@ namespace WindowsFormsApplication1.Exam
                         // 初次压力 大于 整定压力
                         if (debug == 1)
                         {
-                          //  ff.ShowSuccessTip("离线=一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
+                            //  ff.ShowSuccessTip("离线=一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 小于 初次压力 当前应该放松 得分");
                             ff.ShowInfoTip("当前"+a1+"上次"+sjdwq+"电压差"+(a1 - sjdwq));
                         }
                         if ((a1 - sjdwq) <-40)
@@ -1488,22 +1488,23 @@ namespace WindowsFormsApplication1.Exam
                         }
                         else
                         {
-                            if (debug==1) {
+                            if (debug==1)
+                            {
                                 ff.ShowInfoTip("触发4"+(a1-sjdwq)+"离线=第一次测试：整定压力 小于 初次压力 当前不能锁紧,锁紧螺母不得分");
                             }
-                          
-                                      g.updateGrade(0, "sjlmsj", datahelp.QId);
+
+                            g.updateGrade(0, "sjlmsj", datahelp.QId);
                             log1.updatelog("离线=第一次测试：整定压力 小于 初次压力 当前不能锁紧,锁紧螺母不得分", "lx-sjlm-1", 0, datahelp.QId);
                         }
 
                     }
 
                 }
-               
-             
-             
+
+
+
             };
-               
+
             this.Invoke(tongdao);
             sjdwq=a1;
         }
@@ -1586,7 +1587,7 @@ namespace WindowsFormsApplication1.Exam
 
                     if (step == 0)
                     {
-              
+
                         if (ta > 0)
                         {
                             // 方向判分
@@ -1623,7 +1624,7 @@ namespace WindowsFormsApplication1.Exam
                         }
 
 
-                       // g.updateGrade(bycs, "bycs", datahelp.QId);
+                        // g.updateGrade(bycs, "bycs", datahelp.QId);
 
 
 

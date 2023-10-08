@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static OpenCvSharp.ML.DTrees;
-
-namespace WindowsFormsApplication1.Models
+﻿namespace WindowsFormsApplication1.Models
 {
     public class batch1
     {
@@ -25,6 +18,6 @@ namespace WindowsFormsApplication1.Models
         public string sfz;
         public string zkzh;
         public string zyxm;
-      
+
     }
 }

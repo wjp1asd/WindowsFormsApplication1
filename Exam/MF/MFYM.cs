@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
                 awt.FormSizeChanged();
             }
         }
-      
+
         Grade g1 = new Grade();
         DateTime currentTime = DateTime.Now;
         Graphics back;
@@ -78,7 +78,7 @@ namespace WindowsFormsApplication1
         {
             score = sc.getScore("mfym");
 
-         //   this.label1.Text = "研磨得分：" + score;
+            //   this.label1.Text = "研磨得分：" + score;
         }
         private void initBound()
         {
@@ -212,8 +212,8 @@ namespace WindowsFormsApplication1
             //结束鼠标速度的限制
             SystemParametersInfo(0X0071, 0, 7, 0);
 
-            g.updateGrade(score,"score8",datahelp.QId);
-            Log log =new Log();
+            g.updateGrade(score, "score8", datahelp.QId);
+            Log log = new Log();
             log.updatelog("密封面=研磨实操得分" + score, "mf-sc", score, datahelp.QId);
             try
             {
@@ -230,10 +230,10 @@ namespace WindowsFormsApplication1
             }
             catch (Exception)
             {
-              ff.ShowErrorNotifier("保存图片异常");
-               
+                ff.ShowErrorNotifier("保存图片异常");
+
             }
-         
+
 
         }
         //MessageBox.Show(
@@ -251,9 +251,9 @@ namespace WindowsFormsApplication1
             catch (Exception)
             {
 
-              //  throw;
+                //  throw;
             }
-            Thread.Sleep(2000);  
+            Thread.Sleep(2000);
             datahelp.CurrentStep = 5;
             this.Close();
             MF1 mF = new MF1();

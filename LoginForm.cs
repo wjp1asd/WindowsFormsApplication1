@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
             //   ff.fullsreen(this.button5, this);
             //  ff.fullsreen(this.button6, this);
 
-         //   ff.fullsreen(this.label2, this);
+            //   ff.fullsreen(this.label2, this);
         }
         private void InitUI()
         {
@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
 
 
             string x = ConfigurationManager.AppSettings["machine"];
-        //    this.label2.Text = a.link.Trim();
+            //    this.label2.Text = a.link.Trim();
             // this.label2.Left += 100;
             if (x == "1")
             {
@@ -370,8 +370,8 @@ namespace WindowsFormsApplication1
             datahelp.CurrentStep1 =2;                     //zaixianjiaoyan.Show();
             zaixianjiaoyan on = new zaixianjiaoyan();
             on.Show();
-           // ON on = new ON(datahelp.QId);
-           // on.Show();
+            // ON on = new ON(datahelp.QId);
+            // on.Show();
             // this.Hide();
         }
 
@@ -399,7 +399,7 @@ namespace WindowsFormsApplication1
         private void button7_Click(object sender, EventArgs e)
         {
             Choose c = new Choose("321084199510025535");
-             
+
             c.Show();
         }
     }

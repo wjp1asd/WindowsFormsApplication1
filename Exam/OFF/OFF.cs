@@ -1,7 +1,6 @@
 ﻿using AutoWindowsSize;
 using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -38,7 +37,7 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-           // this.change();
+            // this.change();
 
 
         }

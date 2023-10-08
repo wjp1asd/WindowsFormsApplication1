@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1.Admin.Questions.mifengmianyanmo
             ff.button(this.button1);
             ff.button(this.button2);
             ff.button(this.button3);
-            
+
             ff.button(this.button7);
         }
         private void button1_Click(object sender, EventArgs e)

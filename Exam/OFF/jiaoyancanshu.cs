@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -10,12 +9,12 @@ namespace WindowsFormsApplication1.Exam
 {
     public partial class jiaoyancanshu : Form
     {
-        
+
         public jiaoyancanshu()
         {
             InitializeComponent();
 
-            
+
 
         }
         List<Wucha> wuchas = new List<Wucha>();
@@ -43,8 +42,8 @@ namespace WindowsFormsApplication1.Exam
         {
             // 判读选择情况
             //yali
-            
-           
+
+
             string a1 = wuchas[comboBox1.SelectedIndex].Min.Trim();
             string b2 = wuchas[comboBox1.SelectedIndex].Max.Trim();
 
@@ -58,7 +57,7 @@ namespace WindowsFormsApplication1.Exam
                 // 其所选不在范围之内 不得分
                 score = 0;
                 log1.updatelog("离线=误差选择错误，不得分", "lx-wxxz", 0, datahelp.QId);
-               
+
                 if (debug == 1)
                 {
                     ff.ShowErrorTip("离线=误差选择错误，不得分");
@@ -66,14 +65,15 @@ namespace WindowsFormsApplication1.Exam
             }
             else
             {
-                if (debug == 1) {
+                if (debug == 1)
+                {
                     ff.ShowSuccessTip("选择正确，得分" + score);
                 }
-             
+
                 log1.updatelog("离线=误差选择正确得分", "lx-wxxz", score, datahelp.QId);
                 int i = g.updateGrade(score, "wxxz", datahelp.QId.Trim());
             }
-          
+
 
             //MessageBox.Show(""+ff.RC1(url).Length);
 
@@ -81,7 +81,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 this.Close();
 
-               // ff.showloading();
+                // ff.showloading();
                 j = new JiaoYan(wuchas[comboBox1.SelectedIndex].Id);
                 j.Show();
             };
@@ -89,7 +89,7 @@ namespace WindowsFormsApplication1.Exam
 
         }
         int debug = 0;
-        Log log1= new Log();    
+        Log log1 = new Log();
         private void jiaoyancanshu_Load(object sender, EventArgs e)
         {
             TestRecord t = new TestRecord();
@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1.Exam
             {
                 debug = 1;
             }
-           
+
 
             g.updateGrade(0, "wxxz", datahelp.QId);
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -149,7 +149,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.button1.Focus();   
+            this.button1.Focus();
         }
 
         private void label8_Click(object sender, EventArgs e)

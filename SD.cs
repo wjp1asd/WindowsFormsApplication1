@@ -1,12 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 using System.Xml;
 using WindowsFormsApplication1.Models;
@@ -24,18 +16,18 @@ namespace WindowsFormsApplication1
         Api api = new Api();
         private void button1_Click(object sender, EventArgs e)
         {
-          
-           //this.richTextBox1.Text= api.queryNjScpc();
+
+            //this.richTextBox1.Text= api.queryNjScpc();
             // 解析
             xmLprase(api.queryNjScpc());
         }
 
-        private void xmLprase(string  a)
+        private void xmLprase(string a)
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(a);
             nsmgr =new XmlNamespaceManager(doc.NameTable);
-        
+
             nsmgr.AddNamespace("soap", "http://schemas.xmlsoap.org/soap/envelope/");
             nsmgr.AddNamespace("ns1", "http://webservice.jerry.com");
             nsmgr.AddNamespace("resultList", "http://webservice.jerry.com");
@@ -58,15 +50,15 @@ namespace WindowsFormsApplication1
                 {
 
 
-                     //< bzr > zhouyp </ bzr >
-                     //   < kcdz > test </ kcdz >
-                     //   < kssj > 2023 - 09 - 04T00: 00:00 + 08:00 </ kssj >
-                     //   < pcid > 26256 </ pcid >
-                     //   < pclx > 实操考试 </ pclx >
-                     //   < pcmc > K04F2309041 </ pcmc >
+                    //< bzr > zhouyp </ bzr >
+                    //   < kcdz > test </ kcdz >
+                    //   < kssj > 2023 - 09 - 04T00: 00:00 + 08:00 </ kssj >
+                    //   < pcid > 26256 </ pcid >
+                    //   < pclx > 实操考试 </ pclx >
+                    //   < pcmc > K04F2309041 </ pcmc >
                     string bzr = node.ChildNodes[0].InnerText;
 
-                  
+
                     string kssj = node.ChildNodes[2].InnerText;
                     string pcid = node.ChildNodes[3].InnerText;
                     string pclx = node.ChildNodes[4].InnerText;
@@ -84,7 +76,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(e.Message);
                 Console.WriteLine(e.Message);
             }
-           // MessageBox.Show(doc.OuterXml);
+            // MessageBox.Show(doc.OuterXml);
         }
 
         private void xmLprase1(string a)
@@ -119,7 +111,7 @@ namespace WindowsFormsApplication1
 
 
                     string mc = node.ChildNodes[1].InnerText;
-                    string pcmc= node.ChildNodes[2].InnerText;
+                    string pcmc = node.ChildNodes[2].InnerText;
                     string scpc = node.ChildNodes[3].InnerText;
                     string sfz = node.ChildNodes[4].InnerText;
                     string zkzh = node.ChildNodes[5].InnerText;
@@ -150,7 +142,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+
             xmLprase1(api.queryNjScpcInfo(this.textBox1.Text.Trim()));
         }
     }

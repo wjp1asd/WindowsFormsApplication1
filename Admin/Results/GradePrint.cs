@@ -31,9 +31,9 @@ namespace WindowsFormsApplication1.Admin.Results
                 e.Graphics.DrawString("考生：" + a11.Text, fntTxt, brush, new System.Drawing.Point(80, 46));
                 e.Graphics.DrawString("身份证：" + a12.Text, fntTxt, brush, new System.Drawing.Point(80, 66));
                 e.Graphics.DrawString("考试码：" + a13.Text, fntTxt, brush, new System.Drawing.Point(80, 86));
-             //   e.Graphics.DrawString("离线答题结果：" + a14.Text, fntTxt, brush, new System.Drawing.Point(80, 106));
+                //   e.Graphics.DrawString("离线答题结果：" + a14.Text, fntTxt, brush, new System.Drawing.Point(80, 106));
                 e.Graphics.DrawString("总分得分：" + label17.Text, fntTxt, brush, new System.Drawing.Point(80, 126));
-            
+
                 e.Graphics.DrawString("离线得分：" + label7.Text, fntTxt, brush, new System.Drawing.Point(80, 166));
                 e.Graphics.DrawString("在线得分：" + label11.Text, fntTxt, brush, new System.Drawing.Point(80, 186));
                 e.Graphics.DrawString("密封得分：" + label15.Text, fntTxt, brush, new System.Drawing.Point(80, 206));
@@ -43,24 +43,24 @@ namespace WindowsFormsApplication1.Admin.Results
                 e.Graphics.DrawString("得分：" + a23.Text, fntTxt, brush, new System.Drawing.Point(80, 286));
                 e.Graphics.DrawString("研磨膏答题结果：" + a24.Text, fntTxt, brush, new System.Drawing.Point(80, 306));
                 e.Graphics.DrawString("得分：" + a25.Text, fntTxt, brush, new System.Drawing.Point(80, 326));
-                Rectangle rec = new Rectangle(0,0,100,100);
+
                 e.Graphics.DrawString("离线拍照：", fntTxt, brush, new System.Drawing.Point(80, 366));
-              
-                e.Graphics.DrawImage(new Bitmap(a1.lxpic), 80, 396,100,100);
+
+                e.Graphics.DrawImage(new Bitmap(a1.lxpic), 80, 396, 100, 100);
 
                 e.Graphics.DrawString("离线拍照：", fntTxt, brush, new System.Drawing.Point(80, 436));
-               // e.Graphics.DrawImage(new Bitmap(a1.lxpic1), new System.Drawing.Point(80, 866));
+                // e.Graphics.DrawImage(new Bitmap(a1.lxpic1), new System.Drawing.Point(80, 866));
                 e.Graphics.DrawImage(new Bitmap(a1.lxpic1), 80, 596, 100, 100);
 
                 e.Graphics.DrawString("在线拍照：", fntTxt, brush, new System.Drawing.Point(80, 606));
-               // e.Graphics.DrawImage(new Bitmap(a1.zxpic), new System.Drawing.Point(80, 1336));
+                // e.Graphics.DrawImage(new Bitmap(a1.zxpic), new System.Drawing.Point(80, 1336));
                 e.Graphics.DrawImage(new Bitmap(a1.zxpic), 80, 796, 100, 100);
                 e.Graphics.DrawString("在线拍照：", fntTxt, brush, new System.Drawing.Point(80, 876));
-             //   e.Graphics.DrawImage(new Bitmap(a1.zxpic1), new System.Drawing.Point(80, 1806));
+                //   e.Graphics.DrawImage(new Bitmap(a1.zxpic1), new System.Drawing.Point(80, 1806));
                 e.Graphics.DrawImage(new Bitmap(a1.zxpic1), 80, 996, 100, 100);
 
                 e.Graphics.DrawString("研磨方法：", fntTxt, brush, new System.Drawing.Point(80, 1046));
-               // e.Graphics.DrawImage(new Bitmap(a1.mxpic), new System.Drawing.Point(80, 2276));
+                // e.Graphics.DrawImage(new Bitmap(a1.mxpic), new System.Drawing.Point(80, 2276));
                 e.Graphics.DrawImage(new Bitmap(a1.mxpic), 80, 1196, 100, 100);
             }
             catch (Exception ee)
@@ -127,20 +127,20 @@ namespace WindowsFormsApplication1.Admin.Results
             label7.Text=a1.lxtotal.ToString();
             label11.Text=a1.zxtotal.ToString();
             label15.Text=a1.score8.ToString();
-            label17.Text=a1.getGrade("path",datahelp.QId).ToString();
+            label17.Text=a1.getGrade("path", datahelp.QId).ToString();
             this.pictureBox1.ImageLocation = a1.lxpic;
             this.pictureBox2.ImageLocation = a1.lxpic1;
             this.pictureBox3.ImageLocation = a1.zxpic;
             this.pictureBox4.ImageLocation = a1.zxpic1;
             this.pictureBox5.ImageLocation = a1.mxpic;
-           
-           // calctotal();
+
+            // calctotal();
 
         }
 
         private void calctotal()
         {
-         
+
         }
 
         private void label5_Click(object sender, EventArgs e)

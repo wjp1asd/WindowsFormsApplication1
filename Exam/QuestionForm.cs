@@ -352,17 +352,18 @@ namespace WindowsFormsApplication1
 
 
         }
-        Score sc=new Score();
+        Score sc = new Score();
         private void ShowInfo()
         {
             this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
             this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
-            if (sub == "4") {
+            if (sub == "4")
+            {
                 this.label11.Text = "分值：" + sc.getScore("ym" + datahelp.CurrentQuestion);
             }
-           
+
         }
         private Fuc ff = new Fuc();
         private void btnNext_Click(object sender, EventArgs e)
@@ -633,7 +634,8 @@ namespace WindowsFormsApplication1
                     option = option.Replace(rdb.Tag.ToString(), string.Empty);
                 }
             }
-            else {
+            else
+            {
                 if (rdb.Checked)
                 {
 

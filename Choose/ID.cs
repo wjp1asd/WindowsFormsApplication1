@@ -1,6 +1,5 @@
 ﻿
 using AutoWindowsSize;
-using OpenCvSharp;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -38,7 +37,7 @@ namespace WindowsFormsApplication1
             ff.fullsreen(this.label2, this);
             this.pictureBox1.Top = this.Height / 2;
             this.button7.Anchor = AnchorStyles.Top;
-           this.button7.Top = this.pictureBox1.Top + 300;
+            this.button7.Top = this.pictureBox1.Top + 300;
         }
 
         private void InitConfig()
@@ -462,12 +461,13 @@ namespace WindowsFormsApplication1
 
         private void ID_MouseMove(object sender, MouseEventArgs e)
         {
-            if (rest == 0) {
+            if (rest == 0)
+            {
                 InitConfig();
                 ff.ShowInfoTip("10s,保活");
                 rest = 10;
             }
-            
+
         }
 
         private void UpdataInfo(string Id)
