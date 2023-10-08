@@ -1899,6 +1899,7 @@ namespace WindowsFormsApplication1.Exam
             if (DIS == "11111001" || DIS == "01111001" || DIS == "11111000" || DIS == "01111000")
             {
                 log1.updatelog("离线=复位得分" + bycs, "lx-ylbqhf", bycs, datahelp.QId);
+                g.updateGrade(bycs, "bycs", datahelp.QId);
                 Action x = () =>
                 {
                     this.Close();
@@ -1934,6 +1935,7 @@ namespace WindowsFormsApplication1.Exam
                 ff.ShowInfoDialog("请完成复位再退出" + str);
                 //  MessageBox.Show("请完成复位再退出"+str);
                 log1.updatelog("离线=未复位不得分" + str, "lx-ylbqhf", 0, datahelp.QId);
+                g.updateGrade(0, "bycs", datahelp.QId);
                 Action x = () =>
                 {
                     this.Close();
