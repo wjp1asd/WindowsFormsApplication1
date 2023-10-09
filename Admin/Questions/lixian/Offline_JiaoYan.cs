@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1.Questions
 
 
 
-           // this.change();
+            // this.change();
 
 
         }
@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1.Questions
 
             ff.button(this.button1);
             ff.button(this.button2);
-           
+
             ff.button(this.button7);
         }
 

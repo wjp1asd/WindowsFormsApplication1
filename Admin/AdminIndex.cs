@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
         {
             datahelp a = new datahelp();
             a.Initc();
-          
+
             this.label2.ForeColor = System.Drawing.ColorTranslator.FromHtml(a.color5);
             this.button1.BackColor = System.Drawing.ColorTranslator.FromHtml(a.color1);
 
@@ -58,8 +58,8 @@ namespace WindowsFormsApplication1
             ff.button(this.button5);
             ff.button(this.button6);
             ff.button(this.button7);
-          
-           
+
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -75,7 +75,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-          GoalSet1 goalSet1 = new GoalSet1();
+            GoalSet1 goalSet1 = new GoalSet1();
             goalSet1.Show();
             this.Close();
         }
@@ -105,7 +105,7 @@ namespace WindowsFormsApplication1
         {
             Settings1 q = new Settings1();
             q.Show();
-           // this.Close();
+            // this.Close();
         }
 
         private void button7_Click(object sender, EventArgs e)

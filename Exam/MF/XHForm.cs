@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1.Exam.MF
         public XHForm()
         {
             InitializeComponent();
-            
+
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
         }
@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1.Exam.MF
         public XHForm(string qrcode)
         {
             InitializeComponent();
-           
+
             g.getOne(qrcode);
             t = new TestRecord();
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -113,7 +113,7 @@ namespace WindowsFormsApplication1.Exam.MF
             datahelp.Answer = new string[num];
             datahelp.UserAnswer = new string[num];
             datahelp.Correct = new string[num];
-           // awt = new AutoAdaptWindowsSize(this);
+            // awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             // this.SizeChanged += groupBox1_Resize;
             string x = ConfigurationManager.AppSettings["debug"];
@@ -252,7 +252,7 @@ namespace WindowsFormsApplication1.Exam.MF
             this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
             this.label9.Text = "结果：" + string.Join(",", datahelp.Correct);
-          this.label8.Text = "上一次回答："+  datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
+            this.label8.Text = "上一次回答："+  datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
             this.label10.Text = "分值：" + sc.getScore("lp" + datahelp.CurrentQuestion);
         }
 
@@ -542,7 +542,7 @@ namespace WindowsFormsApplication1.Exam.MF
             }
 
 
-                datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
+            datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
 
 
         }
@@ -578,9 +578,9 @@ namespace WindowsFormsApplication1.Exam.MF
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
-           
+
         }
-        
+
 
         private void closing(object sender, FormClosedEventArgs e)
         {

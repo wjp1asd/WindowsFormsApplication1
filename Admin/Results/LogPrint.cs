@@ -1,14 +1,9 @@
 ﻿using AutoWindowsSize;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
@@ -17,7 +12,7 @@ namespace WindowsFormsApplication1.Admin.Results
 {
     public partial class LogPrint : Form
     {
-       
+
         int row;
         String TableName = "log";
         string uid;
@@ -54,7 +49,7 @@ namespace WindowsFormsApplication1.Admin.Results
 
         private void button6_Click(object sender, EventArgs e)
         {
-          
+
             this.Close();
         }
         AutoAdaptWindowsSize awt;
@@ -156,7 +151,7 @@ namespace WindowsFormsApplication1.Admin.Results
         {
             string sql = "delete  " + TableName + " Where qid = '" + uid+"'"
            ;
-           // MessageBox.Show(sql);
+            // MessageBox.Show(sql);
             InitTable(sql);
         }
     }

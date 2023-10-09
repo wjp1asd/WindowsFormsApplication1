@@ -175,9 +175,10 @@ namespace WindowsFormsApplication1.Questions
                 //MessageBox.Show(sql);
                 this.InitTable(sql);
             }
-            else {
+            else
+            {
                 string sql = "select * from " + TableName + "   where subId =" + Subtype;
-                 
+
                 MessageBox.Show(sql);
                 this.InitTable(sql);
             }

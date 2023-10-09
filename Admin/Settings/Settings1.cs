@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1.Settings
             InitializeComponent();
 
             InitC();
-         
+
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
         }
@@ -124,7 +124,7 @@ namespace WindowsFormsApplication1.Settings
         {
             awt = new AutoAdaptWindowsSize(this);
             this.SizeChanged += groupBox1_Resize;
-           
+
 
             string x = ConfigurationManager.AppSettings["machine"];
             switch (x)
@@ -142,11 +142,11 @@ namespace WindowsFormsApplication1.Settings
                     this.groupBox3.Visible = true;
                     this.button9.Visible = true;
                     break;
-                //case "1":
-                //    this.groupBox2.Visible = true;
-                //    this.groupBox3.Visible = true;
-                //    this.button9.Visible = true;
-                //    break;
+                    //case "1":
+                    //    this.groupBox2.Visible = true;
+                    //    this.groupBox3.Visible = true;
+                    //    this.button9.Visible = true;
+                    //    break;
 
             }
         }

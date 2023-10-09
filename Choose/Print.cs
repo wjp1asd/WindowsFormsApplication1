@@ -389,7 +389,7 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
             //  this.change();
-         //   ff.same(this);
+            //   ff.same(this);
         }
 
         private void uiLight1_Click(object sender, EventArgs e)

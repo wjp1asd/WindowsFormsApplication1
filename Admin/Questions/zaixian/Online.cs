@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
 
 
 
-           // this.change();
+            // this.change();
 
 
         }
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
 
             ff.button(this.button1);
             ff.button(this.button2);
-            
+
             ff.button(this.button7);
         }
 
@@ -63,7 +63,7 @@ namespace WindowsFormsApplication1.Admin.Questions.zaixian
         {
             Online_JiaoYan a = new Online_JiaoYan();
             a.Show();
-          //  this.Close();
+            //  this.Close();
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)

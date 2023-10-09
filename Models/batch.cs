@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static OpenCvSharp.ML.DTrees;
-
-namespace WindowsFormsApplication1.Models
+﻿namespace WindowsFormsApplication1.Models
 {
     public class batch
     {
@@ -16,9 +9,9 @@ namespace WindowsFormsApplication1.Models
         //   < pclx > 实操考试 </ pclx >
         //   < pcmc > K04F2309041 </ pcmc >
         public string bzr;
-        public  string kssj;
-        public  string pcid;
-        public  string pclx;
-        public  string pcmc;
+        public string kssj;
+        public string pcid;
+        public string pclx;
+        public string pcmc;
     }
 }
