@@ -40,11 +40,11 @@ namespace WindowsFormsApplication1.Questions
         {
 
 
-           
+
             ff.button(this.button2);
-         
+
             ff.button(this.button7);
-            
+
         }
         private void label2_Click(object sender, EventArgs e)
         {

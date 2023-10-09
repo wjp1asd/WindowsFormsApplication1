@@ -1,22 +1,10 @@
-﻿using Microsoft.SqlServer.Server;
-using MiniExcelLibs;
-using Sunny.UI.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using WindowsFormsApplication1.Models;
-using static Emgu.CV.Stitching.Stitcher;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApplication1.Admin
 {
@@ -167,7 +155,7 @@ namespace WindowsFormsApplication1.Admin
         private void RefreshTable()
         {
             // var list = this.bb1 ;
-           // MessageBox.Show(""+bb1.Count);
+            // MessageBox.Show(""+bb1.Count);
             for (int i = 0; i < bb1.Count; i++)
             {
                 this.dataGridView1.RowCount++;
@@ -178,7 +166,7 @@ namespace WindowsFormsApplication1.Admin
                 this.dataGridView1.Rows[i].Cells[5].Value = bb1[i].sfz;
                 this.dataGridView1.Rows[i].Cells[6].Value = bb1[i].zkzh;
                 this.dataGridView1.Rows[i].Cells[7].Value = bb1[i].zyxm;
-               
+
             }
 
             row = this.bb1.Count;
@@ -263,7 +251,8 @@ namespace WindowsFormsApplication1.Admin
                         {
                             ff.ShowInfoTip("已存在");
                         }
-                        else {
+                        else
+                        {
 
                             string strcomm = "insert into " + "Student" + "(loginid,password,power,name,bumen,idcard,sex,phone,status,date) VALUES(-1,-1,1," +
                              "'" + sub.ToString() + "'" + "," +
@@ -280,14 +269,14 @@ namespace WindowsFormsApplication1.Admin
                             ff.ShowInfoTip("已更新");
                             con.Close();
                         }
-                        
-                       
+
+
                     }
                 }
             }
         }
-        Fuc ff = new Fuc(); 
-        string data="2023-09-04";
+        Fuc ff = new Fuc();
+        string data = "2023-09-04";
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             //MessageBox.Show(this.dateTimePicker1.Value.Year+"-"+ this.dateTimePicker1.Value.Month

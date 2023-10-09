@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
 
         }
-        float rate1,rate2,rate3,rate4,rate5 = 0;
+        float rate1, rate2, rate3, rate4, rate5 = 0;
 
         private void Form6_Load(object sender, EventArgs e)
         {
@@ -43,33 +43,33 @@ namespace WindowsFormsApplication1.Exam
         {
             float count = 0;
             string[] a = datahelp.Correct;
-            
-          
-                // 答对题的数量
-                if (a[0] == "1")
-                {
-                    count += rate1;
-                }
-                if (a[1] == "1")
-                {
-                    count += rate2;
-                }
-                if (a[2] == "1")
-                {
-                    count += rate3;
-                }
-                if (a[3] == "1")
-                {
-                    count += rate4;
-                }
-                if (a[4] == "1")
-                {
-                    count += rate5;
-                }
-            
 
 
-               score = count;
+            // 答对题的数量
+            if (a[0] == "1")
+            {
+                count += rate1;
+            }
+            if (a[1] == "1")
+            {
+                count += rate2;
+            }
+            if (a[2] == "1")
+            {
+                count += rate3;
+            }
+            if (a[3] == "1")
+            {
+                count += rate4;
+            }
+            if (a[4] == "1")
+            {
+                count += rate5;
+            }
+
+
+
+            score = count;
             // MessageBox.Show(count+""+rate+""+score);
             // this.label2.Hide();
             this.label2.Text = "得分:" + score;
@@ -183,9 +183,9 @@ namespace WindowsFormsApplication1.Exam
                     rate5 = float.Parse(sc.getScore("ym5").ToString());
                     break;
             }
-           //  this.label2.Text += rate1+""+rate2+"" + rate3 +""+rate4+""+rate5+"";
-          
-          //  MessageBox.Show(this.Text+rate1 + "-" + rate2 + "-" + rate3 + "-" + rate4 + "-" + rate5 + "-");
+            //  this.label2.Text += rate1+""+rate2+"" + rate3 +""+rate4+""+rate5+"";
+
+            //  MessageBox.Show(this.Text+rate1 + "-" + rate2 + "-" + rate3 + "-" + rate4 + "-" + rate5 + "-");
             ShowScore();
             // AddStudentScore();
         }
@@ -245,7 +245,7 @@ namespace WindowsFormsApplication1.Exam
 
         }
         private Fuc ff = new Fuc();
-        Log log1=new Log(); 
+        Log log1 = new Log();
         private void UpdateGrades()
         {
 
@@ -279,14 +279,14 @@ namespace WindowsFormsApplication1.Exam
                     str1 = "Update Grade set xhquestions='" + a + "',xhanswer='" + b + "',xhcorrect='" + c + "',score4='" + d
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
-                    log1.updatelog("密封型号答题得分" +d, "mf-xh",float.Parse(d+""), datahelp.QId);
+                    log1.updatelog("密封=型号答题得分" +d, "mf-xh", float.Parse(d+""), datahelp.QId);
                     break;
 
                 case 6:
                     str1 = "Update Grade set lpjquestions='" + a + "',lpjanswer='" + b + "',lpjcorrect='" + c + "',score5='" + d
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
-                    log1.updatelog("零配件答题得分" + d, "mf-lpj", float.Parse(d + ""), datahelp.QId);
+                    log1.updatelog("密封=零配件答题得分" + d, "mf-lpj", float.Parse(d + ""), datahelp.QId);
                     break;
 
                 case 4:
@@ -294,7 +294,7 @@ namespace WindowsFormsApplication1.Exam
 
             + "' where testid= '" + datahelp.QId.Trim() + "'";
                     //  MessageBox.Show(str1);
-                    log1.updatelog("研磨膏答题得分" + d, "mf-ymg", float.Parse(d + ""), datahelp.QId);
+                    log1.updatelog("密封=研磨膏答题得分" + d, "mf-ymg", float.Parse(d + ""), datahelp.QId);
                     break;
 
 

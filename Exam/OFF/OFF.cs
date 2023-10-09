@@ -1,7 +1,6 @@
 ﻿using AutoWindowsSize;
 using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -38,7 +37,7 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-           // this.change();
+            // this.change();
 
 
         }
@@ -203,7 +202,7 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
-            float a = g1.getGrade("dycyl", datahelp.QId);
+            float a = g1.getGrade("lx-dycyl", datahelp.QId);
             if (a > -1 && debug != 1)
             {
 

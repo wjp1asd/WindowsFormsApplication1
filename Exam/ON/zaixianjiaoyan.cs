@@ -1,7 +1,6 @@
 ﻿using AutoWindowsSize;
 using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -14,8 +13,8 @@ namespace WindowsFormsApplication1.Exam
             InitializeComponent();
             InitUI();
             ff.same(this);
-          
-           
+
+
         }
         protected override CreateParams CreateParams //防止界面闪烁
         {
@@ -44,10 +43,10 @@ namespace WindowsFormsApplication1.Exam
 
             this.label2.Text = "在线校验";
 
-          
+
 
             // this.change();
-         
+
         }
         zaixianjiaoyan2 z;
         private Fuc ff = new Fuc();
@@ -121,7 +120,7 @@ namespace WindowsFormsApplication1.Exam
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.空白界面副本;
-          
+
             switch (datahelp.CurrentStep1)
             {
                 case 1:
@@ -159,7 +158,7 @@ namespace WindowsFormsApplication1.Exam
             }
         }
         int debug = 0;
-        Grade g=new Grade();
+        Grade g = new Grade();
         private void button1_Click(object sender, EventArgs e)
         {
             float a = g.getGrade("cxfm1", datahelp.QId);
@@ -188,12 +187,12 @@ namespace WindowsFormsApplication1.Exam
 
         private void button2_Click(object sender, EventArgs e)
         {
-            float a1 = g.getGrade("jyjg1", datahelp.QId);
+            float a1 = g.getGrade("zx-jielun", datahelp.QId);
             if (a1 > -1 && debug != 1)
             {
 
                 ff.ShowErrorDialog("重复考试");
-               
+
                 datahelp.CurrentStep1 = 4;
                 this.refreshButton();
                 return;

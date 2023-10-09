@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1.Exam
 
         public LBJForm(String qrcode)
         {
-           
+
 
             InitializeComponent();
             t = new TestRecord();
@@ -111,8 +111,8 @@ namespace WindowsFormsApplication1.Exam
             datahelp.Correct = new string[num];
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
-           this.ControlBox = false;
-           this.FormBorderStyle = FormBorderStyle.None;
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             this.StartPosition = FormStartPosition.CenterScreen;
             string x = ConfigurationManager.AppSettings["debug"];
@@ -231,14 +231,14 @@ namespace WindowsFormsApplication1.Exam
 
 
         }
-        Score sc=new Score();
+        Score sc = new Score();
         private void ShowInfo()
         {
             // this.label3.Text = "" + (int.Parse(datahelp.CurrentQuestion.ToString()));
             this.label6.Text = "您的选择：" + string.Join(",", datahelp.UserAnswer);
             this.label9.Text = "判题：" + string.Join(",", datahelp.Correct);
             this.label8.Text = datahelp.UserAnswer[datahelp.CurrentQuestion - 1];
-            
+
             this.label11.Text = ""+sc.getScore("xh"+ datahelp.CurrentQuestion);
         }
 
@@ -527,7 +527,7 @@ namespace WindowsFormsApplication1.Exam
             }
 
 
-                datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
+            datahelp.UserAnswer[datahelp.CurrentQuestion - 1] = option;
 
 
         }

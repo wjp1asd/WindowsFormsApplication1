@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1.Admin.Questions.jiaoyangongyi
 
 
             c.button(this.button1);
-           
+
             c.button(this.button7);
 
 

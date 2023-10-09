@@ -81,7 +81,7 @@ namespace WindowsFormsApplication1.Scan
             //this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
 
-           
+
 
         }
 
@@ -118,7 +118,7 @@ namespace WindowsFormsApplication1.Scan
                 t = t.getRecord(qrcode);
                 datahelp.QId = qrcode;
                 this.groupBox1.Show();
-              //  this.button4.Focus();
+                //  this.button4.Focus();
                 Student s = new Student(t.KsId);
                 this.button1.Visible = false;
                 this.label10.Text ="学    生：" + t.Ksname;
@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1.Scan
             this.groupBox1.Hide();
             this.textBox1.Enabled = true;
             this.textBox1.Clear();
-          //  this.textBox1.Focus();
+            //  this.textBox1.Focus();
             read = true;
 
         }
@@ -184,7 +184,7 @@ namespace WindowsFormsApplication1.Scan
             //this.groupBox1.Hide();
             //  ff.showloading();
             ff.ShowInfoTip("加载中");
-           // ff.ShowInfoNotifier("加载中",true,5000);
+            // ff.ShowInfoNotifier("加载中",true,5000);
             Thread.Sleep(1000);
             string x = ConfigurationManager.AppSettings["machine"];
 
@@ -204,12 +204,12 @@ namespace WindowsFormsApplication1.Scan
                     on.Show();
                     break;
                 case 4:
-                   
+
                     datahelp.CurrentStep =1;
                     MF1 mf = new MF1();
                     mf.Show();
                     //this.WindowState = FormWindowState.Minimized;
-                   // this.Visible = false;
+                    // this.Visible = false;
                     break;
                 case -1:
                     //  datahelp.CurrentStep = 3;

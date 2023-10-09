@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1.Exam
             qa = new QuestionA();
             ts = new TestRecord();
             InitializeComponent();
-         //   this.change();
+            //   this.change();
             ff.same(this);
             idcard = id;
             this.uiLabel2.Text = st.Name;
@@ -241,11 +241,11 @@ namespace WindowsFormsApplication1.Exam
             con.Close();
             lxques = "已禁用";
             zxques = "已禁用";
-            gyques = "已禁用";  
+            gyques = "已禁用";
             //  lxques = qa.ChooseLixian();
             // zxques = qa.ChooseZaixian();
             xhques = qa.ChooseXH(aqfxhid);
-           // gyques = qa.ChooseJiaoYan();
+            // gyques = qa.ChooseJiaoYan();
             lpjques = qa.ChooseLPJ();
             ymgques = qa.ChooseYMG();
             //MessageBox.Show("在线题：" + zxques);

@@ -210,7 +210,8 @@ namespace WindowsFormsApplication1.Admin.Settings
 
                 this.InitTable(sql);
             }
-            else {
+            else
+            {
 
                 string sql = "select * from " + TableName;
                 this.InitTable(sql);

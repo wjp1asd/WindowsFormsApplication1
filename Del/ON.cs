@@ -1,7 +1,6 @@
 ﻿using AutoWindowsSize;
 using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -32,7 +31,7 @@ namespace WindowsFormsApplication1.Exam
             this.label2.Text = "在线校验";
 
             ff.same(this);
-         
+
             // this.change();
 
 
@@ -126,8 +125,8 @@ namespace WindowsFormsApplication1.Exam
         {
 
         }
-        Grade g= new Grade();
-       // int debug
+        Grade g = new Grade();
+        // int debug
         private void button1_Click(object sender, EventArgs e)
         {
             //float a = g.getGrade("score4", datahelp.QId);
@@ -137,7 +136,7 @@ namespace WindowsFormsApplication1.Exam
             //    datahelp.CurrentStep = 3;
             //    return;
             //}
-                this.Close();
+            this.Close();
             datahelp.SubId = 2;
             datahelp.CurrentStep1 = 1;
             zaixianjiaoyan a = new zaixianjiaoyan();

@@ -3,7 +3,6 @@ using System;
 using System.Configuration;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
-using WindowsFormsApplication1.Scan;
 
 namespace WindowsFormsApplication1.Exam.MF
 {
@@ -32,7 +31,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
 
 
-          //this.change();
+            //this.change();
 
 
         }
@@ -47,12 +46,13 @@ namespace WindowsFormsApplication1.Exam.MF
             ff.fullsreen1(this.button5, this);
             ff.fullsreen1(this.label2, this);
         }
-        Grade g=new Grade();
+        Grade g = new Grade();
         private void button3_Click(object sender, EventArgs e)
         {
             // 型号识别
-          float a=  g.getGrade("score4",datahelp.QId);
-            if (a > -1&&debug!=1) {
+            float a = g.getGrade("score4", datahelp.QId);
+            if (a > -1&&debug!=1)
+            {
 
                 ff.ShowErrorDialog("重复考试");
                 datahelp.CurrentStep = 2;
@@ -92,7 +92,7 @@ namespace WindowsFormsApplication1.Exam.MF
             {
                 debug = 1;
             }
-           
+
 
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
@@ -165,15 +165,15 @@ namespace WindowsFormsApplication1.Exam.MF
 
                 ff.ShowErrorDialog("重复考试");
                 datahelp.CurrentStep = 3;
-              
+
                 this.refreshButton();
                 return;
             }
             datahelp.SubId = 6;
-          
+
             LBJForm lBJ = new LBJForm(datahelp.QId);
             lBJ.Show();
-          this.Close();
+            this.Close();
 
         }
 
@@ -186,7 +186,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
                 ff.ShowErrorDialog("重复考试");
                 datahelp.CurrentStep = 4;
-              
+
                 this.refreshButton();
                 return;
             }
@@ -198,7 +198,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
         private void button4_Click(object sender, EventArgs e)
         {
-           
+
             ProjectInfo projectInfo = new ProjectInfo();
             projectInfo.Show();
             this.Close();
@@ -213,7 +213,7 @@ namespace WindowsFormsApplication1.Exam.MF
 
                 ff.ShowErrorDialog("重复考试");
                 datahelp.CurrentStep = 5;
-               
+
                 this.refreshButton();
                 return;
             }
