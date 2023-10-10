@@ -335,7 +335,7 @@ namespace WindowsFormsApplication1.Exam
 
 
 
-                if (f1 == ap.f1.ToString()||(f1=="1"&&ap.f1.ToString()=="1.0"))
+                if (Math.Abs(float.Parse(f1)-ap.f0)<=ap.f0*0.03)
                 {
                     g.updateGrade(dycyl, "lx-dycyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-第一次压力得分", "lx-dycyl", dycyl, datahelp.QId);
@@ -345,7 +345,7 @@ namespace WindowsFormsApplication1.Exam
                     g.updateGrade(0, "lx-dycyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-第一次压力不得分", "lx-dycyl", 0, datahelp.QId);
                 }
-                if (f2 == ap.f2.ToString()||(f2=="1"&&ap.f2.ToString()=="1.0"))
+                if( Math.Abs(float.Parse(f2)-ap.f0)<=ap.f0*0.03)
                 {
                     g.updateGrade(decyl, "lx-decyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-第二次压力得分", "lx-decyl", decyl, datahelp.QId);
@@ -356,7 +356,7 @@ namespace WindowsFormsApplication1.Exam
                     Log1.updatelog("离线=填写记录-第二次压力不得分", "lx-decyl", 0, datahelp.QId);
 
                 }
-                if (f3 == ap.f3.ToString() ||(f3 == "1" && ap.f3.ToString() == "1.0"))
+                if (Math.Abs(float.Parse(f3)-ap.f0)<=ap.f0*0.03)
                 {
                     g.updateGrade(dscyl, "lx-dscyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-第三次压力得分", "lx-dscyl", dscyl, datahelp.QId);
@@ -367,7 +367,7 @@ namespace WindowsFormsApplication1.Exam
                     Log1.updatelog("离线=填写记录-第三次压力不得分", "lx-dscyl", 0, datahelp.QId);
 
                 }
-                if (mf ==""+ ap.f0 * 0.9)
+                if (Math.Abs(float.Parse(mf)-ap.f0*0.9)<=ap.f0*0.9*0.03)
                 {
                     g.updateGrade(mfsyyl, "lx-mfsyyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-密封压力得分", "lx-mfyl", mfsyyl, datahelp.QId);
