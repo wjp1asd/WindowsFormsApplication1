@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -12,6 +13,42 @@ namespace WindowsFormsApplication1.Models
         public float kffz;
         public string kssj;
         Fuc ff = new Fuc();
+        public string strcomm;
+        public void clear(string qid,int i) {
+           
+            // 0 all 1 lx 2 zx 3 mf
+            switch (i) {
+
+                case 0:
+                     strcomm = " delete from Log where [qid] = '"+qid.Trim()+"'";
+                    break;
+                case 1:
+                 //   delete from log where kfdm like 'lx-%' and qid = '1ppXT82ZZDTmxb44zJ0jNg==  '
+                     strcomm = " delete from Log where kfdm like 'lx-%' and qid = '"+qid.Trim()+"'";
+                    break;
+                case 2:
+                    strcomm = " delete from Log where kfdm like 'zx-%' and qid = '"+qid.Trim()+"'";
+                    break;
+                case 3:
+                    strcomm = " delete from Log where kfdm like 'mf-%' and qid = '"+qid.Trim()+"'";
+                    break;
+            }
+                       
+               
+                              
+               MessageBox.Show(strcomm);
+                string connectionString = ConfigurationManager.AppSettings["sqlc"];
+                SqlConnection con = new SqlConnection(connectionString);
+
+                con.Open();
+
+                SqlCommand comm = new SqlCommand(strcomm, con);
+                comm.ExecuteNonQuery();
+             
+                con.Close();
+
+
+            }
         public int updatelog(string itemname, string kfdm, float kffz, string qid)
         {
             int i = 0;
