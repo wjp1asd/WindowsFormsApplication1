@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
+using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
 namespace WindowsFormsApplication1.Admin
@@ -171,7 +173,169 @@ namespace WindowsFormsApplication1.Admin
 
             row = this.bb1.Count;
         }
+        TestRecord ts = new TestRecord();
+        private void FormRecord(string ksname ,string ksid,string a)
+        {
+            // 当前日期
+            String que = ts.Queuex().ToString();
+            String ksdate = string.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now);
+            
+           
+           
+            String lxyl = "";
+            String zxyl = "";
+            //获取最后一个信息和压力数组
+            List<decimal> yali = new List<decimal>();
+            List<decimal> yali2 = new List<decimal>();
+            yali = ts.Yali();
+            yali2 = ts.Yali();
+            TestRecord t = new TestRecord();
+            t = ts.LastRecord();
+            decimal max, min;
+#pragma warning disable CS0219 // 变量“last”已被赋值，但从未使用过它的值
+            decimal last = 0;
+#pragma warning restore CS0219 // 变量“last”已被赋值，但从未使用过它的值
+#pragma warning disable CS0219 // 变量“last1”已被赋值，但从未使用过它的值
+            decimal last1 = 0;
+#pragma warning restore CS0219 // 变量“last1”已被赋值，但从未使用过它的值
+            decimal cur = 0;
+            decimal cur1 = 0;
 
+            max = yali.Max();
+            min = yali.Min();
+
+            if (decimal.Parse(t.Lxyl) >= (min + (decimal)0.2))
+            {
+                cur = decimal.Parse(t.Lxyl) - (decimal)0.2;
+
+
+            }
+            else
+            {
+                cur = decimal.Parse(t.Lxyl) + (decimal)0.2;
+
+            }
+
+
+            if (que == "1")
+            {
+                // 当天第一个
+                yali2 = ts.Yali();
+                Random random = new Random();
+                int start2 = random.Next(0, yali2.Count);
+                lxyl = yali2[start2].ToString();
+
+            }
+            else
+            {
+                //不是第一个
+                // max 1.3 min 1 上一个 1.2 cur 1.0 那就在 1.0 1.1里选
+                if (decimal.Parse(t.Lxyl) > cur)
+                {
+                    // 删除大于等上次
+                    yali2 = ts.Yali();
+                    yali2.RemoveAll(x => x >= decimal.Parse(t.Lxyl));
+                    Random random = new Random();
+                    int start2 = random.Next(0, yali2.Count);
+                    lxyl = yali2[start2].ToString();
+
+
+                }
+                else if (decimal.Parse(t.Lxyl) < cur)
+                {
+
+                    yali2 = ts.Yali();
+                    yali2.RemoveAll(x => x <= decimal.Parse(t.Lxyl));
+                    Random random = new Random();
+                    int start2 = random.Next(0, yali2.Count);
+                    lxyl = yali2[start2].ToString();
+                }
+            }
+            // 在线直接1.0
+
+            string connectionString2 = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con2 = new SqlConnection(connectionString2);
+            string sql2 = "select * from settings where id=1 ";
+
+            SqlCommand com1 = new SqlCommand(sql2, con2);
+            con2.Open();
+            SqlDataReader reader1 = com1.ExecuteReader();
+            while (reader1.Read())
+            {
+                zxyl = reader1["edyl"].ToString();
+            }
+
+
+           
+
+            String lxlx = ts.Wucha();
+            String zxlx = ts.Wucha();
+            String aqfxh = ts.Aqf();
+            String aqfxhid = "-1";
+            string connectionString = ConfigurationManager.AppSettings["sqlc"];
+            SqlConnection con = new SqlConnection(connectionString);
+            string sql = "select Top 1  * from Aquanfa order by newid()";
+
+            SqlCommand com = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            {
+                aqfxh = reader["subname"].ToString();
+                aqfxhid = reader["id"].ToString();
+            }
+            QuestionA qa = new QuestionA();
+            con.Close();
+          string  lxques = "已禁用";
+          string  zxques = "已禁用";
+          string  gyques = "已禁用";
+            //  lxques = qa.ChooseLixian();
+            // zxques = qa.ChooseZaixian();
+          string  xhques = qa.ChooseXH(aqfxhid);
+            // gyques = qa.ChooseJiaoYan();
+            string lpjques = qa.ChooseLPJ();
+            string ymgques = qa.ChooseYMG();
+            //MessageBox.Show("在线题：" + zxques);
+            //MessageBox.Show("离线题：" + lxques);
+            //MessageBox.Show("型号题：" + xhques);
+            //MessageBox.Show("工艺题：" + gyques);
+            //MessageBox.Show("零配件题：" + lpjques);
+            //MessageBox.Show("研磨题：" + ymgques);
+
+            string strcomm = "insert into TestRecord([queue], [ksname], [ksid],[ksdate], [lxyl], [lxlx], [zxyl], [zxlx],[aqfxh],[qrcode],[lxquestions],[zxquestions],[gyquestions],[xhquestions],[lpjquestions],[ymgquestions]) VALUES(" +
+               "'" + que.ToString() + "'" + "," +
+              "'" + ksname.ToString() + "'" + "," +
+              "'" + ksid.ToString() + "'" + "," +
+                "'" + ksdate.ToString() + "'" + "," +
+                "'" + lxyl.ToString() + "'" + "," +
+                "'" + lxlx.Trim().ToString() + "'" + "," +
+                  "'" + 1.0 + "'" + "," +
+                    "'" + zxlx.Trim().ToString() + "'" + "," +
+                      "'" + aqfxh.Trim().ToString() + "'" + "," +
+                "'" + a.ToString() + "'" + "," +
+                 "'" + lxques.ToString() + "'" + "," +
+                  "'" + zxques.ToString() + "'" + "," +
+                  "'" + gyques.ToString() + "'" + "," +
+                  "'" + xhques.ToString() + "'" + "," +
+                  "'" + lpjques.ToString() + "'" + "," +
+                  "'" + ymgques.ToString() + "'" +
+                  ")"
+              ;
+            //  INSERT INTO[dbo].[question] ([id], [question], [answer], [subId], [optionA], [optionB], [optionC], [optionD]) VALUES(2, N'在SQL Server 2000的安全模型中，提供了“服务器”和（）两种类型的角色。', N'B', 2, N'客户端', N'数据库', N'操作系统', N'数据对象')
+           ff.ShowInfoTip(strcomm);
+            con.Open();
+            SqlCommand comm = new SqlCommand(strcomm, con);
+            comm.ExecuteNonQuery();
+
+            con.Close();
+            ff.ShowInfoTip("已创建考试信息，排队号0" + que);
+          
+            //生成考试清单
+            ff.formGrade(a, ksname, ksid);
+         
+
+        }
         private void uiButton3_Click(object sender, EventArgs e)
         {
             xmLprase1(api.queryNjScpcInfo(this.uiComboBox1.Text.Trim()));
@@ -243,6 +407,7 @@ namespace WindowsFormsApplication1.Admin
                         var sub = this.dataGridView1.Rows[x].Cells[4].Value;
                         var f0 = "上海特检院";
                         var f1 = this.dataGridView1.Rows[x].Cells[5].Value;
+                        var f6 = this.dataGridView1.Rows[x].Cells[6].Value;
                         var f4 = "-1";
                         var f2 = "-1";
                         var f3 = this.dateTimePicker1.Value;
@@ -250,6 +415,13 @@ namespace WindowsFormsApplication1.Admin
                         if (ff.RC1("select * from student where idcard =" + f1).Length>1)
                         {
                             ff.ShowInfoTip("已存在");
+                            if (ff.RC1("select * from testrecord where [qrcode] = '" + f6+"'").Length == 0)
+                            {
+
+                                FormRecord(sub.ToString(), f1.ToString(), f6.ToString());
+                            }
+                          
+                         //   FormRecord(sub.ToString(), f1.ToString(), f6.ToString());
                         }
                         else
                         {
@@ -268,6 +440,12 @@ namespace WindowsFormsApplication1.Admin
                             comm.ExecuteNonQuery();
                             ff.ShowInfoTip("已更新");
                             con.Close();
+                            if (ff.RC1("select * from testrecord where [qrcode] = '" + f6 + "'").Length == 0)
+                            {
+
+                                FormRecord(sub.ToString(), f1.ToString(), f6.ToString());
+                            }
+
                         }
 
 
