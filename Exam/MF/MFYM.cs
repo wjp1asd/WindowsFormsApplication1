@@ -214,7 +214,7 @@ namespace WindowsFormsApplication1
 
             g.updateGrade(score, "score8", datahelp.QId);
             Log log = new Log();
-            log.updatelog("密封面=研磨实操得分" + score, "mf-sc", score, datahelp.QId);
+            log.updatelog("密封=研磨实操得分" + score, "mf-sc", score, datahelp.QId);
             try
             {
                 // 生成图片

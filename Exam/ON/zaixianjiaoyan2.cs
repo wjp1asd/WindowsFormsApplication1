@@ -157,10 +157,10 @@ namespace WindowsFormsApplication1.Exam
                     {
                         if (debug == 1)
                         {
-                            ff.ShowSuccessTip("密封直径得分:" + mfzjcl);
+                            ff.ShowSuccessTip("在线=密封直径得分:" + mfzjcl);
                         }
                         //  ff.ShowSuccessTip("得分:" + mfzjcl);
-                        Log1.updatelog("密封直径得分"+ mfzjcl, "zx-zj", mfzjcl, datahelp.QId);
+                        Log1.updatelog("在线=密封直径得分" + mfzjcl, "zx-zj", mfzjcl, datahelp.QId);
 
                         g.updateGrade(mfzjcl, "mfzjcl", datahelp.QId);
 
@@ -169,10 +169,10 @@ namespace WindowsFormsApplication1.Exam
                     {
                         if (debug == 1)
                         {
-                            ff.ShowErrorTip("密封直径不得分");
+                            ff.ShowErrorTip("在线=密封直径不得分");
                         }
                         //     ff.ShowErrorTip("游标卡尺或阀瓣未拿起，此项不得分");
-                        Log1.updatelog("密封直径超差不得分" + mfzjcl, "zx-zj", 0, datahelp.QId);
+                        Log1.updatelog("在线=密封直径超差不得分" + mfzjcl, "zx-zj", 0, datahelp.QId);
 
                         g.updateGrade(0, "mfzjcl", datahelp.QId);
                     }
@@ -1546,9 +1546,9 @@ namespace WindowsFormsApplication1.Exam
                 // 其所选不在范围之内 不得分
                 if (debug == 1)
                 {
-                    ff.ShowErrorTip("误差选择错误，不得分");
+                    ff.ShowErrorTip("在线=误差选择错误，不得分");
                 }
-                Log1.updatelog("误差选择错误，不得分", "zx-wxxz", 0, datahelp.QId);
+                Log1.updatelog("在线=误差选择错误，不得分", "zx-wxxz", 0, datahelp.QId);
                 //  ff.ShowErrorTip("误差选择错误，不得分");
                 //this.comboBox1.Enabled = false;
 
@@ -1558,10 +1558,10 @@ namespace WindowsFormsApplication1.Exam
             {
                 if (debug == 1)
                 {
-                    ff.ShowSuccessTip("选择正确，得分" + wxxz1);
+                    ff.ShowSuccessTip("在线=选择正确，得分" + wxxz1);
                 }
                 //  ff.ShowSuccessTip("选择正确，得分" + wxxz1);
-                Log1.updatelog("误差选择正确，得分" + wxxz1, "zx-wxxz", wxxz1, datahelp.QId);
+                Log1.updatelog("在线=误差选择正确，得分" + wxxz1, "zx-wxxz", wxxz1, datahelp.QId);
 
                 g.updateGrade(wxxz1, "wxxz1", datahelp.QId);
                 this.comboBox1.Enabled = false;
