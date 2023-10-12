@@ -411,6 +411,8 @@ namespace WindowsFormsApplication1.Admin
                         var f4 = "-1";
                         var f2 = "-1";
                         var f3 = this.dateTimePicker1.Value;
+                        var bmsqid = this.dataGridView1.Rows[x].Cells[1].Value;
+                        var scpc = this.dataGridView1.Rows[x].Cells[2].Value;
                         var status = 1;
                         if (ff.RC1("select * from student where idcard =" + f1).Length>1)
                         {
@@ -426,7 +428,10 @@ namespace WindowsFormsApplication1.Admin
                         else
                         {
 
-                            string strcomm = "insert into " + "Student" + "(loginid,password,power,name,bumen,idcard,sex,phone,status,date) VALUES(-1,-1,1," +
+                            string strcomm = "insert into " + "Student" + "(loginid,password,power,name,bumen,idcard,sex,phone,status,date) VALUES("+
+                                 "'" + bmsqid.ToString() + "'" + "," +
+                                   "'" + scpc.ToString() + "'" + "," +
+                                "1," +
                              "'" + sub.ToString() + "'" + "," +
                             "'" + f0.ToString() + "'" + "," +
                                "'" + f1.ToString() + "'" + "," +

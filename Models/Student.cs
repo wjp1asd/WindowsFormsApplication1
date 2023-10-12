@@ -11,6 +11,8 @@ namespace WindowsFormsApplication1.Models
         public String Sex;
         public String Bumen;
         public string ava;
+        public string loginid;
+        public string password;
 
         //     [id] INT IDENTITY(1, 1) NOT NULL,
 
@@ -51,6 +53,8 @@ namespace WindowsFormsApplication1.Models
                 ID = reader["idcard"].ToString();
                 ava = reader["avatar"].ToString();
                 Sex1 = reader["sex"].ToString();
+                loginid = reader["loginid"].ToString();
+                password = reader["password"].ToString();
                 switch (Sex)
                 {
                     case "1":

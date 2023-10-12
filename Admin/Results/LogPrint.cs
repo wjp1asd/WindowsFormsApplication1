@@ -1,5 +1,7 @@
 ﻿using AutoWindowsSize;
+using Sunny.UI.Win32;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace WindowsFormsApplication1.Admin.Results
 {
@@ -43,8 +46,21 @@ namespace WindowsFormsApplication1.Admin.Results
 
             this.dataGridView1.DataSource = ds.Tables["question"];
             row = this.dataGridView1.RowCount;
-        }
+            for(int i=0;i<row;i++)
+            {
+                Kfitems ks = new Kfitems();
 
+                ks.kfdm=this.dataGridView1.Rows[i].Cells[2].Value.ToString(); 
+                ks.kffz=this.dataGridView1.Rows[i].Cells[3].ToString(); 
+                ks.itemname=this.dataGridView1.Rows[i].Cells[1].ToString(); 
+
+
+
+
+                bb.Add(ks);
+            }
+        }
+        List<Kfitems> bb = new List<Kfitems>();
 
 
         private void button6_Click(object sender, EventArgs e)
@@ -74,6 +90,7 @@ namespace WindowsFormsApplication1.Admin.Results
             awt = new AutoAdaptWindowsSize(this);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
             this.SizeChanged += groupBox1_Resize;
+          
         }
 
 
@@ -88,6 +105,11 @@ namespace WindowsFormsApplication1.Admin.Results
 
                 InitTable(sql);
             }
+            else {
+                string sql = "Select * from " + TableName + " Where qid =" + uid;
+
+                InitTable(sql);
+            }
         }
 
         private void textBox8_TextChanged(object sender, EventArgs e)
@@ -95,6 +117,8 @@ namespace WindowsFormsApplication1.Admin.Results
 
         }
         Fuc ff = new Fuc();
+        private int fz;
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -153,6 +177,19 @@ namespace WindowsFormsApplication1.Admin.Results
            ;
             // MessageBox.Show(sql);
             InitTable(sql);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Api a = new Api();
+            Grade g = new Grade();
+            TestRecord t = new TestRecord();
+             t= t.getRecord(uid);
+            Student sc=new Student(uid); 
+            fz= g.getGrade("path", uid);
+            
+            
+            a.uploadgrade(fz,t.Ksdate,sc.password,sc.loginid,bb);
         }
     }
 }

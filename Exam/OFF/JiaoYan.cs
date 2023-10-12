@@ -77,13 +77,13 @@ namespace WindowsFormsApplication1.Exam
             //初次前,泄压阀关闭，压力表选择
             xygb = sc.getScore("lx-xyfgb");
             ylxz = sc.getScore("lx-ylbxz");
-            log1.updatelog("校验前，选择压力表初始化", "lx-ylbxz", 0, datahelp.QId);
+            log1.updatelog("离线=校验前，选择压力表初始化", "lx-ylbxz", 0, datahelp.QId);
             log1.updatelog("离线=校验前，卸压阀关闭初始化", "lx-xyfgb", 0, datahelp.QId);
             //初次 拆卸阀帽，整定压力调整，泄压阀开启
             cxfm = sc.getScore("lx-cxfm");
             zdyltz = sc.getScore("lx-zdyltz");
             xyfkq = sc.getScore("lx-xyfkq");
-            log1.updatelog("初次校验，安装阀帽初始化", "lx-azfm-2", 0, datahelp.QId);
+            log1.updatelog("离线=初次校验，安装阀帽初始化", "lx-azfm-2", 0, datahelp.QId);
             log1.updatelog("离线=初次卸压阀打开初始化", "lx-xyfkq", 0, datahelp.QId);
             log1.updatelog("离线=初次：整定调整初始化", "lx-zdyltz", 0, datahelp.QId);
             //第一次 锁紧螺母 打开泄压阀，关闭泄压阀
@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1.Exam
             dkxyf2 = sc.getScore("lx-xyfkq-2");
             gbxyf2 = sc.getScore("lx-xyfgb-2");
 
-            log1.updatelog("离线第二次，卸压阀关闭初始化", "lx-xyfgb-2", 0, datahelp.QId);
+            log1.updatelog("离线=第二次，卸压阀关闭初始化", "lx-xyfgb-2", 0, datahelp.QId);
             log1.updatelog("离线=第二次卸压阀打开初始化", "lx-xyfkq-2", 0, datahelp.QId);
 
             //第三次 打开泄压阀，关闭泄压阀 
@@ -113,7 +113,7 @@ namespace WindowsFormsApplication1.Exam
             gbxyf4 = sc.getScore("lx-xyfgb-4");
             bycs = sc.getScore("lx-ylbqhf");
             log1.updatelog("离线=保压测试卸压阀打开初始化", "lx-xyfkq-4", 0, datahelp.QId);
-            log1.updatelog("密封性能测试，卸压阀关闭初始化", "lx-xyfgb-4", 0, datahelp.QId);
+            log1.updatelog("离线=密封性能测试，卸压阀关闭初始化", "lx-xyfgb-4", 0, datahelp.QId);
 
 
 
@@ -246,7 +246,7 @@ namespace WindowsFormsApplication1.Exam
                 }//
                 if (step==-1||step==4)
                 {
-                    log1.updatelog("校验前，选择压力表错误不得分", "lx-ylbxz", 0, datahelp.QId);
+                    log1.updatelog("离线=校验前，选择压力表错误不得分", "lx-ylbxz", 0, datahelp.QId);
                     liangcheng = 2;
                     qiehuastate = true;
                 }
@@ -272,7 +272,7 @@ namespace WindowsFormsApplication1.Exam
 
                 if (step==-1||step==4)
                 {
-                    log1.updatelog("校验前，选择压力表错误不得分", "lx-ylbxz", 0, datahelp.QId);
+                    log1.updatelog("离线=校验前，选择压力表错误不得分", "lx-ylbxz", 0, datahelp.QId);
                     liangcheng = 3;
                     qiehuastate = true;
                 }
@@ -317,7 +317,7 @@ namespace WindowsFormsApplication1.Exam
                 {
                     if (debug == 1)
                     {
-                        ff.ShowInfoTip("初次拆阀帽得分");
+                        ff.ShowInfoTip("离线=初次拆阀帽得分");
                     }
                     //     
                     chaixiefamao();
@@ -352,7 +352,7 @@ namespace WindowsFormsApplication1.Exam
                 {
                     if (debug == 1)
                     {
-                        dishow("泄压阀打开");
+                        dishow("离线=泄压阀打开");
 
                     }
                     log1.updatelog("离线=初次泄压阀打开得分" + xyfkq, "lx-xyfkq", xyfkq, datahelp.QId);
@@ -446,7 +446,7 @@ namespace WindowsFormsApplication1.Exam
                     if (debug == 1)
                     {
 
-                        dishow("第一次，泄压阀关闭");
+                        dishow("离线=第一次，泄压阀关闭");
 
                     }
                     log1.updatelog("离线=第一次，泄压阀关闭得分" + gbxyf1, "lx-xyfgb-1", gbxyf1, datahelp.QId);
@@ -459,7 +459,7 @@ namespace WindowsFormsApplication1.Exam
                     if (debug == 1)
                     {
 
-                        dishow("第二次，泄压阀关闭");
+                        dishow("离线=第二次，泄压阀关闭");
 
                     }
                     log1.updatelog("离线=第二次，泄压阀关闭得分" + gbxyf2, "lx-xyfgb-2", gbxyf2, datahelp.QId);
@@ -472,7 +472,7 @@ namespace WindowsFormsApplication1.Exam
                     if (debug == 1)
                     {
 
-                        dishow("第三次，泄压阀关闭");
+                        dishow("离线=第三次，泄压阀关闭");
 
                     }
                     log1.updatelog("离线=第三次，泄压阀关闭得分" + gbxyf3, "lx-xyfgb-3", gbxyf3, datahelp.QId);
@@ -485,7 +485,7 @@ namespace WindowsFormsApplication1.Exam
                     if (debug == 1)
                     {
 
-                        dishow("密封性能测试，泄压阀关闭");
+                        dishow("离线=密封性能测试，泄压阀关闭");
 
                     }
                     log1.updatelog("离线=密封性能测试，泄压阀关闭得分" + gbxyf4, "lx-xyfgb-4", gbxyf4, datahelp.QId);
