@@ -167,7 +167,7 @@ namespace WindowsFormsApplication1.Models
                 zxdsanyl = float.Parse(reader["zx-dsanyl"].ToString().Trim());
                 zxderyl = float.Parse(reader["zx-deryl"].ToString().Trim());
                 zxjielun = float.Parse(reader["zx-jielun"].ToString().Trim());
-                zxdyiyl = float.Parse(reader["zx-dyiyl"].ToString().Trim());
+                zxdyiyl=float.Parse(reader["zx-dyiyl"].ToString().Trim());
                 zxtotal = wxxz1 + azfm1 + mfzjcl + cxfm1 +zxdyiyl+
                         zxderyl + zxdsanyl + zxgczj + zxzdyl + zxyldjfw + zxjielun;
                 //离线25个判分点
