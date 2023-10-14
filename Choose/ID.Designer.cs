@@ -192,7 +192,7 @@
             // 
             this.lblValidDate.AutoSize = true;
             this.lblValidDate.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblValidDate.Location = new System.Drawing.Point(64, 195);
+            this.lblValidDate.Location = new System.Drawing.Point(84, 195);
             this.lblValidDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblValidDate.Name = "lblValidDate";
             this.lblValidDate.Size = new System.Drawing.Size(0, 14);
@@ -202,7 +202,7 @@
             // 
             this.lblDept.AutoSize = true;
             this.lblDept.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDept.Location = new System.Drawing.Point(64, 170);
+            this.lblDept.Location = new System.Drawing.Point(84, 170);
             this.lblDept.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDept.Name = "lblDept";
             this.lblDept.Size = new System.Drawing.Size(0, 14);
@@ -211,7 +211,7 @@
             // lblAddress
             // 
             this.lblAddress.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblAddress.Location = new System.Drawing.Point(97, 146);
+            this.lblAddress.Location = new System.Drawing.Point(64, 146);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(259, 22);
@@ -221,7 +221,7 @@
             // 
             this.lblIdCard.AutoSize = true;
             this.lblIdCard.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblIdCard.Location = new System.Drawing.Point(64, 121);
+            this.lblIdCard.Location = new System.Drawing.Point(84, 121);
             this.lblIdCard.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIdCard.Name = "lblIdCard";
             this.lblIdCard.Size = new System.Drawing.Size(0, 14);

@@ -107,7 +107,8 @@ namespace WindowsFormsApplication1.Scan
 
                 return;
             }
-            string sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0, 20) + "%'";
+            string sql = "select * from TestRecord where qrcode like  '%" + this.textBox1.Text.Trim().Substring(0,14 
+               ) + "%'";
 
             if (ff.RC(sql).Length > 0)
             {
