@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
@@ -49,14 +51,10 @@ namespace WindowsFormsApplication1.Admin.Results
             for(int i=0;i<row;i++)
             {
                 Kfitems ks = new Kfitems();
-
+                ks.itemname=this.dataGridView1.Rows[i].Cells[1].Value.ToString();
                 ks.kfdm=this.dataGridView1.Rows[i].Cells[2].Value.ToString(); 
-                ks.kffz=this.dataGridView1.Rows[i].Cells[3].ToString(); 
-                ks.itemname=this.dataGridView1.Rows[i].Cells[1].ToString(); 
-
-
-
-
+                ks.kffz=this.dataGridView1.Rows[i].Cells[3].Value.ToString(); 
+                ks.kfsj=this.dataGridView1.Rows[i].Cells[4].Value.ToString();
                 bb.Add(ks);
             }
         }
@@ -170,7 +168,41 @@ namespace WindowsFormsApplication1.Admin.Results
                 return;
             }
         }
+        private void xmLprase(string a)
+        {
+            XmlDocument doc = new XmlDocument();
+            MessageBox.Show(a);
+            try
+            {
+                //返回信息节点
+                doc.LoadXml(a);
 
+                XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
+
+                nsmgr.AddNamespace("soap", "http://schemas.xmlsoap.org/soap/envelope/");
+                nsmgr.AddNamespace("ns1", "http://webservice.jerry.com");
+                nsmgr.AddNamespace("resultList", "http://webservice.jerry.com");
+                nsmgr.AddNamespace("ns1", "http://webservice.jerry.com");
+                XmlNode result = doc.SelectSingleNode("//soap:Envelope//soap:Body//ns1:uploadSccjAndKfItemsInfoResponse//ns1:out", nsmgr);
+
+                // 1是返回文本 2 是考生信息 3批量数量
+                string message = result.ChildNodes[2].InnerText;
+
+
+                MessageBox.Show(message);
+
+              
+
+            }
+            catch (Exception e)
+            {
+                //显示错误信息
+                MessageBox.Show(e.Message);
+                Console.WriteLine(e.Message);
+            }
+
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             string sql = "delete  " + TableName + " Where qid = '" + uid+"'"
@@ -187,9 +219,20 @@ namespace WindowsFormsApplication1.Admin.Results
              t= t.getRecord(uid);
             Student sc=new Student(uid); 
             fz= g.getGrade("path", uid);
-            
-            
-            a.uploadgrade(fz,t.Ksdate,sc.password,sc.loginid,bb);
+            string listarry = "";
+            foreach (var item in bb)
+            {
+                string bean = "<bean:KfItems><bean:itemname>"+item.itemname.Trim()+"</bean:itemname>";
+                string a1 = "<bean:kfdm>"+item.kfdm.Trim()+"</bean:kfdm>";
+                string a2= "<bean:kffz>"+item.kffz.Trim()+"</bean:kffz>";
+                string a3 = "<bean:kfsj>"+item.kfsj.Trim()+"</bean:kffz>";
+                string end = "</bean:KfItems>";
+                listarry +=bean+a1+a2+a3+end;
+            }
+             MessageBox.Show(sc.Name+sc.password+ sc.loginid);
+
+            xmLprase(a.uploadgrade(fz, t.Ksdate, "26256", "1566615", listarry));
+            ;
         }
     }
 }

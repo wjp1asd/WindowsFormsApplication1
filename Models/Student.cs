@@ -14,24 +14,7 @@ namespace WindowsFormsApplication1.Models
         public string loginid;
         public string password;
 
-        //     [id] INT IDENTITY(1, 1) NOT NULL,
-
-        //[name]     VARCHAR(50) NOT NULL,
-
-        //[loginId]  VARCHAR(50) NOT NULL,
-
-        //[password] VARCHAR(50) NOT NULL,
-
-        //[sex]      VARCHAR(50) NULL,
-        // [power]
-        //     INT NULL,
-        // [avatar]   IMAGE NULL,
-        // [status]   INT NULL,
-        // [bumen]    VARCHAR(50) NULL,
-        // [phone] VARCHAR(50) NULL,
-        // [confirm] VARCHAR(50) NULL,
-        // [idcard] VARCHAR(50) NULL,
-        // [date] VARCHAR(50) NULL,
+        
         public string Name { get => name; set => name = value; }
         public string ID1 { get => ID; set => ID = value; }
         public string Sex1 { get => Sex; set => Sex = value; }

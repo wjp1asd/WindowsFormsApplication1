@@ -69,23 +69,25 @@ namespace WindowsFormsApplication1.Models
             return a;
 
         }
-        public string uploadgrade( double fz, string kssj, string scpc, string bmsqid, List<Kfitems> bach)
+        public string uploadgrade(double fz, string kssj, string scpc = "26256", string bmsqid = "1566615", string bach = "")
         {
+            
             StringBuilder soap = new StringBuilder();
             soap.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
             soap.Append("<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://schemas.xmlsoap.org/soap/envelope/\">");
             soap.Append("<soapenv:Header/>");
             soap.Append("<soapenv:Body>");
-            soap.Append("<web:uploadSccjAndKfitemsInfo>");
+            soap.Append("<web:uploadSccjAndKfIetmsInfo>");
             soap.Append("<web:in0>"+username+"</web:in0>");
             soap.Append("<web:in1>" + pass + "</web:in1>");
-            soap.Append("<web:in2>" + fz + "</web:in2>");
-            soap.Append("<web:in3>haxd</web:in3>");
-            soap.Append("<web:in4>" + kssj+ "</web:in4>");
+            soap.Append("<web:in2>" + fz + "</web:in2>");          
+            soap.Append("<web:in3>" + kssj+ "</web:in3>");
+            soap.Append("<web:in4>haxd</web:in4>");
             soap.Append("<web:in5>" + scpc+ "</web:in5>");
             soap.Append("<web:in6>" + bmsqid+ "</web:in6>");
             soap.Append("<web:in7>" + bach+ "</web:in7>");
-            soap.Append("</web:uploadSccjAndKfitemsInfo>");
+            soap.Append("<web:in8>0</web:in8>");
+            soap.Append("</web:uploadSccjAndKfIetmsInfo>");
             soap.Append("</soapenv:Body>");
             soap.Append("</soapenv:Envelope>");
 

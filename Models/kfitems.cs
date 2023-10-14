@@ -12,6 +12,7 @@ namespace WindowsFormsApplication1.Models
         public string kfdm;
         public string itemname;
         public string kffz;
-       
+        public string kfsj;
+
     }
 }
