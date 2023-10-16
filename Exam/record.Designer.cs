@@ -162,6 +162,7 @@
             this.button2.BackColor = System.Drawing.Color.Cyan;
             this.button2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(88, 77);
             this.button2.Location = new System.Drawing.Point(96, 77);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
@@ -194,6 +195,7 @@
             this.label1.Font = new System.Drawing.Font("宋体", 12F);
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(520, 93);
+            this.label1.Location = new System.Drawing.Point(512, 93);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 16);
@@ -911,7 +913,7 @@
             this.label17.Location = new System.Drawing.Point(9, 9);
             this.label17.Margin = new System.Windows.Forms.Padding(8, 8, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 19);
+            this.label17.Size = new System.Drawing.Size(66, 22);
             this.label17.TabIndex = 0;
             this.label17.Text = "检验介质";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

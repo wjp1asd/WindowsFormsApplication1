@@ -117,7 +117,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblName.Location = new System.Drawing.Point(77, 63);
+            this.lblName.Location = new System.Drawing.Point(84, 63);
             this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(0, 14);
@@ -172,7 +172,7 @@
             // 
             this.lblDept.AutoSize = true;
             this.lblDept.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDept.Location = new System.Drawing.Point(64, 170);
+            this.lblDept.Location = new System.Drawing.Point(84, 170);
             this.lblDept.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDept.Name = "lblDept";
             this.lblDept.Size = new System.Drawing.Size(0, 14);

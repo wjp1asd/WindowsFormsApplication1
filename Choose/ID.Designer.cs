@@ -66,7 +66,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(260, 22);
+            this.label1.Location = new System.Drawing.Point(250, 141);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(267, 64);
@@ -79,7 +79,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.zx;
-            this.pictureBox1.Location = new System.Drawing.Point(244, 146);
+            this.pictureBox1.Location = new System.Drawing.Point(236, 231);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(294, 211);
@@ -92,7 +92,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(314, 329);
+            this.label2.Location = new System.Drawing.Point(321, 329);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(1, 1);
@@ -103,7 +103,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 50;
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // groupBox1
@@ -129,7 +129,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Location = new System.Drawing.Point(108, 88);
+            this.groupBox1.Location = new System.Drawing.Point(108, 258);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -192,7 +192,7 @@
             // 
             this.lblValidDate.AutoSize = true;
             this.lblValidDate.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblValidDate.Location = new System.Drawing.Point(64, 195);
+            this.lblValidDate.Location = new System.Drawing.Point(84, 195);
             this.lblValidDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblValidDate.Name = "lblValidDate";
             this.lblValidDate.Size = new System.Drawing.Size(0, 14);
@@ -202,7 +202,7 @@
             // 
             this.lblDept.AutoSize = true;
             this.lblDept.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDept.Location = new System.Drawing.Point(64, 170);
+            this.lblDept.Location = new System.Drawing.Point(84, 170);
             this.lblDept.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDept.Name = "lblDept";
             this.lblDept.Size = new System.Drawing.Size(0, 14);
@@ -221,7 +221,7 @@
             // 
             this.lblIdCard.AutoSize = true;
             this.lblIdCard.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblIdCard.Location = new System.Drawing.Point(64, 121);
+            this.lblIdCard.Location = new System.Drawing.Point(84, 121);
             this.lblIdCard.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIdCard.Name = "lblIdCard";
             this.lblIdCard.Size = new System.Drawing.Size(0, 14);
@@ -231,7 +231,7 @@
             // 
             this.lblBirthday.AutoSize = true;
             this.lblBirthday.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblBirthday.Location = new System.Drawing.Point(64, 94);
+            this.lblBirthday.Location = new System.Drawing.Point(74, 94);
             this.lblBirthday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBirthday.Name = "lblBirthday";
             this.lblBirthday.Size = new System.Drawing.Size(0, 14);
@@ -251,7 +251,7 @@
             // 
             this.lblSex.AutoSize = true;
             this.lblSex.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblSex.Location = new System.Drawing.Point(46, 68);
+            this.lblSex.Location = new System.Drawing.Point(66, 68);
             this.lblSex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(0, 14);
@@ -261,7 +261,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblName.Location = new System.Drawing.Point(38, 42);
+            this.lblName.Location = new System.Drawing.Point(68, 42);
             this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(0, 14);
@@ -350,7 +350,7 @@
             this.button7.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button7.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(300, 377);
+            this.button7.Location = new System.Drawing.Point(307, 550);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(157, 50);
@@ -363,7 +363,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 465);
+            this.ClientSize = new System.Drawing.Size(784, 638);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label2);

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 
@@ -66,8 +67,9 @@ namespace WindowsFormsApplication1
 
                         this.label2.ForeColor = Color.Green;
                         //开启请求
-                        th = new Thread(AutoReadCard);
-                        th.Start();
+                        timer1.Start();
+                        //  th = new Thread(AutoReadCard);
+                        // th.Start();
 
                     }
                     else
@@ -132,11 +134,11 @@ namespace WindowsFormsApplication1
         int readContent = -1;
         private void AutoReadCard()
         {
-            while (true)
+            while (true&&this.groupBox1.Visible==false)
             {
                 rest--;
                 Thread.Sleep(1000);
-
+                timer1.Stop();
                 if (nReaderPort == 0)
                 {
                     if (authenticate == -1)
@@ -153,7 +155,7 @@ namespace WindowsFormsApplication1
                             readContent = IDCardReader.Read_Content(1);
                         }
 
-
+                        
                         Action tongdao = () =>
                         {
                             this.groupBox1.Show();
@@ -393,7 +395,7 @@ namespace WindowsFormsApplication1
                         //上传信息
                         if (lblIdCard.Text.ToString().Length > 0)
                         {
-                            this.groupBox1.Show();
+                            this.groupBox1.Visible=true;
 
                             Id = lblIdCard.Text.ToString().Trim();
                             UpdataInfo(Id);
@@ -403,7 +405,16 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        ff.ShowInfoTip("请放身份证!");
+                       // ff.ShowInfoTip(readContent +"请放身份证!" +authenticate);
+                        
+
+                            authenticate = IDCardReader.Authenticate();
+
+                      //  if (readContent == -1)
+                      //  {
+
+                      //      readContent = IDCardReader.Read_Content(1);
+                       // }
                         //  authenticate = IDCardReader.Authenticate();
                         //  this.label2.Text = "请放身份证!";
                         // this.label2.ForeColor = Color.Red;
@@ -440,11 +451,17 @@ namespace WindowsFormsApplication1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (this.timer1.Enabled) {
 
+                this.AutoReadCard();
+            }
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
+            timer1.Stop();
+            
             this.Close();
             ff.backlogin();
         }
@@ -525,7 +542,8 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.groupBox1.Hide();
+            this.groupBox1.Visible=false;
+            timer1.Start();
         }
     }
 }

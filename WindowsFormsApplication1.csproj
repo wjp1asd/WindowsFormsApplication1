@@ -551,6 +551,7 @@
     </Compile>
     <EmbeddedResource Include="Admin\AdminIndex.resx">
       <DependentUpon>AdminIndex.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Goals\GoalSet1.resx">
       <DependentUpon>GoalSet1.cs</DependentUpon>
