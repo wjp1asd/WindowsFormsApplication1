@@ -256,6 +256,13 @@ namespace WindowsFormsApplication1
 
                 this.InitTable(sql);
             }
+            else {
+                string sql = "select id,name,bumen," +
+                    "idcard,status,phone,date,sex from " + TableName + " where power =1 ";
+
+                this.InitTable(sql);
+
+            }
 
 
         }

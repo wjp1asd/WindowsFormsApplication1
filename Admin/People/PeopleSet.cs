@@ -250,6 +250,12 @@ namespace WindowsFormsApplication1
                 this.InitTable(sql);
 
             }
+            else {
+                string sql = "select id,name,bumen,loginid,password,status,phone,confirm from " + TableName + " where power>1";
+
+                this.InitTable(sql);
+
+            }
 
 
         }

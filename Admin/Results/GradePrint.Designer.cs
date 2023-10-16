@@ -147,7 +147,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.Cyan;
-            this.button1.Location = new System.Drawing.Point(49, 20);
+            this.button1.Location = new System.Drawing.Point(40, 20);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 40);
@@ -161,7 +161,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 20F);
-            this.label1.Location = new System.Drawing.Point(410, 7);
+            this.label1.Location = new System.Drawing.Point(401, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 27);
@@ -189,7 +189,7 @@
             this.groupBox1.Controls.Add(this.flowLayoutPanel6);
             this.groupBox1.Controls.Add(this.flowLayoutPanel5);
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox1.Location = new System.Drawing.Point(29, 64);
+            this.groupBox1.Location = new System.Drawing.Point(20, 64);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -1066,7 +1066,7 @@
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button3.BackColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(872, 20);
+            this.button3.Location = new System.Drawing.Point(863, 20);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(111, 34);
@@ -1079,7 +1079,7 @@
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button6.BackColor = System.Drawing.Color.Red;
-            this.button6.Location = new System.Drawing.Point(749, 20);
+            this.button6.Location = new System.Drawing.Point(740, 20);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(100, 34);
@@ -1092,7 +1092,7 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(634, 20);
+            this.button2.Location = new System.Drawing.Point(625, 20);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 34);
@@ -1105,7 +1105,7 @@
             // 
             this.button10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button10.BackColor = System.Drawing.Color.Cyan;
-            this.button10.Location = new System.Drawing.Point(145, 20);
+            this.button10.Location = new System.Drawing.Point(136, 20);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(83, 40);
@@ -1118,7 +1118,7 @@
             // 
             this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button4.BackColor = System.Drawing.Color.Cyan;
-            this.button4.Location = new System.Drawing.Point(246, 20);
+            this.button4.Location = new System.Drawing.Point(237, 20);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(83, 40);

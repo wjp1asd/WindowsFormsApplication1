@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1.Questions
             {
                 string sql = "select * from " + TableName + "   where subId =" + Subtype;
 
-                MessageBox.Show(sql);
+               // MessageBox.Show(sql);
                 this.InitTable(sql);
             }
 

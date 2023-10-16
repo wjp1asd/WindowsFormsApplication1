@@ -88,6 +88,12 @@ namespace WindowsFormsApplication1
 
                 InitTable(sql);
             }
+            else {
+                string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode";
+                      
+
+                InitTable(sql);
+            }
         }
 
         private void textBox8_TextChanged(object sender, EventArgs e)
