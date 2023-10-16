@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Models
 {
@@ -24,10 +25,10 @@ namespace WindowsFormsApplication1.Models
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select * from student where idcard='" + qrcode + "'";
+            string sql = "select * from student where [idcard] ='" + qrcode + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
-
+          //  MessageBox.Show(""+sql);
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {

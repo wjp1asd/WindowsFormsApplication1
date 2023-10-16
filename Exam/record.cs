@@ -145,6 +145,8 @@ namespace WindowsFormsApplication1.Exam
         {
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("white");
+
+
         }
 
         private void label7_Click(object sender, EventArgs e)

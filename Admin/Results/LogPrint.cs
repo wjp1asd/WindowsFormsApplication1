@@ -12,6 +12,7 @@ using System.Xml;
 using WindowsFormsApplication1.Exam;
 using WindowsFormsApplication1.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace WindowsFormsApplication1.Admin.Results
 {
@@ -47,14 +48,23 @@ namespace WindowsFormsApplication1.Admin.Results
             //   qs = ds.Tables[0];
 
             this.dataGridView1.DataSource = ds.Tables["question"];
-            row = this.dataGridView1.RowCount;
+              row = this.dataGridView1.RowCount;
+
+   
+
+            
+
+
+       
+           // row=1;
             for(int i=0;i<row;i++)
             {
                 Kfitems ks = new Kfitems();
-                ks.itemname=this.dataGridView1.Rows[i].Cells[1].Value.ToString();
-                ks.kfdm=this.dataGridView1.Rows[i].Cells[2].Value.ToString(); 
-                ks.kffz=this.dataGridView1.Rows[i].Cells[3].Value.ToString(); 
-                ks.kfsj=this.dataGridView1.Rows[i].Cells[4].Value.ToString();
+                ks.itemname=this.dataGridView1.Rows[i].Cells[1].Value.ToString().Trim();
+                ks.kfdm=this.dataGridView1.Rows[i].Cells[2].Value.ToString().Trim(); 
+                ks.kffz=this.dataGridView1.Rows[i].Cells[3].Value.ToString().Trim(); 
+               ks.kfsj=this.dataGridView1.Rows[i].Cells[5].Value.ToString().Trim();
+             //   ks.kfsj="2023-09-09";
                 bb.Add(ks);
             }
         }
@@ -171,7 +181,7 @@ namespace WindowsFormsApplication1.Admin.Results
         private void xmLprase(string a)
         {
             XmlDocument doc = new XmlDocument();
-            MessageBox.Show(a);
+          //  MessageBox.Show(a);
             try
             {
                 //返回信息节点
@@ -183,15 +193,15 @@ namespace WindowsFormsApplication1.Admin.Results
                 nsmgr.AddNamespace("ns1", "http://webservice.jerry.com");
                 nsmgr.AddNamespace("resultList", "http://webservice.jerry.com");
                 nsmgr.AddNamespace("ns1", "http://webservice.jerry.com");
-                XmlNode result = doc.SelectSingleNode("//soap:Envelope//soap:Body//ns1:uploadSccjAndKfItemsInfoResponse//ns1:out", nsmgr);
+                XmlNode result = doc.SelectSingleNode("//soap:Envelope//soap:Body//ns1:uploadSccjAndKfIetmsInfoResponse//ns1:out", nsmgr);
 
                 // 1是返回文本 2 是考生信息 3批量数量
-                string message = result.ChildNodes[2].InnerText;
-
-
-                MessageBox.Show(message);
-
-              
+                string message1 = result.ChildNodes[1].InnerText;
+               // string message2 = result.ChildNodes[2].InnerText;
+               // string message3 = result.ChildNodes[3].InnerText;
+                MessageBox.Show(message1);
+             //   MessageBox.Show(message2);
+              //  MessageBox.Show(message3);
 
             }
             catch (Exception e)
@@ -217,22 +227,28 @@ namespace WindowsFormsApplication1.Admin.Results
             Grade g = new Grade();
             TestRecord t = new TestRecord();
              t= t.getRecord(uid);
-            Student sc=new Student(uid); 
+            Student sc=new Student(t.KsId); 
+            
             fz= g.getGrade("path", uid);
             string listarry = "";
+            
             foreach (var item in bb)
             {
                 string bean = "<bean:KfItems><bean:itemname>"+item.itemname.Trim()+"</bean:itemname>";
                 string a1 = "<bean:kfdm>"+item.kfdm.Trim()+"</bean:kfdm>";
                 string a2= "<bean:kffz>"+item.kffz.Trim()+"</bean:kffz>";
-                string a3 = "<bean:kfsj>"+item.kfsj.Trim()+"</bean:kffz>";
+                string a3 = "<bean:kfsj>"+item.kfsj.Trim()+"</bean:kfsj>";
                 string end = "</bean:KfItems>";
                 listarry +=bean+a1+a2+a3+end;
             }
-             MessageBox.Show(sc.Name+sc.password+ sc.loginid);
-
-            xmLprase(a.uploadgrade(fz, t.Ksdate, "26256", "1566615", listarry));
-            ;
+            //  MessageBox.Show(sc.Name+sc.password+ sc.loginid);
+            DateTime d = DateTime.Now;
+            string now =d.Year.ToString()+"-"+d.Month.ToString()+"-"+d.Day;
+            if (sc.Bumen1=="上海特检院") {
+                xmLprase(a.uploadgrade(fz, now, sc.password, sc.loginid, listarry));
+            }
+          
+          
         }
     }
 }
