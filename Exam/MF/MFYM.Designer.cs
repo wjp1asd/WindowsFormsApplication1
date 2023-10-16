@@ -217,6 +217,7 @@
             this.label1.TabIndex = 117;
             this.label1.Text = "身份证：***************";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Visible = false;
             // 
             // MFYM
             // 

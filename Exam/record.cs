@@ -29,9 +29,16 @@ namespace WindowsFormsApplication1.Exam
             Initc();
             this.label2.Text = type + this.label2.Text;
             this.printDocument1.OriginAtMargins = true;//启用页边距
-            if (type== "离线")
+            if (type == "离线")
             {
                 InitScore();
+            }
+            else {
+
+             
+                jyjg1 = sc.getScore("zx-jielun");
+                Log1.updatelog("离线=填写记录-结论初始化", "zx-jielun", 0, datahelp.QId);
+
             }                                          // 初始化成绩
 
             this.ControlBox = false;
@@ -55,7 +62,7 @@ namespace WindowsFormsApplication1.Exam
             dscyl = sc.getScore("lx-dsanyl");
             mfsyyl = sc.getScore("lx-mfyl");
             jyjg = sc.getScore("lx-jielun");
-            jyjg1 = sc.getScore("zx-jielun");
+            Log1.updatelog("离线=填写记录-结论初始化", "lx-jielun", 0, datahelp.QId);
             //  this.label11.Text = "编号：" + datahelp.QId;
             g.updateGrade(0, "lx-yqzdyl", datahelp.QId);
             g.updateGrade(0, "lx-gctj", datahelp.QId);

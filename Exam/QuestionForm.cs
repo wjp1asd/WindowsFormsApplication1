@@ -220,6 +220,7 @@ namespace WindowsFormsApplication1
                 this.label9.Visible = false;
                 this.label8.Visible = false;
                 this.label7.Visible = false;
+                this.label6.Visible = false;
             }
             this.label2.Text = "总题数：" + (num) + "，当前：";
             datahelp.Answer = new string[num];
