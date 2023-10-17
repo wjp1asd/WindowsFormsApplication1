@@ -126,7 +126,7 @@ namespace WindowsFormsApplication1.Admin.Results
 
             label7.Text=a1.lxtotal.ToString();
             label11.Text=a1.zxtotal.ToString();
-            label15.Text=a1.score8.ToString();
+            label15.Text=a1.mftotal.ToString();
             label17.Text=a1.getGrade("path", datahelp.QId).ToString();
             this.pictureBox1.ImageLocation = a1.lxpic;
             this.pictureBox2.ImageLocation = a1.lxpic1;
@@ -156,18 +156,24 @@ namespace WindowsFormsApplication1.Admin.Results
         private void button2_Click(object sender, EventArgs e)
         {
 
-            reset("score1");
+            reset("csfm");
+            reset("lx-jielun");
+            MessageBox.Show("离线考试重置成功");
         }
 
         private void reset(string name)
         {
             a1.updateGrade(-1, name, datahelp.QId);
-            MessageBox.Show("当前考试重置成功");
+           
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            reset("score2");
+            reset("cxfm1");
+            reset("zx-jielun");
+         
+           
+            MessageBox.Show("在线考试重置成功");
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -177,12 +183,17 @@ namespace WindowsFormsApplication1.Admin.Results
 
         private void button5_Click(object sender, EventArgs e)
         {
-            reset("score4");
+           
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             reset("score5");
+            reset("score4");
+            reset("score6");
+            reset("score8");
+          //  reset("mf-total");
+            MessageBox.Show("密封考试重置成功");
         }
 
         private void button4_Click(object sender, EventArgs e)

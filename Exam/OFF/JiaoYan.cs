@@ -514,39 +514,45 @@ namespace WindowsFormsApplication1.Exam
         {
             if (foujuestate1==false)
             {
-                //log1.clear(datahelp.QId, 1);
-                //log1.updatelog("严重错误！校验阀开启后，选择压力表,当前考试结束，得分为0", "lx-fj", 0, datahelp.QId);
-                //ff.ShowErrorDialog("严重错误！校验阀开启后，选择压力表,当前考试结束，得分为0", true);
-                //g.updateGrade(0, "lx-total", datahelp.QId);
-                //foujuestate1=true;
-                //return;
+                log1.clear(datahelp.QId, 1);
+                log1.updatelog("严重错误！校验阀开启后，选择压力表,当前考试结束，得分为0", "lx-fj", 0, datahelp.QId);
+                ff.ShowErrorDialog("严重错误！校验阀开启后，选择压力表,当前考试结束，得分为0");
+                g.updateGrade(0, "lx-total", datahelp.QId);
+                foujuestate1=true;
+                foujuestate=true;
+                foujuestate2=true;
+                return;
             }
         }
             private void foujue()
         {
             if (foujuestate==false) {
 
-                //log1.clear(datahelp.QId, 1);
-                //ff.ShowErrorDialog("严重错误！未泄压调螺母，当前考试结束，得分为0", true);
-                //g.updateGrade(0, "lx-total", datahelp.QId);
-               
-                //foujuestate=true;
-                //return;
+                log1.clear(datahelp.QId, 1);
+                ff.ShowErrorDialog("严重错误！未泄压调螺母，当前考试结束，得分为0", true);
+                g.updateGrade(0, "lx-total", datahelp.QId);
+
+                foujuestate1=true;
+                foujuestate=true;
+                foujuestate2=true;
+                return;
             }
           
         }
 
         private void foujue2()
         {
-            //if (foujuestate2==false)
-            //{
-            //    log1.clear(datahelp.QId,1);
-            //    log1.updatelog("严重错误！锁紧螺母拧错", "lx-fj2", 0, datahelp.QId);
-            //    ff.ShowErrorDialog("严重错误！锁紧螺母拧错,当前考试结束，得分为0", true);
-            //    g.updateGrade(0, "lx-total", datahelp.QId);
-            //    foujuestate2=true;
-            //    return;
-            //}
+            if (foujuestate2==false)
+            {
+                log1.clear(datahelp.QId, 1);
+                log1.updatelog("严重错误！锁紧螺母拧错", "lx-fj2", 0, datahelp.QId);
+                ff.ShowErrorDialog("严重错误！锁紧螺母拧错,当前考试结束，得分为0");
+                g.updateGrade(0, "lx-total", datahelp.QId);
+                foujuestate1=true;
+                foujuestate=true;
+                foujuestate2=true;
+                return;
+            }
         }
 
         private void dishow(string msg)
@@ -791,7 +797,7 @@ namespace WindowsFormsApplication1.Exam
         public bool SJLMSTAT { get; private set; }
 
         List<goal> goals = new List<goal>();
-
+        
 
         private void JiaoYan_Load(object sender, EventArgs e)
         {
