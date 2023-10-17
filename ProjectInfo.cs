@@ -9,8 +9,10 @@ namespace WindowsFormsApplication1
 {
     public partial class ProjectInfo : Form
     {
-        public ProjectInfo()
+        string set1 = "";
+        public ProjectInfo(string set="")
         {
+            set1 = set; 
             InitializeComponent();
         }
 
@@ -37,14 +39,28 @@ namespace WindowsFormsApplication1
             {
                 case 2:
                     //离线得分
-                    this.label2.Text = "离线得分:" +g.lxtotal;
+                    if (set1.Length > 0)
+                    {
+                        this.label2.Text = "离线得分:" + set1;
+                    }
+                    else {
+                        this.label2.Text = "离线得分:" + g.lxtotal;
+                    }
+                  
                     break;
                 case 3:
                     //在线得分
                     //this.label2.Text = "得分:" +(g.wxxz1 + g.azfm1 + g.mfzjcl+g.cxfm1+
                     //        g.zxderyl+g.zxdsanyl+g.zxjielun+g.gctj+g.zxzdyl+g.zxyldjfw+g.zxjielun);
+                    if (set1.Length > 0)
+                    {
+                        this.label2.Text = "在线得分:" + set1;
+                    }
+                    else {
+                        this.label2.Text = "在线得分:" + g.zxtotal;
 
-                    this.label2.Text = "在线得分:" +g.zxtotal;
+                    }
+                   
                     break;
                 case 4:
                     // 密封总得分

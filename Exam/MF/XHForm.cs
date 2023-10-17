@@ -123,6 +123,7 @@ namespace WindowsFormsApplication1.Exam.MF
                 this.label9.Visible = false;
                 this.label8.Visible = false;
                 this.label7.Visible = false;
+                this.label6.Visible = false;
             }
             InitbtnUp();
             InitbtnNext();

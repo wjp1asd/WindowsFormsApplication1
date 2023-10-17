@@ -188,10 +188,10 @@ namespace WindowsFormsApplication1.Exam
         private void button2_Click(object sender, EventArgs e)
         {
             float a1 = g.getGrade("zx-jielun", datahelp.QId);
-            if (a1 > -1 && debug != 1)
+            if (a1 >0 && debug != 1)
             {
 
-                ff.ShowErrorDialog("重复考试");
+                ff.ShowErrorDialog("重复考试"+a1);
 
                 datahelp.CurrentStep1 = 4;
                 this.refreshButton();

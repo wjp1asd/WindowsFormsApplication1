@@ -180,7 +180,7 @@ namespace WindowsFormsApplication1.Exam.MF
         private void button2_Click(object sender, EventArgs e)
         {
             // 研磨识别
-            float a1 = g.getGrade("score6", datahelp.QId);
+            float a1 = g.getGrade("score5", datahelp.QId);
             if (a1 > -1 && debug != 1)
             {
 

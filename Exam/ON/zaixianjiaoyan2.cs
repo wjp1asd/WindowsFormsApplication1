@@ -1319,7 +1319,15 @@ namespace WindowsFormsApplication1.Exam
             //this.Close();
 
             //   reada.Abort();
+            if (datahelp.f1 == "0" &&datahelp.f2 == "0" && datahelp.f3 == "0") {
 
+                g.updateGrade(0,"zx-total",datahelp.QId);
+                Log1.updatelog("在线=否决项，未校零打压", "zx-fj", 0, datahelp.QId);
+                ff.ShowErrorDialog("严重错误，未校零打压，当前考试0分");
+                this.Hide();
+                ProjectInfo p = new ProjectInfo();
+                p.Show();
+            }
 
             this.timer1.Stop();
             this.timer2.Stop();
