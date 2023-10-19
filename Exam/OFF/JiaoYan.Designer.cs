@@ -193,7 +193,7 @@
             this.uiLedLabel4.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiLedLabel4.ForeColor = System.Drawing.Color.Lime;
             this.uiLedLabel4.IntervalOn = 3;
-            this.uiLedLabel4.Location = new System.Drawing.Point(9, 90);
+            this.uiLedLabel4.Location = new System.Drawing.Point(38, 76);
             this.uiLedLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.uiLedLabel4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLedLabel4.Name = "uiLedLabel4";
@@ -405,7 +405,7 @@
             // uiLight6
             // 
             this.uiLight6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight6.Location = new System.Drawing.Point(271, 51);
+            this.uiLight6.Location = new System.Drawing.Point(306, 37);
             this.uiLight6.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight6.Name = "uiLight6";
             this.uiLight6.Radius = 35;
@@ -417,7 +417,7 @@
             // uiLight5
             // 
             this.uiLight5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight5.Location = new System.Drawing.Point(217, 50);
+            this.uiLight5.Location = new System.Drawing.Point(252, 36);
             this.uiLight5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight5.Name = "uiLight5";
             this.uiLight5.Radius = 35;
@@ -431,7 +431,7 @@
             this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("宋体", 12F);
-            this.label34.Location = new System.Drawing.Point(17, 31);
+            this.label34.Location = new System.Drawing.Point(46, 17);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(311, 16);
             this.label34.TabIndex = 141;
@@ -440,7 +440,7 @@
             // uiLight4
             // 
             this.uiLight4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight4.Location = new System.Drawing.Point(164, 50);
+            this.uiLight4.Location = new System.Drawing.Point(199, 36);
             this.uiLight4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight4.Name = "uiLight4";
             this.uiLight4.Radius = 35;
@@ -452,7 +452,7 @@
             // uiLight3
             // 
             this.uiLight3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight3.Location = new System.Drawing.Point(114, 50);
+            this.uiLight3.Location = new System.Drawing.Point(149, 36);
             this.uiLight3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight3.Name = "uiLight3";
             this.uiLight3.Radius = 35;
@@ -464,7 +464,7 @@
             // uiLight2
             // 
             this.uiLight2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight2.Location = new System.Drawing.Point(62, 50);
+            this.uiLight2.Location = new System.Drawing.Point(97, 36);
             this.uiLight2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight2.Name = "uiLight2";
             this.uiLight2.Radius = 35;
@@ -476,7 +476,7 @@
             // uiLight1
             // 
             this.uiLight1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLight1.Location = new System.Drawing.Point(9, 51);
+            this.uiLight1.Location = new System.Drawing.Point(44, 37);
             this.uiLight1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLight1.Name = "uiLight1";
             this.uiLight1.Radius = 35;
@@ -487,6 +487,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.groupBox1.Controls.Add(this.label34);
             this.groupBox1.Controls.Add(this.uiLight6);
             this.groupBox1.Controls.Add(this.uiLight1);
@@ -495,9 +496,9 @@
             this.groupBox1.Controls.Add(this.uiLight3);
             this.groupBox1.Controls.Add(this.uiLight4);
             this.groupBox1.Controls.Add(this.uiLedLabel4);
-            this.groupBox1.Location = new System.Drawing.Point(18, 438);
+            this.groupBox1.Location = new System.Drawing.Point(286, 440);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(399, 124);
+            this.groupBox1.Size = new System.Drawing.Size(393, 124);
             this.groupBox1.TabIndex = 144;
             this.groupBox1.TabStop = false;
             // 

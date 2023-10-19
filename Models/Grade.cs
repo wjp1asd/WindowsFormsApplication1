@@ -217,7 +217,10 @@ namespace WindowsFormsApplication1.Models
                 updateGrade(lxtotal, "lx-total", tid);
                 updateGrade(zxtotal, "zx-total", tid);
                 updateGrade(mftotal, "mf-total", tid);
-                updateGrade(lxtotal+zxtotal+mftotal, "path", tid);
+                if (lxtotal>-1&&zxtotal>-1&&mftotal>-1) {
+                    updateGrade(lxtotal+zxtotal+mftotal, "path", tid);
+                }
+               
                 // total = float.Parse(reader["path"].ToString().Trim());
                 //  MessageBox.Show(lxtotal+""+zxtotal+""+mftotal);
             }

@@ -355,10 +355,13 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            datahelp.CurrentStep1 = 1;
-            datahelp.CurrentStep = 2;
-            jiaoyancanshu jy = new jiaoyancanshu();
-            jy.Show();
+            //datahelp.CurrentStep1 = 1;
+            //datahelp.CurrentStep = 2;
+            //jiaoyancanshu jy = new jiaoyancanshu();
+            //jy.Show();
+           ResultSet rs = new ResultSet();  
+
+            rs.Show();
 
             // XHSB xh =new XHSB();
             //xh.Show();

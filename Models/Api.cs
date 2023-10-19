@@ -182,7 +182,7 @@ namespace WindowsFormsApplication1.Models
                     paramBytes = Encoding.UTF8.GetBytes(soap.ToString());
                     requestStream.Write(paramBytes, 0, paramBytes.Length);
                 }
-                MessageBox.Show(soap.ToString());
+              //  MessageBox.Show(soap.ToString());
                 //  MessageBox.Show(BitConverter.ToString(paramBytes));
                 //响应
                 WebResponse webResponse = webRequest.GetResponse();

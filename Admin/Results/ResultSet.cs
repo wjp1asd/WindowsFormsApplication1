@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
         public ResultSet()
         {
             InitializeComponent();
-            string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode";
+            string sql = "Select a.id,a.path,a.name,a.idcard, a.testid,b.ksdate from Grade as a,TestRecord as b Where a.testid = b.qrcode order by b.ksdate desc";
 
             InitTable(sql);
             ff.dataview(this.dataGridView1);

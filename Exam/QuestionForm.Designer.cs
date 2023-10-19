@@ -182,9 +182,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(974, 587);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
@@ -200,6 +200,7 @@
             this.label11.Size = new System.Drawing.Size(31, 19);
             this.label11.TabIndex = 116;
             this.label11.Text = "[]";
+            this.label11.Visible = false;
             // 
             // lbltime
             // 
@@ -209,7 +210,7 @@
             this.lbltime.ForeColor = System.Drawing.Color.Black;
             this.lbltime.IntervalOn = 3;
             this.lbltime.Location = new System.Drawing.Point(842, 16);
-            this.lbltime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbltime.Margin = new System.Windows.Forms.Padding(2);
             this.lbltime.MinimumSize = new System.Drawing.Size(1, 1);
             this.lbltime.Name = "lbltime";
             this.lbltime.Size = new System.Drawing.Size(116, 42);
@@ -287,7 +288,7 @@
             this.rdbD.AutoSize = true;
             this.rdbD.Font = new System.Drawing.Font("宋体", 18F);
             this.rdbD.Location = new System.Drawing.Point(130, 376);
-            this.rdbD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbD.Margin = new System.Windows.Forms.Padding(2);
             this.rdbD.Name = "rdbD";
             this.rdbD.Size = new System.Drawing.Size(137, 28);
             this.rdbD.TabIndex = 16;
@@ -302,7 +303,7 @@
             this.rdbC.AutoSize = true;
             this.rdbC.Font = new System.Drawing.Font("宋体", 18F);
             this.rdbC.Location = new System.Drawing.Point(130, 349);
-            this.rdbC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbC.Margin = new System.Windows.Forms.Padding(2);
             this.rdbC.Name = "rdbC";
             this.rdbC.Size = new System.Drawing.Size(137, 28);
             this.rdbC.TabIndex = 15;
@@ -317,7 +318,7 @@
             this.rdbB.AutoSize = true;
             this.rdbB.Font = new System.Drawing.Font("宋体", 18F);
             this.rdbB.Location = new System.Drawing.Point(130, 320);
-            this.rdbB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbB.Margin = new System.Windows.Forms.Padding(2);
             this.rdbB.Name = "rdbB";
             this.rdbB.Size = new System.Drawing.Size(137, 28);
             this.rdbB.TabIndex = 14;
@@ -332,7 +333,7 @@
             this.rdbA.AutoSize = true;
             this.rdbA.Font = new System.Drawing.Font("宋体", 18F);
             this.rdbA.Location = new System.Drawing.Point(130, 293);
-            this.rdbA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbA.Margin = new System.Windows.Forms.Padding(2);
             this.rdbA.Name = "rdbA";
             this.rdbA.Size = new System.Drawing.Size(137, 28);
             this.rdbA.TabIndex = 13;

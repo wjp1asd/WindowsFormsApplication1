@@ -123,10 +123,27 @@ namespace WindowsFormsApplication1.Admin.Results
             a23.Text = a1.score5.ToString().Replace("-1", "未考试");
             a24.Text = a1.ymgcorrect.Replace("1", "√").Replace("0", "×");
             a25.Text = a1.score6.ToString().Replace("-1", "未考试");
-
+         
+            
             label7.Text=a1.lxtotal.ToString();
             label11.Text=a1.zxtotal.ToString();
             label15.Text=a1.mftotal.ToString();
+            if (a1.lxtotal<0
+             )
+            {
+                label7.Text="未考试";
+            }
+            if (a1.zxtotal<0
+               )
+            {
+                label11.Text="未考试";
+            }
+            if (a1.mftotal<0
+              )
+            {
+                label15.Text="未考试";
+            }
+
             label17.Text=a1.getGrade("path", datahelp.QId).ToString();
             this.pictureBox1.ImageLocation = a1.lxpic;
             this.pictureBox2.ImageLocation = a1.lxpic1;
