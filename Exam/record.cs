@@ -96,7 +96,7 @@ namespace WindowsFormsApplication1.Exam
             // g.updateGrade(0, "jyjg", datahelp.QId);
 
         }
-
+        bool s1, s2, s3, s4;
         public void Initc()
         {
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
@@ -199,7 +199,7 @@ namespace WindowsFormsApplication1.Exam
             if (this.result.Checked == true)
             {
 
-                if (tper == "离线")
+                if (tper == "离线"&&s1==true&&s2==true&&s3==true&&s4==true)
                 {
                     g.updateGrade(jyjg, "lx-jielun", datahelp.QId);
                     string x = "lx-jielun";
@@ -207,7 +207,7 @@ namespace WindowsFormsApplication1.Exam
                     Log1.updatelog("离线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
 
                 }
-                if (tper == "在线")
+                if (tper == "在线"&&s1==true&&s2==true&&s3==true)
                 {
                     g.updateGrade(jyjg1, "zx-jielun", datahelp.QId);
                     string x = "zx-jielun";
@@ -346,6 +346,7 @@ namespace WindowsFormsApplication1.Exam
 
                 if (Math.Abs(float.Parse(f1)-ap.f0)<=ap.f0*0.03)
                 {
+                    s1=true;
                     g.updateGrade(dycyl, "lx-dycyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-第一次压力得分", "lx-dycyl", dycyl, datahelp.QId);
                 }
@@ -356,6 +357,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 if( Math.Abs(float.Parse(f2)-ap.f0)<=ap.f0*0.03)
                 {
+                    s2=true;
                     g.updateGrade(decyl, "lx-decyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-第二次压力得分", "lx-decyl", decyl, datahelp.QId);
                 }
@@ -367,6 +369,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 if (Math.Abs(float.Parse(f3)-ap.f0)<=ap.f0*0.03)
                 {
+                    s3=true;
                     g.updateGrade(dscyl, "lx-dscyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-第三次压力得分", "lx-dscyl", dscyl, datahelp.QId);
                 }
@@ -375,9 +378,11 @@ namespace WindowsFormsApplication1.Exam
                     g.updateGrade(0, "lx-dscyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-第三次压力不得分", "lx-dscyl", 0, datahelp.QId);
 
+
                 }
                 if (Math.Abs(float.Parse(mf)-ap.f0*0.9)<=ap.f0*0.9*0.03)
                 {
+                    s4=true;
                     g.updateGrade(mfsyyl, "lx-mfsyyl", datahelp.QId);
                     Log1.updatelog("离线=填写记录-密封压力得分", "lx-mfyl", mfsyyl, datahelp.QId);
                 }
@@ -481,6 +486,7 @@ namespace WindowsFormsApplication1.Exam
 
                 if (datahelp.f1 == yi1.Text.Trim())
                 {
+                    s1=true;
                     string x = "zx-dyiyl";
                     g.updateGrade(sc.getScore(x), x, datahelp.QId);
                     Log1.updatelog("在线=填写记录-第一次压力得分", x, sc.getScore(x), datahelp.QId);
@@ -494,6 +500,7 @@ namespace WindowsFormsApplication1.Exam
                 }
                 if (datahelp.f2 == yi2.Text.Trim())
                 {
+                    s2=true; 
                     string x = "zx-deryl";
                     g.updateGrade(sc.getScore(x), x, datahelp.QId);
                     Log1.updatelog("在线=填写记录-第二次压力得分", x, sc.getScore(x), datahelp.QId);
@@ -508,6 +515,7 @@ namespace WindowsFormsApplication1.Exam
 
                 if (datahelp.f3 == yi3.Text.Trim())
                 {
+                    s3=true;
                     string x = "zx-dsanyl";
                     g.updateGrade(sc.getScore(x), x, datahelp.QId);
                     Log1.updatelog("在线=填写记录-第三次压力得分", x, sc.getScore(x), datahelp.QId);
@@ -539,7 +547,26 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
+            if (this.result.Checked == false)
+            {
 
+                if (tper == "离线")
+                {
+                    g.updateGrade(jyjg, "lx-jielun", datahelp.QId);
+                    string x = "lx-jielun";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("离线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
+
+                }
+                if (tper == "在线")
+                {
+                    g.updateGrade(jyjg1, "zx-jielun", datahelp.QId);
+                    string x = "zx-jielun";
+                    g.updateGrade(sc.getScore(x), x, datahelp.QId);
+                    Log1.updatelog("在线=填写记录-结论得分", x, sc.getScore(x), datahelp.QId);
+                }
+
+            }
 
             this.ShowSuccessDialog("保存成功");
 

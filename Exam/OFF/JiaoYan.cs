@@ -2008,6 +2008,7 @@ namespace WindowsFormsApplication1.Exam
                     this.button1.Text = "第一次测试";
 
                     maz = ap.maz;
+                  //  MessageBox.Show(""+maz);
                     maz90 = ap.maz90;
                     ta = 60;
                     if (SJLMSTAT==false)
