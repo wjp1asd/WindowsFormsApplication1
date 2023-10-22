@@ -549,7 +549,7 @@ namespace WindowsFormsApplication1.Exam
         {/*&&(QIEHUATIME-JYTIME)<0*/
             if (foujuestate1==false)
             {
-                MessageBox.Show(JYTIME+"DF"+GetTimeStamp(DateTime.Now));
+               // MessageBox.Show(JYTIME+"DF"+GetTimeStamp(DateTime.Now));
 
                 log1.updatelog("严重错误！校验阀开启后，选择压力表,当前考试结束，得分为0", "lx-fj", 0, datahelp.QId);
                 ff.ShowErrorDialog("严重错误！校验阀开启后，选择压力表,当前考试结束，得分为0");
@@ -858,7 +858,7 @@ namespace WindowsFormsApplication1.Exam
             }
         }
 
-        public bool SJLMSTAT { get; private set; }
+        public int SJLMSTAT = 0;
         public bool JiaoYanDONGL = false;
         public int JYTIME = -1;
         public int QIEHUATIME = -1;
@@ -1201,6 +1201,7 @@ namespace WindowsFormsApplication1.Exam
         int limit = 240;
         string DIS0;
         string DIS = "1111001";
+        int maz = 1111;
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -1591,12 +1592,12 @@ namespace WindowsFormsApplication1.Exam
                             {
                                 ff.ShowInfoTip("触发1"+(a1-sjdwq)+"离线=第一次测试：整定压力大于初次压力 当前应该锁紧，锁紧螺母得分");
                             }
-                            SJLMSTAT=true;
+                            SJLMSTAT=1;
                             log1.updatelog("离线=第一次测试：整定压力大于初次压力 当前应该锁紧，锁紧螺母得分" + sjlmsj, "lx-sjlm-1", sjlmsj, datahelp.QId);
                         }
                         else
                         {
-                            SJLMSTAT=false;
+                            SJLMSTAT=-1;
                             foujue2();
                             // ff.ShowInfoTip("触发2");
                             if (debug==1)
@@ -1625,7 +1626,7 @@ namespace WindowsFormsApplication1.Exam
                             {
                                 ff.ShowInfoTip("触发3"+(a1-sjdwq)+"离线=第一次测试：整定压力 小于 初次压力 当前应该放松,锁紧螺母得分");
                             }
-                            SJLMSTAT=true;
+                            SJLMSTAT=1;
                             g.updateGrade(sjlmsj, "sjlmsj", datahelp.QId);
                             log1.updatelog("离线=第一次测试：整定压力 小于 初次压力 当前应该放松,锁紧螺母得分" + sjlmsj, "lx-sjlm-1", sjlmsj, datahelp.QId);
                         }
@@ -1635,7 +1636,7 @@ namespace WindowsFormsApplication1.Exam
                             {
                                 ff.ShowInfoTip("触发4"+(a1-sjdwq)+"离线=第一次测试：整定压力 小于 初次压力 当前不能锁紧,锁紧螺母不得分");
                             }
-                            SJLMSTAT=false;
+                            SJLMSTAT=-1;
                             foujue2();
                             g.updateGrade(0, "sjlmsj", datahelp.QId);
                             log1.updatelog("离线=第一次测试：整定压力 小于 初次压力 当前不能锁紧,锁紧螺母不得分", "lx-sjlm-1", 0, datahelp.QId);
@@ -1699,10 +1700,10 @@ namespace WindowsFormsApplication1.Exam
             // dwqcha = dwq - a;
 
             int b = Convert.ToInt32(t8.ToString(), 16);
-            // if (debug==1)
-            // {
+             if (debug==1)
+            {
             ff.ShowInfoTip("校验阀实时"+current+"校验阀变化"+Math.Abs(dwqcha-a));
-            //  }
+            }
 
 
 
@@ -1870,6 +1871,7 @@ namespace WindowsFormsApplication1.Exam
             //d3[3] = (byte)(maz & 0x00ff);
             //d3[4] = (byte)((maz >> 8) & 0xff);
             //目标码值（离线压力设置-初次测试压力）
+           // MessageBox.Show("DUOJI"+maz);
             d3[9] = (byte)((maz >> 8) & 0xff);
             d3[8] = (byte)(maz & 0x00ff);
             try
@@ -1923,7 +1925,7 @@ namespace WindowsFormsApplication1.Exam
         }
 
         //码值初始值(范围500-2500)，时间最大值(压力变化，舵机表越走越快)
-        int maz = 1111;
+     
         int mazerr = 0;
         int maz90 = 0;
         int smin = 1000;
@@ -2008,10 +2010,10 @@ namespace WindowsFormsApplication1.Exam
                     this.button1.Text = "第一次测试";
 
                     maz = ap.maz;
-                  //  MessageBox.Show(""+maz);
+                  // MessageBox.Show(""+maz+"err"+mazerr);
                     maz90 = ap.maz90;
                     ta = 60;
-                    if (SJLMSTAT==false)
+                    if (SJLMSTAT==-1)
                     {
                         maz=mazerr;
                     }
@@ -2023,7 +2025,7 @@ namespace WindowsFormsApplication1.Exam
                     this.button1.Text = "第二次测试";
 
                     ta = 60;
-                    if (SJLMSTAT==false)
+                    if (SJLMSTAT==-1)
                     {
                         maz=mazerr;
                     }
@@ -2031,7 +2033,7 @@ namespace WindowsFormsApplication1.Exam
                     ff.ShowInfoTip("第二次测试" + "请在一分钟内正确操作");
                     break;
                 case 3:
-                    this.button1.Text = "第三次测试"; if (SJLMSTAT==false)
+                    this.button1.Text = "第三次测试"; if (SJLMSTAT==-1)
                     {
                         maz=mazerr;
                     }
@@ -2048,7 +2050,7 @@ namespace WindowsFormsApplication1.Exam
                     ff.ShowInfoTip("密封性能测试" + "保压测试开始，倒计时3分钟");
                     this.timer2.Stop();
                     maz = maz90;
-                    if (SJLMSTAT==false)
+                    if (SJLMSTAT==-1)
                     {
                         maz=mazerr;
                     }

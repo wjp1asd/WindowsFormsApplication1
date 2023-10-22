@@ -547,7 +547,7 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            if (this.result.Checked == false)
+            if (this.result.Checked == false&&(s1!=true||s2!=true||s3!=true))
             {
 
                 if (tper == "离线")
