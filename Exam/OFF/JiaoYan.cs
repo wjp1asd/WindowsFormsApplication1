@@ -209,7 +209,8 @@ namespace WindowsFormsApplication1.Exam
                 }
                 liangcheng = 1;
                 qiehuastate = true;
-                if (step==0&&QIEHUATIME==-1) {
+                if (step==0&&QIEHUATIME==-1)
+                {
                     QIEHUATIME=GetTimeStamp(DateTime.Now);
 
                 }
@@ -220,7 +221,8 @@ namespace WindowsFormsApplication1.Exam
                     log1.updatelog("离线=校验前，选择压力表得分", "lx-ylbxz", ylxz, datahelp.QId);
                     g.updateGrade(ylxz, "ylxz", datahelp.QId);
                 }
-                else {
+                else
+                {
                     if (JiaoYanDONGL==true&&step==0)
                     {
                         foujue1();
@@ -260,11 +262,13 @@ namespace WindowsFormsApplication1.Exam
                     liangcheng = 2;
                     qiehuastate = true;
                 }
-                else {
-                    if (JiaoYanDONGL==true&&step==0) {
-                        foujue1();
-                    }
-                }
+                //else
+                //{
+                //    if (JiaoYanDONGL==true&&step==0)
+                //    {
+                //        foujue1();
+                //    }
+                //}
 
 
 
@@ -297,7 +301,8 @@ namespace WindowsFormsApplication1.Exam
                     liangcheng = 3;
                     qiehuastate = true;
                 }
-                else {
+                else
+                {
                     if (JiaoYanDONGL==true&&step==0)
                     {
                         foujue1();
@@ -541,8 +546,8 @@ namespace WindowsFormsApplication1.Exam
         bool foujuestate1 = false;
         bool foujuestate2 = false;
         private void foujue1()
-        {
-            if (foujuestate1==false&&(QIEHUATIME-JYTIME<0))
+        {/*&&(QIEHUATIME-JYTIME)<0*/
+            if (foujuestate1==false)
             {
                 MessageBox.Show(JYTIME+"DF"+GetTimeStamp(DateTime.Now));
 
@@ -565,9 +570,10 @@ namespace WindowsFormsApplication1.Exam
         }
         private void foujue()
         {
-            if (foujuestate==false) {
+            if (foujuestate==false)
+            {
 
-               
+
                 ff.ShowErrorDialog("严重错误！未泄压调螺母，当前考试结束，得分为0", true);
                 g.updateGrade(0, "lx-total", datahelp.QId);
 
@@ -589,7 +595,7 @@ namespace WindowsFormsApplication1.Exam
         {
             if (foujuestate2==false)
             {
-             
+
                 log1.updatelog("严重错误！调节螺母拧错", "lx-fj2", 0, datahelp.QId);
                 ff.ShowErrorDialog("严重错误！调节螺母拧错,当前考试结束，得分为0");
                 g.updateGrade(0, "lx-total", datahelp.QId);
@@ -599,7 +605,7 @@ namespace WindowsFormsApplication1.Exam
                 last=true;
                 Action x = () =>
                 {
-                 
+
                     ProjectInfo p = new ProjectInfo("0");
                     p.Show();
                 };
@@ -1554,12 +1560,12 @@ namespace WindowsFormsApplication1.Exam
                 // 写法问题 初次校验
                 if (step==0)
                 {
-                  //  if (debug == 1)
-                  //  {
-                     //   ff.ShowInfoTip("当前"+a1+"上次"+sjdwq+"电压差"+(a1 - sjdwq));
-                        //  ff.ShowSuccessTip("离线=第一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
+                    //  if (debug == 1)
+                    //  {
+                    //   ff.ShowInfoTip("当前"+a1+"上次"+sjdwq+"电压差"+(a1 - sjdwq));
+                    //  ff.ShowSuccessTip("离线=第一次测试：校验阀关闭，泄压阀打开，量程表归 0 阀帽打开，整定压力 大于 初次压力 当前应该锁紧 得分");
 
-                  //  }
+                    //  }
                     if (xieyastate==false&&Math.Abs(a1-sjdwq)>100)
                     {
                         ff.ShowInfoTip("锁紧螺母动了");
@@ -1614,7 +1620,7 @@ namespace WindowsFormsApplication1.Exam
                         }
                         if ((a1 - sjdwq) <0)
                         {
-                            
+
                             if (debug==1)
                             {
                                 ff.ShowInfoTip("触发3"+(a1-sjdwq)+"离线=第一次测试：整定压力 小于 初次压力 当前应该放松,锁紧螺母得分");
@@ -1644,7 +1650,8 @@ namespace WindowsFormsApplication1.Exam
             };
 
             this.Invoke(tongdao);
-            if (sjdwq==-1) {
+            if (sjdwq==-1)
+            {
 
                 sjdwq=a1;
             }
@@ -1676,7 +1683,7 @@ namespace WindowsFormsApplication1.Exam
         }
         //校验阀电压值
         private int dwq;
-        private int dwqcha=-1;
+        private int dwqcha = -1;
         //锁紧电压值
         private int sjdwq = -1;
         // 调压电压值
@@ -1689,27 +1696,28 @@ namespace WindowsFormsApplication1.Exam
 
             int a = Convert.ToInt32(sb1.ToString(), 16);
             current = a;
-           // dwqcha = dwq - a;
+            // dwqcha = dwq - a;
 
             int b = Convert.ToInt32(t8.ToString(), 16);
-           // if (debug==1)
-          // {
-                ff.ShowInfoTip("校验阀实时"+current+"校验阀变化"+Math.Abs(dwqcha-a));
+            // if (debug==1)
+            // {
+            ff.ShowInfoTip("校验阀实时"+current+"校验阀变化"+Math.Abs(dwqcha-a));
             //  }
 
-            
-   
-            if (Math.Abs(dwqcha-a)>100&&dwqcha!=a&&step==0) {
-              
-                ff.ShowInfoTip("校验阀动了");
 
-                JiaoYanDONGL=true;
-                //   记录当前时间戳
-                
-                JYTIME=GetTimeStamp(DateTime.Now);
-               if (qiehuastate==false&&liangcheng==0) { foujue1(); }
-              
-            }
+
+            //if (Math.Abs(dwqcha-a)>500&&dwqcha!=a&&step==0)
+            //{
+
+            //    ff.ShowInfoTip("校验阀动了");
+
+            //    JiaoYanDONGL=true;
+            //    //   记录当前时间戳
+
+            //    JYTIME=GetTimeStamp(DateTime.Now);
+            //    if (qiehuastate==false&&liangcheng==0) { foujue1(); }
+
+            //}
             Action tongdao = () =>
             {
                 // richTextBox3.Clear();
@@ -1733,70 +1741,74 @@ namespace WindowsFormsApplication1.Exam
 
             if (Math.Abs(a) < 117500 && last == false && step >= 0)
             {
-
-
-                // 开启一个1分值计时
-                //    MessageBox.Show(a+""+xieyastate+liangcheng);
-                if (xieyastate == false && liangcheng > 0)
+                if (qiehuastate==false&&liangcheng==0) { foujue1(); }
+                else
                 {
-
-                    int k = Math.Abs(a - b) / interval;
-                    //   MessageBox.Show("变化速度：" + );
-                    SendServo1(a, 0, k);
-
-
-
-                    if (step == 0)
+                    #region
+                    // 开启一个1分值计时
+                    //    MessageBox.Show(a+""+xieyastate+liangcheng);
+                    if (xieyastate == false && liangcheng > 0)
                     {
 
-                        if (ta > 0)
+                        int k = Math.Abs(a - b) / interval;
+                        //   MessageBox.Show("变化速度：" + );
+
+
+                        SendServo1(a, 0, k);
+
+
+
+
+                        if (step == 0)
                         {
-                            // 方向判分
-                            if (famaostate == false)
+
+                            if (ta > 0)
                             {
-                                correct2 = true;
+                                // 方向判分
+                                if (famaostate == false)
+                                {
+                                    correct2 = true;
+                                }
+
+                            }
+                            if (ta > 0 && step == 0)
+                            {
+                                correct3 = true;
+
+
+                                if (debug == 1)
+                                {//整定调整
+                                    ff.ShowSuccessTip("离线=初次： 锁紧螺母锁紧 得分" + zdyltz);
+
+                                }
+                                g.updateGrade(zdyltz, "zdyltz", datahelp.QId);//整定调整
+                                log1.updatelog("离线=初次：锁紧螺母锁紧 得分" + zdyltz, "lx-zdyltz", zdyltz, datahelp.QId);
                             }
 
                         }
-                        if (ta > 0 && step == 0)
-                        {
-                            correct3 = true;
 
+                        if (step == 4 && ta2 > 0)
+                        {
+
+                            correct4 = true;
 
                             if (debug == 1)
-                            {//整定调整
-                                ff.ShowSuccessTip("离线=初次： 锁紧螺母锁紧 得分" + zdyltz);
-
+                            {
+                                ff.ShowSuccessTip("密封测试：保压 得分");
                             }
-                            g.updateGrade(zdyltz, "zdyltz", datahelp.QId);//整定调整
-                            log1.updatelog("离线=初次：锁紧螺母锁紧 得分" + zdyltz, "lx-zdyltz", zdyltz, datahelp.QId);
+
+
+                            // g.updateGrade(bycs, "bycs", datahelp.QId);
+
+
+
                         }
 
                     }
-
-                    if (step == 4 && ta2 > 0)
-                    {
-
-                        correct4 = true;
-
-                        if (debug == 1)
-                        {
-                            ff.ShowSuccessTip("密封测试：保压 得分");
-                        }
-
-
-                        // g.updateGrade(bycs, "bycs", datahelp.QId);
-
-
-
-                    }
+                    #endregion
                 }
                 // 初次算分
-
-
-
-
-
+              
             }
             else
             {
@@ -1808,11 +1820,13 @@ namespace WindowsFormsApplication1.Exam
 
 
             }
-            if (dwqcha==-1) {
+            if (dwqcha==-1)
+            {
                 dwqcha =a;
-               // d
+                // d
             }
-            
+
+
         }
         int czmaz;
 
@@ -1995,7 +2009,7 @@ namespace WindowsFormsApplication1.Exam
 
                     maz = ap.maz;
                     maz90 = ap.maz90;
-                    ta = 60; 
+                    ta = 60;
                     if (SJLMSTAT==false)
                     {
                         maz=mazerr;
@@ -2008,7 +2022,8 @@ namespace WindowsFormsApplication1.Exam
                     this.button1.Text = "第二次测试";
 
                     ta = 60;
-                    if (SJLMSTAT==false) {
+                    if (SJLMSTAT==false)
+                    {
                         maz=mazerr;
                     }
                     this.timer2.ReStart();
@@ -2062,19 +2077,21 @@ namespace WindowsFormsApplication1.Exam
             this.timer2.Stop();
             this.timer3.Stop();
             datahelp.CurrentStep1 = 3;
-          
-          
+
+
 
             if (DIS == "11111001" || DIS == "01111001" || DIS == "11111000" || DIS == "01111000")
             {
-                if (last==false&&famaostate==true) {
+                if (last==false&&famaostate==true)
+                {
                     Thread a1 = new Thread(shot1);
                     a1.Start();
                 }
-                   
+
                 log1.updatelog("离线=复位得分" + bycs, "lx-ylbqhf", bycs, datahelp.QId);
                 g.updateGrade(bycs, "bycs", datahelp.QId);
-                if (last==true) {
+                if (last==true)
+                {
                     Action x = () =>
                     {
                         this.Close();
@@ -2083,7 +2100,7 @@ namespace WindowsFormsApplication1.Exam
                     };
                     this.Invoke(x);
                 }
-              
+
 
 
 
@@ -2110,7 +2127,7 @@ namespace WindowsFormsApplication1.Exam
                 }
 
                 ff.ShowInfoDialog("请完成复位再退出" + str);
-              
+
                 log1.updatelog("离线=未复位不得分" + str, "lx-ylbqhf", 0, datahelp.QId);
                 g.updateGrade(0, "bycs", datahelp.QId);
                 last=true;
