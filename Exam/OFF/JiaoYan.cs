@@ -968,7 +968,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            // DI
+            
             this.plcinit();
             v = new Emgu.CV.VideoCapture(0);
             if (serialPort2.IsOpen)
