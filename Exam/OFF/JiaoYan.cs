@@ -968,7 +968,7 @@ namespace WindowsFormsApplication1.Exam
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            
+        //   foujue1();
             this.plcinit();
             v = new Emgu.CV.VideoCapture(0);
             if (serialPort2.IsOpen)
@@ -1740,19 +1740,19 @@ namespace WindowsFormsApplication1.Exam
             };
             this.Invoke(tongdao);
 
-            if (Math.Abs(a) < 117500 && last == false && step >= 0)
+            if (Math.Abs(a) < 116000 && last == false && step >= 0)
             {
                 if (qiehuastate==false&&liangcheng==0) { foujue1(); }
                 else
                 {
                     #region
                     // 开启一个1分值计时
-                    //    MessageBox.Show(a+""+xieyastate+liangcheng);
+                    //    MessageBox.Show(a+""+xieyastate+liangcheng);&&JiaoYanDONGL==true
                     if (xieyastate == false && liangcheng > 0)
                     {
 
                         int k = Math.Abs(a - b) / interval;
-                        //   MessageBox.Show("变化速度：" + );
+                     //     MessageBox.Show("跳动A：" + a);
 
 
                         SendServo1(a, 0, k);
@@ -2033,7 +2033,8 @@ namespace WindowsFormsApplication1.Exam
                     ff.ShowInfoTip("第二次测试" + "请在一分钟内正确操作");
                     break;
                 case 3:
-                    this.button1.Text = "第三次测试"; if (SJLMSTAT==-1)
+                    this.button1.Text = "第三次测试";
+                    if (SJLMSTAT==-1)
                     {
                         maz=mazerr;
                     }
@@ -2045,8 +2046,6 @@ namespace WindowsFormsApplication1.Exam
                     break;
                 case 4:
                     this.button1.Text = "密封性能测试";
-
-
                     ff.ShowInfoTip("密封性能测试" + "保压测试开始，倒计时3分钟");
                     this.timer2.Stop();
                     maz = maz90;
@@ -2066,7 +2065,7 @@ namespace WindowsFormsApplication1.Exam
             // 开启1分钟判分倒计时  保压测试显示3分钟 实际30秒走完
 
             ta = 60;
-
+        
 
 
         }

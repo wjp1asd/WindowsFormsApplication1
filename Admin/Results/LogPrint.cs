@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1.Admin.Results
         {
             InitializeComponent();
             string sql = "Select * from "+TableName+" Where qid = '"+id.Trim()+"'";
-            MessageBox.Show(sql);
+            //MessageBox.Show(sql);
             uid = id;
             InitTable(sql);
             ff.dataview(this.dataGridView1);

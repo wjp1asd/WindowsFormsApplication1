@@ -255,6 +255,7 @@ namespace WindowsFormsApplication1.Scan
         private void ScanLogin_MouseMove(object sender, MouseEventArgs e)
         {
             this.textBox1.Focus();
+       //     ff.ShowInfoTip("jh");
         }
     }
 }
