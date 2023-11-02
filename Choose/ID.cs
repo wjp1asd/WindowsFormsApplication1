@@ -134,7 +134,7 @@ namespace WindowsFormsApplication1
         int readContent = -1;
         private void AutoReadCard()
         {
-            ff.ShowInfoTip("q"+123);
+           // ff.ShowInfoTip("q"+123);
             if(this.groupBox1.Visible==false)
             {
                // rest--;
