@@ -227,6 +227,8 @@ namespace WindowsFormsApplication1
                 bt.Save(loc1 + url + t.Ksname.Trim() + "离线-azshot.png", System.Drawing.Imaging.ImageFormat.Bmp);
                 string mm = loc1 + url + t.Ksname.Trim() + "离线-azshot.png";
                 g.updatepath(mm, "mfpic", datahelp.QId);
+                ff.ShowInfoTip("拍照成功");
+
             }
             catch (Exception)
             {
@@ -255,9 +257,14 @@ namespace WindowsFormsApplication1
             }
             Thread.Sleep(2000);
             datahelp.CurrentStep = 5;
+            // this.Close();
+            //  MF1 mF = new MF1();
+            // mF.Show();
+
+
+            ProjectInfo projectInfo = new ProjectInfo();
+            projectInfo.Show();
             this.Close();
-            MF1 mF = new MF1();
-            mF.Show();
             //光标显示
             System.Windows.Forms.Cursor.Show();
         }

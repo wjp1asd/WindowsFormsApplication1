@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 using WindowsFormsApplication1.Scan;
@@ -78,7 +79,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+          
             string x = ConfigurationManager.AppSettings["machine"];
             if (int.Parse(x) < 2)
             {
@@ -90,9 +91,15 @@ namespace WindowsFormsApplication1
                 ScanLogin p = new ScanLogin();
                 p.Show();
             }
+           //开启新的实例  
+System.Diagnostics.Process.Start(Application.ExecutablePath);
+            //关闭当前实例    
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+            Application.Exit();//退出当前项目，如果是子项目，则不会停止主项目
+            System.Environment.Exit(0);//停止所有项目
 
-            Application.Restart();
-            Process.GetCurrentProcess()?.Kill();
+          //  Application.Restart();
+           // Process.GetCurrentProcess()?.Kill();
         }
     }
 }

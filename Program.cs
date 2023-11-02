@@ -48,7 +48,10 @@ namespace WindowsFormsApplication1
                 key.SetValue(appName, appPath);
             }
         }
-
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            Application.Restart();
+        }
         static void RemoveStartupEntry(string appName)
         {
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
