@@ -22,8 +22,13 @@ namespace WindowsFormsApplication1.Models
         public void backlogin()
         {
 
-            Application.Restart();
-            Process.GetCurrentProcess()?.Kill();
+            //开启新的实例  
+            System.Diagnostics.Process.Start(Application.ExecutablePath);
+            //关闭当前实例    
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+            Application.Exit();//退出当前项目，如果是子项目，则不会停止主项目
+            System.Environment.Exit(0);//停止所有项目
+
         }
 
         public void closePorts()

@@ -134,11 +134,12 @@ namespace WindowsFormsApplication1
         int readContent = -1;
         private void AutoReadCard()
         {
-            while (true&&this.groupBox1.Visible==false)
+            ff.ShowInfoTip("q"+123);
+            if(this.groupBox1.Visible==false)
             {
-                rest--;
-                Thread.Sleep(1000);
-                timer1.Stop();
+               // rest--;
+              //  Thread.Sleep(1000);
+             //   timer1.Stop();
                 if (nReaderPort == 0)
                 {
                     if (authenticate == -1)
@@ -386,7 +387,7 @@ namespace WindowsFormsApplication1
                             {
                                 ff.ShowErrorTip("读卡操作失败！");
                                 MessageBox.Show("警告：请联系管理员充气设备再进行抽题");
-                                break;
+                              
                                 // InitConfig();
                                 // this.label2.ForeColor = Color.Red;
                                 //   authenticate = IDCardReader.Authenticate();
@@ -399,7 +400,7 @@ namespace WindowsFormsApplication1
 
                             Id = lblIdCard.Text.ToString().Trim();
                             UpdataInfo(Id);
-                            break;
+                           
                         }
 
                     }
@@ -460,8 +461,12 @@ namespace WindowsFormsApplication1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
-            
+            if (this.timer1.Enabled)
+            {
+
+                this.timer1.Enabled = false;
+            }
+
             this.Close();
             ff.backlogin();
         }
@@ -478,12 +483,12 @@ namespace WindowsFormsApplication1
 
         private void ID_MouseMove(object sender, MouseEventArgs e)
         {
-            if (rest == 0)
-            {
-                InitConfig();
-                ff.ShowInfoTip("10s,保活");
-                rest = 10;
-            }
+            //if (rest == 0)
+            //{
+            //    InitConfig();
+            //    ff.ShowInfoTip("10s,保活");
+            //    rest = 10;
+            //}
 
         }
 
