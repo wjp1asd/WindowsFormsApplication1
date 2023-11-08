@@ -86,7 +86,8 @@ namespace WindowsFormsApplication1
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+          // url1 = "\\BNY-PC\\Images2\\身份证图片\\汪礼文_430423197805152510.bmp";
+         //  UpdataInfo("430423197805152510");
         }
         AutoAdaptWindowsSize awt;
         private void groupBox1_Resize(object sender, EventArgs e)
@@ -386,7 +387,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                 ff.ShowErrorTip("读卡操作失败！");
-                                MessageBox.Show("警告：请联系管理员充气设备再进行抽题");
+                                MessageBox.Show("警告：请联系管理员重启设备再进行抽题");
                               
                                 // InitConfig();
                                 // this.label2.ForeColor = Color.Red;
@@ -497,10 +498,13 @@ namespace WindowsFormsApplication1
 
             string connectionString = ConfigurationManager.AppSettings["sqlc"];
             SqlConnection con = new SqlConnection(connectionString);
-            string sql = "select id from student where idcard='" + Id.ToString() + "'";
+            string sql = "select id from student where idcard='" + 
+                Id.ToString().Trim() + "'";
             SqlCommand com = new SqlCommand(sql, con);
             con.Open();
             string path = url1;
+           // MessageBox.Show(url1);
+
             string id = "";
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
@@ -509,28 +513,39 @@ namespace WindowsFormsApplication1
 
             }
             con.Close();
+          
+
+
             if (id.Length > 0)
             {
                 datahelp.StudentId = Id.ToString();
+                string connectionString1 = ConfigurationManager.AppSettings["sqlc"];
+                SqlConnection con1 = new SqlConnection(connectionString);
+                string strcomm = "update student  set avatar = '" + path + "' where id = " + id;
+              //  MessageBox.Show(url1 + "zxx" + id);
+             //  MessageBox.Show(strcomm);
+                SqlCommand com1 = new SqlCommand(strcomm, con1);
+                con1.Open();
+                int i = 0;
+                SqlDataReader reader1 = com1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    i = 1;
+                }
+                //MessageBox.Show(""+i);
 
-                string strcomm = "update student  set avatar='" + path + "' where id = " + id;
 
-                con.Open();
-                com = new SqlCommand(strcomm, con);
+                    ff.ShowSuccessTip("更新信息成功！");
 
 
-
-                ff.ShowSuccessTip("更新信息成功！");
-
-
-                con.Close();
+                con1.Close();
             }
             else
             {
                 ff.ShowErrorDialog("系统无相关信息");
             }
 
-            con.Close();
+           
 
         }
 

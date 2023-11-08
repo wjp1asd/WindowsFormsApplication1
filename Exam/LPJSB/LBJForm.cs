@@ -262,7 +262,7 @@ namespace WindowsFormsApplication1.Exam
             {
 
                 datahelp.CurrentQuestion++;
-
+                label7.Text = datahelp.CurrentQuestion.ToString();
                 CheckNextButtonText();
                 LoadQuestion();
                 this.rdbA.Checked = false;
@@ -456,6 +456,7 @@ namespace WindowsFormsApplication1.Exam
             if (datahelp.CurrentQuestion > 1)
             {
                 datahelp.CurrentQuestion--;
+                label7.Text = datahelp.CurrentQuestion.ToString();
                 CheckUpButtonText();
                 this.rdbA.Show();
                 this.rdbB.Show();

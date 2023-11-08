@@ -276,7 +276,7 @@ namespace WindowsFormsApplication1.Exam.MF
             {
 
                 datahelp.CurrentQuestion++;
-
+              //  label3.Text = datahelp.CurrentQuestion.ToString();
                 CheckNextButtonText();
                 LoadQuestion();
                 this.rdbA.Checked = false;
