@@ -140,7 +140,7 @@ namespace WindowsFormsApplication1
             {
                // rest--;
               //  Thread.Sleep(1000);
-             //   timer1.Stop();
+               
                 if (nReaderPort == 0)
                 {
                     if (authenticate == -1)
@@ -395,15 +395,16 @@ namespace WindowsFormsApplication1
                             }
                         }
                         //上传信息
+                      
                         if (lblIdCard.Text.ToString().Length > 0)
                         {
                             this.groupBox1.Visible=true;
 
                             Id = lblIdCard.Text.ToString().Trim();
                             UpdataInfo(Id);
-                           
+                            timer1.Stop();
                         }
-
+                        //timer1.Stop();
                     }
                     else
                     {
@@ -563,7 +564,10 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
             this.groupBox1.Visible=false;
-            timer1.Start();
+            timer1.Stop();
+            ff.backlogin();
+        //    Thread.Sleep(5000);
+       //     timer1.Start();
         }
     }
 }

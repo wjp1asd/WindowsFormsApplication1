@@ -284,7 +284,7 @@ namespace WindowsFormsApplication1.Exam
             this.richTextBox2.Hide();
             ff.closePorts();
             this.plcinit();
-            MessageBox.Show("安装检测设备后，点击链接设备");
+           // MessageBox.Show("安装检测设备后，点击链接设备");
 
             this.timer1.Start();
             v = new Emgu.CV.VideoCapture(0);
@@ -818,7 +818,7 @@ namespace WindowsFormsApplication1.Exam
 
                     if (debug == 1)
                     {
-                        ff.ShowErrorTip("在线=阀帽拆卸得分"+cxfm1);
+                        ff.ShowInfoTip("在线=阀帽拆卸得分"+cxfm1);
                     }
                     Log1.updatelog("在线=阀帽拆卸得分" + cxfm1, "zx-cxfm", cxfm1, datahelp.QId);
                     g.updateGrade(cxfm1, "cxfm1", datahelp.QId);

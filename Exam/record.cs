@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1.Exam
 
              
                 jyjg1 = sc.getScore("zx-jielun");
-                Log1.updatelog("离线=填写记录-结论初始化", "zx-jielun", 0, datahelp.QId);
+                Log1.updatelog("在线=填写记录-结论初始化", "zx-jielun", 0, datahelp.QId);
 
             }                                          // 初始化成绩
 
