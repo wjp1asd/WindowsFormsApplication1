@@ -214,7 +214,7 @@
             this.lblUsername.Location = new System.Drawing.Point(29, 139);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(78, 27);
+            this.lblUsername.Size = new System.Drawing.Size(63, 22);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "用户名:";
             // 
@@ -226,7 +226,7 @@
             this.lblPassword.Location = new System.Drawing.Point(29, 184);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 20, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(76, 27);
+            this.lblPassword.Size = new System.Drawing.Size(62, 22);
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "密   码:";
             // 
@@ -343,7 +343,7 @@
             this.AutoSize = true;
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.管理员界面副本;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1404, 788);
+            this.ClientSize = new System.Drawing.Size(1276, 788);
             this.ControlBox = false;
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button12);
@@ -367,6 +367,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "智能化安全阀校验考试系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form1_FormClosed);
             this.Load += new System.EventHandler(this.form1_Load);
             this.Shown += new System.EventHandler(this.form1_Shown);

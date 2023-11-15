@@ -93,12 +93,13 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.label5.Location = new System.Drawing.Point(29, 111);
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(29, 122);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(484, 25);
+            this.label5.Size = new System.Drawing.Size(579, 25);
             this.label5.TabIndex = 46;
-            this.label5.Text = "按住实现划出研磨轨迹,ESC 退出鼠标锁定；Enter键完成";
+            this.label5.Text = "温馨提示：按住实现划出研磨轨迹,ESC 退出鼠标锁定；Enter键完成";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Models;
 
@@ -346,6 +347,10 @@ namespace WindowsFormsApplication1.Exam
             PrintCutpaper(0);
 
             ff.ShowInfoTip("打印完成");
+
+            Thread.Sleep(2000);
+            this.Close();
+            //ff.backlogin();
             // 生成考试成绩单
         }
         AutoAdaptWindowsSize awt;

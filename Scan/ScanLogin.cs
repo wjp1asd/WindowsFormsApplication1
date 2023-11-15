@@ -151,8 +151,16 @@ namespace WindowsFormsApplication1.Scan
         {
             // this.Close();
             // ff.backlogin();
-
-            Application.Exit();
+            DialogResult dr = MessageBox.Show("是否关闭当前系统？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (DialogResult.Yes != dr)
+            {
+                //  e.Cancel = true;
+            }
+            else
+            {
+                Application.Exit();
+            }
+          
             //   Process.GetCurrentProcess()?.Kill();
         }
 

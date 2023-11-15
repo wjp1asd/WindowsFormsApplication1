@@ -74,10 +74,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("宋体", 14F);
+            this.label2.Font = new System.Drawing.Font("宋体", 20F);
             this.label2.Location = new System.Drawing.Point(16, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 19);
+            this.label2.Size = new System.Drawing.Size(256, 27);
             this.label2.TabIndex = 1;
             this.label2.Text = "总题数：10，当前：";
             // 
@@ -85,16 +85,16 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("宋体", 14F);
+            this.label4.Font = new System.Drawing.Font("宋体", 20F);
             this.label4.Location = new System.Drawing.Point(192, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 19);
+            this.label4.Size = new System.Drawing.Size(164, 27);
             this.label4.TabIndex = 1;
             this.label4.Text = "第       题";
             // 
             // txtQuestionContent
             // 
-            this.txtQuestionContent.Font = new System.Drawing.Font("宋体", 14F);
+            this.txtQuestionContent.Font = new System.Drawing.Font("宋体", 20F);
             this.txtQuestionContent.Location = new System.Drawing.Point(130, 88);
             this.txtQuestionContent.Multiline = true;
             this.txtQuestionContent.Name = "txtQuestionContent";
@@ -132,10 +132,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label5.Font = new System.Drawing.Font("宋体", 20F);
             this.label5.Location = new System.Drawing.Point(130, 256);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 25);
+            this.label5.Size = new System.Drawing.Size(93, 27);
             this.label5.TabIndex = 7;
             this.label5.Text = "选项：";
             // 
@@ -251,10 +251,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(336, 51);
+            this.label10.Font = new System.Drawing.Font("宋体", 20F);
+            this.label10.Location = new System.Drawing.Point(382, 52);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 19);
+            this.label10.Size = new System.Drawing.Size(40, 27);
             this.label10.TabIndex = 19;
             this.label10.Text = "[]";
             // 
@@ -286,11 +286,11 @@
             // rdbD
             // 
             this.rdbD.AutoSize = true;
-            this.rdbD.Font = new System.Drawing.Font("宋体", 18F);
+            this.rdbD.Font = new System.Drawing.Font("宋体", 20F);
             this.rdbD.Location = new System.Drawing.Point(130, 376);
             this.rdbD.Margin = new System.Windows.Forms.Padding(2);
             this.rdbD.Name = "rdbD";
-            this.rdbD.Size = new System.Drawing.Size(137, 28);
+            this.rdbD.Size = new System.Drawing.Size(157, 31);
             this.rdbD.TabIndex = 16;
             this.rdbD.Tag = "D";
             this.rdbD.Text = "checkBox4";
@@ -301,11 +301,11 @@
             // rdbC
             // 
             this.rdbC.AutoSize = true;
-            this.rdbC.Font = new System.Drawing.Font("宋体", 18F);
+            this.rdbC.Font = new System.Drawing.Font("宋体", 20F);
             this.rdbC.Location = new System.Drawing.Point(130, 349);
             this.rdbC.Margin = new System.Windows.Forms.Padding(2);
             this.rdbC.Name = "rdbC";
-            this.rdbC.Size = new System.Drawing.Size(137, 28);
+            this.rdbC.Size = new System.Drawing.Size(157, 31);
             this.rdbC.TabIndex = 15;
             this.rdbC.Tag = "C";
             this.rdbC.Text = "checkBox3";
@@ -316,11 +316,11 @@
             // rdbB
             // 
             this.rdbB.AutoSize = true;
-            this.rdbB.Font = new System.Drawing.Font("宋体", 18F);
+            this.rdbB.Font = new System.Drawing.Font("宋体", 20F);
             this.rdbB.Location = new System.Drawing.Point(130, 320);
             this.rdbB.Margin = new System.Windows.Forms.Padding(2);
             this.rdbB.Name = "rdbB";
-            this.rdbB.Size = new System.Drawing.Size(137, 28);
+            this.rdbB.Size = new System.Drawing.Size(157, 31);
             this.rdbB.TabIndex = 14;
             this.rdbB.Tag = "B";
             this.rdbB.Text = "checkBox2";
@@ -331,11 +331,11 @@
             // rdbA
             // 
             this.rdbA.AutoSize = true;
-            this.rdbA.Font = new System.Drawing.Font("宋体", 18F);
+            this.rdbA.Font = new System.Drawing.Font("宋体", 20F);
             this.rdbA.Location = new System.Drawing.Point(130, 293);
             this.rdbA.Margin = new System.Windows.Forms.Padding(2);
             this.rdbA.Name = "rdbA";
-            this.rdbA.Size = new System.Drawing.Size(137, 28);
+            this.rdbA.Size = new System.Drawing.Size(157, 31);
             this.rdbA.TabIndex = 13;
             this.rdbA.Tag = "A";
             this.rdbA.Text = "checkBox1";
@@ -371,11 +371,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 12F);
-            this.label3.Location = new System.Drawing.Point(239, 54);
+            this.label3.Font = new System.Drawing.Font("宋体", 20F);
+            this.label3.Location = new System.Drawing.Point(261, 52);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 16);
+            this.label3.Size = new System.Drawing.Size(26, 27);
             this.label3.TabIndex = 10;
             this.label3.Text = "1";
             this.label3.Click += new System.EventHandler(this.label3_Click);

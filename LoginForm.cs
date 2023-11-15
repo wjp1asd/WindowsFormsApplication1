@@ -286,7 +286,16 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
             //   Application.Exit();
-            System.Environment.Exit(0);
+            DialogResult dr = MessageBox.Show("是否关闭当前系统？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (DialogResult.Yes != dr)
+            {
+              //  e.Cancel = true;
+            }
+            else {
+                System.Environment.Exit(0);
+            }
+
+          
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -405,5 +414,16 @@ namespace WindowsFormsApplication1
 
             c.Show();
         }
+
+      private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			//20210125 添加关闭系统前的提示，避免操作而关闭系统
+			DialogResult dr = MessageBox.Show("是否关闭当前系统？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (DialogResult.Yes != dr)
+			{
+				e.Cancel = true;
+			}
+		}
+
     }
 }

@@ -50,10 +50,10 @@
             this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button2.Font = new System.Drawing.Font("宋体", 12F);
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(226, 244);
+            this.button2.Location = new System.Drawing.Point(188, 234);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 53);
+            this.button2.Size = new System.Drawing.Size(193, 89);
             this.button2.TabIndex = 51;
             this.button2.Text = "下一步";
             this.button2.UseVisualStyleBackColor = false;
@@ -69,6 +69,7 @@
             this.label1.Size = new System.Drawing.Size(355, 83);
             this.label1.TabIndex = 52;
             this.label1.Text = "做的很好！";
+            this.label1.Visible = false;
             // 
             // Score1
             // 
